@@ -14,7 +14,7 @@ export const GrantCover: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You are able to use your shield to defend nearby allies. Any teammates who remain nearby gain a bonus to their defense. Additionally, while this power is active, the user will gain some resistance to defense debuffs.\n\nNotes: The defense bonus from this power is only applied to nearby team mates, but not yourself.\n\nRecharge: Moderate.",
+  "description": "You are able to use your shield to defend nearby allies. Any teammates who remain nearby gain a bonus to their defense. Additionally, while this power is active, the user will gain some resistance to defense debuffs.\n\nNotes:\nThe defense bonus from this power is only applied to nearby team mates, but not yourself.\n\nRecharge: Moderate.",
   "shortHelp": "PBAoE, Team (but not self) +DEF(All but Psionic), Self +RES(Defense Debuff)",
   "icon": "shielddefense_grantcover.png",
   "powerType": "Toggle",

@@ -12,10 +12,10 @@ import type { Powerset } from '@/types';
 import { Jab as Jab } from './jab';
 import { Punch as Punch } from './punch';
 import { Haymaker as Haymaker } from './haymaker';
-import { HandClap as HandClap } from './hand-clap';
-import { KnockoutBlow as KnockoutBlow } from './knockout-blow';
-import { Taunt as Taunt } from './taunt';
 import { Rage as Rage } from './rage';
+import { HandClap as HandClap } from './hand-clap';
+import { Taunt as Taunt } from './taunt';
+import { KnockoutBlow as KnockoutBlow } from './knockout-blow';
 import { Hurl as Hurl } from './hurl';
 import { FootStomp as FootStomp } from './foot-stomp';
 
@@ -35,10 +35,10 @@ export const powerset: Powerset = {
     Jab,
     Punch,
     Haymaker,
-    HandClap,
-    KnockoutBlow,
-    Taunt,
     Rage,
+    HandClap,
+    Taunt,
+    KnockoutBlow,
     Hurl,
     FootStomp,
   ],

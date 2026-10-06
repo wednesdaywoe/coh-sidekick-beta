@@ -131,7 +131,7 @@
     },
     {
       "path": "src/data/display-only-atoms.test.ts",
-      "sha256": "c4746531268db70dd2694acad854b1b302caf7ae1396948294eac5a52282be09"
+      "sha256": "5034cb5a0ce9bab2fe2797702cb878022054b7d048b169367eb2906a9fba8044"
     },
     {
       "path": "src/data/docs/register-shape.test.ts",
@@ -315,7 +315,7 @@
     },
     {
       "path": "src/data/set-mode-resolution.test.ts",
-      "sha256": "7752951920d91a1aaf068624dbbcff2a055b07f0984e2a9576f9f343c238f4a6"
+      "sha256": "265278f40e9e79c9866030950846645c90108623fe6ce1e6308945aa511e623a"
     },
     {
       "path": "src/data/snipe-timing.test.ts",
@@ -479,7 +479,7 @@
     },
     {
       "path": "src/utils/calculations/self-penalty-towho.test.ts",
-      "sha256": "5cf027be256c5e69e12c5ba3407352833ecd68f7bde3e4b555c72a7d4ef9f5e8"
+      "sha256": "2c7eb5888dfb309b40c16934692e79fd1bf1df301387d0ee898bc01040059298"
     },
     {
       "path": "src/utils/export-popmenu.test.ts",
@@ -507,7 +507,7 @@
     },
     {
       "path": "src/utils/mids-import/name-map.test.ts",
-      "sha256": "c2893fcf6a78c67c65c34781532fcc30c7eaa2ca55a0ad2b3ebddc62506e5147"
+      "sha256": "8f8bb53ef202c73c90fb9c3102b68d56657f64c33d20e2bf6503fa0aae711e10"
     },
     {
       "path": "src/utils/mids-import/relative-level.test.ts",

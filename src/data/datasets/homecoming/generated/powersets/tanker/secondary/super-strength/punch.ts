@@ -29,8 +29,8 @@ export const Punch: Power = {
   "stats": {
     "accuracy": 1,
     "range": 7,
-    "recharge": 4,
-    "endurance": 5.2,
+    "recharge": 6,
+    "endurance": 6.864,
     "castTime": 1.2
   },
   "allowedEnhancements": [
@@ -51,15 +51,30 @@ export const Punch: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
-    "scale": 1,
+    "scale": 1.32,
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Damage","Smashing",1,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Smashing",1.32,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Fire",0.45,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Smashing",1.4,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Fire",0.594,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Smashing",0.198,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might",null,null,null,null,null,null,null,null,null,null,"unleashmight"],
+    ["Damage","Smashing",1.48,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Smashing",0.2219,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might"],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.30000001192092896,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "unleashmight",
+      "label": "Unleash Might",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.198,
+        "table": "Melee_Damage"
+      }
+    }
   ],
   "specialEffects": [
     {

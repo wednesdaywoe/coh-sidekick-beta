@@ -21,7 +21,7 @@
   "activation_time": 2.03,
   "recharge_time": 15.0,
   "activate_period": 2.0,
-  "endurance_cost": 1.04,
+  "endurance_cost": 0.8,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -84,7 +84,7 @@
           "target": "AnyAffected",
           "table": "Ranged_Res_Dmg",
           "scale": 1.5,
-          "duration": "2.25 seconds",
+          "duration": "15 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -125,6 +125,90 @@
       "requires_expression": [],
       "tags": [],
       "flags": [
+        "PVPOnly"
+      ],
+      "is_pvp": "PVP_ONLY",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Ranged_Res_Dmg",
+          "scale": 1.5,
+          "duration": "15 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        },
+        {
+          "attribs": [
+            "Held",
+            "Immobilized",
+            "Stunned"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Res_Boolean",
+          "scale": 2.0,
+          "duration": "15 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [],
+      "tags": [],
+      "flags": [
         "PVEOnly"
       ],
       "is_pvp": "PVE_ONLY",
@@ -144,7 +228,7 @@
           "target": "AnyAffected",
           "table": "Ranged_Res_Boolean",
           "scale": -20.0,
-          "duration": "2.25 seconds",
+          "duration": "15 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -162,56 +246,6 @@
             "IgnoreResistance"
           ],
           "flags_raw": 1056
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": [],
-      "tags": [],
-      "flags": [
-        "PVPOnly"
-      ],
-      "is_pvp": "PVP_ONLY",
-      "requires_pv": "EITHER",
-      "requires_default": "SATISFIED",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Held",
-            "Immobilized",
-            "Stunned"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Resistance",
-          "target": "AnyAffected",
-          "table": "Ranged_Res_Boolean",
-          "scale": 2.0,
-          "duration": "2.25 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
         }
       ]
     }

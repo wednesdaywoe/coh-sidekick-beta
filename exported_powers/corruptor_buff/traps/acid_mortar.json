@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Acid Mortar",
   "display_fullname": "Corruptor Buff Traps Acid Mortar",
-  "display_help": "You can place a small Mortar on the ground. If an enemy passes nearby, the Mortar will fire an Acid grenade at the target. The grenade will explodes in a small shower of acid on impact. This acid eats through armor, causing minor damage over time. It reduces the target's Defense as well as his Damage Resistance. The mortar will last up to 60 seconds and will fire up to 10 grenades. It can be destroyed by your foes.<br>",
-  "display_short_help": "Place Trap: Ranged (AoE), DoT(Toxic), Foe -Res(All), -DEF",
+  "display_help": "You can place a small Mortar on the ground. If an enemy passes nearby, the Mortar will fire an Acid grenade at the target. The grenade will explodes in a small shower of acid on impact. This acid eats through armor, causing minor damage over time. It reduces the target's Defense as well as their Damage Resistance. The mortar will last up to 60 seconds and will fire a grenade every 4 seconds. It can be destroyed by your foes.<br><br><color #fcfc95>Damage: Minor(DoT).</color><br><color #fcfc95>Recharge: Long.</color>",
+  "display_short_help": "Place Trap: Ranged (AoE), Minor DoT(Toxic), Foe -Res(All), -DEF",
   "icon": "traps_droppedaoedebuffdefense.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -18,8 +18,8 @@
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 2.77,
-  "time_to_root": 2.77,
+  "activation_time": 1.47,
+  "time_to_root": 1.47,
   "recharge_time": 90.0,
   "activate_period": 0.0,
   "endurance_cost": 13.0,
@@ -99,10 +99,11 @@
             "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods"
           ],
           "flags_raw": 1280,
-          "flags2_raw": 4
+          "flags2_raw": 12
         }
       ]
     }

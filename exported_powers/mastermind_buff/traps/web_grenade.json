@@ -3,9 +3,9 @@
   "full_name": "Mastermind_Buff.Traps.Web_Grenade",
   "short_name": "Web_Grenade",
   "type": "Click",
-  "display_name": "Web Grenade",
+  "display_name": "Debilitating Web Grenade",
   "display_fullname": "Mastermind Buff Traps Web Grenade",
-  "display_help": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed. The Web can bring down flying entities and halts jumping.<br><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_help": "Upon impact, the Web Grenade expels a strong, tenuous, and very sticky substance that can Immobilize most targets. This non-lethal device deals no damage and does not prevent targets from attacking, although their attack rate is Slowed and their damage is reduced. The Web can bring down flying entities and halts jumping. Enemies near the target will be hit with a splash of webbing, slowing them and pulling them towards the target.<br><br><color #fcfc95>Recharge: Fast.</color>",
   "display_short_help": "Ranged, Target Immobilize, -Recharge, -Fly",
   "icon": "traps_targetedimmoblize.png",
   "auto_issue": false,
@@ -20,7 +20,7 @@
   "range_secondary": 0.0,
   "activation_time": 1.37,
   "time_to_root": 1.37,
-  "recharge_time": 4.0,
+  "recharge_time": 10.0,
   "activate_period": 0.0,
   "endurance_cost": 7.8,
   "interrupt_time": 0.0,
@@ -55,6 +55,160 @@
     104
   ],
   "effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [],
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Execute_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": 0.0,
+          "duration": "0 seconds",
+          "magnitude": 0.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "power_names": [
+              "Villain_Pets.Web_Grenade.Web_Grenade"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
+        },
+        {
+          "attribs": [
+            "Knockup",
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 100.0,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        },
+        {
+          "attribs": [
+            "Fly"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": -10.0,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        },
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg",
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Debuff_Dam",
+          "scale": 2.0,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
+        }
+      ]
+    },
     {
       "chance": 1.0,
       "ppm": 0.0,
@@ -123,7 +277,7 @@
           "target": "AnyAffected",
           "table": "Ranged_Ones",
           "scale": -500.0,
-          "duration": "15 seconds",
+          "duration": "30 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -256,141 +410,6 @@
           "jit_requires": [],
           "caster_stack": "Individual",
           "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": [],
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "requires_pv": "EITHER",
-      "requires_default": "SATISFIED",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "RechargeTime"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Strength",
-          "target": "AnyAffected",
-          "table": "Ranged_Slow",
-          "scale": 0.5,
-          "duration": "15 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "NearGround",
-            "IgnoreStrength"
-          ],
-          "flags_raw": 1304
-        },
-        {
-          "attribs": [
-            "RunningSpeed",
-            "FlyingSpeed"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Slow",
-          "scale": 0.5,
-          "duration": "15 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "NearGround"
-          ],
-          "flags_raw": 1288
-        },
-        {
-          "attribs": [
-            "Knockup",
-            "Knockback"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Resistance",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 100.0,
-          "duration": "15 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
-        },
-        {
-          "attribs": [
-            "Fly"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": -10.0,
-          "duration": "15 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
           "flags": [

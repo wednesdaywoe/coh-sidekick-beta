@@ -435,7 +435,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }
@@ -585,7 +585,6 @@
     "*",
     "-"
   ],
-  "chain_delay": 0.25,
   "over_cap_trigger": 0,
   "over_cap_multiplier": 0.3333,
   "over_cap_exponential": false,

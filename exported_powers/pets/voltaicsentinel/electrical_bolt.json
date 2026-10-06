@@ -330,7 +330,6 @@
       ]
     }
   ],
-  "chain_delay": 1.8,
   "strengths_disallowed": [
     "RechargeTime"
   ],

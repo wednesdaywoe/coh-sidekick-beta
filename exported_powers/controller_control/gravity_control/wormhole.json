@@ -18,8 +18,8 @@
   "arc": 0.0,
   "range": 80.0,
   "range_secondary": 200.0,
-  "activation_time": 3.0,
-  "time_to_root": 3.0,
+  "activation_time": 2.53,
+  "time_to_root": 2.53,
   "recharge_time": 90.0,
   "activate_period": 0.0,
   "endurance_cost": 15.6,
@@ -110,7 +110,7 @@
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
-          "scale": 4.1,
+          "scale": 6.1,
           "duration": "0 seconds",
           "magnitude": 3.0,
           "delay": 2.6,
@@ -370,7 +370,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }
@@ -452,6 +452,7 @@
     }
   ],
   "modes_disallowed": [
+    "NoTeleport",
     "Disable_All"
   ],
   "available_level": 21,

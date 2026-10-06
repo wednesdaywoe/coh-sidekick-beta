@@ -15,7 +15,7 @@ export const ChainInduction: Power = {
   "autoIssue": false,
   "free": false,
   "description": "This Electric Melee attack deals moderate Smashing and Energy damage and may drain some of the targets Endurance. However, this attack also induces an unstable electric charge that may jump to another enemy target. The charge will jump to the closest enemy in range that has not been previously hit, until it inevitably dissipates. Enhancements will boost the effectiveness of the initial attack as well as the jumping charge.",
-  "shortHelp": "Melee, DMG(Energy), Foe -End +Special",
+  "shortHelp": "Melee (Chain AoE), DMG(Energy), Foe -End, -Recovery",
   "icon": "electricmelee_targetedchaininduction.png",
   "powerType": "Click",
   "targetType": "Foe",

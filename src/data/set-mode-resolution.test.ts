@@ -57,31 +57,33 @@ function modeByMag(rel: string): Record<number, string> {
   return m;
 }
 
+// Issue 28 Page 4 (live 2026-10-06) inserted one mode into the registry, so every index
+// past the Granite ones below moved up by one; the names they resolve to did not change.
 describe('Set_Mode magnitude → mode-name resolution (HC)', () => {
   it('Domination resolves both its modes (Domination + Domination_Active)', () => {
     const m = modeByMag('inherent/inherent/domination.json');
-    expect(m[45]).toBe('Domination');
-    expect(m[46]).toBe('Domination_Active');
+    expect(m[46]).toBe('Domination');
+    expect(m[47]).toBe('Domination_Active');
   });
 
   it('Bio Armor adaptations resolve to their stance modes', () => {
-    expect(modeByMag('brute_defense/bio_organic_armor/offensive_adaptation.json')[155]).toBe(
+    expect(modeByMag('brute_defense/bio_organic_armor/offensive_adaptation.json')[156]).toBe(
       'OffensiveAdaptation',
     );
-    expect(modeByMag('brute_defense/bio_organic_armor/defensive_adaptation.json')[154]).toBe(
+    expect(modeByMag('brute_defense/bio_organic_armor/defensive_adaptation.json')[155]).toBe(
       'DefensiveAdaptation',
     );
     // Efficient Adaptation genuinely sets RestedAdaptation — there is no
     // "EfficientAdaptation" mode (verified against the .powers oracle).
-    expect(modeByMag('brute_defense/bio_organic_armor/efficient_adaptation.json')[153]).toBe(
+    expect(modeByMag('brute_defense/bio_organic_armor/efficient_adaptation.json')[154]).toBe(
       'RestedAdaptation',
     );
   });
 
   it('Dual Pistols ammo swaps resolve to their ammo modes', () => {
-    expect(modeByMag('blaster_ranged/dual_pistols/cryo_ammunition.json')[90]).toBe('IceAmmo');
-    expect(modeByMag('blaster_ranged/dual_pistols/incendiary_ammunition.json')[91]).toBe('FireAmmo');
-    expect(modeByMag('blaster_ranged/dual_pistols/chemical_ammunition.json')[92]).toBe('ToxicAmmo');
+    expect(modeByMag('blaster_ranged/dual_pistols/cryo_ammunition.json')[91]).toBe('IceAmmo');
+    expect(modeByMag('blaster_ranged/dual_pistols/incendiary_ammunition.json')[92]).toBe('FireAmmo');
+    expect(modeByMag('blaster_ranged/dual_pistols/chemical_ammunition.json')[93]).toBe('ToxicAmmo');
   });
 
   it('Granite Armor resolves its form mode and the toggle-suppression modes', () => {

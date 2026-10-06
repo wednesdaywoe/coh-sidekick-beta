@@ -518,7 +518,8 @@ export function calculateResolvedPseudoPetDamage(
     for (const dmg of damageEntries) {
       const tv = getTableValue(archetype, dmg.table, level);
       if (tv === undefined) continue;
-      baseDamages.push({ type: dmg.damageType, base: Math.abs(tv) * Math.abs(dmg.scale) * chanceMult });
+      // A hit that rolls below the ability's own chance is weighted by it (Trip Mine's 50% Fire).
+      baseDamages.push({ type: dmg.damageType, base: Math.abs(tv) * Math.abs(dmg.scale) * chanceMult * (dmg.chance ?? 1) });
     }
     if (baseDamages.length === 0) continue;
 
@@ -557,6 +558,7 @@ export function calculateResolvedPseudoPetDamage(
     displayName: entity.displayName,
     entityCount: count,
     duration: entity.duration,
+    oneShot: entity.oneShot,
     abilities,
     effectOnlyAbilities,
     allEffects: Array.from(allEffectsMap.values()),

@@ -56,6 +56,7 @@ export const TripMine: Power = {
         "displayName": "Trip Mine",
         "duration": 260,
         "copyCreatorMods": true,
+        "oneShot": true,
         "abilities": [
           {
             "name": "Self_Destruct",
@@ -75,7 +76,8 @@ export const TripMine: Power = {
               {
                 "damageType": "Fire",
                 "scale": 1,
-                "table": "Melee_Damage"
+                "table": "Melee_Damage",
+                "chance": 0.5
               }
             ],
             "effects": [

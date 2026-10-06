@@ -38,7 +38,13 @@
   "num_allowed": 1,
   "requires": [],
   "activate_requires": [],
-  "target_requires": [],
+  "target_requires": [
+    "arch",
+    "target>",
+    "Class_Boss_ChallengeArchvillain",
+    "eq",
+    "!"
+  ],
   "slot_requires": [],
   "attack_types": [],
   "effects": [
@@ -145,7 +151,7 @@
           "fx": {
             "continuing_bits": [
               387,
-              691
+              690
             ],
             "continuing_fx": "POWERS/ILLUSIONS/ILLUSINVISIBILITYCONTINUING.FX",
             "conditional_bits": [],

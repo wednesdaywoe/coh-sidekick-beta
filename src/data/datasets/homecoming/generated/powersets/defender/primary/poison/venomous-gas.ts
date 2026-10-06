@@ -39,7 +39,6 @@ export const VenomousGas: Power = {
   },
   "allowedEnhancements": [
     "EnduranceReduction",
-    "Range",
     "Recharge",
     "ToHit Debuff",
     "Defense Debuff"

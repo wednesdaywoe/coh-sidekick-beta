@@ -337,13 +337,18 @@
           "delay": 0.0,
           "radius_inner": -1.0,
           "radius_outer": -1.0,
-          "requires_expression": [],
+          "requires_expression": [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
+          ],
           "tags": [
             "InherentTaunt"
           ],
           "flags": [],
           "is_pvp": "EITHER",
-          "requires_pv": "EITHER",
+          "requires_pv": "PVE_ONLY",
           "requires_default": "SATISFIED",
           "eval_flags": 0,
           "templates": [

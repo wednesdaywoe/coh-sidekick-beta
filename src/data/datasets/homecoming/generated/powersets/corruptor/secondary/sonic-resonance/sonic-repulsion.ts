@@ -14,8 +14,8 @@ export const SonicRepulsion: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You create a powerful sonic resonance around an ally, repelling all foes nearby. You will lose endurance for each target repelled.\n\nRecharge: Moderate.",
-  "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe Knockback",
+  "description": "You create a powerful sonic resonance around an ally, repelling all foes nearby. When repelled, foes also take minor Smashing and Energy damage.\n\nRecharge: Moderate.",
+  "shortHelp": "Toggle: Ranged (Target Ally AoE), Foe Knockback, DMG (Smashing, Energy)",
   "icon": "sonicdebuff_teamknockback.png",
   "powerType": "Toggle",
   "targetType": "Teammate",
@@ -33,25 +33,38 @@ export const SonicRepulsion: Power = {
     "range": 70,
     "radius": 10,
     "recharge": 8,
-    "endurance": 0.325,
-    "castTime": 2.33,
+    "endurance": 0.26,
+    "castTime": 1.6,
     "activatePeriod": 0.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [
+    "Hold",
     "EnduranceReduction",
     "Recharge",
     "Knockback",
-    "Accuracy"
+    "Damage"
   ],
   "allowedSetCategories": [
-    "Knockback"
+    "Corruptor Archetype Sets",
+    "Holds",
+    "Knockback",
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "atoms": [
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
-    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1.100000023841858,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD"],
+    ["Meta",null,0,0,1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD",null,"null",null,null,["Knocked"],2,true],
+    ["Mez","Held",1,2,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",3,0,0.5,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true]
+    ["Mez","Held",1,2,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.25,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
+  ],
+  "specialEffects": [
+    {
+      "kind": "effect-proc",
+      "chance": 0.25,
+      "label": "Hold"
+    }
   ]
 };

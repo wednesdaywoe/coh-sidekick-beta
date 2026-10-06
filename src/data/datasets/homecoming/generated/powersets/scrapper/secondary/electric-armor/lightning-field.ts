@@ -32,7 +32,7 @@ export const LightningField: Power = {
     "accuracy": 1,
     "radius": 8,
     "recharge": 10,
-    "endurance": 1.04,
+    "endurance": 0.52,
     "castTime": 2.03,
     "activatePeriod": 2,
     "maxTargets": 10

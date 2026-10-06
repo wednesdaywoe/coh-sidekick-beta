@@ -19,7 +19,7 @@
   "range": 0.0,
   "range_secondary": 0.0,
   "activation_time": 0.0,
-  "recharge_time": 1000.0,
+  "recharge_time": 30.0,
   "activate_period": 0.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
@@ -36,7 +36,9 @@
     "Damage",
     "Accuracy"
   ],
-  "allowed_set_categories": null,
+  "allowed_set_categories": [
+    "Melee AoE Damage"
+  ],
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
@@ -203,7 +205,7 @@
       "templates": [
         {
           "attribs": [
-            "Knockback"
+            "Knockup"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -235,7 +237,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }
@@ -265,7 +267,7 @@
       "templates": [
         {
           "attribs": [
-            "Knockback"
+            "Knockup"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
@@ -299,7 +301,55 @@
       ]
     }
   ],
-  "castable_after_death": "DeadOnly",
+  "activation_effects": [
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [],
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Silent_Kill"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.25,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 96
+        }
+      ]
+    }
+  ],
+  "castable_after_death": "DeadOrAlive",
   "available_level": 0,
   "powerset": "Villain_Pets.Traps_Trip_Mine"
 }

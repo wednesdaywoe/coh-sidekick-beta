@@ -28,7 +28,7 @@ export const Fallout: Power = {
     "range": 60,
     "recharge": 300,
     "endurance": 20.8,
-    "castTime": 3.2
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "EnduranceReduction",

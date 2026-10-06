@@ -2519,6 +2519,13 @@
       "icon": "salvage_NightmareObol.tga",
       "rarity": "rare",
       "category": "special"
+    },
+    {
+      "name": "S_PVP_OnslaughtCredit",
+      "display_name": "Onslaught Credit",
+      "icon": "salvage_AlignmentChange.tga",
+      "rarity": "uncommon",
+      "category": "special"
     }
   ]
 }

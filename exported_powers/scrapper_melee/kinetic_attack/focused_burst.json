@@ -628,7 +628,7 @@
               "suppress_events": [
                 {
                   "event": "Knocked",
-                  "event_id": 33,
+                  "event_id": 34,
                   "duration": 10.0,
                   "always": 0
                 }
@@ -779,7 +779,6 @@
     "1",
     "minmax"
   ],
-  "chain_delay": 0.25,
   "procs_only_on_main_target": true,
   "modes_disallowed": [
     "Disable_All"

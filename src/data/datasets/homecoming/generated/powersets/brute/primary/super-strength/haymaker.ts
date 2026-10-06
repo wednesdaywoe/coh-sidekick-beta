@@ -14,7 +14,7 @@ export const Haymaker: Power = {
   "available": 1,
   "autoIssue": false,
   "free": false,
-  "description": "A slow but devastating attack, the Haymaker has a great chance of knocking your opponent down.",
+  "description": "A slow but devastating attack, the Haymaker has a great chance of knocking your opponent down.\n\nWhile Rage is active, up to two nearby opponents will also be smashed by this attack, being damaged and possibly knocked down.",
   "shortHelp": "Melee, DMG(Smashing), Knockback",
   "icon": "superstrength_haymaker.png",
   "powerType": "Click",
@@ -57,9 +57,25 @@ export const Haymaker: Power = {
   "atoms": [
     ["Damage","Smashing",1.64,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Fire",0.738,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Fire",0.738,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Smashing",0.246,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might",null,null,null,null,null,null,null,null,null,null,"unleashmight"],
     ["Damage","Smashing",1.77,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
+    ["Damage","Smashing",0.2654,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.6000000238418579,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kUnleashMight","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unleashmight"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "unleashmight",
+      "label": "Unleash Might",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.246,
+        "table": "Melee_Damage"
+      }
+    }
   ],
   "specialEffects": [
     {

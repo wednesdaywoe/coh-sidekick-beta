@@ -239,7 +239,38 @@
           "table": "Melee_Ones",
           "scale": 1.0,
           "duration": "0.6 seconds",
-          "magnitude": 99.0,
+          "magnitude": 195.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Extend",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 3120,
+          "mode_name": "Miniature"
+        },
+        {
+          "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "0.6 seconds",
+          "magnitude": 100.0,
           "delay": 0.0,
           "duration_expression": [],
           "magnitude_expression": [],
@@ -268,12 +299,6 @@
     "Arena",
     "Disable_All",
     "Shivan_Mode"
-  ],
-  "modes_suspended": [
-    "Peacebringer_Blaster_Mode",
-    "Peacebringer_Tanker_Mode",
-    "Warshade_Blaster_Mode",
-    "Warshade_Tanker_Mode"
   ],
   "available_level": 0,
   "powerset": "Prestige.Prestige_Costumes"

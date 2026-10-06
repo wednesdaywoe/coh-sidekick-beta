@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Seeker Drones",
   "display_fullname": "Defender Buff Traps Seeker Drones",
-  "display_help": "You create two Seeker Drones. These Seeker Drones will follow you until they detect an enemy and then they will zero in on their targets and detonate on impact. The small explosive flash of energy does only minor damage, but the concussion can weaken foes. Affected targets will have reduced Damage, Accuracy and Perception and may even be Disoriented for a short while. You can only ever have Two Seeker Drones out at one time and they can be destroyed by your foes.",
+  "display_help": "You create two Seeker Drones. These Seeker Drones will follow you until they detect an enemy and then they will zero in on their targets and detonate on impact. The small explosive flash of energy does only minor damage, but the concussion can weaken foes. Affected targets will have reduced Damage, chance to hit and Perception and may even be Disoriented for a short while. Your drones can be destroyed by your foes, causing them to explode early.<br><br><color #fcfc95>Recharge: Long.</color>",
   "display_short_help": "Summon Seekers: Ranged Disorient, -DMG, -ACC, -Perception, DMG(Energy)",
   "icon": "traps_droppedaoedebuffdamage.png",
   "auto_issue": false,
@@ -18,9 +18,9 @@
   "arc": 0.0,
   "range": 60.0,
   "range_secondary": 0.0,
-  "activation_time": 2.03,
-  "time_to_root": 2.03,
-  "recharge_time": 90.0,
+  "activation_time": 1.0,
+  "time_to_root": 1.0,
+  "recharge_time": 60.0,
   "activate_period": 0.0,
   "endurance_cost": 15.6,
   "interrupt_time": 0.0,
@@ -45,6 +45,7 @@
     "Accurate To-Hit Debuff",
     "Defender Archetype Sets",
     "Pet Damage",
+    "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
     "Universal Damage Sets"
@@ -93,21 +94,22 @@
           "tick_mag_additive": 0.0,
           "jit_requires": [],
           "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
+          "stack": "StackThenIgnore",
+          "stack_limit": 3,
           "stack_key": null,
           "params": {
-            "entity_def": "Pets_Traps_Seeker1_Defender",
+            "entity_def": "Pets_Traps_Seeker_Defender",
             "priority_list": "PL_SpawnFlying",
             "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods"
           ],
           "flags_raw": 1072,
-          "flags2_raw": 4
+          "flags2_raw": 12
         },
         {
           "attribs": [
@@ -130,21 +132,22 @@
           "tick_mag_additive": 0.0,
           "jit_requires": [],
           "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
+          "stack": "StackThenIgnore",
+          "stack_limit": 3,
           "stack_key": null,
           "params": {
-            "entity_def": "Pets_Traps_Seeker2_Defender",
+            "entity_def": "Pets_Traps_Seeker_Defender",
             "priority_list": "PL_SpawnFlying",
             "type": "EntCreate"
           },
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance",
-            "CopyBoosts"
+            "CopyBoosts",
+            "CopyCreatorMods"
           ],
           "flags_raw": 1072,
-          "flags2_raw": 4
+          "flags2_raw": 12
         }
       ]
     }

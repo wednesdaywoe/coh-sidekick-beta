@@ -29,7 +29,7 @@ export const HowlingTwilight: Power = {
     "radius": 15,
     "recharge": 180,
     "endurance": 10.4,
-    "castTime": 1.83,
+    "castTime": 1.67,
     "maxTargets": 16
   },
   "allowedEnhancements": [

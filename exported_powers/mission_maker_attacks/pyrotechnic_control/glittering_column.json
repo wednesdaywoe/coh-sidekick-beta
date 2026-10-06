@@ -102,10 +102,11 @@
           },
           "flags": [
             "CopyBoosts",
+            "CopyCreatorMods",
             "PseudoPet"
           ],
           "flags_raw": 1280,
-          "flags2_raw": 36
+          "flags2_raw": 44
         }
       ]
     }

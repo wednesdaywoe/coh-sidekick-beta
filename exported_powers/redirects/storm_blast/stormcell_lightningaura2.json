@@ -363,7 +363,7 @@
                   "table": "Melee_Ones",
                   "scale": 1.0,
                   "duration": "5 seconds",
-                  "magnitude": 184.0,
+                  "magnitude": 185.0,
                   "delay": 0.0,
                   "duration_expression": [],
                   "magnitude_expression": [],
@@ -741,7 +741,7 @@
                   "table": "Melee_Ones",
                   "scale": 1.0,
                   "duration": "5 seconds",
-                  "magnitude": 184.0,
+                  "magnitude": 185.0,
                   "delay": 0.0,
                   "duration_expression": [],
                   "magnitude_expression": [],
@@ -1074,7 +1074,7 @@
               "table": "Melee_Ones",
               "scale": 1.0,
               "duration": "4 seconds",
-              "magnitude": 184.0,
+              "magnitude": 185.0,
               "delay": 0.0,
               "duration_expression": [],
               "magnitude_expression": [],
@@ -1247,7 +1247,7 @@
                   "suppress_events": [
                     {
                       "event": "Knocked",
-                      "event_id": 33,
+                      "event_id": 34,
                       "duration": 10.0,
                       "always": 0
                     }
@@ -1300,7 +1300,7 @@
               "table": "Melee_Ones",
               "scale": 1.0,
               "duration": "2 seconds",
-              "magnitude": 183.0,
+              "magnitude": 184.0,
               "delay": 0.0,
               "duration_expression": [],
               "magnitude_expression": [],
@@ -1348,7 +1348,7 @@
               "table": "Melee_Ones",
               "scale": 1.0,
               "duration": "1 seconds",
-              "magnitude": 183.0,
+              "magnitude": 184.0,
               "delay": 0.0,
               "duration_expression": [],
               "magnitude_expression": [],
@@ -1374,7 +1374,6 @@
       ]
     }
   ],
-  "chain_delay": 1.33,
   "modes_disallowed": [
     "Disable_All"
   ],

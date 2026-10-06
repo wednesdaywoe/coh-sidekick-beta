@@ -110,10 +110,11 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "CopyBoosts",
+            "CopyCreatorMods",
             "PseudoPet"
           ],
           "flags_raw": 1072,
-          "flags2_raw": 36
+          "flags2_raw": 44
         }
       ]
     }

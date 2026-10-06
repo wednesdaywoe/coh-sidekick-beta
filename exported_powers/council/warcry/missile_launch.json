@@ -6,7 +6,7 @@
   "display_name": "Missile Launch",
   "display_fullname": "Council Warcry Missile Launch",
   "display_help": "Zenith Warcries can launch small missiles at long range.",
-  "display_short_help": "Ranged (Targeted AoE), Superior DMG(Fire/Lethal), Foe Knockback",
+  "display_short_help": "Ranged (Targeted AoE), High DMG(Fire/Lethal), Foe Knockback",
   "icon": "munitionsmastery_lrmrocket.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -20,9 +20,9 @@
   "range_secondary": 0.0,
   "activation_time": 1.33,
   "time_to_root": 1.33,
-  "recharge_time": 12.0,
+  "recharge_time": 8.0,
   "activate_period": 0.0,
-  "endurance_cost": 13.72,
+  "endurance_cost": 11.48,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -102,7 +102,7 @@
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
-          "scale": 0.96,
+          "scale": 0.64,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -255,7 +255,7 @@
                   "suppress_events": [
                     {
                       "event": "Knocked",
-                      "event_id": 33,
+                      "event_id": 34,
                       "duration": 10.0,
                       "always": 0
                     }

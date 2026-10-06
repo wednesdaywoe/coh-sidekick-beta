@@ -221,6 +221,32 @@
             "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
           },
           "flags_raw": 2560
+        },
+        {
+          "attribs": [
+            "HitPoints"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
+          "table": "Ranged_Heal",
+          "scale": -2.5,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -241,7 +267,7 @@
       "is_pvp": "EITHER",
       "requires_pv": "PVP_ONLY",
       "requires_default": "UNSATISFIED",
-      "eval_flags": 0,
+      "eval_flags": 4,
       "templates": [
         {
           "attribs": [
@@ -315,6 +341,39 @@
             }
           ],
           "flags_raw": 2560
+        },
+        {
+          "attribs": [
+            "HitPoints"
+          ],
+          "type": "Expression",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
+          "table": "Ranged_Heal",
+          "scale": -1.0,
+          "duration": "30 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [
+            "Max.kHitPoints",
+            "target>",
+            "-0.08",
+            "*",
+            "@Strength",
+            "*"
+          ],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

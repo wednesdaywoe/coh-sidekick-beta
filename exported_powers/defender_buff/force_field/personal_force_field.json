@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Personal Force Field",
   "display_fullname": "Defender Buff Force Field Personal Force Field",
-  "display_help": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.",
-  "display_short_help": "Toggle: Self +Def, Res(All except Toxic)",
+  "display_help": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.<br>In addition, owning this power grants you an unenhanceable bonus to all defenses, resistances, and max endurance.",
+  "display_short_help": "Toggle: Self +Def, Res, +Max END",
   "icon": "forcefield_personalforcefield.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -99,7 +99,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -142,7 +142,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -189,7 +189,7 @@
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
-          "scale": 7.5,
+          "scale": 6.75,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -212,7 +212,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -238,7 +238,7 @@
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
-          "scale": 4.0,
+          "scale": 3.6,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -261,7 +261,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -317,7 +317,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -343,7 +343,7 @@
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Buff_Def",
-          "scale": 7.5,
+          "scale": 6.75,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -361,7 +361,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -387,7 +387,7 @@
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
-          "scale": 4.0,
+          "scale": 3.6,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -405,11 +405,138 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
           ],
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        }
+      ]
+    },
+    {
+      "chance": 1.0,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [
+        "0"
+      ],
+      "tags": [
+        "Display"
+      ],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "UNSATISFIED",
+      "eval_flags": 0,
+      "templates": [
+        {
+          "attribs": [
+            "Ranged",
+            "Melee",
+            "Area",
+            "Smashing",
+            "Lethal",
+            "Fire",
+            "Cold",
+            "Energy",
+            "Negative_Energy",
+            "Psionic",
+            "Toxic"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Buff_Def",
+          "scale": 0.75,
+          "duration": "10.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg",
+            "Fire_Dmg",
+            "Cold_Dmg",
+            "Energy_Dmg",
+            "Negative_Energy_Dmg",
+            "Psionic_Dmg",
+            "Toxic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Res_Dmg",
+          "scale": 0.4,
+          "duration": "10.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Endurance"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 5.0,
+          "duration": "10.75 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

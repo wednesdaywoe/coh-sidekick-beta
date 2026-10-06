@@ -31,8 +31,8 @@ export const RepulsionField: Power = {
   "stats": {
     "accuracy": 1,
     "radius": 25,
-    "recharge": 20,
-    "endurance": 0.1625,
+    "recharge": 10,
+    "endurance": 0.08,
     "castTime": 2.03,
     "activatePeriod": 0.25,
     "maxTargets": 16
@@ -48,7 +48,7 @@ export const RepulsionField: Power = {
   "maxSlots": 6,
   "atoms": [
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1.100000023841858,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"ReduceIfKD,RepulsionField"],
-    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Repel,ReduceIfKD"],
+    ["Mez","Repel",10,1,0.25,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"Repel,ReduceIfKD"],
     ["Meta",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq","@ToHitRoll",".10","+","@ToHit",">=","&&"],true,null,null,null,null,null,null,null,null,null,null,"null"],
     ["Mez","Knockback",3,0,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.5],
     ["Endurance",null,-1,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],

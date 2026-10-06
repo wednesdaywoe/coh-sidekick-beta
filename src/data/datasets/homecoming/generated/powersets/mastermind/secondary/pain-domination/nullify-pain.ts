@@ -43,10 +43,10 @@ export const NullifyPain: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Heal",
-    "scale": 0.88,
+    "scale": 1,
     "table": "Ranged_Heal"
   },
   "atoms": [
-    ["Heal",null,0.88,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
+    ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

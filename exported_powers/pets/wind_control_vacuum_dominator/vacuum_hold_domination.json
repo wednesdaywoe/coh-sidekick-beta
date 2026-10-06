@@ -105,7 +105,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -168,7 +168,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -270,7 +270,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -340,7 +340,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },

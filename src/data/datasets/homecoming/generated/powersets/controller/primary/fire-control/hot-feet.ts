@@ -32,7 +32,7 @@ export const HotFeet: Power = {
     "accuracy": 1,
     "radius": 20,
     "recharge": 20,
-    "endurance": 2.08,
+    "endurance": 1.04,
     "castTime": 1.47,
     "activatePeriod": 2,
     "maxTargets": 16

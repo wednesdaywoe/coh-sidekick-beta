@@ -14,7 +14,7 @@ export const TripMine: Power = {
   "available": 27,
   "autoIssue": false,
   "free": false,
-  "description": "You can place a Trip Mine on the ground. Any foes that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate. Setting a mine is delicate work, and if you are interrupted, you will fail.\n\nDamage: Superior.\nRecharge: Slow.",
+  "description": "You can place a Trip Mine on the ground. Any foes that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate.\n\nDamage: Superior.\nRecharge: Slow.",
   "shortHelp": "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_droppedaoedamage.png",
   "powerType": "Click",
@@ -25,10 +25,9 @@ export const TripMine: Power = {
   ],
   "stats": {
     "accuracy": 1.2,
-    "recharge": 20,
+    "recharge": 30,
     "endurance": 13,
-    "castTime": 5,
-    "interruptTime": 4
+    "castTime": 2.77
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -46,11 +45,66 @@ export const TripMine: Power = {
   "maxSlots": 6,
   "summon": {
     "copyBoosts": true,
+    "displayName": "Trip Mine",
     "duration": 260,
-    "entity": "Pets_Traps_Mine",
-    "isPseudoPet": false
+    "isPseudoPet": true,
+    "powers": [
+      "Villain_Pets.Traps_Trip_Mine.Resistance",
+      "Villain_Pets.Traps_Trip_Mine.Self_Destruct"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Trip Mine",
+        "duration": 260,
+        "copyCreatorMods": true,
+        "oneShot": true,
+        "abilities": [
+          {
+            "name": "Self_Destruct",
+            "displayName": "Self Destruct",
+            "type": "Click",
+            "damage": [
+              {
+                "damageType": "Fire",
+                "scale": 2,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Lethal",
+                "scale": 1,
+                "table": "Melee_Damage"
+              },
+              {
+                "damageType": "Fire",
+                "scale": 1,
+                "table": "Melee_Damage",
+                "chance": 0.5
+              }
+            ],
+            "effects": [
+              {
+                "type": "Knockup",
+                "magnitude": 1,
+                "attribType": "Magnitude",
+                "scale": 1,
+                "table": "Melee_Knockback",
+                "chance": 0.5
+              }
+            ],
+            "recharge": 30,
+            "castTime": 0,
+            "effectArea": "SingleTarget",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "maxTargets": 1
+          }
+        ]
+      }
+    ],
+    "entity": "PL_Untargetable_FightPreferRanged"
   },
   "atoms": [
-    ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,260]
+    ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,260]
   ]
 };

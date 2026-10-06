@@ -42,6 +42,7 @@ export const DarkRegeneration: Power = {
     "Accurate Healing",
     "Healing",
     "Melee AoE Damage",
+    "Stalker Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

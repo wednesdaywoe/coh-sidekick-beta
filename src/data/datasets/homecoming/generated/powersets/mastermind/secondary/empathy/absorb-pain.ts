@@ -14,7 +14,7 @@ export const AbsorbPain: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "Dramatically heals an ally's wounds. This power has only a tiny Endurance cost, but it requires you to sacrifice some of your Hit Points. Absorbing someone's pain can be quite dramatic, and afterwards you will be briefly unable to heal your own wounds by any means.",
+  "description": "Dramatically heals an ally's wounds. This power has only a tiny Endurance cost, but it requires you to sacrifice some of your Hit Points. Absorbing someone's pain can be quite dramatic, and afterwards you will be briefly unable to heal your own wounds by any means. Excess healing is converted into an absorb shield.",
   "shortHelp": "Ally Strong Heal, Self Moderate DMG(Special)",
   "icon": "empathy_absorbpain.png",
   "powerType": "Click",
@@ -28,7 +28,7 @@ export const AbsorbPain: Power = {
     "range": 80,
     "recharge": 15,
     "endurance": 0.52,
-    "castTime": 2.27
+    "castTime": 1.87
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -53,13 +53,11 @@ export const AbsorbPain: Power = {
     }
   ],
   "atoms": [
-    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvE",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
-    ["Regeneration",null,-1,1,20,"Ranged_Ones","Cur","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
-    ["HealResistance",null,1,1,20,"Ranged_Ones","Res","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
+    ["Absorb",null,5,1,15,"Ranged_Heal","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["@StdResult","Cur.kHitPoints","target>","Max.kHitPoints","target>","-","+","0","@StdResult","minmax","0.5","*"]],
+    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Regeneration",null,-1,1,15,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
+    ["HealResistance",null,1,1,15,"Ranged_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Damage","Special",3,1,0,"Ranged_Damage","Abs","Magnitude","Self","PvE",false,"Stack",2,null,null,1,null,true],
-    ["Heal",null,5,1,0,"Ranged_Heal","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.5],
-    ["Regeneration",null,-0.5,1,25,"Ranged_Ones","Cur","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["HealResistance",null,0.5,1,25,"Ranged_Ones","Res","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Damage","Special",1.988,1,0,"Ranged_PvPDamage","Abs","Magnitude","Self","PvP",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,true]
   ]
 };

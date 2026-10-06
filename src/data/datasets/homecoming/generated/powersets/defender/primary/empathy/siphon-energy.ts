@@ -14,7 +14,7 @@ export const SiphonEnergy: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Healing Aura restores some Hit Points to you and all nearby heroes. Healing Aura is not as potent as Heal Other, but can heal multiple targets at once.",
+  "description": "Healing Aura restores some Hit Points to you and all nearby heroes. Healing Aura is not as potent as Heal Other, but can heal multiple targets at once. Excess healing is converted into an absorb shield.",
   "shortHelp": "PBAoE, Team +Heal",
   "icon": "empathy_healingaura.png",
   "powerType": "Click",
@@ -47,6 +47,7 @@ export const SiphonEnergy: Power = {
     "table": "Ranged_Heal"
   },
   "atoms": [
+    ["Absorb",null,1,1,10,"Ranged_Heal","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["@StdResult","Cur.kHitPoints","target>","Max.kHitPoints","target>","-","+","0","@StdResult","minmax","0.5","*"]],
     ["Heal",null,1,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Adrenalin Boost",
   "display_fullname": "Mastermind Buff Empathy Adrenalin Boost",
-  "display_help": "Dramatically increases an ally's Endurance Recovery, Hit Point Regeneration and attack rate for 90 seconds. Also grants the target high resistance to slow effects.",
-  "display_short_help": "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)",
+  "display_help": "Dramatically increases an ally's Endurance Recovery, Hit Point Regeneration and attack rate for 90 seconds. Also grants the target high resistance to slow effects. The boost is strong enough to restore unconscious allies to consciousness. If used on a conscious ally, it will automatically revive them should they fall.",
+  "display_short_help": "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow), Rez",
   "icon": "empathy_adrenalinboost.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -18,18 +18,18 @@
   "arc": 0.0,
   "range": 80.0,
   "range_secondary": 0.0,
-  "activation_time": 2.27,
+  "activation_time": 1.17,
   "recharge_time": 300.0,
   "activate_period": 0.0,
   "endurance_cost": 10.4,
   "interrupt_time": 0.0,
-  "target_type": "Friend",
+  "target_type": "DeadOrAliveLeaguemate",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "Friend"
+    "DeadOrAliveLeaguemate"
   ],
   "targets_affected": [
-    "Friend"
+    "DeadOrAliveLeaguemate"
   ],
   "boosts_allowed": [
     "Recovery",
@@ -50,156 +50,24 @@
   "target_requires": [],
   "slot_requires": [],
   "attack_types": [],
-  "effects": [
+  "effects": [],
+  "redirect": [
     {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": [],
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "requires_pv": "EITHER",
-      "requires_default": "SATISFIED",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Recovery"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 8.0,
-          "duration": "90 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": "GENERICCONTINUING/BUFFENDCONTINUING.FX",
-            "conditional_bits": [],
-            "conditional_fx": null
-          },
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
-        },
-        {
-          "attribs": [
-            "Regeneration"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 5.0,
-          "duration": "90 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": "GENERICCONTINUING/BUFFMAXHPCONT.FX",
-            "conditional_bits": [],
-            "conditional_fx": null
-          },
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
-        },
-        {
-          "attribs": [
-            "RechargeTime"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Strength",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 1.0,
-          "duration": "90 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        },
-        {
-          "attribs": [
-            "RunningSpeed",
-            "FlyingSpeed",
-            "JumpingSpeed",
-            "JumpHeight",
-            "RechargeTime"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Resistance",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 0.8,
-          "duration": "90 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
-        }
-      ]
+      "name": "Redirects.Empathy.Adrenaline_Boost_Heal",
+      "condition_expression": [
+        "Cur.kHitPoints",
+        "target>",
+        "0",
+        ">"
+      ],
+      "show_in_info": true
+    },
+    {
+      "name": "Redirects.Empathy.Adrenaline_Boost_Rez",
+      "condition_expression": [
+        "1"
+      ],
+      "show_in_info": true
     }
   ],
   "modes_disallowed": [

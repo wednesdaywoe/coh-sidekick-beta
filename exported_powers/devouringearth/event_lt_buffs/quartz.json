@@ -83,7 +83,7 @@
           "stack_key": null,
           "params": {
             "entity_def": "DevouringEarth_Quartz",
-            "priority_list": "PL_FightPreferMelee",
+            "priority_list": "IgnoreCombatMods(1), PL_FightPreferMelee",
             "type": "EntCreate"
           },
           "flags": [

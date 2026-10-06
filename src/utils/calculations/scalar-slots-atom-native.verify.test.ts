@@ -146,10 +146,13 @@ describe('BPORT11 cluster 1 — the scalar families, censused off the atoms', ()
   it.each([
     ['accuracyBuff', (p: AnyPower) => accuracyBuffValue(p as never), undefined,
       { homecoming: 15, rebirth: 17, thunderspy: 9, brainstorm: 15 }],
+    // Homecoming 28 -> 32 with Issue 28 Page 4 (live 2026-10-06): Empathy's Recovery Aura on four ATs.
     ['enduranceDiscount', (p: AnyPower) => enduranceDiscountValue(p as never), undefined,
-      { homecoming: 28, rebirth: 25, thunderspy: 18, brainstorm: 32 }],
+      { homecoming: 32, rebirth: 25, thunderspy: 18, brainstorm: 32 }],
+    // Homecoming 72 -> 81 with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Somatic Aura on five ATs and Light
+    // Affinity's Radiance on four.
     ['perceptionBuff', (p: AnyPower) => perceptionBuffValue(p as never), undefined,
-      { homecoming: 72, rebirth: 56, thunderspy: 47, brainstorm: 81 }],
+      { homecoming: 81, rebirth: 56, thunderspy: 47, brainstorm: 81 }],
     // The oracle only credits a `rangeBuff` on a Self-target power (the Fast Snipe range bump
     // is not a persistent caster buff), so the comparison runs under the same gate — grading
     // an arm on a population its call site never reaches proves nothing about the call site.
@@ -164,10 +167,13 @@ describe('BPORT11 cluster 1 — the scalar families, censused off the atoms', ()
     expect(census(g), `${slot} carriers`).toEqual(expected);
   });
 
-  it('reads recharge off 309 carriers, and declines the foe slow it used to credit', () => {
+  it('reads recharge off 322 carriers, and declines the foe slow it used to credit', () => {
     const g = grade('rechargeBuff', (p) => rechargeBuffValue(p as never));
     bagIsGone(g, 'rechargeBuff');
-    expect(census(g)).toEqual({ homecoming: 96, rebirth: 58, thunderspy: 46, brainstorm: 109 });
+    // Homecoming 96 -> 109 with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Ultrasonic Flow/Hide on five ATs,
+    // Empathy's Recovery Aura and Resurrect on four. Adrenalin -> Adrenaline Boost is a rename,
+    // net 0.
+    expect(census(g)).toEqual({ homecoming: 109, rebirth: 58, thunderspy: 46, brainstorm: 109 });
     // The falsified half, kept as a live claim rather than a struck-out comment. Time Wall's
     // −recharge is a `Ranged_Slow` row aimed at the target on every fork that carries it; the
     // caster's own recharge reader must not answer for it, and `slowIsDebuff` is what makes

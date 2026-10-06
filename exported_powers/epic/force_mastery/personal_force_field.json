@@ -97,7 +97,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -168,7 +168,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -217,7 +217,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -273,7 +273,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -317,7 +317,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -361,7 +361,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }

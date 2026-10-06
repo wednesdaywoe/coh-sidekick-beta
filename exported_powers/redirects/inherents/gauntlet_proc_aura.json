@@ -124,7 +124,7 @@
               "stack_key": null,
               "messages": {
                 "display_attacker_hit": "You Taunt {PlayerDest} with your {PowerName}.",
-                "display_victim_hit": null,
+                "display_victim_hit": "{PlayerSource} Taunts you with their {PowerName}.",
                 "display_float": null,
                 "display_attrib_defense_float": null,
                 "display_info": null
@@ -184,7 +184,7 @@
               "stack_key": null,
               "messages": {
                 "display_attacker_hit": "You Taunt {PlayerDest} with your {PowerName}.",
-                "display_victim_hit": null,
+                "display_victim_hit": "{PlayerSource} Taunts you with their {PowerName}.",
                 "display_float": null,
                 "display_attrib_defense_float": null,
                 "display_info": null
@@ -197,57 +197,6 @@
               "flags_raw": 112
             }
           ]
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.5,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": [],
-      "tags": [],
-      "flags": [
-        "PVPOnly"
-      ],
-      "is_pvp": "PVP_ONLY",
-      "requires_pv": "EITHER",
-      "requires_default": "SATISFIED",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Taunt"
-          ],
-          "type": "Duration",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": 6.0,
-          "duration": "0 seconds",
-          "magnitude": 4.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "messages": {
-            "display_attacker_hit": "You Taunt {PlayerDest} with your {PowerName}.",
-            "display_victim_hit": null,
-            "display_float": "Taunted!",
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
-          "flags_raw": 2560
         }
       ]
     }

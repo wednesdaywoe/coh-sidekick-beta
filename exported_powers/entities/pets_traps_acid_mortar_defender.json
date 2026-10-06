@@ -3,7 +3,8 @@
   "group_name": "Pets",
   "commandable_pet": 0,
   "power_tags": [
-    "Electronic"
+    "Electronic",
+    "Detonator"
   ],
   "copy_creator_mods": false,
   "can_zone": true,

@@ -5,9 +5,9 @@
   "type": "Click",
   "display_name": "Static Discharge",
   "display_fullname": "V Arachnos Mu Cone Static Discharge",
-  "display_help": "The Static Discharge is continuing to electrocute you.",
-  "display_short_help": "DoT(Energy)",
-  "icon": "electricalbolt_balllightning.png",
+  "display_help": "Hurls multiple bolts of Mu Electricity in an arc that deals damage and drains Endurance from all affected foes in the area.",
+  "display_short_help": "Ranged (Cone), Moderate DMG(Energy), Foe -End, -Recovery",
+  "icon": "arachnos_patron_rangedconemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
@@ -20,9 +20,9 @@
   "range_secondary": 0.0,
   "activation_time": 1.67,
   "time_to_root": 1.67,
-  "recharge_time": 16.0,
+  "recharge_time": 12.0,
   "activate_period": 0.0,
-  "endurance_cost": 14.0,
+  "endurance_cost": 15.96,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -69,7 +69,7 @@
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
-          "scale": 1.0,
+          "scale": 0.96,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -99,10 +99,10 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Absolute",
+          "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
-          "scale": -5.0,
+          "scale": -0.07,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -123,12 +123,6 @@
             "display_float": null,
             "display_attrib_defense_float": null,
             "display_info": null
-          },
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": "POWERS/ELECTRICITYCONTROL/ELECTRICITYBOLTHITCONTINUING.FX",
-            "conditional_bits": [],
-            "conditional_fx": null
           },
           "flags_raw": 1280
         },
@@ -156,13 +150,6 @@
           "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "messages": {
-            "display_attacker_hit": null,
-            "display_victim_hit": "{PlayerSource} shocks you with their {PowerName} and drains some of your Endurance!",
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
           "flags_raw": 1280
         }
       ]

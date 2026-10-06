@@ -6,7 +6,7 @@
   "display_name": "Charged Brawl",
   "display_fullname": "Stalker Melee Electrical Melee Charged Brawl",
   "display_help": "Your fists become electrically charged and deliver a powerful punch. Charged Brawl can drain some Endurance from the target and may overload their synapses, leaving them writhing for a moment. A portion of drained Endurance may be returned to you. Disturbing an overloaded target will disperse the electrical charge and release him.",
-  "display_short_help": "Melee, DMG(Smash/Energy), Target Sleep, -End",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Sleep, -End, -Recovery",
   "icon": "electricmelee_targetedminordmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

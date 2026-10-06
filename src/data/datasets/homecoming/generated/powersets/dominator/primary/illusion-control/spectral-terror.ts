@@ -28,7 +28,7 @@ export const SpectralTerror: Power = {
     "range": 60,
     "recharge": 45,
     "endurance": 16.64,
-    "castTime": 3.2
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "EnduranceReduction",

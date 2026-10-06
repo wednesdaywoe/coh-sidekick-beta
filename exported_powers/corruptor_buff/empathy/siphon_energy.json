@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Healing Aura",
   "display_fullname": "Corruptor Buff Empathy Siphon Energy",
-  "display_help": "Healing Aura restores some Hit Points to you and all nearby heroes. Healing Aura is not as potent as Heal Other, but can heal multiple targets at once.",
+  "display_help": "Healing Aura restores some Hit Points to you and all nearby heroes. Healing Aura is not as potent as Heal Other, but can heal multiple targets at once. Excess healing is converted into an absorb shield.",
   "display_short_help": "PBAoE, Team +Heal",
   "icon": "empathy_healingaura.png",
   "auto_issue": false,
@@ -62,8 +62,57 @@
       "is_pvp": "EITHER",
       "requires_pv": "EITHER",
       "requires_default": "SATISFIED",
-      "eval_flags": 0,
+      "eval_flags": 4,
       "templates": [
+        {
+          "attribs": [
+            "Absorb"
+          ],
+          "type": "Expression",
+          "application_type": "OnTick",
+          "aspect": "Maximum",
+          "target": "AnyAffected",
+          "table": "Ranged_Heal",
+          "scale": 1.0,
+          "duration": "10 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [
+            "@StdResult",
+            "Cur.kHitPoints",
+            "target>",
+            "Max.kHitPoints",
+            "target>",
+            "-",
+            "+",
+            "0",
+            "@StdResult",
+            "minmax",
+            "0.5",
+            "*"
+          ],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You grant {PlayerDest} {Damage} points of absorption over time with {PowerName}.",
+            "display_victim_hit": "{PlayerSource} grants you {Damage} points of absorption over time with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "flags": [
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 320
+        },
         {
           "attribs": [
             "Heal_Dmg"

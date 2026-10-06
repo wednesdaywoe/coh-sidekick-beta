@@ -161,8 +161,12 @@ describe('BPORT11 cluster 4 — the movement cluster, censused off the atoms', (
     expect(acrobaticsRawDeclines, 'Acrobatics answered without a fork to resolve').toBe(1);
     expect(acrobaticsResolved, 'Acrobatics answered for no class view').toBeGreaterThan(0);
     expect(strandedResolved, 'a class view of the forked power went unanswered').toEqual([]);
-    expect(carriers, 'movementBuffValue carriers').toHaveLength(2100);
-    expect(byFork(carriers)).toEqual({ homecoming: 585, rebirth: 462, thunderspy: 447, brainstorm: 606 });
+    // 2100 -> 2121 (homecoming 585 -> 606) with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Ultrasonic
+    // Flow/Hide on five ATs; Light Affinity's Searing Beam and Spotlight, Sonic Resonance's Sonic
+    // Siphon and Empathy's Fortitude on four. Web Grenade -> Debilitating Web Grenade and
+    // Adrenalin -> Adrenaline Boost are renames, net 0.
+    expect(carriers, 'movementBuffValue carriers').toHaveLength(2121);
+    expect(byFork(carriers)).toEqual({ homecoming: 606, rebirth: 462, thunderspy: 447, brainstorm: 606 });
   });
 
   it('swaps the combat-debuff gate without swapping its verdict', () => {
@@ -178,8 +182,11 @@ describe('BPORT11 cluster 4 — the movement cluster, censused off the atoms', (
     // rework stopped giving a combat debuff. Three static forks did not move a single power.
     const carrying = [...views()].filter(([, p]) => carries_combat_debuff(p as never)).map(([id]) => id);
     expect(carrying, 'carries_combat_debuff answered for nothing').not.toHaveLength(0);
-    expect(carrying).toHaveLength(1620);
-    expect(byFork(carrying)).toEqual({ homecoming: 433, rebirth: 387, thunderspy: 361, brainstorm: 439 });
+    // 1620 -> 1626 (homecoming 433 -> 439) with Issue 28 Page 4 (live 2026-10-06): + Light Affinity's Blinding
+    // Beam and Traps' Debilitating Web Grenade on four ATs, - Super Strength's Rage on brute and
+    // tanker (crash removed).
+    expect(carrying).toHaveLength(1626);
+    expect(byFork(carrying)).toEqual({ homecoming: 439, rebirth: 387, thunderspy: 361, brainstorm: 439 });
   });
 
   it('restores the jump root two forks lost to an untagged bag entry', () => {

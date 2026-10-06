@@ -41,7 +41,6 @@ export const ViciousSlash: Power = {
     "Accuracy"
   ],
   "allowedSetCategories": [
-    "Dominator Archetype Sets",
     "Knockback",
     "Melee Damage",
     "Universal Damage Sets"

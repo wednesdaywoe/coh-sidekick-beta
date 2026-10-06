@@ -33,7 +33,7 @@ export const UpgradeRobot: Power = {
     "radius": 30,
     "recharge": 0.5,
     "endurance": 11.375,
-    "castTime": 2.03,
+    "castTime": 1,
     "maxTargets": 16
   },
   "allowedEnhancements": [

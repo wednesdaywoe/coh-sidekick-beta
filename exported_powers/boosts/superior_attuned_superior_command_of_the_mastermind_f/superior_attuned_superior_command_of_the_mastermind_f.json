@@ -61,6 +61,11 @@
     "char>",
     "Class_Mastermind",
     "eq",
+    "&&",
+    "level",
+    "char>",
+    "50",
+    "==",
     "&&"
   ],
   "attack_types": [],

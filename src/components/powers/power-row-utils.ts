@@ -196,9 +196,27 @@ function hasPersistentBuffEffects(power: AtomSource & { damage?: unknown }): boo
   });
 }
 
-function affectsCaster(power: { targetType?: string }): boolean {
-  if (!power.targetType) return true;
-  return !ALLY_ONLY_TARGETS.has(power.targetType.toLowerCase());
+/**
+ * `targetsAffected` tokens naming only a defeated ally — never the living caster. A power whose
+ * every recipient is one of these reaches the caster only through an atom aimed at `Self`
+ * (Conduit of Pain's empowerment); without one, its buffs are the corpse's. HC Resurrect grew
+ * recharge and absorb riders in Issue 28 Page 4, and those queries do not ask the recipient.
+ */
+const DEAD_ALLY_ONLY = new Set([
+  'DeadPlayerFriend',
+  'DeadFriend',
+  'DeadLeaguemate',
+  'DeadTeammate',
+  'DeadMyPet',
+]);
+
+function affectsCaster(power: AtomSource & { targetType?: string }): boolean {
+  if (power.targetType && ALLY_ONLY_TARGETS.has(power.targetType.toLowerCase())) return false;
+  const affected = power.targetsAffected ?? [];
+  if (affected.length > 0 && affected.every((t) => DEAD_ALLY_ONLY.has(t))) {
+    return baseAtoms(power).some((a) => a.toWho === 'Self');
+  }
+  return true;
 }
 
 /**

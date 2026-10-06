@@ -29,7 +29,7 @@ export const GravityDistortionField: Power = {
     "range": 80,
     "recharge": 240,
     "endurance": 15.6,
-    "castTime": 1.83
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Hold",
@@ -37,12 +37,15 @@ export const GravityDistortionField: Power = {
     "EnduranceReduction",
     "Range",
     "Recharge",
+    "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Controller Archetype Sets",
     "Holds",
-    "Slow Movement"
+    "Ranged AoE Damage",
+    "Slow Movement",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
   "summon": {

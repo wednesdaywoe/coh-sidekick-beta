@@ -170,7 +170,7 @@
             },
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 15.0,
               "always": 0
             }
@@ -292,7 +292,7 @@
                 },
                 {
                   "event": "Knocked",
-                  "event_id": 33,
+                  "event_id": 34,
                   "duration": 15.0,
                   "always": 0
                 }
@@ -407,7 +407,7 @@
                 },
                 {
                   "event": "Knocked",
-                  "event_id": 33,
+                  "event_id": 34,
                   "duration": 15.0,
                   "always": 0
                 }
@@ -522,7 +522,7 @@
             },
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 15.0,
               "always": 0
             }

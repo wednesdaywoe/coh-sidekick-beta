@@ -70,6 +70,7 @@
     }
   ],
   "modes_disallowed": [
+    "NoTeleport",
     "Disable_All",
     "Disable_Teleport",
     "Disable_Travel",

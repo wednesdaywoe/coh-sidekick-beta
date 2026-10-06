@@ -103,77 +103,7 @@
             "display_info": null
           },
           "flags_raw": 2560
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": [
-        "enttype",
-        "target>",
-        "player",
-        "eq"
-      ],
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "requires_pv": "PVP_ONLY",
-      "requires_default": "UNSATISFIED",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "Taunt"
-          ],
-          "type": "Duration",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "AnyAffected",
-          "table": "Melee_Taunt",
-          "scale": 5.0,
-          "duration": "0 seconds",
-          "magnitude": 4.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "messages": {
-            "display_attacker_hit": "You Taunt {PlayerDest} with your {PowerName}.",
-            "display_victim_hit": "{PlayerSource} Taunts you with their {PowerName}.",
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
-          "flags_raw": 2560
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": 0.0,
-      "radius_outer": 0.0,
-      "requires_expression": [],
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "requires_pv": "EITHER",
-      "requires_default": "SATISFIED",
-      "eval_flags": 0,
-      "templates": [
+        },
         {
           "attribs": [
             "Range"
@@ -215,32 +145,67 @@
         "enttype",
         "target>",
         "player",
-        "eq",
-        "@ToHitRoll",
-        "@ToHit",
-        ">=",
-        "@ForceHit",
-        "||",
-        "&&"
+        "eq"
       ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "PVP_ONLY",
       "requires_default": "UNSATISFIED",
-      "eval_flags": 2,
+      "eval_flags": 0,
       "templates": [
         {
           "attribs": [
-            "Null"
+            "Taunt"
+          ],
+          "type": "Duration",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Melee_Taunt",
+          "scale": 1.95,
+          "duration": "0 seconds",
+          "magnitude": 4.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You Taunt {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Taunts you with their {PowerName}.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "suppress_events": [
+            {
+              "event": "Event_32",
+              "event_id": 32,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
+          "flags_raw": 2560
+        },
+        {
+          "attribs": [
+            "Range"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Current",
+          "aspect": "Strength",
           "target": "AnyAffected",
           "table": "Melee_Ones",
-          "scale": 1.0,
-          "duration": "0 seconds",
+          "scale": -0.75,
+          "duration": "4 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -251,17 +216,21 @@
           "tick_mag_additive": 0.0,
           "jit_requires": [],
           "caster_stack": "Individual",
-          "stack": "Stack",
+          "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "messages": {
-            "display_attacker_hit": "Your {PowerName} partially hit! {PlayerDest} is not taunted but their range is reduced!",
-            "display_victim_hit": "{Playersource} partially hits you with their Taunt! Your range is reduced but the Taunt is not successful!",
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
-          "flags_raw": 1280
+          "suppress_events": [
+            {
+              "event": "Event_32",
+              "event_id": 32,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
+          "flags": [
+            "IgnoreStrength"
+          ],
+          "flags_raw": 1296
         }
       ]
     }

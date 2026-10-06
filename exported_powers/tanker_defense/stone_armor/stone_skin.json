@@ -42,10 +42,7 @@
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
-  "requires": [
-    "Tanker_Melee.Claws",
-    "!"
-  ],
+  "requires": [],
   "activate_requires": [],
   "target_requires": [],
   "slot_requires": [],

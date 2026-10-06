@@ -14,8 +14,8 @@ export const ForceBubble: Power = {
   "available": 25,
   "autoIssue": false,
   "free": false,
-  "description": "Creates a large bubble at your location which protects all allies inside. While active, this power will grant resistance to Accuracy, Defense, Regeneration, Perception, and Slow debuffs on yourself and allies. Foes within this bubble will have the strength of their Accuracy, Defense, Regeneration, Perception, and Speed debuff powers weakened directly.",
-  "shortHelp": "Location (PBAoE), Team +Res(Accuracy, Defense, Perception, Recharge, Regen, Speed, ToHit), Foe -Str(Defense, Perception, Regen, Speed, ToHit)",
+  "description": "Creates a large bubble at your location which protects all allies inside. While active, this power will grant a small amount of stacking absorb shield as well as resistance to Accuracy, Defense, Regeneration, Perception, and Slow debuffs on yourself and allies. Foes within this bubble will have the strength of their Accuracy, Defense, Regeneration, Perception, and Speed powers weakened directly, while also suffering debuffs to those stats.",
+  "shortHelp": "Location (PBAoE), Team Absorb, +Res(Multiple), Foe Special, -Defense, -Perception, -Regen, -Speed, -ToHit",
   "icon": "forcefield_dampeningbubble.png",
   "powerType": "Click",
   "targetType": "Self",
@@ -84,6 +84,12 @@ export const ForceBubble: Power = {
                 "type": "DefenseDebuffResist",
                 "scale": 0.5,
                 "table": "Ranged_Res_Boolean"
+              },
+              {
+                "type": "Absorb",
+                "absorbAspect": "Maximum",
+                "scale": 0.1,
+                "table": "Melee_HealSelf"
               }
             ],
             "recharge": 0,
@@ -105,23 +111,51 @@ export const ForceBubble: Power = {
               {
                 "type": "Slow",
                 "axis": "runSpeed",
-                "scale": 1,
+                "scale": 1.5,
                 "table": "Ranged_Res_Boolean",
                 "ignoreStrength": true
               },
               {
                 "type": "Slow",
                 "axis": "flySpeed",
-                "scale": 1,
+                "scale": 1.5,
                 "table": "Ranged_Res_Boolean",
                 "ignoreStrength": true
               },
               {
                 "type": "Slow",
                 "axis": "jumpSpeed",
-                "scale": 1,
+                "scale": 1.5,
                 "table": "Ranged_Res_Boolean",
                 "ignoreStrength": true
+              },
+              {
+                "type": "ToHitDebuff",
+                "scale": 0.5,
+                "table": "Ranged_Debuff_ToHit"
+              },
+              {
+                "type": "Slow",
+                "axis": "runSpeed",
+                "scale": 0.1,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "flySpeed",
+                "scale": 0.1,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "Slow",
+                "axis": "jumpSpeed",
+                "scale": 0.1,
+                "table": "Ranged_Slow"
+              },
+              {
+                "type": "DefenseDebuff",
+                "scale": 0.5,
+                "table": "Ranged_Debuff_Def"
               }
             ],
             "recharge": 0,

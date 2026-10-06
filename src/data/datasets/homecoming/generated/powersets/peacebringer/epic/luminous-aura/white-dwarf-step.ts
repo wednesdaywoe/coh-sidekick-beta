@@ -51,10 +51,10 @@ export const WhiteDwarfStep: Power = {
     ["Movement","Control",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1.5],
     ["Movement","Friction",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1.5],
     ["Mez","Intangible",8,0,15,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Self"],1.5],
-    ["Meta",null,1,66,15,"Ranged_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode",["Self"],1.5,null,null,null,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_38"]],
+    ["Meta",null,1,67,15,"Ranged_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode",["Self"],1.5,null,null,null,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_39"]],
     ["Mez","Untouchable",1000,1000,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,null,["Self"],1.5],
     ["Stealth","Translucency",0.25,1,3,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,0,null,null,null,null,["Self"],3],
-    ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"],1.5,["Attacked","HitByFoe","MissionObjectClick"],10,true,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_38"]],
+    ["Meta",null,-1,1,3,"Melee_Ones","Abs","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.NoPhase","source.ownPower?","!"],null,null,true,null,null,null,null,null,null,null,null,"designer_status",["Self"],1.5,["Attacked","HitByFoe","MissionObjectClick"],10,true,["Attacked","Event_11","HitByOther","MissionObjectClick","Event_39"]],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"TeleHover",null,null,null,1.5]
   ],
   "requires": [
@@ -67,6 +67,7 @@ export const WhiteDwarfStep: Power = {
     "Peacebringer_Tanker_Mode"
   ],
   "modesDisallowed": [
+    "NoTeleport",
     "Disable_Teleport",
     "Disable_Travel",
     "Peacebringer_Blaster_Mode",

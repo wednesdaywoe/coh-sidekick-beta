@@ -27,8 +27,8 @@
     29
   ],
   "power_display_names": [
-    "Web Grenade",
-    "Caltrops",
+    "Debilitating Web Grenade",
+    "Shrapnel Grenade",
     "Triage Beacon",
     "Acid Mortar",
     "Force Field Generator",
@@ -39,9 +39,9 @@
   ],
   "power_short_helps": [
     "Ranged, Target Immobilize, -Recharge, -Fly",
-    "Ranged (Location AoE), DoT(Lethal), Foe -Speed",
+    "Ranged (Location AoE), Minor DoT(Lethal), Foe -Speed",
     "Place Beacon: PBAoE +Regen",
-    "Place Trap: Ranged (AoE), DoT(Toxic), Foe -Res(All), -DEF",
+    "Place Trap: Ranged (AoE), Minor DoT(Toxic), Foe -Res(All), -DEF",
     "Place Drone: PBAoE, Team +DEF, +Res(Hold, Immobilize, Disorient)",
     "Place Trap: PBAoE Foe Choke, Vomit, -Regen, -Recharge",
     "Summon Seekers: Ranged Disorient, -DMG, -ACC, -Perception, DMG(Energy)",

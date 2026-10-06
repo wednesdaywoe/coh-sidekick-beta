@@ -22,7 +22,7 @@
   "time_to_root": 1.47,
   "recharge_time": 20.0,
   "activate_period": 2.0,
-  "endurance_cost": 2.08,
+  "endurance_cost": 1.04,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",

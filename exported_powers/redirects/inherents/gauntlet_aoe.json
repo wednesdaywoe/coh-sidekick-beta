@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Gauntlet's Area of Effect",
   "display_fullname": "Redirects Inherents Gauntlet AoE",
-  "display_help": "Taunt.<br><br><color #fcfc95>Notes: Gauntlet's Area of Effect is unaffected by Radius or TimeToRoot changes.</color>",
+  "display_help": "Taunt.<br><br><color #fcfc95>Notes:<br>Gauntlet's Area of Effect is unaffected by Radius or TimeToRoot changes.</color>",
   "display_short_help": "Taunt",
   "icon": "battleaxe_taunt.png",
   "auto_issue": false,

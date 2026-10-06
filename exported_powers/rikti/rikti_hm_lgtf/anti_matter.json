@@ -113,11 +113,11 @@
         "Training_Gadgets.Bane_Spider_Training.Hide",
         "target.ownPower?",
         "!",
-        "||",
+        "&&",
         "Teamwork.Widow_Teamwork.NW_Mask_Presence",
         "target.ownPower?",
         "!",
-        "||"
+        "&&"
       ],
       "tags": [],
       "flags": [],

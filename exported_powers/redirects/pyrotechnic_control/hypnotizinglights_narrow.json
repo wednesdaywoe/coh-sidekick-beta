@@ -19,7 +19,7 @@
   "range": 20.0,
   "range_secondary": 0.0,
   "activation_time": 0.0,
-  "recharge_time": 40.0,
+  "recharge_time": 45.0,
   "activate_period": 0.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,

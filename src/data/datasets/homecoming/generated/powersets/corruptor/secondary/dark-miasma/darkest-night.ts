@@ -34,7 +34,7 @@ export const DarkestNight: Power = {
     "radius": 25,
     "recharge": 10,
     "endurance": 0.26,
-    "castTime": 3.17,
+    "castTime": 1.67,
     "activatePeriod": 0.5,
     "maxTargets": 16
   },

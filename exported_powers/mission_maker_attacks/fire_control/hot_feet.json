@@ -128,35 +128,6 @@
       "templates": [
         {
           "attribs": [
-            "Afraid"
-          ],
-          "type": "Duration",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Ones",
-          "scale": 4.0,
-          "duration": "0 seconds",
-          "magnitude": 3.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags": [
-            "IgnoreStrength"
-          ],
-          "flags_raw": 2576
-        },
-        {
-          "attribs": [
             "Fly"
           ],
           "type": "Magnitude",

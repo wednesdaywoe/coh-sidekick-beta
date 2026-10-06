@@ -7,7 +7,7 @@
   "display_fullname": "V Arachnos Mu Inherent Resistance",
   "display_help": "Resistance",
   "display_short_help": "Resistance",
-  "icon": "darkarmor_defractingcloud.png",
+  "icon": "weaver1_resist.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
@@ -65,8 +65,8 @@
           "application_type": "OnActivate",
           "aspect": "Current",
           "target": "Self",
-          "table": "Melee_Buff_Def",
-          "scale": 1.0,
+          "table": "Melee_Ones",
+          "scale": 0.1,
           "duration": "999999 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -82,9 +82,10 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1056
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -95,8 +96,8 @@
           "application_type": "OnActivate",
           "aspect": "Resistance",
           "target": "Self",
-          "table": "Melee_Res_Dmg",
-          "scale": 1.0,
+          "table": "Melee_Ones",
+          "scale": 0.1,
           "duration": "999999 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -112,9 +113,41 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1056
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Smashing_Dmg",
+            "Lethal_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnActivate",
+          "aspect": "Resistance",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": -0.1,
+          "duration": "999999 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
         }
       ]
     }

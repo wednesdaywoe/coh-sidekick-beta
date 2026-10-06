@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "f218e7ce1be6f79bfc6c19c4b10094cfd9789217",
-  "synced_from_subject": "say what the widened glob costs, and pay it once to prove the point",
-  "synced_from_date": "2026-09-20T11:26:37-04:00",
+  "synced_from_commit": "b80ecdc061b96ceefb6dce6b99093d8c81b7168b",
+  "synced_from_subject": "Trip Mine: mark the resolved mine a one-shot, as its old pet entities were",
+  "synced_from_date": "2026-10-06T13:36:35-04:00",
   "tree_fingerprint": "5bf9d3b7d9d5909725a5a58d11d2bc66d3f36de737fd31d6b7001b85decd093a",
-  "export_manifest_digest": "4116a5ddcb4d3257022f45fcb1bed2cf956533b52e708645a0e2821fc8066898",
+  "export_manifest_digest": "fc259a0c15e1b65659d8ceb2c607c6e7935e09db168c7fd808ba242953bcd570",
   "export_manifest_count": 14
 }

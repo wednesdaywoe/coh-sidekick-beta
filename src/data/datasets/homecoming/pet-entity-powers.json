@@ -1842,8 +1842,6 @@
     "V_Arachnos.Arachnobot_Heavy.Venom_Bolt",
     "V_Arachnos.Arachnobot_Heavy.Web_Spitter",
     "V_Arachnos.Arachnobot_Heavy.Cocoon",
-    "V_Arachnos.Arachnobot_Heavy.Toxic_Claws",
-    "V_Arachnos.Arachnobot_Heavy.Claw_Pierce",
     "V_Arachnos.Arachnobot_Heavy.Armored_Exoskeleton",
     "V_Arachnos.Arachnobot_Heavy.Disruptor_Blast",
     "V_Arachnos.Arachnobot_Heavy.Disruptor_Tesla",
@@ -1862,7 +1860,6 @@
     "V_Arachnos.Bane_Spider_Boss.Bash",
     "V_Arachnos.Bane_Spider_Boss.Pulverize",
     "V_Arachnos.Bane_Spider_Boss.Clobber",
-    "V_Arachnos.Bane_Spider_Boss.Whirling_Mace",
     "V_Arachnos.Bane_Spider_Boss.Crowd_Control",
     "V_Arachnos.Bane_Spider_Boss.Poisonous_Ray_Burst",
     "V_Arachnos.Bane_Spider_Boss.Mace_Beam_Volley",
@@ -1989,7 +1986,16 @@
   ],
   "Pets_Caltrops": [
     "Pets.ResistAll.ResistAll",
+    "Pets.Caltrops.Avoid",
     "Pets.Caltrops.Caltrops"
+  ],
+  "Pets_Caltrops_PvP_Blue": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Caltrops_PvP.Caltrops_Blue"
+  ],
+  "Pets_Caltrops_PvP_Red": [
+    "Pets.ResistAll.ResistAll",
+    "Pets.Caltrops_PvP.Caltrops_Red"
   ],
   "Pets_Camera_Drone_Pet": [
     "Pets.ResistAllFast.ResistAll",
@@ -2192,6 +2198,10 @@
     "Pets.DarkServant.Darkest_Night",
     "Pets.DarkServant.Tenebrous_Tentacles",
     "Pets.DarkServant.Resistance"
+  ],
+  "Pets_Dark_Globber": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
   ],
   "Pets_Decoy": [
     "Pets.Decoy.Decoy",
@@ -2838,6 +2848,16 @@
     "Pets.Mine.Self_Destruct",
     "Pets.Mine.Resistance"
   ],
+  "Pets_Mine_PvP_Blue": [
+    "Pets.Mine_PvP.Trip_Mine",
+    "Pets.Mine_PvP.Self_Destruct",
+    "Pets.Mine_PvP.ONS_MineHero"
+  ],
+  "Pets_Mine_PvP_Red": [
+    "Pets.Mine_PvP.Trip_Mine",
+    "Pets.Mine_PvP.Self_Destruct",
+    "Pets.Mine_PvP.ONS_MineVillain"
+  ],
   "Pets_MiniSignature_AchlysGeneral_Fang": [
     "Pets.ResistAll_NoFly_Fast.ResistAll",
     "NPC_Pets.Civilian_Panic.Panic"
@@ -2858,6 +2878,11 @@
     "Pets.ResistAll_NoFly_Fast.ResistAll",
     "NPC_Pets.Civilian_Panic.Panic"
   ],
+  "Pets_MiniSignature_MrRay": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic",
+    "Portal.Clockwork_Summon_FX.SummonFX"
+  ],
   "Pets_MiniSignature_Nemesis": [
     "Pets.ResistAll_NoFly_Fast.ResistAll",
     "NPC_Pets.Civilian_Panic.Panic"
@@ -2876,6 +2901,18 @@
   ],
   "Pets_MiniSignatures_Babbage": [
     "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Bronze_Recluse": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Bronze_Statesman": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Bronze_Tyrant": [
+    "Pets.ResistAllFast.ResistAll",
     "NPC_Pets.Civilian_Panic.Panic"
   ],
   "Pets_MiniSignatures_Caleb": [
@@ -2903,6 +2940,18 @@
     "NPC_Pets.Civilian_Panic.Panic"
   ],
   "Pets_MiniSignatures_FogMinotaur": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Gold_Recluse": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Gold_Statesman": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Gold_Tyrant": [
     "Pets.ResistAllFast.ResistAll",
     "NPC_Pets.Civilian_Panic.Panic"
   ],
@@ -2948,6 +2997,18 @@
   ],
   "Pets_MiniSignatures_Scrapyard": [
     "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Silver_Recluse": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Silver_Statesman": [
+    "Pets.ResistAllFast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
+  ],
+  "Pets_MiniSignatures_Silver_Tyrant": [
+    "Pets.ResistAllFast.ResistAll",
     "NPC_Pets.Civilian_Panic.Panic"
   ],
   "Pets_MiniSignatures_Statesman": [
@@ -2997,6 +3058,10 @@
   "Pets_NewTest": [
     "Pets.ResistAll.ResistAll",
     "Pets.TestBurn.Burn"
+  ],
+  "Pets_Nightmare_Seedling": [
+    "Pets.ResistAll_NoFly_Fast.ResistAll",
+    "NPC_Pets.Civilian_Panic.Panic"
   ],
   "Pets_Nightstalker_Jackal_Pet": [
     "Pets.ResistAll_NoFly_Fast.ResistAll",
@@ -3345,16 +3410,6 @@
     "Villain_Pets.Traps_Seeker1.Self_Destruct",
     "Villain_Pets.Traps_Seeker1.Fly"
   ],
-  "Pets_Protector_Traps_Seeker2": [
-    "Villain_Pets.Traps_Seeker2.FlashPulse",
-    "Villain_Pets.Traps_Seeker2.Self_Destruct",
-    "Villain_Pets.Traps_Seeker2.Fly"
-  ],
-  "Pets_Protector_Traps_Seeker3": [
-    "Villain_Pets.Traps_Seeker3.FlashPulse",
-    "Villain_Pets.Traps_Seeker3.Self_Destruct",
-    "Villain_Pets.Traps_Seeker3.Fly"
-  ],
   "Pets_Psionic_Nexus": [
     "Pets.PsionicNexus.Psionic_Link_Self",
     "Pets.PsionicNexus.Self_Destruct",
@@ -3392,28 +3447,23 @@
   ],
   "Pets_RainofArrows": [
     "Pets.ResistAll.ResistAll",
-    "Pets.RainofArrows.RainofArrows",
-    "Pets.RainofArrows.Avoid"
+    "Pets.RainofArrows.RainofArrows"
   ],
   "Pets_RainofArrows_Corruptor": [
     "Pets.ResistAll.ResistAll",
-    "Villain_Pets.RainofArrows_Corruptor.RainofArrows",
-    "Villain_Pets.RainofArrows_Corruptor.Avoid"
+    "Villain_Pets.RainofArrows_Corruptor.RainofArrows"
   ],
   "Pets_RainofArrows_Critter": [
     "Pets.ResistAll.ResistAll",
-    "Pets.RainofArrows_Critter.RainofArrows",
-    "Pets.RainofArrows_Critter.Avoid"
+    "Pets.RainofArrows_Critter.RainofArrows"
   ],
   "Pets_RainofArrows_Defender": [
     "Pets.ResistAll.ResistAll",
-    "Pets.RainofArrows_Defender.RainofArrows",
-    "Pets.RainofArrows_Defender.Avoid"
+    "Pets.RainofArrows_Defender.RainofArrows"
   ],
   "Pets_RainofArrows_Sentinel": [
     "Pets.ResistAll.ResistAll",
-    "Pets.RainofArrows_Sentinel.RainofArrows",
-    "Pets.RainofArrows_Sentinel.Avoid"
+    "Pets.RainofArrows_Sentinel.RainofArrows"
   ],
   "Pets_RainofArrows_Visual": [
     "Pets.ResistAll.ResistAll",
@@ -3475,6 +3525,7 @@
   ],
   "Pets_Sap": [
     "Pets.ResistAll.ResistAll",
+    "Pets.Caltrops.Avoid",
     "Pets.Caltrops.Caltrops"
   ],
   "Pets_Savage_Melee_Savage_Leap": [
@@ -3980,10 +4031,6 @@
     "Villain_Pets.Traps_Acid_Mortar.Acid_Mortar",
     "Villain_Pets.Traps_Acid_Mortar.Resistance"
   ],
-  "Pets_Traps_Acid_Mortar_Controller": [
-    "Pets.Traps_Acid_Mortar_Controller.Acid_Mortar",
-    "Pets.Traps_Acid_Mortar_Controller.Resistance"
-  ],
   "Pets_Traps_Acid_Mortar_Defender": [
     "Pets.Traps_Acid_Mortar_Defender.Acid_Mortar",
     "Pets.Traps_Acid_Mortar_Defender.Resistance"
@@ -4001,17 +4048,8 @@
   "Pets_Traps_Mine": [
     "Villain_Pets.Traps_Trip_Mine.Trip_Mine",
     "Villain_Pets.Traps_Trip_Mine.Self_Destruct",
-    "Villain_Pets.Traps_Trip_Mine.Resistance"
-  ],
-  "Pets_Traps_Mine_Controller": [
-    "Pets.Traps_Trip_Mine_Controller.Trip_Mine",
-    "Pets.Traps_Trip_Mine_Controller.Self_Destruct",
-    "Pets.Traps_Trip_Mine_Controller.Resistance"
-  ],
-  "Pets_Traps_Mine_Defender": [
-    "Pets.Traps_Trip_Mine_Defender.Trip_Mine",
-    "Pets.Traps_Trip_Mine_Defender.Self_Destruct",
-    "Pets.Traps_Trip_Mine_Defender.Resistance"
+    "Villain_Pets.Traps_Trip_Mine.Resistance",
+    "Villain_Pets.Traps_Trip_Mine.Info"
   ],
   "Pets_Traps_Poison_Gas": [
     "Pets.ResistAll.ResistAll",
@@ -4019,69 +4057,24 @@
     "Villain_Pets.Traps_Poison_Gas.Initial_Poison_Gas",
     "Villain_Pets.Traps_Poison_Gas.Self_Destruct"
   ],
-  "Pets_Traps_Poison_Gas_Defender": [
-    "Pets.ResistAll.ResistAll",
-    "Pets.Traps_Poison_Gas_Defender.Poison_Gas",
-    "Pets.Traps_Poison_Gas_Defender.Initial_Poison_Gas",
-    "Pets.Traps_Poison_Gas_Defender.Self_Destruct"
-  ],
   "Pets_Traps_Poison_Trap": [
     "Villain_Pets.Traps_Poison_Trap.Self_Destruct",
     "Villain_Pets.Traps_Poison_Trap.Resistance"
-  ],
-  "Pets_Traps_Poison_Trap_Defender": [
-    "Pets.Traps_Poison_Trap_Defender.Self_Destruct",
-    "Pets.Traps_Poison_Trap_Defender.Resistance"
   ],
   "Pets_Traps_Seeker1": [
     "Villain_Pets.Traps_Seeker1.FlashPulse",
     "Villain_Pets.Traps_Seeker1.Self_Destruct",
     "Villain_Pets.Traps_Seeker1.Fly"
   ],
-  "Pets_Traps_Seeker1_Controller": [
-    "Pets.Traps_Seeker1_Controller.FlashPulse",
-    "Pets.Traps_Seeker1_Controller.Self_Destruct",
-    "Pets.Traps_Seeker1_Controller.Fly"
-  ],
-  "Pets_Traps_Seeker1_Defender": [
-    "Pets.Traps_Seeker1_Defender.FlashPulse",
-    "Pets.Traps_Seeker1_Defender.Self_Destruct",
-    "Pets.Traps_Seeker1_Defender.Fly"
-  ],
-  "Pets_Traps_Seeker2": [
-    "Villain_Pets.Traps_Seeker2.FlashPulse",
-    "Villain_Pets.Traps_Seeker2.Self_Destruct",
-    "Villain_Pets.Traps_Seeker2.Fly"
-  ],
-  "Pets_Traps_Seeker2_Controller": [
-    "Pets.Traps_Seeker2_Controller.FlashPulse",
-    "Pets.Traps_Seeker2_Controller.Self_Destruct",
-    "Pets.Traps_Seeker2_Controller.Fly"
-  ],
-  "Pets_Traps_Seeker2_Defender": [
-    "Pets.Traps_Seeker2_Defender.FlashPulse",
-    "Pets.Traps_Seeker2_Defender.Self_Destruct",
-    "Pets.Traps_Seeker2_Defender.Fly"
-  ],
-  "Pets_Traps_Seeker3": [
-    "Villain_Pets.Traps_Seeker3.FlashPulse",
-    "Villain_Pets.Traps_Seeker3.Self_Destruct",
-    "Villain_Pets.Traps_Seeker3.Fly"
-  ],
-  "Pets_Traps_Seeker3_Defender": [
-    "Pets.Traps_Seeker3_Defender.FlashPulse",
-    "Pets.Traps_Seeker3_Defender.Self_Destruct",
-    "Pets.Traps_Seeker3_Defender.Fly"
+  "Pets_Traps_Seeker_Defender": [
+    "Pets.Traps_Seeker_Defender.FlashPulse",
+    "Pets.Traps_Seeker_Defender.Self_Destruct",
+    "Pets.Traps_Seeker_Defender.Fly"
   ],
   "Pets_Traps_TimeBomb": [
     "Villain_Pets.Traps_TimeBomb.Time_Bomb",
     "Villain_Pets.Traps_TimeBomb.Self_Destruct",
     "Villain_Pets.Traps_TimeBomb.Resistance"
-  ],
-  "Pets_Traps_TimeBomb_Defender": [
-    "Pets.Traps_TimeBomb_Defender.Time_Bomb",
-    "Pets.Traps_TimeBomb_Defender.Self_Destruct",
-    "Pets.Traps_TimeBomb_Defender.Resistance"
   ],
   "Pets_Traps_Triage_Beacon": [
     "Pets.ResistAll.ResistAll",

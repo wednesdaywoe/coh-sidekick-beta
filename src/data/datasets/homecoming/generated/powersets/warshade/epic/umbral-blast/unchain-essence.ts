@@ -29,7 +29,7 @@ export const UnchainEssence: Power = {
     "radius": 20,
     "recharge": 240,
     "endurance": 26,
-    "castTime": 3.17,
+    "castTime": 2.5,
     "maxTargets": 16
   },
   "allowedEnhancements": [

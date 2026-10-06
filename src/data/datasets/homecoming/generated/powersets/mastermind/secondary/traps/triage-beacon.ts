@@ -14,7 +14,7 @@ export const TriageBeacon: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "You can plant a Triage Beacon into the ground. The Beacon is immobile, but it emits a powerful healing aura. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Triage Beacon. The Beacon is invulnerable.\n\nRecharge: Long.",
+  "description": "You can plant a Triage Beacon into the ground. The Beacon is immobile, but it emits a powerful healing aura. The Regeneration Rate of you, or your allies, will be greatly increased as long as you are near the Triage Beacon, with half of that value lingering for 30 seconds after you leave it. The Beacon is invulnerable.\n\nRecharge: Long.",
   "shortHelp": "Place Beacon: PBAoE +Regen",
   "icon": "traps_droppedaoebuffregen.png",
   "powerType": "Click",
@@ -25,9 +25,9 @@ export const TriageBeacon: Power = {
   ],
   "stats": {
     "accuracy": 1,
-    "recharge": 200,
+    "recharge": 120,
     "endurance": 13,
-    "castTime": 2.77
+    "castTime": 1.47
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -40,11 +40,11 @@ export const TriageBeacon: Power = {
   "maxSlots": 6,
   "summon": {
     "copyBoosts": true,
-    "duration": 90,
+    "duration": 60,
     "entity": "Pets_Traps_Triage_Beacon",
     "isPseudoPet": false
   },
   "atoms": [
-    ["EntCreate",null,-1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,90]
+    ["EntCreate",null,-1,1,60,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,60]
   ]
 };

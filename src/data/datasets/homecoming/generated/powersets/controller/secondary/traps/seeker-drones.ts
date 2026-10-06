@@ -14,7 +14,7 @@ export const SeekerDrones: Power = {
   "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You create two Seeker Drones. These Seeker Drones will follow you until they detect an enemy and then they will zero in on their targets and detonate on impact. The small explosive flash of energy does only minor damage, but the concussion can weaken foes. Affected targets will have reduced Damage, Accuracy and Perception and may even be Disoriented for a short while. You can only ever have Two Seeker Drones out at one time and they can be destroyed by your foes.",
+  "description": "You create two Seeker Drones. These Seeker Drones will follow you until they detect an enemy and then they will zero in on their targets and detonate on impact. The small explosive flash of energy does only minor damage, but the concussion can weaken foes. Affected targets will have reduced Damage, chance to hit and Perception and may even be Disoriented for a short while. Your drones can be destroyed by your foes, causing them to explode early.\n\nRecharge: Long.",
   "shortHelp": "Summon Seekers: Ranged Disorient, -DMG, -ACC, -Perception, DMG(Energy)",
   "icon": "traps_droppedaoedebuffdamage.png",
   "powerType": "Click",
@@ -26,9 +26,9 @@ export const SeekerDrones: Power = {
   "stats": {
     "accuracy": 1.2,
     "range": 60,
-    "recharge": 90,
+    "recharge": 60,
     "endurance": 15.6,
-    "castTime": 2.03
+    "castTime": 1
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -43,6 +43,7 @@ export const SeekerDrones: Power = {
     "Accurate To-Hit Debuff",
     "Controller Archetype Sets",
     "Pet Damage",
+    "Ranged AoE Damage",
     "Stuns",
     "To Hit Debuff",
     "Universal Damage Sets"
@@ -51,20 +52,12 @@ export const SeekerDrones: Power = {
   "summon": {
     "copyBoosts": true,
     "duration": 240,
-    "entities": [
-      {
-        "count": 1,
-        "entity": "Pets_Traps_Seeker1"
-      },
-      {
-        "count": 1,
-        "entity": "Pets_Traps_Seeker2"
-      }
-    ],
+    "entity": "Pets_Traps_Seeker1",
+    "entityCount": 2,
     "isPseudoPet": false
   },
   "atoms": [
-    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],
-    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1]
+    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240],
+    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",false,"StackThenIgnore",3,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1]
   ]
 };

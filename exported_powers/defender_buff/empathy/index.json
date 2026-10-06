@@ -1,7 +1,7 @@
 {
   "key": "Defender_Buff.Empathy",
   "display_name": "Empathy",
-  "help": "Empathy gives you the ability to heal and aid allies as well as yourself. Empathy has no offensive powers, but its heals and buffs are unmatched.",
+  "help": "Empathy gives you the ability to heal and aid allies as well as yourself. Empathy has no offensive powers, but its heals and buffs are unmatched, converting excess healing into absorb shields.",
   "short_help": "Empathy",
   "icon": "empathy_set.ico",
   "powers": [
@@ -35,18 +35,18 @@
     "Fortitude",
     "Recovery Aura",
     "Regeneration Aura",
-    "Adrenalin Boost"
+    "Adrenaline Boost"
   ],
   "power_short_helps": [
     "PBAoE, Team +Heal",
     "Ally Heal",
     "Ally Strong Heal, Self Moderate DMG(Special)",
     "Ally Rez",
-    "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception",
-    "Ally +DEF(All), +DMG, +To Hit",
-    "PBAoE, Ally +Recovery",
-    "PBAoE, Ally +Regeneration",
-    "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow)"
+    "Ally +Res(Psi, Disorient, Hold, Sleep, Immobilize, Fear, Confuse), +Perception",
+    "Ally +DEF(All), +DMG, +To Hit, +RES(debuffs)",
+    "PBAoE, Ally +Recovery, -RECH, +Res(-End, -Recovery)",
+    "PBAoE, Ally +Regeneration, +MaxHP, +Res(-Regen)",
+    "Ranged, Ally +End, +Regeneration, +Recharge, Res (Slow), Rez"
   ],
   "buy_requires": [],
   "buy_requires_failed": "",

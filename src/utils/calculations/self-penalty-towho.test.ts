@@ -97,13 +97,25 @@ describe('selfPenalty → toWho retirement', () => {
   // Defense(All). The bag's `defenseDebuff` slot (the scalar, `base_defense`
   // branch) carries the -Def with toWho:'Self' on both AT variants — the DSH6c
   // discriminator gate caught this on its first run (self-penalty|Defense).
-  it('HC Rage crash: the -Def(All) is self-directed (DSH6c catch), like its -Dmg', async () => {
-    await loadDataset('homecoming');
+  // Homecoming's Rage lost its crash in Issue 28 Page 4 (live 2026-10-06), so the
+  // claim is held on Rebirth, whose Rage still crashes with the same two rows.
+  it('Rebirth Rage crash: the -Def(All) is self-directed (DSH6c catch), like its -Dmg', async () => {
+    await loadDataset('rebirth');
     for (const setId of ['brute/super-strength', 'tanker/super-strength']) {
       const rage = getPowerset(setId)?.powers.find((p) => p.internalName === 'Rage');
       expect(rage, setId).toBeDefined();
       expect(selfDefenseDebuffValue(rage!), `${setId} -Def self`).toEqual({ scale: 0.2, table: 'Melee_Ones' });
       expect(selfDamageDebuffValue(rage!), `${setId} -Dmg self`).toEqual({ scale: 999, table: 'Melee_Buff_Dmg' });
+    }
+  });
+
+  it('HC Rage no longer crashes (Issue 28 Page 4)', async () => {
+    await loadDataset('homecoming');
+    for (const setId of ['brute/super-strength', 'tanker/super-strength']) {
+      const rage = getPowerset(setId)?.powers.find((p) => p.internalName === 'Rage');
+      expect(rage, setId).toBeDefined();
+      expect(selfDefenseDebuffValue(rage!), `${setId} -Def self`).toBeUndefined();
+      expect(selfDamageDebuffValue(rage!), `${setId} -Dmg self`).toBeUndefined();
     }
   });
 });

@@ -5,15 +5,19 @@
   "short_help": "Traps",
   "icon": "traps_set_timebomb_set.ico",
   "powers": [
+    "Villain_Pets.Traps_Set_TimeBomb.Time_Bomb_Equipped",
     "Villain_Pets.Traps_Set_TimeBomb.Time_Bomb"
   ],
   "available_level": [
+    0,
     0
   ],
   "power_display_names": [
+    "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
     "Time Bomb"
   ],
   "power_short_helps": [
+    "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
     "Place Bomb: PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback"
   ],
   "buy_requires": [],

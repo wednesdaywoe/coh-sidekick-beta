@@ -14,7 +14,7 @@ export const HealOther: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "Heals a single targeted ally. You cannot use this power to heal yourself.",
+  "description": "Heals a single targeted ally. You cannot use this power to heal yourself. Excess healing is converted into an absorb shield.",
   "shortHelp": "Ally Heal",
   "icon": "empathy_healother.png",
   "powerType": "Click",
@@ -46,6 +46,7 @@ export const HealOther: Power = {
     "table": "Ranged_Heal"
   },
   "atoms": [
+    ["Absorb",null,1.96,1,10,"Ranged_Heal","Max","Expression","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,["@StdResult","Cur.kHitPoints","target>","Max.kHitPoints","target>","-","+","0","@StdResult","minmax","0.5","*"]],
     ["Heal",null,1.96,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1]
   ]
 };

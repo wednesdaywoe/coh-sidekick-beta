@@ -7,12 +7,12 @@
     "signRule": "sign follows the converter (scale<0 OR table matches /debuff/), not scale alone."
   },
   "coverage": {
-    "powersTotal": 3359,
-    "powersChecked": 3359,
+    "powersTotal": 3440,
+    "powersChecked": 3440,
     "sourceMissing": 0,
     "requireFail": 0,
-    "atomsChecked": 5899,
-    "scalarChecked": 1231
+    "atomsChecked": 6428,
+    "scalarChecked": 1316
   },
   "summary": {
     "highConfidenceCollapses": 0,

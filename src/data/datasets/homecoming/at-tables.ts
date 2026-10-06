@@ -29046,7 +29046,7 @@ export const PET_TABLES: Record<string, PetTableData> = {
         890.4249877929688, 904.9686279296875, 917.9957275390625, 929.4370727539062, 939.2316284179688, 947.326904296875, 953.6796264648438, 958.2557983398438, 961.0313720703125, 963.8070068359375
       ],
       resistanceCap: 0.8999999761581421,
-      damageCap: 4,
+      damageCap: 5,
       baseThreat: 3,
       rechargeFloor: 1,
       rechargeCap: 1,
@@ -30472,7 +30472,7 @@ export const PET_TABLES: Record<string, PetTableData> = {
         712.3400268554688, 723.9749145507812, 734.3966064453125, 743.5496826171875, 751.3853149414062, 757.8615112304688, 762.9437255859375, 766.6046142578125, 768.8250732421875, 771.0455932617188
       ],
       resistanceCap: 0.8999999761581421,
-      damageCap: 4,
+      damageCap: 5,
       baseThreat: 3,
       rechargeFloor: 1,
       rechargeCap: 1,
@@ -31898,7 +31898,7 @@ export const PET_TABLES: Record<string, PetTableData> = {
         534.2550048828125, 542.981201171875, 550.7974243164062, 557.6622924804688, 563.5390014648438, 568.3961791992188, 572.2077026367188, 574.9534912109375, 576.6187744140625, 578.2841796875
       ],
       resistanceCap: 0.8999999761581421,
-      damageCap: 4,
+      damageCap: 5,
       baseThreat: 3,
       rechargeFloor: 1,
       rechargeCap: 1,
@@ -33324,7 +33324,7 @@ export const PET_TABLES: Record<string, PetTableData> = {
         534.2550048828125, 542.981201171875, 550.7974243164062, 557.6622924804688, 563.5390014648438, 568.3961791992188, 572.2077026367188, 574.9534912109375, 576.6187744140625, 578.2841796875
       ],
       resistanceCap: 0.699999988079071,
-      damageCap: 4,
+      damageCap: 5,
       baseThreat: 3,
       rechargeFloor: 1,
       rechargeCap: 1,
@@ -37602,7 +37602,7 @@ export const PET_TABLES: Record<string, PetTableData> = {
         989.3612060546875, 1005.5206909179688, 1019.9953002929688, 1032.7078857421875, 1043.5906982421875, 1052.58544921875, 1059.64404296875, 1064.7286376953125, 1067.812744140625, 1070.896728515625
       ],
       resistanceCap: 0.8999999761581421,
-      damageCap: 4,
+      damageCap: 5,
       baseThreat: 1.5,
       rechargeFloor: 1,
       rechargeCap: 1,
@@ -40480,7 +40480,7 @@ export const PET_TABLES: Record<string, PetTableData> = {
         989.3612060546875, 1005.5206909179688, 1019.9953002929688, 1032.7078857421875, 1043.5906982421875, 1052.58544921875, 1059.64404296875, 1064.7286376953125, 1067.812744140625, 1070.896728515625
       ],
       resistanceCap: 1,
-      damageCap: 4,
+      damageCap: 5,
       baseThreat: 1.5,
       rechargeFloor: 0.25,
       rechargeCap: 5,
@@ -41906,7 +41906,7 @@ export const PET_TABLES: Record<string, PetTableData> = {
         989.3612060546875, 1005.5206909179688, 1019.9953002929688, 1032.7078857421875, 1043.5906982421875, 1052.58544921875, 1059.64404296875, 1064.7286376953125, 1067.812744140625, 1070.896728515625
       ],
       resistanceCap: 0.8999999761581421,
-      damageCap: 4,
+      damageCap: 5,
       baseThreat: 1.5,
       rechargeFloor: 1,
       rechargeCap: 1,

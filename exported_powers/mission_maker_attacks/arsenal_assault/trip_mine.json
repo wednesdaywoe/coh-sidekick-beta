@@ -86,7 +86,7 @@
             "priority_list": "PL_Untargetable_FightPreferRanged",
             "redirects": [
               "Pets.Trip_Mine_Dominator.TripMine_Resistance",
-              "Pets.Trip_Mine_Dominator.TripMine_Info"
+              "Pets.Trip_Mine_Dominator.TripMine_SelfDestruct"
             ],
             "type": "EntCreate"
           },

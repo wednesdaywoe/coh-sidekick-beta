@@ -28,7 +28,7 @@ export const Repair: Power = {
     "range": 80,
     "recharge": 120,
     "endurance": 16.25,
-    "castTime": 2.03
+    "castTime": 1
   },
   "allowedEnhancements": [
     "EnduranceReduction",

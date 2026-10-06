@@ -175,19 +175,23 @@ describe('BPORT11 — every slot a synthetic still supplies keeps an arm that ca
     // Affinity ATs and each gated on `chain_jolt_mode`. That is upstream's own token — HC hung
     // the Radiance rework on the existing Chain Jolt mode rather than minting one — so the
     // gate reads oddly here and in the UI, and is faithful to the export either way.
+    // Four more moved with Issue 28 Page 4 (live 2026-10-06), all homecoming catching up to the
+    // beta: damageBuff 52 -> 56 (Spotlight) and regenBuff 24 -> 28 (Lightfield), the same
+    // `chain_jolt_mode` pair on four ATs; defenseBuff 64 -> 68 and resistance 65 -> 69, Force
+    // Field's reworked Personal Force Field `conditional` on four ATs.
     const top = [...credits].filter(([, n]) => n >= 20).sort((a, b) => b[1] - a[1]);
     expect(Object.fromEntries(top)).toEqual({
       recoveryBuffUnenhanced: 110,
       regenBuffUnenhanced: 95,
-      resistance: 65,
-      defenseBuff: 64,
-      damageBuff: 52,
+      resistance: 69,
+      defenseBuff: 68,
+      damageBuff: 56,
       absorb: 50,
       maxHPBuffUnenhanced: 43,
       tohitBuffUnenhanced: 37,
       enduranceDiscount: 29,
+      regenBuff: 28,
       tohitBuff: 25,
-      regenBuff: 24,
       rechargeBuff: 20,
     });
     // The gate is doing real work, not waving everything through: `slow` mints 175 times and

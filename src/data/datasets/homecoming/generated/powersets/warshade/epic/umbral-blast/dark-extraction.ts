@@ -28,7 +28,7 @@ export const DarkExtraction: Power = {
     "range": 40,
     "recharge": 240,
     "endurance": 26,
-    "castTime": 3.2
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Slow",

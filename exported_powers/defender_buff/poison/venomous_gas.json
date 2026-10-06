@@ -34,7 +34,6 @@
   ],
   "boosts_allowed": [
     "EnduranceDiscount",
-    "Range",
     "Recharge",
     "Debuff_ToHit",
     "Debuff_Defense"

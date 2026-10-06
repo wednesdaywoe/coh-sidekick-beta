@@ -29,7 +29,7 @@ export const Vortex: Power = {
     "range": 60,
     "recharge": 240,
     "endurance": 26,
-    "castTime": 1.87
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Slow",

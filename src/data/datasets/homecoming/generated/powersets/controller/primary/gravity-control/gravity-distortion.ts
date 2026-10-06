@@ -28,7 +28,7 @@ export const GravityDistortion: Power = {
     "range": 80,
     "recharge": 8,
     "endurance": 8.528,
-    "castTime": 1.83
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Hold",

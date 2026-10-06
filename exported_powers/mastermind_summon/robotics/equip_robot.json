@@ -18,7 +18,7 @@
   "arc": 0.0,
   "range": 50.0,
   "range_secondary": 0.0,
-  "activation_time": 2.03,
+  "activation_time": 1.0,
   "recharge_time": 0.5,
   "activate_period": 0.0,
   "endurance_cost": 11.375,
@@ -599,7 +599,7 @@
           "fx": {
             "continuing_bits": [
               49,
-              689,
+              688,
               397
             ],
             "continuing_fx": null,

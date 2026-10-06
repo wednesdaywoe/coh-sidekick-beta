@@ -11,11 +11,11 @@ import type { Power } from '@/types';
 export const KnockoutBlow: Power = {
   "name": "Knockout Blow",
   "internalName": "Knockout_Blow",
-  "available": 19,
+  "available": 23,
   "autoIssue": false,
   "free": false,
-  "description": "You can perform a Knockout Blow on your opponent. This punch does extreme damage, and has a great chance of Holding your target.",
-  "shortHelp": "Melee, DMG(Smash), Foe Hold",
+  "description": "You can perform a Knockout Blow on your opponent. This punch does extreme damage, and has a great chance of Holding your target.\n\nWhile Rage is active, up to two nearby opponents will also be smashed by this attack, being damaged and possibly knocked down.",
+  "shortHelp": "Melee, DMG(Smash), Foe Hold, Self +Res DMG",
   "icon": "superstrength_knockoutblow.png",
   "powerType": "Click",
   "targetType": "Foe",
@@ -29,7 +29,7 @@ export const KnockoutBlow: Power = {
   "stats": {
     "accuracy": 1.2,
     "range": 13.199999809265137,
-    "recharge": 25,
+    "recharge": 20,
     "endurance": 18.512,
     "castTime": 2.23
   },
@@ -60,9 +60,25 @@ export const KnockoutBlow: Power = {
     ["Damage","Smashing",3.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Held",10,3,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Smashing",2.9609,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Fire",1.602,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Smashing",0.534,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might",null,null,null,null,null,null,null,null,null,null,"unleashmight"],
+    ["Damage","Smashing",2.7609,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Smashing",0.4141,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might"],
+    ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Mez","Knockup",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kUnleashMight","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unleashmight"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "unleashmight",
+      "label": "Unleash Might",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.534,
+        "table": "Melee_Damage"
+      }
+    }
   ]
 };

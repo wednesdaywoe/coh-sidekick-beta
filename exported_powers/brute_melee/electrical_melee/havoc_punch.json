@@ -6,7 +6,7 @@
   "display_name": "Havoc Punch",
   "display_fullname": "Brute Melee Electrical Melee Havoc Punch",
   "display_help": "The Havoc Punch is a slower attack than Charged Brawl, but makes up for it with a greater damage. Havoc Punch can drain some Endurance from your target and may overload their synapses, leaving him writhing for a moment. A portion of the drained Endurance may be given back to you. Disturbing an overloaded target will disperse the electrical charge and release him.",
-  "display_short_help": "Melee, DMG(Smash/Energy), Foe Sleep, -End",
+  "display_short_help": "Melee, DMG(Energy/Smash), Foe Sleep, -End, -Recovery",
   "icon": "electricmelee_targetedmoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

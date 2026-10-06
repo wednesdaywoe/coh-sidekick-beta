@@ -13,7 +13,7 @@
   "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
-  "max_targets_hit": 10,
+  "max_targets_hit": 16,
   "radius": 25.0,
   "arc": 0.0,
   "range": 0.0,
@@ -164,7 +164,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }

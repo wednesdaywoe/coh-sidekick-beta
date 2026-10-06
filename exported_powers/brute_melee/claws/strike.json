@@ -50,10 +50,7 @@
   "num_allowed": 1,
   "requires": [
     "Brute_Defense.Shield_Defense",
-    "!",
-    "Brute_Defense.Stone_Armor",
-    "!",
-    "&&"
+    "!"
   ],
   "activate_requires": [],
   "target_requires": [],

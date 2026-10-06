@@ -29,7 +29,7 @@ export const Wormhole: Power = {
     "radius": 20,
     "recharge": 90,
     "endurance": 15.6,
-    "castTime": 3,
+    "castTime": 2.53,
     "maxTargets": 16
   },
   "allowedEnhancements": [
@@ -50,7 +50,7 @@ export const Wormhole: Power = {
   "maxSlots": 6,
   "atoms": [
     ["Stealth","Translucency",0,1,1.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,1.4],
-    ["Mez","Teleport",4.1,3,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.6],
+    ["Mez","Teleport",6.1,3,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.6],
     ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.8],
     ["Mez","Stunned",10,3,0,"Ranged_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,2.7],
     ["Mez","Knockback",7,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,2.9],
@@ -64,5 +64,8 @@ export const Wormhole: Power = {
       "chance": 0.20000000298023224,
       "label": "Stun"
     }
+  ],
+  "modesDisallowed": [
+    "NoTeleport"
   ]
 };

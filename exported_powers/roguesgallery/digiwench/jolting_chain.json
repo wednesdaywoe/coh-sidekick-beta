@@ -160,7 +160,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 5.0,
               "always": 0
             }
@@ -312,7 +312,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "4 seconds",
-          "magnitude": 77.0,
+          "magnitude": 78.0,
           "delay": 0.0,
           "duration_expression": [],
           "magnitude_expression": [],

@@ -5,16 +5,16 @@
   "type": "Click",
   "display_name": "EM Pulse",
   "display_fullname": "V Arachnos Mu Boss High EM Pulse",
-  "display_help": "You are Held by the EMP Pulse and your Regeneration Rate is reduced.",
-  "display_short_help": "Hold, -Regen",
-  "icon": "radiationpoisoning_emppulse.png",
+  "display_help": "You can unleash a massive pulse of electromagnetic energy. This EMP will drain the endurance and HP regeneration of all affected targets and leave them incapacitated and Held for a while. Additionally, most machines and robots will take moderate high damage.",
+  "display_short_help": "PBAoE, Foe Hold, -End, -Regen, Special vs. Robots",
+  "icon": "arachnos_patron_pbaoestun.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
-  "radius": 20.0,
+  "radius": 40.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
@@ -22,7 +22,7 @@
   "time_to_root": 3.17,
   "recharge_time": 300.0,
   "activate_period": 0.0,
-  "endurance_cost": 15.4,
+  "endurance_cost": 28.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -69,7 +69,7 @@
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
-          "scale": 15.0,
+          "scale": 6.0,
           "duration": "0 seconds",
           "magnitude": 3.0,
           "delay": 0.0,
@@ -110,10 +110,10 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Absolute",
+          "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
-          "scale": -50.0,
+          "scale": -0.45,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -168,10 +168,9 @@
             "conditional_fx": null
           },
           "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreStrength"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1296
         }
       ]
     },

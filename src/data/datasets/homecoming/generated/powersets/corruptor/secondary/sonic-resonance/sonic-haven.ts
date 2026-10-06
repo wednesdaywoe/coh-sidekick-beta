@@ -14,7 +14,7 @@ export const SonicHaven: Power = {
   "available": 3,
   "autoIssue": false,
   "free": false,
-  "description": "This shield dramatically reduces the damage an ally takes from Fire, Cold, Energy, and Negative Energy attacks for a limited time. You cannot stack multiple Sonic Havens on the same target, however the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Barrier. You cannot use this power on yourself.\n\nRecharge: Very Fast.",
+  "description": "This shield dramatically reduces the damage an ally takes from Fire, Cold, Energy, and Negative Energy attacks for a limited time, as well as protection from Endurance and Recovery debuffs. You cannot stack multiple Sonic Havens on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Barrier. You cannot use this power on yourself.\n\nRecharge: Very Fast.",
   "shortHelp": "Ranged, Ally +Res(Fire, Cold, Energy, Negative Energy)",
   "icon": "sonicdebuff_protectelements.png",
   "powerType": "Click",
@@ -46,6 +46,8 @@ export const SonicHaven: Power = {
     ["Resistance","Fire",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Cold",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Energy",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Negative",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Resistance","Negative",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,1,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

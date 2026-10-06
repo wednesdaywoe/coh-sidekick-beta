@@ -14,23 +14,20 @@ export const RegenerationAura: Power = {
   "available": 21,
   "autoIssue": false,
   "free": false,
-  "description": "The Regeneration Aura dramatically increases the healing rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge.",
-  "shortHelp": "PBAoE, Ally +Regeneration",
+  "description": "The Regeneration Aura dramatically increases the healing rate of all nearby heroes for a limited time, as well as allies who gather within 5 seconds of activation. This also increases their maximum Hit Points and provides resistance to regeneration debuffs.",
+  "shortHelp": "PBAoE, Ally +Regeneration, +MaxHP, +Res(-Regen)",
   "icon": "empathy_regenerationaura.png",
   "powerType": "Click",
   "targetType": "Self",
-  "effectArea": "AoE",
+  "effectArea": "SingleTarget",
   "targetsAffected": [
-    "Friend",
     "Self"
   ],
   "stats": {
     "accuracy": 1,
-    "radius": 25,
-    "recharge": 500,
+    "recharge": 360,
     "endurance": 26,
-    "castTime": 2.03,
-    "maxTargets": 255
+    "castTime": 2.03
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -42,6 +39,9 @@ export const RegenerationAura: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Regeneration",null,5,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Regeneration",null,3.75,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["MaxHP",null,1,1,90,"Ranged_Heal","Max","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Regeneration",null,1.5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ]
 };

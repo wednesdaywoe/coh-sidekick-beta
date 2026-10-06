@@ -437,7 +437,9 @@ export interface ResolvedPseudoPetAbility {
   name: string;
   displayName: string;
   type: string;
-  damage: { damageType: string; scale: number; table: string }[];
+  /** `chance` is a hit's own roll relative to the ability's (`damageChance`), stated only when
+   *  lower — Trip Mine's third Fire is a 50% child of a guaranteed detonation. */
+  damage: { damageType: string; scale: number; table: string; chance?: number }[];
   /** Empowered ("High Winds") replacement for `effects` — the WindSpeed values
    *  (~2× the base Tempest debuffs). The runtime swaps to these when the
    *  "Storm Cell Active" toggle is on. */
@@ -447,7 +449,7 @@ export interface ResolvedPseudoPetAbility {
    *  runtime swaps to these when the "Storm Cell Active" toggle is on, so the
    *  lightning escalates from the base aura to the strong variant players see
    *  in-game once storm strength builds. */
-  poweredUpDamage?: { damageType: string; scale: number; table: string }[];
+  poweredUpDamage?: { damageType: string; scale: number; table: string; chance?: number }[];
   /** Damage lands at < 100% (storm-strength gated / proc) — kept OUT of the
    *  guaranteed headline DoT and surfaced as a conditional effect instead. */
   conditionalDamage?: boolean;
@@ -474,6 +476,8 @@ export interface ResolvedPseudoPet {
   count?: number;
   /** Inherits the summoner's enhancements/modifiers (damage off summoner AT). */
   copyCreatorMods: boolean;
+  /** A bomb: detonates once and is destroyed (Trip Mine). Same rule as `PetEntity.oneShot`. */
+  oneShot?: boolean;
   abilities: ResolvedPseudoPetAbility[];
 }
 

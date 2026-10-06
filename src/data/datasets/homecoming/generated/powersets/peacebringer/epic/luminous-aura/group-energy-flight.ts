@@ -32,7 +32,7 @@ export const GroupEnergyFlight: Power = {
   "stats": {
     "accuracy": 1,
     "radius": 60,
-    "endurance": 1.3,
+    "endurance": 0.416,
     "castTime": 2.03,
     "activatePeriod": 2,
     "maxTargets": 255

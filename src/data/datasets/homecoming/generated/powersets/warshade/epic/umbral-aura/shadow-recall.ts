@@ -187,6 +187,7 @@ export const ShadowRecall: Power = {
     "!"
   ],
   "modesDisallowed": [
+    "NoTeleport",
     "Disable_Recall",
     "Peacebringer_Blaster_Mode",
     "Peacebringer_Tanker_Mode",

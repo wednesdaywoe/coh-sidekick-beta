@@ -14,23 +14,20 @@ export const RecoveryAura: Power = {
   "available": 17,
   "autoIssue": false,
   "free": false,
-  "description": "The Recovery Aura dramatically increases the Endurance recovery rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge.",
-  "shortHelp": "PBAoE, Ally +Recovery",
+  "description": "The Recovery Aura dramatically increases the attack rate and Endurance recovery of all nearby heroes for a limited time, as well as allies who gather within 5 seconds of activation. The aura also protects them from endurance drain and recovery debuffs.",
+  "shortHelp": "PBAoE, Ally +Recovery, -RECH, +Res(-End, -Recovery)",
   "icon": "empathy_recoveryaura.png",
   "powerType": "Click",
   "targetType": "Self",
-  "effectArea": "AoE",
+  "effectArea": "SingleTarget",
   "targetsAffected": [
-    "Friend",
     "Self"
   ],
   "stats": {
     "accuracy": 1,
-    "radius": 25,
-    "recharge": 500,
-    "endurance": 26,
-    "castTime": 2.03,
-    "maxTargets": 255
+    "recharge": 360,
+    "endurance": 13,
+    "castTime": 1
   },
   "allowedEnhancements": [
     "EnduranceModification",
@@ -42,6 +39,11 @@ export const RecoveryAura: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Recovery",null,2,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["EnduranceDiscount",null,0.25,1,90,"Ranged_Stun","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["Endurance",null,1.5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Recovery",null,1.5,1,90,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["RechargeTime",null,0.3,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Replace",2,null,null,1]
   ]
 };

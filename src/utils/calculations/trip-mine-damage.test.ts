@@ -2,6 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { loadDataset } from '@/data/dataset';
 import { getPetEntity } from '@/data/pet-entities';
 import { getPowerset } from '@/data';
+import { getTableValue } from '@/data/at-tables';
 import { calculatePetDamage, calculateResolvedPseudoPetDamage } from './pet-damage';
 import { dotTickCount } from './damage';
 import type { Power } from '@/types';
@@ -31,19 +32,19 @@ import type { Power } from '@/types';
  *
  * Expected values are level 50, unslotted, `minion_pets` melee_damage = 55.66
  * (the Dominator's resolved pseudo-pet reads the SUMMONER's table instead).
+ *
+ * Issue 28 Page 4 (live 2026-10-06) retired the per-AT Traps mines: Traps and Devices now share
+ * one pseudo-pet (`Villain_Pets.Traps_Trip_Mine`) on the summoner's own modifiers. Its 50% third
+ * Fire sits in a child group, which the resolved path summed whole until the converter learned to
+ * carry a per-hit `chance` — defect 2 again, on the new path.
  */
 describe('Trip Mine damage (homecoming)', () => {
   beforeAll(async () => { await loadDataset('homecoming'); });
 
   const SUMMON_WINDOW = 260;
 
-  // Every AT's mine is a one-shot: it is destroyed by its own detonation.
-  it.each([
-    ['Pets_Mine', 'blaster'],
-    ['Pets_Traps_Mine_Defender', 'defender'],
-    ['Pets_Traps_Mine', 'controller/corruptor/mastermind'],
-  ])('%s is marked oneShot (%s)', (entityName) => {
-    expect(getPetEntity(entityName)?.oneShot).toBe(true);
+  it('Pets_Mine is marked oneShot', () => {
+    expect(getPetEntity('Pets_Mine')?.oneShot).toBe(true);
   });
 
   it('a mine fires once, not once per attack-recharge over the summon window', () => {
@@ -55,24 +56,32 @@ describe('Trip Mine damage (homecoming)', () => {
     expect(r.oneShot).toBe(true);
   });
 
+  const MINE_HOLDERS: [string, string][] = [
+    ['blaster', 'blaster/devices'],
+    ['defender', 'defender/traps'],
+    ['controller', 'controller/traps'],
+    ['corruptor', 'corruptor/traps'],
+    ['mastermind', 'mastermind/traps'],
+  ];
+  const resolvedMine = (setId: string) => {
+    const power = getPowerset(setId)?.powers
+      .find((p: Power) => p.internalName === 'Trip_Mine') as Power | undefined;
+    return (power?.summon as any)?.resolvedEntities?.[0];
+  };
+
   it('weights the 50%-chance third Fire template instead of summing it whole', () => {
-    const defender = getPetEntity('Pets_Traps_Mine_Defender')!;
-    const dmg = defender.abilities[0].damage;
-    expect(dmg.map((d) => d.chance)).toEqual([undefined, undefined, 0.5]);
-    // 1.3 + 0.65 + 0.5×0.65 = 2.275 scale, not 2.6.
-    const r = calculatePetDamage('Pets_Traps_Mine_Defender', 50, 1, SUMMON_WINDOW, 0, false, 0, [])!;
-    expect(r.abilities[0].damagePerHit).toBeCloseTo(2.275 * 55.66, 0);
+    const mine = resolvedMine('defender/traps');
+    expect(mine, 'defender Trip Mine resolvedEntities').toBeTruthy();
+    expect(mine.abilities[0].damage.map((d: any) => d.chance)).toEqual([undefined, undefined, 0.5]);
   });
 
-  it('per-detonation damage matches the scales, per AT', () => {
-    const perHit = (e: string) =>
-      calculatePetDamage(e, 50, 1, SUMMON_WINDOW, 0, false, 0, [])!.abilities[0].damagePerHit;
-    // Blaster 2 + 1 + 0.5×1 = 3.5; was shown as 13 × 222.6 = 2894.
-    expect(perHit('Pets_Mine')).toBeCloseTo(3.5 * 55.66, 0);
-    // Defender 1.3 + 0.65 + 0.5×0.65 = 2.275; was shown as 13 × 144.7 = 1881.
-    expect(perHit('Pets_Traps_Mine_Defender')).toBeCloseTo(2.275 * 55.66, 0);
-    // The shared mine was already right — it must not move.
-    expect(perHit('Pets_Traps_Mine')).toBeCloseTo(3 * 55.66, 0);
+  it.each(MINE_HOLDERS)('per-detonation damage is 2 + 1 + 0.5x1 on the %s table (%s)', (at, setId) => {
+    const r = calculateResolvedPseudoPetDamage(resolvedMine(setId), at, 50, 0, false, 0, false)!;
+    expect(r, `${setId} resolves`).toBeTruthy();
+    // Defect 1 on the new path: without it the 260s window read as nine detonations.
+    expect(r.oneShot, `${setId} is a one-shot`).toBe(true);
+    // 3.5, not the 4.0 a whole third Fire would give.
+    expect(r.abilities[0].damagePerHit).toBeCloseTo(3.5 * Math.abs(getTableValue(at, 'Melee_Damage', 50)!), 0);
   });
 
   it("the Dominator's mine resolves damage from its Info redirect", () => {

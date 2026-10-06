@@ -120,7 +120,7 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "entity_def": "Pets_Protector_Traps_Seeker2",
+            "entity_def": "Pets_Protector_Traps_Seeker1",
             "priority_list": "PL_SpawnFlying",
             "type": "EntCreate"
           },

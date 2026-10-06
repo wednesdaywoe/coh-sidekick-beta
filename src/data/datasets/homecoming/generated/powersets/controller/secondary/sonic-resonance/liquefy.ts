@@ -14,8 +14,8 @@ export const Liquefy: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "You unleash a barrage of sonic waves on the Earth itself, generating a powerful, localized earthquake. The impact of the sonic shockwave may Hold some foes and deal some minor damage. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit and Defense.\n\nRecharge: Very Long.",
-  "shortHelp": "Ranged (Location AoE), Minor DMG(Smashing/Energy), Foe Hold, Knockdown, -To Hit, -DEF",
+  "description": "You unleash a barrage of sonic waves on the Earth itself, generating a powerful, localized earthquake. The impact of the sonic shockwave may Hold some foes and deal some minor damage. Most foes that pass through the location will fall down. The violent shaking also reduces their chance to hit, Defense, and their maximum hit points.\n\nRecharge: Very Long.",
+  "shortHelp": "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF, -MaxHP",
   "icon": "sonicdebuff_dropknockback.png",
   "powerType": "Click",
   "targetType": "Location",
@@ -26,7 +26,7 @@ export const Liquefy: Power = {
   "stats": {
     "accuracy": 1,
     "range": 60,
-    "recharge": 150,
+    "recharge": 120,
     "endurance": 23.4,
     "castTime": 2.67
   },
@@ -43,6 +43,7 @@ export const Liquefy: Power = {
   "allowedSetCategories": [
     "Accurate Defense Debuff",
     "Accurate To-Hit Debuff",
+    "Controller Archetype Sets",
     "Defense Debuff",
     "Holds",
     "Ranged AoE Damage",
@@ -111,7 +112,7 @@ export const Liquefy: Power = {
               "Foe"
             ],
             "radius": 25,
-            "maxTargets": 10
+            "maxTargets": 16
           }
         ]
       }

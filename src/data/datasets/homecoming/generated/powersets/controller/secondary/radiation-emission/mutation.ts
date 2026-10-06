@@ -28,7 +28,7 @@ export const Mutation: Power = {
     "range": 60,
     "recharge": 120,
     "endurance": 5.2,
-    "castTime": 1.83
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "EnduranceModification",

@@ -18,8 +18,8 @@
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 2.77,
-  "time_to_root": 2.77,
+  "activation_time": 1.47,
+  "time_to_root": 1.47,
   "recharge_time": 90.0,
   "activate_period": 0.0,
   "endurance_cost": 13.0,
@@ -90,15 +90,25 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "entity_def": "Pets_Traps_Poison_Trap",
+            "display_name": "Poison Trap",
             "priority_list": "PL_Untargetable_FightPreferRanged",
+            "redirects": [
+              "Villain_Pets.Traps_Poison_Trap.Self_Destruct",
+              "Villain_Pets.Traps_Poison_Trap.Resistance"
+            ],
             "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "NearGround",
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280,
-          "flags2_raw": 4
+          "flags_raw": 120,
+          "flags2_raw": 44
         }
       ]
     }

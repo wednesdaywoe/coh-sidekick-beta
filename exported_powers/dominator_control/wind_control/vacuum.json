@@ -208,7 +208,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -281,7 +281,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -388,7 +388,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -463,7 +463,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -679,7 +679,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 159.0,
+          "magnitude": 160.0,
           "delay": 0.0,
           "duration_expression": [
             "Temporary_Powers.Temporary_Powers.Wind_Control_Pressure",
@@ -747,7 +747,7 @@
           "table": "Ranged_Ones",
           "scale": 1.0,
           "duration": "239 seconds",
-          "magnitude": 160.0,
+          "magnitude": 161.0,
           "delay": 0.5,
           "duration_expression": [],
           "magnitude_expression": [],

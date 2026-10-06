@@ -28,7 +28,7 @@ export const DarkServant: Power = {
     "range": 60,
     "recharge": 500,
     "endurance": 26,
-    "castTime": 3.17
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Hold",

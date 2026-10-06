@@ -146,8 +146,8 @@
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
-          "table": "Melee_Level",
-          "scale": 0.002,
+          "table": "Ranged_Ones",
+          "scale": 0.1,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -191,8 +191,8 @@
           "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "AnyAffected",
-          "table": "Melee_Level",
-          "scale": 0.002,
+          "table": "Ranged_Ones",
+          "scale": 0.1,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -229,8 +229,8 @@
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
-          "table": "Melee_Level",
-          "scale": 0.02,
+          "table": "Ranged_Ones",
+          "scale": 1.0,
           "duration": "0.75 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -529,7 +529,7 @@
             "Stunned",
             "Held",
             "Sleep",
-            "Teleported"
+            "Event_36"
           ],
           "suppress_events": [
             {
@@ -585,7 +585,7 @@
             "Stunned",
             "Held",
             "Sleep",
-            "Teleported"
+            "Event_36"
           ],
           "suppress_events": [
             {
@@ -761,7 +761,7 @@
             "Immobilized",
             "Held",
             "Sleep",
-            "Teleported"
+            "Event_36"
           ],
           "suppress_events": [
             {

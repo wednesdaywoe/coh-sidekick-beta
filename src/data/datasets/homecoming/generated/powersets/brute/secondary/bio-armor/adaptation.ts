@@ -74,7 +74,7 @@ export const Adaptation: Power = {
     ["Resistance","Lethal",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["Resistance","Toxic",0.05,1,1,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.05],
     ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","entref","source>","entref","target>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"StealthOn"],
-    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","PvE",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Regeneration",null,0.3,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"restedadaptation"],
     ["Regeneration",null,0.06,1,1,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","Source.Mode?"],true,0.06,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"restedadaptation"],
     ["Recovery",null,0.15,1,1.125,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kRestedAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"restedadaptation"],
@@ -118,7 +118,7 @@ export const Adaptation: Power = {
     ["Defense","Negative",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,0.0336,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
     ["Defense","Psionic",0.024,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,0.024,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
     ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","entref","source>","entref","target>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"StealthOn"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ],
   "conditionalEffects": [
     {

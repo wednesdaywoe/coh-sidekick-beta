@@ -5,24 +5,24 @@
   "type": "Click",
   "display_name": "Shocking Bolt",
   "display_fullname": "V Arachnos Mu Hold Shocking Bolt",
-  "display_help": "The shock of energy has locked you in place -- you are held!",
-  "display_short_help": "Hold",
-  "icon": "archery_stunarrow.png",
+  "display_help": "Shocking Bolt binds a foes limbs, leaving the target held and helpless. The target is drained of some Endurance.",
+  "display_short_help": "Ranged, Moderate DoT(Energy), Foe Hold, -End, -Recovery",
+  "icon": "arachnos_patron_targetedhold.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
-  "accuracy": 1.155,
+  "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
   "radius": 0.0,
   "arc": 0.0,
-  "range": 80.0,
+  "range": 60.0,
   "range_secondary": 0.0,
   "activation_time": 1.33,
   "time_to_root": 1.33,
-  "recharge_time": 20.0,
+  "recharge_time": 16.0,
   "activate_period": 0.0,
-  "endurance_cost": 13.72,
+  "endurance_cost": 11.48,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -69,13 +69,13 @@
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
-          "scale": 0.25,
-          "duration": "0 seconds",
+          "scale": 0.15,
+          "duration": "6.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
           "magnitude_expression": [],
-          "application_period": 0.0,
+          "application_period": 1.0,
           "tick_chance": 1.0,
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
@@ -85,8 +85,8 @@
           "stack_limit": 2,
           "stack_key": null,
           "messages": {
-            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
-            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage over time.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage over time.",
             "display_float": null,
             "display_attrib_defense_float": null,
             "display_info": null
@@ -95,14 +95,14 @@
         },
         {
           "attribs": [
-            "Stunned"
+            "Held"
           ],
           "type": "Duration",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Immobilize",
-          "scale": 8.0,
+          "scale": 6.0,
           "duration": "0 seconds",
           "magnitude": 3.0,
           "delay": 0.0,
@@ -118,8 +118,8 @@
           "stack_limit": 2,
           "stack_key": null,
           "messages": {
-            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
-            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+            "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
             "display_float": null,
             "display_attrib_defense_float": null,
             "display_info": null
@@ -127,10 +127,71 @@
           "fx": {
             "continuing_bits": [],
             "continuing_fx": null,
-            "conditional_bits": [],
-            "conditional_fx": "GENERICCONTINUING/STUNCONTINUING.FX"
+            "conditional_bits": [
+              388
+            ],
+            "conditional_fx": "V_COV/ENEMYPOWERS/ARACHNOS/MU_SHOCKING_HOLD.FX"
           },
           "flags_raw": 2560
+        },
+        {
+          "attribs": [
+            "Endurance"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_EndDrain",
+          "scale": -0.07,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of their endurance.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} draining {Damage} points of your endurance.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "flags_raw": 1280
+        },
+        {
+          "attribs": [
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": -0.5,
+          "duration": "8 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     }

@@ -29,7 +29,7 @@ export const GravityDistortionField: Power = {
     "range": 80,
     "recharge": 240,
     "endurance": 15.6,
-    "castTime": 1.83
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Hold",

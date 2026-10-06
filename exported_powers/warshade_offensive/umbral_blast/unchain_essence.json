@@ -18,8 +18,8 @@
   "arc": 0.0,
   "range": 40.0,
   "range_secondary": 0.0,
-  "activation_time": 3.17,
-  "time_to_root": 3.17,
+  "activation_time": 2.5,
+  "time_to_root": 2.5,
   "recharge_time": 240.0,
   "activate_period": 0.0,
   "endurance_cost": 26.0,
@@ -419,7 +419,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }

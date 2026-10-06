@@ -20,6 +20,8 @@
     "Redirects.Pyrotechnic_Control.CatherineWheel_InterceptProc",
     "Redirects.Pyrotechnic_Control.Hypnotizing_Lights",
     "Redirects.Pyrotechnic_Control.HypnotizingLights_Narrow",
+    "Redirects.Pyrotechnic_Control.Hypnotizing_Lights_NPC",
+    "Redirects.Pyrotechnic_Control.Hypnotizing_Lights_Narrow_NPC",
     "Redirects.Pyrotechnic_Control.Glitz_Burst"
   ],
   "available_level": [
@@ -37,6 +39,8 @@
     0,
     0,
     7,
+    0,
+    0,
     0,
     0
   ],
@@ -56,6 +60,8 @@
     "Intercept Proc",
     "Hypnotizing Lights",
     "Hypnotizing Lights (Close)",
+    "Hypnotizing Lights",
+    "Hypnotizing Lights (Close)",
     "Brilliant Barrage"
   ],
   "power_short_helps": [
@@ -72,6 +78,8 @@
     "DMG(Fire/Energy)",
     "Intercept Aura",
     "DMG(Fire/Energy), Special",
+    "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
+    "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
     "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
     "Ranged (Cone), Foe Sleep, Foe Confuse (Within 20ft), Moderate DoT (Psionic), Foe Deep Sleep",
     "Ranged (AoE), Foe Stun, Foe Terrorize, Minor DMG (Fire, Energy)"

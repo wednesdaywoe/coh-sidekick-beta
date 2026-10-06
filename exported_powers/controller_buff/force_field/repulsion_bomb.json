@@ -20,7 +20,7 @@
   "range_secondary": 0.0,
   "activation_time": 1.67,
   "time_to_root": 1.67,
-  "recharge_time": 30.0,
+  "recharge_time": 24.0,
   "activate_period": 0.0,
   "endurance_cost": 16.9,
   "interrupt_time": 0.0,
@@ -82,7 +82,7 @@
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
-          "scale": 0.6,
+          "scale": 0.9,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -158,7 +158,7 @@
               "aspect": "Absolute",
               "target": "AnyAffected",
               "table": "Ranged_InherentDamage",
-              "scale": 0.6,
+              "scale": 0.9,
               "duration": "0 seconds",
               "magnitude": 1.0,
               "delay": 0.0,
@@ -467,7 +467,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }

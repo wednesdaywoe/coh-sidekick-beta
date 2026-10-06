@@ -93,7 +93,7 @@
             "Attacked",
             "HitByFoe",
             "MissionObjectClick",
-            "Event_38"
+            "Event_39"
           ],
           "flags": [
             "IgnoreStrength",
@@ -130,7 +130,7 @@
             "Attacked",
             "HitByFoe",
             "MissionObjectClick",
-            "Event_38"
+            "Event_39"
           ],
           "flags": [
             "IgnoreStrength",

@@ -142,6 +142,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'controller/time-manipulation',
       'controller/traps',
       'controller/trick-arrow',
+      'controller/light-affinity',
     ],
   },
 
@@ -184,6 +185,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'defender/time-manipulation',
       'defender/traps',
       'defender/trick-arrow',
+      'defender/light-affinity',
     ],
     secondarySets: [
       'defender/archery',
@@ -265,6 +267,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'scrapper/stone-armor',
       'scrapper/super-reflexes',
       'scrapper/willpower',
+      'scrapper/sonic-aura',
     ],
   },
 
@@ -308,6 +311,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'tanker/stone-armor',
       'tanker/super-reflexes',
       'tanker/willpower',
+      'tanker/sonic-aura',
     ],
     secondarySets: [
       'tanker/battle-axe',
@@ -389,6 +393,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'sentinel/stone-armor',
       'sentinel/super-reflexes',
       'sentinel/willpower',
+      'sentinel/sonic-aura',
     ],
   },
 
@@ -457,6 +462,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'brute/stone-armor',
       'brute/super-reflexes',
       'brute/willpower',
+      'brute/sonic-aura',
     ],
   },
 
@@ -516,6 +522,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'corruptor/time-manipulation',
       'corruptor/traps',
       'corruptor/trick-arrow',
+      'corruptor/light-affinity',
     ],
   },
 
@@ -632,6 +639,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'mastermind/time-manipulation',
       'mastermind/traps',
       'mastermind/trick-arrow',
+      'mastermind/light-affinity',
     ],
   },
 
@@ -693,6 +701,7 @@ export const ARCHETYPES: ArchetypeRegistry = {
       'stalker/stone-armor',
       'stalker/super-reflexes',
       'stalker/willpower',
+      'stalker/sonic-aura',
     ],
   },
 

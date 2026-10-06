@@ -32,7 +32,7 @@ export const DisruptionAura: Power = {
     "accuracy": 1,
     "radius": 15,
     "recharge": 10,
-    "endurance": 1.04,
+    "endurance": 0.52,
     "castTime": 1.97,
     "activatePeriod": 2,
     "maxTargets": 10

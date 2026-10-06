@@ -132,6 +132,7 @@
     }
   ],
   "modes_disallowed": [
+    "NoTeleport",
     "Disable_All",
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode"

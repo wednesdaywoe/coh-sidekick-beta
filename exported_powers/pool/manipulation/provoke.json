@@ -133,8 +133,8 @@
           "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
-          "table": "Melee_Taunt",
-          "scale": 4.0,
+          "table": "Melee_Ones",
+          "scale": 2.0,
           "duration": "0 seconds",
           "magnitude": 4.0,
           "delay": 0.0,
@@ -156,6 +156,14 @@
             "display_attrib_defense_float": null,
             "display_info": null
           },
+          "suppress_events": [
+            {
+              "event": "Event_32",
+              "event_id": 32,
+              "duration": 15.0,
+              "always": 0
+            }
+          ],
           "flags_raw": 2560
         }
       ]

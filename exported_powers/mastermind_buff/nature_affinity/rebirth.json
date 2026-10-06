@@ -18,7 +18,7 @@
   "arc": 0.0,
   "range": 45.0,
   "range_secondary": 0.0,
-  "activation_time": 3.0,
+  "activation_time": 2.53,
   "recharge_time": 180.0,
   "activate_period": 0.0,
   "endurance_cost": 13.0,

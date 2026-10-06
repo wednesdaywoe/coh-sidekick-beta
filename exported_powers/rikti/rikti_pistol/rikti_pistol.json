@@ -101,7 +101,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": [],
+      "requires_expression": [
+        "Arena_Onslaught_01",
+        "mapname>",
+        "==",
+        "!"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",

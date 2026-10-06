@@ -31,7 +31,7 @@ export const IncandescentStrike: Power = {
     "range": 7,
     "recharge": 20,
     "endurance": 18.512,
-    "castTime": 3.3
+    "castTime": 2.53
   },
   "allowedEnhancements": [
     "Hold",

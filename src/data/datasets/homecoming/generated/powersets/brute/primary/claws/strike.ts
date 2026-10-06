@@ -59,9 +59,6 @@ export const Strike: Power = {
   ],
   "requires": [
     "Brute_Defense.Shield_Defense",
-    "!",
-    "Brute_Defense.Stone_Armor",
-    "!",
-    "&&"
+    "!"
   ]
 };

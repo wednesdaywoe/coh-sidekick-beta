@@ -14,8 +14,8 @@ export const SonicBarrier: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "This shield dramatically reduces the damage an ally takes from Smashing, Lethal, and Toxic attacks for a limited time. You cannot stack multiple Sonic Barriers on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Haven. You cannot use this power on yourself.\n\nRecharge: Very Fast.",
-  "shortHelp": "Ranged, Ally +Res(Smash, Lethal, Toxic)",
+  "description": "This shield dramatically reduces the damage an ally takes from Smashing, Lethal, and Toxic attacks for a limited time, as well as reducing the effects of ToHit and Defense debuffs. You cannot stack multiple Sonic Barriers on the same target; however, the shield can be improved by another ally using the same power. Can also be used in conjunction with your Sonic Haven. You cannot use this power on yourself.\n\nRecharge: Very Fast.",
+  "shortHelp": "Ranged, Ally +Res(Smash, Lethal, Toxic, ToHit, Def)",
   "icon": "sonicdebuff_protectphysical.png",
   "powerType": "Click",
   "targetType": "Ally (Alive)",
@@ -45,6 +45,8 @@ export const SonicBarrier: Power = {
   "atoms": [
     ["Resistance","Smashing",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
-    ["Resistance","Toxic",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1]
+    ["Resistance","Toxic",2,1,240,"Ranged_Res_Dmg","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1],
+    ["ToHit",null,1,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true],
+    ["Defense","All",0.75,1,240,"Ranged_Res_Boolean","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true]
   ]
 };

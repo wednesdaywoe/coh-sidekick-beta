@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Rage",
   "display_fullname": "Brute Melee Super Strength Rage",
-  "display_help": "A Rage comes over you, sending you into a berserker fury. While Raging, your damage and chance to hit is dramatically increased. However, when your Rage subsides, you are left with reduced Defense, drained of some of your Endurance, and your attacks are substantially weakened.",
-  "display_short_help": "Self +DMG, +To Hit, Delayed Self(Weaken, Special)",
+  "display_help": "A Rage comes over you, sending you into a berserker fury. While Raging, your damage, chance to hit, endurance recovery, and damage resistance is increased. Your Super Strength attacks also deal additional Smashing Damage!<br><br>However, when Raging your Super Strength attacks all cost more endurance as you attack recklessly.<br><br><color #FF7F27>Note: you can right-click and cancel this power on your tray to manage endurance</color>",
+  "display_short_help": "Self +DMG, +To Hit, +Res DMG, +Recovery, Special",
   "icon": "superstrength_rage.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -21,7 +21,7 @@
   "activation_time": 1.17,
   "recharge_time": 240.0,
   "activate_period": 0.0,
-  "endurance_cost": 5.2,
+  "endurance_cost": 20.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -113,7 +113,7 @@
           "aspect": "Strength",
           "target": "Self",
           "table": "Melee_Buff_Dmg",
-          "scale": 8.0,
+          "scale": 5.0,
           "duration": "120 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -136,6 +136,38 @@
         },
         {
           "attribs": [
+            "Set_Mode"
+          ],
+          "type": "Constant",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "Self",
+          "table": "Melee_Ones",
+          "scale": 1.0,
+          "duration": "120 seconds",
+          "magnitude": 217.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods"
+          ],
+          "flags_raw": 112,
+          "mode_name": "UnleashMight"
+        },
+        {
+          "attribs": [
             "Smashing_Dmg",
             "Lethal_Dmg",
             "Fire_Dmg",
@@ -147,13 +179,13 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Strength",
+          "aspect": "Resistance",
           "target": "Self",
-          "table": "Melee_Buff_Dmg",
-          "scale": -999.0,
-          "duration": "10 seconds",
+          "table": "Melee_Res_Dmg",
+          "scale": 0.75,
+          "duration": "120 seconds",
           "magnitude": 1.0,
-          "delay": 120.0,
+          "delay": 0.0,
           "duration_expression": [],
           "magnitude_expression": [],
           "application_period": 0.0,
@@ -162,34 +194,30 @@
           "tick_mag_additive": 0.0,
           "jit_requires": [],
           "caster_stack": "Individual",
-          "stack": "Stack",
+          "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
-            "conditional_bits": [],
-            "conditional_fx": null
-          },
           "flags": [
             "IgnoreStrength",
-            "IgnoreResistance"
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "NoHitDelay"
           ],
-          "flags_raw": 1072
+          "flags_raw": 65648
         },
         {
           "attribs": [
-            "Base_Defense"
+            "Recovery"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
-          "scale": -0.2,
-          "duration": "10 seconds",
+          "scale": 0.1,
+          "duration": "120 seconds",
           "magnitude": 1.0,
-          "delay": 120.0,
+          "delay": 0.0,
           "duration_expression": [],
           "magnitude_expression": [],
           "application_period": 0.0,
@@ -206,43 +234,6 @@
             "IgnoreResistance"
           ],
           "flags_raw": 1072
-        },
-        {
-          "attribs": [
-            "Endurance"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "Self",
-          "table": "Melee_Ones",
-          "scale": -0.25,
-          "duration": "0 seconds",
-          "magnitude": 1.0,
-          "delay": 120.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "messages": {
-            "display_attacker_hit": null,
-            "display_victim_hit": "Your {PowerName} drains {Damage} points of your endurance.",
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1072
         }
       ]
     }
@@ -250,6 +241,6 @@
   "modes_disallowed": [
     "Disable_All"
   ],
-  "available_level": 17,
+  "available_level": 5,
   "powerset": "Brute_Melee.Super_Strength"
 }

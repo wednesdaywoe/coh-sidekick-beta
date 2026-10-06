@@ -836,7 +836,7 @@ export const ACCOLADES_POWERSET = {
       },
       "atoms": [
         ["EntCreate",null,-1,1,99999,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"OnActivate",99999],
-        ["Meta",null,1,170,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
+        ["Meta",null,1,171,1.5,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode"],
         ["Meta",null,1,1,0,"Melee_Damage","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"script_notify"]
       ],
       "targetsAffected": [
@@ -894,7 +894,7 @@ export const ACCOLADES_POWERSET = {
       "available": 0,
       "autoIssue": false,
       "free": true,
-      "description": "You've mastered the experience of fighting in the strange dream-like corridors of the maze, and as a result have gained increased Hitpoints and Endurance while adventuring within the fog!\n\nCan only be used while in the Labyrinth of Fog zone.\n\nMoving through the Fog takes practice, such as learning to assert your mind's calm when the tendrils of malevolence begin to bore into one's thoughts.",
+      "description": "You've mastered the experience of fighting in the strange dream-like corridors of the maze, and as a result have gained increased Hitpoints and Endurance while adventuring within the fog!\n\nCan only be used when fueled by the presence of mythic fog.\n\nMoving through the Fog takes practice, such as learning to assert your mind's calm when the tendrils of malevolence begin to bore into one's thoughts.",
       "shortHelp": "+Max HP, +Max END",
       "icon": "accolade_labyrinthconqueror.png",
       "powerType": "Auto",
@@ -923,7 +923,7 @@ export const ACCOLADES_POWERSET = {
       "available": 0,
       "autoIssue": false,
       "free": true,
-      "description": "You've been tested time and time again and emerged triumphant, and as a result have gained increased Endurance while adventuring within the fog!\n\nCan only be used while in the Labyrinth of Fog zone.\n\nThe Four were mighty, but their strongest trait was their care for the armies that served under them. Individually instructing every warrior in their service, the Generals were loved and revered by all in the Goddess' service.",
+      "description": "You've been tested time and time again and emerged triumphant, and as a result have gained increased Endurance while adventuring within the fog!\n\nCan only be used when fueled by the presence of mythic fog.\n\nThe Four were mighty, but their strongest trait was their care for the armies that served under them. Individually instructing every warrior in their service, the Generals were loved and revered by all in the Goddess' service.",
       "shortHelp": "+Max END",
       "icon": "accolade_mazebreaker.png",
       "powerType": "Auto",

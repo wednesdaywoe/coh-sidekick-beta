@@ -170,20 +170,28 @@ const record = (t: Split, id: string, bag?: string, atom?: string) => {
  * The carrier-view censuses, per fork. Every one is a population the bag comparison walked; the
  * numbers are what the atom arm answers for now that it is the only arm.
  */
+// Homecoming moved with Issue 28 Page 4 (live 2026-10-06): hold 140 -> 158, stun 151 -> 169, immobilize
+// 137 -> 155 (Sonic Aura's Harmonic Distortion and Noise Cancellation on five ATs, Light
+// Affinity's Lightfield and Spotlight on four); sleep 138 -> 152 (the Sonic Aura pair, Spotlight);
+// confuse 55 -> 59 and fear 63 -> 67 (Spotlight).
 const MEZ6_CENSUS: Record<string, Record<string, number>> = {
-  hold: { homecoming: 140, rebirth: 111, thunderspy: 103, brainstorm: 158 },
-  stun: { homecoming: 151, rebirth: 119, thunderspy: 110, brainstorm: 169 },
-  immobilize: { homecoming: 137, rebirth: 120, thunderspy: 105, brainstorm: 155 },
-  sleep: { homecoming: 138, rebirth: 103, thunderspy: 96, brainstorm: 152 },
-  confuse: { homecoming: 55, rebirth: 56, thunderspy: 37, brainstorm: 59 },
-  fear: { homecoming: 63, rebirth: 41, thunderspy: 35, brainstorm: 67 },
+  hold: { homecoming: 158, rebirth: 111, thunderspy: 103, brainstorm: 158 },
+  stun: { homecoming: 169, rebirth: 119, thunderspy: 110, brainstorm: 169 },
+  immobilize: { homecoming: 155, rebirth: 120, thunderspy: 105, brainstorm: 155 },
+  sleep: { homecoming: 152, rebirth: 103, thunderspy: 96, brainstorm: 152 },
+  confuse: { homecoming: 59, rebirth: 56, thunderspy: 37, brainstorm: 59 },
+  fear: { homecoming: 67, rebirth: 41, thunderspy: 35, brainstorm: 67 },
 };
-const MEZRES_CENSUS = { homecoming: 162, rebirth: 161, thunderspy: 123, brainstorm: 168 };
+// Homecoming 162 -> 168 with Issue 28 Page 4 (live 2026-10-06): + Sonic Aura's Harmonic Distortion and Noise
+// Cancellation on five ATs, - Empathy's Clear Mind on four.
+const MEZRES_CENSUS = { homecoming: 168, rebirth: 161, thunderspy: 123, brainstorm: 168 };
 const TAUNT_PLACATE_CENSUS: Record<string, Record<string, number>> = {
   Taunt: { homecoming: 0, rebirth: 2, thunderspy: 2, brainstorm: 0 },
   Placate: { homecoming: 4, rebirth: 5, thunderspy: 2, brainstorm: 4 },
 };
-const REPEL_CENSUS = { homecoming: 61, rebirth: 44, thunderspy: 41, brainstorm: 71 };
+// Homecoming 61 -> 71 with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Harmonic Distortion and Noise
+// Cancellation on five ATs.
+const REPEL_CENSUS = { homecoming: 71, rebirth: 44, thunderspy: 41, brainstorm: 71 };
 
 /** A per-fork tally of view ids shaped `fork/partition/set/name[ [token]]`. */
 const byFork = (ids: string[]): Record<string, number> => {
@@ -328,7 +336,8 @@ describe('BPORT11 cluster 2 — mez protection, censused off the atoms', () => {
     // The direction that survives is the one that matters. `repelProtectionValue` reads
     // protection, so an offensive-repel power must NOT be a carrier, and the four named
     // examples are asserted as absences rather than left to the retired count.
-    expect(t.atomOnly).toHaveLength(217);
+    // 217 -> 227 with Issue 28 Page 4 (live 2026-10-06): the ten Sonic Aura views in REPEL_CENSUS.
+    expect(t.atomOnly).toHaveLength(227);
     expect(byFork(t.atomOnly.map((r) => r.split(' atom=')[0]))).toEqual(REPEL_CENSUS);
     for (const named of ['Ki Push', 'Jet Stream', 'Hurricane', 'Repulsion Field']) {
       expect(t.atomOnly.some((s) => s.includes(named)), `${named} is credited as protection`).toBe(false);

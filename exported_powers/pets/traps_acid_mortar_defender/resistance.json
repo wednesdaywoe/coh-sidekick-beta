@@ -81,9 +81,10 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength"
+            "IgnoreStrength",
+            "IgnoreResistance"
           ],
-          "flags_raw": 1296
+          "flags_raw": 1072
         },
         {
           "attribs": [
@@ -348,9 +349,10 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
+            "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1056
+          "flags_raw": 1072
         },
         {
           "attribs": [

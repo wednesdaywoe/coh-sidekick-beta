@@ -65,7 +65,7 @@
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_Ones",
-          "scale": 0.1,
+          "scale": 0.125,
           "duration": "10.25 seconds",
           "magnitude": 1.0,
           "delay": 0.0,

@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Conqueror of the Labyrinth",
   "display_fullname": "Temporary Powers Accolades Labyrinth Conqueror",
-  "display_help": "You've mastered the experience of fighting in the strange dream-like corridors of the maze, and as a result have gained increased Hitpoints and Endurance while adventuring within the fog!<br><br><color Yellow>Can only be used while in the Labyrinth of Fog zone.</color><br><br><color BurlyWood>Moving through the Fog takes practice, such as learning to assert your mind's calm when the tendrils of malevolence begin to bore into one's thoughts.</color>",
+  "display_help": "You've mastered the experience of fighting in the strange dream-like corridors of the maze, and as a result have gained increased Hitpoints and Endurance while adventuring within the fog!<br><br><color Yellow>Can only be used when fueled by the presence of mythic fog.</color><br><br><color BurlyWood>Moving through the Fog takes practice, such as learning to assert your mind's calm when the tendrils of malevolence begin to bore into one's thoughts.</color>",
   "display_short_help": "+Max HP, +Max END",
   "icon": "accolade_labyrinthconqueror.png",
   "auto_issue": false,

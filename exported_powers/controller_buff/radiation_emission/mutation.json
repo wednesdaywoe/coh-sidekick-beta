@@ -18,7 +18,7 @@
   "arc": 0.0,
   "range": 60.0,
   "range_secondary": 0.0,
-  "activation_time": 1.83,
+  "activation_time": 1.67,
   "recharge_time": 120.0,
   "activate_period": 0.0,
   "endurance_cost": 5.2,
@@ -350,7 +350,7 @@
                 },
                 {
                   "event": "MissionObjectClick",
-                  "event_id": 37,
+                  "event_id": 38,
                   "duration": 8.0,
                   "always": 1
                 }

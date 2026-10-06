@@ -114,7 +114,7 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 4.0,
               "always": 1
             }

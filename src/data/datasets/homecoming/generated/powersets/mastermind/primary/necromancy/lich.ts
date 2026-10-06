@@ -29,7 +29,7 @@ export const Lich: Power = {
     "range": 60,
     "recharge": 15,
     "endurance": 13.18,
-    "castTime": 3.17
+    "castTime": 1.67
   },
   "allowedEnhancements": [
     "Hold",

@@ -18,8 +18,8 @@
   "arc": 0.0,
   "range": 70.0,
   "range_secondary": 0.0,
-  "activation_time": 2.17,
-  "time_to_root": 2.17,
+  "activation_time": 1.93,
+  "time_to_root": 1.93,
   "recharge_time": 16.0,
   "activate_period": 0.0,
   "endurance_cost": 11.0,
@@ -89,7 +89,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "PFX"
           },
@@ -131,7 +131,7 @@
             "continuing_fx": null,
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "PFX"
           },

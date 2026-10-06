@@ -11,7 +11,7 @@
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
-  "accuracy": 1.2,
+  "accuracy": 1.0,
   "effect_area": "SingleTarget",
   "max_targets_hit": 0,
   "radius": 0.0,

@@ -350,7 +350,7 @@
             "continuing_fx": "POWERS/COLDCONTROL/COLDMISTCONTINUING.FX",
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },
@@ -448,7 +448,7 @@
             "continuing_fx": "POWERS/COLDCONTROL/COLDMISTCONTINUING.FX",
             "conditional_bits": [
               387,
-              691
+              690
             ],
             "conditional_fx": "POWERS/COLDCONTROL/ICEROOTCONTINUING.FX"
           },

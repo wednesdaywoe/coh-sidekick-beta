@@ -15,7 +15,7 @@ export const ThunderStrike: Power = {
   "autoIssue": false,
   "free": false,
   "description": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave as well as have some endurance drained.",
-  "shortHelp": "Melee (AoE), DMG(Energy), Foe Disorient, Knockback, -End",
+  "shortHelp": "Melee (Targeted AoE), DMG(Energy), Foe Disorient, Knockdown, -End, -Recovery",
   "icon": "electricmelee_targetedaoeheavydmg.png",
   "powerType": "Click",
   "targetType": "Foe",

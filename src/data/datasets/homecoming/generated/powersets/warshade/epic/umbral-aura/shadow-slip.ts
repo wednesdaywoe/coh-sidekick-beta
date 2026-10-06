@@ -43,6 +43,7 @@ export const ShadowSlip: Power = {
     ["MezResist","Teleport",100,1,15,"Ranged_Ones","Res","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,2.8]
   ],
   "modesDisallowed": [
+    "NoTeleport",
     "Warshade_Blaster_Mode",
     "Warshade_Tanker_Mode"
   ]

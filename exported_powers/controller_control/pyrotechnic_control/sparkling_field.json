@@ -144,7 +144,7 @@
           "fx": {
             "continuing_bits": [
               49,
-              689
+              688
             ],
             "continuing_fx": null,
             "conditional_bits": [],
@@ -832,7 +832,6 @@
     "/",
     "+"
   ],
-  "chain_delay": 0.3,
   "modes_disallowed": [
     "Disable_All"
   ],

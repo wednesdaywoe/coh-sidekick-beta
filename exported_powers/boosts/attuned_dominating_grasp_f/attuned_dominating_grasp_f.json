@@ -5,7 +5,7 @@
   "type": "Boost",
   "display_name": "Dominating Grasp: Recharge/Chance for Fiery Orb (Dominator)",
   "display_fullname": "Boosts Attuned Dominating Grasp F Attuned Dominating Grasp F",
-  "display_help": "UNIQUE -- No more than 1 enhancement of this type may be slotted by a character. Gives the slotted power a chance to create a Fiery Orb which will damage and disorient enemies and reduces recharge time by {Boost.Attrib.RechargeTime.Scale}%. This enhancement's chance to trigger is equal to approximately 1 times per minute. This enhancement can only be slotted by Dominators and may be slotted into most control powers.",
+  "display_help": "UNIQUE -- No more than 1 enhancement of this type may be slotted by a character. Gives the slotted power a chance to create a Fiery Orb which will damage and disorient enemies and reduces recharge time by {Boost.Attrib.RechargeTime.Scale}%. This enhancement's chance to trigger is equal to approximately 2 times per minute. This enhancement can only be slotted by Dominators and may be slotted into most control powers.",
   "display_short_help": "Increases Attack Rate, Chance for Fiery Orb",
   "icon": "e_icon_dominating_grasp_ato.png",
   "auto_issue": false,
@@ -71,7 +71,7 @@
   "effects": [
     {
       "chance": 1.0,
-      "ppm": 1.0,
+      "ppm": 2.0,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
@@ -106,7 +106,7 @@
           "target": "Self",
           "table": "Melee_Level",
           "scale": -1.0,
-          "duration": "0 seconds",
+          "duration": "25 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -116,10 +116,10 @@
           "tick_mag_multiplier": 1.0,
           "tick_mag_additive": 0.0,
           "jit_requires": [],
-          "caster_stack": "Collective",
-          "stack": "Ignore",
-          "stack_limit": 2,
-          "stack_key": null,
+          "caster_stack": "Individual",
+          "stack": "StackThenIgnore",
+          "stack_limit": 3,
+          "stack_key": "DominatingGraspProc",
           "params": {
             "entity_def": "Pets_Dominating_Grasp_Pet",
             "priority_list": "PL_FightPreferMelee",
@@ -129,9 +129,10 @@
             "IgnoreStrength",
             "IgnoreResistance",
             "IgnoreCombatMods",
+            "NoProjectileDelay",
             "CopyBoosts"
           ],
-          "flags_raw": 112,
+          "flags_raw": 131184,
           "flags2_raw": 4
         }
       ]

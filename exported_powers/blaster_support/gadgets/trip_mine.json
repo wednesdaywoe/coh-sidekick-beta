@@ -93,22 +93,24 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "entity_def": "Pets_Mine",
+            "display_name": "Trip Mine",
             "priority_list": "PL_Untargetable_FightPreferRanged",
+            "redirects": [
+              "Villain_Pets.Traps_Trip_Mine.Resistance",
+              "Villain_Pets.Traps_Trip_Mine.Self_Destruct"
+            ],
             "type": "EntCreate"
           },
-          "messages": {
-            "display_attacker_hit": "You set up a {PowerName}!",
-            "display_victim_hit": null,
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
           "flags": [
-            "CopyBoosts"
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280,
-          "flags2_raw": 4
+          "flags_raw": 112,
+          "flags2_raw": 44
         }
       ]
     },

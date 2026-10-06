@@ -14,13 +14,16 @@
     "display_class_name": "P243512248",
     "power_full_names": [
       "Pets.ResistAll.ResistAll",
+      "Pets.Caltrops.Avoid",
       "Pets.Caltrops.Caltrops"
     ],
     "power_display_names": [
       "ResistAll",
+      "Avoid",
       "Caltrops"
     ],
     "power_levels": [
+      0,
       0,
       0
     ],

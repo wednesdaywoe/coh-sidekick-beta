@@ -1072,6 +1072,9 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
   // so the no-bridge-rule tripwire stays sharp for genuinely new attrib names.
   if (a.startsWith('special(')) return { effectType: 'Unmapped', reason: `kSpecial special-behavior attrib (not a modeled quantity): ${attrib}` };
   if (a.startsWith('unknown(')) return { effectType: 'Unmapped', reason: `parser-unmapped attrib index: ${attrib}` };
+  // Issue 28 Page 4: Light Affinity's Magnify raises the Strength of the target's area
+  // radius. Power geometry, not a stat any total reads — recognized, deliberately not modeled.
+  if (a === 'radius') return { effectType: 'Unmapped', reason: `power-geometry attrib (not a modeled quantity): ${attrib}` };
   return { effectType: 'Unmapped', reason: `no bridge rule: ${attrib}` };
 }
 

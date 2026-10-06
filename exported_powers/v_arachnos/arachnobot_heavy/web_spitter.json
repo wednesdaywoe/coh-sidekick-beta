@@ -6,15 +6,15 @@
   "display_name": "Web Spitter",
   "display_fullname": "V Arachnos Arachnobot Heavy Web Spitter",
   "display_help": "You have been caught in a web. You cannot move or fly and your attack speed is reduced.",
-  "display_short_help": "Immobilize, -Fly, -Recharge",
-  "icon": "gadgets_webgrenade.png",
+  "display_short_help": "Ranged (Targeted AoE), Foe Immobilize, -SPD, -Recharge, -Jump, -Fly",
+  "icon": "arachnossoldier_wideareawebgrenade.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
   "accuracy": 1.0,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
-  "radius": 20.0,
+  "radius": 25.0,
   "arc": 0.0,
   "range": 80.0,
   "range_secondary": 0.0,
@@ -22,7 +22,7 @@
   "time_to_root": 1.17,
   "recharge_time": 30.0,
   "activate_period": 0.0,
-  "endurance_cost": 10.5,
+  "endurance_cost": 21.0,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -42,7 +42,7 @@
   "target_requires": [],
   "slot_requires": [],
   "attack_types": [
-    104
+    112
   ],
   "effects": [
     {

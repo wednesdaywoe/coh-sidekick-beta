@@ -32,7 +32,7 @@ export const GeneticContamination: Power = {
     "accuracy": 1,
     "radius": 8,
     "recharge": 4,
-    "endurance": 1.04,
+    "endurance": 0.52,
     "castTime": 1.07,
     "activatePeriod": 2,
     "maxTargets": 10

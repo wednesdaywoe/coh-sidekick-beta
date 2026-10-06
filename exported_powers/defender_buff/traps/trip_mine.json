@@ -18,11 +18,12 @@
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 5.0,
-  "recharge_time": 20.0,
+  "activation_time": 2.77,
+  "time_to_root": 2.77,
+  "recharge_time": 30.0,
   "activate_period": 0.0,
   "endurance_cost": 13.0,
-  "interrupt_time": 4.0,
+  "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
@@ -92,19 +93,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "entity_def": "Pets_Traps_Mine_Defender",
+            "display_name": "Trip Mine",
             "priority_list": "PL_Untargetable_FightPreferRanged",
+            "redirects": [
+              "Villain_Pets.Traps_Trip_Mine.Resistance",
+              "Villain_Pets.Traps_Trip_Mine.Self_Destruct"
+            ],
             "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280,
-          "flags2_raw": 4
+          "flags_raw": 112,
+          "flags2_raw": 44
         }
       ]
     }
   ],
+  "chain_delay": 2.8,
   "modes_disallowed": [
     "Disable_All"
   ],

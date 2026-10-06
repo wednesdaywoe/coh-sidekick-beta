@@ -50,10 +50,7 @@
   "num_allowed": 1,
   "requires": [
     "Tanker_Defense.Shield_Defense",
-    "!",
-    "Tanker_Defense.Stone_Armor",
-    "!",
-    "&&"
+    "!"
   ],
   "activate_requires": [],
   "target_requires": [],

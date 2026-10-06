@@ -45,6 +45,7 @@ export const SoulTransfer: Power = {
     "Healing",
     "Melee AoE Damage",
     "Stuns",
+    "Tanker Archetype Sets",
     "Universal Damage Sets"
   ],
   "maxSlots": 6,

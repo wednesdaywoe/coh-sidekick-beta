@@ -5,7 +5,7 @@
   "type": "Auto",
   "display_name": "Containment",
   "display_fullname": "Inherent Inherent Containment",
-  "display_help": "Controllers are the masters at locking down and controlling their opponents. Few can escape their will. Controllers do extra damage to any target that is already Held, Immobilized, Slept, or Disoriented. This control mastery extends to their capstone pets, allowing them to command their behavior as well as enabling them a 33% chance to inflict containment damage.",
+  "display_help": "Controllers are the masters at locking down and controlling their opponents. Few can escape their will. Controllers do extra damage to any target that is already Held, Immobilized, Slept, Terrorized, or Disoriented. This control mastery extends to their capstone pets, allowing them to command their behavior as well as enabling them a 33% chance to inflict containment damage.",
   "display_short_help": "Critical Damage and Pet Control",
   "icon": "inherent_blasterdesperation.png",
   "auto_issue": true,

@@ -14,7 +14,7 @@ export const Jab: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "A quick jab that deals minor damage, but has a chance of Disorienting the target, especially if coupled with other attacks.",
+  "description": "A quick jab that deals minor damage, but will Disorient the target when used in succession, especially if coupled with other attacks.",
   "shortHelp": "Melee, DMG(Smashing), Minor Disorient",
   "icon": "superstrength_jab.png",
   "powerType": "Click",
@@ -29,9 +29,9 @@ export const Jab: Power = {
   "stats": {
     "accuracy": 1,
     "range": 7,
-    "recharge": 2,
-    "endurance": 3.536,
-    "castTime": 1.07
+    "recharge": 3,
+    "endurance": 4.368,
+    "castTime": 1
   },
   "allowedEnhancements": [
     "Taunt",
@@ -51,15 +51,31 @@ export const Jab: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
-    "scale": 0.68,
+    "scale": 0.84,
     "table": "Melee_Damage"
   },
   "atoms": [
-    ["Damage","Smashing",0.68,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Mez","Stunned",6,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Fire",0.306,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Smashing",1.229,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Smashing",0.84,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Stunned",6,0.5,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Stunned",2,1.5,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Fire",0.378,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Damage","Smashing",0.126,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might",null,null,null,null,null,null,null,null,null,null,"unleashmight"],
+    ["Damage","Smashing",1.22,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Smashing",0.1829,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might"],
     ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "unleashmight",
+      "label": "Unleash Might",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.126,
+        "table": "Melee_Damage"
+      }
+    }
   ],
   "specialEffects": [
     {

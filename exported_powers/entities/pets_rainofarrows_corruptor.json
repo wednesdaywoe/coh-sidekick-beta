@@ -14,16 +14,13 @@
     "display_class_name": "",
     "power_full_names": [
       "Pets.ResistAll.ResistAll",
-      "Villain_Pets.RainofArrows_Corruptor.RainofArrows",
-      "Villain_Pets.RainofArrows_Corruptor.Avoid"
+      "Villain_Pets.RainofArrows_Corruptor.RainofArrows"
     ],
     "power_display_names": [
       "ResistAll",
-      "RainofArrows",
-      "Avoid"
+      "RainofArrows"
     ],
     "power_levels": [
-      0,
       0,
       0
     ],

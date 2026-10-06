@@ -18,7 +18,7 @@
   "arc": 0.0,
   "range": 45.0,
   "range_secondary": 0.0,
-  "activation_time": 3.0,
+  "activation_time": 2.53,
   "recharge_time": 180.0,
   "activate_period": 0.0,
   "endurance_cost": 13.0,
@@ -104,10 +104,7 @@
             "conditional_bits": [],
             "conditional_fx": null
           },
-          "flags": [
-            "IgnoreResistance"
-          ],
-          "flags_raw": 1056
+          "flags_raw": 1280
         },
         {
           "attribs": [
@@ -278,7 +275,7 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             }

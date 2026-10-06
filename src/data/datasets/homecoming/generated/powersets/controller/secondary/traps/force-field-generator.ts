@@ -28,7 +28,7 @@ export const ForceFieldGenerator: Power = {
     "range": 20,
     "recharge": 15,
     "endurance": 13,
-    "castTime": 2.03
+    "castTime": 1
   },
   "allowedEnhancements": [
     "EnduranceReduction",
@@ -41,11 +41,11 @@ export const ForceFieldGenerator: Power = {
   "maxSlots": 6,
   "summon": {
     "copyBoosts": true,
-    "duration": 240,
+    "duration": 99999,
     "entity": "Pets_Traps_FF_Generator",
     "isPseudoPet": false
   },
   "atoms": [
-    ["EntCreate",null,1,1,240,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,240]
+    ["EntCreate",null,1,1,99999,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,99999]
   ]
 };

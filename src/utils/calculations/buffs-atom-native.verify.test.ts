@@ -146,12 +146,16 @@ const bagIsGone = (t: Split, slot: string): void => {
 
 describe('BPORT11 cluster 5 — the last families, censused off the atoms', () => {
   it.each([
-    ['tohitBuff', (p: AnyPower) => toHitBuffValue(p as never), 874,
-      { homecoming: 230, rebirth: 205, thunderspy: 205, brainstorm: 234 }],
+    // 874 -> 878 (homecoming 230 -> 234) with Issue 28 Page 4 (live 2026-10-06): Light Affinity's Radiance on
+    // controller, corruptor, defender and mastermind.
+    ['tohitBuff', (p: AnyPower) => toHitBuffValue(p as never), 878,
+      { homecoming: 234, rebirth: 205, thunderspy: 205, brainstorm: 234 }],
     ['tohitBuffUnenhanced', (p: AnyPower) => toHitBuffValue(p as never, { ignoreStrength: true }), 48,
       { homecoming: 13, rebirth: 4, thunderspy: 18, brainstorm: 13 }],
-    ['maxHPBuff', (p: AnyPower) => maxHPBuffValue(p as never), 293,
-      { homecoming: 99, rebirth: 45, thunderspy: 46, brainstorm: 103 }],
+    // 293 -> 297 (homecoming 99 -> 103) with Issue 28 Page 4 (live 2026-10-06): Empathy's reworked Regeneration
+    // Aura on controller, corruptor, defender and mastermind.
+    ['maxHPBuff', (p: AnyPower) => maxHPBuffValue(p as never), 297,
+      { homecoming: 103, rebirth: 45, thunderspy: 46, brainstorm: 103 }],
     ['maxHPBuffUnenhanced', (p: AnyPower) => maxHPBuffValue(p as never, { ignoreStrength: true }), 162,
       { homecoming: 48, rebirth: 33, thunderspy: 33, brainstorm: 48 }],
   ])('%s: the carrier census the bag comparison minted (%d), per fork', (slot, arm, total, expected) => {
@@ -163,8 +167,10 @@ describe('BPORT11 cluster 5 — the last families, censused off the atoms', () =
   });
 
   it.each([
-    ['damageDebuff', (p: AnyPower) => selfDamageDebuffValue(p as never), 43,
-      { homecoming: 16, rebirth: 11, thunderspy: 2, brainstorm: 14 }],
+    // 43 -> 41 (homecoming 16 -> 14) with Issue 28 Page 4 (live 2026-10-06): Super Strength's Rage on brute and
+    // tanker lost its crash.
+    ['damageDebuff', (p: AnyPower) => selfDamageDebuffValue(p as never), 41,
+      { homecoming: 14, rebirth: 11, thunderspy: 2, brainstorm: 14 }],
     ['rechargeDebuff', (p: AnyPower) => selfRechargeDebuffValue(p as never), 8,
       { homecoming: 2, rebirth: 2, thunderspy: 2, brainstorm: 2 }],
   ])('%s: the self-tagged half, which is the only half spent (%d)', (slot, arm, total, expected) => {
@@ -207,8 +213,10 @@ describe('BPORT11 cluster 5 — the last families, censused off the atoms', () =
   it.each([
     ['regenBuff', 'Regeneration', (p: AnyPower) => regenBuffValue(p as never), 50,
       { homecoming: 14, rebirth: 12, thunderspy: 10, brainstorm: 14 }],
-    ['recoveryBuff', 'Recovery', (p: AnyPower) => recoveryBuffValue(p as never), 84,
-      { homecoming: 28, rebirth: 14, thunderspy: 10, brainstorm: 32 }],
+    // 84 -> 88 (homecoming 28 -> 32) with Issue 28 Page 4 (live 2026-10-06): Empathy's Resurrect on controller,
+    // corruptor, defender and mastermind. Adrenalin Boost -> Adrenaline Boost is a rename, net 0.
+    ['recoveryBuff', 'Recovery', (p: AnyPower) => recoveryBuffValue(p as never), 88,
+      { homecoming: 32, rebirth: 14, thunderspy: 10, brainstorm: 32 }],
   ])('%s: drops only values the caster never receives (%s, %d)', (slot, type, arm, dropped, expected) => {
     // The dropped population was the bag's — a slot the reader declined. Its defining property
     // was never the bag's though, it was `reachesCaster`, so the set is reconstructible: a
@@ -308,7 +316,7 @@ describe('BPORT11 cluster 5 — the last families, censused off the atoms', () =
     }
   });
 
-  it('answers for 341 stealth carriers, and the one it declines is not a stealth row', () => {
+  it('answers for 346 stealth carriers, and the one it declines is not a stealth row', () => {
     // The bag comparison here was 106 declined carriers, 105 of them the teleport family's
     // `{translucency: …}` under a key this block never reads. Those 105 were bag-only rows and
     // went with the strip. What did NOT go is the 106th, because the override layer still
@@ -325,8 +333,11 @@ describe('BPORT11 cluster 5 — the last families, censused off the atoms', () =
     expect((declined[0][1] as AnyPower).powerType).toBe('Click');
     // The carrier census, per fork — the 341 the bag comparison agreed on.
     const answered = [...corpus()].filter(([, p]) => stealthValue(p as never)).map(([id]) => id);
-    expect(answered).toHaveLength(341);
-    expect(byFork(answered)).toEqual({ homecoming: 114, rebirth: 67, thunderspy: 41, brainstorm: 119 });
+    // 341 -> 346 (homecoming 114 -> 119) with Issue 28 Page 4 (live 2026-10-06): Empathy's Adrenaline Boost on
+    // controller, corruptor and defender (mastermind's keeps the "Adrenalin" spelling), and
+    // Sonic Aura's Ultrasonic Hide.
+    expect(answered).toHaveLength(346);
+    expect(byFork(answered)).toEqual({ homecoming: 119, rebirth: 67, thunderspy: 41, brainstorm: 119 });
   });
 
   it('reads the accolade +MaxEnd off the atoms, on the 28 carriers the bag agreed', () => {

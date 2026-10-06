@@ -5,7 +5,7 @@
   "type": "Toggle",
   "display_name": "Grant Cover",
   "display_fullname": "Brute Defense Shield Defense Grant Cover",
-  "display_help": "You are able to use your shield to defend nearby allies. Any teammates who remain nearby gain a bonus to their defense. Additionally, while this power is active, the user will gain some resistance to defense debuffs.<br><br><color #fcfc95>Notes: The defense bonus from this power is only applied to nearby team mates, but not yourself.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_help": "You are able to use your shield to defend nearby allies. Any teammates who remain nearby gain a bonus to their defense. Additionally, while this power is active, the user will gain some resistance to defense debuffs.<br><br><color #fcfc95>Notes:<br>The defense bonus from this power is only applied to nearby team mates, but not yourself.</color><br><br><color #fcfc95>Recharge: Moderate.</color>",
   "display_short_help": "PBAoE, Team (but not self) +DEF(All but Psionic), Self +RES(Defense Debuff)",
   "icon": "shielddefense_grantcover.png",
   "auto_issue": false,

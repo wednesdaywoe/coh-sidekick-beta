@@ -49,7 +49,7 @@ export const TripMine: Power = {
     "isPseudoPet": true,
     "powers": [
       "Pets.Trip_Mine_Dominator.TripMine_Resistance",
-      "Pets.Trip_Mine_Dominator.TripMine_Info"
+      "Pets.Trip_Mine_Dominator.TripMine_SelfDestruct"
     ],
     "resolvedEntities": [
       {
@@ -58,9 +58,9 @@ export const TripMine: Power = {
         "copyCreatorMods": true,
         "abilities": [
           {
-            "name": "TripMine_Info",
-            "displayName": "Trip Mine",
-            "type": "Auto",
+            "name": "TripMine_SelfDestruct",
+            "displayName": "Self Destruct",
+            "type": "Click",
             "damage": [
               {
                 "damageType": "Fire",
@@ -80,13 +80,11 @@ export const TripMine: Power = {
             ],
             "recharge": 20,
             "castTime": 0,
-            "activatePeriod": 1000,
-            "effectArea": "Sphere",
+            "effectArea": "SingleTarget",
             "targetsAffected": [
               "Foe"
             ],
-            "radius": 15,
-            "maxTargets": 10
+            "maxTargets": 1
           }
         ]
       }

@@ -5,32 +5,30 @@
   "type": "Click",
   "display_name": "Recovery Aura",
   "display_fullname": "Defender Buff Empathy Recovery Aura",
-  "display_help": "The Recovery Aura dramatically increases the Endurance recovery rate of all nearby heroes for a limited time. Emitting this Aura costs you a lot of Endurance, and it takes a long time to recharge.",
-  "display_short_help": "PBAoE, Ally +Recovery",
+  "display_help": "The Recovery Aura dramatically increases the attack rate and Endurance recovery of all nearby heroes for a limited time, as well as allies who gather within 5 seconds of activation. The aura also protects them from endurance drain and recovery debuffs.",
+  "display_short_help": "PBAoE, Ally +Recovery, -RECH, +Res(-End, -Recovery)",
   "icon": "empathy_recoveryaura.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
   "accuracy": 1.0,
-  "effect_area": "Sphere",
-  "max_targets_hit": 255,
-  "radius": 25.0,
+  "effect_area": "SingleTarget",
+  "max_targets_hit": 0,
+  "radius": 0.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 2.03,
-  "recharge_time": 500.0,
+  "activation_time": 1.0,
+  "recharge_time": 360.0,
   "activate_period": 0.0,
-  "endurance_cost": 26.0,
+  "endurance_cost": 13.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "Friend",
     "Self"
   ],
   "targets_affected": [
-    "Friend",
     "Self"
   ],
   "boosts_allowed": [
@@ -66,6 +64,36 @@
       "templates": [
         {
           "attribs": [
+            "EnduranceDiscount"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Stun",
+          "scale": 0.25,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
             "Recovery"
           ],
           "type": "Magnitude",
@@ -73,7 +101,7 @@
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_Ones",
-          "scale": 2.0,
+          "scale": 1.0,
           "duration": "90 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -98,6 +126,104 @@
             "IgnoreResistance"
           ],
           "flags_raw": 1056
+        },
+        {
+          "attribs": [
+            "Endurance",
+            "Recovery"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Res_Boolean",
+          "scale": 1.5,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "RechargeTime"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Strength",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 0.3,
+          "duration": "90 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags": [
+            "IgnoreStrength",
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1072
+        },
+        {
+          "attribs": [
+            "Grant_Power"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Absolute",
+          "target": "AnyAffected",
+          "table": "Ranged_Ones",
+          "scale": 1.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "params": {
+            "power_names": [
+              "Redirects.Empathy.Recovery_Aura_Pulse"
+            ],
+            "count": 1,
+            "type": "Power"
+          },
+          "flags": [
+            "CopyBoosts"
+          ],
+          "flags_raw": 1280,
+          "flags2_raw": 4
         }
       ]
     }

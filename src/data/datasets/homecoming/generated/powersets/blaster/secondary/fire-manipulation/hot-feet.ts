@@ -32,7 +32,7 @@ export const HotFeet: Power = {
     "accuracy": 1,
     "radius": 20,
     "recharge": 20,
-    "endurance": 2.08,
+    "endurance": 0.78,
     "castTime": 1.47,
     "activatePeriod": 2,
     "maxTargets": 10
@@ -58,7 +58,7 @@ export const HotFeet: Power = {
   },
   "atoms": [
     ["Damage","Fire",0.25,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Mez","Afraid",4,3,0,"Melee_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
+    ["Mez","Afraid",4,3,0,"Ranged_Ones","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
     ["Movement","FlyMode",-10,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
     ["Movement","Run",0.7,1,2.3,"Melee_Slow","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1],
     ["Damage","Fire",0.2033,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]

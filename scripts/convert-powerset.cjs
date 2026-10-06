@@ -2608,6 +2608,26 @@ function resolveSummonRedirects(redirectNames) {
       }
       if (!hasGuaranteed && hasGated) conditionalDamage = true;
       else if (hasGuaranteed && maxGuaranteedChance < 1) damageChance = Math.round(maxGuaranteedChance * 100) / 100;
+
+      // A hit that rolls below the ability's own chance carries the ratio, so the reader
+      // weights it rather than summing it whole: Trip Mine's third Fire is a 50% child group
+      // under a guaranteed detonation (Issue 28 Page 4 moved the mine onto this path).
+      if (hasGuaranteed) {
+        const hitChance = new Map();
+        for (const { template, chance, gated } of collected) {
+          if (gated) continue;
+          for (const d of [].concat(extractDamage([template], json) || [])) {
+            const key = `${d.type}|${d.scale}|${d.table}`;
+            hitChance.set(key, Math.max(hitChance.get(key) ?? 0, chance));
+          }
+        }
+        for (const d of damage) {
+          const c = hitChance.get(`${d.damageType}|${d.scale}|${d.table}`);
+          if (c !== undefined && c < maxGuaranteedChance) {
+            d.chance = Math.round((c / maxGuaranteedChance) * 100) / 100;
+          }
+        }
+      }
     }
 
     abilities.push({
@@ -3187,6 +3207,15 @@ function attachResolvedPseudoPets(powerJson, effects) {
     // duration the main builder already resolved (pet-lifespan cascade).
     const duration = g.duration || effects.summon.duration;
     if (g.override) overrides.push(g.override);
+    // A bomb, by convert-pet-entities' `detectOneShot` rule: an immediate Self_Destruct among
+    // the redirects and one damaging Click. Issue 28 Page 4 moved Trip Mine onto this path,
+    // where without it the 260s window read as nine detonations.
+    const selfDestructDelay = (g.redirects || [])
+      .map((r) => SELF_DESTRUCT_DELAYS[r])
+      .find((v) => typeof v === 'number');
+    const damaging = abilities.filter((a) => a.damage.length > 0);
+    const oneShot = selfDestructDelay !== undefined && selfDestructDelay <= 1
+      && damaging.length === 1 && damaging[0].type === 'Click';
     resolved.push({
       displayName: g.displayName || effects.summon.displayName
         || powerJson.display_name || powerJson.name || 'Summoned Effect',
@@ -3198,6 +3227,7 @@ function attachResolvedPseudoPets(powerJson, effects) {
       // SUMMONER's archetype (verified vs Storm Cell / Category Five in-game).
       // So the runtime computes damage off the summoner's AT, not a pet class.
       copyCreatorMods: true,
+      ...(oneShot ? { oneShot: true } : {}),
       abilities,
     });
   }

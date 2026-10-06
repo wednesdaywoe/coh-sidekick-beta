@@ -500,25 +500,25 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             },
             {
               "event": "CommandedPet",
-              "event_id": 41,
+              "event_id": 42,
               "duration": 10.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 10.0,
               "always": 1
             },
             {
               "event": "PseudoPetHelped",
-              "event_id": 48,
+              "event_id": 49,
               "duration": 10.0,
               "always": 1
             }

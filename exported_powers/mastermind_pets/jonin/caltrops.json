@@ -90,7 +90,8 @@
             "display_name": "Jounin's Caltrops",
             "priority_list": "PL_StaticObject",
             "redirects": [
-              "Mastermind_Pets.Ninja_Pets.Jounins_Caltrops"
+              "Mastermind_Pets.Ninja_Pets.Jounins_Caltrops",
+              "Mastermind_Pets.Ninja_Pets.Avoid"
             ],
             "type": "EntCreate"
           },

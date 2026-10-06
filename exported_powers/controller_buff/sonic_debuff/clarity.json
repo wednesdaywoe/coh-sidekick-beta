@@ -5,16 +5,16 @@
   "type": "Click",
   "display_name": "Clarity",
   "display_fullname": "Controller Buff Sonic Debuff Clarity",
-  "display_help": "By bouncing a carefully pitched sound wave off an ally's ear drum, you can free them from any Disorient, Hold, Sleep, Confusion, Fear, or Immobilize effects, and leave them resistant to such effects for a good while. Protection will improve with multiple applications and as you advance in level. Clarity also provides your ally enhanced perception.<br><br><color #fcfc95>Recharge: Fast.</color>",
-  "display_short_help": "Ally +Res(Disorient, Hold, Sleep, Immobilize, Terrorize, Confusion), +Perception",
+  "display_help": "By bouncing a carefully pitched sound wave off an ally's ear drum, you can free them from any Disorient, Hold, Sleep, Confusion, Fear, or Immobilize effects, and leave them resistant to such effects for a good while. Protection will improve with multiple applications and as you advance in level. Clarity also provides your ally enhanced perception and resistance to psionic damage.<br><br><color #fcfc95>Recharge: Fast.</color>",
+  "display_short_help": "Ally +Res(Psi, Disorient, Hold, Sleep, Immobilize, Fear, Confusion), +Perception",
   "icon": "sonicdebuff_dispel.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
   "accuracy": 1.0,
-  "effect_area": "SingleTarget",
-  "max_targets_hit": 0,
-  "radius": 0.0,
+  "effect_area": "Sphere",
+  "max_targets_hit": 255,
+  "radius": 15.0,
   "arc": 0.0,
   "range": 70.0,
   "range_secondary": 0.0,
@@ -32,11 +32,14 @@
     "Friend"
   ],
   "boosts_allowed": [
+    "Res_Damage",
     "EnduranceDiscount",
     "Range",
     "Recharge"
   ],
-  "allowed_set_categories": null,
+  "allowed_set_categories": [
+    "Resist Damage"
+  ],
   "cast_through": [],
   "toggle_ignore": [],
   "num_allowed": 1,
@@ -64,20 +67,15 @@
       "templates": [
         {
           "attribs": [
-            "Confused",
-            "Terrorized",
-            "Held",
-            "Immobilized",
-            "Stunned",
-            "Sleep"
+            "Psionic_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Current",
+          "aspect": "Resistance",
           "target": "AnyAffected",
-          "table": "Ranged_Res_Boolean",
-          "scale": -30.0,
-          "duration": "90 seconds",
+          "table": "Ranged_Res_Dmg",
+          "scale": 2.0,
+          "duration": "240 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -88,7 +86,7 @@
           "tick_mag_additive": 0.0,
           "jit_requires": [],
           "caster_stack": "Individual",
-          "stack": "Stack",
+          "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
           "fx": {
@@ -131,6 +129,121 @@
           ],
           "flags_raw": 1056
         }
+      ],
+      "child_effects": [
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": [],
+          "tags": [],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Confused",
+                "Terrorized",
+                "Held",
+                "Immobilized",
+                "Stunned",
+                "Sleep"
+              ],
+              "type": "Magnitude",
+              "application_type": "OnTick",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Ranged_Res_Boolean",
+              "scale": -30.0,
+              "duration": "90 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": [],
+              "magnitude_expression": [],
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": [],
+              "caster_stack": "Individual",
+              "stack": "Stack",
+              "stack_limit": 2,
+              "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
+              "flags": [
+                "IgnoreResistance"
+              ],
+              "flags_raw": 1056
+            }
+          ]
+        },
+        {
+          "chance": 1.0,
+          "ppm": 0.0,
+          "delay": 0.0,
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": [],
+          "tags": [],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Confused",
+                "Terrorized",
+                "Held",
+                "Immobilized",
+                "Stunned",
+                "Sleep"
+              ],
+              "type": "Magnitude",
+              "application_type": "OnTick",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Ranged_Res_Boolean",
+              "scale": -5.0,
+              "duration": "90 seconds",
+              "magnitude": 1.0,
+              "delay": 0.0,
+              "duration_expression": [],
+              "magnitude_expression": [],
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": [],
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
+              "flags": [
+                "IgnoreStrength",
+                "IgnoreResistance"
+              ],
+              "flags_raw": 1072
+            }
+          ]
+        }
       ]
     },
     {
@@ -149,6 +262,41 @@
       "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
+        {
+          "attribs": [
+            "Psionic_Dmg"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Resistance",
+          "target": "AnyAffected",
+          "table": "Ranged_Res_Dmg",
+          "scale": 2.0,
+          "duration": "240 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "fx": {
+            "continuing_bits": [],
+            "continuing_fx": "PFX",
+            "conditional_bits": [],
+            "conditional_fx": null
+          },
+          "flags": [
+            "IgnoreResistance"
+          ],
+          "flags_raw": 1056
+        },
         {
           "attribs": [
             "Confused",
@@ -178,10 +326,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -208,10 +355,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "IgnoreStrength",
             "IgnoreResistance"
           ],
-          "flags_raw": 1072
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -331,6 +477,16 @@
         }
       ]
     }
+  ],
+  "global_strengths_disallowed": [
+    "Smashing_Dmg",
+    "Lethal_Dmg",
+    "Fire_Dmg",
+    "Cold_Dmg",
+    "Energy_Dmg",
+    "Negative_Energy_Dmg",
+    "Psionic_Dmg",
+    "Toxic_Dmg"
   ],
   "modes_disallowed": [
     "Disable_All"

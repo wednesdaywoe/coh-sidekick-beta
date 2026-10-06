@@ -93,7 +93,9 @@ const EXPECTED: Record<(typeof DATASETS)[number], { withPowers: number; resolved
   // Geode ×3, Rise of the Phoenix ×5, the epic Tar Patch/Bonfire/Sleet shells ×5 and pool
   // Corrosive Vial. None resolves: all redirect to `Redirects.*`/`Pets.*_Epic.*` powers that no
   // entity declares, which is why the missing branch cost Homecoming nothing measurable.
-  homecoming: { withPowers: 14, resolved: 0 },
+  // Issue 28 Page 4 (live 2026-10-06) brought the beta's Poison Trap rework to Homecoming,
+  // so it now reads the brainstorm figure below.
+  homecoming: { withPowers: 18, resolved: 4 },
   rebirth: { withPowers: 0, resolved: 0 },
   thunderspy: { withPowers: 0, resolved: 0 },
   // Homecoming's fourteen plus the four Poison Traps the beta reworked into pseudo-pets —

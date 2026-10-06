@@ -541,7 +541,8 @@ describe('Mids .mbd export — the powerset path table', () => {
     // (`scripts/keys/mbdexport9-powerset-pairing-census.cjs`) is where each one's reason
     // is: Mids holds a copy per archetype and our key names none (Rebirth's Frost and
     // Inferno Mastery), Mids merges two of ours into one set (its Martial Mastery), Mids'
-    // database predates the fork (Brainstorm's Light Affinity and Sonic Aura), or the one
+    // database predates the patch (Light Affinity and Sonic Aura, on Brainstorm and, since Issue 28
+    // Page 4 went live, Homecoming), or the one
     // Mids set that holds the roster is already another powerset of ours (`Pool.Fitness`,
     // whose four powers live at Mids' `Inherent.Fitness` — where our own `Inherent.Fitness`
     // already is).
@@ -549,7 +550,7 @@ describe('Mids .mbd export — the powerset path table', () => {
     // Thunderspy read 386 — every set it has — while its path table was withheld for the
     // folded-key reason above. With the table in place it reads 14, and those 14 are in the
     // census beside the other three forks' rather than standing outside it (MBDEXPORT-2).
-    expect(unpaired).toEqual({ homecoming: 1, rebirth: 6, thunderspy: 14, brainstorm: 10 });
+    expect(unpaired).toEqual({ homecoming: 10, rebirth: 6, thunderspy: 14, brainstorm: 10 });
   }, 600000);
 
   it('says whether a fork has a Mids namespace at all, rather than reading absence as loss', () => {

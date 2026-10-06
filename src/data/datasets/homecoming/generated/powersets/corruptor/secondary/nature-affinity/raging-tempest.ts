@@ -32,7 +32,7 @@ export const RagingTempest: Power = {
     "accuracy": 1,
     "radius": 15,
     "recharge": 20,
-    "endurance": 1.3,
+    "endurance": 1.04,
     "castTime": 2.03,
     "activatePeriod": 2,
     "maxTargets": 16

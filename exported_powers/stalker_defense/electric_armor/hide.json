@@ -109,13 +109,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }
@@ -169,13 +169,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }
@@ -229,13 +229,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }
@@ -290,13 +290,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }
@@ -422,13 +422,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }
@@ -482,13 +482,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }
@@ -613,13 +613,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }
@@ -673,13 +673,13 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 8.0,
               "always": 1
             },
             {
               "event": "PseudoPetAttacked",
-              "event_id": 47,
+              "event_id": 48,
               "duration": 8.0,
               "always": 1
             }

@@ -283,7 +283,6 @@
     "*",
     "+"
   ],
-  "chain_delay": 0.1,
   "modes_disallowed": [
     "Disable_All"
   ],

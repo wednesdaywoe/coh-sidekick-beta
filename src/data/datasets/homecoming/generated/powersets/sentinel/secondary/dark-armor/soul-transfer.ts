@@ -44,6 +44,7 @@ export const SoulTransfer: Power = {
     "Endurance Modification",
     "Healing",
     "Melee AoE Damage",
+    "Sentinel Archetype Sets",
     "Stuns",
     "Universal Damage Sets"
   ],

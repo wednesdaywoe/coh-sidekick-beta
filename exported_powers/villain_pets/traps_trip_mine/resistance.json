@@ -31,7 +31,12 @@
   "targets_affected": [
     "Self"
   ],
-  "boosts_allowed": [],
+  "boosts_allowed": [
+    "Recharge",
+    "Knockback",
+    "Damage",
+    "Accuracy"
+  ],
   "allowed_set_categories": null,
   "cast_through": [],
   "toggle_ignore": [],
@@ -197,6 +202,7 @@
         },
         {
           "attribs": [
+            "Teleport",
             "Stunned"
           ],
           "type": "Magnitude",
@@ -260,7 +266,6 @@
         },
         {
           "attribs": [
-            "Teleport",
             "Afraid",
             "Terrorized"
           ],

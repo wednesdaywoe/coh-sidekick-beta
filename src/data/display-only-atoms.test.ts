@@ -101,8 +101,9 @@ describe('DisplayOnly atoms are printed, never totalled', () => {
       expect(r.tags.split(',')).toContain('DisplayOnly');
       expect(isDisplayOnly(decodeAtoms([atom(r.tags)])[0])).toBe(true);
     }
-    // Pinned: Brainstorm alone carries the tag today. A dataset growing one should be
+    // Pinned: Sonic Aura's Disruption Strike is the only carrier, on Brainstorm and, since
+    // Issue 28 Page 4 went live (2026-10-06), Homecoming. A dataset growing one should be
     // adjudicated here rather than absorbed — the game uses it for more than resistance.
-    expect(new Set(rows.map((r) => r.dataset))).toEqual(new Set(['brainstorm']));
+    expect(new Set(rows.map((r) => r.dataset))).toEqual(new Set(['homecoming', 'brainstorm']));
   });
 });

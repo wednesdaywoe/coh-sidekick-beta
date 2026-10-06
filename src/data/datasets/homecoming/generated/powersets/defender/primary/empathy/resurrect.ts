@@ -14,26 +14,33 @@ export const Resurrect: Power = {
   "available": 5,
   "autoIssue": false,
   "free": false,
-  "description": "Resurrects a fallen ally with full Hit Points and Endurance. The Resurrected target is left protected from XP Debt for 90 seconds.",
+  "description": "Resurrects fallen allies in an area with full Hit Points and Endurance. The Resurrected targets are left protected from XP Debt for 90 seconds, and gain moderate absorb shield and recharge and recovery buffs.",
   "shortHelp": "Ally Rez",
   "icon": "empathy_resurrect.png",
   "powerType": "Click",
   "targetType": "Dead Teammate",
-  "effectArea": "SingleTarget",
+  "effectArea": "AoE",
   "targetsAffected": [
     "DeadPlayerFriend"
   ],
   "stats": {
     "accuracy": 1,
     "range": 60,
+    "radius": 15,
     "recharge": 120,
     "endurance": 5.2,
-    "castTime": 1.83
+    "castTime": 1.67
   },
   "allowedEnhancements": [
+    "EnduranceModification",
     "EnduranceReduction",
     "Range",
-    "Recharge"
+    "Recharge",
+    "Healing"
+  ],
+  "allowedSetCategories": [
+    "Endurance Modification",
+    "Healing"
   ],
   "maxSlots": 6,
   "damage": {
@@ -46,7 +53,10 @@ export const Resurrect: Power = {
   "atoms": [
     ["Heal",null,1,1,0.5,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,1,1],
     ["Endurance",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
+    ["Absorb",null,1,0,90,"Ranged_Heal","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
+    ["Recovery",null,0.5,1,90,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1],
+    ["RechargeTime",null,0.5,1,90,"Ranged_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true],
     ["Meta",null,1,1,90,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"xpdebtprotection"],
-    ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true]
+    ["Stealth","RadiusPvE",300,1,15,"Melee_Ones","Cur","Magnitude","Target","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true]
   ]
 };

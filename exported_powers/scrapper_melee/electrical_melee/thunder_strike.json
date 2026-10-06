@@ -6,7 +6,7 @@
   "display_name": "Thunder Strike",
   "display_fullname": "Scrapper Melee Electrical Melee Thunder Strike",
   "display_help": "A massive attack. You smash your foes with all the power of a lightning bolt. The pummeled victim takes tremendous damage and may be Disoriented. Any nearby foes may be knocked down and take some damage from the shockwave as well as have some endurance drained.",
-  "display_short_help": "Melee (AoE), DMG(Energy), Foe Disorient, Knockback, -End",
+  "display_short_help": "Melee (Targeted AoE), DMG(Energy), Foe Disorient, Knockdown, -End, -Recovery",
   "icon": "electricmelee_targetedaoeheavydmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -1270,7 +1270,7 @@
                   "suppress_events": [
                     {
                       "event": "Knocked",
-                      "event_id": 33,
+                      "event_id": 34,
                       "duration": 10.0,
                       "always": 0
                     }

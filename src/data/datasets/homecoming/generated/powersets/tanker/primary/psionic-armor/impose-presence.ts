@@ -55,12 +55,12 @@ export const ImposePresence: Power = {
     ["RechargeTime",null,0.3,1,1.25,"Melee_Slow","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true],
     ["Defense","Ranged",0.075,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.075],
     ["Defense","Melee",0.075,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Continuous",2,null,null,1,null,null,null,null,null,null,null,null,0.075],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","!"],null,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]],
     ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","!","enttype","target>","critter","eq","&&","entref","source>","entref","target>","eq","!","&&"],null,null,null,null,null,null,null,null,null,"StealthOn"],
     ["Defense","Ranged",0.75,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Defense","Melee",0.75,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Defense","AoE",0.75,1,15,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
     ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","entref","source>","entref","target>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"StealthOn"]
   ]
 };

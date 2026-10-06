@@ -54,9 +54,5 @@ export const StoneSkin: Power = {
     ["Defense","Psionic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Defense","Toxic",0.5,1,10.25,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
-  "requires": [
-    "Tanker_Melee.Claws",
-    "!"
-  ],
   "mechanicType": "parentMechanic"
 };

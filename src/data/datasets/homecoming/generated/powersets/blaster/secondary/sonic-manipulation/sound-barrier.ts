@@ -31,7 +31,7 @@ export const SoundBarrier: Power = {
   "stats": {
     "accuracy": 1,
     "recharge": 10,
-    "castTime": 2.7,
+    "castTime": 2,
     "activatePeriod": 2
   },
   "allowedEnhancements": [

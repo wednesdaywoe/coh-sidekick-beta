@@ -39,14 +39,14 @@
   ],
   "power_short_helps": [
     "Ranged, Foe -Res(All)",
-    "Ranged, Ally +Res(Smash, Lethal, Toxic)",
+    "Ranged, Ally +Res(Smash, Lethal, Toxic, ToHit, Def)",
     "Ranged, Ally +Res(Fire, Cold, Energy, Negative Energy)",
-    "Ranged, Foe Capture (Special)",
+    "Ranged, Foe Capture (Special), Ally Res/Def (all)",
     "Toggle: Ranged (Target Ally AoE), Foe -Res",
     "Toggle: PBAoE, Ally +Res(All DMG except Psionic, Hold, Immobilize, Disorient)",
-    "Toggle: Ranged (Target Ally AoE), Foe Knockback",
-    "Ally +Res(Disorient, Hold, Sleep, Immobilize, Fear, Confusion), +Perception",
-    "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF"
+    "Toggle: Ranged (Target Ally AoE), Foe Knockback, DMG (Smashing, Energy)",
+    "Ally +Res(Psi, Disorient, Hold, Sleep, Immobilize, Fear, Confusion), +Perception",
+    "Ranged (Location AoE), Foe Knockback, Hold, -To Hit, -DEF, -MaxHP"
   ],
   "buy_requires": [],
   "buy_requires_failed": "",

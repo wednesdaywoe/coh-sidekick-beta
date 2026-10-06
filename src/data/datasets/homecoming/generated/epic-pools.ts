@@ -1615,22 +1615,22 @@ export const EPIC_POOLS_RAW = {
         "effectArea": "SingleTarget",
         "damage": {
           "type": "Fire",
-          "scale": 0.1,
+          "scale": 0.22,
           "table": "Melee_Damage",
           "duration": 4.2,
           "tickRate": 1
         },
         "atoms": [
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Fire",0.1,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Fire",0.045,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,["arch","source>","Class_Scrapper","=="],null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
+          ["Damage","Fire",0.22,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+          ["Damage","Fire",0.09,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,["arch","source>","Class_Scrapper","=="],null,null,null,null,null,null,null,null,null,"FieryEmbrace","Class_Scrapper"],
+          ["Damage","Fire",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.07000000029802322,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","enttype","target>","critter","eq","kMeter","source>",".9","<","&&","&&"],null,null,null,null,null,null,null,null,null,"ASTeamCrit","Class_Stalker"],
           ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
           ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","==","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["arch","source>","Class_Scrapper","==","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","==","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST","Class_Scrapper"],
+          ["Damage","Fire",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["arch","source>","Class_Scrapper","==","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST","Class_Scrapper"],
           ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","source>","Class_Scrapper","==","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST","Class_Scrapper"],
-          ["Damage","Fire",0.5,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","kMeter","source>","0",">","enttype","target>","critter","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
+          ["Damage","Fire",1.1,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","kMeter","source>","0",">","enttype","target>","critter","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit","Class_Stalker"],
           ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"PvPCrit","Class_Stalker"],
           ["Damage","Fire",2.109,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["arch","source>","Class_Stalker","==","kMeter","source>","0",">","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"PvPStealthCrit","Class_Stalker"]
         ]
@@ -2988,7 +2988,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -4065,7 +4065,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "recharge": 20,
           "endurance": 0.26,
-          "castTime": 2.37,
+          "castTime": 1.67,
           "activatePeriod": 0.5,
           "maxTargets": 10
         },
@@ -4204,7 +4204,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -6676,7 +6676,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -7787,7 +7787,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -9222,7 +9222,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 1.87
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -9408,7 +9408,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "recharge": 20,
           "endurance": 0.26,
-          "castTime": 3.17,
+          "castTime": 1.67,
           "activatePeriod": 0.5,
           "maxTargets": 10
         },
@@ -9921,7 +9921,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -11048,7 +11048,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -20118,14 +20118,14 @@ export const EPIC_POOLS_RAW = {
         "damage": [
           {
             "type": "Fire",
-            "scale": 0.1,
+            "scale": 0.22,
             "table": "Ranged_Damage",
             "duration": 4.2,
             "tickRate": 1
           },
           {
             "type": "Fire",
-            "scale": 0.045,
+            "scale": 0.09,
             "table": "Ranged_Damage",
             "duration": 4.2,
             "tickRate": 1
@@ -20133,8 +20133,8 @@ export const EPIC_POOLS_RAW = {
         ],
         "atoms": [
           ["Mez","Held",10,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Fire",0.1,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Fire",0.045,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+          ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+          ["Damage","Fire",0.09,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
           ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
           ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
         ]
@@ -20749,7 +20749,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 1.87
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -21147,7 +21147,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "recharge": 20,
           "endurance": 0.26,
-          "castTime": 3.17,
+          "castTime": 1.67,
           "activatePeriod": 0.5,
           "maxTargets": 10
         },
@@ -21476,7 +21476,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "radius": 10,
           "recharge": 20,
-          "endurance": 1.04,
+          "endurance": 0.52,
           "castTime": 2.03,
           "activatePeriod": 2,
           "maxTargets": 10
@@ -21789,22 +21789,22 @@ export const EPIC_POOLS_RAW = {
         "damage": [
           {
             "type": "Fire",
-            "scale": 0.1,
-            "table": "Melee_Damage",
+            "scale": 0.22,
+            "table": "Ranged_Damage",
             "duration": 4.2,
             "tickRate": 1
           },
           {
             "type": "Fire",
-            "scale": 0.1,
-            "table": "Melee_InherentDamage",
+            "scale": 0.22,
+            "table": "Ranged_InherentDamage",
             "duration": 4.2,
             "tickRate": 1
           }
         ],
         "atoms": [
-          ["Damage","Fire",0.1,1,4.2,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-          ["Damage","Fire",0.1,1,4.2,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
+          ["Damage","Fire",0.22,1,4.2,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+          ["Damage","Fire",0.22,1,4.2,"Ranged_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
           ["Mez","Held",10,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
           ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
           ["Damage","Fire",0.4218,1,4.2,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0,null,"SentCrit,SentCritST"],
@@ -22794,7 +22794,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -24727,7 +24727,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "recharge": 20,
           "endurance": 0.26,
-          "castTime": 2.37,
+          "castTime": 1.67,
           "activatePeriod": 0.5,
           "maxTargets": 10
         },
@@ -24804,7 +24804,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -25235,7 +25235,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -26519,7 +26519,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -27971,7 +27971,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -29039,7 +29039,7 @@ export const EPIC_POOLS_RAW = {
           "radius": 15,
           "recharge": 20,
           "endurance": 0.26,
-          "castTime": 2.37,
+          "castTime": 1.67,
           "activatePeriod": 0.5,
           "maxTargets": 10
         },
@@ -29108,7 +29108,7 @@ export const EPIC_POOLS_RAW = {
           "range": 60,
           "recharge": 900,
           "endurance": 20.8,
-          "castTime": 3.2
+          "castTime": 1.67
         },
         "effectArea": "Location",
         "summon": {
@@ -29372,7 +29372,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 20,
           "endurance": 0.156,
-          "castTime": 1.17,
+          "castTime": 1,
           "activatePeriod": 0.5
         },
         "effectArea": "SingleTarget",
@@ -29686,7 +29686,7 @@ export const EPIC_POOLS_RAW = {
           "accuracy": 1,
           "recharge": 20,
           "endurance": 0.156,
-          "castTime": 1.17,
+          "castTime": 1,
           "activatePeriod": 0.5
         },
         "effectArea": "SingleTarget",

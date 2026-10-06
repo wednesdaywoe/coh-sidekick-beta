@@ -29,7 +29,7 @@ export const Farsight: Power = {
     "radius": 25,
     "recharge": 240,
     "endurance": 15.6,
-    "castTime": 2.03,
+    "castTime": 1.33,
     "maxTargets": 255
   },
   "allowedEnhancements": [

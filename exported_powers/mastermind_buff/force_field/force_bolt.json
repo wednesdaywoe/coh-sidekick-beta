@@ -20,9 +20,9 @@
   "range_secondary": 0.0,
   "activation_time": 1.1,
   "time_to_root": 1.1,
-  "recharge_time": 4.0,
+  "recharge_time": 6.0,
   "activate_period": 0.0,
-  "endurance_cost": 10.192,
+  "endurance_cost": 5.2,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -81,7 +81,7 @@
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Ranged_Damage",
-          "scale": 0.2,
+          "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -256,7 +256,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }

@@ -13,13 +13,13 @@
   "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
-  "max_targets_hit": 10,
+  "max_targets_hit": 16,
   "radius": 15.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
   "activation_time": 0.0,
-  "recharge_time": 1000.0,
+  "recharge_time": 60.0,
   "activate_period": 0.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
@@ -106,7 +106,7 @@
           "aspect": "Current",
           "target": "AnyAffected",
           "table": "Melee_DeBuff_ToHit",
-          "scale": 0.5,
+          "scale": 1.0,
           "duration": "40 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -174,7 +174,7 @@
       ]
     },
     {
-      "chance": 0.25,
+      "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -203,7 +203,7 @@
           "table": "Melee_Stun",
           "scale": 6.0,
           "duration": "0 seconds",
-          "magnitude": 2.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
           "magnitude_expression": [],
@@ -230,6 +230,32 @@
             "conditional_fx": "PFX"
           },
           "flags_raw": 2560
+        },
+        {
+          "attribs": [
+            "PerceptionRadius"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Ones",
+          "scale": -0.9,
+          "duration": "40 seconds",
+          "magnitude": 1.0,
+          "delay": 0.0,
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Replace",
+          "stack_limit": 2,
+          "stack_key": null,
+          "flags_raw": 1280
         }
       ]
     },
@@ -322,53 +348,6 @@
             }
           ],
           "flags_raw": 2560
-        }
-      ]
-    },
-    {
-      "chance": 1.0,
-      "ppm": 0.0,
-      "delay": 0.0,
-      "radius_inner": -1.0,
-      "radius_outer": -1.0,
-      "requires_expression": [
-        "enttype",
-        "target>",
-        "critter",
-        "eq"
-      ],
-      "tags": [],
-      "flags": [],
-      "is_pvp": "EITHER",
-      "requires_pv": "PVE_ONLY",
-      "requires_default": "SATISFIED",
-      "eval_flags": 0,
-      "templates": [
-        {
-          "attribs": [
-            "PerceptionRadius"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": -0.9,
-          "duration": "40 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "flags_raw": 1280
         }
       ]
     },

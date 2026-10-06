@@ -14,18 +14,19 @@ export const Detonator: Power = {
   "available": 29,
   "autoIssue": false,
   "free": false,
-  "description": "A good Mastermind always plans ahead, but a great one knows when to make a strategic sacrifice. You have equipped all your Henchmen with explosives. When the time is right, select a Henchman and set off the Detonator.\n\nRecharge: Very Long.",
+  "description": "A good Mastermind always plans ahead, but a great one knows when to make a strategic sacrifice. You equip all of your Henchmen with explosives, which will be set off if they are defeated or dismissed.\n\nRecharge: Very Long.",
   "shortHelp": "Sacrifice Henchman, PBAoE, Extreme DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_aoemassivedamage.png",
   "powerType": "Click",
   "targetType": "Own Pet (Alive)",
-  "effectArea": "SingleTarget",
+  "effectArea": "AoE",
   "targetsAffected": [
     "MyPet"
   ],
   "stats": {
     "accuracy": 1,
     "range": 100,
+    "radius": 30,
     "recharge": 300,
     "endurance": 16.31,
     "castTime": 2.03
@@ -45,6 +46,7 @@ export const Detonator: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["GrantPower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true]
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"],
+    ["Meta",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Target","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"grant_boosted_power"]
   ]
 };

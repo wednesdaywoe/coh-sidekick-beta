@@ -26,8 +26,8 @@ export const ForceBolt: Power = {
   "stats": {
     "accuracy": 1.2,
     "range": 80,
-    "recharge": 4,
-    "endurance": 10.192,
+    "recharge": 6,
+    "endurance": 5.2,
     "castTime": 1.1
   },
   "allowedEnhancements": [
@@ -47,11 +47,11 @@ export const ForceBolt: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
-    "scale": 0.2,
+    "scale": 1,
     "table": "Ranged_Damage"
   },
   "atoms": [
-    ["Damage","Smashing",0.2,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",1,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Knockback",9,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Resistance","Smashing",-2,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Resistance","Lethal",-2,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],

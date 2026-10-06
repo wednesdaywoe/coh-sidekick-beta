@@ -11416,7 +11416,7 @@
     ],
     "resistance_cap": 0.8999999761581421,
     "base_threat": 3.0,
-    "damage_cap": 4.0,
+    "damage_cap": 5.0,
     "recharge_floor": 1.0,
     "recharge_cap": 1.0,
     "endurance_floor": 9.999999747378752e-05,

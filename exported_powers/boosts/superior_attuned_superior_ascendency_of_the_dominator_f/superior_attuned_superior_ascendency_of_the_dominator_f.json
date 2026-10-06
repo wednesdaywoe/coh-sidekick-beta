@@ -143,9 +143,10 @@
             "CancelOnMiss",
             "IgnoreStrength",
             "IgnoreResistance",
-            "IgnoreCombatMods"
+            "IgnoreCombatMods",
+            "NoProjectileDelay"
           ],
-          "flags_raw": 116
+          "flags_raw": 131188
         }
       ]
     },

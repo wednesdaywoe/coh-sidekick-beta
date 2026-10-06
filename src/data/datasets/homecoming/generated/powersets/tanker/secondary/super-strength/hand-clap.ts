@@ -11,11 +11,11 @@ import type { Power } from '@/types';
 export const HandClap: Power = {
   "name": "Hand Clap",
   "internalName": "Hand_Clap",
-  "available": 15,
+  "available": 19,
   "autoIssue": false,
   "free": false,
-  "description": "You can clap your hands together with such force that you create a deafening shockwave. This shockwave can knock back nearby foes, and they have a chance to become Disoriented due to the shock to the inner ear. Hand Clap deals no damage.\n\nNotes: Thanks to gauntlet, this power can hit up to 6 targets above its cap at 1/3rd effectiveness.",
-  "shortHelp": "PBAoE, Foe Disorient, Knockback",
+  "description": "You can clap your hands together with such force that you create a deafening shockwave. This shockwave can damage up to 5 nearby foes, but every foe has a chance to be knocked down and Disoriented due to the shock to the inner ear.\n\nThanks to gauntlet, this power can hit up to 5 targets above its cap at 1/3rd effectiveness.",
+  "shortHelp": "PBAoE, DMG(Smash), Foe Disorient, Knockback",
   "icon": "superstrength_handclap.png",
   "powerType": "Click",
   "targetType": "Self",
@@ -24,20 +24,20 @@ export const HandClap: Power = {
     "Foe"
   ],
   "maxTargetsExpression": [
-    "16",
+    "10",
     "kDisable_GauntletTargetCap",
     "Source.Mode?",
-    "6",
+    "5",
     "*",
     "-"
   ],
   "stats": {
-    "accuracy": 0.8,
-    "radius": 15,
-    "recharge": 30,
-    "endurance": 13,
+    "accuracy": 1,
+    "radius": 12,
+    "recharge": 15,
+    "endurance": 14.352,
     "castTime": 1.23,
-    "maxTargets": 10
+    "maxTargets": 5
   },
   "allowedEnhancements": [
     "Taunt",
@@ -45,27 +45,57 @@ export const HandClap: Power = {
     "Stun",
     "Recharge",
     "Knockback",
+    "Damage",
     "Accuracy"
   ],
   "allowedSetCategories": [
     "Knockback",
+    "Melee AoE Damage",
     "Stuns",
-    "Threat Duration"
+    "Tanker Archetype Sets",
+    "Threat Duration",
+    "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "damage": {
+    "type": "Smashing",
+    "scale": 1.2428,
+    "table": "Melee_Damage"
+  },
   "atoms": [
-    ["Mez","Stunned",8,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Mez","Knockback",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Mez","Stunned",8,1,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
-    ["Damage","Fire",0.4871,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["Mez","Knockback",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
+    ["Damage","Smashing",1.2428,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Stunned",4,2,0,"Melee_Stun","Cur","Duration","Target","Any",true,"Replace",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
+    ["Damage","Smashing",0.1864,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might",null,null,null,null,null,null,null,null,null,null,"unleashmight"],
+    ["Damage","Fire",0.4928,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq","0","&&"],true,null,null,null,null,null,null,null,null,"FieryEmbrace"],
+    ["Mez","Stunned",1,2,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Mez","Knockback",2,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Smashing",0.8707,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
+    ["Damage","Smashing",0.1306,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "unleashmight",
+      "label": "Unleash Might",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Smashing",
+        "scale": 0.1864,
+        "table": "Melee_Damage"
+      }
+    }
   ],
   "specialEffects": [
     {
       "kind": "effect-proc",
       "chance": 0.5,
       "label": "Stun"
+    },
+    {
+      "kind": "effect-proc",
+      "chance": 0.5,
+      "label": "Knockback"
     }
   ]
 };

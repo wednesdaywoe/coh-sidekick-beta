@@ -22,7 +22,7 @@
   "time_to_root": 2.03,
   "recharge_time": 15.0,
   "activate_period": 2.0,
-  "endurance_cost": 2.08,
+  "endurance_cost": 1.04,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
@@ -204,7 +204,7 @@
           "suppress_events": [
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }
@@ -250,7 +250,7 @@
             },
             {
               "event": "MissionObjectClick",
-              "event_id": 37,
+              "event_id": 38,
               "duration": 10.0,
               "always": 1
             }

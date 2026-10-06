@@ -32,7 +32,7 @@ export const DeathShroud: Power = {
     "accuracy": 1,
     "radius": 12,
     "recharge": 4,
-    "endurance": 1.04,
+    "endurance": 0.52,
     "castTime": 2.47,
     "activatePeriod": 2,
     "maxTargets": 10
@@ -58,7 +58,7 @@ export const DeathShroud: Power = {
   },
   "atoms": [
     ["Damage","Negative",0.1571,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","!"],null,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

@@ -6,7 +6,7 @@
   "display_name": "Jacobs Ladder",
   "display_fullname": "Brute Melee Electrical Melee Jacobs Ladder",
   "display_help": "You are able to generate a strong current between your arms and snap a powerful bolt of electricity in an arc in front of you. This melee attack can electrocute all foes within the arc dealing High energy damage. Jacobs Ladder can drain some Endurance from your target and may overload their synapses, leaving him writhing for a moment. Disturbing an overloaded target will disperse the electrical charge and release him.",
-  "display_short_help": "Melee (Cone), DMG(Energy), Foe Sleep, -End",
+  "display_short_help": "Melee (Cone), DMG(Energy), Foe Sleep, -End, -Recovery",
   "icon": "electricmelee_conemoderatedmg.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

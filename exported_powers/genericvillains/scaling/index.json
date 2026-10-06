@@ -11,9 +11,11 @@
     "GenericVillains.Scaling.HP_30_Dmg_4_Min_0_Max_30",
     "GenericVillains.Scaling.HP_5_Dmg_3_Min_0",
     "GenericVillains.Scaling.HP_15_Dmg_4_Min_8",
-    "GenericVillains.Scaling.HP_10_Dmg_4_Min_2"
+    "GenericVillains.Scaling.HP_10_Dmg_4_Min_2",
+    "GenericVillains.Scaling.HP_10_Dmg_4_Min_0"
   ],
   "available_level": [
+    0,
     0,
     0,
     0,
@@ -29,9 +31,11 @@
     "Scaling",
     "Scaling",
     "Scaling",
+    "Scaling",
     "Scaling"
   ],
   "power_short_helps": [
+    "Special",
     "Special",
     "Special",
     "Special",

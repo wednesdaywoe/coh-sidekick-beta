@@ -14,7 +14,7 @@ export const AcidMortar: Power = {
   "available": 9,
   "autoIssue": false,
   "free": false,
-  "description": "You can place a small Mortar on the ground. If an enemy passes nearby, the Mortar will fire an Acid grenade at the target. The grenade will explodes in a small shower of acid on impact. This acid eats through armor, causing minor damage over time. It reduces the target's Defense as well as their Damage Resistance. The mortar will last up to 60 seconds and will fire up to 10 grenades. It can be destroyed by your foes.\n\nDamage: Minor(DoT).\nRecharge: Long.",
+  "description": "You can place a small Mortar on the ground. If an enemy passes nearby, the Mortar will fire an Acid grenade at the target. The grenade will explodes in a small shower of acid on impact. This acid eats through armor, causing minor damage over time. It reduces the target's Defense as well as their Damage Resistance. The mortar will last up to 60 seconds and will fire a grenade every 4 seconds. It can be destroyed by your foes.\n\nDamage: Minor(DoT).\nRecharge: Long.",
   "shortHelp": "Place Trap: Ranged (AoE), Minor DoT(Toxic), Foe -Res(All), -DEF",
   "icon": "traps_droppedaoedebuffdefense.png",
   "powerType": "Click",
@@ -27,7 +27,7 @@ export const AcidMortar: Power = {
     "accuracy": 1,
     "recharge": 90,
     "endurance": 13,
-    "castTime": 2.77
+    "castTime": 1.47
   },
   "allowedEnhancements": [
     "EnduranceReduction",

@@ -45,8 +45,11 @@ describe('homecoming pairings named by the authored defs', () => {
     }
   });
 
-  it('refuses Claws + Stone Armor', () => {
-    expect(isPairable(getPowerset('brute/claws'), getPowerset('brute/stone-armor'))).toBe(false);
+  // Issue 28 Page 4 (live 2026-10-06): "This powerset is no longer mutually exclusive with
+  // Stone Armor on Tankers and Brutes." The defs stopped naming the exclusion, so the pair opens.
+  it('allows Claws + Stone Armor since Issue 28 Page 4', () => {
+    expect(isPairable(getPowerset('brute/claws'), getPowerset('brute/stone-armor'))).toBe(true);
+    expect(isPairable(getPowerset('tanker/stone-armor'), getPowerset('tanker/claws'))).toBe(true);
   });
 
   it('allows a weapon set with an armour set that does not exclude it', () => {

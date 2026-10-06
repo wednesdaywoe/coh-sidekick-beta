@@ -21,7 +21,7 @@
   "activation_time": 1.07,
   "recharge_time": 15.0,
   "activate_period": 2.0,
-  "endurance_cost": 1.04,
+  "endurance_cost": 0.8,
   "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",

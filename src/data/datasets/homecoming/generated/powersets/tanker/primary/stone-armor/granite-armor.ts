@@ -47,7 +47,6 @@ export const GraniteArmor: Power = {
   ],
   "maxSlots": 6,
   "atoms": [
-    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Defense","All",1,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true],
     ["Resistance","Smashing",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
     ["Resistance","Lethal",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1],
@@ -88,6 +87,7 @@ export const GraniteArmor: Power = {
     ["Meta",null,1,36,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
     ["Meta",null,1,37,0.75,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
     ["Meta",null,1,6,10,"Ranged_Ones","Cur","Constant","Self","Any",false,"Overlap",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"GranitePenalties",null,"set_mode"],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,["kMiniature","Source.Mode?","!"],null,null,null,null,null,null,null,null,null,null,null,"set_costume"],
     ["Resistance","Smashing",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Lethal",5,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
     ["Resistance","Fire",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
@@ -108,7 +108,19 @@ export const GraniteArmor: Power = {
     ["MezResist","Sleep",5,1,0.75,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Mez","Knockup",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
     ["Mez","Knockback",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
-    ["Mez","Repel",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true]
+    ["Mez","Repel",-10,1,0.75,"Melee_Ones","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true],
+    ["Elusivity","Ranged",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Melee",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","AoE",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Smashing",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Lethal",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Fire",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Cold",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Energy",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Negative",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Elusivity","Psionic",0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Unmapped",null,0.1,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Meta",null,1,1,0.75,"Melee_Ones","Cur","Constant","Self","Any",false,"Extend",2,null,1,1,null,true,null,null,null,null,["kMiniature","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,"set_costume"]
   ],
   "setsModes": [
     "Suppress_FlyToggles",

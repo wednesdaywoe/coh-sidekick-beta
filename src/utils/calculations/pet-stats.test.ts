@@ -135,7 +135,9 @@ describe('pet class stats — anchored values (homecoming)', () => {
     expect(imp?.hitPoints).toBeCloseTo(1070.9, 1);
     expect(imp?.hpCap).toBeCloseTo(1606.3, 1);
     expect(imp?.resistanceCap).toBeCloseTo(0.9, 4);
-    expect(imp?.damageCap).toBe(4);
+    // 4 -> 5 with Issue 28 Page 4 (live 2026-10-06): the +400% damage cap raise covers AT pets
+    // and henchmen, so minion_pets' class row moved with it. Not a new pet class.
+    expect(imp?.damageCap).toBe(5);
     expect(imp?.baseThreat).toBe(1.5);
     expect(imp?.movement?.runSpeed).toBe(1.5);
 

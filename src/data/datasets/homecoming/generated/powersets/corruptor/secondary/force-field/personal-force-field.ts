@@ -14,8 +14,8 @@ export const PersonalForceField: Power = {
   "available": 0,
   "autoIssue": false,
   "free": false,
-  "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.",
-  "shortHelp": "Toggle: Self +Def, Res(All except Toxic)",
+  "description": "The Personal Force Field is almost impenetrable to all attacks, even Psionics and Enemy Teleportation, although attacks from more powerful foes may get through more easily. Personal Force Field will also reduce the damage of almost any attacks that do get through. The Personal Force Field works both ways; while it is active, you can only use powers that affect yourself. Cannot be used with Rest.\nIn addition, owning this power grants you an unenhanceable bonus to all defenses, resistances, and max endurance.",
+  "shortHelp": "Toggle: Self +Def, Res, +Max END",
   "icon": "forcefield_personalforcefield.png",
   "powerType": "Toggle",
   "targetType": "Self",
@@ -47,40 +47,180 @@ export const PersonalForceField: Power = {
   "atoms": [
     ["Mez","OnlyAffectsSelf",0.75,100,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
     ["MezResist","Teleport",1,1,0.75,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Ranged",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Melee",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","AoE",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Smashing",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Lethal",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Fire",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Cold",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Energy",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Negative",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Psionic",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Defense","Toxic",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
-    ["Resistance","Smashing",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Resistance","Lethal",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Resistance","Fire",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Resistance","Cold",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Resistance","Energy",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Resistance","Negative",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Resistance","Psionic",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
-    ["Resistance","Toxic",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Defense","Ranged",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Melee",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","AoE",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Smashing",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Lethal",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Fire",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Cold",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Energy",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Negative",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Psionic",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Defense","Toxic",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,true],
+    ["Resistance","Smashing",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Resistance","Lethal",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Resistance","Fire",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Resistance","Cold",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Resistance","Energy",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Resistance","Negative",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Resistance","Psionic",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
+    ["Resistance","Toxic",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,true],
     ["Elusivity","All",0.5,1,0.75,"Melee_Ones","Str","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Defense","Smashing",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
-    ["Defense","Lethal",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
-    ["Defense","Fire",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
-    ["Defense","Cold",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
-    ["Defense","Energy",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
-    ["Defense","Negative",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
-    ["Defense","Psionic",7.5,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
-    ["Resistance","Smashing",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Resistance","Lethal",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Resistance","Fire",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Resistance","Cold",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Resistance","Energy",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Resistance","Negative",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Resistance","Psionic",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
-    ["Resistance","Toxic",4,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true]
+    ["Defense","Smashing",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
+    ["Defense","Lethal",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
+    ["Defense","Fire",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
+    ["Defense","Cold",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
+    ["Defense","Energy",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
+    ["Defense","Negative",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
+    ["Defense","Psionic",6.75,1,0.75,"Melee_Buff_Def","Cur","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,true],
+    ["Resistance","Smashing",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Resistance","Lethal",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Resistance","Fire",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Resistance","Cold",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Resistance","Energy",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Resistance","Negative",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Resistance","Psionic",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Resistance","Toxic",3.6,1,0.75,"Melee_Res_Dmg","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,true],
+    ["Defense","Ranged",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Melee",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","AoE",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Smashing",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Lethal",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Fire",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Cold",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Energy",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Negative",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Psionic",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Defense","Toxic",0.75,1,10.75,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Smashing",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Lethal",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Fire",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Cold",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Energy",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Negative",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Psionic",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["Resistance","Toxic",0.4,1,10.75,"Melee_Res_Dmg","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"],
+    ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["0"],true,null,null,null,null,null,null,null,null,"Display",null,null,null,null,null,null,null,null,null,null,"conditional"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 10.75,
+        "defenseBuff": {
+          "aoe": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "cold": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "energy": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "fire": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "lethal": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "melee": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "negative": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "psionic": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "ranged": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "smashing": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          },
+          "toxic": {
+            "ignoreStrength": true,
+            "scale": 0.75,
+            "table": "Melee_Buff_Def"
+          }
+        },
+        "durations": {
+          "defenseBuff": 10.75,
+          "maxEndBuff": 10.75,
+          "resistance": 10.75
+        },
+        "maxEndBuff": {
+          "ignoreStrength": true,
+          "scale": 5,
+          "table": "Melee_Ones"
+        },
+        "resistance": {
+          "cold": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          },
+          "energy": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          },
+          "fire": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          },
+          "lethal": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          },
+          "negative": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          },
+          "psionic": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          },
+          "smashing": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          },
+          "toxic": {
+            "ignoreStrength": true,
+            "scale": 0.4,
+            "table": "Melee_Res_Dmg"
+          }
+        }
+      }
+    }
   ]
 };

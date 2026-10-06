@@ -390,6 +390,7 @@
     "SpeedofSoundOn"
   ],
   "modes_disallowed": [
+    "NoTeleport",
     "Disable_All",
     "Disable_Pool",
     "Disable_Travel",

@@ -6,8 +6,8 @@
   "display_name": "Lightning Armor",
   "display_fullname": "V Arachnos Mu Defense Lightning Armor",
   "display_help": "You surround yourself in Lightning Armor, providing good resistance to Fire, Cold, Energy and Negative Energy attacks.",
-  "display_short_help": "Toggle: Self +Res(Fire, Cold, Energy, Negative, End Drain)",
-  "icon": "darkarmor_defractingcloud.png",
+  "display_short_help": "Toggle: Self +Res(Fire, Cold, Energy, Negative)",
+  "icon": "arachnos_patron_resistbuff.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
@@ -20,7 +20,7 @@
   "range_secondary": 0.0,
   "activation_time": 0.0,
   "recharge_time": 0.0,
-  "activate_period": 99999.0,
+  "activate_period": 10.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
   "target_type": "Self",
@@ -48,7 +48,12 @@
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": [],
+      "requires_expression": [
+        "kEndurance%",
+        "source>",
+        "20",
+        ">"
+      ],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
@@ -64,12 +69,12 @@
             "Negative_Energy_Dmg"
           ],
           "type": "Magnitude",
-          "application_type": "OnActivate",
+          "application_type": "OnTick",
           "aspect": "Resistance",
           "target": "Self",
           "table": "Melee_Res_Dmg",
-          "scale": 3.5,
-          "duration": "999999 seconds",
+          "scale": 3.0,
+          "duration": "10.25 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -83,6 +88,11 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
+          "cancel_events": [
+            "Stunned",
+            "Held",
+            "Sleep"
+          ],
           "flags": [
             "IgnoreResistance"
           ],

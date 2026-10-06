@@ -5,8 +5,8 @@
   "type": "Click",
   "display_name": "Disruptor Blast",
   "display_fullname": "V Arachnos Arachnobot Heavy Disruptor Blast",
-  "display_help": "The Disruptor Blast is continuing to damage you.",
-  "display_short_help": "DoT(Energy)",
+  "display_help": "Hurls a highly charged ball of Disruptor lightning that explodes on contact. Disruptor Blast deals good damage in an area of effect, and drains some Endurance from each target it hits.",
+  "display_short_help": "Ranged (Targeted AoE), Heavy DoT(Energy), Foe -End, -Recovery",
   "icon": "electricalbolt_balllightning.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -22,7 +22,7 @@
   "time_to_root": 1.67,
   "recharge_time": 12.0,
   "activate_period": 0.0,
-  "endurance_cost": 8.4,
+  "endurance_cost": 15.96,
   "interrupt_time": 0.0,
   "target_type": "Foe",
   "target_type_secondary": "None",
@@ -138,10 +138,10 @@
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Absolute",
+          "aspect": "Current",
           "target": "AnyAffected",
           "table": "Ranged_EndDrain",
-          "scale": -5.0,
+          "scale": -0.07,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -164,7 +164,23 @@
             "display_info": null
           },
           "flags_raw": 1280
-        },
+        }
+      ]
+    },
+    {
+      "chance": 0.30000001192092896,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [],
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
         {
           "attribs": [
             "Recovery"

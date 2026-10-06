@@ -181,11 +181,7 @@
   "show_in_manage": false,
   "modes_disallowed": [
     "Disable_All",
-    "Disable_Temp",
-    "Peacebringer_Blaster_Mode",
-    "Peacebringer_Tanker_Mode",
-    "Warshade_Blaster_Mode",
-    "Warshade_Tanker_Mode"
+    "Disable_Temp"
   ],
   "available_level": 0,
   "powerset": "Temporary_Powers.Temporary_Powers"

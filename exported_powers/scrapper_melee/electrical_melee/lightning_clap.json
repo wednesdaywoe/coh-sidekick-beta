@@ -6,7 +6,7 @@
   "display_name": "Lightning Clap",
   "display_fullname": "Scrapper Melee Electrical Melee Lightning Clap",
   "display_help": "You can clap your hands together to release a violent Lightning Clap at your target. The Lightning Clap does energy damage to your main target and can knock down most nearby foes, Disorienting many of them.",
-  "display_short_help": "Melee AoE, Foe Damage, Disorient, Knockdown",
+  "display_short_help": "Melee (Targeted AoE), Main Target DMG(Energy), Foe Disorient, Knockdown",
   "icon": "electricmelee_taoestun",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -177,7 +177,8 @@
                 "!"
               ],
               "tags": [
-                "CritLarge"
+                "CritLarge",
+                "ScrapperCrit_AoE"
               ],
               "flags": [],
               "is_pvp": "EITHER",
@@ -248,7 +249,8 @@
                 "||"
               ],
               "tags": [
-                "CritSmall"
+                "CritSmall",
+                "ScrapperCrit_AoE"
               ],
               "flags": [],
               "is_pvp": "EITHER",
@@ -749,7 +751,7 @@
                   "suppress_events": [
                     {
                       "event": "Knocked",
-                      "event_id": 33,
+                      "event_id": 34,
                       "duration": 10.0,
                       "always": 0
                     }

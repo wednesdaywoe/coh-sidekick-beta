@@ -5,7 +5,7 @@
   "type": "Click",
   "display_name": "Trip Mine",
   "display_fullname": "Mastermind Buff Traps Trip Mine",
-  "display_help": "You can place a Trip Mine on the ground. Any foes that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate. Setting a mine is delicate work, and if you are interrupted, you will fail.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
+  "display_help": "You can place a Trip Mine on the ground. Any foes that pass near the Trip Mine will cause it to explode, severely damaging all nearby foes and sending them flying. The Trip Mine is almost impossible to detect, but it is fragile and may be set off by an enemy's explosion. Even if destroyed, the Trip Mine will detonate.<br><br><color #fcfc95>Damage: Superior.</color><br><color #fcfc95>Recharge: Slow.</color>",
   "display_short_help": "Place Mine: PBAoE, Superior DMG(Lethal/Fire), Foe Knockback",
   "icon": "traps_droppedaoedamage.png",
   "auto_issue": false,
@@ -18,11 +18,12 @@
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
-  "activation_time": 5.0,
-  "recharge_time": 20.0,
+  "activation_time": 2.77,
+  "time_to_root": 2.77,
+  "recharge_time": 30.0,
   "activate_period": 0.0,
   "endurance_cost": 13.0,
-  "interrupt_time": 4.0,
+  "interrupt_time": 0.0,
   "target_type": "Self",
   "target_type_secondary": "None",
   "targets_autohit": [
@@ -92,19 +93,29 @@
           "stack_limit": 2,
           "stack_key": null,
           "params": {
-            "entity_def": "Pets_Traps_Mine",
+            "display_name": "Trip Mine",
             "priority_list": "PL_Untargetable_FightPreferRanged",
+            "redirects": [
+              "Villain_Pets.Traps_Trip_Mine.Resistance",
+              "Villain_Pets.Traps_Trip_Mine.Self_Destruct"
+            ],
             "type": "EntCreate"
           },
           "flags": [
-            "CopyBoosts"
+            "IgnoreStrength",
+            "IgnoreResistance",
+            "IgnoreCombatMods",
+            "CopyBoosts",
+            "CopyCreatorMods",
+            "PseudoPet"
           ],
-          "flags_raw": 1280,
-          "flags2_raw": 4
+          "flags_raw": 112,
+          "flags2_raw": 44
         }
       ]
     }
   ],
+  "chain_delay": 2.8,
   "modes_disallowed": [
     "Disable_All"
   ],

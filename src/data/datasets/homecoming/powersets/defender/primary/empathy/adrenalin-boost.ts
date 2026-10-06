@@ -1,5 +1,5 @@
 /**
- * Adrenalin Boost — COMPOSED EXPORT
+ * Adrenaline Boost — COMPOSED EXPORT
  *
  * The planner imports from here. No hand-written overrides exist for this
  * power, so it re-exports the auto-generated base directly. To add an

@@ -32,7 +32,7 @@ export const ArticAir: Power = {
     "accuracy": 1,
     "radius": 25,
     "recharge": 15,
-    "endurance": 2.08,
+    "endurance": 1.04,
     "castTime": 2.03,
     "activatePeriod": 2,
     "maxTargets": 16

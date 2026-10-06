@@ -66,7 +66,7 @@
           "aspect": "Current",
           "target": "Self",
           "table": "Melee_Ones",
-          "scale": 3.0,
+          "scale": 5.0,
           "duration": "10.3 seconds",
           "magnitude": 1.0,
           "delay": 0.0,

@@ -38,15 +38,15 @@
     "Lightning Rod"
   ],
   "power_short_helps": [
-    "Melee, DMG(Smash/Energy), Target Sleep, -End",
-    "Melee, DMG(Smash/Energy), Foe Sleep, -End",
-    "Melee (Cone), DMG(Energy), Foe Sleep, -End",
+    "Melee, DMG(Energy/Smash), Foe Sleep, -End, -Recovery",
+    "Melee, DMG(Energy/Smash), Foe Sleep, -End, -Recovery",
+    "Melee (Cone), DMG(Energy), Foe Sleep, -End, -Recovery",
     "Self +DMG, +To Hit",
-    "Melee (AoE), DMG(Energy), Foe Disorient, Knockback, -End",
+    "Melee (Targeted AoE), DMG(Energy), Foe Disorient, Knockdown, -End, -Recovery",
     "Ranged, Foe Taunt",
-    "Melee, DMG(Energy), Foe -End +Special",
-    "Melee AoE, Foe Damage, Disorient, Knockdown",
-    "PBAoE, Foe Knockback; Self Teleport;"
+    "Melee (Chain AoE), DMG(Energy), Foe -End, -Recovery",
+    "Melee (Targeted AoE), Main Target DMG(Energy), Foe Disorient, Knockdown",
+    "PBAoE, DMG(Energy), Foe Knockdown; Self Teleport"
   ],
   "buy_requires": [],
   "buy_requires_failed": "",

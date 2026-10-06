@@ -20,6 +20,9 @@
  * before copying it: a moved value is a verdict changing, not a table needing a refresh.
  */
 export const BASE_ROW_OVER_ADDITIVE_FILL: Record<string, Record<string, { base: number; filled: number }>> = {
+  // Brute and Tanker Greater_Psi_Blade left with Issue 28 Page 4 (live 2026-10-06), unchanged:
+  // reworked Super Strength now carries 7 conditionals to Psionic Melee's 6, so the sweep's
+  // most-carriers pick builds those two archetypes from Super Strength instead.
   homecoming: {
     'blaster/Bullet_Rain.buffDuration': { base: 10, filled: 10 },
     'blaster/Bullet_Rain.damageDebuff': { base: 7, filled: 7 },
@@ -55,7 +58,6 @@ export const BASE_ROW_OVER_ADDITIVE_FILL: Record<string, Record<string, { base: 
     'blaster/Temporal_Healing.buffDuration': { base: 2.25, filled: 12 },
     'blaster/Time_Shift.stun': { base: 9.54, filled: 4.77 },
     'blaster/Time_Stop.hold': { base: 11.92, filled: 3.58 },
-    'brute/Greater_Psi_Blade.hold': { base: 9.54, filled: 9.54 },
     'controller/Time_Stop.hold': { base: 14.9, filled: 7.45 },
     'corruptor/Bullet_Rain.buffDuration': { base: 10, filled: 10 },
     'corruptor/Bullet_Rain.damageDebuff': { base: 10, filled: 10 },
@@ -160,7 +162,6 @@ export const BASE_ROW_OVER_ADDITIVE_FILL: Record<string, Record<string, { base: 
     'sentinel/Pistols.slow': { base: 12, filled: 12 },
     'sentinel/Suppressive_Fire.hold': { base: 2.38, filled: 2.38 },
     'stalker/Greater_Psi_Blade.hold': { base: 9.54, filled: 9.54 },
-    'tanker/Greater_Psi_Blade.hold': { base: 9.54, filled: 9.54 },
   },
   rebirth: {
     'blaster/Bullet_Rain.buffDuration': { base: 9.17, filled: 10 },

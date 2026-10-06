@@ -93,56 +93,54 @@
           },
           "flags_raw": 1280
         }
-      ],
-      "child_effects": [
+      ]
+    },
+    {
+      "chance": 0.30000001192092896,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [],
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "EITHER",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
         {
-          "chance": 0.30000001192092896,
-          "ppm": 0.0,
+          "attribs": [
+            "Knockback"
+          ],
+          "type": "Magnitude",
+          "application_type": "OnTick",
+          "aspect": "Current",
+          "target": "AnyAffected",
+          "table": "Melee_Knockback",
+          "scale": 3.0,
+          "duration": "0 seconds",
+          "magnitude": 1.0,
           "delay": 0.0,
-          "radius_inner": -1.0,
-          "radius_outer": -1.0,
-          "requires_expression": [],
-          "tags": [],
-          "flags": [],
-          "is_pvp": "EITHER",
-          "requires_pv": "EITHER",
-          "requires_default": "SATISFIED",
-          "eval_flags": 0,
-          "templates": [
-            {
-              "attribs": [
-                "Knockback"
-              ],
-              "type": "Magnitude",
-              "application_type": "OnTick",
-              "aspect": "Current",
-              "target": "AnyAffected",
-              "table": "Melee_Knockback",
-              "scale": 3.0,
-              "duration": "0 seconds",
-              "magnitude": 1.0,
-              "delay": 0.0,
-              "duration_expression": [],
-              "magnitude_expression": [],
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": [],
-              "caster_stack": "Individual",
-              "stack": "Stack",
-              "stack_limit": 2,
-              "stack_key": null,
-              "messages": {
-                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
-                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
-                "display_float": null,
-                "display_attrib_defense_float": null,
-                "display_info": null
-              },
-              "flags_raw": 1280
-            }
-          ]
+          "duration_expression": [],
+          "magnitude_expression": [],
+          "application_period": 0.0,
+          "tick_chance": 1.0,
+          "tick_mag_multiplier": 1.0,
+          "tick_mag_additive": 0.0,
+          "jit_requires": [],
+          "caster_stack": "Individual",
+          "stack": "Stack",
+          "stack_limit": 2,
+          "stack_key": null,
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
+          "flags_raw": 1280
         }
       ]
     }

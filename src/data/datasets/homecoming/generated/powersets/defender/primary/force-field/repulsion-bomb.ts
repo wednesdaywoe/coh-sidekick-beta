@@ -27,7 +27,7 @@ export const RepulsionBomb: Power = {
     "accuracy": 1.2,
     "range": 70,
     "radius": 15,
-    "recharge": 30,
+    "recharge": 24,
     "endurance": 16.9,
     "castTime": 1.67,
     "maxTargets": 16
@@ -51,11 +51,11 @@ export const RepulsionBomb: Power = {
   "maxSlots": 6,
   "damage": {
     "type": "Smashing",
-    "scale": 0.6,
+    "scale": 0.9,
     "table": "Ranged_Damage"
   },
   "atoms": [
-    ["Damage","Smashing",0.6,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
+    ["Damage","Smashing",0.9,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["Mez","Knockback",9,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Resistance","Smashing",-1.5,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Resistance","Lethal",-1.5,1,30,"Ranged_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"]],

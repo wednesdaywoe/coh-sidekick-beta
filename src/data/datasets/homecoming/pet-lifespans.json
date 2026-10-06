@@ -36,8 +36,7 @@
   "Pets_Thug_Pose_07": 120,
   "Pets_Thug_Pose_08": 120,
   "Pets_Thug_Pose_09": 120,
+  "Pets_Traps_Mine": 0.25,
   "Pets_Traps_Poison_Gas": 30,
-  "Pets_Traps_Poison_Gas_Defender": 30,
-  "Pets_Traps_TimeBomb_Defender": 2,
   "Pets_Warshade_Extraction": 200
 }

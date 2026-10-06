@@ -15,14 +15,17 @@
     "power_full_names": [
       "Villain_Pets.Traps_Trip_Mine.Trip_Mine",
       "Villain_Pets.Traps_Trip_Mine.Self_Destruct",
-      "Villain_Pets.Traps_Trip_Mine.Resistance"
+      "Villain_Pets.Traps_Trip_Mine.Resistance",
+      "Villain_Pets.Traps_Trip_Mine.Info"
     ],
     "power_display_names": [
       "Trip Mine",
       "Self Destruct",
-      "Resistance"
+      "Resistance",
+      "Info"
     ],
     "power_levels": [
+      0,
       0,
       0,
       0

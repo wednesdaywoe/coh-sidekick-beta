@@ -139,10 +139,19 @@ const bagIsGone = (t: Split, slot: string): void => {
 
 describe('BPORT11 cluster 3 — defence and resistance, censused off the atoms', () => {
   it.each([
-    ['resistance', RES_KEYS, (src: AnyPower) => resistanceBuffValue(src as never), 1606,
-      { homecoming: 439, rebirth: 360, thunderspy: 321, brainstorm: 486 }],
-    ['debuffResistance', DEBUFF_RES_KEYS, (src: AnyPower) => debuffResistanceValue(src as never), 1319,
-      { homecoming: 383, rebirth: 277, thunderspy: 224, brainstorm: 435 }],
+    // 1606 -> 1653 (homecoming 439 -> 486) with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Attenuation
+    // Blanket, Harmonic Distortion, Noise Cancellation, Somatic Aura and Sonic Diffusion on five
+    // ATs; Light Affinity's Magnify and Purifying Beam, Sonic Resonance's Clarity and Sonic
+    // Siphon, and Empathy's Clear Mind on four; Super Strength's Rage on brute and tanker.
+    ['resistance', RES_KEYS, (src: AnyPower) => resistanceBuffValue(src as never), 1653,
+      { homecoming: 486, rebirth: 360, thunderspy: 321, brainstorm: 486 }],
+    // 1319 -> 1371 (homecoming 383 -> 435) with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Attenuation
+    // Blanket, Somatic Aura, Sonic Diffusion and Ultrasonic Flow/Hide on five ATs; Empathy's
+    // Fortitude, Recovery Aura and Regeneration Aura, Light Affinity's Radiance and Spotlight,
+    // and Sonic Resonance's Sonic Barrier, Sonic Haven and Sonic Siphon on four. Adrenalin
+    // Boost -> Adrenaline Boost is a rename, net 0.
+    ['debuffResistance', DEBUFF_RES_KEYS, (src: AnyPower) => debuffResistanceValue(src as never), 1371,
+      { homecoming: 435, rebirth: 277, thunderspy: 224, brainstorm: 435 }],
   ])('%s: the carrier-view census the bag comparison minted (%d)', (slot, keys, arm, total, expected) => {
     const t = empty();
     for (const [id, power, source] of views())
@@ -190,8 +199,11 @@ describe('BPORT11 cluster 3 — defence and resistance, censused off the atoms',
     // side cannot know which powers the converter once minted a zeros map for, and inventing a
     // stand-in would be the reader agreeing with itself.
     bagIsGone(t, 'defense');
-    expect(t.atomOnly).toHaveLength(1143);
-    expect(byFork(t.atomOnly.map((r) => r.split(' atom=')[0]))).toEqual({ homecoming: 289, rebirth: 352, thunderspy: 203, brainstorm: 299 });
+    // 1143 -> 1153 (homecoming 289 -> 299) with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Noise
+    // Cancellation on five ATs and the stalker's Ultrasonic Hide; Light Affinity's Protective
+    // Beam on four.
+    expect(t.atomOnly).toHaveLength(1153);
+    expect(byFork(t.atomOnly.map((r) => r.split(' atom=')[0]))).toEqual({ homecoming: 299, rebirth: 352, thunderspy: 203, brainstorm: 299 });
   });
 
   it('recovers Personal Force Field, whose suppressible defence two forks never carried', () => {
@@ -204,8 +216,9 @@ describe('BPORT11 cluster 3 — defence and resistance, censused off the atoms',
     // what keeps the recovery visible — PFF is why this arm exists, and a per-fork count is the
     // only shape that reds if it silently goes back to being a homecoming-only reader.
     bagIsGone(t, 'defenseBuffSuppressible');
-    expect(t.atomOnly).toHaveLength(109);
-    expect(byFork(t.atomOnly.map((r) => r.split(' atom=')[0]))).toEqual({ homecoming: 37, rebirth: 22, thunderspy: 12, brainstorm: 38 });
+    // 109 -> 110 (homecoming 37 -> 38) with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Ultrasonic Hide.
+    expect(t.atomOnly).toHaveLength(110);
+    expect(byFork(t.atomOnly.map((r) => r.split(' atom=')[0]))).toEqual({ homecoming: 38, rebirth: 22, thunderspy: 12, brainstorm: 38 });
     // 24 PFF views, not the 12 the old arm reported: `atomOnly` used to mean "the bag lacked
     // this" and now means "a carrier", so the 12 views the bag DID hold on Homecoming and
     // Brainstorm join the 12 it never held on Rebirth and Thunderspy. The recovery is therefore

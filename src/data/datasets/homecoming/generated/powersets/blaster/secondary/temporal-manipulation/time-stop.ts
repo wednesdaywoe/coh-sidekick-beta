@@ -28,7 +28,7 @@ export const TimeStop: Power = {
     "range": 60,
     "recharge": 16,
     "endurance": 11.388,
-    "castTime": 2.17
+    "castTime": 1.93
   },
   "allowedEnhancements": [
     "Hold",

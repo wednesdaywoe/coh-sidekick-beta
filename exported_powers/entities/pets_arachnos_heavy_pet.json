@@ -19,8 +19,6 @@
       "V_Arachnos.Arachnobot_Heavy.Venom_Bolt",
       "V_Arachnos.Arachnobot_Heavy.Web_Spitter",
       "V_Arachnos.Arachnobot_Heavy.Cocoon",
-      "V_Arachnos.Arachnobot_Heavy.Toxic_Claws",
-      "V_Arachnos.Arachnobot_Heavy.Claw_Pierce",
       "V_Arachnos.Arachnobot_Heavy.Armored_Exoskeleton",
       "V_Arachnos.Arachnobot_Heavy.Disruptor_Blast",
       "V_Arachnos.Arachnobot_Heavy.Disruptor_Tesla",
@@ -33,8 +31,6 @@
       "Venom Bolt",
       "Web Spitter",
       "Cocoon",
-      "Toxic Claws",
-      "Claw Pierce",
       "Armored Exoskeleton",
       "Disruptor Blast",
       "Disruptor Tesla",
@@ -43,8 +39,6 @@
       "Power Jumping"
     ],
     "power_levels": [
-      0,
-      0,
       0,
       0,
       0,

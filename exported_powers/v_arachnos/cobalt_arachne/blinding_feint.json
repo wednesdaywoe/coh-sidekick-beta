@@ -3,7 +3,7 @@
   "full_name": "V_Arachnos.Cobalt_Arachne.Blinding_Feint",
   "short_name": "Blinding_Feint",
   "type": "Click",
-  "display_name": "Dark Feint",
+  "display_name": "New Moon Feint",
   "display_fullname": "V Arachnos Cobalt Arachne Blinding Feint",
   "display_help": "You perform a feint attack that deals light damage. After this attack hits, it gives you a large bonus to your chance to hit and damage for a brief time.<br><br><color Violet>If the target is asleep, Cobalt Arachne will consume some of their dreams and regain health!</color>",
   "display_short_help": "Melee, Light DMG(Negative/Cold), Heal(Special), Foe -MaxHP, Self +DMG, +ToHit",

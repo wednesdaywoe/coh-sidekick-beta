@@ -5,8 +5,8 @@
   "type": "Toggle",
   "display_name": "Sonic Repulsion",
   "display_fullname": "Mastermind Buff Sonic Resonance Sonic Repulsion",
-  "display_help": "You create a powerful sonic resonance around an ally, repelling all foes nearby. You will lose endurance for each target repelled.<br><br><color #fcfc95>Recharge: Moderate.</color>",
-  "display_short_help": "Toggle: Ranged (Target Ally AoE), Foe Knockback",
+  "display_help": "You create a powerful sonic resonance around an ally, repelling all foes nearby. When repelled, foes also take minor Smashing and Energy damage.<br><br><color #fcfc95>Recharge: Moderate.</color>",
+  "display_short_help": "Toggle: Ranged (Target Ally AoE), Foe Knockback, DMG (Smashing, Energy)",
   "icon": "sonicdebuff_teamknockback.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
@@ -18,28 +18,34 @@
   "arc": 0.0,
   "range": 70.0,
   "range_secondary": 0.0,
-  "activation_time": 2.33,
-  "time_to_root": 2.33,
+  "activation_time": 1.6,
+  "time_to_root": 1.6,
   "recharge_time": 8.0,
   "activate_period": 0.5,
-  "endurance_cost": 0.325,
+  "endurance_cost": 0.26,
   "interrupt_time": 0.0,
   "target_type": "Leaguemate",
   "target_type_secondary": "None",
   "targets_autohit": [
-    "Leaguemate"
+    "Leaguemate",
+    "Foe"
   ],
   "targets_affected": [
     "Foe"
   ],
   "boosts_allowed": [
+    "Hold",
     "EnduranceDiscount",
     "Recharge",
     "Knockback",
-    "Accuracy"
+    "Damage"
   ],
   "allowed_set_categories": [
-    "Knockback"
+    "Holds",
+    "Knockback",
+    "Mastermind Archetype Sets",
+    "Melee AoE Damage",
+    "Universal Damage Sets"
   ],
   "cast_through": [],
   "toggle_ignore": [
@@ -70,7 +76,7 @@
   "attack_types": [],
   "effects": [
     {
-      "chance": 1.100000023841858,
+      "chance": 1.0,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -81,88 +87,184 @@
         "critter",
         "eq"
       ],
-      "tags": [
-        "ReduceIfKD"
-      ],
+      "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
       "requires_pv": "PVE_ONLY",
       "requires_default": "SATISFIED",
       "eval_flags": 0,
-      "templates": [
+      "templates": [],
+      "child_effects": [
         {
-          "attribs": [
-            "Knockback"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Ranged_Knockback",
-          "scale": 3.0,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
+          "chance": 1.100000023841858,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "messages": {
-            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
-            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
-          "flags": [
-            "IgnoreCombatMods"
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": [],
+          "tags": [
+            "ReduceIfKD"
           ],
-          "flags_raw": 320
+          "flags": [],
+          "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Knockback"
+              ],
+              "type": "Magnitude",
+              "application_type": "OnTick",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Ranged_Knockback",
+              "scale": 3.0,
+              "duration": "0 seconds",
+              "magnitude": 0.0,
+              "delay": 0.0,
+              "duration_expression": [],
+              "magnitude_expression": [],
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": [],
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "params": {
+                "vec_start": "Source",
+                "vec_end": "Target",
+                "vec_adjust_pyr": [
+                  0.0,
+                  0.013962634839117527,
+                  0.0
+                ],
+                "priority": 0,
+                "vel": 0.10000000149011612,
+                "vel_mag": 0.10000000149011612,
+                "height": 1.0,
+                "height_mag": 1.0,
+                "type": "Knock"
+              },
+              "messages": {
+                "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+                "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "flags": [
+                "IgnoreCombatMods"
+              ],
+              "flags_raw": 320
+            },
+            {
+              "attribs": [
+                "Null"
+              ],
+              "type": "Magnitude",
+              "application_type": "OnTick",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Melee_Ones",
+              "scale": 0.0,
+              "duration": "1 seconds",
+              "magnitude": 0.0,
+              "delay": 0.0,
+              "duration_expression": [],
+              "magnitude_expression": [],
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": [],
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [],
+                "conditional_fx": null
+              },
+              "suppress_events": [
+                {
+                  "event": "Knocked",
+                  "event_id": 34,
+                  "duration": 2.0,
+                  "always": 1
+                }
+              ],
+              "flags_raw": 1280
+            }
+          ]
         },
         {
-          "attribs": [
-            "Endurance"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
+          "chance": 0.25,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "messages": {
-            "display_attacker_hit": null,
-            "display_victim_hit": "Your {PowerName} drains {Damage} points of your endurance.",
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreCombatMods"
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": [
+            "enttype",
+            "target>",
+            "critter",
+            "eq"
           ],
-          "flags_raw": 112
+          "tags": [],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "requires_pv": "PVE_ONLY",
+          "requires_default": "SATISFIED",
+          "eval_flags": 0,
+          "templates": [
+            {
+              "attribs": [
+                "Held"
+              ],
+              "type": "Duration",
+              "application_type": "OnTick",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Ranged_Immobilize",
+              "scale": 1.0,
+              "duration": "0 seconds",
+              "magnitude": 2.0,
+              "delay": 0.0,
+              "duration_expression": [],
+              "magnitude_expression": [],
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": [],
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "fx": {
+                "continuing_bits": [],
+                "continuing_fx": "PFX",
+                "conditional_bits": [
+                  383
+                ],
+                "conditional_fx": null
+              },
+              "flags_raw": 2560
+            }
+          ]
         }
       ]
     },
@@ -219,7 +321,7 @@
           "suppress_events": [
             {
               "event": "Knocked",
-              "event_id": 33,
+              "event_id": 34,
               "duration": 10.0,
               "always": 0
             }
@@ -228,52 +330,89 @@
             "IgnoreCombatMods"
           ],
           "flags_raw": 320
-        },
+        }
+      ],
+      "child_effects": [
         {
-          "attribs": [
-            "Endurance"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Absolute",
-          "target": "Self",
-          "table": "Ranged_Ones",
-          "scale": -1.0,
-          "duration": "0 seconds",
-          "magnitude": 0.0,
+          "chance": 0.25,
+          "ppm": 0.0,
           "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Stack",
-          "stack_limit": 2,
-          "stack_key": null,
-          "messages": {
-            "display_attacker_hit": null,
-            "display_victim_hit": "Your {PowerName} drains {Damage} points of your endurance.",
-            "display_float": null,
-            "display_attrib_defense_float": null,
-            "display_info": null
-          },
-          "suppress_events": [
+          "radius_inner": -1.0,
+          "radius_outer": -1.0,
+          "requires_expression": [],
+          "tags": [],
+          "flags": [],
+          "is_pvp": "EITHER",
+          "requires_pv": "EITHER",
+          "requires_default": "SATISFIED",
+          "eval_flags": 0,
+          "templates": [
             {
-              "event": "Knocked",
-              "event_id": 33,
-              "duration": 10.0,
-              "always": 0
+              "attribs": [
+                "Held"
+              ],
+              "type": "Duration",
+              "application_type": "OnTick",
+              "aspect": "Current",
+              "target": "AnyAffected",
+              "table": "Ranged_PvPMez",
+              "scale": 1.0,
+              "duration": "0 seconds",
+              "magnitude": 2.0,
+              "delay": 0.0,
+              "duration_expression": [],
+              "magnitude_expression": [],
+              "application_period": 0.0,
+              "tick_chance": 1.0,
+              "tick_mag_multiplier": 1.0,
+              "tick_mag_additive": 0.0,
+              "jit_requires": [],
+              "caster_stack": "Individual",
+              "stack": "Replace",
+              "stack_limit": 2,
+              "stack_key": null,
+              "messages": {
+                "display_attacker_hit": "You Hold {PlayerDest} with your {PowerName}.",
+                "display_victim_hit": "{PlayerSource} Holds you with their {PowerName}.",
+                "display_float": null,
+                "display_attrib_defense_float": null,
+                "display_info": null
+              },
+              "suppress_events": [
+                {
+                  "event": "Stunned",
+                  "event_id": 23,
+                  "duration": 15.0,
+                  "always": 0
+                },
+                {
+                  "event": "Immobilized",
+                  "event_id": 24,
+                  "duration": 15.0,
+                  "always": 0
+                },
+                {
+                  "event": "Held",
+                  "event_id": 25,
+                  "duration": 15.0,
+                  "always": 0
+                },
+                {
+                  "event": "Sleep",
+                  "event_id": 26,
+                  "duration": 15.0,
+                  "always": 0
+                },
+                {
+                  "event": "Terrorized",
+                  "event_id": 27,
+                  "duration": 15.0,
+                  "always": 0
+                }
+              ],
+              "flags_raw": 2560
             }
-          ],
-          "flags": [
-            "IgnoreStrength",
-            "IgnoreResistance",
-            "IgnoreCombatMods"
-          ],
-          "flags_raw": 112
+          ]
         }
       ]
     }

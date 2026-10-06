@@ -14,16 +14,13 @@
     "display_class_name": "",
     "power_full_names": [
       "Pets.ResistAll.ResistAll",
-      "Pets.RainofArrows_Defender.RainofArrows",
-      "Pets.RainofArrows_Defender.Avoid"
+      "Pets.RainofArrows_Defender.RainofArrows"
     ],
     "power_display_names": [
       "ResistAll",
-      "RainofArrows",
-      "Avoid"
+      "RainofArrows"
     ],
     "power_levels": [
-      0,
       0,
       0
     ],

@@ -6,7 +6,7 @@
   "display_name": "Lightning Rod",
   "display_fullname": "Scrapper Melee Electrical Melee Lightning Rod",
   "display_help": "You can polarize your body and become a living Lightning Rod. This power calls forth a massive lightning bolt from the sky to strike you. You can then ride this bolt and instantly Teleport a short distance. You rematerialize in a massive bolt of electricity, dealing massive damage and knocking down all nearby foes. Damage from the lightning bolt is superior.",
-  "display_short_help": "PBAoE, Foe Knockback; Self Teleport;",
+  "display_short_help": "PBAoE, DMG(Energy), Foe Knockdown; Self Teleport",
   "icon": "electricmelee_pbaoeteleport.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

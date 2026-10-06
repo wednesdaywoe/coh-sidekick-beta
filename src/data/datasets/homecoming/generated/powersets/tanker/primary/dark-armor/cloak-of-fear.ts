@@ -71,8 +71,8 @@ export const CloakofFear: Power = {
     ["Enhancement","Knockback",-0.25,1,3,"Melee_Ones","Str","Magnitude","Target","Any",true,"RefreshToCount",1,null,null,1,null,true],
     ["Mez","Knockup",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
     ["Mez","Knockback",-1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"RefreshToCount",10,null,null,1],
-    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Raid","target.HasTag?","!"],null,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]],
     ["Mez","Terrorized",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"InherentTaunt"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
   ]
 };

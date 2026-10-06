@@ -27,7 +27,7 @@ export const PoisonTrap: Power = {
     "accuracy": 1,
     "recharge": 90,
     "endurance": 13,
-    "castTime": 2.77
+    "castTime": 1.47
   },
   "allowedEnhancements": [
     "Hold",
@@ -42,11 +42,16 @@ export const PoisonTrap: Power = {
   "maxSlots": 6,
   "summon": {
     "copyBoosts": true,
+    "displayName": "Poison Trap",
     "duration": 260,
-    "entity": "Pets_Traps_Poison_Trap",
-    "isPseudoPet": false
+    "isPseudoPet": true,
+    "powers": [
+      "Villain_Pets.Traps_Poison_Trap.Self_Destruct",
+      "Villain_Pets.Traps_Poison_Trap.Resistance"
+    ],
+    "entity": "Pets_Traps_Poison_Trap"
   },
   "atoms": [
-    ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,260]
+    ["EntCreate",null,1,1,260,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,260]
   ]
 };

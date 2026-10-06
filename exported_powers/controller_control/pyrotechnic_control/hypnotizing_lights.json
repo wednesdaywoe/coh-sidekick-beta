@@ -110,15 +110,15 @@
           "flags": [
             "NoHitDelay",
             "NoProjectileDelay",
-            "CopyBoosts",
-            "ProcSeparately"
+            "CopyBoosts"
           ],
           "flags_raw": 197888,
-          "flags2_raw": 12
+          "flags2_raw": 4
         }
       ]
     }
   ],
+  "chain_delay": 1.0,
   "procs_allowed": false,
   "modes_disallowed": [
     "Disable_All"

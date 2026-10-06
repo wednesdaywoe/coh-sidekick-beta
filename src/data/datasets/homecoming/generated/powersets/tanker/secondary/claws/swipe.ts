@@ -59,9 +59,6 @@ export const Swipe: Power = {
   ],
   "requires": [
     "Tanker_Defense.Shield_Defense",
-    "!",
-    "Tanker_Defense.Stone_Armor",
-    "!",
-    "&&"
+    "!"
   ]
 };

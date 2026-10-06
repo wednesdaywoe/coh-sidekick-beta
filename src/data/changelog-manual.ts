@@ -46,6 +46,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-10-06',
+
+    items: [
+      { id: 'hc-issue28-page4', message: 'HC database updated to Issue 28: Legacy, Page 4.', type: 'update' },
+      { id: 'max-end-in-points', message: 'The Info panel shows +Max End in endurance points, so Power of the Depths reads +20 rather than 2000%', type: 'fix' },
+      { id: 'mission-click-not-combat', message: 'Personal Force Field, Arctic Air and the phase powers no longer switch off when In-Combat is on', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-09-26',
 
     items: [

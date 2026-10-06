@@ -1,6 +1,6 @@
 {
   "schema": "bin-crawler-export-manifest/3",
-  "incarnate_recipes_fingerprint": "a8185cf1de4041b05f40ee63c65032823dc6a0e1da69174265fa81529343ed6e",
+  "incarnate_recipes_fingerprint": "c543e2897fbb716fd250c1cb93977a8dfefe4e552368158288510cd3e1d9be46",
   "source": {
     "assets_dir": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/beta",
     "shard": "beta",

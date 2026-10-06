@@ -29,6 +29,7 @@ import { getAvailableGenericIOs, createGenericIOEnhancement } from '@/data/enhan
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { createEmptyBuild } from '@/types/build';
 import { legacyCalculateCharacterTotals } from '@/utils/calculations/legacy-totals.oracle';
+import { perTargetCountCannotBeZero } from '@/utils/calculations/character-totals';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapStats, mapGlobal, type EngineTotals } from './engineTotalsMap';
 import type { Build } from '@/types/build';
@@ -89,19 +90,23 @@ function bundleEffects(server: Server): Map<string, Record<string, unknown>> {
  *  `stats.maxTargets`), keyed like `bundleEffects`. The BPORT7 regen empties the bag this
  *  sits next to, but this meta survives it. */
 const bundleMetaCache = new Map<Server, Map<string, { effectArea?: string; maxTargets?: number }>>();
-function bundleMeta(server: Server): Map<string, { effectArea?: string; maxTargets?: number }> {
+function bundleMeta(server: Server): Map<string, { effectArea?: string; maxTargets?: number; perTargetMaxTargets?: number }> {
   const cached = bundleMetaCache.get(server);
   if (cached) return cached;
   const { gunzipSync } = require('node:zlib') as typeof import('node:zlib');
   const bundle = JSON.parse(
     gunzipSync(readFileSync(join(BUNDLE_DIR, `${server}.json.gz`))).toString('utf8'),
-  ) as Record<string, Record<string, { id?: string; powers?: { internalName?: string; effectArea?: string; stats?: { maxTargets?: number } }[] }>>;
-  const out = new Map<string, { effectArea?: string; maxTargets?: number }>();
+  ) as Record<string, Record<string, { id?: string; powers?: { internalName?: string; effectArea?: string; perTargetMaxTargets?: number; stats?: { maxTargets?: number } }[] }>>;
+  const out = new Map<string, { effectArea?: string; maxTargets?: number; perTargetMaxTargets?: number }>();
   for (const section of ['powersets', 'power-pools', 'epic-pools']) {
     for (const [setKey, set] of Object.entries(bundle[section] ?? {})) {
       for (const power of set.powers ?? []) {
         if (power.internalName) {
-          out.set(`${set.id ?? setKey}\0${power.internalName}`, { effectArea: power.effectArea, maxTargets: power.stats?.maxTargets });
+          out.set(`${set.id ?? setKey}\0${power.internalName}`, {
+            effectArea: power.effectArea,
+            maxTargets: power.stats?.maxTargets,
+            perTargetMaxTargets: power.perTargetMaxTargets,
+          });
         }
       }
     }
@@ -580,8 +585,16 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
         examined++;
 
         const build = solo(atId, powerset.id ?? powersetKey, power);
-        const zero = totalsAt(build, power, 0);
-        for (const targets of [null, 1, 5] as const) {
+        // A power whose foes are counted by a redirect's sphere (Fulcrum Shift) is aimed at a
+        // foe, so the engine floors its count at one; the legacy floor reads only the power's
+        // own geometry, a single target, and lets it reach zero. Both agree from one foe up, so
+        // the response is graded from there rather than from a zero only one side can be at.
+        const redirectFloor = (meta?.perTargetMaxTargets ?? 0) > 1 && !perTargetCountCannotBeZero(power);
+        if (redirectFloor) {
+          adjudicated.push(`${powersetKey}/${power.name}: redirect-counted, engine floors at one foe — graded from N=1`);
+        }
+        const zero = totalsAt(build, power, redirectFloor ? 1 : 0);
+        for (const targets of redirectFloor ? ([5] as const) : ([null, 1, 5] as const)) {
           const at = totalsAt(build, power, targets);
           // The RESPONSE to the count, not the totals themselves.
           const keys = Object.keys(at.engine).filter((key) => !UNMAPPED.has(key) && !(absorbUnverified && key === 'absorb'));

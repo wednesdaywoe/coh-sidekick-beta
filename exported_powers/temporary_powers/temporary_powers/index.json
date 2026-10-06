@@ -74,12 +74,16 @@
     "temporary_powers.temporary_powers.StormBlast_InStormCell",
     "Temporary_Powers.Temporary_Powers.Ignite",
     "Temporary_Powers.Temporary_Powers.Time_Bomb",
+    "Temporary_Powers.Temporary_Powers.Leviathan_Hunger_Proc",
     "Temporary_Powers.Temporary_Powers.Rising_Tide",
     "Temporary_Powers.Temporary_Powers.Radiation_Control_GammaBurstDebuff",
     "Temporary_Powers.Temporary_Powers.StormBlast_StormBrewing",
-    "Temporary_Powers.Temporary_Powers.Street_Cred"
+    "Temporary_Powers.Temporary_Powers.Street_Cred",
+    "Temporary_Powers.Temporary_Powers.Personal_Force_Field_Auto"
   ],
   "available_level": [
+    0,
+    0,
     0,
     0,
     0,
@@ -224,10 +228,12 @@
     "In Storm Cell",
     "Ignite",
     "Remote Bomb",
+    "Leviathan Force",
     "Rising Tide",
     "Gamma Rays",
     "Storm Brewing",
-    "Street Cred"
+    "Street Cred",
+    "Personal Force Field"
   ],
   "power_short_helps": [
     "Self Rez",
@@ -299,10 +305,12 @@
     "Special",
     "+Tidal Power",
     "Self +Remote Bomb",
+    "Special",
     "Team +ToHit, +Damage, +Recharge",
     "Contaminated",
     "Special",
-    "Street Cred"
+    "Street Cred",
+    "Toggle: Self +Def, Res, +Max END"
   ],
   "buy_requires": [],
   "buy_requires_failed": "",

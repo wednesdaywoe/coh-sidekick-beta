@@ -604,8 +604,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     label: '+Max End',
     category: 'buff',
     colorClass: STAT_COLORS.maxEnd,
-    format: 'percent',
-    calculation: 'buff',
+    format: 'value',
     priority: 9,
   },
   rangeBuff: {

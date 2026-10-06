@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-export-manifest/3",
   "note": "parser_fingerprint is the sha256 of the powers exporter (every .py in bin_crawler) at export time. If it disagrees with the current committed exporter source, THIS tree is stale \u2014 re-run export_powers for this dataset and commit. Guarded by audit:export-integrity (staleness). `source` names the assets shard the bytes were read from; guarded by audit:export-integrity (provenance). `content_digest` is the sha256 of the bytes this export WROTE; guarded by audit:export-integrity (contents).",
-  "parser_fingerprint": "a8185cf1de4041b05f40ee63c65032823dc6a0e1da69174265fa81529343ed6e",
+  "parser_fingerprint": "c543e2897fbb716fd250c1cb93977a8dfefe4e552368158288510cd3e1d9be46",
   "source": {
     "assets_dir": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/beta",
     "shard": "beta",
@@ -50,8 +50,8 @@
       }
     ]
   },
-  "content_digest": "e91b00bd04e41c6544a966a3132fa6335a264163ddc10ef89d3d72cc288458ed",
-  "file_count": 20046,
+  "content_digest": "81ed9913d5e8f6babca5d93543913d9cb874601d7167268d1fb7f01f6aa8bbae",
+  "file_count": 20048,
   "categories": 66,
-  "power_files": 13564
+  "power_files": 13566
 }

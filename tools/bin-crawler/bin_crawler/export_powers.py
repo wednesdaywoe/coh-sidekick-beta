@@ -1033,6 +1033,33 @@ def main():
             print(f'  +{len(accolade_added)} Temporary_Powers powerset members '
                   f'({sorted(INCLUDED_TEMPORARY_POWERSETS)}).', flush=True)
 
+        # Ownership-issued members of Temporary_Powers: the third referenced edge,
+        # pointing the other way. Every character owns Temporary_Powers, and
+        # `character_GrantAutoIssuePowers` hands over any auto-issued member of an
+        # owned set whose `requires` holds — so a member gated on holding a player
+        # power is that power's passive, delivered by no Grant_Power. Brainstorm's
+        # and Homecoming's Personal Force Field is the case: the toggle carries its
+        # always-on +Def/+Res/+MaxEnd only as a never-true `Display` group, and the
+        # real one is `Personal_Force_Field_Auto` here, gated on owning any of the
+        # four Force Field copies. Structural, no names: auto-issued, and the gate
+        # names a power this export already holds.
+        def _names_exported_power(pw):
+            return any(tok.lower() in already for tok in pw.requires)
+
+        owned_added = [
+            pw for pw in all_powers
+            if pw.category == 'Temporary_Powers'
+            and pw.auto_issue
+            and pw.full_name.lower() not in already
+            and _names_exported_power(pw)
+        ]
+        for pw in owned_added:
+            player_powers.append(pw)
+            already.add(pw.full_name.lower())
+        if owned_added:
+            print(f'  +{len(owned_added)} ownership-issued Temporary_Powers members '
+                  f'(auto-issued while a player power is held).', flush=True)
+
     total_files, grouped = _write_power_tree(
         player_powers, ps_records, ps_available, msgs, set_cats_index,
         mode_table, stack_key_table, output_dir, tree,

@@ -6,10 +6,10 @@
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "eacc8e89cdddd90aeb0835046f8a08868e44ebb7",
-  "synced_from_subject": "Homecoming: Issue 28 Page 4 — Light Affinity, Sonic Aura and the reworked sets",
-  "synced_from_date": "2026-10-06T13:54:54-04:00",
-  "tree_fingerprint": "64c873e2eccdc7f62f5f62671e4ea7fcbfb9a5f3fc2d4089c9233b6aff8c8c8d",
-  "export_manifest_digest": "67f9fbc0f971e55d77a99d21dbfec73af0be81a16e1abd941a18cafd15ed8b1b",
+  "synced_from_commit": "cd8d6d68e7b14c00ffa476fb894535a5e3289293",
+  "synced_from_subject": "Changelog: +Max End reads in points",
+  "synced_from_date": "2026-10-06T16:00:32-04:00",
+  "tree_fingerprint": "9f67f8f59d17ccd3ae5d3f2e4aaa4b829056bce24ddd9b26234c6db98f48d339",
+  "export_manifest_digest": "5640aece1b1cfbeb9b2ff05b83fad30f2f15180aa939043aa3c31f21f85bb8e0",
   "export_manifest_count": 14
 }

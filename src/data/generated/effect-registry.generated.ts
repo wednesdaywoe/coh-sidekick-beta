@@ -474,8 +474,7 @@ export const EFFECT_RESOLUTION: Record<string, Record<string, unknown>> =
     "maxEndBuff": {
       "label": "+Max End",
       "category": "buff",
-      "format": "percent",
-      "calculation": "buff",
+      "format": "value",
       "priority": 9,
       "summaryTokens": [
         "max end",

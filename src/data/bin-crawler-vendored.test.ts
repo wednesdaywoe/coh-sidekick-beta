@@ -11,7 +11,7 @@ import {
  * Vendored-copy guard — the cross-repo currency gate.
  *
  * `tools/bin-crawler` and `exported_powers` live here because this repo ships
- * the crawler with the Sidekick tool suite, but `coh-sidekick-1.0` owns them.
+ * the crawler with the Sidekick tool suite, but `coh-sidekick-experiment` owns them.
  * `scripts/sync-bin-crawler.sh` copies them across and records what it copied in
  * `tools/bin-crawler-vendored.json`.
  *
@@ -45,7 +45,7 @@ const canonical = resolveCanonicalRepo();
 const SYNC_HINT =
   'Run ./scripts/sync-bin-crawler.sh (it rewrites the record) and commit the result.';
 
-describe('vendored bin-crawler guard (this repo ↔ coh-sidekick-1.0)', () => {
+describe('vendored bin-crawler guard (this repo ↔ coh-sidekick-experiment)', () => {
   it('carries a well-formed vendoring record', () => {
     expect(
       record,
@@ -66,7 +66,7 @@ describe('vendored bin-crawler guard (this repo ↔ coh-sidekick-1.0)', () => {
     expect(
       here.tree_fingerprint,
       `tools/bin-crawler in this repo does not match ${VENDOR_RECORD}. It is a VENDORED ` +
-        `COPY — coh-sidekick-1.0 is canonical. Move the change there, re-export there if ` +
+        `COPY — coh-sidekick-experiment is canonical. Move the change there, re-export there if ` +
         `it touched the parser, then re-sync. ${SYNC_HINT}`,
     ).toBe(record!.tree_fingerprint);
   });

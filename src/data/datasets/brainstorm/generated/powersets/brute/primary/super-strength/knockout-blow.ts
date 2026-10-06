@@ -15,7 +15,7 @@ export const KnockoutBlow: Power = {
   "autoIssue": false,
   "free": false,
   "description": "You can perform a Knockout Blow on your opponent. This punch does extreme damage, and has a great chance of Holding your target.\n\nWhile Rage is active, up to two nearby opponents will also be smashed by this attack, being damaged and possibly knocked down.",
-  "shortHelp": "Melee, DMG(Smash), Foe Hold, Self +Res DMG",
+  "shortHelp": "Melee, DMG(Smash), Foe Hold, KnockUp",
   "icon": "superstrength_knockoutblow.png",
   "powerType": "Click",
   "targetType": "Foe",

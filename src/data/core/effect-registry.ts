@@ -399,6 +399,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'debuff',
     colorClass: STAT_COLORS.recoveryDebuff,
     format: 'percent',
+    enhancementAspect: 'enduranceMod',
     baseMultiplier: 100,
     priority: 6,
   },
@@ -448,6 +449,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'debuff',
     colorClass: STAT_COLORS.enduranceDrain,
     format: 'percent',
+    enhancementAspect: 'enduranceMod',
     priority: 9,
   },
   enduranceCrash: {
@@ -630,6 +632,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     category: 'buff',
     colorClass: STAT_COLORS.enduranceGain,
     format: 'percent',
+    enhancementAspect: 'enduranceMod',
     priority: 12,
   },
   threatBuff: {

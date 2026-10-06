@@ -14,11 +14,18 @@ collapses — read [COH-DATA-MODEL.md](../COH-DATA-MODEL.md) first.
 
 The running issue log is `streams/HOMECOMING_PARSER.md`, cited from 17 files here
 (`See HOMECOMING_PARSER`); the DSH harness log is `streams/DEDUCTIVE_SCHEMA_HARNESS.md`, cited
-from 11. **Both are canonical-owned and VENDORED here**, like the parser — edit them in
-`coh-sidekick-1.0` under `docs/streams/`, then re-sync. They are tracked here so a beta-only
-clone resolves those citations; unlike the parser they carry no fingerprint guard, so nothing
-will tell you if they drift. Historical entries predate canonical's `docs/DATA-GAP-REGISTER.md`
-(which starts 2026-07-16 and does not backfill); new findings go in that register, not the logs.
+from 11. Both were copied from `coh-sidekick-1.0`, which is retired; this repo now owns them
+and edits them in place.
+
+## The engine and the rebuild
+
+The calculation engine is the rebuild's Rust (`coh-sidekick-experiment`, remote
+`wednesdaywoe/coh-sidekick-rebuild`), compiled to WebAssembly and committed under
+`src/engine/wasm*/` with the data bundles in `public/engine/contract/`. A math fix is made in
+the rebuild, then `npm run build:engine` here (it finds `../coh-sidekick-experiment`, or
+`COH_REBUILD_DIR`). The converters under `scripts/` belong to this repo alone and are edited
+here; the two-repo sync tooling (`sync-shared`, `verify-sync`, `sync-manifest.json`) is gone.
+`coh-sidekick-1.0` is retired and nothing here reads it.
 
 ## Source Data
 
@@ -53,7 +60,7 @@ Key parser files (under `tools/bin-crawler/bin_crawler/`): `parser/_dataclasses.
 
 ### `tools/bin-crawler/` and `exported_powers/` are VENDORED — do not edit them here
 
-**`coh-sidekick-1.0` is canonical for the parser and for the exports it produces.** This repo
+**`coh-sidekick-experiment` is canonical for the parser and for the exports it produces.** This repo
 ships the crawler as part of the Sidekick tool suite, so both paths must physically exist here,
 but they are a one-way copy. Edit the parser *there*, re-export *there*, then run
 [`scripts/sync-bin-crawler.sh`](../scripts/sync-bin-crawler.sh) here and commit the refreshed

@@ -14,7 +14,6 @@
     "regen": "node scripts/regen-all.cjs",
     "regen:generated": "node scripts/regen-all.cjs --generated-only",
     "sync:bin-crawler": "./scripts/sync-bin-crawler.sh",
-    "sync:shared": "node scripts/sync-shared.cjs",
     "audit:set-categories": "for ds in $(node -p \"require('./scripts/_dataset-paths.cjs').ALL_DATASETS.join(' ')\"); do node scripts/audit-allowed-set-categories.cjs --dataset \"$ds\" --gate || exit 1; done",
     "validate:converter": "for ds in $(node -p \"require('./scripts/_dataset-paths.cjs').ALL_DATASETS.join(' ')\"); do node scripts/validate-converter-output.cjs --dataset \"$ds\" --gate || exit 1; done",
     "validate:incarnate-collapse": "for ds in $(node -p \"require('./scripts/_dataset-paths.cjs').ALL_DATASETS.join(' ')\"); do node scripts/dsh8-incarnate-collapse-detector.cjs --dataset \"$ds\" --gate || exit 1; done",
@@ -25,8 +24,7 @@
     "import-mids": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/bulk-import-mids.ts",
     "delete-user-builds": "tsx --env-file-if-exists=.env --import ./scripts/register-env-loader.mjs scripts/delete-user-shared-builds.ts",
     "changelog:push": "tsx --env-file-if-exists=.env scripts/push-changelog-discord.ts",
-    "hooks:install": "git config core.hooksPath scripts/git-hooks",
-    "verify:sync": "node scripts/verify-sync.cjs --gate"
+    "hooks:install": "git config core.hooksPath scripts/git-hooks"
   },
   "repository": {
     "type": "git",

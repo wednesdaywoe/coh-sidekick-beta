@@ -6,8 +6,8 @@
 
 export const ENGINE_BUNDLE_VERSIONS: Record<string, string> =
   {
-    "brainstorm": "bb95e93c3d88d802",
-    "homecoming": "151f415de0526691",
-    "rebirth": "7263af2536614cd2",
-    "thunderspy": "9dab8120f7f1aa79"
+    "brainstorm": "383ba146f86a3bb4",
+    "homecoming": "326e38e3db85ff74",
+    "rebirth": "b005b19841d75a6f",
+    "thunderspy": "c69afb6cc1857a23"
   };

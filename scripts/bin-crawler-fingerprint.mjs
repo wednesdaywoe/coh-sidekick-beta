@@ -2,7 +2,7 @@
  * Vendored-copy fingerprints for `tools/bin-crawler` + `exported_powers`.
  *
  * This repo SHIPS the bin crawler as part of the Sidekick tool suite, but does
- * not own it: `coh-sidekick-1.0` is canonical for both the parser and the
+ * not own it: `coh-sidekick-experiment` is canonical for both the parser and the
  * exports it produces. What lives here is a vendored copy, refreshed by
  * `scripts/sync-bin-crawler.sh` and recorded in `tools/bin-crawler-vendored.json`.
  *
@@ -44,7 +44,7 @@ export const SYNCED_PATHS = ['tools/bin-crawler', 'exported_powers'];
 /** Where the sync records what it copied and from which canonical commit. */
 export const VENDOR_RECORD = 'tools/bin-crawler-vendored.json';
 
-export const CANONICAL_REMOTE = 'git@github.com:wednesdaywoe/coh-sidekick-1.0.git';
+export const CANONICAL_REMOTE = 'git@github.com:wednesdaywoe/coh-sidekick-rebuild.git';
 
 /**
  * The COMMITTED files under `relDir`, as absolute paths.
@@ -151,7 +151,7 @@ export function resolveCanonicalRepo(explicit) {
   const candidates = [
     explicit,
     process.env.SIDEKICK_CANONICAL_REPO,
-    resolve(REPO_ROOT, '..', 'coh-sidekick-1.0'),
+    resolve(REPO_ROOT, '..', 'coh-sidekick-experiment'),
   ].filter(Boolean);
   for (const c of candidates) {
     const p = resolve(c);
@@ -185,7 +185,7 @@ export function writeVendorRecord(canonicalPath, repoRoot = REPO_ROOT) {
   const record = {
     schema: 'bin-crawler-vendored/1',
     note:
-      'tools/bin-crawler and exported_powers are a VENDORED COPY. coh-sidekick-1.0 ' +
+      'tools/bin-crawler and exported_powers are a VENDORED COPY. coh-sidekick-experiment ' +
       'is canonical for both — edit the parser there, re-export there, then run ' +
       'scripts/sync-bin-crawler.sh here. Do not hand-edit either path in this repo; ' +
       'src/data/bin-crawler-vendored.test.ts will catch it.',

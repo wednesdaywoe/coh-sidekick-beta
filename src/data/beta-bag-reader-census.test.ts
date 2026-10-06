@@ -20,7 +20,9 @@ import path from 'node:path';
 
 const REPO = path.resolve(__dirname, '../..');
 const SCRIPT = path.join(REPO, 'scripts/beta-bag-reader-census.cjs');
-const SIBLING = path.resolve(REPO, '../coh-sidekick-1.0');
+// The comparison tree was coh-sidekick-1.0's TypeScript. That repo is retired and the rebuild
+// that replaced it has no src/ to compare, so sibling mode runs only when pointed at a tree.
+const SIBLING = process.env.BETA_CENSUS_SIBLING ? path.resolve(process.env.BETA_CENSUS_SIBLING) : '';
 const ORACLE = 'src/utils/calculations/legacy-totals.oracle.ts';
 /** Where canonical kept the same file. PROD7 renamed it on this side only. */
 const ORACLE_TWIN = 'src/utils/calculations/character-totals.ts';

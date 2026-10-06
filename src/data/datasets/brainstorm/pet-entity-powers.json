@@ -2843,6 +2843,11 @@
     "Pets.ResistAll_NoFly_Fast.ResistAll",
     "NPC_Pets.Civilian_Panic.Panic"
   ],
+  "Pets_Mine": [
+    "Pets.Mine.Trip_Mine",
+    "Pets.Mine.Self_Destruct",
+    "Pets.Mine.Resistance"
+  ],
   "Pets_Mine_PvP_Blue": [
     "Pets.Mine_PvP.Trip_Mine",
     "Pets.Mine_PvP.Self_Destruct",

@@ -1,15 +1,15 @@
 {
   "schema": "bin-crawler-vendored/1",
-  "note": "tools/bin-crawler and exported_powers are a VENDORED COPY. coh-sidekick-1.0 is canonical for both — edit the parser there, re-export there, then run scripts/sync-bin-crawler.sh here. Do not hand-edit either path in this repo; src/data/bin-crawler-vendored.test.ts will catch it.",
-  "canonical_repo": "git@github.com:wednesdaywoe/coh-sidekick-1.0.git",
+  "note": "tools/bin-crawler and exported_powers are a VENDORED COPY. coh-sidekick-experiment is canonical for both — edit the parser there, re-export there, then run scripts/sync-bin-crawler.sh here. Do not hand-edit either path in this repo; src/data/bin-crawler-vendored.test.ts will catch it.",
+  "canonical_repo": "git@github.com:wednesdaywoe/coh-sidekick-rebuild.git",
   "synced_paths": [
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "b80ecdc061b96ceefb6dce6b99093d8c81b7168b",
-  "synced_from_subject": "Trip Mine: mark the resolved mine a one-shot, as its old pet entities were",
-  "synced_from_date": "2026-10-06T13:36:35-04:00",
-  "tree_fingerprint": "5bf9d3b7d9d5909725a5a58d11d2bc66d3f36de737fd31d6b7001b85decd093a",
-  "export_manifest_digest": "fc259a0c15e1b65659d8ceb2c607c6e7935e09db168c7fd808ba242953bcd570",
+  "synced_from_commit": "eacc8e89cdddd90aeb0835046f8a08868e44ebb7",
+  "synced_from_subject": "Homecoming: Issue 28 Page 4 — Light Affinity, Sonic Aura and the reworked sets",
+  "synced_from_date": "2026-10-06T13:54:54-04:00",
+  "tree_fingerprint": "64c873e2eccdc7f62f5f62671e4ea7fcbfb9a5f3fc2d4089c9233b6aff8c8c8d",
+  "export_manifest_digest": "67f9fbc0f971e55d77a99d21dbfec73af0be81a16e1abd941a18cafd15ed8b1b",
   "export_manifest_count": 14
 }

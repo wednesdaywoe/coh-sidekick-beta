@@ -24,7 +24,6 @@ Usage:
   python3 -m bin_crawler.export_incarnate_recipes --source thunderspy
 """
 import argparse
-import json
 import sys
 from dataclasses import asdict
 from pathlib import Path

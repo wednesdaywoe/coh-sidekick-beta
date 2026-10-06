@@ -44,7 +44,7 @@
     "Self +DMG, +To Hit, +Res DMG, +Recovery, Special",
     "PBAoE, DMG(Smash), Foe Disorient, Knockback",
     "Ranged (Targeted AoE), Foe Taunt",
-    "Melee, DMG(Smash), Foe Hold, Self +Res DMG",
+    "Melee, DMG(Smash), Foe Hold, KnockUp",
     "Ranged, Moderate DMG(Smash), Knockback, -Fly",
     "PBAoE Melee, DMG(Smashing), Knockback"
   ],

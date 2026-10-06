@@ -42,7 +42,6 @@ fields after the slot — `specialize_at`'s 23-on-the-VEAT-branches, the
 show_in_* distribution — line up identically on all three forks either way.
 """
 
-import sys
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowersetRecord
 

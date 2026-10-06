@@ -306,11 +306,6 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "cancel_events": [
-            "Stunned",
-            "Held",
-            "Sleep"
-          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"
@@ -341,11 +336,6 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "cancel_events": [
-            "Stunned",
-            "Held",
-            "Sleep"
-          ],
           "flags": [
             "IgnoreResistance"
           ],
@@ -375,11 +365,6 @@
           "stack": "Replace",
           "stack_limit": 2,
           "stack_key": null,
-          "cancel_events": [
-            "Stunned",
-            "Held",
-            "Sleep"
-          ],
           "flags": [
             "IgnoreStrength",
             "IgnoreResistance"

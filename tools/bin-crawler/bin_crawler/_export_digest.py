@@ -13,9 +13,10 @@ That is the FLAGS-2 shape the mandate names, one layer lower: not a bad read
 becoming authoritative, but a good read quietly amended afterwards.
 
 The guard: each exporter records, in its own manifest, a `content_digest` over
-every file it wrote, and `src/data/export-contents.test.ts` recomputes it from
-the committed tree. A file edited, added, or deleted after the export moves the
-digest and the gate goes red; the only green path back is a re-export.
+every file it wrote, and the `contents` check in `tools/export-integrity.py`
+recomputes it from the committed tree. A file edited, added, or deleted after
+the export moves the digest and the gate goes red; the only green path back is
+a re-export.
 
 What this does and does not buy. It is not an attestation — a single committer
 can always re-export or re-stamp. What it removes is the *silent* case: partial
@@ -28,17 +29,17 @@ trace to find afterwards either". This is the trace.
 Exactness comes from the write boundary, not from a walk. `ExportTree` is the
 one door every exported file goes through, so the recorded set is what the
 exporter wrote by construction — no glob, no subtraction, no allowlist of which
-subtrees belong to whom. The JS gate has to rederive that set from the committed
+subtrees belong to whom. The gate has to rederive that set from the committed
 tree and does so by nearest-enclosing-manifest (the surfaces nest:
 `exported_powers/` holds `tables/`, `entities/` and the three sibling datasets),
 which is a rule rather than a list, and disagreement shows up as a `file_count`
 mismatch before it shows up as a digest mismatch.
 
 The fold is `_export_fingerprint._fold`, shared rather than reimplemented, so
-"hash a set of files" means one thing in this package. The JS side must
-replicate it byte for byte — sorted (posix relpath, bytes) folded into sha256 as
-`relpath\\0content\\0` — exactly as it already does for the source fingerprint.
-A divergence surfaces as a permanently-red guard, never a silent gap.
+"hash a set of files" means one thing in this package — and the gate at
+`tools/export-integrity.py` imports that same function rather than writing its
+own, so there is no second copy to keep byte-for-byte identical. The TypeScript
+twin this paragraph used to address was never written.
 """
 from __future__ import annotations
 

@@ -123,11 +123,13 @@ def deep_diff_power(a: dict, b: dict):
     added, removed, changes = [], [], []
     for ident in set(A) | set(B):
         la, lb = A.get(ident, []), B.get(ident, [])
-        for t in lb[len(la):]:
+        for _t in lb[len(la):]:
             added.append(ident)
-        for t in la[len(lb):]:
+        for _t in la[len(lb):]:
             removed.append(ident)
-        for ta, tb in zip(la, lb):
+        # strict=False deliberately: the two loops above already consumed whichever tail
+        # is longer, so this pass is the shared prefix by design.
+        for ta, tb in zip(la, lb, strict=False):
             for f in TEMPLATE_VALUE_FIELDS:
                 if f in ta and f in tb and ta[f] != tb[f]:
                     changes.append((ident, f, ta[f], tb[f]))
@@ -181,11 +183,11 @@ def summarize_deep(left: dict[str, dict], right: dict[str, dict],
                 print(f'              {ident}: {old!r} -> {new!r}')
 
     if added_ct:
-        print(f'\n--- Most-added template identities ---')
+        print('\n--- Most-added template identities ---')
         for ident, c in added_ct.most_common(limit):
             print(f'  {c:5d}  + {ident}')
     if removed_ct:
-        print(f'\n--- Most-removed template identities ---')
+        print('\n--- Most-removed template identities ---')
         for ident, c in removed_ct.most_common(limit):
             print(f'  {c:5d}  - {ident}')
 
@@ -429,7 +431,7 @@ def summarize(left_name: str, left: dict[str, dict],
         # Field-frequency histogram across all changed powers
         from collections import Counter
         field_counts = Counter(f for _, fields in changed for f in fields)
-        print(f'\n--- Most-changed fields ---')
+        print('\n--- Most-changed fields ---')
         for field, count in field_counts.most_common(15):
             print(f'  {count:5d}  {field}')
 

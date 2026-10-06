@@ -201,46 +201,6 @@
                 }
               ],
               "flags_raw": 1280
-            },
-            {
-              "attribs": [
-                "Null"
-              ],
-              "type": "Magnitude",
-              "application_type": "OnTick",
-              "aspect": "Current",
-              "target": "Self",
-              "table": "Melee_Ones",
-              "scale": 0.0,
-              "duration": "1 seconds",
-              "magnitude": 0.0,
-              "delay": 0.0,
-              "duration_expression": [],
-              "magnitude_expression": [],
-              "application_period": 0.0,
-              "tick_chance": 1.0,
-              "tick_mag_multiplier": 1.0,
-              "tick_mag_additive": 0.0,
-              "jit_requires": [],
-              "caster_stack": "Individual",
-              "stack": "Replace",
-              "stack_limit": 2,
-              "stack_key": null,
-              "fx": {
-                "continuing_bits": [],
-                "continuing_fx": "PFX",
-                "conditional_bits": [],
-                "conditional_fx": null
-              },
-              "suppress_events": [
-                {
-                  "event": "Knocked",
-                  "event_id": 34,
-                  "duration": 2.0,
-                  "always": 1
-                }
-              ],
-              "flags_raw": 1280
             }
           ]
         },

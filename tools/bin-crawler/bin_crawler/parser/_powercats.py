@@ -11,7 +11,6 @@ Format per record:
   string_array powersets
 """
 
-from pathlib import Path
 from ._reader import open_parse7
 from ._dataclasses import PowercatRecord
 
@@ -19,8 +18,10 @@ from ._dataclasses import PowercatRecord
 def parse_powercats(bin_path_or_data) -> list[PowercatRecord]:
     r = open_parse7(bin_path_or_data)
 
-    # Data block: u4 size, then u4 count + records
-    block_size = r.read_u4()
+    # Data block: u4 size, then u4 count + records.
+    # `_block_size` is unused BY NAME and load-bearing BY POSITION — read_u4 advances the
+    # cursor four bytes. Removing the line misaligns every record that follows.
+    _block_size = r.read_u4()
     count = r.read_u4()
 
     records = []

@@ -1,21 +1,21 @@
 {
   "schema": "bin-crawler-export-manifest/3",
-  "incarnate_recipes_fingerprint": "a8470cb470f7c4e0752049f15ef787e9a003011d20b7d40520fdbb054896c7ed",
+  "incarnate_recipes_fingerprint": "a8185cf1de4041b05f40ee63c65032823dc6a0e1da69174265fa81529343ed6e",
   "source": {
     "assets_dir": "/home/jiiwii/.wine/drive_c/Games/Homecoming/assets/beta",
     "shard": "beta",
     "sources": [
       {
         "name": "bin.pigg",
-        "bytes": 11351074,
-        "modified": "2026-09-18T17:02:12Z",
-        "sha256": "21f2ee6fc462c6252f8e99eef2bde572ab110c7536a69400f803d837fea54946"
+        "bytes": 11351569,
+        "modified": "2026-09-28T13:49:57Z",
+        "sha256": "0b0cca9fb6a84aa959efcddba97d7c1be4b4569165d95c308fe8af9c33df1f5c"
       },
       {
         "name": "bin_fxinfo.pigg",
-        "bytes": 3760331,
-        "modified": "2026-09-18T17:02:12Z",
-        "sha256": "287f455b0e2b7cdfa62954335668de28e68d50369454ec0ca5bb365e71963c8d"
+        "bytes": 3760626,
+        "modified": "2026-09-28T13:49:57Z",
+        "sha256": "8f2a4365e50dd02ade081b90da8091226d4632f14583950c4180dde62ec72f4e"
       },
       {
         "name": "bin_minimap.pigg",
@@ -31,9 +31,9 @@
       },
       {
         "name": "bin_powers.pigg",
-        "bytes": 5375117,
-        "modified": "2026-09-18T17:02:12Z",
-        "sha256": "72fd7abc90b22852999a1e07cd78eb515de28dd8a86a46ff7d5767f0208a39e1"
+        "bytes": 5375652,
+        "modified": "2026-09-28T13:49:57Z",
+        "sha256": "659136b7c3d64312fa38a9597dcaf1975fcce97e6beb7230fb79f4e7532dbd08"
       },
       {
         "name": "bin_sequencers.pigg",

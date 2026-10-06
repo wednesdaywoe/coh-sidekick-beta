@@ -5,8 +5,9 @@ registry exists because a path typed at the command line is the one input
 nothing downstream can check: an export from the wrong tree is internally
 self-consistent, so it passes the staleness guard, converter validation and the
 contract totals alike (DATA-GAP-REGISTER PROV-1). Naming trees instead of
-typing paths removes the typo from the loop, and `src/data/export-provenance.test.ts`
-holds every committed manifest to the path this registry names.
+typing paths removes the typo from the loop, and the `provenance` check in
+`tools/export-integrity.py` holds every committed manifest to the path this
+registry names.
 
 `--source <dataset>[:<ring>]` on each exporter resolves through here. Rings
 other than `exportable_ring` resolve fine — reading the open beta to see what a
@@ -78,6 +79,30 @@ def _dataset(dataset: str) -> dict:
 def _expand(path: str) -> Path:
     """Registry paths may be written home-relative so one entry fits any user."""
     return Path(os.path.expanduser(path))
+
+
+def _comparable(path: str | Path) -> str:
+    """A tree path in the one spelling comparisons may use: symlinks followed.
+
+    BOTH sides of every path-vs-registry comparison go through here. Resolving
+    only the ARGUMENT was the original bug: where an install sits behind a
+    symlink (this workstation has `~/Games` -> `/mnt/games-1tb/Games`), the
+    registry side kept the `~` spelling, so no Sweet Tea path matched either
+    side and `rejection_reason` stopped rejecting the `piggs` decoy under BOTH
+    spellings while Homecoming's traps, whose root has no symlink, kept firing.
+    That is schema 1's disease by another route: a trap that quietly stops
+    rejecting when the workstation changes.
+
+    Resolution is applied to the COMPOSED path, not just the root, so a symlink
+    anywhere along it cannot reintroduce the mismatch. `resolve()` is
+    non-strict, so a root belonging to another workstation still normalises to
+    a comparable absolute path instead of raising.
+
+    Deliberately not folded into `_expand`: `root()` and `canonical_path()`
+    feed error messages and the `assets_dir` an exporter stamps, and those must
+    keep the registry's own spelling rather than shift to this machine's mount.
+    """
+    return Path(os.path.expanduser(str(path))).resolve().as_posix()
 
 
 def _roots(dataset: str) -> list[dict]:
@@ -185,10 +210,10 @@ def rejection_reason(path: str | Path) -> str | None:
     the live rings, and the Sweet Tea `piggs` folder resolves `powers.bin` while
     holding an unrelated corpus.
     """
-    resolved = Path(path).resolve().as_posix()
+    resolved = _comparable(path)
     for _, entry, base in _all_roots():
         for subpath, reason in entry.get("rejected_subpaths", {}).items():
-            if (base / subpath).as_posix() == resolved:
+            if _comparable(base / subpath) == resolved:
                 return reason
     return None
 
@@ -200,9 +225,9 @@ def canonical_path(dataset: str) -> str:
 
 def dataset_for_path(path: str | Path) -> tuple[str, str] | None:
     """The ``(dataset, ring)`` this tree is, or None if the registry omits it."""
-    resolved = Path(path).resolve().as_posix()
+    resolved = _comparable(path)
     for name, entry, base in _all_roots():
         for ring, ring_entry in entry["rings"].items():
-            if (base / ring_entry["subpath"]).as_posix() == resolved:
+            if _comparable(base / ring_entry["subpath"]) == resolved:
                 return name, ring
     return None

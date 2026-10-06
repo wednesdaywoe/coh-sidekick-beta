@@ -55,7 +55,9 @@ def _read_level_array(reader, field_name: str) -> list[int]:
     if len(values) > _MAX_PLAUSIBLE_COUNT:
         raise ValueError(
             f"implausible {field_name} count {len(values)} — misaligned read")
-    for previous, current in zip(values, values[1:]):
+    # strict=False is the pairwise idiom, not a truncation: the second operand is the same
+    # list offset by one, so it is shorter by exactly one by construction.
+    for previous, current in zip(values, values[1:], strict=False):
         if current < previous:
             raise ValueError(
                 f"{field_name} levels not sorted ascending ({values}) — "

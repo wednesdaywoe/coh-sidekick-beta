@@ -9,22 +9,23 @@ For each player power:
 
 Usage:
   py -3 audit_stack_alignment.py [--assets-dir G:/Homecoming/assets/live]
-                                 [--defs-dir "C:/Projects/CoH-Planner/raw defs"]
+                                 [--defs-dir "<reference tree>/raw defs"]
                                  [--limit N]
 """
 
 import argparse
 import re
 import sys
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+import refdata
 from bin_crawler.parser._powers import parse_powers
 from bin_crawler.parser._pigg import BinResolver
 from bin_crawler.assets_dir import resolve_assets_dir
-from bin_crawler.parser._enums import ATTRIB_MOD_STACK
 
 
 # Map .def kStack* names to the parser's enum string labels
@@ -213,9 +214,11 @@ def compare(defs_map: dict[str, list[dict]], powers, *, limit: int) -> dict:
         # Flatten parser templates (recursive — effect groups can contain
         # child effect groups with their own templates).
         parser_templates = []
+        # noqa B023: `_walk` is redefined each iteration and invoked immediately below,
+        # so it always appends to the list built in its own iteration.
         def _walk(eg):
             for t in eg.templates:
-                parser_templates.append(t)
+                parser_templates.append(t)  # noqa: B023
             for child in getattr(eg, 'child_groups', []):
                 _walk(child)
         for eg in pw.effects:
@@ -235,7 +238,8 @@ def compare(defs_map: dict[str, list[dict]], powers, *, limit: int) -> dict:
                 })
             # Skip — can't safely zip mismatched counts
             continue
-        for d, t in zip(def_mods, parser_templates):
+        # strict=True: the unequal-length case is counted and `continue`d above.
+        for d, t in zip(def_mods, parser_templates, strict=True):
             matched_mods += 1
             if d['stack_type'] is None:
                 # Def didn't specify (unlikely); skip
@@ -317,7 +321,10 @@ def main():
                     help='Assets directory; omit to use the remembered path or a folder picker')
     ap.add_argument('--pick', action='store_true',
                     help='Open a folder picker to choose/change the assets directory')
-    ap.add_argument('--defs-dir', default=r'C:\Projects\CoH-Planner\raw defs')
+    # Was a hardcoded C:\ path until 2026-09-24, i.e. right on one Windows box and
+    # broken everywhere else. Resolved through refdata now, same as the two gates.
+    ap.add_argument('--defs-dir', default=str(refdata.raw_defs(required=False)),
+                    help='The `raw defs/` .powers oracle; overrides COH_RAW_DEFS')
     ap.add_argument('--limit', type=int, default=10,
                     help='Max example mismatches to print')
     args = ap.parse_args()
@@ -353,7 +360,8 @@ def main():
         parser_templates = [t for eg in pw.effects for t in eg.templates]
         if len(def_mods) != len(parser_templates):
             continue
-        for d, t in zip(def_mods, parser_templates):
+        # strict=True: the unequal-length case is skipped two lines above.
+        for d, t in zip(def_mods, parser_templates, strict=True):
             if d['stack_type'] is None:
                 continue
             expected = DEF_STACK_TO_LABEL.get(d['stack_type'], d['stack_type'])

@@ -6,7 +6,7 @@
   "display_name": "Knockout Blow",
   "display_fullname": "Brute Melee Super Strength Knockout Blow",
   "display_help": "You can perform a Knockout Blow on your opponent. This punch does extreme damage, and has a great chance of Holding your target.<br><br>While <color #FF7F27>Rage</color> is active, up to two nearby opponents will also be <color #FF7F27>smashed </color>by this attack, being damaged and possibly knocked down.",
-  "display_short_help": "Melee, DMG(Smash), Foe Hold, Self +Res DMG",
+  "display_short_help": "Melee, DMG(Smash), Foe Hold, KnockUp",
   "icon": "superstrength_knockoutblow.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,

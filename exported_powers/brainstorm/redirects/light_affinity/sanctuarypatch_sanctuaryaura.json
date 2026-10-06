@@ -102,10 +102,9 @@
             "conditional_fx": null
           },
           "flags": [
-            "IgnoreResistance",
-            "KeepThroughDeath"
+            "IgnoreResistance"
           ],
-          "flags_raw": 17440
+          "flags_raw": 1056
         },
         {
           "attribs": [
@@ -145,10 +144,9 @@
             "conditional_fx": "PFX"
           },
           "flags": [
-            "IgnoreResistance",
-            "KeepThroughDeath"
+            "IgnoreResistance"
           ],
-          "flags_raw": 17440
+          "flags_raw": 1056
         },
         {
           "attribs": [

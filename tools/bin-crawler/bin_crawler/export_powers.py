@@ -12,8 +12,6 @@ Usage:
 """
 
 import argparse
-import json
-import os
 import re
 import sys
 from dataclasses import asdict
@@ -26,7 +24,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from bin_crawler.parser._powers import (
     parse_powers, detect_dataset_flavor, resolve_attrib_thunderspy)
 from bin_crawler.parser._powersets import parse_powersets
-from bin_crawler.parser._powercats import parse_powercats
 from bin_crawler.parser._classes import parse_classes, player_class_names
 from bin_crawler.parser._boostsets import parse_boostsets, build_power_category_index
 from bin_crawler.parser._dim_returns import parse_dim_returns, parse_boost_effect
@@ -39,7 +36,7 @@ from bin_crawler._export_fingerprint import parser_fingerprint
 from bin_crawler._export_digest import ExportTree
 from bin_crawler.path_safety import safe_path_component
 from bin_crawler.parser._enums import (
-    POWER_TYPE, EFFECT_AREA, PVP_FLAG, CASTABLE_AFTER_DEATH,
+    POWER_TYPE, EFFECT_AREA, CASTABLE_AFTER_DEATH,
     SHOW_POWER_SETTING,
     BOOST_TYPE, BOOST_TYPE_REBIRTH,
     ATTRIB_NAME, ATTRIB_NAME_REBIRTH, ATTRIB_NAME_THUNDERSPY,
@@ -922,7 +919,11 @@ def main():
             # not just short names. Keys are folded to lower case because
             # powers.bin and powersets.bin disagree on case for some powers
             # (see _write_power_tree) and the game matches case-insensitively.
-            for pw_name, avail in zip(ps.powers, ps.available):
+            # strict=True: _powersets.parse_powersets already raises when these two lists
+            # disagree in length, so this can only fire if that check is ever removed —
+            # at which point availability would otherwise go missing for the tail of the
+            # set without a word.
+            for pw_name, avail in zip(ps.powers, ps.available, strict=True):
                 ps_available[pw_name.lower()] = avail
         print(f'  {len(ps_records)} powersets loaded.', flush=True)
 
@@ -1044,8 +1045,8 @@ def main():
 
     # Stamp the export-staleness manifest. This records the fingerprint of the
     # powers-exporter SOURCE that produced this tree, so a later parser change
-    # that ships without a matching re-export is caught by the JS/vitest guard
-    # (src/data/export-staleness.test.ts) — CI can't re-run this Python export
+    # that ships without a matching re-export is caught by the staleness check
+    # in tools/export-integrity.py — CI can't re-run this Python export
     # (no .pigg) so the fingerprint is the only cross-check. See
     # bin_crawler/_export_fingerprint.py. Skip when the user exported a category
     # SUBSET (`--categories`): a partial tree must not claim whole-dataset
@@ -1084,11 +1085,11 @@ def main():
                      'disagrees with the current committed exporter source, '
                      'THIS tree is stale — re-run export_powers for this '
                      'dataset and commit. Guarded by '
-                     'src/data/export-staleness.test.ts. `source` names the '
+                     'audit:export-integrity (staleness). `source` names the '
                      'assets shard the bytes were read from; guarded by '
-                     'src/data/export-provenance.test.ts. `content_digest` is '
+                     'audit:export-integrity (provenance). `content_digest` is '
                      'the sha256 of the bytes this export WROTE; guarded by '
-                     'src/data/export-contents.test.ts.'),
+                     'audit:export-integrity (contents).'),
             'parser_fingerprint': parser_fingerprint(),
             'source': resolver.provenance(),
             'content_digest': tree.digest(),

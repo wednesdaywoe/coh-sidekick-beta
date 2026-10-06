@@ -1,10 +1,9 @@
 """Exporter source fingerprints — the anchor of the export-staleness guard.
 
 `exported_powers/<dataset>/` (and its `tables/` subtree) is produced by the
-Python bin parser reading the gitignored `.pigg` archives. CI has neither the
-archives nor Python, so unlike `src/data/datasets/*/generated/` (which
-regenerates from committed `exported_powers/`), these exports CANNOT be
-regenerate-and-diffed in CI.
+Python bin parser reading the gitignored `.pigg` archives. CI has no archives,
+so unlike `src/data/datasets/*/generated/` (which regenerates from committed
+`exported_powers/`), these exports CANNOT be regenerate-and-diffed in CI.
 
 The failure this closes: a change to the parser (e.g. `_powers.py`,
 `_classes.py`) that ships WITHOUT a matching re-export, so the committed JSON is
@@ -16,11 +15,14 @@ forward.
 
 The guard: each exporter (`export_powers.py`, `export_classes.py`,
 `export_entities.py`, `export_salvage.py`) stamps its output dir with a manifest
-recording that exporter's SOURCE fingerprint at export time. A JS/vitest guard
-(`src/data/export-staleness.test.ts`) recomputes
-the same hash from the committed sources and asserts every dataset's manifest
-matches. If the parser changed but a dataset was not re-exported, its recorded
-fingerprint diverges from the current source and the guard goes red; the only
+recording that exporter's SOURCE fingerprint at export time. The guard that
+grades them is `tools/export-integrity.py` (`npm run audit:export-integrity`),
+whose `staleness` check recomputes the same hash from the committed sources and
+asserts every dataset's manifest matches. It is not a CI job: it runs locally,
+and as the FIRST step of `scripts/regen-all.cjs`, ahead of every converter that
+treats the export as ground truth. If the parser changed but a dataset was not
+re-exported, its recorded fingerprint diverges from the current source and the
+guard goes red; the only
 way to make it green is to actually re-export (which re-stamps).
 
 Scope: every `.py` in the package — `parser/**/*.py`, the exporter entry
@@ -66,13 +68,17 @@ The salvage surface (`export_salvage.py` → HC-only
 
 The manifest carries a second, independent record alongside these fingerprints:
 `source`, the assets tree the bytes were read from (`BinResolver.provenance()`,
-guarded by `src/data/export-provenance.test.ts`). A fingerprint says which
-exporter ran; it cannot say what it was pointed at — DATA-GAP-REGISTER PROV-1.
+graded by the `provenance` check in `tools/export-integrity.py`). A fingerprint
+says which exporter ran; it cannot say what it was pointed at —
+DATA-GAP-REGISTER PROV-1.
 
-The JS side (`export-staleness.test.ts`) MUST replicate this algorithm byte for
-byte: sorted (posix-relpath-from-bin_crawler, file-bytes) folded into sha256 as
-`relpath\0content\0` per file. Keep the two in lockstep — a divergence surfaces
-loudly as a permanently-red guard, never a silent gap.
+The algorithm: sorted (posix-relpath-from-bin_crawler, file-bytes) folded into
+sha256 as `relpath\\0content\\0` per file. There is deliberately no second
+implementation to keep in lockstep. This module used to require one — a
+TypeScript twin that "MUST replicate this algorithm byte for byte", warning that
+a divergence would surface as a permanently-red guard. That twin was never
+written. `tools/export-integrity.py` imports `_fold` from here instead, which
+deletes the failure mode rather than managing it.
 """
 from __future__ import annotations
 
@@ -90,8 +96,9 @@ def _fold(entries: list[tuple[str, bytes]]) -> str:
     not pre-sort. This is THE "hash a set of files" primitive for the package:
     `_export_digest.ExportTree` folds an export's OUTPUT with it, the
     fingerprints below fold the exporter's SOURCE with it, and
-    `src/data/export-staleness.test.ts` + `src/data/export-contents.test.ts`
-    replicate it in TS. One algorithm, four call sites, no drift.
+    `tools/export-integrity.py` imports it to re-fold both sides when it grades
+    the committed manifests. One algorithm, three call sites, and no second
+    implementation to drift against.
     """
     ordered = sorted(entries, key=lambda e: e[0])
     h = hashlib.sha256()

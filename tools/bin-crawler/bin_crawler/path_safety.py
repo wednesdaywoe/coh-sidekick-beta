@@ -8,9 +8,10 @@ nothing hashes, so the write leaves no trace to find afterwards either.
 
 Wired into `_write_power_tree` at two call sites, and WHAT THAT COST is the part
 worth reading. `_export_fingerprint.py` hashes `export_powers.py` byte for byte
-and `src/data/export-staleness.test.ts` asserts every dataset's recorded
-fingerprint equals the current source's, so adding the import declared all four
-committed exports stale and the only green path back was re-running the export
+and the `staleness` check in `tools/export-integrity.py` asserts every
+dataset's recorded fingerprint equals the current source's, so adding the import
+declared all four committed exports stale and the only green path back was
+re-running the export
 from the gitignored `.pigg` archives. That was done: the wiring is provably
 inert, zero of the 79,297 committed power files moved, and the whole diff is
 this call plus a fingerprint bump in fourteen manifests.

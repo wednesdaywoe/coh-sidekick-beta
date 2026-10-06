@@ -837,6 +837,19 @@ ATTRIB_MOD_CASTER_STACK: dict[int, str] = {
     1: "Collective",
 }
 
+# FINDING (2026-09-26). NOTHING READS THIS TABLE. It was imported by
+# `_powers.py` and by `export_powers.py` and used by neither; the lint gate added that day
+# found both imports and they are gone, which leaves the table with no reader at all.
+#
+# The three strings themselves are very much alive — `is_pvp` is exported on every effect
+# group as exactly this tri-state. They are just spelled somewhere else each time: as three
+# module constants in `_requires.py`, as a comment on `EffectGroup.is_pvp` in
+# `_dataclasses.py`, and as bare literals at roughly ten sites in `_powers.py`. So the
+# lookup that looks like the authority is the one copy nobody consults.
+#
+# Left standing rather than deleted. The raw flag it decodes is read from the bin as an
+# integer, and whether the branches in `_powers.py` cover the same three values this table
+# does is a question for a re-export and the oracle, not for an edit.
 PVP_FLAG: dict[int, str] = {
     0: "EITHER",
     1: "PVE_ONLY",

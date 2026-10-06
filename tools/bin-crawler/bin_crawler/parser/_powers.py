@@ -18,19 +18,18 @@ Auto-detected via _detect_field_41b.
 
 import struct
 from collections import Counter
-from pathlib import Path
 from typing import NamedTuple
 from ._reader import open_parse7, BinReader, Parse6BinReader
 from ._dataclasses import PowerRecord, EffectGroup, EffectTemplate
 from ._gate_default import evaluate as gate_evaluate
 from ._requires import entity_scope
 from ._enums import (
-    BOOST_TYPE, BOOST_TYPE_REBIRTH, ATTRIB_NAME, ATTRIB_NAME_REBIRTH,
+    BOOST_TYPE, BOOST_TYPE_REBIRTH, ATTRIB_NAME,
     EVENT_NAME, EVENT_NAME_PARSE6, resolve_attrib,
     resolve_attrib_rebirth, select_event_table, event_id_from_name,
     ATTRIB_MOD_TYPE, ATTRIB_MOD_ASPECT, ATTRIB_MOD_APPLICATION,
     ATTRIB_MOD_TARGET, ATTRIB_MOD_STACK, ATTRIB_MOD_CASTER_STACK,
-    PVP_FLAG, KNOCK_VEC_POSITION, NOTIFY_EVENT,
+    KNOCK_VEC_POSITION, NOTIFY_EVENT,
     SPECIAL_ATTRIB_MIN_REBIRTH,
     special_attrib_table, select_special_attrib_base, thunderspy_attrib_table,
 )
@@ -207,8 +206,8 @@ def _warn_dropped(full_name: str, reason: str) -> None:
     if len(_dropped_powers) <= _DROP_WARN_CAP:
         print(f"  Warning: {full_name or '<unknown power>'}: {reason}", file=sys.stderr)
     elif len(_dropped_powers) == _DROP_WARN_CAP + 1:
-        print(f"  Warning: … further dropped-data warnings suppressed "
-              f"(see total at end)", file=sys.stderr)
+        print("  Warning: … further dropped-data warnings suppressed "
+              "(see total at end)", file=sys.stderr)
 
 
 def _note_chances(full_name: str, group_chance: float, templates) -> None:
@@ -310,7 +309,9 @@ def parse_powers(bin_path_or_data, *, player_classes=()) -> list[PowerRecord]:
     r = open_parse7(bin_path_or_data)
     is_parse6 = isinstance(r, Parse6BinReader)
 
-    block_size = r.read_u4()
+    # Unused by name, load-bearing by position: read_u4 advances the cursor. See the same
+    # note in _powercats.py — deleting this line misaligns every power that follows.
+    _block_size = r.read_u4()
     count = r.read_u4()
 
     if is_parse6:
@@ -3604,7 +3605,11 @@ def _parse_effect_template_parse6(r: BinReader, *, thunderspy: bool = False) -> 
     else:
         params = _parse6_tail_params(tail)
         suppress_events = tail["suppress"]
-        for (name, bit, second_word), value in zip(_PARSE6_TAIL_BOOL_FLAGS, tail["bools"]):
+        # strict=True is free here and worth having: `bools` is read as exactly
+        # len(_PARSE6_TAIL_BOOL_FLAGS) u4s (see _parse6_tail_params), so a mismatch means
+        # the tail layout moved and silently dropping the last flags would be the worst
+        # available outcome.
+        for (name, bit, second_word), value in zip(_PARSE6_TAIL_BOOL_FLAGS, tail["bools"], strict=True):
             if not value:
                 continue
             flags.append(name)

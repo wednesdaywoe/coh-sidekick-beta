@@ -207,10 +207,9 @@
           "stack_limit": 2,
           "stack_key": null,
           "flags": [
-            "IgnoreResistance",
-            "KeepThroughDeath"
+            "IgnoreResistance"
           ],
-          "flags_raw": 17440
+          "flags_raw": 1056
         }
       ]
     }

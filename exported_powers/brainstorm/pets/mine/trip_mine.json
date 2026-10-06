@@ -1,25 +1,25 @@
 {
-  "name": "FlashPulse",
-  "full_name": "Pets.Traps_Seeker.FlashPulse",
-  "short_name": "FlashPulse",
+  "name": "Trip_Mine",
+  "full_name": "Pets.Mine.Trip_Mine",
+  "short_name": "Trip_Mine",
   "type": "Click",
-  "display_name": "FlashPulse",
-  "display_fullname": "Pets Traps Seeker FlashPulse",
-  "display_help": "The Seeker Drone has exploded near you. You feel Disoriented and cannot focus. Your Accuracy, Damage and Perception have been reduced.<br><br><color #fcfc95>Notes: FlashPulse is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Recharge: Extremely Long.</color>",
-  "display_short_help": "Disorient, -DMG, -ACC, -Perception",
-  "icon": "traps_droppedaoedebuffdamage.png",
+  "display_name": "Trip Mine",
+  "display_fullname": "Pets Mine Trip Mine",
+  "display_help": "All foes that pass near this Trip Mine will get blown to smithereens.<br><br><color #fcfc95>Notes: Trip Mine is unaffected by Recharge Time changes.</color><br><br><color #fcfc95>Damage: Extreme.</color><br><color #fcfc95>Recharge: Extremely Long.</color>",
+  "display_short_help": "AoE Lethal/Fire, Knockback",
+  "icon": "darkmiasma_tarpatch.png",
   "auto_issue": false,
   "auto_issue_keeps_level": false,
   "free": false,
   "accuracy": 1.2,
   "effect_area": "Sphere",
   "max_targets_hit": 16,
-  "radius": 15.0,
+  "radius": 12.0,
   "arc": 0.0,
   "range": 0.0,
   "range_secondary": 0.0,
   "activation_time": 0.0,
-  "recharge_time": 1000.0,
+  "recharge_time": 20.0,
   "activate_period": 0.0,
   "endurance_cost": 0.0,
   "interrupt_time": 0.0,
@@ -32,8 +32,8 @@
     "Foe"
   ],
   "boosts_allowed": [
-    "Stun",
-    "Debuff_ToHit",
+    "Recharge",
+    "Knockback",
     "Damage",
     "Accuracy"
   ],
@@ -47,7 +47,7 @@
   "slot_requires": [],
   "attack_types": [
     112,
-    132
+    124
   ],
   "effects": [
     {
@@ -66,14 +66,14 @@
       "templates": [
         {
           "attribs": [
-            "Energy_Dmg"
+            "Fire_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Absolute",
           "target": "AnyAffected",
           "table": "Melee_Damage",
-          "scale": 0.38,
+          "scale": 2.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -89,8 +89,8 @@
           "stack_limit": 2,
           "stack_key": null,
           "messages": {
-            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Energy damage.",
-            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Energy damage.",
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage.",
             "display_float": null,
             "display_attrib_defense_float": null,
             "display_info": null
@@ -99,15 +99,15 @@
         },
         {
           "attribs": [
-            "ToHit"
+            "Lethal_Dmg"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Current",
+          "aspect": "Absolute",
           "target": "AnyAffected",
-          "table": "Melee_DeBuff_ToHit",
+          "table": "Melee_Damage",
           "scale": 1.0,
-          "duration": "40 seconds",
+          "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -118,90 +118,44 @@
           "tick_mag_additive": 0.0,
           "jit_requires": [],
           "caster_stack": "Individual",
-          "stack": "Replace",
+          "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": "GENERICCONTINUING/DEBUFFTOHITCONTINUING.FX",
-            "conditional_bits": [],
-            "conditional_fx": null
+          "messages": {
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Lethal damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Lethal damage.",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
           },
           "flags_raw": 1280
-        },
-        {
-          "attribs": [
-            "Smashing_Dmg",
-            "Lethal_Dmg",
-            "Fire_Dmg",
-            "Cold_Dmg",
-            "Energy_Dmg",
-            "Negative_Energy_Dmg",
-            "Psionic_Dmg",
-            "Toxic_Dmg"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Strength",
-          "target": "AnyAffected",
-          "table": "Melee_Debuff_Dam",
-          "scale": 2.0,
-          "duration": "40 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": "GENERICCONTINUING/DEBUFFDAMAGECONTINUING.FX",
-            "conditional_bits": [],
-            "conditional_fx": null
-          },
-          "flags": [
-            "IgnoreStrength"
-          ],
-          "flags_raw": 1296
         }
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
       "radius_outer": -1.0,
-      "requires_expression": [
-        "enttype",
-        "target>",
-        "critter",
-        "eq"
-      ],
+      "requires_expression": [],
       "tags": [],
       "flags": [],
       "is_pvp": "EITHER",
-      "requires_pv": "PVE_ONLY",
+      "requires_pv": "EITHER",
       "requires_default": "SATISFIED",
       "eval_flags": 0,
       "templates": [
         {
           "attribs": [
-            "Stunned"
+            "Fire_Dmg"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
-          "aspect": "Current",
+          "aspect": "Absolute",
           "target": "AnyAffected",
-          "table": "Melee_Stun",
-          "scale": 6.0,
+          "table": "Melee_Damage",
+          "scale": 1.0,
           "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
@@ -217,50 +171,18 @@
           "stack_limit": 2,
           "stack_key": null,
           "messages": {
-            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
-            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_attacker_hit": "You hit {PlayerDest} with your {PowerName} for {Damage} points of Fire damage.",
+            "display_victim_hit": "{PlayerSource} hits you with their {PowerName} for {Damage} points of Fire damage.",
             "display_float": null,
             "display_attrib_defense_float": null,
             "display_info": null
           },
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": null,
-            "conditional_bits": [],
-            "conditional_fx": "PFX"
-          },
-          "flags_raw": 2560
-        },
-        {
-          "attribs": [
-            "PerceptionRadius"
-          ],
-          "type": "Magnitude",
-          "application_type": "OnTick",
-          "aspect": "Current",
-          "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": -0.9,
-          "duration": "40 seconds",
-          "magnitude": 1.0,
-          "delay": 0.0,
-          "duration_expression": [],
-          "magnitude_expression": [],
-          "application_period": 0.0,
-          "tick_chance": 1.0,
-          "tick_mag_multiplier": 1.0,
-          "tick_mag_additive": 0.0,
-          "jit_requires": [],
-          "caster_stack": "Individual",
-          "stack": "Replace",
-          "stack_limit": 2,
-          "stack_key": null,
           "flags_raw": 1280
         }
       ]
     },
     {
-      "chance": 1.0,
+      "chance": 0.5,
       "ppm": 0.0,
       "delay": 0.0,
       "radius_inner": -1.0,
@@ -280,16 +202,16 @@
       "templates": [
         {
           "attribs": [
-            "Stunned"
+            "Knockback"
           ],
-          "type": "Duration",
+          "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
-          "table": "Melee_PvPMez",
+          "table": "Melee_Knockback",
           "scale": 1.0,
           "duration": "0 seconds",
-          "magnitude": 2.0,
+          "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
           "magnitude_expression": [],
@@ -303,63 +225,54 @@
           "stack_limit": 2,
           "stack_key": null,
           "messages": {
-            "display_attacker_hit": "You Stun {PlayerDest} with your {PowerName}.",
-            "display_victim_hit": "{PlayerSource} Stuns you with their {PowerName}.",
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
             "display_float": null,
             "display_attrib_defense_float": null,
             "display_info": null
           },
-          "fx": {
-            "continuing_bits": [],
-            "continuing_fx": null,
-            "conditional_bits": [],
-            "conditional_fx": "PFX"
-          },
           "suppress_events": [
             {
-              "event": "Stunned",
-              "event_id": 23,
-              "duration": 15.0,
-              "always": 0
-            },
-            {
-              "event": "Immobilized",
-              "event_id": 24,
-              "duration": 15.0,
-              "always": 0
-            },
-            {
-              "event": "Held",
-              "event_id": 25,
-              "duration": 15.0,
-              "always": 0
-            },
-            {
-              "event": "Sleep",
-              "event_id": 26,
-              "duration": 15.0,
-              "always": 0
-            },
-            {
-              "event": "Terrorized",
-              "event_id": 27,
-              "duration": 15.0,
+              "event": "Knocked",
+              "event_id": 34,
+              "duration": 10.0,
               "always": 0
             }
           ],
-          "flags_raw": 2560
-        },
+          "flags_raw": 1280
+        }
+      ]
+    },
+    {
+      "chance": 0.5,
+      "ppm": 0.0,
+      "delay": 0.0,
+      "radius_inner": -1.0,
+      "radius_outer": -1.0,
+      "requires_expression": [
+        "enttype",
+        "target>",
+        "critter",
+        "eq"
+      ],
+      "tags": [],
+      "flags": [],
+      "is_pvp": "EITHER",
+      "requires_pv": "PVE_ONLY",
+      "requires_default": "SATISFIED",
+      "eval_flags": 0,
+      "templates": [
         {
           "attribs": [
-            "PerceptionRadius"
+            "Knockback"
           ],
           "type": "Magnitude",
           "application_type": "OnTick",
           "aspect": "Current",
           "target": "AnyAffected",
-          "table": "Melee_Ones",
-          "scale": -0.9,
-          "duration": "20 seconds",
+          "table": "Melee_Knockback",
+          "scale": 1.0,
+          "duration": "0 seconds",
           "magnitude": 1.0,
           "delay": 0.0,
           "duration_expression": [],
@@ -370,12 +283,16 @@
           "tick_mag_additive": 0.0,
           "jit_requires": [],
           "caster_stack": "Individual",
-          "stack": "Replace",
+          "stack": "Stack",
           "stack_limit": 2,
           "stack_key": null,
-          "cancel_events": [
-            "Damaged"
-          ],
+          "messages": {
+            "display_attacker_hit": "You knock {PlayerDest} off their feet with your {PowerName}!",
+            "display_victim_hit": "{PlayerSource} knocks you off your feet with their {PowerName}!",
+            "display_float": null,
+            "display_attrib_defense_float": null,
+            "display_info": null
+          },
           "flags_raw": 1280
         }
       ]
@@ -386,5 +303,5 @@
     "RechargeTime"
   ],
   "available_level": 0,
-  "powerset": "Pets.Traps_Seeker"
+  "powerset": "Pets.Mine"
 }

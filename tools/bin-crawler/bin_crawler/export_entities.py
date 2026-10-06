@@ -24,7 +24,6 @@ Defaults: --assets-dir G:/Homecoming/assets/live, output to
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
@@ -227,18 +226,18 @@ def main():
     # fingerprint is the only cross-check that this tree was produced by the
     # currently-committed entities exporter and not left stale after a parser edit
     # (the INHERENT-3 residual after WS3 guarded `tables/`). Guarded by
-    # src/data/export-staleness.test.ts. See _export_fingerprint.py.
+    # audit:export-integrity (staleness). See _export_fingerprint.py.
     manifest = {
         'schema': 'bin-crawler-export-manifest/3',
         'note': ('entities_fingerprint is the sha256 of the entities exporter '
                  '(every .py in bin_crawler) at export time. If it disagrees '
                  'with the current committed exporter source, THIS entities/ '
                  'tree is stale — re-run export_entities for this dataset and '
-                 'commit. Guarded by src/data/export-staleness.test.ts. '
+                 'commit. Guarded by audit:export-integrity (staleness). '
                  '`source` names the assets shard the bytes were read from; '
-                 'guarded by src/data/export-provenance.test.ts. '
+                 'guarded by audit:export-integrity (provenance). '
                  '`content_digest` is the sha256 of the bytes this export '
-                 'WROTE; guarded by src/data/export-contents.test.ts.'),
+                 'WROTE; guarded by audit:export-integrity (contents).'),
         'entities_fingerprint': entities_fingerprint(),
         'source': resolver.provenance(),
         'content_digest': tree.digest(),

@@ -20,7 +20,6 @@ Defaults: --assets-dir G:/Homecoming/assets/live, output to
 import argparse
 import json
 import sys
-from dataclasses import asdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -155,18 +154,18 @@ def main():
     # `tables/` tree can't be regenerate-and-diffed there; the fingerprint is the
     # only cross-check that this tree was produced by the currently-committed
     # classes exporter and not left stale after a parser edit (the WS3 gap).
-    # Guarded by src/data/export-staleness.test.ts. See _export_fingerprint.py.
+    # Guarded by audit:export-integrity (staleness). See _export_fingerprint.py.
     manifest = {
         'schema': 'bin-crawler-export-manifest/3',
         'note': ('classes_fingerprint is the sha256 of the classes exporter '
                  '(every .py in bin_crawler) at export time. If it disagrees '
                  'with the current committed exporter source, THIS tables/ tree '
                  'is stale — re-run export_classes for this dataset and commit. '
-                 'Guarded by src/data/export-staleness.test.ts. `source` names '
+                 'Guarded by audit:export-integrity (staleness). `source` names '
                  'the assets shard the bytes were read from; guarded by '
-                 'src/data/export-provenance.test.ts. `content_digest` is the '
+                 'audit:export-integrity (provenance). `content_digest` is the '
                  'sha256 of the bytes this export WROTE; guarded by '
-                 'src/data/export-contents.test.ts.'),
+                 'audit:export-integrity (contents).'),
         'classes_fingerprint': classes_fingerprint(),
         'source': resolver.provenance(),
         'content_digest': tree.digest(),

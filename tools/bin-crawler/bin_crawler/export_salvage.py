@@ -12,7 +12,6 @@ Usage:
   py -3 -m bin_crawler.export_salvage [--assets-dir DIR] [--output DIR]
 """
 import argparse
-import json
 import sys
 from dataclasses import asdict
 from pathlib import Path
@@ -72,7 +71,7 @@ def main():
     # not left stale after a parser edit (the INHERENT-3 residual after WS-ENT
     # guarded `entities/`). Salvage is HC-only, so this runs only where salvage.bin
     # exists — the early-return above skips it for Rebirth/Thunderspy, which carry
-    # no manifest. Guarded by src/data/export-staleness.test.ts. See
+    # no manifest. Guarded by audit:export-integrity (staleness). See
     # _export_fingerprint.py.
     manifest = {
         "schema": "bin-crawler-export-manifest/3",
@@ -80,11 +79,11 @@ def main():
                  "(every .py in bin_crawler) at export time. If it disagrees "
                  "with the current committed exporter source, THIS salvage.json "
                  "is stale — re-run export_salvage and commit. Guarded by "
-                 "src/data/export-staleness.test.ts. `source` names the assets "
+                 "audit:export-integrity (staleness). `source` names the assets "
                  "shard the bytes were read from; guarded by "
-                 "src/data/export-provenance.test.ts. `content_digest` is the "
+                 "audit:export-integrity (provenance). `content_digest` is the "
                  "sha256 of the bytes this export WROTE; guarded by "
-                 "src/data/export-contents.test.ts."),
+                 "audit:export-integrity (contents)."),
         "salvage_fingerprint": salvage_fingerprint(),
         "source": resolver.provenance(),
         "content_digest": tree.digest(),

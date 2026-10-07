@@ -16,6 +16,7 @@
  *   npm run changelog:push -- --force-backlog  # post every entry, even historical ones
  *
  * The webhook URL is read from DISCORD_CHANGELOG_WEBHOOK_URL (put it in .env, which is gitignored).
+ * Sidekick 1.0 posts to the same channel, so every title names the beta and links to its site.
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -141,6 +142,10 @@ function stateEntry(item: FlatItem): StateEntry {
 const MAX_EMBEDS_PER_MESSAGE = 10;
 const MAX_DESC = 4000; // leave headroom under the 4096 hard cap
 
+// Every title says which app it is about, since Sidekick 1.0 posts to the same channel.
+const PRODUCT = 'Sidekick Beta';
+const SITE = 'https://coh-sidekick.com';
+
 function pickColor(types: ChangelogType[]): number {
   for (const t of COLOR_PRIORITY) if (types.includes(t)) return TYPE_META[t].color;
   return 0x5865f2;
@@ -169,7 +174,8 @@ function embedsForGroup(date: string, items: FlatItem[]): unknown[] {
   if (current) chunks.push(current);
 
   return chunks.map((description, idx) => ({
-    title: idx === 0 ? `📋 What's New — ${date}` : `📋 What's New — ${date} (cont.)`,
+    title: idx === 0 ? `📋 ${PRODUCT} — What's New — ${date}` : `📋 ${PRODUCT} — What's New — ${date} (cont.)`,
+    url: SITE,
     description,
     color,
   }));

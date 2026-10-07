@@ -19,10 +19,10 @@ and edits them in place.
 
 ## The engine and the rebuild
 
-The calculation engine is the rebuild's Rust (`coh-sidekick-experiment`, remote
+The calculation engine is the rebuild's Rust (`coh-sidekick-next`, remote
 `wednesdaywoe/coh-sidekick-rebuild`), compiled to WebAssembly and committed under
 `src/engine/wasm*/` with the data bundles in `public/engine/contract/`. A math fix is made in
-the rebuild, then `npm run build:engine` here (it finds `../coh-sidekick-experiment`, or
+the rebuild, then `npm run build:engine` here (it finds `../coh-sidekick-next`, or
 `COH_REBUILD_DIR`). The converters under `scripts/` belong to this repo alone and are edited
 here; the two-repo sync tooling (`sync-shared`, `verify-sync`, `sync-manifest.json`) is gone.
 `coh-sidekick-1.0` is retired and nothing here reads it.
@@ -60,7 +60,7 @@ Key parser files (under `tools/bin-crawler/bin_crawler/`): `parser/_dataclasses.
 
 ### `tools/bin-crawler/` and `exported_powers/` are VENDORED — do not edit them here
 
-**`coh-sidekick-experiment` is canonical for the parser and for the exports it produces.** This repo
+**`coh-sidekick-next` is canonical for the parser and for the exports it produces.** This repo
 ships the crawler as part of the Sidekick tool suite, so both paths must physically exist here,
 but they are a one-way copy. Edit the parser *there*, re-export *there*, then run
 [`scripts/sync-bin-crawler.sh`](../scripts/sync-bin-crawler.sh) here and commit the refreshed

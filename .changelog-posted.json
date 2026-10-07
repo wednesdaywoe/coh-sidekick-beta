@@ -855,6 +855,21 @@
       "id": "shell-power-recharge",
       "date": "2026-09-26",
       "preview": "Suppressive Fire shows each ammunition setting's 8-second recharge instead of th"
+    },
+    {
+      "id": "hc-issue28-page4",
+      "date": "2026-10-06",
+      "preview": "HC database updated to Issue 28: Legacy, Page 4."
+    },
+    {
+      "id": "max-end-in-points",
+      "date": "2026-10-06",
+      "preview": "The Info panel shows +Max End in endurance points, so Power of the Depths reads "
+    },
+    {
+      "id": "mission-click-not-combat",
+      "date": "2026-10-06",
+      "preview": "Personal Force Field, Arctic Air and the phase powers no longer switch off when "
     }
   ]
 }

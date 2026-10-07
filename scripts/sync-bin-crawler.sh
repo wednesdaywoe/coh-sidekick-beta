@@ -2,11 +2,11 @@
 # Refresh this repo's VENDORED copy of the bin crawler and its exports.
 #
 #   ./scripts/sync-bin-crawler.sh                 # find the canonical checkout
-#   ./scripts/sync-bin-crawler.sh ../coh-sidekick-experiment
+#   ./scripts/sync-bin-crawler.sh ../coh-sidekick-next
 #   SIDEKICK_CANONICAL_REPO=/path/to/repo ./scripts/sync-bin-crawler.sh
 #   ./scripts/sync-bin-crawler.sh --allow-dirty   # stamp a dirty canonical anyway
 #
-# `coh-sidekick-experiment` is canonical for `tools/bin-crawler` (the parser) and for
+# `coh-sidekick-next` is canonical for `tools/bin-crawler` (the parser) and for
 # `exported_powers` (what that parser produced). This repo ships the crawler as
 # part of the Sidekick tool suite, so both paths must physically exist here — but
 # they are a copy, and the flow is one-way. Edit the parser THERE, re-export
@@ -52,7 +52,7 @@ CANONICAL="$(node -e '
     console.log(p);
   });
 ' "$EXPLICIT")" || die "cannot find the canonical checkout.
-Pass it as an argument, or set SIDEKICK_CANONICAL_REPO, or place it at ../coh-sidekick-experiment.
+Pass it as an argument, or set SIDEKICK_CANONICAL_REPO, or place it at ../coh-sidekick-next.
 It must contain both ${SYNCED_PATHS[*]}."
 git -C "$CANONICAL" rev-parse --git-dir >/dev/null 2>&1 || die "$CANONICAL is not a git repo"
 [[ "$(cd "$CANONICAL" && pwd -P)" != "$(cd "$REPO_ROOT" && pwd -P)" ]] \

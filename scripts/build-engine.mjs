@@ -14,7 +14,7 @@
  *      as <server>.json.gz (what engine.ts fetches at boot).
  *
  * The rebuild repo is located via COH_REBUILD_DIR (or --rebuild-dir), defaulting to the
- * sibling `coh-sidekick-experiment` checkout. Every input is verified before use; a missing rebuild, a version skew,
+ * sibling `coh-sidekick-next` checkout. Every input is verified before use; a missing rebuild, a version skew,
  * or a missing bundle aborts with a specific message rather than emitting a half-built engine.
  *
  * `--verify` runs steps 1 and 2 into a scratch directory and compares what came out against
@@ -46,7 +46,7 @@ const flagValue = (flag) => {
 };
 /** Rebuild-and-compare instead of rebuild-and-replace. Writes nothing into the beta tree. */
 const verifyOnly = process.argv.includes('--verify');
-const rebuildDir = resolve(flagValue('--rebuild-dir') ?? process.env.COH_REBUILD_DIR ?? join(betaRoot, '..', 'coh-sidekick-experiment'));
+const rebuildDir = resolve(flagValue('--rebuild-dir') ?? process.env.COH_REBUILD_DIR ?? join(betaRoot, '..', 'coh-sidekick-next'));
 const engineDir = resolve(flagValue('--engine-dir') ?? join(betaRoot, 'src', 'engine'));
 
 function die(message) {
@@ -64,7 +64,7 @@ function run(command, args, cwd, env) {
 if (!existsSync(join(rebuildDir, 'crates', 'coh_wasm', 'Cargo.toml'))) {
   die(
     `rebuild repo not found at ${rebuildDir}.\n` +
-      `Set COH_REBUILD_DIR to your coh-sidekick-experiment checkout.`,
+      `Set COH_REBUILD_DIR to your coh-sidekick-next checkout.`,
   );
 }
 

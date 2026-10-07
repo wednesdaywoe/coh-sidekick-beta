@@ -33,38 +33,17 @@ import-output/
 # TypeScript cache
 *.tsbuildinfo
 
-# Local config. Note `.claude/*`, not `.claude/` — an ignored *directory* is never
-# descended into, so the negations below would not take effect against `.claude/`.
-# The two doctrine files are project knowledge and travel with the repo; everything
-# else in here (settings, local state) stays local.
-.claude/*
-!.claude/CLAUDE.md
-!.claude/GAME-DATA-PRINCIPLES.md
+# Agent instructions and settings. The real files live outside the repo, in ../beta/;
+# what's left in here is a local pointer to them.
+.claude/
 .env
 nul
 
 # Data
 .impeccable/
-# Note `streams/*`, not `streams/` — an ignored *directory* is never descended into,
-# so the negations below would not fire against `streams/`. Same trap as `.claude/`.
-#
-# a6131eae09 blanket-ignored this directory. The three files added afterwards stayed
-# tracked (ignore rules don't apply to tracked files), which is exactly what hid the
-# problem: `streams/` looked fine in git while the two files nothing had re-added were
-# invisible. HOMECOMING_PARSER.md — cited from ~17 files as `See HOMECOMING_PARSER` —
-# survived only on one machine, and DEDUCTIVE_SCHEMA_HARNESS.md, cited from 11, was
-# already gone from disk and had to be restored from a6131eae09^.
-#
-# These five are project record and travel with the repo. Scratch and per-session notes
-# stay local by default.
-streams/*
-!streams/HOMECOMING_PARSER.md
-!streams/DEDUCTIVE_SCHEMA_HARNESS.md
-!streams/REARRANGEABLE_LAYOUT_PLAN.md
-!streams/OPEN_ITEMS.md
-!streams/CHANGELOG-DISCORD.md
-!streams/BUILD_PREVIEW_IMAGE_PLAN.md
-!streams/BUILD_PREVIEW_BACKFILL_PLAN.md
+# Planning and development docs live outside the repo, in ../beta/.
+/streams/
+/docs/
 raw_data_homecoming-raw_data_homecoming-20251209_7415/
 # exported_powers/ (repo root) is now COMMITTED — it's the converter input, so a fresh
 # clone / CI can regenerate generated/ from it without the gitignored .pigg source.

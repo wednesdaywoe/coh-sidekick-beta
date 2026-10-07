@@ -33,9 +33,6 @@ import-output/
 # TypeScript cache
 *.tsbuildinfo
 
-# Agent instructions and settings. The real files live outside the repo, in ../beta/;
-# what's left in here is a local pointer to them.
-.claude/
 .env
 nul
 
@@ -114,3 +111,29 @@ tools/bin-crawler/**/static/cache/
 # RESEND_API_KEY and DESKTOP_CLIENT_TOKEN when the feedback worker is run locally.
 .dev.vars
 .wrangler/
+
+# AI agent files: instructions, skills, settings and tool output, for Claude and other
+# coding assistants. All of it stays local. The shared copies live outside the repo,
+# in ../.claude/skills/ and ../beta/, versioned by the parent folder's own git repo.
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
+GEMINI.md
+.claude/
+.agents/
+.mcp.json
+.cursor/
+.cursorrules
+.windsurf/
+.windsurfrules
+.github/copilot-instructions.md
+.aider*
+.codex/
+.gemini/
+.continue/
+.clinerules
+.roo/
+.ua/
+.ori/
+.pi/
+.playwright-mcp/

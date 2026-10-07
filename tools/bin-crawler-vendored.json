@@ -1,7 +1,7 @@
 {
   "schema": "bin-crawler-vendored/1",
   "note": "tools/bin-crawler and exported_powers are a VENDORED COPY. coh-sidekick-experiment is canonical for both — edit the parser there, re-export there, then run scripts/sync-bin-crawler.sh here. Do not hand-edit either path in this repo; src/data/bin-crawler-vendored.test.ts will catch it.",
-  "canonical_repo": "git@github.com:wednesdaywoe/coh-sidekick-rebuild.git",
+  "canonical_repo": "git@github.com:wednesdaywoe/coh-sidekick.git",
   "synced_paths": [
     "tools/bin-crawler",
     "exported_powers"

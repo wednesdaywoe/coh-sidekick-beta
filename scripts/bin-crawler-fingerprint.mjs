@@ -44,7 +44,7 @@ export const SYNCED_PATHS = ['tools/bin-crawler', 'exported_powers'];
 /** Where the sync records what it copied and from which canonical commit. */
 export const VENDOR_RECORD = 'tools/bin-crawler-vendored.json';
 
-export const CANONICAL_REMOTE = 'git@github.com:wednesdaywoe/coh-sidekick-rebuild.git';
+export const CANONICAL_REMOTE = 'git@github.com:wednesdaywoe/coh-sidekick.git';
 
 /**
  * The COMMITTED files under `relDir`, as absolute paths.

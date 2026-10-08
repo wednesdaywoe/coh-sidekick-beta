@@ -462,6 +462,10 @@ export interface ResolvedPseudoPetAbility {
   effectArea?: string;
   radius?: number;
   maxTargets?: number;
+  /** HC field 41b: an authored PPM area factor that replaces the one the geometry gives. */
+  areaFactorOverride?: number;
+  /** HC field 41b: multiplies the PPM of every proc rolled here (Sonic Boom's pseudo-pet: 2). */
+  ppmMod?: number;
   /** EntsAffected — who the ability's effects can land on, which is what an atom
    *  targeting `AnyAffected` means by "the target". */
   targetsAffected?: string[];
@@ -877,6 +881,14 @@ export interface ProcRollSite {
   /** The child's own `ProcMainTargetOnly`, when it sets one — see
    *  {@link Power.procsOnlyOnMainTarget}, same `true`-or-absent shape. */
   procsOnlyOnMainTarget?: true;
+  /** The child's own `EffectArea`; `Chain` changes how its area factor is scored. */
+  effectArea?: string;
+  /** The child's own target cap, which a `Chain` area factor reads. */
+  maxTargets?: number;
+  /** HC field 41b: an authored PPM area factor that replaces the one the geometry gives. */
+  areaFactorOverride?: number;
+  /** HC field 41b: multiplies the PPM of every proc rolled here (Sonic Boom's pseudo-pet: 2). */
+  ppmMod?: number;
 }
 
 /**
@@ -1069,6 +1081,10 @@ export interface Power {
    * Only ever `true` — absence is the other state, so the type carries no `false`.
    */
   procsOnlyOnMainTarget?: true;
+  /** HC field 41b: an authored PPM area factor that replaces the one the geometry gives. */
+  areaFactorOverride?: number;
+  /** HC field 41b: multiplies the PPM of every proc rolled here (Sonic Boom's pseudo-pet: 2). */
+  ppmMod?: number;
   /**
    * `ProcAllowed kNone` (HC power-level bin field). **This power never rolls a
    * PPM proc** — whatever is slotted, no PPM chance is computed against its

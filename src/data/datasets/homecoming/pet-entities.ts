@@ -83,6 +83,10 @@ export interface PetAbility {
   range?: number;
   radius?: number;
   maxTargets?: number;
+  /** HC field 41b: authored PPM area factor (replaces the geometric one). */
+  areaFactorOverride?: number;
+  /** HC field 41b: multiplier on the PPM of procs rolled in this ability. */
+  ppmMod?: number;
   attackTypes?: string[];
   rechargeUnaffected?: boolean;
 }

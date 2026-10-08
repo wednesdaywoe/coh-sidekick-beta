@@ -328,6 +328,7 @@ export {
   resolveProcRollSchedule,
   procRollsInPatch,
   calculateScheduledProcChance,
+  type ProcRollModifiers,
   // Variable-proc controls (per-proc toggles + stack / HP sliders)
   getProcControlType,
   isVariableProc,

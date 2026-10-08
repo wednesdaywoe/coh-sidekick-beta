@@ -189,6 +189,10 @@ export interface PetAbility {
   range?: number;
   radius?: number;
   maxTargets?: number;
+  /** HC field 41b: an authored PPM area factor that replaces the one the geometry gives. */
+  areaFactorOverride?: number;
+  /** HC field 41b: multiplies the PPM of every proc rolled here (Sonic Boom's pseudo-pet: 2). */
+  ppmMod?: number;
   attackTypes?: string[];
   rechargeUnaffected?: boolean;
 }

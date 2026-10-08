@@ -39,7 +39,7 @@ import type { IOSetEnhancement } from '@/types';
 import { isPermaEligible, recastVerdict } from '@/utils/calculations/perma';
 import { getRechargeBounds } from '@/data/at-tables';
 import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from './buildDisplayEffects';
-import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, resolveProcPatchDuration, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
+import { calculatePetDamage, calculateResolvedPseudoPetDamage, shouldApplyEnhancements, resolveProcAreaGeometry, resolveProcPatchDuration, resolveProcRollModifiers, type PetDamageResult, type PetAbilityDamage, type PetEffectComputed } from '@/utils/calculations/pet-damage';
 import { getPetEntity, type PetAbility } from '@/data/pet-entities';
 import { petUpgradeStatuses, resolveActiveUpgradeTiers, takenPowerNames, type PetUpgradeStatus } from '@/utils/calculations/pet-upgrades';
 import { calculateIncarnateDamage } from '@/data/at-tables';
@@ -583,6 +583,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // (that radius is a secondary knockback), so score them single-target.
     const { radius: procRadius, arcDegrees: procArc } =
       resolveProcRollGeometry(effectivePower?.procsOnlyOnMainTarget, radius, arcDegrees);
+    const rollMods = resolveProcRollModifiers(effectivePower ?? {});
     if (!baseRecharge && !castTime) return null;
     // A rain hands its rolls to the summoned patch: they are scored against the
     // proc's own 10s period, once every 10s the patch lives, so one cast of
@@ -641,6 +642,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
         procRadius,
         procArc,
         enhancementBonuses.recharge || 0,
+        rollMods,
       );
       const perActivation = chance * avgDamage * schedule.rolls;
       const dps = perActivation / cycleTime;

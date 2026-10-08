@@ -20,6 +20,7 @@ export const TripMine: Power = {
   "powerType": "Click",
   "targetType": "Self",
   "effectArea": "SingleTarget",
+  "areaFactorOverride": 2.8,
   "targetsAffected": [
     "Self"
   ],

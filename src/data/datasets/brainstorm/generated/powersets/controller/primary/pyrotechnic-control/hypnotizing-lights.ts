@@ -20,6 +20,7 @@ export const HypnotizingLights: Power = {
   "powerType": "Click",
   "targetType": "Foe",
   "effectArea": "Cone",
+  "areaFactorOverride": 1,
   "procsAllowed": false,
   "procRollSites": [
     {
@@ -31,7 +32,9 @@ export const HypnotizingLights: Power = {
         "Accuracy"
       ],
       "radius": 70,
-      "arc": 0.7853981852531433
+      "arc": 0.7853981852531433,
+      "effectArea": "Cone",
+      "maxTargets": 16
     },
     {
       "power": "Redirects.Pyrotechnic_Control.HypnotizingLights_Narrow",
@@ -41,7 +44,9 @@ export const HypnotizingLights: Power = {
         "Accuracy"
       ],
       "radius": 20,
-      "arc": 0.7853981852531433
+      "arc": 0.7853981852531433,
+      "effectArea": "Cone",
+      "maxTargets": 5
     }
   ],
   "targetsAffected": [

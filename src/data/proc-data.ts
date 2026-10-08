@@ -2499,15 +2499,40 @@ export function isProcAlwaysOn(procData: ProcData): boolean {
 // ============================================
 
 /**
+ * What the power a roll happens IN says about its PPM chance, beyond its
+ * radius and arc. All three are HC's: the two field-41b values authored in
+ * 2026, and the chain shape's own area rule. See `resolveProcRollModifiers`.
+ */
+export interface ProcRollModifiers {
+  /** Authored area factor, standing in for the one the geometry gives. */
+  areaFactorOverride?: number;
+  /** A `Chain` power's target cap: its area is radius × targets, not a sphere. */
+  chainMaxTargets?: number;
+  /** Multiplies the PPM of every proc rolled here. */
+  ppmMod?: number;
+}
+
+/**
  * AoE penalty denominator used by the PPM formula.
  * denom = 0.25 + 0.75 × (1 + radius × (11 × arc + 540) / 30,000)
  * A full sphere (arc 360) reduces to 0.25 + 0.75 × (1 + 0.15 × radius); cones
  * scale the radius term down linearly with arc. Single target (radius 0)
  * returns 1.0 regardless of arc.
+ *
+ * An authored override replaces the bracketed area factor outright. A chain's
+ * is 1 + 0.15 × radius × targets / 10, the radius being the jump distance.
  */
-export function getPPMAreaDenominator(radius: number, arcDegrees: number): number {
-  if (radius <= 0) return 1.0;
-  return 0.25 + 0.75 * (1 + radius * (11 * arcDegrees + 540) / 30000);
+export function getPPMAreaDenominator(
+  radius: number,
+  arcDegrees: number,
+  mods: ProcRollModifiers = {},
+): number {
+  let factor: number;
+  if (mods.areaFactorOverride) factor = mods.areaFactorOverride;
+  else if (radius <= 0) return 1.0;
+  else if (mods.chainMaxTargets) factor = 1 + 0.15 * radius * mods.chainMaxTargets / 10;
+  else factor = 1 + radius * (11 * arcDegrees + 540) / 30000;
+  return 0.25 + 0.75 * factor;
 }
 
 /**
@@ -2580,6 +2605,8 @@ export function procRechargeWindow(baseRecharge: number, enhancedRechargeBonus: 
  * @param arcDegrees - cone arc in degrees (default 360 = sphere)
  * @param enhancedRechargeBonus - decimal recharge enhancement from *this power's* own slotting,
  *        post-ED and Alpha included. e.g. 0.95 for +95%. Default 0.
+ * @param mods - the rolling power's override / chain / PPMMod. `ppmMod` scales
+ *        the PPM before the clamps, so the minimum sees the modified rate too.
  */
 export function calculateProcChance(
   ppm: number,
@@ -2587,12 +2614,14 @@ export function calculateProcChance(
   castTime: number,
   radius: number = 0,
   arcDegrees: number = 360,
-  enhancedRechargeBonus: number = 0
+  enhancedRechargeBonus: number = 0,
+  mods: ProcRollModifiers = {},
 ): number {
+  const effectivePpm = ppm * (mods.ppmMod ?? 1);
   const modifiedRecharge = procRechargeWindow(baseRecharge, enhancedRechargeBonus);
-  const areaDenom = getPPMAreaDenominator(radius, arcDegrees);
-  const raw = (ppm * (modifiedRecharge + castTime)) / (60 * areaDenom);
-  return clampProcChance(raw, ppm);
+  const areaDenom = getPPMAreaDenominator(radius, arcDegrees, mods);
+  const raw = (effectivePpm * (modifiedRecharge + castTime)) / (60 * areaDenom);
+  return clampProcChance(raw, effectivePpm);
 }
 
 /**
@@ -2617,7 +2646,8 @@ export function calculateProcsPerMinute(
   radius: number = 0,
   enhancedRechargeBonus: number = 0,
   arcDegrees: number = 360,
-  globalRechargeBonus: number = 0
+  globalRechargeBonus: number = 0,
+  mods: ProcRollModifiers = {},
 ): number {
   const procChance = calculateProcChance(
     ppm,
@@ -2626,6 +2656,7 @@ export function calculateProcsPerMinute(
     radius,
     arcDegrees,
     enhancedRechargeBonus,
+    mods,
   );
 
   // Actual cycle time: every source of recharge shortens it, slotted and global alike. This is
@@ -2942,7 +2973,8 @@ export function calculateProcDPS(
   castTime: number,
   radius: number = 0,
   enhancedRechargeBonus: number = 0,
-  arcDegrees: number = 360
+  arcDegrees: number = 360,
+  mods: ProcRollModifiers = {},
 ): number {
   const procsPerMinute = calculateProcsPerMinute(
     ppm,
@@ -2950,7 +2982,9 @@ export function calculateProcDPS(
     castTime,
     radius,
     enhancedRechargeBonus,
-    arcDegrees
+    arcDegrees,
+    0,
+    mods,
   );
 
   // Average damage per proc (damage is uniformly distributed)
@@ -3111,6 +3145,7 @@ export function calculateScheduledProcChance(
   radius: number = 0,
   arcDegrees: number = 360,
   enhancedRechargeBonus: number = 0,
+  mods: ProcRollModifiers = {},
 ): number {
   return calculateProcChance(
     ppm,
@@ -3119,6 +3154,7 @@ export function calculateScheduledProcChance(
     radius,
     arcDegrees,
     schedule.fixedPeriod ? 0 : enhancedRechargeBonus,
+    mods,
   );
 }
 
@@ -3137,10 +3173,12 @@ export function calculateAutoToggleProcChance(
   ppm: number,
   radius: number = 0,
   arcDegrees: number = 360,
+  mods: ProcRollModifiers = {},
 ): number {
-  const areaDenom = getPPMAreaDenominator(radius, arcDegrees);
-  const raw = (ppm * AUTO_POWER_PSEUDO_RECHARGE) / (60 * areaDenom);
-  return clampProcChance(raw, ppm);
+  const effectivePpm = ppm * (mods.ppmMod ?? 1);
+  const areaDenom = getPPMAreaDenominator(radius, arcDegrees, mods);
+  const raw = (effectivePpm * AUTO_POWER_PSEUDO_RECHARGE) / (60 * areaDenom);
+  return clampProcChance(raw, effectivePpm);
 }
 
 /**
@@ -3151,8 +3189,9 @@ export function calculateAutoToggleProcsPerMinute(
   ppm: number,
   radius: number = 0,
   arcDegrees: number = 360,
+  mods: ProcRollModifiers = {},
 ): number {
-  const procChance = calculateAutoToggleProcChance(ppm, radius, arcDegrees);
+  const procChance = calculateAutoToggleProcChance(ppm, radius, arcDegrees, mods);
   // 6 ticks per minute (every 10 seconds)
   return procChance * 6;
 }

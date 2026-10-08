@@ -1410,6 +1410,8 @@ function processPetPower(powerFilePath, powerData) {
     range: powerData.range > 0 ? powerData.range : undefined,
     radius: powerData.radius > 0 ? powerData.radius : undefined,
     maxTargets: powerData.max_targets_hit > 0 ? powerData.max_targets_hit : undefined,
+    areaFactorOverride: powerData.area_factor_override || undefined,
+    ppmMod: powerData.ppm_mod || undefined,
     // bin-crawler currently exports attack_types as raw enum integers; the
     // PetAbility type expects string tags ("Lethal", "Area", "Incarnate", …).
     // Drop numeric entries until the enum mapping is added to export_powers.
@@ -1989,6 +1991,8 @@ function abilityLines(ability, indent) {
   if (ability.range) field('range', ability.range);
   if (ability.radius) field('radius', ability.radius);
   if (ability.maxTargets) field('maxTargets', ability.maxTargets);
+  if (ability.areaFactorOverride) field('areaFactorOverride', ability.areaFactorOverride);
+  if (ability.ppmMod) field('ppmMod', ability.ppmMod);
   if (ability.attackTypes) field('attackTypes', JSON.stringify(ability.attackTypes));
   if (ability.rechargeUnaffected) field('rechargeUnaffected', true);
   lines.push(`${indent}},`);
@@ -2083,6 +2087,10 @@ function generateTypeScript(entities) {
   lines.push(`  range?: number;`);
   lines.push(`  radius?: number;`);
   lines.push(`  maxTargets?: number;`);
+  lines.push(`  /** HC field 41b: authored PPM area factor (replaces the geometric one). */`);
+  lines.push(`  areaFactorOverride?: number;`);
+  lines.push(`  /** HC field 41b: multiplier on the PPM of procs rolled in this ability. */`);
+  lines.push(`  ppmMod?: number;`);
   lines.push(`  attackTypes?: string[];`);
   lines.push(`  rechargeUnaffected?: boolean;`);
   lines.push(`}`);

@@ -12,6 +12,7 @@ import { getPetTableValue, getTableValue } from '@/data/at-tables';
 import { getArchetype } from '@/data/archetypes';
 import type { ArchetypeId } from '@/types';
 import type { ResolvedPseudoPet } from '@/types/power';
+import type { ProcRollModifiers } from '@/data/proc-data';
 import { getPetClassAttribs } from './pet-stats';
 
 // ============================================
@@ -927,6 +928,85 @@ export function resolveProcAreaGeometry(
     };
   }
   return getPseudoPetAoEGeometry(summon) ?? { radius: 0, arcDegrees: 360 };
+}
+
+/** `chainMaxTargets` for a power or ability of this shape, or `undefined`. */
+function chainTargets(effectArea: string | undefined, maxTargets: number | undefined) {
+  return effectArea === 'Chain' && maxTargets && maxTargets > 0 ? maxTargets : undefined;
+}
+
+/** The summoned ability whose footprint is widest: the one the area factor borrows. */
+function widestPseudoPetAbility(
+  summon: import('@/types/power').SummonEffect | undefined,
+): { radius?: number; effectArea?: string; maxTargets?: number; areaFactorOverride?: number; ppmMod?: number } | null {
+  if (!summon) return null;
+  type Ability = NonNullable<ReturnType<typeof widestPseudoPetAbility>>;
+  let best: Ability | null = null;
+  const consider = (ability: Ability) => {
+    if (!ability.radius || ability.radius <= 0) return;
+    if (ability.effectArea === 'SingleTarget' || ability.effectArea === 'Self') return;
+    if (!best || ability.radius > (best.radius ?? 0)) best = ability;
+  };
+  const entityNames = summon.entities && summon.entities.length > 0
+    ? summon.entities.map((e) => e.entity)
+    : summon.entity ? [summon.entity] : [];
+  for (const entityName of entityNames) {
+    const entity = getPetEntity(entityName);
+    if (!entity || entity.commandable) continue;
+    for (const ability of entity.abilities) consider(ability);
+  }
+  for (const resolved of summon.resolvedEntities ?? []) {
+    for (const ability of resolved.abilities) consider(ability);
+  }
+  return best;
+}
+
+/**
+ * The override, chain cap and `PPMMod` of the power a slotted proc rolls IN.
+ * Same rule as the engine's `proc_area`: a patch (`resolveProcPatchDuration`)
+ * rolls on its pulsing ability, so those three are the ability's — Sonic Boom's
+ * damage procs take its pseudo-pet's `PPMMod` of 2 and its 15ft sphere, not the
+ * parent's 3.25 override. Anything else rolls in the power itself.
+ *
+ * `ProcMainTargetOnly` drops the area terms, matching the radius-0 geometry
+ * `resolveProcRollGeometry` hands back for it; `PPMMod` still applies.
+ */
+export function resolveProcRollModifiers(power: {
+  effectArea?: string;
+  stats?: { radius?: number; maxTargets?: number };
+  areaFactorOverride?: number;
+  ppmMod?: number;
+  summon?: import('@/types/power').SummonEffect;
+  procsOnlyOnMainTarget?: true;
+}): ProcRollModifiers {
+  const directRadius = power.stats?.radius ?? 0;
+  const ability = resolveProcPatchDuration(directRadius, power.summon) !== undefined
+    ? widestPseudoPetAbility(power.summon)
+    : null;
+  const mods: ProcRollModifiers = ability
+    ? {
+      areaFactorOverride: ability.areaFactorOverride,
+      chainMaxTargets: chainTargets(ability.effectArea, ability.maxTargets),
+      ppmMod: ability.ppmMod,
+    }
+    : {
+      areaFactorOverride: power.areaFactorOverride,
+      chainMaxTargets: directRadius > 0
+        ? chainTargets(power.effectArea, power.stats?.maxTargets)
+        : undefined,
+      ppmMod: power.ppmMod,
+    };
+  return power.procsOnlyOnMainTarget ? { ppmMod: mods.ppmMod } : mods;
+}
+
+/** The same three for a `procRollSites` child, off the site record itself. */
+export function procRollSiteModifiers(site: import('@/types/power').ProcRollSite): ProcRollModifiers {
+  if (site.procsOnlyOnMainTarget) return { ppmMod: site.ppmMod };
+  return {
+    areaFactorOverride: site.areaFactorOverride,
+    chainMaxTargets: chainTargets(site.effectArea, site.maxTargets),
+    ppmMod: site.ppmMod,
+  };
 }
 
 /**

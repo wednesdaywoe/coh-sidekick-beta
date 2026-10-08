@@ -30,7 +30,9 @@ export const Whitecap: Power = {
         "Accuracy"
       ],
       "radius": 20,
-      "arc": 0
+      "arc": 0,
+      "effectArea": "Sphere",
+      "maxTargets": 16
     }
   ],
   "targetsAffected": [

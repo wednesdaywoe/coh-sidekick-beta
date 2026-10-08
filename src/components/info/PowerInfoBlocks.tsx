@@ -22,7 +22,12 @@ import type { ProcRollSite } from '@/types/power';
 import type { PowerDamageResult } from '@/utils/calculations';
 import type { PowerProjection } from '@/engine/engineTotalsMap';
 import { abbreviateDamageType } from '@/utils/calculations';
-import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
+import {
+  procRollSiteModifiers,
+  resolveProcAreaGeometry,
+  resolveProcPatchDuration,
+  resolveProcRollModifiers,
+} from '@/utils/calculations/pet-damage';
 import { describeChainTarget, describeTargetCap, expressionText } from '@/utils/chain-expressions';
 import { Chip, type TagKind } from './TagsRow';
 import {
@@ -37,6 +42,7 @@ import {
   getPPMAreaDenominator,
   procRechargeWindow,
   type ProcData,
+  type ProcRollModifiers,
   type ProcRollSchedule,
 } from '@/data';
 
@@ -262,6 +268,8 @@ export function GeneralStatsBlock({
         // scored against the proc's own 10s period, once every 10s the patch
         // lives. The parent's recharge — 60s on Sleet — never enters.
         patchDuration={resolveProcPatchDuration(effects.radius ?? 0, power.summon)}
+        // The rolling power's area-factor override, chain cap and PPMMod.
+        rollMods={resolveProcRollModifiers(power)}
       />
     </div>
   );
@@ -326,6 +334,8 @@ interface ProcChanceRowProps {
    *  Its procs roll on the patch's 10s clock, not the parent's recharge, and
    *  they roll once per 10s of patch life — see resolveProcRollSchedule. */
   patchDuration?: number;
+  /** Area-factor override, chain cap and PPMMod of the power the procs roll in. */
+  rollMods?: ProcRollModifiers;
 }
 
 interface ProcEntry {
@@ -361,6 +371,8 @@ interface ProcRollWindow {
   castTime: number;
   baseRecharge: number;
   areaDenom: number;
+  /** The rolling power's PPMMod; 1 when it authors none. */
+  ppmMod: number;
   /** Full name of the child rolling it, when it is not this power. */
   via?: string;
 }
@@ -377,6 +389,7 @@ function ProcChanceRow({
   procsAllowed,
   procRollSites,
   patchDuration,
+  rollMods = {},
 }: ProcChanceRowProps) {
   // Per-view local expansion plus a persisted "pin" toggle. The pin
   // wins when on — Power Info shows the breakdown automatically for
@@ -399,7 +412,11 @@ function ProcChanceRow({
   // user can reproduce by hand has to be the formula that ran.
   const buildWindow = (
     site: ProcRollSite | null,
-  ): { window: ProcRollWindow; geometry: { radius: number; arcDegrees: number } } => {
+  ): {
+    window: ProcRollWindow;
+    geometry: { radius: number; arcDegrees: number };
+    mods: ProcRollModifiers;
+  } => {
     // Propel & co.: the power's radius is a secondary knockback splash, so every
     // proc in it — damage or Force Feedback alike — rolls the single-target
     // area-factor. resolveProcRollGeometry owns that rule for all PPM surfaces.
@@ -407,6 +424,7 @@ function ProcChanceRow({
       ? resolveProcRollGeometry(
         site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined)
       : resolveProcRollGeometry(procsOnlyOnMainTarget, radius, arcDegrees);
+    const mods = site ? procRollSiteModifiers(site) : rollMods;
     // The schedule is this power's whether the proc was routed or not: a site
     // changes the area factor, never the window. See collectProcRollSites.
     const schedule = resolveProcRollSchedule({
@@ -414,6 +432,7 @@ function ProcChanceRow({
     });
     return {
       geometry,
+      mods,
       window: {
         schedule,
         // On a fixed-period schedule the recharge term is inert. Otherwise this is the shared
@@ -424,7 +443,8 @@ function ProcChanceRow({
           : procRechargeWindow(baseRecharge, slottedRechargeBonus),
         castTime,
         baseRecharge,
-        areaDenom: getPPMAreaDenominator(geometry.radius, geometry.arcDegrees),
+        areaDenom: getPPMAreaDenominator(geometry.radius, geometry.arcDegrees, mods),
+        ppmMod: mods.ppmMod ?? 1,
         ...(site ? { via: site.power } : {}),
       },
     };
@@ -473,10 +493,10 @@ function ProcChanceRow({
       });
       continue;
     }
-    const { window, geometry } = site ? buildWindow(site) : own;
+    const { window, geometry, mods } = site ? buildWindow(site) : own;
     const chance = calculateScheduledProcChance(
       procData.ppm, window.schedule, geometry.radius, geometry.arcDegrees,
-      slottedRechargeBonus);
+      slottedRechargeBonus, mods);
 
     entries.push({
       key,
@@ -650,18 +670,21 @@ function ProcDetailLine({
     );
   }
 
-  const { schedule, modifiedRecharge, castTime, areaDenom, baseRecharge, via } = entry.roll;
+  const { schedule, modifiedRecharge, castTime, areaDenom, baseRecharge, ppmMod, via } = entry.roll;
   const ppm = entry.ppm;
   const chancePct = entry.chance * 100;
+  // PPMMod scales the piece's rate inside the formula; spelled out so the
+  // printed arithmetic still reproduces the chance.
+  const ppmTerm = ppmMod === 1 ? ppm.toFixed(1) : `${ppm.toFixed(1)} × ${ppmMod} PPMMod`;
 
   let formula: string;
   if (schedule.fixedPeriod) {
-    formula = `${ppm.toFixed(1)} × 10 / (60 × ${areaDenom.toFixed(2)})`;
+    formula = `${ppmTerm} × 10 / (60 × ${areaDenom.toFixed(2)})`;
   } else {
     const rechargeLabel = hasRechargeMod
       ? `${modifiedRecharge.toFixed(2)} (was ${baseRecharge.toFixed(2)})`
       : `${modifiedRecharge.toFixed(2)}`;
-    formula = `${ppm.toFixed(1)} × (${rechargeLabel} + ${castTime.toFixed(2)}) / (60 × ${areaDenom.toFixed(2)})`;
+    formula = `${ppmTerm} × (${rechargeLabel} + ${castTime.toFixed(2)}) / (60 × ${areaDenom.toFixed(2)})`;
   }
 
   return (

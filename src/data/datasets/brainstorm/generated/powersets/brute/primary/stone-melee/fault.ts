@@ -34,7 +34,9 @@ export const Fault: Power = {
         "Accuracy"
       ],
       "radius": 15,
-      "arc": 0
+      "arc": 0,
+      "effectArea": "Sphere",
+      "maxTargets": 10
     },
     {
       "power": "Redirects.Stone_Melee.Fault_Cone_Brute",
@@ -44,7 +46,9 @@ export const Fault: Power = {
         "Accuracy"
       ],
       "radius": 20,
-      "arc": 0.9599311351776123
+      "arc": 0.9599311351776123,
+      "effectArea": "Cone",
+      "maxTargets": 5
     }
   ],
   "targetsAffected": [

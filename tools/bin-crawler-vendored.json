@@ -1,15 +1,15 @@
 {
   "schema": "bin-crawler-vendored/1",
-  "note": "tools/bin-crawler and exported_powers are a VENDORED COPY. coh-sidekick-experiment is canonical for both — edit the parser there, re-export there, then run scripts/sync-bin-crawler.sh here. Do not hand-edit either path in this repo; src/data/bin-crawler-vendored.test.ts will catch it.",
+  "note": "tools/bin-crawler and exported_powers are a VENDORED COPY. coh-sidekick-next is canonical for both — edit the parser there, re-export there, then run scripts/sync-bin-crawler.sh here. Do not hand-edit either path in this repo; src/data/bin-crawler-vendored.test.ts will catch it.",
   "canonical_repo": "git@github.com:wednesdaywoe/coh-sidekick.git",
   "synced_paths": [
     "tools/bin-crawler",
     "exported_powers"
   ],
-  "synced_from_commit": "cd8d6d68e7b14c00ffa476fb894535a5e3289293",
-  "synced_from_subject": "Changelog: +Max End reads in points",
-  "synced_from_date": "2026-10-06T16:00:32-04:00",
-  "tree_fingerprint": "9f67f8f59d17ccd3ae5d3f2e4aaa4b829056bce24ddd9b26234c6db98f48d339",
-  "export_manifest_digest": "5640aece1b1cfbeb9b2ff05b83fad30f2f15180aa939043aa3c31f21f85bb8e0",
+  "synced_from_commit": "77041362275c78fab326f5f2cd3561ac8da398f1",
+  "synced_from_subject": "PPM: chain area factor, HC's area-factor override and PPMMod; Sonic Boom's damage",
+  "synced_from_date": "2026-10-08T19:57:22-04:00",
+  "tree_fingerprint": "23ae1176ce3d4ef8345133205cce229a70149bb4be3dc16e44af1d8511eb284a",
+  "export_manifest_digest": "ff8f51f519bd880eec6bbcfc2675e2b0d6248fe59c4c3e8734152dfd488e54bb",
   "export_manifest_count": 14
 }

@@ -31,7 +31,9 @@ export const SonicBoom: Power = {
         "Accuracy"
       ],
       "radius": 15,
-      "arc": 0
+      "arc": 0,
+      "effectArea": "Sphere",
+      "maxTargets": 10
     }
   ],
   "targetsAffected": [
@@ -59,9 +61,51 @@ export const SonicBoom: Power = {
     "Universal Damage Sets"
   ],
   "maxSlots": 6,
+  "summon": {
+    "copyBoosts": true,
+    "displayName": "Sonic Boom",
+    "duration": 4,
+    "isPseudoPet": true,
+    "powers": [
+      "Pets.Sonic_Aura.Sonic_Boom",
+      "Pets.ResistAll.ResistAll"
+    ],
+    "resolvedEntities": [
+      {
+        "displayName": "Sonic Boom",
+        "duration": 4,
+        "copyCreatorMods": true,
+        "abilities": [
+          {
+            "name": "Sonic_Boom",
+            "displayName": "Sonic Boom",
+            "type": "Auto",
+            "damage": [
+              {
+                "damageType": "Energy",
+                "scale": 0.933,
+                "table": "Melee_Damage"
+              }
+            ],
+            "recharge": 0,
+            "castTime": 0,
+            "activatePeriod": 100,
+            "effectArea": "Sphere",
+            "targetsAffected": [
+              "Foe"
+            ],
+            "radius": 8,
+            "maxTargets": 10,
+            "ppmMod": 2
+          }
+        ]
+      }
+    ],
+    "entity": "PL_StaticObject"
+  },
   "atoms": [
-    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
-    ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.51],
+    ["Mez","Teleport",1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.3],
+    ["EntCreate",null,-1,1,4,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.51,null,null,null,null,null,4],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["entref","target>","entref","source>","eq"],true]
   ]
 };

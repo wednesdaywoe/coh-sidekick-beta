@@ -3620,7 +3620,9 @@ export const POWER_POOLS_RAW = {
               "Accuracy"
             ],
             "radius": 15,
-            "arc": 0
+            "arc": 0,
+            "effectArea": "Sphere",
+            "maxTargets": 10
           }
         ],
         "targetsAffected": [

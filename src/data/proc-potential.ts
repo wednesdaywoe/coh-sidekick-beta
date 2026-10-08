@@ -46,7 +46,12 @@ import {
   getPPMAreaDenominator,
   type ProcData,
 } from './proc-data';
-import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
+import {
+  procRollSiteModifiers,
+  resolveProcAreaGeometry,
+  resolveProcPatchDuration,
+  resolveProcRollModifiers,
+} from '@/utils/calculations/pet-damage';
 
 /** The PPM formula's hard ceiling. A proc at this value cannot be improved. */
 export const PROC_CHANCE_CAP = 0.9;
@@ -205,6 +210,7 @@ function resolveProcContext(power: Power) {
     power.summon,
   );
   const roll = resolveProcRollGeometry(power.procsOnlyOnMainTarget, area.radius, area.arcDegrees);
+  const mods = resolveProcRollModifiers(power);
   const schedule = resolveProcRollSchedule({
     powerType: power.powerType,
     baseRecharge: stats.recharge ?? 0,
@@ -219,7 +225,8 @@ function resolveProcContext(power: Power) {
     rolls: schedule.rolls,
     radius: roll.radius,
     arcDegrees: roll.arcDegrees,
-    areaDenominator: getPPMAreaDenominator(roll.radius, roll.arcDegrees),
+    mods,
+    areaDenominator: getPPMAreaDenominator(roll.radius, roll.arcDegrees, mods),
     fromPseudoPet: directRadius <= 0 && area.radius > 0,
     mainTargetOnly: !!power.procsOnlyOnMainTarget,
     procsDisallowed: !powerFiresProcs(power),
@@ -237,7 +244,12 @@ function resolveProcContext(power: Power) {
 function resolveSiteContext(ctx: ReturnType<typeof resolveProcContext>, site: ProcRollSite) {
   const roll = resolveProcRollGeometry(
     site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined);
-  return { schedule: ctx.schedule, radius: roll.radius, arcDegrees: roll.arcDegrees };
+  return {
+    schedule: ctx.schedule,
+    radius: roll.radius,
+    arcDegrees: roll.arcDegrees,
+    mods: procRollSiteModifiers(site),
+  };
 }
 
 /**
@@ -341,6 +353,8 @@ export function getProcPotential(power: Power): ProcPotential | null {
       roll.schedule,
       roll.radius,
       roll.arcDegrees,
+      0,
+      roll.mods,
     );
     const { category, effectType } = classifyProc(data);
     if (set.category === 'purple') purpleSets.add(set.name);

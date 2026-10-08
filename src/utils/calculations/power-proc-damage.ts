@@ -25,7 +25,9 @@ import {
   resolveProcRollSite,
   calculateScheduledProcChance,
   powerFiresProcs,
+  type ProcRollModifiers,
 } from '@/data';
+import { procRollSiteModifiers } from './pet-damage';
 
 export interface SlottedProcDamageInput {
   slots: (Enhancement | null)[];
@@ -62,6 +64,9 @@ export interface SlottedProcDamageInput {
    *  long as it lives, so one cast of Sleet is worth two rolls — but each is
    *  scored against that 10s period, not against the parent's 60s recharge. */
   patchDuration?: number;
+  /** Area-factor override, chain cap and PPMMod of the power the procs roll in,
+   *  from resolveProcRollModifiers. A routed piece takes its site's instead. */
+  rollMods?: ProcRollModifiers;
 }
 
 /**
@@ -144,8 +149,9 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
       ? resolveProcRollGeometry(
         site.procsOnlyOnMainTarget, site.radius, arcToDegrees(site.arc) || undefined)
       : shellGeometry;
+    const mods = site ? procRollSiteModifiers(site) : (input.rollMods ?? {});
     const procChance = calculateScheduledProcChance(
-      procData.ppm, schedule, areaRadius, areaArc, rechargeEnh,
+      procData.ppm, schedule, areaRadius, areaArc, rechargeEnh, mods,
     );
     total += procDmg * procChance * schedule.rolls;
   }

@@ -7,7 +7,7 @@ import { useBuildStore, useUIStore } from '@/stores';
 import { useBonusTracking, useSlotLevels } from '@/hooks';
 import { powerKey, type PowerCategory } from '@/utils/power-key';
 import { getIOSet, lookupPower, findProcData, resolveProcPieceName, procEffectSummary, getProcEffectLabel, getProcEffectColor, isProcAlwaysOn, resolveProcRollGeometry, procRollsInPatch, powerFiresProcs, interpolateProcDamage, calculateProcChance, calculateProcsPerMinute, calculateProcDPS, calculateAutoToggleProcChance, calculateAutoToggleProcsPerMinute, arcToDegrees } from '@/data';
-import { resolveProcAreaGeometry, resolveProcPatchDuration } from '@/utils/calculations/pet-damage';
+import { resolveProcAreaGeometry, resolveProcPatchDuration, resolveProcRollModifiers } from '@/utils/calculations/pet-damage';
 import {
   normalizeAspectName,
   readAspectDisplayValue,
@@ -320,6 +320,8 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                       // will never honour. The rest of the tooltip (the proc's
                       // own effects) still renders.
                       if (!powerFiresProcs(selected) || !powerFiresProcs(base)) return null;
+                      // Area-factor override, chain cap and PPMMod of the power the roll happens in.
+                      const rollMods = resolveProcRollModifiers(base ?? selected);
 
                       // Auto/Toggle powers, and the patch a rain summons, both
                       // roll on the proc's own 10s period instead of a recharge
@@ -349,14 +351,14 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                                 + (base?.effects?.castTime || selected.effects?.castTime || 0),
                             )
                           : 1;
-                        const procChance = calculateAutoToggleProcChance(procData.ppm, togRadius, togArc);
+                        const procChance = calculateAutoToggleProcChance(procData.ppm, togRadius, togArc, rollMods);
                         // Per minute: a toggle checks 6×/min flat, whereas a patch
                         // gets `rolls` checks per cast on the parent's cycle.
                         const cycle = (base?.effects?.recharge || selected.effects?.recharge || 0)
                           + (base?.effects?.castTime || selected.effects?.castTime || 0);
                         const procsPerMin = patchDuration != null && cycle > 0
                           ? procChance * rolls * (60 / cycle)
-                          : calculateAutoToggleProcsPerMinute(procData.ppm, togRadius, togArc);
+                          : calculateAutoToggleProcsPerMinute(procData.ppm, togRadius, togArc, rollMods);
 
                         return (
                           <div className="mt-1 pt-1 border-t border-amber-700/30">
@@ -438,8 +440,8 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
 
                       if (recharge <= 0) return null; // Can't calculate without recharge
 
-                      const procChance = calculateProcChance(procData.ppm, recharge, castTime, radius, arcDegrees);
-                      const procsPerMin = calculateProcsPerMinute(procData.ppm, recharge, castTime, radius, 0, arcDegrees);
+                      const procChance = calculateProcChance(procData.ppm, recharge, castTime, radius, arcDegrees, 0, rollMods);
+                      const procsPerMin = calculateProcsPerMinute(procData.ppm, recharge, castTime, radius, 0, arcDegrees, 0, rollMods);
 
                       return (
                         <div className="mt-1 pt-1 border-t border-amber-700/30">
@@ -459,7 +461,7 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
                                 <div>
                                   <span className="text-slate-400">DPS:</span>
                                   <span className="text-red-400 ml-1">
-                                    {calculateProcDPS(procData.ppm, dmgAtLevel, dmgAtLevel, recharge, castTime, radius, 0, arcDegrees).toFixed(1)}
+                                    {calculateProcDPS(procData.ppm, dmgAtLevel, dmgAtLevel, recharge, castTime, radius, 0, arcDegrees, rollMods).toFixed(1)}
                                   </span>
                                 </div>
                               );

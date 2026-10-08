@@ -29,7 +29,6 @@ import { getAvailableGenericIOs, createGenericIOEnhancement } from '@/data/enhan
 import { withoutIllegalSlots } from '@/utils/build-enhancement-validation';
 import { createEmptyBuild } from '@/types/build';
 import { legacyCalculateCharacterTotals } from '@/utils/calculations/legacy-totals.oracle';
-import { perTargetCountCannotBeZero } from '@/utils/calculations/character-totals';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
 import { mapStats, mapGlobal, type EngineTotals } from './engineTotalsMap';
 import type { Build } from '@/types/build';
@@ -586,10 +585,11 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
 
         const build = solo(atId, powerset.id ?? powersetKey, power);
         // A power whose foes are counted by a redirect's sphere (Fulcrum Shift) is aimed at a
-        // foe, so the engine floors its count at one; the legacy floor reads only the power's
-        // own geometry, a single target, and lets it reach zero. Both agree from one foe up, so
-        // the response is graded from there rather than from a zero only one side can be at.
-        const redirectFloor = (meta?.perTargetMaxTargets ?? 0) > 1 && !perTargetCountCannotBeZero(power);
+        // foe, so the engine floors its count at one. The legacy calc's resolved power does not
+        // carry `perTargetMaxTargets`, so its floor reads only the shell's own geometry, a single
+        // target, and lets it reach zero. Both agree from one foe up, so the response is graded
+        // from there rather than from a zero only one side can be at.
+        const redirectFloor = (meta?.perTargetMaxTargets ?? 0) > 1;
         if (redirectFloor) {
           adjudicated.push(`${powersetKey}/${power.name}: redirect-counted, engine floors at one foe — graded from N=1`);
         }

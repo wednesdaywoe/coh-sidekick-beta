@@ -891,10 +891,20 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
           selectedPower.isActive === false;
         // Toggled off, the power is not running and even a caster-counted seat is empty.
         const effectiveTargets = isToggleOff ? 0 : Math.max(targetsHit, stackingInfo.minStacks);
+        // A count spanning more than one cast (Fulcrum Shift: 10 foes a cast, two casts deep)
+        // says how many casts it stands for, since each cast also brings its own base buff.
+        const casts = stackingInfo.perCast && effectiveTargets > 0
+          ? Math.ceil(effectiveTargets / stackingInfo.perCast)
+          : null;
 
         return (
           <div className={`flex items-center gap-2 bg-slate-800/50 rounded px-2 py-1.5 ${isToggleOff ? 'opacity-50' : ''}`}>
-            <span className="text-xs text-slate-300 whitespace-nowrap">{stackingInfo.label}</span>
+            <span className="flex flex-col text-xs text-slate-300 whitespace-nowrap leading-tight">
+              {stackingInfo.label}
+              {casts !== null && (
+                <span className="text-[10px] text-slate-400">{casts} {casts === 1 ? 'cast' : 'casts'}</span>
+              )}
+            </span>
             <input
               type="range"
               min={stackingInfo.minStacks}
@@ -904,7 +914,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
               disabled={!!isToggleOff}
               className="flex-1 h-1 accent-blue-500 cursor-pointer disabled:opacity-50"
             />
-            <span className="text-xs text-slate-200 font-mono w-10 text-right">
+            <span className="text-xs text-slate-200 font-mono min-w-10 text-right whitespace-nowrap">
               {effectiveTargets === 0 ? 'Off' : `${effectiveTargets} / ${stackingInfo.maxStacks}`}
             </span>
           </div>

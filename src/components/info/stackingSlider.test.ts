@@ -80,7 +80,15 @@ describe('STACKINFO-1 — the slider the atoms raise', () => {
         // between. Restating rather than calling keeps the test from agreeing with the reader
         // however the reader is spelled.
         expect(carriesPerTarget(power), `${power.internalName} has no per-foe atom`).toBe(true);
-        expect(info.maxStacks).toBe(power.stats?.maxTargets);
+        if (power.perTargetMaxTargets) {
+          // Redirect-counted (Fulcrum Shift): one cast's foes, times however many casts can
+          // stand at once — a whole number of casts, at least one.
+          expect(info.perCast).toBe(power.perTargetMaxTargets);
+          expect(info.maxStacks % power.perTargetMaxTargets).toBe(0);
+          expect(info.maxStacks).toBeGreaterThanOrEqual(power.perTargetMaxTargets);
+        } else {
+          expect(info.maxStacks).toBe(power.stats?.maxTargets);
+        }
         expect(info.minStacks === 0 || info.minStacks === 1).toBe(true);
       } else {
         stacks += 1;

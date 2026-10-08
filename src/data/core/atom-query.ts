@@ -2561,3 +2561,20 @@ export function maxStackCap(power: AtomSource): number | undefined {
 export function carriesPerTarget(power: AtomSource): boolean {
   return atomsOf(power).some((a) => a.perTarget !== undefined && a.perTarget !== 0);
 }
+
+/**
+ * How many casts of a redirect-counted power can stand at once: the deepest stack its per-foe
+ * atoms state, else 1 — the twin of `coh_math::stacking::redirect_cast_depth`. Fulcrum Shift's
+ * per-foe buff is `Stack` with a limit of 2, so a second cast inside the buff's duration adds a
+ * second set of foe buffs and a second base.
+ */
+export function redirectCastDepth(power: AtomSource): number {
+  let depth: number | undefined;
+  for (const a of atomsOf(power)) {
+    if (a.perTarget === undefined || a.perTarget === 0) continue;
+    if (a.stacking !== 'Stack' && a.stacking !== 'RefreshToCount') continue;
+    if (a.stackCap === undefined) continue;
+    if (depth === undefined || a.stackCap > depth) depth = a.stackCap;
+  }
+  return depth === undefined ? 1 : Math.max(1, Math.floor(depth));
+}

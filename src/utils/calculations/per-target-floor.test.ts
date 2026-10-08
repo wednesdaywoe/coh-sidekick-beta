@@ -243,3 +243,39 @@ describe('getStackingInfo — where the slider starts', () => {
     expect(getStackingInfo(buildUp as unknown as Power)).toMatchObject({ minStacks: 0, label: 'Stacks' });
   });
 });
+
+describe('getStackingInfo — a redirect-counted power', () => {
+  // Fulcrum Shift's shape: a foe-aimed single-target shell whose `KineticTransfer` sphere hits up
+  // to 10 foes (`perTargetMaxTargets`), each running a +damage buff that `Stack`s to 2. Its own
+  // geometry states no `maxTargets`, and the slider used to fall through to a 0–2 stack count
+  // while the engine read 0–20 foe buffs (beta bug report, 2026-10-08).
+  const fulcrumShift = {
+    name: 'Fulcrum Shift',
+    internalName: 'Kinetic_Transfer',
+    powerType: 'Click',
+    targetType: 'Foe',
+    targetsAffected: ['Foe'],
+    effectArea: 'SingleTarget',
+    stats: {},
+    perTargetMaxTargets: 10,
+    atoms: [encodeAtom({
+      effectType: 'DamageBuff', subType: 'Smashing', toWho: 'Target', aspect: 'Str',
+      attribType: 'Magnitude', modifierTable: 'Ranged_Buff_Dmg', scale: 2, magnitude: 1,
+      duration: 45, stacking: 'Stack', stackCap: 2, baseProbability: 1, pvMode: 'Any',
+      resistible: false, perTarget: 2,
+    } as AtomicEffect)],
+  };
+
+  it('counts foe buffs across both casts that can stand at once, from one foe', () => {
+    expect(getStackingInfo(fulcrumShift as unknown as Power)).toEqual({
+      maxStacks: 20,
+      minStacks: 1,
+      label: 'Targets Hit',
+      perCast: 10,
+    });
+  });
+
+  it('floors the count at one foe, as the engine does', () => {
+    expect(perTargetCountCannotBeZero(fulcrumShift as never)).toBe(true);
+  });
+});

@@ -7707,6 +7707,49 @@ function classifyTemplateForStacking(template, { treatAsCaster = false } = {}) {
 }
 
 /**
+ * How many entities one power record counts as separate targets: its `max_targets_hit` when it
+ * is a sphere or cone with a bounded cap, 1 otherwise. 255 is the export's "everyone in radius"
+ * sentinel — a recipient list, not a count anybody could move.
+ */
+function boundedTargetCount(json) {
+  const area = EFFECT_AREA_MAP[json.effect_area] ?? json.effect_area;
+  const max = json.max_targets_hit ?? 0;
+  if ((area === 'AoE' || area === 'Cone') && max > 1 && max !== 255) return max;
+  return 1;
+}
+
+/**
+ * How many times one cast runs the leaf of an `AnyAffected` Execute_Power chain — the per-foe
+ * count's ceiling when the foes are counted by a REDIRECT's sphere rather than the power's own.
+ *
+ * Fulcrum Shift is the shape: a single-target shell executes `KineticTransfer` on its foe, that
+ * 10-target sphere executes `KineticTransferBuff` once per foe it hits, and the leaf's own
+ * 255-target sphere is who each of those buffs lands on. So a node multiplies the count only
+ * when it fans out to a deeper node through `AnyAffected`; a leaf's sphere is its recipients.
+ * Only `Stack` rows are walked, as `collectRedirectStackingTemplates` walks them.
+ */
+function redirectFanOut(redirectName, visited = new Set(), depth = 0) {
+  if (depth > 5) return 1;
+  const key = redirectName.toLowerCase();
+  if (visited.has(key)) return 1;
+  visited.add(key);
+  const redirectPath = resolveRedirectPath(redirectName);
+  if (!fs.existsSync(redirectPath)) return 1;
+  let redirectJson;
+  try { redirectJson = _readPowerFile(redirectPath); } catch { return 1; }
+  let child = null;
+  for (const { template: rt } of collectTemplatesWithMeta(redirectJson.effects || [])) {
+    if (rt.stack !== 'Stack' || rt.target !== 'AnyAffected') continue;
+    if (rt.attribs?.[0]?.toLowerCase() !== 'execute_power') continue;
+    for (const cn of (rt.params && rt.params.power_names) || []) {
+      if (!cn.toLowerCase().startsWith('redirects.')) continue;
+      child = Math.max(child ?? 1, redirectFanOut(cn, visited, depth + 1));
+    }
+  }
+  return child === null ? 1 : boundedTargetCount(redirectJson) * child;
+}
+
+/**
  * Recursively walk an Execute_Power redirect chain (e.g. Fulcrum Shift →
  * Redirects.Kinetics.KineticTransfer → KineticTransferBuffSelf) and collect
  * Stack templates that contribute to caster-side per-target buffs.
@@ -8169,6 +8212,7 @@ function detectStackingEffects(rawJson) {
   // `allTemplates` by the caller exactly as `redirectPerTargetSigs` is; the two never match the
   // same template, because a per-foe increment and a base one-shot differ in scale.
   const redirectBaseSigs = [];
+  let redirectFanOutMax = null;
 
   // === Execute_Power redirect stacking (multi-level) ===
   // Handles two patterns under one rule:
@@ -8193,6 +8237,13 @@ function detectStackingEffects(rawJson) {
       const { templates: chainTemplates, maxStacks: chainMax } = collectRedirectStackingTemplates(pName);
       const isPerTarget = template.target === 'AnyAffected' || (chainMax !== null && chainMax > 1);
       if (chainMax && (maxStacks === null || chainMax > maxStacks)) maxStacks = chainMax;
+      // The foe count this branch's increments grow with, when a redirect's sphere does the
+      // counting (see `redirectFanOut`). The shell's own count is the first factor: its
+      // `AnyAffected` row runs the chain once per target the shell itself hit.
+      if (template.target === 'AnyAffected' && chainTemplates.length) {
+        const fan = boundedTargetCount(rawJson) * redirectFanOut(pName);
+        if (fan > (redirectFanOutMax ?? 1)) redirectFanOutMax = fan;
+      }
 
       for (const { template: rt, treatAsCaster } of chainTemplates) {
         const classifications = classifyTemplateForStacking(rt, { treatAsCaster });
@@ -8252,9 +8303,13 @@ function detectStackingEffects(rawJson) {
   }
 
   if (Object.keys(patches).length === 0 && maxStacks === null && !stacksLinear) return null;
+  // Stamped only where a redirect widens the count past what the power's own geometry states;
+  // a bounded AoE shell whose chain does not fan out already carries the count as `maxTargets`.
+  const perTargetMaxTargets = redirectPerTargetSigs.length
+    && redirectFanOutMax > boundedTargetCount(rawJson) ? redirectFanOutMax : null;
   return {
     patches, maxStacks, stacksLinear, stackCaps,
-    redirectPerTargetSigs, redirectBaseSigs, aoePerTargetSigs,
+    redirectPerTargetSigs, redirectBaseSigs, aoePerTargetSigs, perTargetMaxTargets,
   };
 }
 
@@ -9235,6 +9290,12 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
             t._redirectBaseIncrement = sig.scale;
           }
         }
+      }
+      // The per-foe count's ceiling for one cast when a redirect's sphere counts the foes —
+      // Fulcrum Shift's single-target shell states no `maxTargets`, and its 10 lives in
+      // `Redirects.Kinetics.KineticTransfer`. A whole-chain fact, so it is stamped here.
+      if (stackingResult.perTargetMaxTargets) {
+        power.perTargetMaxTargets = stackingResult.perTargetMaxTargets;
       }
     }
 

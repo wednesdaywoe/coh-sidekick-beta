@@ -43,7 +43,7 @@ import type { Power, PowerEffects } from '@/types';
 import { arcToDegrees } from '@/data/proc-data';
 import { extractHealingFromDamage } from '@/utils/calculations/healing';
 import { synthesizePseudoPetEffects } from '@/utils/calculations/pet-damage';
-import { carriesPerTarget, maxStackCap } from '@/data/core/atom-query';
+import { carriesPerTarget, maxStackCap, redirectCastDepth } from '@/data/core/atom-query';
 import { perTargetCountCannotBeZero } from '@/utils/calculations/character-totals';
 
 /** Toggle tick interval when the data omits one — end/s = endurance / activatePeriod. */
@@ -190,11 +190,24 @@ export function hasPerTargetField(value: unknown): boolean {
  */
 export function getStackingInfo(
   power: Power,
-): { maxStacks: number; minStacks: number; label: string } | null {
+): { maxStacks: number; minStacks: number; label: string; perCast?: number } | null {
   // AoE per-target powers (Soul Drain, Eclipse, Power Sink, …) — the slider's natural axis is
   // "targets hit", bounded by the power's own `maxTargets`. An absent or unbounded bound is no
   // axis to drag, so it is no slider rather than a one-target one.
   if (carriesPerTarget(power)) {
+    // A redirect-counted power (Fulcrum Shift) counts foe buffs across every cast that can stand
+    // at once: 10 foes per cast, two casts deep, is 20. Its own shell is single-target and states
+    // no `maxTargets`, which is why it fell through to a 0–2 stack count here while the engine
+    // (`stacking_slider`) read 0–20.
+    const perCast = power.perTargetMaxTargets;
+    if (perCast !== undefined && perCast > 1) {
+      return {
+        maxStacks: perCast * redirectCastDepth(power),
+        minStacks: perTargetCountCannotBeZero(power) ? 1 : 0,
+        label: 'Targets Hit',
+        perCast,
+      };
+    }
     const maxTargets = power.stats?.maxTargets;
     if (maxTargets && maxTargets > 1 && maxTargets !== UNBOUNDED_MAX_TARGETS) {
       const minStacks = perTargetCountCannotBeZero(power) ? 1 : 0;

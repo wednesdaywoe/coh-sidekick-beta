@@ -996,6 +996,13 @@ export interface Power {
   /** Max targets for AoE */
   maxTargets?: number;
   /**
+   * The per-foe ceiling for ONE cast when an `Execute_Power` redirect's sphere counts the foes
+   * rather than the power's own geometry. Fulcrum Shift: a single-target shell whose
+   * `KineticTransfer` sphere hits up to 10. Stamped by the converter, which alone can see the
+   * redirect's file; the engine reads it as `redirect_targets_per_cast`.
+   */
+  perTargetMaxTargets?: number;
+  /**
    * Mez states this power can still be activated through (e.g. Blaster Defiance
    * lets low-tier attacks fire while Held/Slept/Stunned/Terrorized). Values:
    * 'hold' | 'sleep' | 'stun' | 'terror'. Absent when the power can't be cast

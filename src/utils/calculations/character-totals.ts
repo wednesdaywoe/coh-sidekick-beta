@@ -377,6 +377,7 @@ type PerTargetFloorFields = {
   targetType?: string;
   effectArea?: string;
   stats?: { maxTargets?: number } | Record<string, unknown>;
+  perTargetMaxTargets?: number;
 };
 
 /**
@@ -384,8 +385,12 @@ type PerTargetFloorFields = {
  * `computeAoePerTargetPatches`' own `isAoEWithTargets` gate, read back. It is what makes N an
  * entity count rather than something else wearing the same field, and without it the floor would
  * assert a combat state (Reactive Regeneration counts how recently you were hit).
+ *
+ * A redirect's sphere counts the foes instead of the power's own (Fulcrum Shift): still an entity
+ * count, stated one hop away — the engine's `bounded_aoe_entity_count` reads it the same way.
  */
 function boundedAoeEntityCount(power: PerTargetFloorFields): boolean {
+  if ((power.perTargetMaxTargets ?? 0) > 1) return true;
   if (power.effectArea !== 'AoE' && power.effectArea !== 'Cone') return false;
   const maxTargets = power.stats?.maxTargets;
   return typeof maxTargets === 'number' && maxTargets > 1 && maxTargets !== UNBOUNDED_MAX_TARGETS;

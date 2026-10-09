@@ -870,6 +870,21 @@
       "id": "mission-click-not-combat",
       "date": "2026-10-06",
       "preview": "Personal Force Field, Arctic Air and the phase powers no longer switch off when "
+    },
+    {
+      "id": "fulcrum-shift-targets",
+      "date": "2026-10-08",
+      "preview": "Homecoming and Brainstorm: Fulcrum Shift's slider now counts the enemies you hit"
+    },
+    {
+      "id": "fulcrum-shift-rebirth-tspy",
+      "date": "2026-10-08",
+      "preview": "Rebirth and Thunderspy: Fulcrum Shift and Kinetic Transfer now add their damage "
+    },
+    {
+      "id": "soul-absorption-per-foe",
+      "date": "2026-10-08",
+      "preview": "Soul Absorption now adds its Regeneration and Recovery bonus for each enemy it h"
     }
   ]
 }

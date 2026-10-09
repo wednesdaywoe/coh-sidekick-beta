@@ -24,6 +24,9 @@ export const SoulAbsorption: Power = {
     "DeadFoe",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 20,

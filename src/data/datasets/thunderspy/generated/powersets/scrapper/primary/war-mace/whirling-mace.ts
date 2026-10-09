@@ -26,6 +26,9 @@ export const WhirlingMace: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.05,
     "radius": 8,

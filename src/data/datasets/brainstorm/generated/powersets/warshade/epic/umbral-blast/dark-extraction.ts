@@ -23,6 +23,9 @@ export const DarkExtraction: Power = {
   "targetsAffected": [
     "DeadFoe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

@@ -24,6 +24,10 @@ export const Rejuvenate: Power = {
     "Self",
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

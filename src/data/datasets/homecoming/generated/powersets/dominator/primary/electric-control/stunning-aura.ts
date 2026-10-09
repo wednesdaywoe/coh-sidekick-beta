@@ -28,6 +28,9 @@ export const StunningAura: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,

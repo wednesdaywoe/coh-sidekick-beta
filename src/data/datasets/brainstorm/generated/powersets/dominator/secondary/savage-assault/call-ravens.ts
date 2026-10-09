@@ -23,6 +23,9 @@ export const CallRavens: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 40,

@@ -23,6 +23,9 @@ export const LightningStorm: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.4,
     "recharge": 90,

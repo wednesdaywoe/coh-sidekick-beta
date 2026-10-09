@@ -26,6 +26,9 @@ export const TouchofFear: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.5,
     "range": 80,

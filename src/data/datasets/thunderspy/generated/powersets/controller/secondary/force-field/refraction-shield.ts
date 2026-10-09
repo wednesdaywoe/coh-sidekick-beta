@@ -23,6 +23,9 @@ export const RefractionShield: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 80,

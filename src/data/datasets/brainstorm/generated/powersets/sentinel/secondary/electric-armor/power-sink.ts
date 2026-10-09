@@ -23,6 +23,9 @@ export const PowerSink: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

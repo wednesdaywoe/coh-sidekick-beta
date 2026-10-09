@@ -23,6 +23,9 @@ export const ShadowSlip: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 100,

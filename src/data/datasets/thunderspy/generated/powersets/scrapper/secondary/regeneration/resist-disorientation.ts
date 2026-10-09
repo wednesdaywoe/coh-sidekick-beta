@@ -23,6 +23,9 @@ export const ResistDisorientation: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

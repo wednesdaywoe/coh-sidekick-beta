@@ -26,6 +26,9 @@ export const ChargedBrawl: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

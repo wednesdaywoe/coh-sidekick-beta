@@ -23,6 +23,10 @@ export const Vacuum: Power = {
   "targetsAffected": [
     "Any"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

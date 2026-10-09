@@ -34,6 +34,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "targetsAffected": [
         "MyPet"
       ],
+      "targetsAutoHit": [
+        "MyPet"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 50,
@@ -195,6 +198,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "stun"
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ],
       "stats": {
@@ -610,6 +616,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "stun"
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ],
       "stats": {
@@ -1264,6 +1273,10 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "Teammate",
         "Self"
       ],
+      "targetsAutoHit": [
+        "Teammate",
+        "Self"
+      ],
       "stats": {
         "accuracy": 1,
         "radius": 60,
@@ -1470,6 +1483,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
         "stun"
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ],
       "stats": {
@@ -2451,6 +2467,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "targetsAffected": [
         "Self"
       ],
+      "targetsAutoHit": [
+        "Self"
+      ],
       "stats": {
         "accuracy": 1,
         "recharge": 20,
@@ -3345,6 +3364,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "targetsAffected": [
         "Foe"
       ],
+      "targetsAutoHit": [
+        "Foe"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 50,
@@ -3652,6 +3674,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "targetsAffected": [
         "Self"
       ],
+      "targetsAutoHit": [
+        "Self"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 300,
@@ -3840,6 +3865,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "effectArea": "SingleTarget",
       "targetsAffected": [
         "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
       ],
       "stats": {
         "accuracy": 1,
@@ -4327,6 +4355,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "targetsAffected": [
         "DeadOrAliveLeaguemate"
       ],
+      "targetsAutoHit": [
+        "DeadOrAliveLeaguemate"
+      ],
       "stats": {
         "accuracy": 1,
         "range": 10000,
@@ -4451,6 +4482,9 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
       "targetType": "Self",
       "effectArea": "SingleTarget",
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ],
       "stats": {

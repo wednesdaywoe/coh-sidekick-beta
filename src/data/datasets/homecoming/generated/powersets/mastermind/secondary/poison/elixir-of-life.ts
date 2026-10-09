@@ -33,6 +33,9 @@ export const ElixirofLife: Power = {
   "targetsAffected": [
     "DeadPlayerFriend"
   ],
+  "targetsAutoHit": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,

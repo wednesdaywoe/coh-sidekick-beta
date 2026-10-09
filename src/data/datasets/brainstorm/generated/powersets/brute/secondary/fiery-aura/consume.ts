@@ -23,6 +23,9 @@ export const Consume: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,

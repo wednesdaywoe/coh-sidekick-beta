@@ -23,6 +23,9 @@ export const UnchainEssence: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

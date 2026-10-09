@@ -24,6 +24,9 @@ export const Admonish: Power = {
     "Friend",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

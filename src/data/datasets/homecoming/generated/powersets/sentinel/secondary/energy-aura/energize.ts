@@ -23,6 +23,9 @@ export const Energize: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 90,

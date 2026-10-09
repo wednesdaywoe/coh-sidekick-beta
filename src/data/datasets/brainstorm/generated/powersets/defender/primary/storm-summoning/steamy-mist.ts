@@ -29,6 +29,10 @@ export const SteamyMist: Power = {
     "Leaguemate",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Leaguemate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 40,

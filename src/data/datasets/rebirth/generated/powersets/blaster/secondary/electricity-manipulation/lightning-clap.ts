@@ -27,6 +27,9 @@ export const LightningClap: Power = {
     "Foe",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

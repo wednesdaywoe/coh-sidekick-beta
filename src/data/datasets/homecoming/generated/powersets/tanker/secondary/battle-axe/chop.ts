@@ -26,6 +26,9 @@ export const Chop: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.15,
     "range": 7,

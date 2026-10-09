@@ -24,6 +24,9 @@ export const Placate: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

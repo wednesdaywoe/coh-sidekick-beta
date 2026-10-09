@@ -29,6 +29,10 @@ export const Telekinesis: Power = {
     "Foe",
     "DeadFoe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

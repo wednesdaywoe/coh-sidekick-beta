@@ -23,6 +23,9 @@ export const PowerCrash: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "maxTargetsExpression": [
     "5",
     "Redirects.Energy_Melee.Energy_Store",

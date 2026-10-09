@@ -24,6 +24,9 @@ export const Wrath: Power = {
     "Friend",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

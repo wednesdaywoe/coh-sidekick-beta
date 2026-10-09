@@ -23,6 +23,9 @@ export const TemperatureProtection: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 10

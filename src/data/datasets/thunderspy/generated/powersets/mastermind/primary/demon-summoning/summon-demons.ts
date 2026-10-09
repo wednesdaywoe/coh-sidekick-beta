@@ -23,6 +23,9 @@ export const SummonDemons: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

@@ -22,6 +22,9 @@ export const ElectronHaze: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 40,

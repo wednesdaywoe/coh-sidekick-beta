@@ -23,6 +23,9 @@ export const FRTPsychicWail: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

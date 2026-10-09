@@ -23,6 +23,9 @@ export const FullAuto: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.35,
     "range": 40,

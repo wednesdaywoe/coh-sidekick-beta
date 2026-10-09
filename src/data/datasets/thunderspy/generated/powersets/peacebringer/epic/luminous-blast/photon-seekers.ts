@@ -23,6 +23,9 @@ export const PhotonSeekers: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "recharge": 90,

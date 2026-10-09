@@ -71,6 +71,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Foe"
+    ],
+    "targetsAutoHit": [
+      "None"
     ]
   },
   {
@@ -122,6 +125,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["Movement","Run",0.4,1,0.75,"Melee_SpeedRunning","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["isPVPMap?","!"],null,null,true,null,null,null,null,null,null,"SpeedRunning"]
     ],
     "targetsAffected": [
+      "Self"
+    ],
+    "targetsAutoHit": [
       "Self"
     ]
   },
@@ -186,6 +192,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["MezResist","Sleep",-1,1,0.55,"Melee_Ones","Res","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
     ],
     "targetsAffected": [
+      "Self"
+    ],
+    "targetsAutoHit": [
       "Self"
     ]
   }

@@ -29,6 +29,9 @@ export const ChargedShot: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,

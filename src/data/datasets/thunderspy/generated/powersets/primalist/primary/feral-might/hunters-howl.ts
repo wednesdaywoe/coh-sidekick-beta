@@ -26,6 +26,9 @@ export const HuntersHowl: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

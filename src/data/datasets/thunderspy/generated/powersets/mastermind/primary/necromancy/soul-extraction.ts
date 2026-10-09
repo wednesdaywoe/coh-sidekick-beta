@@ -23,6 +23,9 @@ export const SoulExtraction: Power = {
   "targetsAffected": [
     "DeadFoe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 50,

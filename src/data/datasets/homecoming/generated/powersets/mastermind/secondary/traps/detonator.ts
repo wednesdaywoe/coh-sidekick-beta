@@ -23,6 +23,9 @@ export const Detonator: Power = {
   "targetsAffected": [
     "MyPet"
   ],
+  "targetsAutoHit": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,

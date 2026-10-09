@@ -23,6 +23,9 @@ export const FollowUp: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "activatePeriod": 1

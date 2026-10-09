@@ -26,6 +26,9 @@ export const TimeBomb: Power = {
   "targetsAffected": [
     "None"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 2
   },

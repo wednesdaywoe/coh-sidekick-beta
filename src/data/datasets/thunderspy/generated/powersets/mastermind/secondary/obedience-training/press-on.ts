@@ -22,6 +22,9 @@ export const PressOn: Power = {
   "targetsAffected": [
     "DeadFriend"
   ],
+  "targetsAutoHit": [
+    "DeadFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 20,

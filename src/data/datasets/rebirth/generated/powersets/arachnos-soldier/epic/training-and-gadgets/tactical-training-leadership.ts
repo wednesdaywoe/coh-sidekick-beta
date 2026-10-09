@@ -29,6 +29,10 @@ export const TacticalTrainingLeadership: Power = {
     "Teammate",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Teammate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 60,

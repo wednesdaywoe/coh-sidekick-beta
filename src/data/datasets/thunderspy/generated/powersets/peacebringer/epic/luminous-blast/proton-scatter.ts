@@ -23,6 +23,9 @@ export const ProtonScatter: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 40,

@@ -23,6 +23,9 @@ export const KnockoutBlow: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 13.199999809265137,

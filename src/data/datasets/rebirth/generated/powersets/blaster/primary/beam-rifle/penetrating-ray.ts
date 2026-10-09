@@ -23,6 +23,9 @@ export const PenetratingRay: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.25,
     "range": 150,

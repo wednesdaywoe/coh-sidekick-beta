@@ -23,6 +23,9 @@ export const IcePatch: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "recharge": 35,

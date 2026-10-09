@@ -23,6 +23,9 @@ export const PoisonousRay: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 70,

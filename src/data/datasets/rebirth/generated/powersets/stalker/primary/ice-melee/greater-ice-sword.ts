@@ -27,6 +27,9 @@ export const GreaterIceSword: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,

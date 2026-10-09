@@ -23,6 +23,9 @@ export const ChainLightning: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "chainTargetExpression": [
     "enttype",
     "maintarget>",

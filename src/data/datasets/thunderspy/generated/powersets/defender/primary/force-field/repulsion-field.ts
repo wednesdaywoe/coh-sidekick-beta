@@ -23,6 +23,9 @@ export const RepulsionField: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,

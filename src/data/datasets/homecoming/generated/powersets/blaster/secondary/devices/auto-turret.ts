@@ -24,6 +24,9 @@ export const AutoTurret: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 180,

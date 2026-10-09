@@ -23,6 +23,9 @@ export const Mesmerize: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 100,

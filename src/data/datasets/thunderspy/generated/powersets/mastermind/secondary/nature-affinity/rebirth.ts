@@ -23,6 +23,9 @@ export const Rebirth: Power = {
   "targetsAffected": [
     "DeadOrAliveLeaguemate"
   ],
+  "targetsAutoHit": [
+    "DeadOrAliveLeaguemate"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 45,

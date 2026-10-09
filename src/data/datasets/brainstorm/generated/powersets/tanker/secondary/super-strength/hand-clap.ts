@@ -23,6 +23,9 @@ export const HandClap: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "maxTargetsExpression": [
     "10",
     "kDisable_GauntletTargetCap",

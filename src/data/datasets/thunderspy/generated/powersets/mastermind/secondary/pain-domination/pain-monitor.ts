@@ -23,6 +23,9 @@ export const PainMonitor: Power = {
   "targetsAffected": [
     "Any"
   ],
+  "targetsAutoHit": [
+    "Any"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

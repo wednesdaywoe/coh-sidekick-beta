@@ -23,6 +23,9 @@ export const Tornado: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.3,
     "range": 60,

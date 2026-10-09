@@ -23,6 +23,9 @@ export const PoisonGasArrow: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "range": 70,

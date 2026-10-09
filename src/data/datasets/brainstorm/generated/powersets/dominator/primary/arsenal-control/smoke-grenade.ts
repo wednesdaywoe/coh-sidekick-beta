@@ -23,6 +23,9 @@ export const SmokeGrenade: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 80,

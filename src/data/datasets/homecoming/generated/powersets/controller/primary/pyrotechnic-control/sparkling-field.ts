@@ -23,6 +23,9 @@ export const SparklingField: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "chainTargetExpression": [
     "enttype",
     "maintarget>",

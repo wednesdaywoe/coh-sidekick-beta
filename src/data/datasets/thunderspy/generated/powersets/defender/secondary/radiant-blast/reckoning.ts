@@ -24,6 +24,9 @@ export const Reckoning: Power = {
     "Friend",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

@@ -26,6 +26,9 @@ export const WhirlingAxe: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.05,
     "radius": 8,

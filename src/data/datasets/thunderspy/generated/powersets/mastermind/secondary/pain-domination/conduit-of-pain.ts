@@ -22,6 +22,9 @@ export const ConduitofPain: Power = {
   "targetsAffected": [
     "DeadOrAliveFriend"
   ],
+  "targetsAutoHit": [
+    "DeadOrAliveFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,

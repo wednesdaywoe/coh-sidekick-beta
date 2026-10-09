@@ -26,6 +26,9 @@ export const SpiritSunder: Power = {
   "targetsAffected": [
     "DeadOrAliveFoe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 9,

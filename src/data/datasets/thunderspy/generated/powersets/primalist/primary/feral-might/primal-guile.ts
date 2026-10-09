@@ -23,6 +23,9 @@ export const PrimalGuile: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 20,

@@ -24,6 +24,9 @@ export const ShadowRecall: Power = {
     "DeadOrAliveLeaguemate",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "DeadOrAliveLeaguemate"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 10000,

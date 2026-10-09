@@ -23,6 +23,9 @@ export const RiseofthePhoenix: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 300,

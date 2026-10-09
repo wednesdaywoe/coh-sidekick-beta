@@ -24,6 +24,10 @@ export const IceShield: Power = {
     "Friend",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 80,

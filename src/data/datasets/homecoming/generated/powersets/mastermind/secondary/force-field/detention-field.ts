@@ -24,6 +24,9 @@ export const DetentionField: Power = {
     "Foe",
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 80,

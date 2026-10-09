@@ -23,6 +23,9 @@ export const Flamethrower: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.3,
     "range": 40,

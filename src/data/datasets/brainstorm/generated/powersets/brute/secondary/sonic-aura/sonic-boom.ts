@@ -33,10 +33,19 @@ export const SonicBoom: Power = {
       "radius": 15,
       "arc": 0,
       "effectArea": "Sphere",
-      "maxTargets": 10
+      "maxTargets": 10,
+      "targetsAffected": [
+        "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
+      ]
     }
   ],
   "targetsAffected": [
+    "Self"
+  ],
+  "targetsAutoHit": [
     "Self"
   ],
   "stats": {

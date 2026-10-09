@@ -23,6 +23,9 @@ export const Transfusion: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,

@@ -24,6 +24,9 @@ export const Levitate: Power = {
     "Foe",
     "DeadFoe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

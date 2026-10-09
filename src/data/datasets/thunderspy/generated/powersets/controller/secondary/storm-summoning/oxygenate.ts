@@ -24,6 +24,10 @@ export const Oxygenate: Power = {
     "Friend",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

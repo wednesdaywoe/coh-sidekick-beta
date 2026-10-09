@@ -748,7 +748,7 @@ function betaReference(
   archetypeId: string,
   rawGlobal: ReturnType<typeof mapGlobal>,
   state: ReferenceState = {},
-): { projection: Omit<PowerProjection, 'grantedMagnitudes' | 'damage'>; magnitudes: Map<string, ResolvedMagnitude>; bag: Record<string, unknown> } {
+): { projection: Omit<PowerProjection, 'grantedMagnitudes' | 'damage' | 'hitChance'>; magnitudes: Map<string, ResolvedMagnitude>; bag: Record<string, unknown> } {
   const enh = betaEnhancement(power, build, state);
   const global = convertGlobalBonusesToAspects(rawGlobal);
 

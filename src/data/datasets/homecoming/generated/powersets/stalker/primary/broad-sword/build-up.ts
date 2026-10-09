@@ -23,6 +23,9 @@ export const BuildUp: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.05,
     "recharge": 90,

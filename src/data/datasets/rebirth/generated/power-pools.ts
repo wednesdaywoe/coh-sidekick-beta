@@ -58,6 +58,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Friend"
         ],
+        "targetsAutoHit": [
+          "Friend"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -120,6 +123,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Experimentation.Toxic_Dart",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 0,
@@ -211,6 +217,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 3,
         "autoIssue": false,
@@ -265,6 +274,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Corrosive_Vial",
         "fullName": "Pool.Experimentation.Corrosive_Vial",
         "targetsAffected": [
+          "Foe"
+        ],
+        "targetsAutoHit": [
           "Foe"
         ],
         "rank": 4,
@@ -334,6 +346,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Adrenal_Booster",
         "fullName": "Pool.Experimentation.Adrenal_Booster",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -415,6 +430,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 6,
         "available": -1,
         "autoIssue": true,
@@ -478,6 +496,9 @@ export const POWER_POOLS_RAW = {
         ],
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 0,
@@ -636,6 +657,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 0,
         "autoIssue": false,
@@ -766,6 +790,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 13,
         "autoIssue": false,
@@ -829,6 +856,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Weave",
         "fullName": "Pool.Fighting.Weave",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -928,6 +958,9 @@ export const POWER_POOLS_RAW = {
         ],
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 13,
@@ -1094,6 +1127,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 5,
         "autoIssue": false,
@@ -1132,6 +1168,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 5,
         "autoIssue": false,
@@ -1167,6 +1206,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Health",
         "fullName": "Pool.Fitness.Health",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -1211,6 +1253,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Stamina",
         "fullName": "Pool.Fitness.Stamina",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -1277,6 +1322,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Combat_Flight",
         "fullName": "Pool.Flight.Combat_Flight",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 1,
@@ -1367,6 +1415,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 0,
         "autoIssue": false,
@@ -1447,6 +1498,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Fly",
         "fullName": "Pool.Flight.Fly",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -1538,6 +1592,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Group_Fly",
         "fullName": "Pool.Flight.Group_Fly",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -1760,6 +1817,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 13,
         "autoIssue": false,
@@ -1846,6 +1906,10 @@ export const POWER_POOLS_RAW = {
           "Teammate",
           "Self"
         ],
+        "targetsAutoHit": [
+          "Teammate",
+          "Self"
+        ],
         "rank": 6,
         "available": -1,
         "autoIssue": true,
@@ -1899,6 +1963,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Fly_Afterburner",
         "fullName": "Pool.Flight.Fly_Afterburner",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 7,
@@ -2034,6 +2101,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -2094,6 +2164,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Force_of_Will.Project_Will",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 0,
@@ -2200,6 +2273,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 3,
         "autoIssue": false,
@@ -2259,6 +2335,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Force_of_Will.Wall_of_Force",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 13,
@@ -2380,6 +2459,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 19,
         "autoIssue": false,
@@ -2457,6 +2539,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Force_of_Will.Stomp",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 6,
         "available": -1,
@@ -2544,6 +2629,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -2603,6 +2691,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Gadgetry.Wrist_Blaster",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 0,
@@ -2684,6 +2775,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 3,
         "autoIssue": false,
@@ -2748,6 +2842,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Gadgetry.Blaster_Barrage",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 13,
@@ -2892,6 +2989,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 19,
         "autoIssue": false,
@@ -2947,6 +3047,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Turbo_Boost",
         "fullName": "Pool.Gadgetry.Turbo_Boost",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 6,
@@ -3006,6 +3109,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Stealth",
         "fullName": "Pool.Invisibility.Stealth",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 1,
@@ -3118,6 +3224,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Leaguemate"
         ],
+        "targetsAutoHit": [
+          "Leaguemate"
+        ],
         "rank": 2,
         "available": 0,
         "autoIssue": false,
@@ -3188,6 +3297,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Invisibility",
         "fullName": "Pool.Invisibility.Invisibility",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -3268,6 +3380,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 13,
         "autoIssue": false,
@@ -3344,6 +3459,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Invisibility.Misdirection",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 13,
@@ -3439,6 +3557,10 @@ export const POWER_POOLS_RAW = {
           "Teammate",
           "Self"
         ],
+        "targetsAutoHit": [
+          "Teammate",
+          "Self"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -3503,6 +3625,10 @@ export const POWER_POOLS_RAW = {
           "Teammate",
           "Self"
         ],
+        "targetsAutoHit": [
+          "Teammate",
+          "Self"
+        ],
         "rank": 2,
         "available": 0,
         "autoIssue": false,
@@ -3550,6 +3676,10 @@ export const POWER_POOLS_RAW = {
         "internalName": "Tactics",
         "fullName": "Pool.Leadership.Tactics",
         "targetsAffected": [
+          "Teammate",
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Teammate",
           "Self"
         ],
@@ -3605,6 +3735,10 @@ export const POWER_POOLS_RAW = {
         "internalName": "Vengeance",
         "fullName": "Pool.Leadership.Vengeance",
         "targetsAffected": [
+          "Teammate",
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Teammate",
           "Self"
         ],
@@ -3712,6 +3846,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "DeadFoe"
         ],
+        "targetsAutoHit": [
+          "DeadFoe"
+        ],
         "rank": 5,
         "available": 13,
         "autoIssue": false,
@@ -3805,6 +3942,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -3892,6 +4032,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Combat_Jumping",
         "fullName": "Pool.Leaping.Combat_Jumping",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -3987,6 +4130,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 3,
         "autoIssue": false,
@@ -4045,6 +4191,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Leap",
         "fullName": "Pool.Leaping.Leap",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -4184,6 +4333,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 13,
         "autoIssue": false,
@@ -4289,6 +4441,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -4334,6 +4489,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Manipulation.Provoke",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 0,
@@ -4384,6 +4542,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Manipulation.Intimidate",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 13,
@@ -4462,6 +4623,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Manipulation.Invoke_Panic",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 13,
@@ -4546,6 +4710,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Unrelenting",
         "fullName": "Pool.Manipulation.Unrelenting",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -4670,6 +4837,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Friend"
         ],
+        "targetsAutoHit": [
+          "Friend"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -4746,6 +4916,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Friend",
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "Friend"
         ],
         "rank": 2,
         "available": 0,
@@ -4830,6 +5003,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 13,
         "autoIssue": false,
@@ -4912,6 +5088,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "DeadPlayerFriend"
         ],
+        "targetsAutoHit": [
+          "DeadPlayerFriend"
+        ],
         "rank": 4,
         "available": 13,
         "autoIssue": false,
@@ -4980,6 +5159,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Field_Medic",
         "fullName": "Pool.Medicine.Field_Medic",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -5089,6 +5271,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Friend"
         ],
+        "targetsAutoHit": [
+          "Friend"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -5144,6 +5329,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Sorcery.Arcane_Bolt",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 0,
@@ -5229,6 +5417,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 3,
         "autoIssue": false,
@@ -5292,6 +5483,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Enflame",
         "fullName": "Pool.Sorcery.Enflame",
         "targetsAffected": [
+          "Any"
+        ],
+        "targetsAutoHit": [
           "Any"
         ],
         "rank": 4,
@@ -5365,6 +5559,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Rune_of_Protection",
         "fullName": "Pool.Sorcery.Rune_of_Protection",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -5446,6 +5643,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 6,
         "available": -1,
         "autoIssue": true,
@@ -5507,6 +5707,9 @@ export const POWER_POOLS_RAW = {
         ],
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 0,
@@ -5597,6 +5800,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 0,
         "autoIssue": false,
@@ -5642,6 +5848,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Super_Speed",
         "fullName": "Pool.Speed.Super_Speed",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -5698,6 +5907,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Whirlwind",
         "fullName": "Pool.Speed.Whirlwind",
         "targetsAffected": [
+          "Foe"
+        ],
+        "targetsAutoHit": [
           "Foe"
         ],
         "rank": 4,
@@ -5818,6 +6030,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Burnout",
         "fullName": "Pool.Speed.Burnout",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -5967,6 +6182,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "DeadOrAliveLeaguemate",
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "DeadOrAliveLeaguemate"
         ],
         "rank": 1,
         "available": 0,
@@ -6147,6 +6365,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 0,
         "autoIssue": false,
@@ -6246,6 +6467,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Teleport",
         "fullName": "Pool.Teleportation.Teleport",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -6412,6 +6636,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 13,
         "autoIssue": false,
@@ -6536,6 +6763,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 5,
         "available": 13,
         "autoIssue": false,
@@ -6616,6 +6846,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 6,
         "available": -1,
         "autoIssue": true,
@@ -6659,6 +6892,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Team_Teleport_Friends",
         "fullName": "Pool.Teleportation.Team_Teleport_Friends",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 7,
@@ -6753,6 +6989,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 0,
         "autoIssue": false,
@@ -6806,6 +7045,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Utility_Belt.Poisoned_Dagger",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 0,
@@ -6905,6 +7147,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 3,
         "autoIssue": false,
@@ -6971,6 +7216,9 @@ export const POWER_POOLS_RAW = {
         "fullName": "Pool.Utility_Belt.Flying_Kick",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 13,
@@ -7085,6 +7333,9 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 19,
         "autoIssue": false,
@@ -7154,6 +7405,9 @@ export const POWER_POOLS_RAW = {
         "internalName": "Athletics",
         "fullName": "Pool.Utility_Belt.Athletics",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 6,

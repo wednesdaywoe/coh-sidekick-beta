@@ -23,6 +23,9 @@ export const PoisonTrap: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 60,

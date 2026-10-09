@@ -23,6 +23,9 @@ export const ShortCircuit: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.3,
     "radius": 20,

@@ -24,6 +24,9 @@ export const TripMine: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.2,
     "recharge": 30,

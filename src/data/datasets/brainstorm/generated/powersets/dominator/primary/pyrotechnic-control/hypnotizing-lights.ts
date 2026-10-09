@@ -34,7 +34,13 @@ export const HypnotizingLights: Power = {
       "radius": 70,
       "arc": 0.7853981852531433,
       "effectArea": "Cone",
-      "maxTargets": 16
+      "maxTargets": 16,
+      "targetsAffected": [
+        "Foe"
+      ],
+      "targetsAutoHit": [
+        "Foe"
+      ]
     },
     {
       "power": "Redirects.Pyrotechnic_Control.HypnotizingLights_Narrow",
@@ -46,10 +52,19 @@ export const HypnotizingLights: Power = {
       "radius": 20,
       "arc": 0.7853981852531433,
       "effectArea": "Cone",
-      "maxTargets": 5
+      "maxTargets": 5,
+      "targetsAffected": [
+        "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
+      ]
     }
   ],
   "targetsAffected": [
+    "Foe"
+  ],
+  "targetsAutoHit": [
     "Foe"
   ],
   "stats": {

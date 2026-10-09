@@ -24,6 +24,10 @@ export const ReformEssence: Power = {
     "Self",
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 15,

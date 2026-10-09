@@ -24,6 +24,10 @@ export const MirrorImage: Power = {
     "Self",
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

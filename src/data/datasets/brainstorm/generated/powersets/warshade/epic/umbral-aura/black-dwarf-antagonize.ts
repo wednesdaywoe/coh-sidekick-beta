@@ -23,6 +23,9 @@ export const BlackDwarfAntagonize: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.5,
     "range": 60,

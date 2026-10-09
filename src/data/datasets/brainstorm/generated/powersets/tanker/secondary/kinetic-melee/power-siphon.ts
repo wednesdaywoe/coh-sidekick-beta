@@ -23,6 +23,9 @@ export const PowerSiphon: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.2,
     "recharge": 90,

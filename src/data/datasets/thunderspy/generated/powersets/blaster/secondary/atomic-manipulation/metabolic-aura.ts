@@ -34,6 +34,9 @@ export const MetabolicAura: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "recharge": 10,

@@ -24,6 +24,9 @@ export const Consecrate: Power = {
     "Friend",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

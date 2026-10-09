@@ -26,6 +26,9 @@ export const RadiationTherapy: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 20,

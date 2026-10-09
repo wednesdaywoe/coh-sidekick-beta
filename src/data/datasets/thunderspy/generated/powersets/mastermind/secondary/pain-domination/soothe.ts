@@ -24,6 +24,10 @@ export const Soothe: Power = {
     "Friend",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

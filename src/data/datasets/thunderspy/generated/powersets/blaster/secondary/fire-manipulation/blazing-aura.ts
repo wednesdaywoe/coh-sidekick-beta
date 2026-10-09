@@ -35,6 +35,9 @@ export const BlazingAura: Power = {
     "Foe",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

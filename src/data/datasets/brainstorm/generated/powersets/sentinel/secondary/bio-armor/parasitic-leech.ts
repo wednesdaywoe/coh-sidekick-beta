@@ -23,6 +23,9 @@ export const ParasiticLeech: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.5,
     "range": 40,

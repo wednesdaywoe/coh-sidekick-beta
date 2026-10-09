@@ -23,6 +23,9 @@ export const GroundingShield: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "castTime": 0.5,

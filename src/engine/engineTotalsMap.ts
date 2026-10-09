@@ -213,6 +213,7 @@ export interface EnginePowerProjection {
   recharge: EngineThreeTier | null;
   endurance_cost: EngineThreeTier | null;
   accuracy: EngineThreeTier | null;
+  hit_chance: { chance: number; level_diff: number } | null;
   cast_time: EngineThreeTier | null;
   arcana_time: number | null;
   range: EngineThreeTier | null;
@@ -331,6 +332,9 @@ export interface PowerProjection {
   recharge: ThreeTierValues | null;
   enduranceCost: ThreeTierValues | null;
   accuracy: ThreeTierValues | null;
+  /** The chance this power lands on the chosen target (fraction in [0.05, 0.95]), read at the
+   *  target's level net of the incarnate level shift. `null` when the power has no accuracy. */
+  hitChance: number | null;
   castTime: ThreeTierValues | null;
   arcanaTime: number | null;
   range: ThreeTierValues | null;
@@ -829,6 +833,7 @@ export function mapOnePowerProjection(p: EnginePowerProjection): PowerProjection
     recharge: mapTier(p.recharge),
     enduranceCost: mapTier(p.endurance_cost),
     accuracy: mapTier(p.accuracy),
+    hitChance: p.hit_chance?.chance ?? null,
     castTime: mapTier(p.cast_time),
     arcanaTime: p.arcana_time,
     range: mapTier(p.range),

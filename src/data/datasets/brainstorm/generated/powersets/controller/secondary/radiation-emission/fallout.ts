@@ -23,6 +23,9 @@ export const Fallout: Power = {
   "targetsAffected": [
     "DeadLeaguemate"
   ],
+  "targetsAutoHit": [
+    "DeadLeaguemate"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

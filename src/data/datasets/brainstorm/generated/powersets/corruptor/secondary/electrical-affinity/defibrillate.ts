@@ -23,6 +23,9 @@ export const Defibrillate: Power = {
   "targetsAffected": [
     "DeadOrAliveAny"
   ],
+  "targetsAutoHit": [
+    "DeadOrAliveAny"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 7,

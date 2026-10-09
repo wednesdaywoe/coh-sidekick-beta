@@ -26,6 +26,9 @@ export const Birdshot: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 70,

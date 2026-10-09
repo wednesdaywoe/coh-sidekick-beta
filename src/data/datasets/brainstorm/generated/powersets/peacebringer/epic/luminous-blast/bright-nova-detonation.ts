@@ -23,6 +23,9 @@ export const BrightNovaDetonation: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 100,

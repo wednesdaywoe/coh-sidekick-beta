@@ -24,6 +24,9 @@ export const Disintegrate: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.1,
     "range": 80,

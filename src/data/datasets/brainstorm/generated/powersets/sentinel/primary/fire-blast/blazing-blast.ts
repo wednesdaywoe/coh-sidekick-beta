@@ -23,6 +23,9 @@ export const BlazingBlast: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,

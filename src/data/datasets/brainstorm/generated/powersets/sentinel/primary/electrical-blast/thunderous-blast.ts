@@ -23,6 +23,9 @@ export const ThunderousBlast: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 40,

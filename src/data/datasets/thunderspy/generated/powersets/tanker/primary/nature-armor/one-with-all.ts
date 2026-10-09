@@ -25,6 +25,10 @@ export const OneWithAll: Power = {
     "Foe",
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 20,

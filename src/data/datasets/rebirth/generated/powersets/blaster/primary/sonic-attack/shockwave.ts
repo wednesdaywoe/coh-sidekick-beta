@@ -23,6 +23,9 @@ export const Shockwave: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 0.9,
     "range": 50,

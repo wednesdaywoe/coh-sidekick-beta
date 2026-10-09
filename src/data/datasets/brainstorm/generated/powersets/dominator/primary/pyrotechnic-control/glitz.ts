@@ -23,6 +23,9 @@ export const Glitz: Power = {
   "targetsAffected": [
     "DeadOrAliveFoe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

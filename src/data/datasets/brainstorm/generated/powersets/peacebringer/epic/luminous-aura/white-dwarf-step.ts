@@ -23,6 +23,9 @@ export const WhiteDwarfStep: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 300,

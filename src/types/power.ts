@@ -889,6 +889,10 @@ export interface ProcRollSite {
   areaFactorOverride?: number;
   /** HC field 41b: multiplies the PPM of every proc rolled here (Sonic Boom's pseudo-pet: 2). */
   ppmMod?: number;
+  /** The child's own EntsAffected — see {@link Power.targetsAffected}. */
+  targetsAffected?: string[];
+  /** The child's own EntsAutoHit — see {@link Power.targetsAutoHit}. */
+  targetsAutoHit?: string[];
 }
 
 /**
@@ -988,6 +992,13 @@ export interface Power {
    * an authored empty list.
    */
   targetsAffected?: string[];
+  /**
+   * EntsAutoHit — the entity categories this power lands on without rolling to hit,
+   * straight from the export. `['None']` means every target in `targetsAffected`
+   * rolls; a foe-affecting power with `'Foe'` here (a Self-anchored PBAoE, most
+   * debuff patches) never misses. Omitted when the export states nothing.
+   */
+  targetsAutoHit?: string[];
   /**
    * The power's damage-type SET, emitted only where the per-template element is
    * genuinely absent from the export (Thunderspy, whose damage atoms arrive

@@ -23,6 +23,9 @@ export const Vines: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 0.8,
     "range": 80,

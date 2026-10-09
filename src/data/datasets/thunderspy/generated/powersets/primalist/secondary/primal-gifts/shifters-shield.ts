@@ -24,6 +24,10 @@ export const ShiftersShield: Power = {
     "Self",
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Self",
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

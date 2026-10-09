@@ -23,6 +23,9 @@ export const SmokeFlash: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 20,

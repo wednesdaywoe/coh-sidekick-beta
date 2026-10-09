@@ -26,6 +26,9 @@ export const JacobsLadder: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "maxTargetsExpression": [
     "10",
     "kDisable_GauntletTargetCap",

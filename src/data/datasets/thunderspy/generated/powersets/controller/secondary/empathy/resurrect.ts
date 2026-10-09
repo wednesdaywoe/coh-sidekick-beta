@@ -23,6 +23,9 @@ export const Resurrect: Power = {
   "targetsAffected": [
     "DeadPlayerFriend"
   ],
+  "targetsAutoHit": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

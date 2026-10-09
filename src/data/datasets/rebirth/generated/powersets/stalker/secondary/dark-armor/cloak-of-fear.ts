@@ -23,6 +23,9 @@ export const CloakofFear: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 0.67,
     "radius": 8,

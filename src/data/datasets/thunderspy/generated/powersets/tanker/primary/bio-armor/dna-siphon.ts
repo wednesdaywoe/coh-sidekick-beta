@@ -27,6 +27,9 @@ export const DNASiphon: Power = {
     "Foe",
     "DeadFoe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,

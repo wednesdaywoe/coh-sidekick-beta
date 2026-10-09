@@ -32,11 +32,20 @@ export const Whitecap: Power = {
       "radius": 20,
       "arc": 0,
       "effectArea": "Sphere",
-      "maxTargets": 16
+      "maxTargets": 16,
+      "targetsAffected": [
+        "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
+      ]
     }
   ],
   "targetsAffected": [
     "Location"
+  ],
+  "targetsAutoHit": [
+    "Self"
   ],
   "stats": {
     "accuracy": 1,

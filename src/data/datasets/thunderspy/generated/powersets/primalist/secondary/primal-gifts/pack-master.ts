@@ -24,6 +24,10 @@ export const PackMaster: Power = {
     "Friend",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

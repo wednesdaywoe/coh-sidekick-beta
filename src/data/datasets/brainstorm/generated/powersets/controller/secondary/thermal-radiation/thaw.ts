@@ -23,6 +23,9 @@ export const Thaw: Power = {
   "targetsAffected": [
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

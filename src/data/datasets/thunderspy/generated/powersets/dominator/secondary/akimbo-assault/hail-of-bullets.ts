@@ -23,6 +23,9 @@ export const HailofBullets: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.1,
     "radius": 15,

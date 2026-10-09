@@ -23,6 +23,9 @@ export const Irradiate: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.1,
     "radius": 20,

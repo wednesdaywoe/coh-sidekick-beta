@@ -24,6 +24,9 @@ export const VoltaicSentinel: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 40,

@@ -23,6 +23,10 @@ export const RadiationInfection: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

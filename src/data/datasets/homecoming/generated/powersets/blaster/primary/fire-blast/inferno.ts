@@ -23,6 +23,9 @@ export const Inferno: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 25,

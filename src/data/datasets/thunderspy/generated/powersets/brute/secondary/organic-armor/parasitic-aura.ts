@@ -23,6 +23,9 @@ export const ParasiticAura: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.5,
     "radius": 20,

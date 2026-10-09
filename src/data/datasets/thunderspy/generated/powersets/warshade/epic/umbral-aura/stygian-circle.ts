@@ -23,6 +23,9 @@ export const StygianCircle: Power = {
   "targetsAffected": [
     "DeadFoe"
   ],
+  "targetsAutoHit": [
+    "DeadFoe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 20,

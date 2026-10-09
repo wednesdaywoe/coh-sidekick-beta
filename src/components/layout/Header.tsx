@@ -139,6 +139,8 @@ export function Header() {
   const openProcSettingsModal = useUIStore((s) => s.openProcSettingsModal);
   const ruleOf5AlertEnabled = useUIStore((s) => s.ruleOf5AlertEnabled);
   const toggleRuleOf5AlertEnabled = useUIStore((s) => s.toggleRuleOf5AlertEnabled);
+  const hitChanceAlertEnabled = useUIStore((s) => s.hitChanceAlertEnabled);
+  const toggleHitChanceAlertEnabled = useUIStore((s) => s.toggleHitChanceAlertEnabled);
   const openAboutModal = useUIStore((s) => s.openAboutModal);
   const openWelcomeModal = useUIStore((s) => s.openWelcomeModal);
   const openAnnouncementModal = useUIStore((s) => s.openAnnouncementModal);
@@ -273,6 +275,19 @@ export function Header() {
             onChange={toggleRuleOf5AlertEnabled}
             label="Bonus Cap Alert"
             title="Show a banner above the dashboard and highlight offending powers when the build has any set bonus that exceeds the Rule of 5 cap."
+            className="!gap-2"
+            variant="warning"
+          />
+        </div>
+
+        <div className="flex items-center bg-slate-700/50 px-2 py-1 rounded border border-slate-600">
+          <Toggle
+            id="hit-chance-alert-toggle"
+            name="hitChanceAlert"
+            checked={hitChanceAlertEnabled}
+            onChange={toggleHitChanceAlertEnabled}
+            label="Hit Chance Alert"
+            title="Mark every power whose chance to hit is under the 95% cap, against the Target level and incarnate shift you have set."
             className="!gap-2"
             variant="warning"
           />

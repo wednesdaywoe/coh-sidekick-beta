@@ -24,6 +24,10 @@ export const Burn: Power = {
     "Foe",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 8,

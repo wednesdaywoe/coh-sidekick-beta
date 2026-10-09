@@ -24,6 +24,10 @@ export const EnergizingCircuit: Power = {
     "Friend",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Self"
+  ],
   "chainTargetExpression": [
     "101",
     "kEndurance%",

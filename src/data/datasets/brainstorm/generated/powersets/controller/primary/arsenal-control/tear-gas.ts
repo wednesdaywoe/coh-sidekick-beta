@@ -23,6 +23,9 @@ export const TearGas: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 0.85,
     "range": 80,

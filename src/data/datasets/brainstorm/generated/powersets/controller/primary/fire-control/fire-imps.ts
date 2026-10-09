@@ -24,6 +24,9 @@ export const FireImps: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,

@@ -26,6 +26,9 @@ export const Pendulum: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "maxTargetsExpression": [
     "5",
     "kDisable_GauntletTargetCap",

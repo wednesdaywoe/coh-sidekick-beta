@@ -23,6 +23,9 @@ export const VolcanicGasses: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 60,

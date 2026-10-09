@@ -23,6 +23,9 @@ export const Tranquilizer: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.15,
     "range": 80,

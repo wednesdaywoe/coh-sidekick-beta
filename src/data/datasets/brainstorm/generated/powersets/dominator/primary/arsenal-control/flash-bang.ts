@@ -23,6 +23,9 @@ export const FlashBang: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 0.85,
     "range": 70,

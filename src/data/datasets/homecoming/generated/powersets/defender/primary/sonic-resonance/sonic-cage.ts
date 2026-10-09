@@ -24,6 +24,9 @@ export const SonicCage: Power = {
     "Foe",
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1.4,
     "range": 80,

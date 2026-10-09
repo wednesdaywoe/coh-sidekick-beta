@@ -23,6 +23,9 @@ export const Fallout: Power = {
   "targetsAffected": [
     "MyPet"
   ],
+  "targetsAutoHit": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

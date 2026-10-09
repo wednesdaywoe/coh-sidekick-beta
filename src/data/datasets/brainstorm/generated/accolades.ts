@@ -47,6 +47,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -80,6 +83,9 @@ export const ACCOLADES_POWERSET = {
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -115,6 +121,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -148,6 +157,9 @@ export const ACCOLADES_POWERSET = {
         ["MaxHP",null,0.5,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -183,6 +195,9 @@ export const ACCOLADES_POWERSET = {
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -230,6 +245,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
       ]
     },
     {
@@ -272,6 +290,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -307,6 +328,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -339,6 +363,9 @@ export const ACCOLADES_POWERSET = {
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -374,6 +401,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -407,6 +437,9 @@ export const ACCOLADES_POWERSET = {
         ["MaxHP",null,1,1,10.75,"Melee_HealSelf","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -442,6 +475,9 @@ export const ACCOLADES_POWERSET = {
         ["MaxEndurance",null,5,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -489,6 +525,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
       ]
     },
     {
@@ -531,6 +570,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -566,6 +608,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -600,6 +645,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -632,6 +680,9 @@ export const ACCOLADES_POWERSET = {
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -667,6 +718,9 @@ export const ACCOLADES_POWERSET = {
         ["MaxEndurance",null,10,1,10.75,"Melee_Ones","Max","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -711,6 +765,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -741,6 +798,9 @@ export const ACCOLADES_POWERSET = {
         ["RechargePower",null,1,1,0,"Ranged_Ones","Abs","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -775,6 +835,9 @@ export const ACCOLADES_POWERSET = {
         ["Meta",null,1,1,0,"Ranged_Ones","Abs","Constant","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"token_add",["Self"]]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -841,6 +904,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -885,6 +951,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -914,6 +983,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -942,6 +1014,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Self"
+      ],
+      "targetsAutoHit": [
+        "Self"
       ]
     },
     {
@@ -965,6 +1040,9 @@ export const ACCOLADES_POWERSET = {
         ["Meta",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",null,1.5]
       ],
       "targetsAffected": [
+        "Self"
+      ],
+      "targetsAutoHit": [
         "Self"
       ]
     },
@@ -1012,6 +1090,9 @@ export const ACCOLADES_POWERSET = {
       ],
       "targetsAffected": [
         "Any"
+      ],
+      "targetsAutoHit": [
+        "None"
       ]
     },
     {
@@ -1042,6 +1123,9 @@ export const ACCOLADES_POWERSET = {
         ["Meta",null,100,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,"view_attributes"]
       ],
       "targetsAffected": [
+        "Foe"
+      ],
+      "targetsAutoHit": [
         "Foe"
       ]
     }

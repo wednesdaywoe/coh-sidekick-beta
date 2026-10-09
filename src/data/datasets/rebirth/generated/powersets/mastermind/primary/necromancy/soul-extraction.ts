@@ -23,6 +23,9 @@ export const SoulExtraction: Power = {
   "targetsAffected": [
     "DeadMyPet"
   ],
+  "targetsAutoHit": [
+    "DeadMyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

@@ -23,6 +23,9 @@ export const Pulsar: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 0.8,
     "radius": 20,

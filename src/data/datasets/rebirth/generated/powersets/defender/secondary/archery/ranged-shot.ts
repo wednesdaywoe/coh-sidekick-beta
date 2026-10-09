@@ -23,6 +23,9 @@ export const RangedShot: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.386,
     "range": 150,

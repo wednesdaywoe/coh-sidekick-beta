@@ -24,6 +24,10 @@ export const RejuvenatingCircuit: Power = {
     "Friend",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Self"
+  ],
   "chainTargetExpression": [
     "101",
     "kHitPoints%",

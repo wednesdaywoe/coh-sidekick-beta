@@ -27,6 +27,9 @@ export const HeadSplitter: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1.05,
     "range": 10,

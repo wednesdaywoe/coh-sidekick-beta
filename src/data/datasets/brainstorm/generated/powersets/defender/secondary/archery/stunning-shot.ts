@@ -23,6 +23,9 @@ export const StunningShot: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.155,
     "range": 60,

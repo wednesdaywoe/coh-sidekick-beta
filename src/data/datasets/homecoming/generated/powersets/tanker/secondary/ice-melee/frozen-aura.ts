@@ -26,6 +26,9 @@ export const FrozenAura: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "maxTargetsExpression": [
     "16",
     "kDisable_GauntletTargetCap",

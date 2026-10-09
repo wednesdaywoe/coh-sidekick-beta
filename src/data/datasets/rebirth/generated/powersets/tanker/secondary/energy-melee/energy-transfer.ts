@@ -27,6 +27,9 @@ export const EnergyTransfer: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 7,

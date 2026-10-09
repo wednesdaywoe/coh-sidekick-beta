@@ -27,6 +27,9 @@ export const TouchofFear: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "maxTargetsExpression": [
     "16",
     "kDisable_GauntletTargetCap",

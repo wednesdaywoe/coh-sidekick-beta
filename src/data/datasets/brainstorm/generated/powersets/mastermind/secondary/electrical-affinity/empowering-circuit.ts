@@ -24,6 +24,10 @@ export const EmpoweringCircuit: Power = {
     "Friend",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Friend",
+    "Self"
+  ],
   "chainTargetExpression": [
     "enttype",
     "maintarget>",

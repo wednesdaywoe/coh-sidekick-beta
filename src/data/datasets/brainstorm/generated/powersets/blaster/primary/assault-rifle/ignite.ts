@@ -23,6 +23,9 @@ export const Ignite: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.15,
     "range": 60,

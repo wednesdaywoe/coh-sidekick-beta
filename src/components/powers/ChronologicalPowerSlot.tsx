@@ -310,6 +310,7 @@ export function ChronologicalPowerSlot({
             return (
               <PowerRow
                 key={subPower.name}
+                hitChancePower={subPower}
                 name={subPower.name}
                 iconSrc={getPowerIconPath(subPower.icon)}
                 size="lg"

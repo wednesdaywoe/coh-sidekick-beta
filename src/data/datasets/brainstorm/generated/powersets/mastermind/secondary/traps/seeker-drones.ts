@@ -23,6 +23,9 @@ export const SeekerDrones: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1.2,
     "range": 60,

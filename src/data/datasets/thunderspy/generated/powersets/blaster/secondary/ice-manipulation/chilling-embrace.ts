@@ -33,6 +33,10 @@ export const ChillingEmbrace: Power = {
     "Foe",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

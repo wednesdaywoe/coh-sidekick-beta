@@ -23,6 +23,9 @@ export const FrighteningFade: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.4,
     "radius": 20,

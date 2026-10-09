@@ -28,6 +28,9 @@ export const EnergyFlight: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "endurance": 0.2275,

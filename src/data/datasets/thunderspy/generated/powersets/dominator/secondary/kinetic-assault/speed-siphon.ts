@@ -29,6 +29,10 @@ export const SpeedSiphon: Power = {
     "Foe",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 10,

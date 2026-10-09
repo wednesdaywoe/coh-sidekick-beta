@@ -23,6 +23,9 @@ export const Incinerator: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "stats": {
     "accuracy": 1.15,
     "range": 40,

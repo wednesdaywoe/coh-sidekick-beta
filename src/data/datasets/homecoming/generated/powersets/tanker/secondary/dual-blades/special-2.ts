@@ -26,6 +26,9 @@ export const Special2: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "maxTargetsExpression": [
     "10",
     "kDisable_GauntletTargetCap",

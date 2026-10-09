@@ -38,6 +38,10 @@ export const Agile: Power = {
     "Foe",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Foe",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 15,

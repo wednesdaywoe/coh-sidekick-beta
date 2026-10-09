@@ -24,6 +24,10 @@ export const WorldofPain: Power = {
     "Any",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Any",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 35,

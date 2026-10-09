@@ -131,6 +131,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Foe"
+    ],
+    "targetsAutoHit": [
+      "None"
     ]
   },
   {
@@ -177,6 +180,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
     ],
     "targetsAffected": [
+      "Self"
+    ],
+    "targetsAutoHit": [
       "Self"
     ]
   },
@@ -245,6 +251,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Self"
+    ],
+    "targetsAutoHit": [
+      "Self"
     ]
   },
   {
@@ -305,6 +314,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Self"
+    ],
+    "targetsAutoHit": [
+      "Self"
     ]
   },
   {
@@ -363,6 +375,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Self"
+    ],
+    "targetsAutoHit": [
+      "Self"
     ]
   },
   {
@@ -417,6 +432,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Self"
+    ],
+    "targetsAutoHit": [
+      "Self"
     ]
   },
   {
@@ -469,6 +487,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
     ],
     "targetsAffected": [
+      "Self"
+    ],
+    "targetsAutoHit": [
       "Self"
     ]
   },
@@ -523,6 +544,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Self"
+    ],
+    "targetsAutoHit": [
+      "Self"
     ]
   },
   {
@@ -576,6 +600,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
     ],
     "targetsAffected": [
       "Self"
+    ],
+    "targetsAutoHit": [
+      "Self"
     ]
   },
   {
@@ -628,6 +655,9 @@ export const BASIC_INHERENTS: BasicInherentDef[] = [
       ["Movement","JumpHeight",0.1,1,0.75,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
     ],
     "targetsAffected": [
+      "Self"
+    ],
+    "targetsAutoHit": [
       "Self"
     ]
   }

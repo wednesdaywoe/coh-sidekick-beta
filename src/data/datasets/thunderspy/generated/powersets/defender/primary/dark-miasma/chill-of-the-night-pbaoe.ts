@@ -28,6 +28,9 @@ export const ChillofthenightPBAoE: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 25,

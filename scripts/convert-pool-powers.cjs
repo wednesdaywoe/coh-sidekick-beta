@@ -197,6 +197,10 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   if (Array.isArray(rawJson.targets_affected) && rawJson.targets_affected.length) {
     power.targetsAffected = rawJson.targets_affected;
   }
+  // EntsAutoHit — see the field doc on `Power.targetsAutoHit`.
+  if (Array.isArray(rawJson.targets_autohit) && rawJson.targets_autohit.length) {
+    power.targetsAutoHit = rawJson.targets_autohit;
+  }
 
   power.rank = rank;
   power.available = availableLevel;

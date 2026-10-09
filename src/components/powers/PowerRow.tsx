@@ -17,6 +17,7 @@ import { SlottedEnhancementList } from './SlottedEnhancementList';
 import { SlottedSetBonuses } from './SlottedSetBonuses';
 import { PermaRing } from './PermaRing';
 import { ProcPotentialBadge } from './ProcPotentialBadge';
+import { HitChanceBadge } from './HitChanceBadge';
 import type { SlotSize } from './TouchableSlot';
 import { useBuildStore, useUIStore, type PowerCategory } from '@/stores';
 import { isMovableSlot, type SlotLevel, type SlotLevelRef, type PowerRef } from '@/utils/slot-levels';
@@ -84,6 +85,9 @@ interface PowerRowProps {
   slotLevels?: SlotLevel[];
   /** Full power object for perma ring display */
   selectedPower?: SelectedPower;
+  /** The power the Hit Chance Alert reads, for a row that does not pass `selectedPower`
+   *  (a form's nested sub-power). */
+  hitChancePower?: SelectedPower;
   /** Store category for this power — enables the slot-level move feature
    *  (addresses slots unambiguously). Falls back to by-name resolution when
    *  omitted. */
@@ -121,6 +125,7 @@ export function PowerRow({
   onInfoClick,
   slotLevels,
   selectedPower,
+  hitChancePower,
   powerCategory,
 }: PowerRowProps) {
   const isTouch = useIsTouchDevice();
@@ -438,6 +443,7 @@ export function PowerRow({
       {showAutoLabel && (
         <span className="text-[9px] text-slate-500 ml-1 flex-shrink-0">(Auto)</span>
       )}
+      <HitChanceBadge power={selectedPower ?? hitChancePower} />
       <ProcPotentialBadge power={selectedPower} />
       {/* Toggle lives in the name row (stacked layout) rather than beside the
           slots: a 6-slot row + ghost already fills a narrow column, and letting
@@ -599,6 +605,7 @@ export function PowerRow({
         {showAutoLabel && (
           <span className="text-[9px] text-slate-400 ml-1 flex-shrink-0">(Auto)</span>
         )}
+        <HitChanceBadge power={selectedPower ?? hitChancePower} />
         {renderActions()}
       </div>
 

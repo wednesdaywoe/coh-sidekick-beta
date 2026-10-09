@@ -28,6 +28,10 @@ export const SonicRepulsion: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Leaguemate",
+    "Foe"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 70,

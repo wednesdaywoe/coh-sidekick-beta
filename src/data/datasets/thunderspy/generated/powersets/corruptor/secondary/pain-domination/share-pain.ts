@@ -23,6 +23,9 @@ export const SharePain: Power = {
   "targetsAffected": [
     "Any"
   ],
+  "targetsAutoHit": [
+    "Any"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

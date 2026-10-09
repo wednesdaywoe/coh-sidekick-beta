@@ -24,6 +24,10 @@ export const PhalanxFighting: Power = {
     "Leaguemate",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Leaguemate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 12,

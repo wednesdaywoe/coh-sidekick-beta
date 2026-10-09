@@ -23,6 +23,9 @@ export const Mutation: Power = {
   "targetsAffected": [
     "DeadPlayerFriend"
   ],
+  "targetsAutoHit": [
+    "DeadPlayerFriend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

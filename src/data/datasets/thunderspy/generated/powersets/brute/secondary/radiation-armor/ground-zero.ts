@@ -24,6 +24,9 @@ export const GroundZero: Power = {
     "Friend",
     "Foe"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1.2,
     "radius": 15,

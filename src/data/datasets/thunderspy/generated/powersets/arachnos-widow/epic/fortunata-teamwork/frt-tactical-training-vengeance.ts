@@ -23,6 +23,10 @@ export const FRTTacticalTrainingVengeance: Power = {
     "Teammate",
     "Self"
   ],
+  "targetsAutoHit": [
+    "Teammate",
+    "Self"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 60,

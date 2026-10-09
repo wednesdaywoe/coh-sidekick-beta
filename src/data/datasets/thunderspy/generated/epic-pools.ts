@@ -35,6 +35,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -123,6 +126,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -205,6 +211,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Arctic_Mastery.Ice_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -290,6 +299,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -357,6 +369,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Ice_Storm",
         "fullName": "Epic.Arctic_Mastery.Ice_Storm",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -446,6 +461,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -515,6 +533,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -578,6 +599,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Blaster_Mace_Mastery.Mace_Beam_Volley",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -662,6 +686,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -735,6 +762,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Blaster_Mace_Mastery.Web_Cocoon",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -821,6 +851,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -897,6 +930,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -955,6 +991,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Thunder_Strike",
         "fullName": "Epic.Blaster_Mu_Mastery.Thunder_Strike",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -1028,6 +1067,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Blaster_Mu_Mastery.Electrifying_Fences",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -1112,6 +1154,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Blaster_Mu_Mastery.Electric_Shackles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -1209,6 +1254,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -1292,6 +1340,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -1370,6 +1421,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Blaze_Mastery.Fire_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -1454,6 +1508,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -1516,6 +1573,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Blaze_Mastery.Fire_Ball",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -1626,6 +1686,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -1666,6 +1729,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Focused_Accuracy",
         "fullName": "Epic.Body_Mastery.Focused_Accuracy",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -1717,6 +1783,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Body_Mastery.Laser_Beam_Eyes",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -1783,6 +1852,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -1826,6 +1898,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Body_Mastery.Energy_Torrent",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -1921,6 +1996,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -1960,6 +2038,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Focused_Accuracy",
         "fullName": "Epic.Body_Mastery_Stalker.Focused_Accuracy",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -2011,6 +2092,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Body_Mastery_Stalker.Laser_Beam_Eyes",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -2082,6 +2166,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -2125,6 +2212,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Body_Mastery_Stalker.Energy_Torrent",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -2222,6 +2312,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Leviathan_Mastery.Spirit_Shark",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 34,
@@ -2327,6 +2420,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Leviathan_Mastery.School_of_Sharks",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -2435,6 +2531,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -2537,6 +2636,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Leviathan_Mastery.Arctic_Breath",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -2662,6 +2764,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 34,
         "autoIssue": false,
@@ -2754,6 +2859,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Mace_Mastery.Mace_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 34,
@@ -2849,6 +2957,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -2931,6 +3042,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -2996,6 +3110,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Mace_Mastery.Disruptor_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -3093,6 +3210,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 34,
         "autoIssue": false,
@@ -3185,6 +3305,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -3273,6 +3396,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Mu_Mastery.Electrifying_Fences",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -3375,6 +3501,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Mu_Mastery.Ball_Lightning",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -3483,6 +3612,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -3572,6 +3704,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Striker",
         "fullName": "Epic.Brute_Mu_Mastery.Summon_Striker",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -3666,6 +3801,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -3755,6 +3893,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Soul_Mastery.Soul_Tentacles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -3857,6 +3998,10 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Friend",
+          "Foe"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -3930,6 +4075,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Brute_Soul_Mastery.Dark_Obliteration",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -4018,6 +4166,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Widow",
         "fullName": "Epic.Brute_Soul_Mastery.Summon_Widow",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -4110,6 +4261,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -4171,6 +4325,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Charge_Mastery.Electric_Shackles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -4241,6 +4398,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -4319,6 +4479,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -4374,6 +4537,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Charge_Mastery.EM_Pulse",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -4463,6 +4629,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -4534,6 +4703,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -4602,6 +4774,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -4651,6 +4826,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Snow_Storm",
         "fullName": "Epic.Chill_Mastery.Snow_Storm",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -4715,6 +4893,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Hibernate",
         "fullName": "Epic.Chill_Mastery.Hibernate",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -4804,6 +4985,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -4866,6 +5050,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Cold_Mastery.Flash_Freeze",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -4935,6 +5122,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -4988,6 +5178,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Frozen_Armor",
         "fullName": "Epic.Cold_Mastery.Frozen_Armor",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -5052,6 +5245,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Hibernate",
         "fullName": "Epic.Cold_Mastery.Hibernate",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -5141,6 +5337,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -5213,6 +5412,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Leviathan_Mastery.Chum_Spray",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -5297,6 +5499,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -5379,6 +5584,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -5438,6 +5646,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Coralax",
         "fullName": "Epic.Controller_Leviathan_Mastery.Summon_Coralax",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -5525,6 +5736,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Mace_Mastery.Poisonous_Ray",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 34,
@@ -5618,6 +5832,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -5681,6 +5898,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Mace_Mastery.Disruptor_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -5766,6 +5986,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -5826,6 +6049,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Tarantula",
         "fullName": "Epic.Controller_Mace_Mastery.Summon_Tarantula",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -5916,6 +6142,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -5979,6 +6208,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -6038,6 +6270,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Mu_Mastery.Ball_Lightning",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -6126,6 +6361,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -6192,6 +6430,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Guardian",
         "fullName": "Epic.Controller_Mu_Mastery.Summon_Guardian",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -6281,6 +6522,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -6343,6 +6587,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Munitions_Mastery.M30_Grenade",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -6416,6 +6663,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -6456,6 +6706,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Serum",
         "fullName": "Epic.Controller_Munitions_Mastery.Serum",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -6508,6 +6761,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Targeting_Drone",
         "fullName": "Epic.Controller_Munitions_Mastery.Targeting_Drone",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -6575,6 +6831,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Soul_Mastery.Dark_Consumption",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 34,
@@ -6647,6 +6906,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -6707,6 +6969,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Soul_Mastery.Dark_Obliteration",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -6784,6 +7049,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Controller_Soul_Mastery.Soul_Drain",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -6872,6 +7140,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 34,
         "autoIssue": false,
@@ -6957,6 +7228,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -7039,6 +7313,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -7102,6 +7379,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Hibernate",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Hibernate",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -7190,6 +7470,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -7268,6 +7551,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Coralax",
         "fullName": "Epic.Corruptor_Leviathan_Mastery.Summon_Coralax",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -7364,6 +7650,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -7437,6 +7726,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -7505,6 +7797,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -7570,6 +7865,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Corruptor_Mace_Mastery.Web_Cocoon",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -7641,6 +7939,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Disruptor",
         "fullName": "Epic.Corruptor_Mace_Mastery.Summon_Disruptor",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -7735,6 +8036,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -7802,6 +8106,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -7865,6 +8172,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Corruptor_Mu_Mastery.Electric_Shackles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -7951,6 +8261,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -8018,6 +8331,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Adept",
         "fullName": "Epic.Corruptor_Mu_Mastery.Summon_Adept",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -8113,6 +8429,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -8205,6 +8524,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -8268,6 +8590,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Power_Boost",
         "fullName": "Epic.Corruptor_Soul_Mastery.Power_Boost",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -8349,6 +8674,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -8426,6 +8754,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Mistress",
         "fullName": "Epic.Corruptor_Soul_Mastery.Summon_Mistress",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -8522,6 +8853,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -8581,6 +8915,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dark_Mastery.Dark_Consumption",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -8643,6 +8980,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -8694,6 +9034,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Soul_Transfer",
         "fullName": "Epic.Dark_Mastery.Soul_Transfer",
         "targetsAffected": [
+          "Foe"
+        ],
+        "targetsAutoHit": [
           "Foe"
         ],
         "rank": 4,
@@ -8768,6 +9111,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dark_Mastery.Soul_Drain",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -8865,6 +9211,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -8945,6 +9294,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -9000,6 +9352,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Darkness_Mastery.Dark_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -9073,6 +9428,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Darkness_Mastery.Night_Fall",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -9151,6 +9509,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Darkness_Mastery.Tenebrous_Tentacles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -9260,6 +9621,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -9307,6 +9671,10 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Accelerate_Metabolism",
         "fullName": "Epic.Dominator_Atomic_Mastery.Accelerate_Metabolism",
         "targetsAffected": [
+          "Friend",
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Friend",
           "Self"
         ],
@@ -9376,6 +9744,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -9435,6 +9806,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -9485,6 +9859,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dominator_Atomic_Mastery.Neutron_Bomb",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -9579,6 +9956,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -9650,6 +10030,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dominator_Leviathan_Mastery.Chum_Spray",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -9730,6 +10113,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Hibernate",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Hibernate",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -9814,6 +10200,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -9873,6 +10262,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Coralax",
         "fullName": "Epic.Dominator_Leviathan_Mastery.Summon_Coralax",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -9962,6 +10354,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dominator_Mace_Mastery.Poisonous_Ray",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 34,
@@ -10055,6 +10450,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -10118,6 +10516,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dominator_Mace_Mastery.Disruptor_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -10203,6 +10604,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -10285,6 +10689,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Tarantula",
         "fullName": "Epic.Dominator_Mace_Mastery.Summon_Tarantula",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -10375,6 +10782,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -10438,6 +10848,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -10497,6 +10910,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dominator_Mu_Mastery.Ball_Lightning",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -10575,6 +10991,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -10641,6 +11060,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Guardian",
         "fullName": "Epic.Dominator_Mu_Mastery.Summon_Guardian",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -10731,6 +11153,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -10800,6 +11225,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -10860,6 +11288,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Dominator_Soul_Mastery.Dark_Obliteration",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -10967,6 +11398,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -11051,6 +11485,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Seer",
         "fullName": "Epic.Dominator_Soul_Mastery.Summon_Seer",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -11139,6 +11576,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -11224,6 +11664,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -11281,6 +11724,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Earth_Mastery.Fossilize",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -11357,6 +11803,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -11413,6 +11862,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Earth_Mastery.Stalagmites",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -11508,6 +11960,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -11569,6 +12024,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Electrical_Mastery.Shocking_Bolt",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -11635,6 +12093,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -11681,6 +12142,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Surge_of_Power",
         "fullName": "Epic.Electrical_Mastery.Surge_of_Power",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -11738,6 +12202,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Electrical_Mastery.EM_Pulse",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -11827,6 +12294,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -11902,6 +12372,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Electricity_Mastery.Thunder_Strike",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -11985,6 +12458,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -12036,6 +12512,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Electricity_Mastery.Shocking_Bolt",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -12110,6 +12589,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 5,
         "available": 34,
         "autoIssue": false,
@@ -12181,6 +12663,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -12220,6 +12705,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Focused_Accuracy",
         "fullName": "Epic.Energy_Mastery.Focused_Accuracy",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -12271,6 +12759,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Energy_Mastery.Laser_Beam_Eyes",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -12342,6 +12833,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -12385,6 +12879,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Energy_Mastery.Energy_Torrent",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -12483,6 +12980,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -12522,6 +13022,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Focused_Accuracy",
         "fullName": "Epic.Energy_Mastery_Brute.Focused_Accuracy",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -12573,6 +13076,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Energy_Mastery_Brute.Laser_Beam_Eyes",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -12644,6 +13150,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -12687,6 +13196,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Energy_Mastery_Brute.Energy_Torrent",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -12785,6 +13297,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -12839,6 +13354,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Field_Mastery.Power_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -12907,6 +13425,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Field_Mastery.Energy_Torrent",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -12979,6 +13500,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -13042,6 +13566,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Foce_of_Nature",
         "fullName": "Epic.Field_Mastery.Foce_of_Nature",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -13115,6 +13642,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -13183,6 +13713,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Fire_Mastery.Fire_Ball",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -13262,6 +13795,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -13309,6 +13845,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Rise_of_the_Phoenix",
         "fullName": "Epic.Fire_Mastery.Rise_of_the_Phoenix",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -13378,6 +13917,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Fire_Mastery.Consume",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -13457,6 +13999,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -13511,6 +14056,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Fire_Mastery_Dominator.Fire_Ball",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -13573,6 +14121,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -13620,6 +14171,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Rise_of_the_Phoenix",
         "fullName": "Epic.Fire_Mastery_Dominator.Rise_of_the_Phoenix",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -13689,6 +14243,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Fire_Mastery_Dominator.Consume",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -13766,6 +14323,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -13821,6 +14381,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Flame_Mastery.Char",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -13883,6 +14446,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -13931,6 +14497,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Flame_Mastery.Melt_Armor",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -13997,6 +14566,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Rise_of_the_Phoenix",
         "fullName": "Epic.Flame_Mastery.Rise_of_the_Phoenix",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -14084,6 +14656,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -14156,6 +14731,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -14205,6 +14783,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -14251,6 +14832,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Force_Mastery.Repulsion_Bomb",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -14326,6 +14910,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 34,
         "autoIssue": false,
@@ -14397,6 +14984,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -14452,6 +15042,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Heat_Mastery_Stalker.Fire_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -14519,6 +15112,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Heat_Mastery_Stalker.Fire_Ball",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -14596,6 +15192,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -14668,6 +15267,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Rise_of_the_Phoenix",
         "fullName": "Epic.Heat_Mastery_Stalker.Rise_of_the_Phoenix",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -14755,6 +15357,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -14828,6 +15433,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -14898,6 +15506,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -14961,6 +15572,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Ice_Mastery.Frost_Breath",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -15029,6 +15643,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Ice_Storm",
         "fullName": "Epic.Ice_Mastery.Ice_Storm",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -15104,6 +15721,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -15162,6 +15782,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Hibernate",
         "fullName": "Epic.Ice_Mastery_Dominator.Hibernate",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -15234,6 +15857,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -15298,6 +15924,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -15351,6 +15980,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Ice_Storm",
         "fullName": "Epic.Ice_Mastery_Dominator.Ice_Storm",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -15426,6 +16058,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -15473,6 +16108,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Power_Build_Up",
         "fullName": "Epic.Mastermind_Atomic_Mastery.Power_Build_Up",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -15554,6 +16192,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -15642,6 +16283,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -15697,6 +16341,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Atomic_Mastery.Neutron_Bomb",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -15785,6 +16432,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Leviathan_Mastery.School_of_Sharks",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 34,
@@ -15875,6 +16525,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -15960,6 +16613,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -16039,6 +16695,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -16103,6 +16762,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Leviathan_Mastery.Spirit_Shark_Jaws",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -16208,6 +16870,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -16277,6 +16942,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -16340,6 +17008,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Mace_Mastery.Mace_Beam_Volley",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -16424,6 +17095,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -16498,6 +17172,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Mace_Mastery.Web_Cocoon",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -16584,6 +17261,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -16660,6 +17340,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -16722,6 +17405,9 @@ export const EPIC_POOLS_RAW = {
         ],
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -16812,6 +17498,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -16895,6 +17584,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Mu_Mastery.Electric_Shackles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -16992,6 +17684,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -17072,6 +17767,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -17136,6 +17834,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Soul_Mastery.Oppressive_Gloom",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -17209,6 +17910,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Tentacles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -17298,6 +18002,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Mastermind_Soul_Mastery.Soul_Storm",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -17393,6 +18100,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -17434,6 +18144,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Munitions_Mastery.Cryo_Freeze_Ray",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -17497,6 +18210,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -17557,6 +18273,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -17613,6 +18332,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Munitions_Mastery.LRM_Rocket",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -17703,6 +18425,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -17757,6 +18482,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Power_Build_Up",
         "fullName": "Epic.Power_Mastery.Power_Build_Up",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 2,
@@ -17838,6 +18566,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -17887,6 +18618,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Force_of_Nature",
         "fullName": "Epic.Power_Mastery.Force_of_Nature",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 4,
@@ -17946,6 +18680,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Power_Mastery.Total_Focus",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -18037,6 +18774,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -18107,6 +18847,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -18159,6 +18902,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -18205,6 +18951,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Primal_Forces_Mastery.Energy_Torrent",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -18277,6 +19026,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Power_Boost",
         "fullName": "Epic.Primal_Forces_Mastery.Power_Boost",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -18362,6 +19114,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -18436,6 +19191,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -18488,6 +19246,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -18534,6 +19295,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Energy_Torrent",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -18606,6 +19370,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Explosive_Blast",
         "fullName": "Epic.Primal_Forces_Mastery_Dominator.Explosive_Blast",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -18682,6 +19449,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -18740,6 +19510,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -18795,6 +19568,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -18841,6 +19617,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "World_of_Confusion",
         "fullName": "Epic.Psionic_Mastery.World_of_Confusion",
         "targetsAffected": [
+          "Foe"
+        ],
+        "targetsAutoHit": [
           "Foe"
         ],
         "rank": 4,
@@ -18901,6 +19680,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Psionic_Mastery.Psionic_Tornado",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -18984,6 +19766,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -19036,6 +19821,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -19079,6 +19867,10 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Link_Minds",
         "fullName": "Epic.Psionic_Mastery_Domingator.Link_Minds",
         "targetsAffected": [
+          "Teammate",
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Teammate",
           "Self"
         ],
@@ -19136,6 +19928,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Foe"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -19189,6 +19984,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Psionic_Mastery_Domingator.Psionic_Tornado",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -19264,6 +20062,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -19329,6 +20130,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -19384,6 +20188,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -19434,6 +20241,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "World_of_Confusion",
         "fullName": "Epic.Psychic_Mastery.World_of_Confusion",
         "targetsAffected": [
+          "Foe"
+        ],
+        "targetsAutoHit": [
           "Foe"
         ],
         "rank": 4,
@@ -19497,6 +20307,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Telekinesis",
         "fullName": "Epic.Psychic_Mastery.Telekinesis",
         "targetsAffected": [
+          "Foe"
+        ],
+        "targetsAutoHit": [
           "Foe"
         ],
         "rank": 5,
@@ -19582,6 +20395,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -19664,6 +20480,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -19741,6 +20560,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Pyre_Mastery.Fire_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -19830,6 +20652,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -19900,6 +20725,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Pyre_Mastery.Fire_Ball",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -20015,6 +20843,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -20109,6 +20940,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -20183,6 +21017,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Hibernate",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Hibernate",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 3,
@@ -20274,6 +21111,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -20359,6 +21199,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Guardian",
         "fullName": "Epic.Stalker_Leviathan_Mastery.Summon_Guardian",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -20454,6 +21297,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -20546,6 +21392,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Stalker_Mace_Mastery.Mace_Beam",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -20643,6 +21492,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -20738,6 +21590,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -20808,6 +21663,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Spiderlings",
         "fullName": "Epic.Stalker_Mace_Mastery.Summon_Spiderlings",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -20905,6 +21763,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -20993,6 +21854,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -21076,6 +21940,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Stalker_Mu_Mastery.Ball_Lightning",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -21175,6 +22042,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -21256,6 +22126,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Adept",
         "fullName": "Epic.Stalker_Mu_Mastery.Summon_Adept",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -21351,6 +22224,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -21436,6 +22312,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Stalker_Soul_Mastery.Moonbeam",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -21526,6 +22405,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -21596,6 +22478,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Stalker_Soul_Mastery.Soul_Storm",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -21672,6 +22557,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Widow",
         "fullName": "Epic.Stalker_Soul_Mastery.Summon_Widow",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -21766,6 +22654,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -21826,6 +22717,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Stone_Mastery.Fissure",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -21895,6 +22789,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -21961,6 +22858,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -22019,6 +22919,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Earths_Embrace",
         "fullName": "Epic.Stone_Mastery.Earths_Embrace",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -22092,6 +22995,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.VEAT_Leviathan_Mastery.Spirit_Shark",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 1,
         "available": 34,
@@ -22178,6 +23084,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.VEAT_Leviathan_Mastery.School_of_Sharks",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -22269,6 +23178,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -22354,6 +23266,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.VEAT_Leviathan_Mastery.Arctic_Breath",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 4,
         "available": 34,
@@ -22462,6 +23377,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 5,
         "available": 34,
         "autoIssue": false,
@@ -22555,6 +23473,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -22639,6 +23560,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -22713,6 +23637,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.VEAT_Mace_Mastery.Disruptor_Blast",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -22800,6 +23727,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -22883,6 +23813,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Blaster",
         "fullName": "Epic.VEAT_Mace_Mastery.Summon_Blaster",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -22977,6 +23910,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -23054,6 +23990,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.VEAT_Mu_Mastery.Electrifying_Fences",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -23143,6 +24082,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.VEAT_Mu_Mastery.Ball_Lightning",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -23234,6 +24176,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -23313,6 +24258,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Striker",
         "fullName": "Epic.VEAT_Mu_Mastery.Summon_Striker",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -23407,6 +24355,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -23484,6 +24435,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.VEAT_Soul_Mastery.Soul_Tentacles",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 2,
         "available": 34,
@@ -23575,6 +24529,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 3,
         "available": 34,
         "autoIssue": false,
@@ -23653,6 +24610,10 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "Friend",
+          "Foe"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -23725,6 +24686,9 @@ export const EPIC_POOLS_RAW = {
         "internalName": "Summon_Widow",
         "fullName": "Epic.VEAT_Soul_Mastery.Summon_Widow",
         "targetsAffected": [
+          "Self"
+        ],
+        "targetsAutoHit": [
           "Self"
         ],
         "rank": 5,
@@ -23816,6 +24780,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -23879,6 +24846,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -23934,6 +24904,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Weapon_Mastery.Shuriken",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -23996,6 +24969,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -24045,6 +25021,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Weapon_Mastery.Exploding_Shuriken",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,
@@ -24126,6 +25105,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [
+          "None"
+        ],
         "rank": 1,
         "available": 34,
         "autoIssue": false,
@@ -24186,6 +25168,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 2,
         "available": 34,
         "autoIssue": false,
@@ -24229,6 +25214,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Weapon_Mastery_Stalker.Shuriken",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 3,
         "available": 34,
@@ -24289,6 +25277,9 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Self"
         ],
+        "targetsAutoHit": [
+          "Self"
+        ],
         "rank": 4,
         "available": 34,
         "autoIssue": false,
@@ -24335,6 +25326,9 @@ export const EPIC_POOLS_RAW = {
         "fullName": "Epic.Weapon_Mastery_Stalker.Exploding_Shuriken",
         "targetsAffected": [
           "Foe"
+        ],
+        "targetsAutoHit": [
+          "None"
         ],
         "rank": 5,
         "available": 34,

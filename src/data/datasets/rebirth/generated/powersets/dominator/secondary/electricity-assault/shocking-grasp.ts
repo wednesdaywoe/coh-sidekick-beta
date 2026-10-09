@@ -23,6 +23,9 @@ export const ShockingGrasp: Power = {
   "targetsAffected": [
     "Self"
   ],
+  "targetsAutoHit": [
+    "Self"
+  ],
   "stats": {
     "accuracy": 2,
     "range": 60,

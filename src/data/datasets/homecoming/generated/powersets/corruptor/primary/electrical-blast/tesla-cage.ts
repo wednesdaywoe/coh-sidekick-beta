@@ -24,6 +24,9 @@ export const TeslaCage: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [
+    "None"
+  ],
   "maxTargetsExpression": [
     "1",
     "Redirects.Shock_Therapy.Shock_Therapy_Static",

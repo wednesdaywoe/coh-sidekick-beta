@@ -36,7 +36,13 @@ export const Fault: Power = {
       "radius": 15,
       "arc": 0,
       "effectArea": "Sphere",
-      "maxTargets": 10
+      "maxTargets": 10,
+      "targetsAffected": [
+        "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
+      ]
     },
     {
       "power": "Redirects.Stone_Melee.Fault_Cone_Brute",
@@ -48,10 +54,19 @@ export const Fault: Power = {
       "radius": 20,
       "arc": 0.9599311351776123,
       "effectArea": "Cone",
-      "maxTargets": 5
+      "maxTargets": 5,
+      "targetsAffected": [
+        "Foe"
+      ],
+      "targetsAutoHit": [
+        "None"
+      ]
     }
   ],
   "targetsAffected": [
+    "Foe"
+  ],
+  "targetsAutoHit": [
     "Foe"
   ],
   "stats": {

@@ -491,6 +491,10 @@ interface UIState {
    *  what the strikethrough/orange-ring indicators mean. */
   ruleOf5AlertEnabled: boolean;
 
+  /** Badge every picked power whose chance to hit the chosen target (Target level + the
+   *  incarnate shift setting) is under the 95% cap. Off by default — it is a tuning aid. */
+  hitChanceAlertEnabled: boolean;
+
   /** Display recharge as Mids' speed-multiplier "Haste" (100% base + bonuses,
    *  e.g. +70% Hasten → 170%) when true. When false, show just the bonus
    *  portion (+70%) — matches what the in-game UI displays. Default is
@@ -851,6 +855,7 @@ interface UIActions {
   clearToasts: () => void;
   setRuleOf5AlertEnabled: (enabled: boolean) => void;
   toggleRuleOf5AlertEnabled: () => void;
+  toggleHitChanceAlertEnabled: () => void;
   setRechargeMidsStyle: (enabled: boolean) => void;
   toggleRechargeMidsStyle: () => void;
 
@@ -1055,6 +1060,7 @@ export const useUIStore = create<UIStore>()(
       mobileSheet: null,
       toasts: [],
       ruleOf5AlertEnabled: true,
+      hitChanceAlertEnabled: false,
       rechargeMidsStyle: false,
 
       // Enhancement Picker Modal
@@ -1980,6 +1986,8 @@ export const useUIStore = create<UIStore>()(
       setRuleOf5AlertEnabled: (enabled) => set({ ruleOf5AlertEnabled: enabled }),
       toggleRuleOf5AlertEnabled: () =>
         set((state) => ({ ruleOf5AlertEnabled: !state.ruleOf5AlertEnabled })),
+      toggleHitChanceAlertEnabled: () =>
+        set((state) => ({ hitChanceAlertEnabled: !state.hitChanceAlertEnabled })),
       setRechargeMidsStyle: (enabled) => set({ rechargeMidsStyle: enabled }),
       toggleRechargeMidsStyle: () =>
         set((state) => ({ rechargeMidsStyle: !state.rechargeMidsStyle })),
@@ -2087,6 +2095,7 @@ export const useUIStore = create<UIStore>()(
         mechanicAdjusters: state.mechanicAdjusters,
         globalAdjusters: state.globalAdjusters,
         ruleOf5AlertEnabled: state.ruleOf5AlertEnabled,
+        hitChanceAlertEnabled: state.hitChanceAlertEnabled,
         rechargeMidsStyle: state.rechargeMidsStyle,
         dismissedAnnouncements: state.dismissedAnnouncements,
         chainPowerMetric: state.chainPowerMetric,

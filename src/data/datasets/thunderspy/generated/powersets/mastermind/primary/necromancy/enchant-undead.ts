@@ -23,6 +23,9 @@ export const EnchantUndead: Power = {
   "targetsAffected": [
     "MyPet"
   ],
+  "targetsAutoHit": [
+    "MyPet"
+  ],
   "stats": {
     "accuracy": 1,
     "radius": 30,

@@ -23,6 +23,9 @@ export const O2Boost: Power = {
   "targetsAffected": [
     "Friend"
   ],
+  "targetsAutoHit": [
+    "Friend"
+  ],
   "stats": {
     "accuracy": 1,
     "range": 80,

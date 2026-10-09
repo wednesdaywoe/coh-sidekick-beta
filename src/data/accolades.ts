@@ -93,9 +93,24 @@ export function accoladeFaction(power: AccoladePower): AccoladeFaction {
   return 'any';
 }
 
+/**
+ * Accolade powers present in the exported set but awarded by no badge, so unobtainable in-game
+ * yet matching the stat-toggle shape. Dropped from the picker so the list shows only what a
+ * player can actually earn (reported as unobtainable accolades).
+ *
+ * Verified against the Unofficial Homecoming Wiki: neither appears in the hero/villain
+ * accolade badge lists, and neither is granted through any inherent, prestige, or leveling
+ * path in any dataset's `levels.json`. The roster is derived, not hand-authored, so this is
+ * the one curated exception — and a fork that later activates one needs only remove it here.
+ */
+const UNOBTAINABLE_ACCOLADES = new Set(['Super_Patriot', 'Iron_Man']);
+
 /** The permanent stat-buff accolades the planner offers as toggles, in game order. */
 export function getAccolades(): AccoladePower[] {
-  return activeAccoladePowerset().powers.filter(isStatToggle);
+  return activeAccoladePowerset()
+    .powers
+    .filter(isStatToggle)
+    .filter((power) => !UNOBTAINABLE_ACCOLADES.has(power.internalName));
 }
 
 /**

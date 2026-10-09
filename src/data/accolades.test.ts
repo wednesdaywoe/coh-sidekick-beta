@@ -25,9 +25,18 @@ describe('accolades derived from the exported Accolades powerset', () => {
     byId = new Map(getAccolades().map((p) => [accoladeId(p), p]));
   });
 
-  it('surfaces the four permanent stat accolades the beta silo dropped', () => {
-    for (const id of ['iron_man', 'super_patriot', 'labyrinth_conqueror', 'mazebreaker']) {
+  it('surfaces the obtainable stat accolades the beta silo dropped', () => {
+    // Labyrinth Conqueror and Mazebreaker are genuinely earned (Labyrinth of Fog), so they stay.
+    for (const id of ['labyrinth_conqueror', 'mazebreaker']) {
       expect(byId.has(id), id).toBe(true);
+    }
+  });
+
+  it('excludes the unobtainable accolades the export still carries', () => {
+    // Super Patriot and Iron Man are awarded by no badge and granted through no path in any
+    // dataset, so they must not be offered even though they match the stat-toggle shape.
+    for (const id of ['iron_man', 'super_patriot']) {
+      expect(byId.has(id), id).toBe(false);
     }
   });
 
@@ -47,7 +56,6 @@ describe('accolades derived from the exported Accolades powerset', () => {
     ['born_in_battle',             5,     5], //  villain +5% HP +5 End (silo DROPPED the HP)
     ['high_pain_threshold',       10,     0], //  villain +10% HP
     ['invader',                    5,     0], //  villain +5% HP
-    ['iron_man',                  10,    10], //  villain +10% HP +10 End
     ['labyrinth_conqueror',        5,     5], //  any    +5% HP +5 End
     ['mazebreaker',                0,     5], //  any    +5 End
   ])('%s grants +%i%% HP, +%i End', (id, hpPct, endFlat) => {
@@ -83,26 +91,26 @@ describe('accolades derived from the exported Accolades powerset', () => {
 describe('the accolade roster is each fork\'s own', () => {
   const EXPECTED: Record<string, string[]> = {
     homecoming: [
-      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
+      'the_atlas_medallion', 'freedom_phalanx_reserve', 'task_force_commander',
       'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader',
-      'iron_man', 'labyrinth_conqueror', 'mazebreaker',
+      'labyrinth_conqueror', 'mazebreaker',
     ],
     rebirth: [
-      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
-      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader', 'iron_man',
+      'the_atlas_medallion', 'freedom_phalanx_reserve', 'task_force_commander',
+      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader',
     ],
     // Brainstorm is the Homecoming install one shard over, so it carries Homecoming's
-    // twelve — the Labyrinth pair included. Written out rather than aliased to the entry
+    // accolades — the Labyrinth pair included. Written out rather than aliased to the entry
     // above: this table exists to catch a fork silently shipping another server's roster,
     // and an alias would make that impossible to see for the one pair that differs.
     brainstorm: [
-      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
+      'the_atlas_medallion', 'freedom_phalanx_reserve', 'task_force_commander',
       'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader',
-      'iron_man', 'labyrinth_conqueror', 'mazebreaker',
+      'labyrinth_conqueror', 'mazebreaker',
     ],
     thunderspy: [
-      'the_atlas_medallion', 'super_patriot', 'freedom_phalanx_reserve', 'task_force_commander',
-      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader', 'iron_man',
+      'the_atlas_medallion', 'freedom_phalanx_reserve', 'task_force_commander',
+      'portal_jockey', 'marshall', 'high_pain_threshold', 'born_in_battle', 'invader',
     ],
   };
 

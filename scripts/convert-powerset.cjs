@@ -836,7 +836,7 @@ function collectProcRollSites(powerJson) {
         // Who the child lands on, and whom it hits without rolling: Spring Attack's
         // own power only teleports the caster; this child is the attack that rolls.
         ...(child.targets_affected?.length ? { targetsAffected: child.targets_affected } : {}),
-        ...(child.targets_autohit?.length ? { targetsAutoHit: child.targets_autohit } : {}),
+        ...(Array.isArray(child.targets_autohit) ? { targetsAutoHit: child.targets_autohit } : {}),
       });
     }
   }
@@ -9095,8 +9095,9 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
     power.targetsAffected = powerJson.targets_affected;
   }
   // EntsAutoHit — the entity categories this power lands on without a to-hit roll
-  // (`['None']` when every affected target rolls). Same absence rule as above.
-  if (Array.isArray(powerJson.targets_autohit) && powerJson.targets_autohit.length) {
+  // (`['None']`, or an authored `[]`, when every affected target rolls — Blazing Aura
+  // carries `[]`). Emitted whenever the export states it, empty included.
+  if (Array.isArray(powerJson.targets_autohit)) {
     power.targetsAutoHit = powerJson.targets_autohit;
   }
 

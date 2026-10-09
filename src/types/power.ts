@@ -994,8 +994,8 @@ export interface Power {
   targetsAffected?: string[];
   /**
    * EntsAutoHit — the entity categories this power lands on without rolling to hit,
-   * straight from the export. `['None']` means every target in `targetsAffected`
-   * rolls; a foe-affecting power with `'Foe'` here (a Self-anchored PBAoE, most
+   * straight from the export. `['None']` or an authored `[]` (Blazing Aura) means every
+   * target in `targetsAffected` rolls; a foe-affecting power with `'Foe'` here (a Self-anchored PBAoE, most
    * debuff patches) never misses. Omitted when the export states nothing.
    */
   targetsAutoHit?: string[];

@@ -20753,6 +20753,7 @@ export const EPIC_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [],
         "rank": 5,
         "available": 43,
         "autoIssue": false,

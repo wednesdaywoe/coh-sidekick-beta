@@ -23,6 +23,7 @@ export const Shock: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [],
   "stats": {
     "accuracy": 1,
     "range": 80,

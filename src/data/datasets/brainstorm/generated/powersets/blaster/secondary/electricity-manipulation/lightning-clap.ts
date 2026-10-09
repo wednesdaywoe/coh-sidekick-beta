@@ -28,6 +28,7 @@ export const LightningClap: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [],
   "stats": {
     "accuracy": 1,
     "radius": 20,

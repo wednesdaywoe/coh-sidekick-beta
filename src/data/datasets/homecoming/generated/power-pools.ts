@@ -2117,6 +2117,7 @@ export const POWER_POOLS_RAW = {
         "targetsAffected": [
           "Foe"
         ],
+        "targetsAutoHit": [],
         "rank": 6,
         "available": -1,
         "autoIssue": true,

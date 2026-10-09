@@ -26,6 +26,7 @@ export const LightningField: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [],
   "stats": {
     "accuracy": 0.8,
     "radius": 15,

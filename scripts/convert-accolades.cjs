@@ -193,7 +193,7 @@ function convertAccoladePower(rawJson) {
     power.targetsAffected = rawJson.targets_affected;
   }
   // EntsAutoHit — see the field doc on `Power.targetsAutoHit`.
-  if (Array.isArray(rawJson.targets_autohit) && rawJson.targets_autohit.length) {
+  if (Array.isArray(rawJson.targets_autohit)) {
     power.targetsAutoHit = rawJson.targets_autohit;
   }
 

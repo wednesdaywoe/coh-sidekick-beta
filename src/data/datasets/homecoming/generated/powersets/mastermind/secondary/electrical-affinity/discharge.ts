@@ -23,6 +23,7 @@ export const Discharge: Power = {
   "targetsAffected": [
     "Foe"
   ],
+  "targetsAutoHit": [],
   "maxTargetsExpression": [
     "16"
   ],

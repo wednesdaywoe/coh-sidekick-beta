@@ -525,6 +525,35 @@ function permaEvidence(power: BundlePower | undefined, betaDuration: number): { 
 }
 
 /**
+ * Split delta rows on the same recharge-lock evidence [`permaEvidence`] reads. The engine drops
+ * the build's global recharge from a power that lists RechargeTime in `globalStrengthsDisallowed`,
+ * and slotted recharge too when it is in `strengthsDisallowed`; the beta's `calcThreeTier` applies
+ * both regardless. The InfoPanel renders the engine's row, so the beta is the stale side.
+ *
+ * Only `recharge.enhanced` and `recharge.final` move — the lock never touches `base`, so a base
+ * disagreement stays a hard delta. Covers both channels: `tierDelta`'s `<power>.recharge.<tier>`
+ * and the magnitude rows' `<power>.recharge.<tier>`. Absent evidence keeps every row strict.
+ */
+function splitRechargeLockedRows(
+  power: BundlePower | undefined,
+  rows: readonly string[],
+): { real: string[]; adjudicated: string[] } {
+  if (power === undefined || !permaEvidence(power, 0).rechargeLocked) return { real: [...rows], adjudicated: [] };
+  const real: string[] = [];
+  const adjudicated: string[] = [];
+  for (const row of rows) {
+    const segments = row.split(':')[0].split('.');
+    const tier = segments[segments.length - 1];
+    if (segments[segments.length - 2] === 'recharge' && (tier === 'enhanced' || tier === 'final')) {
+      adjudicated.push(`${row} — the export disallows ${RECHARGE_STRENGTH} on this power and the beta applies the recharge anyway`);
+    } else {
+      real.push(row);
+    }
+  }
+  return { real, adjudicated };
+}
+
+/**
  * True when the beta's copy of the power carries no atom array. The caster-side
  * window (`selfStateWindow`) uses the atoms' `toWho` to veto a bag duration that
  * belongs to the TARGET — the bag's buff slots carry no target of their own — so
@@ -1945,8 +1974,10 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
           power,
         ));
-        deltas.push(...mags.real);
+        const magRows = splitRechargeLockedRows(enginePower, mags.real);
+        deltas.push(...magRows.real);
         adjudicated.push(
+          ...magRows.adjudicated,
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
         );
         for (const row of mags.underlayOutranked) {
@@ -2057,16 +2088,20 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
         ));
         const perma = permaDelta(engine.perma, beta.perma, enginePower, unslotted);
-        deltas.push(
+        const locked = splitRechargeLockedRows(enginePower, [
           ...tierDelta(`${atId}/${power.internalName}.recharge`, engine.recharge, beta.recharge),
+          ...mags.real,
+        ]);
+        deltas.push(
           ...tierDelta(`${atId}/${power.internalName}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
           ...tierDelta(`${atId}/${power.internalName}.accuracy`, engine.accuracy, beta.accuracy),
           ...tierDelta(`${atId}/${power.internalName}.castTime`, engine.castTime, beta.castTime),
           ...tierDelta(`${atId}/${power.internalName}.range`, engine.range, beta.range),
           ...perma.real.map((d) => `${atId}/${power.internalName}.${d}`),
-          ...mags.real,
+          ...locked.real,
         );
         adjudicated.push(
+          ...locked.adjudicated,
           ...perma.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
           ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`),
         );
@@ -2176,16 +2211,20 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           if (tag in (MIRROR_RECOVERED_WINDOWS[server] ?? {})) {
             recoveredWindows[tag] = engine.perma?.duration ?? null;
           }
-          deltas.push(
+          const locked = splitRechargeLockedRows(enginePower, [
             ...tierDelta(`${tag}.recharge`, engine.recharge, beta.recharge),
+            ...mags.real,
+          ]);
+          deltas.push(
             ...tierDelta(`${tag}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
             ...tierDelta(`${tag}.accuracy`, engine.accuracy, beta.accuracy),
             ...tierDelta(`${tag}.castTime`, engine.castTime, beta.castTime),
             ...tierDelta(`${tag}.range`, engine.range, beta.range),
             ...perma.real.map((d) => `${tag}.${d}`),
-            ...mags.real,
+            ...locked.real,
           );
           adjudicated.push(
+            ...locked.adjudicated,
             ...perma.adjudicated.map((d) => `${tag}.${d}`),
             ...mags.adjudicated.map((d) => `${tag}.${d}`),
           );
@@ -2338,8 +2377,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         bag,
         enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
       ));
-      deltas.push(...mags.real);
-      adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
+      const magRows = splitRechargeLockedRows(enginePower, mags.real);
+      deltas.push(...magRows.real);
+      adjudicated.push(...magRows.adjudicated, ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
     }
 
     // eslint-disable-next-line no-console
@@ -2459,8 +2499,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
             ? displayBag(enginePower as unknown as Power, targetsHit, shownPower(enginePower as unknown as Power, build, atId, rawGlobal))
             : undefined,
         ));
-        deltas.push(...mags.real);
-        adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
+        const magRows = splitRechargeLockedRows(enginePower, mags.real);
+        deltas.push(...magRows.real);
+        adjudicated.push(...magRows.adjudicated, ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
 
         const atZero = countWitness(witness, magnitudeDeltas(
           `${atId}/${power.internalName}@0`,
@@ -2469,8 +2510,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           displayBag(power, 0, shownPower(power, build, atId, rawGlobal)),
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, build, atId, rawGlobal)) : undefined,
         ));
-        deltas.push(...atZero.real);
-        adjudicated.push(...atZero.adjudicated.map((d) => `${atId}/${power.internalName}@0.${d}`));
+        const zeroRows = splitRechargeLockedRows(enginePower, atZero.real);
+        deltas.push(...zeroRows.real);
+        adjudicated.push(...zeroRows.adjudicated, ...atZero.adjudicated.map((d) => `${atId}/${power.internalName}@0.${d}`));
       }
     }
 
@@ -2661,21 +2703,24 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           // `enduranceCost` rows and the projection's tiers. Only the combat-state sites are
           // split — the shell's plain projection agrees on both sides, because the stamp lands on
           // the `conditionalEffects` entry a mode selects rather than on the power's own stats.
-          const magRows = splitRedirStatRows(power.internalName, mags.real);
+          const redirRows = splitRedirStatRows(power.internalName, mags.real);
+          const magRows = splitRechargeLockedRows(enginePower, redirRows.real);
           deltas.push(...magRows.real);
           adjudicated.push(
+            ...redirRows.adjudicated,
             ...magRows.adjudicated,
             ...mags.adjudicated.map((d) => `${atId}/${power.internalName}@${tag}.${d}`),
           );
-          const tiers = splitRedirStatRows(power.internalName, [
+          const redirTiers = splitRedirStatRows(power.internalName, [
             ...tierDelta(`${power.internalName}@${tag}.recharge`, engine.recharge, beta.recharge),
             ...tierDelta(`${power.internalName}@${tag}.enduranceCost`, engine.enduranceCost, beta.enduranceCost),
             ...tierDelta(`${power.internalName}@${tag}.accuracy`, engine.accuracy, beta.accuracy),
             ...tierDelta(`${power.internalName}@${tag}.castTime`, engine.castTime, beta.castTime),
             ...tierDelta(`${power.internalName}@${tag}.range`, engine.range, beta.range),
           ]);
+          const tiers = splitRechargeLockedRows(enginePower, redirTiers.real);
           deltas.push(...tiers.real);
-          adjudicated.push(...tiers.adjudicated);
+          adjudicated.push(...redirTiers.adjudicated, ...tiers.adjudicated);
           if (engine.arcanaTime !== null && beta.arcanaTime !== null && Math.abs(engine.arcanaTime - beta.arcanaTime) > TOLERANCE) {
             deltas.push(`${power.internalName}@${tag}.arcanaTime: engine ${engine.arcanaTime} vs beta ${beta.arcanaTime}`);
           }
@@ -3011,8 +3056,9 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           low_.bag,
           enginePower ? displayBag(enginePower as unknown as Power, 0, shownPower(enginePower as unknown as Power, low.build, atId, low.rawGlobal)) : undefined,
         ));
-        deltas.push(...mags.real);
-        adjudicated.push(...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
+        const magRows = splitRechargeLockedRows(enginePower, mags.real);
+        deltas.push(...magRows.real);
+        adjudicated.push(...magRows.adjudicated, ...mags.adjudicated.map((d) => `${atId}/${power.internalName}.${d}`));
         rows += engineLow.grantedMagnitudes.length;
 
         const engineHighByKey = new Map((engineHigh?.grantedMagnitudes ?? []).map((r) => [r.rowKey, r]));

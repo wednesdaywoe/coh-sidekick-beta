@@ -61,6 +61,11 @@ export const InertialSiphon: Power = {
     ["Movement","JumpHeight",0.5,1,45,"Melee_Slow","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["Movement","Jump",0.5,1,45,"Melee_Slow","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Slow"],
     ["RechargeTime",null,-0.2,1,45,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
-    ["Movement","Run",-1,1,45,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"]
+    ["Movement","Run",-1,1,45,"Melee_SpeedRunning","Max","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"SpeedRunning"],
+    ["RechargeTime",null,0.05,1,60,"Melee_Ones","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,0.05,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["Movement","Run",0.15,1,60,"Melee_SpeedRunning","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.15,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["Movement","Fly",0.15,1,60,"Melee_SpeedFlying","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.15,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["Movement","JumpHeight",0.15,1,60,"Melee_Leap","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.15,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["Movement","Jump",0.15,1,60,"Melee_SpeedJumping","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,0.15,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"]
   ]
 };

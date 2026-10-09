@@ -1160,6 +1160,15 @@ function witnessLine(server: string, label: string, w: MagnitudeWitness): string
  *  the rows were adjudicated on atom evidence instead. STACK-6 closed it upstream — the keys
  *  come from the router now — and the rows are plain greens, which is the bar the exit
  *  condition set. A row that needs the old adjudication is a regression, not an exception. */
+/** Whether an engine display slot resolved from a spawned helper's rows: the slot itself or any
+ *  of its terms names the helper's class. */
+function slotCarriesPetClass(slot: unknown): boolean {
+  if (typeof slot !== 'object' || slot === null) return false;
+  if ('petClass' in slot) return true;
+  const terms = (slot as { scaleTerms?: unknown }).scaleTerms;
+  return Array.isArray(terms) && terms.some((term) => typeof term === 'object' && term !== null && 'petClass' in term);
+}
+
 function magnitudeDeltas(
   powerName: string,
   engineRows: GrantedMagnitude[],
@@ -1263,6 +1272,25 @@ function magnitudeDeltas(
         + `in both merge orders — engine ${engine.label} ${engine.value.base}`,
       );
       underlayOutranked.push({ key, own: engine.value.base, underlay: beta.tiers.base });
+      continue;
+    }
+    // The power's OWN atoms now carry its spawned helpers' rows (`petClass`, stamped by the
+    // converter's hand-off walk), and the engine's row is resolved from them: the base helper and
+    // the per-foe helper together, under the helpers' class. The beta reaches the same helpers
+    // only through the pseudo-pet underlay, which lays the base helper's entity under the card
+    // and has no per-foe helper at all — Rebirth and Thunderspy's Heat Loss are the case, 20
+    // endurance flat at every count against the engine's 20 + 20 per foe. Graded from the atoms
+    // instead (`redirect_fan_out.rs`, `helper_rows.rs`), with the one claim the beta can still
+    // witness held here: the engine's value contains the base helper's.
+    const helperOwnRow = petUnderlay && slotCarriesPetClass(engineSlot);
+    if (helperOwnRow) {
+      if (engine.value.base + TOLERANCE < beta.tiers.base) {
+        out.push(`${powerName}.${key}: engine ${engine.value.base} from the helper rows is below the base helper's ${beta.tiers.base}`);
+      }
+      adjudicated.push(
+        `${key}: the power's own helper rows (engine ${engine.value.base}) outrank the beta's `
+        + `base-helper underlay (${beta.tiers.base}), which has no per-foe helper`,
+      );
       continue;
     }
     // The beta resolved an ADDITIVE conditional's own copy of a key the power's base atoms

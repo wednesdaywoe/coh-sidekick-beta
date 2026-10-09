@@ -37,6 +37,7 @@ export const KineticTransfer: Power = {
     "Accuracy"
   ],
   "maxSlots": 6,
+  "perTargetMaxTargets": 10,
   "summon": {
     "duration": 1,
     "entities": [
@@ -53,6 +54,22 @@ export const KineticTransfer: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,1],
-    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
+    ["EntCreate",null,-1,1,1,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["DamageBuff","Smashing",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Lethal",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Fire",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Cold",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Energy",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Negative",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Toxic",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Psionic",2.5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["DamageBuff","Smashing",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"],
+    ["DamageBuff","Lethal",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"],
+    ["DamageBuff","Fire",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"],
+    ["DamageBuff","Cold",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"],
+    ["DamageBuff","Energy",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"],
+    ["DamageBuff","Negative",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"],
+    ["DamageBuff","Toxic",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"],
+    ["DamageBuff","Psionic",5,1,45,"Melee_Buff_Dmg","Str","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,5,"minion_pets"]
   ]
 };

@@ -45,9 +45,11 @@ export const Convalesce: Power = {
     "scale": 2.5,
     "table": "Melee_HealSelf"
   },
+  "perTargetMaxTargets": 10,
   "atoms": [
     ["Heal",null,2.5,1,0,"Melee_HealSelf","Abs","Magnitude","Self","Any",false,"Ignore",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HealSelf"],
     ["Meta",null,1,122,6,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
+    ["Endurance",null,10,1,1,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,1.5,1,null,null,null,null,null,null,null,null,10,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true]
   ],
   "setsModes": [

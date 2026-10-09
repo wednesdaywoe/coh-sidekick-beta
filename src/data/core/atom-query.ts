@@ -706,10 +706,19 @@ function gateExcludesCaster(a: AtomicEffect): boolean {
  * ally-buff powers are exactly where the two questions come apart.
  */
 export function reachesCaster(a: AtomicEffect, power: AtomSource): boolean {
+  // A spawned helper's row (`petClass`) turns the recipients around: its `Self` is the helper,
+  // and the player is on its side, so the side tokens reach him (the engine's `reaches_caster`).
+  if (a.petClass) {
+    if (a.toWho !== 'Target' && a.toWho !== 'TargetOnly') return false;
+    return (a.ownerTargets ?? []).some((t) => HELPER_SUMMONER_TOKENS.has(t)) && !gateExcludesCaster(a);
+  }
   if (a.toWho !== 'Target' && a.toWho !== 'TargetOnly') return landsOnCaster(a);
   const targets = a.ownerTargets ?? power.targetsAffected ?? [];
   return targets.includes('Self') && !gateExcludesCaster(a);
 }
+
+/** The `targets_affected` tokens on a helper's power that include its summoner. */
+const HELPER_SUMMONER_TOKENS = new Set(['Friend', 'Teammate', 'MyOwner', 'Any']);
 
 /**
  * The atom-native `effects.resistance` — the per-damage-type +resistance BUFF the

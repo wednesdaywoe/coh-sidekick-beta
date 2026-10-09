@@ -45,6 +45,7 @@ export const StaticField: Power = {
     "Slow Movement"
   ],
   "maxSlots": 6,
+  "perTargetMaxTargets": 16,
   "summon": {
     "copyBoosts": true,
     "duration": 25,
@@ -52,6 +53,7 @@ export const StaticField: Power = {
     "isPseudoPet": false
   },
   "atoms": [
-    ["EntCreate",null,1,1,25,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,25]
+    ["EntCreate",null,1,1,25,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,25],
+    ["Endurance",null,2.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"]
   ]
 };

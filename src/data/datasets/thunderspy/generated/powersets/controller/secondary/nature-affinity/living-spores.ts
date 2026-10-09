@@ -54,7 +54,8 @@ export const LivingSpores: Power = {
     "isPseudoPet": false
   },
   "atoms": [
-    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,5]
+    ["EntCreate",null,-1,1,5,"Ranged_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,5],
+    ["Endurance",null,0.01,1,0,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,0.01,"minion_pets"]
   ],
   "requires": [
     "Controller_Buff.Nature_Affinity.Lifegiving_Spores",

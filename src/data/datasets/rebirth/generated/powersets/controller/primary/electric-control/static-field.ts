@@ -47,12 +47,14 @@ export const StaticField: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
+  "perTargetMaxTargets": 16,
   "summon": {
     "duration": 25,
     "entity": "Pets_Static_Field_Controller",
     "isPseudoPet": false
   },
   "atoms": [
-    ["EntCreate",null,1,1,25,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,25]
+    ["EntCreate",null,1,1,25,"Ranged_Level","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Level",null,null,null,null,null,null,null,null,null,25],
+    ["Endurance",null,2.5,1,0,"Melee_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,2.5,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"]
   ]
 };

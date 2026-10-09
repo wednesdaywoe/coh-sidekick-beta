@@ -567,6 +567,19 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
           adjudicated.push(`${powersetKey}/${power.name}: ${drift} — dataset drift, response comparison skipped`);
           continue;
         }
+        // A spawned helper's rows (`petClass`) read their table under the helper's class, and the
+        // legacy calc has no reader for that: it resolves them through the caster's archetype.
+        // Where the table is a flat `*_Ones` the class changes nothing and the power stays graded
+        // (Soul Absorption); where it is class-scaled the two calcs read different numbers off the
+        // same row (Rebirth's Fulcrum Shift on `Melee_Buff_Dmg`: 0.1 for the helper, 0.08 read as
+        // a Controller). Graded against the helper's class in `redirect_fan_out.rs` instead.
+        const helperTable = baseAtoms(power as never).find(
+          (a) => a.petClass && !(a.modifierTable ?? '').toLowerCase().endsWith('_ones'),
+        );
+        if (helperTable) {
+          adjudicated.push(`${powersetKey}/${power.name}: helper row on ${helperTable.modifierTable} reads the ${helperTable.petClass} class — legacy calc reads the caster's, response comparison skipped`);
+          continue;
+        }
         // BPORT7 A3: the per-foe absorb channel is the named ABSORB-4 residual. The atom-fed
         // oracle reads absorb flat while the engine grows it per foe (atom stamp or derived
         // bundle gate), so the absorb key compares two channels, not two calcs. Drop it and

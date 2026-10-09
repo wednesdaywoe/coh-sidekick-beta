@@ -167,13 +167,14 @@ describe('BPORT11 cluster 1 — the scalar families, censused off the atoms', ()
     expect(census(g), `${slot} carriers`).toEqual(expected);
   });
 
-  it('reads recharge off 322 carriers, and declines the foe slow it used to credit', () => {
+  it('reads recharge off 323 carriers, and declines the foe slow it used to credit', () => {
     const g = grade('rechargeBuff', (p) => rechargeBuffValue(p as never));
     bagIsGone(g, 'rechargeBuff');
     // Homecoming 96 -> 109 with Issue 28 Page 4 (live 2026-10-06): Sonic Aura's Ultrasonic Flow/Hide on five ATs,
     // Empathy's Recovery Aura and Resurrect on four. Adrenalin -> Adrenaline Boost is a rename,
-    // net 0.
-    expect(census(g)).toEqual({ homecoming: 109, rebirth: 58, thunderspy: 46, brainstorm: 109 });
+    // net 0. Rebirth 58 -> 59 when helper rows reached the atoms (`petClass`): the Guardian's
+    // Inertial Siphon spawns a helper whose +5% recharge per foe lands on its summoner.
+    expect(census(g)).toEqual({ homecoming: 109, rebirth: 59, thunderspy: 46, brainstorm: 109 });
     // The falsified half, kept as a live claim rather than a struck-out comment. Time Wall's
     // −recharge is a `Ranged_Slow` row aimed at the target on every fork that carries it; the
     // caster's own recharge reader must not answer for it, and `slowIsDebuff` is what makes

@@ -46,6 +46,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-10-08',
+
+    items: [
+      { id: 'fulcrum-shift-targets', message: 'Homecoming and Brainstorm: Fulcrum Shift\'s slider now counts the enemies you hit, up to 20 over two casts, instead of stopping at 2. Each enemy adds its damage bonus to you, and the slider shows how many casts that count takes', type: 'fix' },
+      { id: 'fulcrum-shift-rebirth-tspy', message: 'Rebirth and Thunderspy: Fulcrum Shift and Kinetic Transfer now add their damage bonus, and the slider counts the enemies you hit, up to 20 over two casts. Rebirth\'s Siphon Power and Fulcrum Flip add theirs too. These servers give the bonus through hidden helper creatures, which the planner now reads', type: 'fix' },
+      { id: 'soul-absorption-per-foe', message: 'Soul Absorption now adds its Regeneration and Recovery bonus for each enemy it hits', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-10-06',
 
     items: [

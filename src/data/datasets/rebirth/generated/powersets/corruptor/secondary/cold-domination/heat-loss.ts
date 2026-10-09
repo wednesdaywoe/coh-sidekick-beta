@@ -44,6 +44,7 @@ export const HeatLoss: Power = {
     "Universal Debuff"
   ],
   "maxSlots": 6,
+  "perTargetMaxTargets": 10,
   "summon": {
     "duration": 2,
     "entities": [
@@ -60,6 +61,8 @@ export const HeatLoss: Power = {
   },
   "atoms": [
     ["EntCreate",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Target","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,null,null,null,null,null,null,null,null,2],
-    ["EntCreate",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"]
+    ["EntCreate",null,-1,1,2,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones"],
+    ["Endurance",null,20,1,1,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,null,null,20,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,null,"minion_pets"],
+    ["Endurance",null,20,1,1,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Stack",2,null,3,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,null,null,20,"minion_pets"]
   ]
 };

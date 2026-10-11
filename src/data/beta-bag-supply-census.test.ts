@@ -130,6 +130,8 @@ const ZERO_SUPPLY_SLOTS = [
   'maxStacks', 'stackCaps', 'stacksLinear',
   // The six that were declared mint-only and were not: their mint read the bag.
   'defense', 'fly', 'runSpeed', 'runSpeedUnenhanced', 'jumpHeight', 'jumpSpeed',
+  // Engine-only from birth: the Info panel's foe −DDR row, filled by `window_slots`.
+  'debuffResistanceDebuff',
 ];
 
 /**

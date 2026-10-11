@@ -150,8 +150,10 @@ describe('BPORT11 cluster 3 — defence and resistance, censused off the atoms',
     // Fortitude, Recovery Aura and Regeneration Aura, Light Affinity's Radiance and Spotlight,
     // and Sonic Resonance's Sonic Barrier, Sonic Haven and Sonic Siphon on four. Adrenalin
     // Boost -> Adrenaline Boost is a rename, net 0.
-    ['debuffResistance', DEBUFF_RES_KEYS, (src: AnyPower) => debuffResistanceValue(src as never), 1371,
-      { homecoming: 435, rebirth: 277, thunderspy: 224, brainstorm: 435 }],
+    // 1371 -> 1339 (homecoming and brainstorm 435 -> 419): a foe-facing negative row (Sonic
+    // Thrust, Acid Arrow) lowers the TARGET's resistance and no longer reads as the caster's.
+    ['debuffResistance', DEBUFF_RES_KEYS, (src: AnyPower) => debuffResistanceValue(src as never), 1339,
+      { homecoming: 419, rebirth: 277, thunderspy: 224, brainstorm: 419 }],
   ])('%s: the carrier-view census the bag comparison minted (%d)', (slot, keys, arm, total, expected) => {
     const t = empty();
     for (const [id, power, source] of views())

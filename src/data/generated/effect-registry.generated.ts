@@ -228,6 +228,17 @@ export const EFFECT_RESOLUTION: Record<string, Record<string, unknown>> =
         "resistance"
       ]
     },
+    "debuffResistanceDebuff": {
+      "label": "-Debuff Res",
+      "category": "debuff",
+      "format": "percent",
+      "priority": 3,
+      "canBeByType": true,
+      "expandByType": true,
+      "summaryTokens": [
+        "debuff res"
+      ]
+    },
     "damageDebuff": {
       "label": "-Damage",
       "category": "debuff",

@@ -709,6 +709,8 @@ export interface PowerEffects {
   stealth?: StealthEffects;
   /** Debuff resistance */
   debuffResistance?: DebuffResistance;
+  /** A foe's debuff resistance LOWERED (Sonic Thrust, Acid Arrow): a debuff, not the caster's */
+  debuffResistanceDebuff?: DebuffResistance;
   /** Mez resistance (reduces mez duration) — per-type, e.g., { hold: { scale, table } } */
   mezResistance?: Record<string, NumberOrScaled>;
 

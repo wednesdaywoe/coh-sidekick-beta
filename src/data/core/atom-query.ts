@@ -2051,6 +2051,11 @@ export function debuffResistanceValue(
   for (const a of baseAtoms(power)) {
     if (a.aspect !== 'Res') continue;
     if (!a.modifierTable) continue;
+    // A foe-facing negative row lowers the TARGET's resistance (Sonic Thrust, Acid Arrow);
+    // through `Math.abs` it became the caster's own. Positive Target rows stay: they are the
+    // team half of an ally buff (Tactical Training: Leadership). Mirrors
+    // `coh_math::appliers::debuff_resistance`.
+    if (a.toWho === 'Target' && a.scale < 0) continue;
     const key = DEBUFF_RES_KEY[a.effectType];
     if (!key) continue;
     out ??= {};

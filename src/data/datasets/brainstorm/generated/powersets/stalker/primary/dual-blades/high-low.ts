@@ -102,6 +102,7 @@ export const HighLow: Power = {
       "label": "DD Debuff Mode 2",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_DebuffMode_2",
       "effects": {
         "buffDuration": 20,
         "defenseDebuff": {

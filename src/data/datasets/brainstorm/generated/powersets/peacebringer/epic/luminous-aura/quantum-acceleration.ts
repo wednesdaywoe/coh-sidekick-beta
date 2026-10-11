@@ -80,6 +80,7 @@ export const QuantumAcceleration: Power = {
       "label": "Flight Active",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FlightActive",
       "effects": {
         "buffDuration": 0.2,
         "durations": {

@@ -82,8 +82,32 @@ export const ModerateBridge: Power = {
     ["Damage","Lethal",0.6805,1,0.6,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.4000000059604645,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.13],
     ["Damage","Lethal",1.361,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>","0",">","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit",null,null,null,0.13],
     ["Damage","Lethal",1.361,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.13],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,"Sweep"],
-    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,"Sweep",null,"cancel_mods"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,"Sweep",null,null,null,null,null,null,null,null,null,null,"dd_bonusaoemode_2"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.125,null,null,null,null,null,null,"dd_bonusaoemode_2"],
+    ["Damage","Lethal",0.57,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.125,null,null,null,null,null,null,"dd_bonusaoemode_2"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.125],
+    ["Damage","Lethal",0.5877,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.125],
+    ["Meta",null,1,1,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDD_BonusAoEMode_2","Source.Mode?"],true,null,null,null,null,null,null,null,null,"Sweep",null,"cancel_mods",null,null,null,null,null,null,null,null,"dd_bonusaoemode_2"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "dd_bonusaoemode_2",
+      "label": "DD Bonus Ao E Mode 2",
+      "scope": "global",
+      "defaultActive": false,
+      "sourceMode": "DD_BonusAoEMode_2",
+      "damage": {
+        "type": "Lethal",
+        "scale": 0.57,
+        "table": "Melee_Damage"
+      },
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
+      }
+    }
   ],
   "specialEffects": [
     {

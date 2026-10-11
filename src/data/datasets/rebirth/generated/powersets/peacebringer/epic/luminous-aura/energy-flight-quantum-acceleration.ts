@@ -52,6 +52,7 @@ export const EnergyFlightQuantumAcceleration: Power = {
       "label": "Flight Active",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FlightActive",
       "effects": {
         "buffDuration": 0.75,
         "durations": {
@@ -75,6 +76,7 @@ export const EnergyFlightQuantumAcceleration: Power = {
       "label": "Group Flying",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "GroupFlying",
       "effects": {
         "buffDuration": 0.75,
         "durations": {

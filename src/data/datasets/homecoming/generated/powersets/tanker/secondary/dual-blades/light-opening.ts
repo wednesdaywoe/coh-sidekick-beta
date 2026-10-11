@@ -71,5 +71,9 @@ export const LightOpening: Power = {
   "requires": [
     "Tanker_Defense.Shield_Defense",
     "!"
+  ],
+  "setsModes": [
+    "DD_StatusMode_1",
+    "DD_DebuffMode_1"
   ]
 };

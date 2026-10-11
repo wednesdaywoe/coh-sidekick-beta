@@ -72,9 +72,10 @@ export const Quasar: Power = {
   "conditionalEffects": [
     {
       "id": "warshade_blaster_mode",
-      "label": "Warshade Blaster Mode",
+      "label": "Dark Nova",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "Warshade_Blaster_Mode",
       "damage": {
         "type": "Negative",
         "scale": 4,

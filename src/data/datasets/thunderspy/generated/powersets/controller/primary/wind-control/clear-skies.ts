@@ -49,9 +49,10 @@ export const ClearSkies: Power = {
   "conditionalEffects": [
     {
       "id": "clearskies",
-      "label": "Clear Skies",
+      "label": "Vacuum",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ClearSkies",
       "effects": {
         "buffDuration": 2.1,
         "durations": {

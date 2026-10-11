@@ -116,9 +116,10 @@ export const EmptyClips: Power = {
   "conditionalEffects": [
     {
       "id": "fireammo",
-      "label": "Fire Ammo",
+      "label": "Incendiary Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FireAmmo",
       "damage": [
         {
           "type": "Fire",
@@ -138,9 +139,10 @@ export const EmptyClips: Power = {
     },
     {
       "id": "iceammo",
-      "label": "Ice Ammo",
+      "label": "Cryo Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "IceAmmo",
       "damage": {
         "type": "Cold",
         "scale": 0.26,
@@ -182,9 +184,10 @@ export const EmptyClips: Power = {
     },
     {
       "id": "toxicammo",
-      "label": "Toxic Ammo",
+      "label": "Chemical Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ToxicAmmo",
       "damage": {
         "type": "Toxic",
         "scale": 0.078,

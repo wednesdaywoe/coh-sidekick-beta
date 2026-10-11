@@ -98,6 +98,26 @@ export const SearingBeam: Power = {
     ["Damage","Fire",0.01,1,29.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Damage","Fire",0.7,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"MainTarget",null,null,["Foe"]],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Refract"],
-    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true]
+    ["Damage","Fire",0.35,1,4.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Undead","target.HasTag?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Damage","Fire",0.0233,1,29.1,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null",["Foe","Friend","Self"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["Meta",null,0,0,2.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null",["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "chain_jolt_mode",
+      "label": "Radiance",
+      "scope": "global",
+      "defaultActive": false,
+      "sourceMode": "Chain_Jolt_Mode",
+      "damage": {
+        "type": "Fire",
+        "scale": 0.0233,
+        "table": "Ranged_Damage",
+        "duration": 29.1,
+        "tickRate": 1
+      }
+    }
   ]
 };

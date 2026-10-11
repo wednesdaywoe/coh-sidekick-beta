@@ -105,5 +105,8 @@ export const Special2: Power = {
       "expires": 10,
       "maxCount": 3
     }
+  ],
+  "setsModes": [
+    "DD_DebuffMode_1"
   ]
 };

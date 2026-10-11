@@ -58,6 +58,25 @@ export const ImpassionedSerenade: Power = {
     ["Mez","Confused",20,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.25],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","SelfAndPets","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"ReverbImpassionedSerenade",null,null,null,2],
     ["Damage","Psionic",0.04,1,30,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Replace",2,null,1,1,null,null,null,null,null,null,null,true,null,null,null,null,null,"Confused",null,null,null,null,null,null,1],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.25]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
+    ["Mez","Confused",30,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"Domination",null,null,["Foe"],0.25,null,null,null,null,null,null,"domination"],
+    ["Mez","Confused",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.25],
+    ["Mez","Confused",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Domination",null,null,["Foe"],0.25]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "domination",
+      "label": "Domination Active",
+      "scope": "global",
+      "defaultActive": false,
+      "effects": {
+        "confuse": {
+          "attribType": "Duration",
+          "mag": 3,
+          "scale": 30,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
   ]
 };

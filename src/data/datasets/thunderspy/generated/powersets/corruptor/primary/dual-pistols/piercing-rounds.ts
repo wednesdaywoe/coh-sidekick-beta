@@ -116,6 +116,7 @@ export const PiercingRounds: Power = {
       "label": "Fire Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FireDamage",
       "damage": {
         "type": "Fire",
         "scale": 1.055,
@@ -127,6 +128,7 @@ export const PiercingRounds: Power = {
       "label": "Cold Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ColdDamage",
       "damage": {
         "type": "Cold",
         "scale": 1.055,
@@ -175,6 +177,7 @@ export const PiercingRounds: Power = {
       "label": "Toxic Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ToxicDamage",
       "damage": {
         "type": "Toxic",
         "scale": 1.055,

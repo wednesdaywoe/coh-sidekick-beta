@@ -83,9 +83,10 @@ export const AoEBridge: Power = {
   "conditionalEffects": [
     {
       "id": "dd_debuffmode_2",
-      "label": "DD Debuff Mode 2",
+      "label": "Ablating Strike",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_DebuffMode_2",
       "effects": {
         "buffDuration": 20,
         "defenseDebuff": {
@@ -104,9 +105,10 @@ export const AoEBridge: Power = {
     },
     {
       "id": "dd_bonusaoemode_2",
-      "label": "DD Bonus Ao E Mode 2",
+      "label": "Power Slice",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_BonusAoEMode_2",
       "damage": {
         "type": "Lethal",
         "scale": 0.57,

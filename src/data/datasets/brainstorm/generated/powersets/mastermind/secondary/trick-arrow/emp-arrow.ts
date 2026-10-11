@@ -179,6 +179,34 @@ export const EMPArrow: Power = {
     ["Regeneration",null,-5,1,45,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Mez","Held",7,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Electronic","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Mez","Held",7,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq","Electronic","target.HasTag?","!","&&"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Damage","Energy",1.64,1,0,"Ranged_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Electronic","target.HasTag?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"vs-electronic"],
+    ["Mez","Held",15,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Electronic","target.HasTag?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"vs-electronic"],
+    ["Mez","Held",15,1,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,["enttype","target>","critter","eq","Electronic","target.HasTag?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Endurance",null,-16.67,1,0,"Ranged_EndDrain","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Regeneration",null,-15,1,15,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Regeneration",null,-15,1,45,"Ranged_Res_Boolean","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "vs-electronic",
+      "label": "vs Machines/Robots",
+      "scope": "per-power",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 1.64,
+        "table": "Ranged_Damage"
+      },
+      "effects": {
+        "hold": {
+          "attribType": "Duration",
+          "mag": 3,
+          "scale": 15,
+          "table": "Ranged_Immobilize"
+        }
+      }
+    }
   ]
 };

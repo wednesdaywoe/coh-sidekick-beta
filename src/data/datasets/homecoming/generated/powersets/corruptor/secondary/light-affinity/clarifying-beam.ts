@@ -57,7 +57,24 @@ export const ClarifyingBeam: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",["Friend"]],
     ["Heal",null,1.5,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["Heal",null,0.75,1,0,"Ranged_Heal","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Friend"],null,null,null,null,null,null,null,"chain_jolt_mode"],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
-    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true]
+    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null",["Foe","Friend","Self"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["Meta",null,0,0,2.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null",["Friend"],null,null,null,null,null,null,null,"chain_jolt_mode"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "chain_jolt_mode",
+      "label": "Radiance",
+      "scope": "global",
+      "defaultActive": false,
+      "sourceMode": "Chain_Jolt_Mode",
+      "damage": {
+        "type": "Heal",
+        "scale": 0.75,
+        "table": "Ranged_Heal"
+      }
+    }
   ]
 };

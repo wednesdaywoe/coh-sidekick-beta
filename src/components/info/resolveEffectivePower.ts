@@ -237,6 +237,7 @@ export function resolveEffectivePower(power: Power, state: EffectivePowerState):
     state.mechanicAdjusters,
     state.globalAdjusters,
     state.atInherentState ?? {},
+    state.activeModes ?? [],
   );
   if (active.length === 0) return { power: cast, extraInstances: {} };
   return applyActiveConditionals(cast, active);

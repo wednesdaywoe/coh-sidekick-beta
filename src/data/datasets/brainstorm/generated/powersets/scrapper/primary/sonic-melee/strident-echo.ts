@@ -106,9 +106,10 @@ export const StridentEcho: Power = {
   "conditionalEffects": [
     {
       "id": "sonicatuneself",
-      "label": "Sonic Atune Self",
+      "label": "Attune",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "SonicAtuneSelf",
       "damage": {
         "type": "Energy",
         "scale": 0.2,

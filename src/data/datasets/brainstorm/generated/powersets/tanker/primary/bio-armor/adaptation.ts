@@ -121,14 +121,16 @@ export const Adaptation: Power = {
     ["Defense","Negative",0.0336,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,0.0336,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
     ["Defense","Psionic",0.024,1,1,"Melee_Buff_Def","Cur","Magnitude","Self","Any",false,"Continuous",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,0.024,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
     ["Mez","Taunt",1,3,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","entref","source>","entref","target>","eq","!","&&"],true,null,null,null,null,null,null,null,null,"StealthOn"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
+    ["Mez","Taunt",1.1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","&&"],true,null,null,null,null,null,null,null,null,"Mez",null,null,["Foe"]]
   ],
   "conditionalEffects": [
     {
       "id": "restedadaptation",
-      "label": "Rested Adaptation",
+      "label": "Efficient Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 1,
         "durations": {
@@ -153,6 +155,7 @@ export const Adaptation: Power = {
       "label": "Offensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OffensiveAdaptation",
       "effects": {
         "buffDuration": 1.125,
         "durations": {
@@ -208,6 +211,7 @@ export const Adaptation: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "buffDuration": 1,
         "defenseBuff": {

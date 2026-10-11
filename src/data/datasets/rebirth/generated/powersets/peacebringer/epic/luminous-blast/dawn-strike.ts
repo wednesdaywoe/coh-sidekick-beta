@@ -69,9 +69,10 @@ export const DawnStrike: Power = {
   "conditionalEffects": [
     {
       "id": "peacebringer_blaster_mode",
-      "label": "Peacebringer Blaster Mode",
+      "label": "Bright Nova",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "Peacebringer_Blaster_Mode",
       "damage": {
         "type": "Energy",
         "scale": 4,

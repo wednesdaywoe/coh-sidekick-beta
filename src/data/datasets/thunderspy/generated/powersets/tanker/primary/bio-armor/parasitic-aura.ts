@@ -82,6 +82,7 @@ export const ParasiticAura: Power = {
       "label": "Rested Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 45,
         "durations": {
@@ -106,6 +107,7 @@ export const ParasiticAura: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "absorb": {
           "scale": 0.033,

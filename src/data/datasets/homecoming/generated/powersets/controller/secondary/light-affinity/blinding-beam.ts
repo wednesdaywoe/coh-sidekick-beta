@@ -53,7 +53,45 @@ export const BlindingBeam: Power = {
     ["Perception",null,-0.9,1,30,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["Mez","Held",8,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true],
+    ["ToHit",null,1,1,30,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["Perception",null,-0.9,1,20,"Ranged_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
+    ["ToHit",null,1,1,30,"Ranged_Debuff_ToHit","Cur","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Smashing",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Lethal",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Fire",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Cold",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Energy",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Negative",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Psionic",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["DamageBuff","Toxic",1,1,30,"Ranged_Debuff_Dam","Str","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"],
     ["Mez","Held",1,3,0,"Ranged_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true]
+    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kChain_Jolt_Mode","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null",["Foe","Friend","Self"],null,null,null,null,null,null,null,"chain_jolt_mode"],
+    ["Meta",null,0,0,2.25,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null",["Foe"],null,null,null,null,null,null,null,"chain_jolt_mode"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "chain_jolt_mode",
+      "label": "Radiance",
+      "scope": "global",
+      "defaultActive": false,
+      "sourceMode": "Chain_Jolt_Mode",
+      "effects": {
+        "buffDuration": 30,
+        "damageDebuff": {
+          "ignoreStrength": true,
+          "scale": 1,
+          "table": "Ranged_Debuff_Dam"
+        },
+        "durations": {
+          "damageDebuff": 30,
+          "tohitDebuff": 30
+        },
+        "tohitDebuff": {
+          "scale": 1,
+          "table": "Ranged_Debuff_ToHit"
+        }
+      }
+    }
   ]
 };

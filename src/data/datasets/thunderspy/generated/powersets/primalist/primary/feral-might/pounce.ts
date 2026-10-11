@@ -93,6 +93,7 @@ export const Pounce: Power = {
       "label": "Prowler Cloak Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ProwlerCloakMode",
       "damage": [
         {
           "type": "Lethal",

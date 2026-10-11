@@ -105,9 +105,10 @@ export const Adaptation: Power = {
   "conditionalEffects": [
     {
       "id": "restedadaptation",
-      "label": "Rested Adaptation",
+      "label": "Efficient Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "durations": {
@@ -138,6 +139,7 @@ export const Adaptation: Power = {
       "label": "Offensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OffensiveAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "durations": {
@@ -193,6 +195,7 @@ export const Adaptation: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "durations": {

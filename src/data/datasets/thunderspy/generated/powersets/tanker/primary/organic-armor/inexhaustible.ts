@@ -68,6 +68,7 @@ export const Inexhaustible: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "absorb": {
           "appliesStrength": true,
@@ -127,9 +128,10 @@ export const Inexhaustible: Power = {
     },
     {
       "id": "restedadaptation",
-      "label": "Rested Adaptation",
+      "label": "Efficient Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 5.25,
         "durations": {

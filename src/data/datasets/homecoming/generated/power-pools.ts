@@ -1602,6 +1602,7 @@ export const POWER_POOLS_RAW = {
             "label": "Flight Active",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "FlightActive",
             "effects": {
               "buffDuration": 0.25,
               "durations": {
@@ -4860,6 +4861,7 @@ export const POWER_POOLS_RAW = {
             "label": "Arcane Bolt",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "ArcaneBolt",
             "damage": {
               "type": "Energy",
               "scale": 1.48,

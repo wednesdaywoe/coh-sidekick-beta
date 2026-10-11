@@ -55,6 +55,7 @@ export const AblativeCarapace: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "absorb": {
           "scale": 0.09,
@@ -72,6 +73,7 @@ export const AblativeCarapace: Power = {
       "label": "Rested Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 30,
         "durations": {

@@ -91,6 +91,7 @@ export const PackMaster: Power = {
       "label": "Hunter Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "HunterMode",
       "effects": {
         "buffDuration": 10.25,
         "damageBuff": {
@@ -108,6 +109,7 @@ export const PackMaster: Power = {
       "label": "Prowler Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ProwlerMode",
       "effects": {
         "buffDuration": 10.25,
         "durations": {

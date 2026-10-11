@@ -61,9 +61,10 @@ export const PackFrenzy: Power = {
   "conditionalEffects": [
     {
       "id": "huntermode",
-      "label": "Hunter Mode",
+      "label": "Hunter Form",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "HunterMode",
       "effects": {
         "buffDuration": 15,
         "durations": {

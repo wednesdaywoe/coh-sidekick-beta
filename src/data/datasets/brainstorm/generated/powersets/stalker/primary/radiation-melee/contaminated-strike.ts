@@ -81,7 +81,23 @@ export const ContaminatedStrike: Power = {
     ["Damage","Energy",0.8257,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",1.101,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>","0",">","enttype","target>","player","eq","&&","&&"],true,null,null,null,null,null,null,null,null,"StealthCrit"],
     ["Damage","Energy",1.101,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq","kMeter","source>",".9","<","kHeld","target>","0",">","kSleep","target>","0",">","||","&&","enttype","target>","player","eq","&&","&&"],true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"radiation_melee_contaminated"],
+    ["Damage","Toxic",0.168,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.5,null,null,null,null,null,null,"radiation_melee_contaminated"],
+    ["Damage","Toxic",0.1319,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.5]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "radiation_melee_contaminated",
+      "label": "Contaminated",
+      "scope": "per-power",
+      "defaultActive": false,
+      "mode": "replace",
+      "damage": {
+        "type": "Toxic",
+        "scale": 0.168,
+        "table": "Melee_Damage"
+      }
+    }
   ],
   "specialEffects": [
     {

@@ -76,9 +76,10 @@ export const FootStomp: Power = {
   "conditionalEffects": [
     {
       "id": "unleashmight",
-      "label": "Unleash Might",
+      "label": "Rage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "UnleashMight",
       "damage": {
         "type": "Smashing",
         "scale": 0.213,

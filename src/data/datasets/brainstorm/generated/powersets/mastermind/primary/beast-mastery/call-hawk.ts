@@ -94,5 +94,8 @@ export const CallHawk: Power = {
       "expiresInGame": 15,
       "maxCount": 10
     }
+  ],
+  "setsModes": [
+    "PersonalAttack2"
   ]
 };

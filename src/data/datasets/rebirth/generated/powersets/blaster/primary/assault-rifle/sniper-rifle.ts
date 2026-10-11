@@ -79,6 +79,7 @@ export const SniperRifle: Power = {
       "label": "Range Finder Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "Range_Finder_Mode",
       "damage": {
         "type": "Lethal",
         "scale": 0.313,

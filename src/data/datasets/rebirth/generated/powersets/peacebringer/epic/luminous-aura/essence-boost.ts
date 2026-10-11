@@ -60,9 +60,10 @@ export const EssenceBoost: Power = {
   "conditionalEffects": [
     {
       "id": "peacebringer_tanker_mode",
-      "label": "Peacebringer Tanker Mode",
+      "label": "White Dwarf",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "Peacebringer_Tanker_Mode",
       "damage": {
         "type": "Heal",
         "scale": 4,

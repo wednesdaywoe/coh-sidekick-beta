@@ -101,6 +101,7 @@ export const DNASiphon: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "damage": {
         "type": "Heal",
         "scale": 0.375,
@@ -111,9 +112,10 @@ export const DNASiphon: Power = {
     },
     {
       "id": "restedadaptation",
-      "label": "Rested Adaptation",
+      "label": "Efficient Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 30,
         "durations": {
@@ -138,6 +140,7 @@ export const DNASiphon: Power = {
       "label": "Offensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OffensiveAdaptation",
       "effects": {
         "buffDuration": 30,
         "durations": {

@@ -75,5 +75,8 @@ export const MirrorImage: Power = {
     ["Perception",null,0.9,1,40,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Buff"],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Self","Any",true,"Replace",2,null,null,1],
     ["Meta",null,0,0,2,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"null",["Foe","Friend","Self"]]
+  ],
+  "setsModes": [
+    "Chain_Jolt_Mode"
   ]
 };

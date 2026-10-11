@@ -74,6 +74,7 @@ export const HardenedCarapace: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "durations": {
@@ -104,6 +105,7 @@ export const HardenedCarapace: Power = {
       "label": "Offensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OffensiveAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "damageBuff": {
@@ -119,9 +121,10 @@ export const HardenedCarapace: Power = {
     },
     {
       "id": "restedadaptation",
-      "label": "Rested Adaptation",
+      "label": "Efficient Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "durations": {

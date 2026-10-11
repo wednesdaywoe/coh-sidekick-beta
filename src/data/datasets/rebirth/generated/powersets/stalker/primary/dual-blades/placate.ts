@@ -65,9 +65,10 @@ export const Placate: Power = {
   "conditionalEffects": [
     {
       "id": "dd_statusmode_2",
-      "label": "DD Status Mode 2",
+      "label": "Assassin's Blades",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_StatusMode_2",
       "effects": {
         "buffDuration": 20,
         "damageBuff": {

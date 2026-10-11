@@ -109,6 +109,7 @@ export const GroupEnergyFlight: Power = {
       "label": "Shapeshift Active",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ShapeshiftActive",
       "effects": {
         "buffDuration": 2,
         "durations": {
@@ -126,6 +127,7 @@ export const GroupEnergyFlight: Power = {
       "label": "Flight Active",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FlightActive",
       "effects": {
         "buffDuration": 0.75,
         "debuffResistance": {
@@ -162,6 +164,7 @@ export const GroupEnergyFlight: Power = {
       "label": "Group Flying",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "GroupFlying",
       "effects": {
         "buffDuration": 0.75,
         "durations": {

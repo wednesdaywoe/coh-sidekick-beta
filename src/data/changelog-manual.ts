@@ -49,6 +49,10 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
     date: '2026-10-11',
 
     items: [
+      { id: 'radiance-bonuses', message: 'Homecoming and Brainstorm: Radiance now switches on the Radiance bonuses of the other Light Affinity powers. Blinding Beam adds its extra -ToHit and -Damage, Spotlight its +Damage, Searing Beam its extra damage over time, Protective Beam its extra absorb and Clarifying Beam its bigger heal', type: 'fix' },
+      { id: 'mode-bonuses-follow-power', message: "A bonus that depends on another of your powers running now turns on by itself when that power is on, such as Attune's Sonic Melee bonuses, Bio Armor's adaptations, Rage on Super Strength and the Dual Pistols ammo types. These switches are now named after that power instead of the game's internal name", type: 'update' },
+      { id: 'stacking-bonuses-add', message: 'When a bonus adds a second copy of an effect the power already has, such as a second -ToHit, absorb or resistance, the Info panel now adds the two together instead of showing only the first', type: 'fix' },
+      { id: 'fired-power-bonuses', message: "Homecoming and Brainstorm: Sonic Clap and Deafening Wave now include Attune's damage over time, and Radiation Melee's Contaminated hits, EMP Arrow and Power Surge against robots show their bonuses", type: 'fix' },
       { id: 'sonic-attune-bonuses', message: 'Homecoming and Brainstorm: Attune now switches on the extra damage and effects Sonic Melee attacks deal to an Attuned target, and shows its own -Resistance', type: 'fix' },
       { id: 'attune-mud-pots-damage', message: 'Attune and Mud Pots now show their damage in the Info panel and power tooltips', type: 'fix' },
       { id: 'foe-debuff-res-is-debuff', message: 'Homecoming and Brainstorm: Attune, Sonic Thrust, Strident Echo, Earsplitter, Sonic Siphon and Acid Arrow list the debuff resistance they take from an enemy under Debuffs, and no longer add it to your own totals when switched on', type: 'fix' },

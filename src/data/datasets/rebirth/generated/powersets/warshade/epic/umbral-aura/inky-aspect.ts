@@ -64,6 +64,7 @@ export const InkyAspect: Power = {
       "label": "Warshade Blaster Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "Warshade_Blaster_Mode",
       "effects": {
         "buffDuration": 2,
         "durations": {

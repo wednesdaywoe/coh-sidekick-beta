@@ -121,6 +121,7 @@ export const HailofBullets: Power = {
       "label": "Cold Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ColdDamage",
       "effects": {
         "buffDuration": 10,
         "durations": {
@@ -164,6 +165,7 @@ export const HailofBullets: Power = {
       "label": "Toxic Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ToxicDamage",
       "effects": {
         "buffDuration": 10,
         "damageDebuff": {

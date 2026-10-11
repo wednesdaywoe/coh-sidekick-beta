@@ -90,6 +90,7 @@ export const Rooted: Power = {
       "label": "Granite Root",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "GraniteRoot",
       "effects": {
         "buffDuration": 0.75,
         "durations": {

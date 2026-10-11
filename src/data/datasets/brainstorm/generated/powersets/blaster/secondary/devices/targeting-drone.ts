@@ -75,6 +75,7 @@ export const TargetingDrone: Power = {
       "label": "Out Of Combat",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OutOfCombat",
       "effects": {
         "buffDuration": 0.75,
         "damageBuff": {

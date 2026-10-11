@@ -60,6 +60,7 @@ export const GravityShield: Power = {
       "label": "Shapeshift Active",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ShapeshiftActive",
       "effects": {
         "buffDuration": 2,
         "durations": {

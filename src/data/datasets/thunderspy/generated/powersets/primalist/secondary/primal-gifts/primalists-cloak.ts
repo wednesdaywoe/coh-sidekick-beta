@@ -66,6 +66,7 @@ export const PrimalistsCloak: Power = {
       "label": "Prowler Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ProwlerMode",
       "effects": {
         "buffDuration": 1.25,
         "durations": {

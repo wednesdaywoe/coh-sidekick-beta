@@ -123,8 +123,10 @@ const ZERO_SUPPLY_SLOTS = [
   'dot', 'elusivity', 'protection', 'flySpeed', 'speedBuff', 'enduranceCrash',
   // Converter-supplied until BPORT7 emptied the bag, and no mint reaches them.
   'accuracyBuff', 'accuracyDebuff', 'damage', 'defenseBuffSuppressible', 'movementCapBump',
-  'perceptionDebuff', 'placate', 'repel', 'specialDebuff', 'teleport', 'threatBuff',
+  'perceptionDebuff', 'placate', 'specialDebuff', 'teleport', 'threatBuff',
   'threatDebuff',
+  // `repel` left this list when the conditional walk began following `Execute_Power`: Hibernate's
+  // end-early Icy Bastion conditional supplies it.
   // The stacking metadata, which lived in the bag rather than beside it (see
   // `stacking-flaw-fix.verify.test.ts`, restated onto `atom.stackCap`).
   'maxStacks', 'stackCaps', 'stacksLinear',

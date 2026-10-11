@@ -111,9 +111,10 @@ export const ExecutionersShot: Power = {
   "conditionalEffects": [
     {
       "id": "fireammo",
-      "label": "Fire Ammo",
+      "label": "Incendiary Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FireAmmo",
       "damage": [
         {
           "type": "Fire",
@@ -131,9 +132,10 @@ export const ExecutionersShot: Power = {
     },
     {
       "id": "iceammo",
-      "label": "Ice Ammo",
+      "label": "Cryo Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "IceAmmo",
       "damage": {
         "type": "Cold",
         "scale": 2.12,
@@ -173,9 +175,10 @@ export const ExecutionersShot: Power = {
     },
     {
       "id": "toxicammo",
-      "label": "Toxic Ammo",
+      "label": "Chemical Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ToxicAmmo",
       "damage": {
         "type": "Toxic",
         "scale": 2.12,

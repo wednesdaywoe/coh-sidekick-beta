@@ -74,6 +74,7 @@ export const Rejuvenate: Power = {
       "label": "Prowler Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ProwlerMode",
       "damage": {
         "type": "Heal",
         "scale": 2.5,

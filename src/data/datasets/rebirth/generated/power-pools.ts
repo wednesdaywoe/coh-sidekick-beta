@@ -1570,6 +1570,7 @@ export const POWER_POOLS_RAW = {
             "label": "Group Flying",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "GroupFlying",
             "effects": {
               "buffDuration": 0.75,
               "durations": {
@@ -1757,6 +1758,7 @@ export const POWER_POOLS_RAW = {
             "label": "Flight Active",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "FlightActive",
             "effects": {
               "buffDuration": 0.75,
               "debuffResistance": {
@@ -1793,6 +1795,7 @@ export const POWER_POOLS_RAW = {
             "label": "Group Flying",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "GroupFlying",
             "effects": {
               "buffDuration": 0.75,
               "durations": {
@@ -2015,6 +2018,7 @@ export const POWER_POOLS_RAW = {
             "label": "Flight Active",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "FlightActive",
             "effects": {
               "buffDuration": 0.75,
               "durations": {
@@ -2038,6 +2042,7 @@ export const POWER_POOLS_RAW = {
             "label": "Group Flying",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "GroupFlying",
             "effects": {
               "buffDuration": 0.75,
               "durations": {
@@ -3203,6 +3208,7 @@ export const POWER_POOLS_RAW = {
             "label": "Shapeshift Active",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "ShapeshiftActive",
             "effects": {
               "buffDuration": 2,
               "durations": {

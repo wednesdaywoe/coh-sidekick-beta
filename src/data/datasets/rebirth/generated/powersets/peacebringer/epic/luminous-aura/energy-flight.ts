@@ -68,6 +68,7 @@ export const EnergyFlight: Power = {
       "label": "Group Flying",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "GroupFlying",
       "effects": {
         "buffDuration": 0.75,
         "durations": {

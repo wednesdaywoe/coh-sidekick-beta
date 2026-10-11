@@ -112,9 +112,10 @@ export const Spotlight: Power = {
   "conditionalEffects": [
     {
       "id": "chain_jolt_mode",
-      "label": "Chain Jolt Mode",
+      "label": "Radiance",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "Chain_Jolt_Mode",
       "effects": {
         "buffDuration": 2,
         "damageBuff": {

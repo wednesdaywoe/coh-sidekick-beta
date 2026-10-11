@@ -1050,6 +1050,25 @@ function _unforkedCopies(templates) {
   });
 }
 
+/** While set, `collectTemplatesDeep` reads redirects through [`_loadSharedRedirect`]. */
+let _shareRedirectsInDeepWalk = false;
+
+/**
+ * The redirect files parsed for the power being converted, by name, while `convertPower` runs
+ * from its base walk to its atom emit. The base walk, the conditional pass and the atom collector
+ * all read a fired power through here, so each template exists once: the atom union dedups the
+ * base rows by identity, and the `_conditionalId` the conditional pass stamps lands on the
+ * objects the atoms are built from. Outside that window it is null and every read is fresh.
+ */
+let _redirectJsonByName = null;
+const _loadSharedRedirect = (name, filePath) => {
+  const cached = _redirectJsonByName?.get(name);
+  if (cached) return cached;
+  const json = _readPowerFile(filePath);
+  _redirectJsonByName?.set(name, json);
+  return json;
+};
+
 function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCombatGated = false,
                              ancestorRequires = [], ancestorArchetypes = null,
                              ancestorDelay = 0) {
@@ -1161,7 +1180,9 @@ function collectTemplatesDeep(effects, visited = new Set(), depth = 0, parentCom
 
             const redirectPath = isStandardRedirect ? resolveRedirectPath(pName) : auxPath;
             if (fs.existsSync(redirectPath)) {
-              const redirectJson = _readPowerFile(redirectPath);
+              const redirectJson = _shareRedirectsInDeepWalk
+                ? _loadSharedRedirect(pName, redirectPath)
+                : _readPowerFile(redirectPath);
               if (redirectJson.effects && redirectJson.effects.length > 0) {
                 templates.push(..._stampOwnerScalars(collectTemplatesDeep(
                   redirectJson.effects, visited, depth + 1, combatGated, childRequires,
@@ -1388,7 +1409,7 @@ const dropNoiseMode = (m) => m && !MODE_NOISE.has(m);
  * Empty arrays are left unset rather than emitted, so the shape matches the rest of the
  * converter and an absent field means "no gating" everywhere.
  */
-function assignModes(power, powerJson) {
+function _modesSetBy(powerJson) {
   const setsModes = [];
   const targetModes = [];
   const reachesFoes = (powerJson.targets_affected || []).some((t) => /Foe/.test(t));
@@ -1409,6 +1430,15 @@ function assignModes(power, powerJson) {
     }
   };
   collect(powerJson.effects, false);
+  // Radiance (`Mirror_Image`) sets `Chain_Jolt_Mode` from its activation effects, and every
+  // Light Affinity bonus reads that mode. Held to the nested rule at every level: an
+  // activation group behind a condition sets its mode only some of the time.
+  collect(powerJson.activation_effects, true);
+  return { setsModes, targetModes };
+}
+
+function assignModes(power, powerJson) {
+  const { setsModes, targetModes } = _modesSetBy(powerJson);
   if (targetModes.length) power.targetModes = targetModes;
   // The minted tokens of the corpus-wide chance-mod families this power MOVES (COND-12): a
   // flight toggle publishes `FlightActive` the way Swap Ammo publishes `IceAmmo`, except the
@@ -3885,6 +3915,7 @@ function _classifyGateExpression(effect, powersetKey) {
       id: raw.toLowerCase(),
       label: _splitCamelOrUnderscore(raw),
       side: modeMatch[2].toLowerCase(),
+      _mode: raw,
     };
   }
   // Bare self-referential power-presence: `<side>.ownPower?` with NO dotted
@@ -4184,9 +4215,35 @@ function _isConditionalGate(effect) {
  * chance=0, kHitPoints==0 / kMeter / rand() — those represent inherent
  * mechanics handled by the existing toggle system, not surfaced as
  * Mechanic Adjusters).
+ *
+ * Follows `Execute_Power` into `Redirects.*` (and `*_Aux.*`) the way the base walk does. A
+ * fired power's gated groups become toggles of their own, and under a gated group the whole
+ * fired power belongs to that gate: Blinding Beam's Radiance -ToHit and -Damage live in
+ * `Refracted_BlindingBeam` behind `kChain_Jolt_Mode Source.Mode?`, and had no toggle.
  */
-function collectConditionalsGrouped(effects, powersetKey, ancestorArchetypes = null) {
+function collectConditionalsGrouped(effects, powersetKey, ancestorArchetypes = null,
+                                    visited = new Set()) {
   const groups = new Map();
+
+  // The redirect files `effect`'s own `Execute_Power` rows fire, each read once per walk.
+  function firedPowers(effect) {
+    const out = [];
+    for (const t of effect.templates || []) {
+      if ((t?.attribs || [])[0]?.toLowerCase() !== 'execute_power') continue;
+      for (const pName of t.params?.power_names || []) {
+        const isStandardRedirect = pName.toLowerCase().startsWith('redirects.');
+        const auxPath = isStandardRedirect ? null : resolveAuxRedirectPath(pName);
+        if (!isStandardRedirect && !auxPath) continue;
+        if (visited.has(pName)) continue;
+        visited.add(pName);
+        const file = isStandardRedirect ? resolveRedirectPath(pName) : auxPath;
+        if (!fs.existsSync(file)) continue;
+        const json = _loadSharedRedirect(pName, file);
+        if (json.effects?.length) out.push(json);
+      }
+    }
+    return out;
+  }
 
   function pushTemplates(gate, templates, req, archetypes) {
     if (!groups.has(gate.id)) {
@@ -4194,6 +4251,7 @@ function collectConditionalsGrouped(effects, powersetKey, ancestorArchetypes = n
         label: gate.label,
         side: gate.side,
         _powerName: gate._powerName,
+        _mode: gate._mode,
         _gates: [],
         _casterArchetypes: undefined,
         templates: [],
@@ -4248,7 +4306,8 @@ function collectConditionalsGrouped(effects, powersetKey, ancestorArchetypes = n
       const childArchetypes = _childArchetypes(ancestorArchetypes, effect);
       pushTemplates(gate, effect.templates || [], undefined, _restrictionOf(childArchetypes));
       if (effect.child_effects?.length) {
-        const sub = collectConditionalsGrouped(effect.child_effects, powersetKey, childArchetypes);
+        const sub = collectConditionalsGrouped(effect.child_effects, powersetKey, childArchetypes,
+                                               visited);
         for (const [, subg] of sub) absorb(gate.id, subg);
       }
       return;
@@ -4279,21 +4338,57 @@ function collectConditionalsGrouped(effects, powersetKey, ancestorArchetypes = n
         for (const child of effect.child_effects) {
           // Recurse but reattribute to the parent gate by collecting normally
           // and then folding into the same bucket.
-          const sub = collectConditionalsGrouped([child], powersetKey, childArchetypes);
+          const sub = collectConditionalsGrouped([child], powersetKey, childArchetypes, visited);
           for (const [, subg] of sub) absorb(gate.id, subg);
         }
       }
-    } else if (effect.child_effects?.length) {
+      for (const fired of firedPowers(effect)) {
+        pushTemplates(gate, _stampOwnerScalars(collectTemplatesDeep(fired.effects), fired), req,
+                      _restrictionOf(childArchetypes));
+        const sub = collectConditionalsGrouped(fired.effects, powersetKey, childArchetypes, visited);
+        for (const [, subg] of sub) absorb(gate.id, subg);
+      }
+    } else {
+      for (const fired of firedPowers(effect)) {
+        mergeSubGroups(_stampGroupOwners(
+          collectConditionalsGrouped(fired.effects, powersetKey, childArchetypes, visited), fired));
+      }
+    }
+    if (!gate && effect.child_effects?.length) {
       // Non-conditional branch with possibly-conditional descendants. The archetype fork is
       // the one thing that survives a branch being non-conditional: `arch source> Class_Stalker
       // eq` is base for a Stalker (so no group is built for it here) while still scoping every
       // conditional underneath it to Stalkers — Mace Blast's crit branch is exactly that shape.
       mergeSubGroups(collectConditionalsGrouped(effect.child_effects, powersetKey,
-                                                childArchetypes));
+                                                childArchetypes, visited));
     }
   }
 
   for (const effect of effects) visit(effect);
+  return groups;
+}
+
+/**
+ * Caster mode → the display name of the one power in the set being converted that sets it.
+ * Labels a mode toggle after the power a player knows: Light Affinity's `Chain_Jolt_Mode` is
+ * Radiance. A mode set by several powers (the Dual Blades combo steps) keeps its own label.
+ */
+let _modeSetterNames = new Map();
+function installModeSetters(powerJsons) {
+  const setters = new Map();
+  for (const json of powerJsons) {
+    for (const mode of _modesSetBy(json).setsModes) {
+      if (!setters.has(mode)) setters.set(mode, new Set());
+      setters.get(mode).add(json.display_name);
+    }
+  }
+  _modeSetterNames = new Map(
+    [...setters].filter(([, names]) => names.size === 1).map(([mode, names]) => [mode, [...names][0]]));
+}
+
+/** Stamp each group's templates with the fired power that owns them ([`_stampOwnerScalars`]). */
+function _stampGroupOwners(groups, ownerJson) {
+  for (const [, group] of groups) _stampOwnerScalars(group.templates, ownerJson);
   return groups;
 }
 
@@ -4546,6 +4641,13 @@ function extractConditionalEffects(rawEffects, powerJson, { stampOnly = false, b
       defaultActive: CONDITIONALS_DEFAULT_ACTIVE.has(id),
     };
     if (mode) entry.mode = mode;
+    // The caster mode this toggle stands for. A build running the power that sets it is in that
+    // state, so the engine counts the toggle on without being asked (Radiance's bonuses).
+    if (group._mode && group.side === 'source') {
+      entry.sourceMode = group._mode;
+      const setter = _modeSetterNames.get(group._mode);
+      if (setter && !CONDITIONAL_LABEL_OVERRIDES[id]) entry.label = setter;
+    }
     // The archetypes this toggle exists for. Read by the engine the way `casterArchetypes`
     // on an atom is: a build of any other class is never offered it (AT-FORK-1's shape, one
     // level up — the atom says who an effect applies to, this says who the CONTROL is for).
@@ -5105,7 +5207,7 @@ function _hasRequiredEvents(t) {
  * same power JSON is safe.
  */
 function collectAtomTemplates(effects, parentCombatGated = false, ancestorRequires = [],
-                              ancestorArchetypes = null, ancestorDelay = 0) {
+                              ancestorArchetypes = null, ancestorDelay = 0, visited = new Set()) {
   const templates = [];
   for (const effect of effects || []) {
     let combatGated = parentCombatGated;
@@ -5116,11 +5218,30 @@ function collectAtomTemplates(effects, parentCombatGated = false, ancestorRequir
       if (combatGated) _tagCombatGated(t);
       _tagGroupContext(t, effect, ancestorRequires, ancestorArchetypes, ancestorDelay);
       templates.push(t);
+      // Inside `convertPower`'s window, follow what the row fires, under this group's gate.
+      // Blinding Beam's Radiance -Damage and Sonic Clap's Attune damage over time both live in a
+      // fired power, the second behind a gated group the base walk never enters.
+      if (!_redirectJsonByName || (t.attribs || [])[0]?.toLowerCase() !== 'execute_power') continue;
+      for (const pName of t.params?.power_names || []) {
+        const isStandardRedirect = pName.toLowerCase().startsWith('redirects.');
+        const auxPath = isStandardRedirect ? null : resolveAuxRedirectPath(pName);
+        if (!isStandardRedirect && !auxPath) continue;
+        if (visited.has(pName)) continue;
+        visited.add(pName);
+        const file = isStandardRedirect ? resolveRedirectPath(pName) : auxPath;
+        if (!fs.existsSync(file)) continue;
+        const fired = _loadSharedRedirect(pName, file);
+        templates.push(..._stampOwnerScalars(collectAtomTemplates(
+          fired.effects || [], combatGated, _childRequires(ancestorRequires, effect),
+          _childArchetypes(ancestorArchetypes, effect),
+          _childDelay(ancestorDelay, effect) + (t.delay || 0), visited
+        ), fired));
+      }
     }
     if (effect.child_effects && effect.child_effects.length > 0) {
       templates.push(...collectAtomTemplates(
         effect.child_effects, combatGated, _childRequires(ancestorRequires, effect),
-        _childArchetypes(ancestorArchetypes, effect), _childDelay(ancestorDelay, effect)
+        _childArchetypes(ancestorArchetypes, effect), _childDelay(ancestorDelay, effect), visited
       ));
     }
   }
@@ -9241,7 +9362,17 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   // Recursively collect from child_effects AND follow Execute_Power redirects
   // (e.g. Fault → Redirects.Stone_Melee.Fault_Brute / Fault_Cone_Brute, where
   // the actual damage/knockback/stun lives in the redirect targets).
-  let { templates: allTemplates, usedInfoRedirect } = collectBaseTemplates(powerJson);
+  // Only for a power's own `effects`: a redirect-only power's chain is the residual the atom
+  // union below records, and a mode-variant form has its own collection policy. Closed again
+  // after the atom emit.
+  _redirectJsonByName = powerJson.effects?.length ? new Map() : null;
+  _shareRedirectsInDeepWalk = !!_redirectJsonByName;
+  let allTemplates, usedInfoRedirect;
+  try {
+    ({ templates: allTemplates, usedInfoRedirect } = collectBaseTemplates(powerJson));
+  } finally {
+    _shareRedirectsInDeepWalk = false;
+  }
 
   // The redirect record the base came from, when it came from one. Held because two later passes
   // need the groups `collectTemplatesDeep` dropped out of it — see source 4 of the atom union and
@@ -9555,7 +9686,11 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
   //      that carries it, `requiresExpression` for the Thugs three and `tags` for the
   //      Necromancy three, both empty on Gang War's 13.
   //
-  // Known residual: gated groups nested inside a REDIRECT chain are still not collected,
+  //   5. Inside source 2: `collectAtomTemplates` follows the redirects the power's own
+  //      `effects` execute (`_redirectJsonByName`), so a fired power's gated groups reach the
+  //      atom list too, stamped `gated: true` like the rest of source 2.
+  //
+  // Known residual: gated groups nested inside a redirect-only power's chain are still not collected,
   // and source 3 admits only create-entity rows, so the rest of `activation_effects`'
   // filtered groups remain uncollected. Those paths apply their own modeling filters (the
   // activation_effects Self / IgnoreStrength-dupe rules) that are not safe to bypass
@@ -9589,6 +9724,7 @@ function convertPower(powerJson, availableLevel, archetypeId, powerType, provena
       provenance.baseAtoms = encodeAtomsForEmit(allTemplates, allTemplates, powerJson.name);
     }
   }
+  _redirectJsonByName = null;
 
   // Conditional bonus effects (Mechanic Adjusters). These are positive state
   // gates the base collectors silently filtered out (drowning bonus, Domination
@@ -9815,8 +9951,9 @@ function convertPowerset(category, powersetName) {
   // group states, and `_readPowerFile` writes it onto the groups as they load. Installed before
   // the first power is read, and read from THIS set only — the mode's publisher is a power the
   // set hands out, so the set is the whole scope.
-  installVariantModes(detectVariantModes(
-    powerFiles.map((file) => JSON.parse(fs.readFileSync(path.join(rawPath, file), 'utf-8')))));
+  const setJsons = powerFiles.map((file) => JSON.parse(fs.readFileSync(path.join(rawPath, file), 'utf-8')));
+  installVariantModes(detectVariantModes(setJsons));
+  installModeSetters(setJsons);
 
   for (const file of powerFiles) {
     const powerJson = _readPowerFile(path.join(rawPath, file));
@@ -9854,6 +9991,9 @@ function convertPowerset(category, powersetName) {
     const power = convertPower(powerJson, availableLevel, categoryInfo.archetype, categoryInfo.type);
     powers.push({ power, powerIndex, availableLevel, file });
   }
+  // Scoped to this set: a later set, or a pool converted in the same process, must not inherit
+  // its labels.
+  _modeSetterNames = new Map();
 
   // Sort by available_level (game pick order). Ties broken by powerIndex so
   // same-level powers (e.g. two level-0 starters) keep a deterministic order

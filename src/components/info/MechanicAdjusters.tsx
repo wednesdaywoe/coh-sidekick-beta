@@ -254,7 +254,12 @@ function SingleToggle({ power, entry }: SingleToggleProps) {
   const isGlobal = entry.scope === 'global';
   const perPowerActive = useMechanicAdjuster(powerName, entry.id, entry.defaultActive ?? false);
   const globalActive = useGlobalAdjuster(entry.id, entry.defaultActive ?? false);
-  const active = isGlobal ? globalActive : perPowerActive;
+  // A running power that sets this toggle's mode holds it on (`selectActiveConditionals`): with
+  // Radiance up, every Light Affinity bonus applies, so the switch says so and can't be cleared.
+  const modeLive = useBuildStore(
+    (s) => !!entry.sourceMode && (s.build.activeModes ?? []).includes(entry.sourceMode),
+  );
+  const active = modeLive || (isGlobal ? globalActive : perPowerActive);
 
   const setMechanicAdjuster = useUIStore((s) => s.setMechanicAdjuster);
   const setGlobalAdjuster = useUIStore((s) => s.setGlobalAdjuster);
@@ -271,8 +276,9 @@ function SingleToggle({ power, entry }: SingleToggleProps) {
           id={`adjuster-${powerName}-${entry.id}`}
           checked={active}
           onChange={(e) => handleChange(e.target.checked)}
+          disabled={modeLive}
           label={entry.label}
-          title={describeContribution(entry)}
+          title={modeLive ? `On while ${entry.label} is running` : describeContribution(entry)}
         />
         {isGlobal && <GlobalBadge />}
       </div>

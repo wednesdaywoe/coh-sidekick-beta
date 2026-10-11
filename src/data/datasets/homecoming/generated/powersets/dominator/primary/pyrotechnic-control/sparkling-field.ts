@@ -106,6 +106,7 @@ export const SparklingField: Power = {
     ["Mez","Immobilized",22.5,3,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"Domination",null,null,null,null,null,null,null,null,null,null,"domination"],
     ["Mez","Immobilized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Domination"],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.4000000059604645,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"Main Target"],
+    ["Mez","Knockup",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]],
     ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,null,true]
   ],
   "conditionalEffects": [

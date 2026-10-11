@@ -52,6 +52,7 @@ export const AthleticRegulation: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "buffDuration": 2.25,
         "debuffResistance": {
@@ -72,6 +73,7 @@ export const AthleticRegulation: Power = {
       "label": "Offensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OffensiveAdaptation",
       "effects": {
         "buffDuration": 2.25,
         "durations": {
@@ -94,9 +96,10 @@ export const AthleticRegulation: Power = {
     },
     {
       "id": "restedadaptation",
-      "label": "Rested Adaptation",
+      "label": "Efficient Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "buffDuration": 2.25,
         "durations": {

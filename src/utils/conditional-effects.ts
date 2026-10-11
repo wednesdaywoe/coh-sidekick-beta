@@ -75,6 +75,7 @@ export function selectActiveConditionals(
   mechanicAdjusters: Record<string, boolean>,
   globalAdjusters: Record<string, boolean>,
   atInherentState: ATInherentState = {},
+  activeModes: readonly string[] = [],
 ): ConditionalEffect[] {
   const list = power.conditionalEffects;
   if (!list || list.length === 0) return [];
@@ -82,7 +83,12 @@ export function selectActiveConditionals(
   for (const c of list) {
     const def = !!c.defaultActive;
     let on: boolean;
-    if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) {
+    if (c.sourceMode && activeModes.includes(c.sourceMode)) {
+      // A caster mode the build is in is on, whatever the toggle says: with Radiance running,
+      // every Light Affinity power applies its Radiance bonus. Mirrors
+      // `coh_math::effective::active_conditionals`.
+      on = true;
+    } else if (AT_INHERENT_CONDITIONAL_IDS.has(c.id)) {
       // Read from the existing AT-inherent state instead of the new
       // mechanic-adjuster maps so the Header's toggle is the single
       // source of truth.

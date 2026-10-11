@@ -98,9 +98,10 @@ export const HighLow: Power = {
   "conditionalEffects": [
     {
       "id": "dd_debuffmode_2",
-      "label": "DD Debuff Mode 2",
+      "label": "Power Slice",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_DebuffMode_2",
       "effects": {
         "buffDuration": 20,
         "defenseDebuff": {

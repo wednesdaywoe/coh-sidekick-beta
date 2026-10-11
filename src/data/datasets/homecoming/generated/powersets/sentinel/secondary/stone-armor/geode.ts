@@ -85,7 +85,26 @@ export const Geode: Power = {
     ["EntCreate",null,-1,1,99999,"Melee_Ones","Cur","Magnitude","Self","PvP",true,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"OnActivate"],
     ["GrantPower",null,0,0,0,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Sentinel_Defense.Stone_Armor.Brimstone_Armor","source.ownPower?"],true,null,null,null,null,null,null,null,null,"GrantThermalBoost"],
     ["GlobalChanceMod",null,-100,0,2,"Melee_Ones","Cur","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Sentinel_Defense.Stone_Armor.Brimstone_Armor","source.ownPower?"],true,null,null,null,null,null,null,null,null,"GrantThermalBoost"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"RepositionGeode"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Abs","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,"RepositionGeode"],
+    ["Mez","Repel",1,1,0.1,"Melee_Ones","Cur","Expression","Target","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,["distance","0.5",">"],true,null,null,null,null,["distance",".1","*"],null,null,null,null,null,null,["MyPet"],null,null,null,null,null,null,null,"conditional"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "conditional",
+      "label": "Conditional",
+      "scope": "per-power",
+      "defaultActive": false,
+      "effects": {
+        "buffDuration": 0.1,
+        "durations": {
+          "repel": 0.1
+        },
+        "repel": {
+          "scale": 1,
+          "table": "Melee_Ones"
+        }
+      }
+    }
   ],
   "grantEdges": [
     {

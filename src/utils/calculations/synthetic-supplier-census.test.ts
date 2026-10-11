@@ -179,18 +179,22 @@ describe('BPORT11 — every slot a synthetic still supplies keeps an arm that ca
     // beta: damageBuff 52 -> 56 (Spotlight) and regenBuff 24 -> 28 (Lightfield), the same
     // `chain_jolt_mode` pair on four ATs; defenseBuff 64 -> 68 and resistance 65 -> 69, Force
     // Field's reworked Personal Force Field `conditional` on four ATs.
+    // Three more when the conditional walk began following `Execute_Power` into the powers a
+    // power fires, on homecoming and brainstorm: absorb 50 -> 58 is Protective Beam's Radiance
+    // bonus on four ATs, and regenBuff 28 -> 38 and resistance 69 -> 79 are Hibernate's
+    // end-early Icy Bastion (`disable_toggle`) on five.
     const top = [...credits].filter(([, n]) => n >= 20).sort((a, b) => b[1] - a[1]);
     expect(Object.fromEntries(top)).toEqual({
       recoveryBuffUnenhanced: 110,
       regenBuffUnenhanced: 95,
-      resistance: 69,
+      resistance: 79,
       defenseBuff: 68,
       damageBuff: 56,
-      absorb: 50,
+      absorb: 58,
       maxHPBuffUnenhanced: 43,
       tohitBuffUnenhanced: 37,
       enduranceDiscount: 29,
-      regenBuff: 28,
+      regenBuff: 38,
       tohitBuff: 25,
       rechargeBuff: 20,
     });

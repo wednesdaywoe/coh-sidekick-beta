@@ -132,9 +132,10 @@ export const HailofBullets: Power = {
   "conditionalEffects": [
     {
       "id": "iceammo",
-      "label": "Ice Ammo",
+      "label": "Cryo Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "IceAmmo",
       "damage": {
         "type": "Cold",
         "scale": 0.1362,
@@ -176,9 +177,10 @@ export const HailofBullets: Power = {
     },
     {
       "id": "toxicammo",
-      "label": "Toxic Ammo",
+      "label": "Chemical Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ToxicAmmo",
       "damage": {
         "type": "Toxic",
         "scale": 0.1362,

@@ -90,5 +90,8 @@ export const CallSwarm: Power = {
       "expiresInGame": 15,
       "maxCount": 10
     }
+  ],
+  "setsModes": [
+    "PersonalAttack1"
   ]
 };

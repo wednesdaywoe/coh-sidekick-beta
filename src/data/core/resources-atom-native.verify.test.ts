@@ -150,7 +150,9 @@ describe('atom-native resources — Icy Bastion (the StackByAttribAndKey burst/t
     // they show the two rows the sum is made of: a dropped lingering half is not a number that
     // looks slightly off here, it is one of these rows disappearing and the pair going to 1.
     for (const [type, total] of [['Regeneration', 10], ['Recovery', 4]] as const) {
-      const rows = atomsOf(IcyBastion).filter((a) => a.effectType === type && a.toWho === 'Self');
+      // Base rows only: the power's `kDisable_Toggle` group fires the lingering half again when
+      // the toggle is switched off, and that copy rides along as a gated row.
+      const rows = atomsOf(IcyBastion).filter((a) => a.effectType === type && a.toWho === 'Self' && !a.gated);
       expect(rows, type).toHaveLength(2);
       // The toggle-refreshed burst at 0.75s and the 30s lingering half applied OnActivate.
       expect(rows.map((a) => a.duration).sort((x, y) => (x ?? 0) - (y ?? 0)), type).toEqual([0.75, 30]);

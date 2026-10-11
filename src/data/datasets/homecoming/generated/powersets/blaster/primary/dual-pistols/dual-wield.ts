@@ -112,9 +112,10 @@ export const DualWield: Power = {
   "conditionalEffects": [
     {
       "id": "fireammo",
-      "label": "Fire Ammo",
+      "label": "Incendiary Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FireAmmo",
       "damage": [
         {
           "type": "Fire",
@@ -132,9 +133,10 @@ export const DualWield: Power = {
     },
     {
       "id": "iceammo",
-      "label": "Ice Ammo",
+      "label": "Cryo Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "IceAmmo",
       "damage": {
         "type": "Cold",
         "scale": 1.32,
@@ -174,9 +176,10 @@ export const DualWield: Power = {
     },
     {
       "id": "toxicammo",
-      "label": "Toxic Ammo",
+      "label": "Chemical Ammunition",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ToxicAmmo",
       "damage": {
         "type": "Toxic",
         "scale": 1.32,

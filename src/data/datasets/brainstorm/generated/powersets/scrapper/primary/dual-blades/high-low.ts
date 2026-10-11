@@ -99,5 +99,8 @@ export const HighLow: Power = {
       "chance": 0.10000000149011612,
       "label": "Lethal_Dmg"
     }
+  ],
+  "setsModes": [
+    "DD_BonusAoEMode_1"
   ]
 };

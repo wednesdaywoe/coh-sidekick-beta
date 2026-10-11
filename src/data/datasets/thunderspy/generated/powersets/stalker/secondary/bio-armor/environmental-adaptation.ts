@@ -79,6 +79,7 @@ export const EnvironmentalAdaptation: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "defenseBuff": {
@@ -135,6 +136,7 @@ export const EnvironmentalAdaptation: Power = {
       "label": "Offensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OffensiveAdaptation",
       "effects": {
         "buffDuration": 0.75,
         "durations": {

@@ -87,6 +87,7 @@ export const Special2: Power = {
       "label": "DD Bonus Do T Mode 2",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_BonusDoTMode_2",
       "damage": {
         "type": "Lethal",
         "scale": 0.2,

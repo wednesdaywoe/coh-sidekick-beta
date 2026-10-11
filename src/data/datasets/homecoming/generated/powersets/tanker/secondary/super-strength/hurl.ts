@@ -65,18 +65,35 @@ export const Hurl: Power = {
     ["Damage","Smashing",0.3525,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq","kUnleashMight","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"Might"],
     ["Movement","FlyMode",-1.6,1,15,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Knockback",3,1,0,"Melee_Knockback","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kUnleashMight","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unleashmight"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kUnleashMight","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"unleashmight"],
+    ["Damage","Smashing",0.7,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"unleashmight"],
+    ["Meta",null,0,0,1,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,"null",["Foe"],null,null,null,null,null,null,null,"unleashmight"],
+    ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.5,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"unleashmight"]
   ],
   "conditionalEffects": [
     {
       "id": "unleashmight",
-      "label": "Unleash Might",
+      "label": "Rage",
       "scope": "global",
       "defaultActive": false,
-      "damage": {
-        "type": "Smashing",
-        "scale": 0.342,
-        "table": "Melee_Damage"
+      "sourceMode": "UnleashMight",
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.342,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Smashing",
+          "scale": 0.7,
+          "table": "Melee_Damage"
+        }
+      ],
+      "effects": {
+        "knockback": {
+          "scale": 0.67,
+          "table": "Melee_Ones"
+        }
       }
     }
   ]

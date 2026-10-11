@@ -86,7 +86,8 @@ export const SparklingCage: Power = {
     ["Damage","Energy",0.069,1,9.2,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,2,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Immobilized",22.5,4,0,"Ranged_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"Domination",null,null,null,null,null,null,null,null,null,null,"domination"],
     ["Mez","Immobilized",1,1,0,"Ranged_PvPMez","Cur","Duration","Target","Any",false,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Domination"],
-    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,null,true]
+    ["ExecutePower",null,0,0,0,"Ranged_Ones","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.25,null,null,null,null,null,null,null,true],
+    ["Mez","Knockup",3,1,0,"Ranged_Knockback","Cur","Magnitude","Target","Any",true,"Ignore",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ],
   "conditionalEffects": [
     {

@@ -62,6 +62,7 @@ export const RebuildDNA: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "damage": {
         "type": "Heal",
         "scale": 0.9,
@@ -72,9 +73,10 @@ export const RebuildDNA: Power = {
     },
     {
       "id": "restedadaptation",
-      "label": "Rested Adaptation",
+      "label": "Efficient Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "RestedAdaptation",
       "effects": {
         "enduranceGain": {
           "scale": 7.5,
@@ -88,6 +90,7 @@ export const RebuildDNA: Power = {
       "label": "Offensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "OffensiveAdaptation",
       "effects": {
         "buffDuration": 30,
         "debuffResistance": {

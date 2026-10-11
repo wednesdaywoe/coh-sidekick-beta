@@ -78,6 +78,7 @@ export const Placate: Power = {
       "label": "DD Status Mode 2",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_StatusMode_2",
       "effects": {
         "buffDuration": 20,
         "damageBuff": {

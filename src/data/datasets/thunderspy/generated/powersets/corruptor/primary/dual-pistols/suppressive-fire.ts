@@ -110,6 +110,7 @@ export const SuppressiveFire: Power = {
       "label": "Cold Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ColdDamage",
       "damage": {
         "type": "Cold",
         "scale": 0.05,
@@ -129,6 +130,7 @@ export const SuppressiveFire: Power = {
       "label": "Fire Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "FireDamage",
       "damage": {
         "type": "Fire",
         "scale": 0.05,
@@ -148,6 +150,7 @@ export const SuppressiveFire: Power = {
       "label": "Toxic Damage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ToxicDamage",
       "damage": {
         "type": "Toxic",
         "scale": 0.05,

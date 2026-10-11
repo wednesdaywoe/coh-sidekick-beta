@@ -57,9 +57,10 @@ export const BrimstoneArmor: Power = {
   "conditionalEffects": [
     {
       "id": "granite_armor_mode",
-      "label": "Granite Armor Mode",
+      "label": "Granite Armor",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "Granite_Armor_Mode",
       "effects": {
         "buffDuration": 2,
         "durations": {

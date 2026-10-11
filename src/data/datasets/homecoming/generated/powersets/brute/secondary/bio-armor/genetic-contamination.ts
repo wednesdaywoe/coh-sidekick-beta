@@ -78,7 +78,8 @@ export const GeneticContamination: Power = {
     ["DamageBuff","Negative",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
     ["DamageBuff","Psionic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
     ["DamageBuff","Toxic",1.995,1,5,"Melee_Debuff_Dam","Str","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["kDefensiveAdaptation","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"defensiveadaptation"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,"InherentTaunt"],
+    ["Mez","Taunt",1,4,0,"Melee_InherentTaunt","Abs","Duration","Target","Any",true,"Replace",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","Raid","target.HasTag?","@ToHitRoll","0.2","+","@ToHit","<","&&","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"]]
   ],
   "conditionalEffects": [
     {
@@ -86,6 +87,7 @@ export const GeneticContamination: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "buffDuration": 5,
         "damageDebuff": {

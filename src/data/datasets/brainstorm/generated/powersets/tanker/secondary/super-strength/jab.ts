@@ -70,9 +70,10 @@ export const Jab: Power = {
   "conditionalEffects": [
     {
       "id": "unleashmight",
-      "label": "Unleash Might",
+      "label": "Rage",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "UnleashMight",
       "damage": {
         "type": "Smashing",
         "scale": 0.126,

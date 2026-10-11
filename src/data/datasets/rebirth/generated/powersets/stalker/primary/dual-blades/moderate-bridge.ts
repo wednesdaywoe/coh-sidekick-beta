@@ -92,9 +92,10 @@ export const ModerateBridge: Power = {
   "conditionalEffects": [
     {
       "id": "dd_bonusaoemode_2",
-      "label": "DD Bonus Ao E Mode 2",
+      "label": "Assassin's Blades",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_BonusAoEMode_2",
       "damage": {
         "type": "Lethal",
         "scale": 0.57,

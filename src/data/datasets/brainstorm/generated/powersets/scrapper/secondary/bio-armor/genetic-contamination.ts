@@ -82,6 +82,7 @@ export const GeneticContamination: Power = {
       "label": "Defensive Adaptation",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DefensiveAdaptation",
       "effects": {
         "buffDuration": 5,
         "damageDebuff": {

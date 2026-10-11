@@ -106,9 +106,10 @@ export const Special1: Power = {
   "conditionalEffects": [
     {
       "id": "dd_bonusdotmode_2",
-      "label": "DD Bonus Do T Mode 2",
+      "label": "Nimble Slash",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_BonusDoTMode_2",
       "damage": {
         "type": "Lethal",
         "scale": 0.2,

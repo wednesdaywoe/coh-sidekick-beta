@@ -84,9 +84,160 @@ export const Hibernate: Power = {
     ["Mez","Untouchable",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
     ["Mez","OnlyAffectsSelf",0.75,1000,0,"Melee_Ones","Cur","Duration","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"HybernateRoot"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"OnActivate"],
-    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,null,null,null,null,"OnActivate"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,null,null,null,null,"OnActivate"],
-    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,null,null,null,null,"OnActivate"]
+    ["MezResist","Held",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,null,true],
+    ["MezResist","Stunned",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,null,true],
+    ["MezResist","Sleep",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,null,true],
+    ["MezResist","Immobilized",6,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,null,true],
+    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,null,null,null,null,"OnActivate",null,"disable_toggle"],
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Self","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,null,null,null,null,"OnActivate",null,"disable_toggle"],
+    ["Mez","Knockup",-100,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Mez","Knockback",-100,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Mez","Repel",-100,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["MezResist","Knockup",10,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["MezResist","Knockback",10,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["MezResist","Repel",10,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Recovery",null,2,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Resistance","Smashing",0.375,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Resistance","Lethal",0.375,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Resistance","Fire",0.375,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Resistance","Cold",0.375,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Resistance","Energy",0.375,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Resistance","Negative",0.375,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Resistance","Toxic",0.375,1,30,"Melee_Ones","Res","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Regeneration",null,4,1,30,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Mez","Held",-50,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Mez","Immobilized",-50,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Mez","Stunned",-50,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["Mez","Sleep",-50,1,30,"Melee_Res_Boolean","Cur","Magnitude","Self","PvE",false,"Replace",2,null,null,1,null,null,null,null,null,null,null,true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],null,null,null,null,null,null,null,"disable_toggle",true],
+    ["MezResist","Held",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],0.1,null,null,null,null,null,null,null,true],
+    ["MezResist","Stunned",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],0.1,null,null,null,null,null,null,null,true],
+    ["MezResist","Sleep",5,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],0.1,null,null,null,null,null,null,null,true],
+    ["MezResist","Immobilized",6,1,30,"Melee_Res_Boolean","Res","Magnitude","Self","PvP",false,"Replace",2,null,null,1,null,null,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,"IcyBastion",null,null,null,null,null,null,null,["Self"],0.1,null,null,null,null,null,null,null,true],
+    ["RechargePower",null,1,1,0,"Ranged_Ones","Cur","Magnitude","Self","Any",false,"Stack",2,null,null,1,null,true,null,null,null,null,["kDisable_Toggle","Source.Mode?"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.1,null,null,null,null,"OnActivate",null,"disable_toggle"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "disable_toggle",
+      "label": "Disable Toggle",
+      "scope": "global",
+      "defaultActive": false,
+      "sourceMode": "Disable_Toggle",
+      "effects": {
+        "buffDuration": 30,
+        "durations": {
+          "hold": 30,
+          "immobilize": 30,
+          "knockback": 30,
+          "knockup": 30,
+          "mezResistance": 30,
+          "recoveryBuff": 30,
+          "regenBuff": 30,
+          "repel": 30,
+          "resistance": 30,
+          "sleep": 30,
+          "stun": 30
+        },
+        "effectDuration": 30,
+        "hold": {
+          "attribType": "Magnitude",
+          "mag": 1,
+          "scale": -50,
+          "table": "Melee_Res_Boolean",
+          "toWho": "Self"
+        },
+        "immobilize": {
+          "attribType": "Magnitude",
+          "mag": 1,
+          "scale": -50,
+          "table": "Melee_Res_Boolean",
+          "toWho": "Self"
+        },
+        "knockback": {
+          "ignoreStrength": true,
+          "scale": 100,
+          "table": "Melee_Ones"
+        },
+        "knockup": {
+          "ignoreStrength": true,
+          "scale": 100,
+          "table": "Melee_Ones"
+        },
+        "mezResistance": {
+          "knockback": {
+            "ignoreStrength": true,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "knockup": {
+            "ignoreStrength": true,
+            "scale": 10,
+            "table": "Melee_Ones"
+          },
+          "repel": {
+            "ignoreStrength": true,
+            "scale": 10,
+            "table": "Melee_Ones"
+          }
+        },
+        "recoveryBuff": {
+          "scale": 2,
+          "table": "Melee_Ones"
+        },
+        "regenBuff": {
+          "scale": 4,
+          "table": "Melee_Ones"
+        },
+        "repel": {
+          "ignoreStrength": true,
+          "scale": 100,
+          "table": "Melee_Ones"
+        },
+        "resistance": {
+          "cold": {
+            "scale": 0.375,
+            "table": "Melee_Ones"
+          },
+          "energy": {
+            "scale": 0.375,
+            "table": "Melee_Ones"
+          },
+          "fire": {
+            "scale": 0.375,
+            "table": "Melee_Ones"
+          },
+          "lethal": {
+            "scale": 0.375,
+            "table": "Melee_Ones"
+          },
+          "negative": {
+            "scale": 0.375,
+            "table": "Melee_Ones"
+          },
+          "smashing": {
+            "scale": 0.375,
+            "table": "Melee_Ones"
+          },
+          "toxic": {
+            "scale": 0.375,
+            "table": "Melee_Ones"
+          }
+        },
+        "sleep": {
+          "attribType": "Magnitude",
+          "mag": 1,
+          "scale": -50,
+          "table": "Melee_Res_Boolean",
+          "toWho": "Self"
+        },
+        "stun": {
+          "attribType": "Magnitude",
+          "mag": 1,
+          "scale": -50,
+          "table": "Melee_Res_Boolean",
+          "toWho": "Self"
+        }
+      }
+    }
   ],
   "grantEdges": [
     {

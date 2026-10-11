@@ -91,6 +91,7 @@ export const AoEBridge: Power = {
       "label": "DD Debuff Mode 2",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_DebuffMode_2",
       "effects": {
         "buffDuration": 20,
         "defenseDebuff": {
@@ -112,6 +113,7 @@ export const AoEBridge: Power = {
       "label": "DD Bonus Ao E Mode 2",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "DD_BonusAoEMode_2",
       "damage": {
         "type": "Lethal",
         "scale": 0.57,

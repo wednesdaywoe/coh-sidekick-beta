@@ -100,9 +100,10 @@ export const Earsplitter: Power = {
   "conditionalEffects": [
     {
       "id": "sonicatuneself",
-      "label": "Sonic Atune Self",
+      "label": "Attune",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "SonicAtuneSelf",
       "damage": [
         {
           "type": "Smashing",

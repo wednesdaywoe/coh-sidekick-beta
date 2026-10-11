@@ -1441,6 +1441,11 @@ export interface ConditionalEffect {
    *  automatically (e.g. snipe Quick variant when in combat) may default true. */
   defaultActive?: boolean;
   /**
+   * The caster mode this toggle stands for (`Chain_Jolt_Mode` for Radiance). A build running a
+   * power whose `setsModes` names it is in that state, and the engine counts the toggle on.
+   */
+  sourceMode?: string;
+  /**
    * The power this caster-side toggle asserts the build HOLDS, and how many copies
    * satisfy its gate. A build without that power is never offered the toggle — the gate
    * reads `<path> source.ownPower(Num)? [N <op>]`, so the claim is the smallest count

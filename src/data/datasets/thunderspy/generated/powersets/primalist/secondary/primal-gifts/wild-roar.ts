@@ -66,6 +66,7 @@ export const WildRoar: Power = {
       "label": "Prowler Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "ProwlerMode",
       "effects": {
         "buffDuration": 30,
         "defenseDebuff": {
@@ -88,6 +89,7 @@ export const WildRoar: Power = {
       "label": "Hunter Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "HunterMode",
       "effects": {
         "buffDuration": 30,
         "defenseDebuff": {

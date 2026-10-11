@@ -78,6 +78,7 @@ export const WilloftheWild: Power = {
       "label": "Hunter Mode",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "HunterMode",
       "effects": {
         "buffDuration": 120,
         "damageBuff": {

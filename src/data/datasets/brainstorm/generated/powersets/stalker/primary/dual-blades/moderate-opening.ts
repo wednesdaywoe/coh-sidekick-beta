@@ -107,5 +107,8 @@ export const ModerateOpening: Power = {
   "requires": [
     "Stalker_Defense.Shield_Defense",
     "!"
+  ],
+  "setsModes": [
+    "DD_BonusDoTMode_1"
   ]
 };

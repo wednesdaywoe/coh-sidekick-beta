@@ -77,6 +77,8 @@ export const RadiationSiphon: Power = {
     ["Meta",null,1,1,0,"Melee_Ones","Abs","Magnitude","Target","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,"revoke_power",null,0.1,null,null,null,null,null,null,"radiation_melee_contaminated"],
     ["Heal",null,0.6667,1,2.1,"Melee_HealSelf","Abs","Magnitude","Self","Any",true,"Stack",2,null,1,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"radiation_melee_contaminated"],
     ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"radiation_melee_contaminated"],
+    ["Damage","Toxic",0.392,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.2,null,null,null,null,null,null,"radiation_melee_contaminated"],
+    ["Damage","Toxic",0.1503,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["Temporary_Powers.Temporary_Powers.Radiation_Melee_Contaminated","target.ownPower?","enttype","target>","player","eq","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],0.2],
     ["Damage","Smashing",0.5902,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST"],
     ["Damage","Energy",1.7707,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST"],
     ["Damage","Smashing",0.49,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST"],
@@ -91,13 +93,20 @@ export const RadiationSiphon: Power = {
       "scope": "per-power",
       "defaultActive": false,
       "mode": "replace",
-      "damage": {
-        "type": "Heal",
-        "scale": 0.6667,
-        "table": "Melee_HealSelf",
-        "duration": 2.1,
-        "tickRate": 1
-      }
+      "damage": [
+        {
+          "type": "Heal",
+          "scale": 0.6667,
+          "table": "Melee_HealSelf",
+          "duration": 2.1,
+          "tickRate": 1
+        },
+        {
+          "type": "Toxic",
+          "scale": 0.392,
+          "table": "Melee_Damage"
+        }
+      ]
     }
   ],
   "specialEffects": [

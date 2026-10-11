@@ -1844,6 +1844,7 @@ export const POWER_POOLS_RAW = {
             "label": "Flight Active",
             "scope": "global",
             "defaultActive": false,
+            "sourceMode": "FlightActive",
             "effects": {
               "buffDuration": 0.75,
               "durations": {

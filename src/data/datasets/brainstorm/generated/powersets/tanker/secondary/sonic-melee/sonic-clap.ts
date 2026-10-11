@@ -90,14 +90,22 @@ export const SonicClap: Power = {
     ["Damage","Energy",0.3779,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.33,null,"SoundBoost"],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"SoundBoost"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"SMAttune",null,null,null,null,null,null,null,null,null,null,"sonicatuneself"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"SMAttune",null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",0.1,1,15.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","kSonicAtuneSelf","Source.Mode?","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,["Foe"],null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",0.1,1,15.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","kSonicAtuneSelf","Source.Mode?","kSMAttune","Source.Mode?","&&","&&","arch","source>","Class_Stalker","eq","kSMAttune","Source.Mode?","&&","&&","enttype","target>","critter","eq","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,-0.93,null,"SMAttune","Class_Stalker",null,["Foe"],null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",0.1,1,15.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","kSonicAtuneSelf","Source.Mode?","kSMAttune","Source.Mode?","&&","&&","arch","source>","Class_Stalker","eq","kSMAttune","Source.Mode?","&&","&&","enttype","target>","player","eq","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,"Held,Sleep",-0.8,null,"SMAttune","Class_Stalker",null,["Foe"]],
+    ["Damage","Energy",0.1,1,15.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,0.05000000074505806,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","kSonicAtuneSelf","Source.Mode?","kSMAttune","Source.Mode?","&&","&&","arch","source>","Class_Scrapper","eq","kSMAttune","Source.Mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,-0.95,null,"SMAttune","Class_Scrapper",null,["Foe"]],
+    ["Damage","Energy",0.1,1,15.8,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,0.10000000149011612,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","kSonicAtuneSelf","Source.Mode?","kSMAttune","Source.Mode?","&&","&&","arch","source>","Class_Scrapper","eq","kSMAttune","Source.Mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,-0.9,null,"SMAttune","Class_Scrapper",null,["Foe"]],
+    ["Damage","Energy",0.1,1,15.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","kSonicAtuneSelf","Source.Mode?","kSMAttune","Source.Mode?","&&","&&","arch","source>","Class_Scrapper","eq","kSMAttune","Source.Mode?","&&","&&","enttype","target>","player","eq","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,-0.95,null,"SMAttune","Class_Scrapper",null,["Foe"]],
+    ["Meta",null,1,212,14.25,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","kSonicAtuneSelf","Source.Mode?","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"AttuneBonus",null,"set_mode",["Foe"],null,null,null,null,null,null,null,"sonicatuneself"]
   ],
   "conditionalEffects": [
     {
       "id": "sonicatuneself",
-      "label": "Sonic Atune Self",
+      "label": "Attune",
       "scope": "global",
       "defaultActive": false,
+      "sourceMode": "SonicAtuneSelf",
       "damage": [
         {
           "type": "Smashing",
@@ -108,6 +116,20 @@ export const SonicClap: Power = {
           "type": "Energy",
           "scale": 0.4312,
           "table": "Melee_Damage"
+        },
+        {
+          "type": "Energy",
+          "scale": 0.1,
+          "table": "Melee_Damage",
+          "duration": 15.8,
+          "tickRate": 2
+        },
+        {
+          "type": "Energy",
+          "scale": 0.1,
+          "table": "Melee_InherentDamage",
+          "duration": 15.8,
+          "tickRate": 2
         }
       ]
     }

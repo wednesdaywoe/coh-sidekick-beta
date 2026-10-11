@@ -10,6 +10,7 @@ import { useUIStore, useBuildStore, useDominationActive, useScourgeActive, useFu
 import { getBaseToHit } from '@/data/purple-patch';
 import { useCharacterCalculation, useGlobalBonuses, usePowerDamageVsRank, usePowerProjection } from '@/hooks/useCalculatedStats';
 import { magnitudesFromProjection } from './magnitudesFromProjection';
+import { damageFromProjection } from './damageFromProjection';
 import { critBranchSummary, critComponents, VS_HIGHER_RANK_SEGMENT, VS_MINION_RANK_SEGMENT } from '@/utils/calculations/power-at-mechanics';
 import { lookupPower, getIOSet, getPowerset } from '@/data';
 import type { Power } from '@/types';
@@ -219,7 +220,7 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   );
 
   // Calculate actual damage using archetype modifiers and level
-  const calculatedDamage = useMemo(() => {
+  const localDamage = useMemo(() => {
     if (!effectivePower?.damage && !effectivePower?.effects?.damage) return null;
 
     // Determine if this is a primary or secondary powerset
@@ -249,6 +250,9 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
       0 // active buffs
     );
   }, [effectivePower, build.level, archetypeId, enhancementBonuses.damage, globalBonusesForCalc.damage, powerSet, build.primary.id, build.secondary.id, powerset]);
+  // The engine's ledger, for a power whose damage rows the converter set aside (Attune).
+  const engineDamage = useMemo(() => damageFromProjection(projection?.damage), [projection]);
+  const calculatedDamage = localDamage ?? engineDamage;
 
   // Calculate aggregate pet damage (supports multi-entity summons)
   const petDamageAggregate = useMemo<{ results: PetDamageResult[]; base: number; enhanced: number; final: number } | null>(() => {

@@ -1169,6 +1169,12 @@ export interface Power {
    */
   setsModes?: string[];
   /**
+   * The subset of `setsModes` this power sets on the FOE it is aimed at, for
+   * `<mode> target.mode?` gates — Attune marks its target `SonicAtuneFoe`. Read by
+   * the engine from the contract bundle; nothing in the beta reads it.
+   */
+  targetModes?: string[];
+  /**
    * What this power BECOMES while a mode is live, keyed by the mode id that selects it. The
    * game's PowerRedirector fires a different record entirely at activation time — a Kheldian
    * attack in Nova form, a Titan Weapons attack under Momentum, Seismic Blast under Seismic

@@ -202,5 +202,8 @@ export const PiercingRounds: Power = {
       "scope": "global",
       "defaultActive": true
     }
+  ],
+  "setsModes": [
+    "Piercing"
   ]
 };

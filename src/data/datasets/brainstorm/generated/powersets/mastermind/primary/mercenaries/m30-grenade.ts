@@ -79,6 +79,9 @@ export const M30Grenade: Power = {
       "label": "Knockback"
     }
   ],
+  "targetModes": [
+    "FocusFire_M30"
+  ],
   "setsModes": [
     "FocusFire_M30",
     "PersonalAttack3"

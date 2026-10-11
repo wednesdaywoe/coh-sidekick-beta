@@ -240,5 +240,11 @@ export const Geyser: Power = {
       "expires": 15,
       "maxCount": 3
     }
+  ],
+  "targetModes": [
+    "Wet"
+  ],
+  "setsModes": [
+    "Wet"
   ]
 };

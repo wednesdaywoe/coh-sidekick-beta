@@ -87,6 +87,9 @@ export const AquaBolt: Power = {
       "maxCount": 3
     }
   ],
+  "targetModes": [
+    "Wet"
+  ],
   "setsModes": [
     "Wet"
   ]

@@ -54,5 +54,8 @@ export const Placate: Power = {
     ["Meta",null,1,1,5,"Melee_Ones","Cur","Magnitude","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"meter",null,0.3,null,null,null,["Attacked","MissionObjectClick"]],
     ["Meta",null,1,72,5,"Melee_Ones","Cur","Constant","Self","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"set_mode",null,0.05,null,null,null,["Attacked","MissionObjectClick"]],
     ["Mez","Placate",6,4,0,"Melee_Taunt","Abs","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.05]
+  ],
+  "setsModes": [
+    "PlacateFollowup"
   ]
 };

@@ -67,6 +67,9 @@ export const TrickShot: Power = {
     ["Meta",null,1,59,4,"Ranged_Ones","Cur","Constant","Target","Any",false,"Ignore",2,null,4.300000190734863,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"Ones",null,"set_mode"],
     ["Damage","Lethal",1.964114,1,0,"Ranged_Damage","Abs","Magnitude","Target","PvP",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"Damage"]
   ],
+  "targetModes": [
+    "Chain_Induction"
+  ],
   "setsModes": [
     "Chain_Induction"
   ]

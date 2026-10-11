@@ -90,5 +90,13 @@ export const Attune: Power = {
       "chance": 0.10000000149011612,
       "label": "Energy_Dmg"
     }
+  ],
+  "targetModes": [
+    "SonicAtuneFoe"
+  ],
+  "setsModes": [
+    "SonicAtuneFoe",
+    "SonicAtuneSelf",
+    "SMAttune"
   ]
 };

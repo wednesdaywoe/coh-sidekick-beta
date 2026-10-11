@@ -1358,6 +1358,8 @@ const dropNoiseMode = (m) => m && !MODE_NOISE.has(m);
  * `mode_name` on each Set_Mode template.
  *
  *   setsModes        modes this power ACTIVATES (from Set_Mode `mode_name`).
+ *   targetModes      the subset of those it sets on the FOE it is aimed at, for
+ *                    `<mode> target.mode?` gates (Attune marks its target `SonicAtuneFoe`).
  *   modesSuspended   modes that SUSPEND this power's own effects (Granite suspends the other
  *                    Stone toggles; forms suspend human toggles).
  *   modesRequired    modes the power needs to be USABLE.
@@ -1375,19 +1377,39 @@ const dropNoiseMode = (m) => m && !MODE_NOISE.has(m);
  * which tree it was converted through — the pools carry the Kheldian form modes too, and a
  * pool-only omission read as "Hasten is castable in Nova form".
  *
+ * A Set_Mode can sit in a child group rather than at the top: Attune publishes both of its
+ * modes one level down, and reading only the top left Attune publishing nothing, so no Sonic
+ * Melee bonus ever saw it running. A child's mode counts only where every group on the way down
+ * is certain to fire (`chance` 1, no `requires`, no PPM). A mode behind a roll or a condition is
+ * set some of the time, and publishing it would hold it on for as long as the power runs — an
+ * Auto's for good (the Sorcery pool's Arcane Bolt proc sets `ArcaneBolt` only when it fires).
+ * The top level stays as it was, unconditional.
+ *
  * Empty arrays are left unset rather than emitted, so the shape matches the rest of the
  * converter and an absent field means "no gating" everywhere.
  */
 function assignModes(power, powerJson) {
   const setsModes = [];
-  for (const grp of powerJson.effects || []) {
-    if (grp?.is_pvp === 'PVP_ONLY') continue; // PvE planner default — PvP-only setters excluded
-    for (const t of grp?.templates || []) {
-      if (t?.mode_name && (t.attribs || []).includes('Set_Mode') && dropNoiseMode(t.mode_name)) {
-        if (!setsModes.includes(t.mode_name)) setsModes.push(t.mode_name);
+  const targetModes = [];
+  const reachesFoes = (powerJson.targets_affected || []).some((t) => /Foe/.test(t));
+  const certain = (grp) => (grp.chance == null || grp.chance === 1)
+    && !(grp.requires_expression || []).length && !grp.ppm;
+  const collect = (groups, nested) => {
+    for (const grp of groups || []) {
+      if (grp?.is_pvp === 'PVP_ONLY') continue; // PvE planner default — PvP-only setters excluded
+      if (nested && !certain(grp)) continue;
+      for (const t of grp?.templates || []) {
+        if (t?.mode_name && (t.attribs || []).includes('Set_Mode') && dropNoiseMode(t.mode_name)) {
+          if (!setsModes.includes(t.mode_name)) setsModes.push(t.mode_name);
+          const onFoe = reachesFoes && t.target !== 'Self' && t.target !== 'SelfAndPets';
+          if (onFoe && !targetModes.includes(t.mode_name)) targetModes.push(t.mode_name);
+        }
       }
+      if (nested || certain(grp)) collect(grp?.child_effects, true);
     }
-  }
+  };
+  collect(powerJson.effects, false);
+  if (targetModes.length) power.targetModes = targetModes;
   // The minted tokens of the corpus-wide chance-mod families this power MOVES (COND-12): a
   // flight toggle publishes `FlightActive` the way Swap Ammo publishes `IceAmmo`, except the
   // binary spells it as a `Global_Chance_Mod` tag rather than a `Set_Mode`, so the token is

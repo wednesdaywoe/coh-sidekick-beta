@@ -51,11 +51,13 @@
  *      atoms, so there is nothing for a gate to move (the Stance inherent's `TravelStance`
  *      row is exactly that: the travel toggles raise the tag, and what it switches is a
  *      payload-less costume-FX stance the planner has no number for). A carrier whose own
- *      gate already reads a mode EVERY mover publishes is not stampable — the gate already
- *      states the mover condition (Sonic Melee's `SMAttune` rows all carry
- *      `kSonicAtuneSelf Source.Mode?`, published by Attune itself), and a tag that mixes
- *      stampable and already-stated carriers is declined outright rather than half-stamped
- *      (none does, and the decline is what keeps that measured). A `Boost` is not a carrier:
+ *      gate already reads a mode every mover publishes is still a carrier. Sonic Melee's
+ *      `SMAttune` rows all carry `kSonicAtuneSelf Source.Mode?`, published by Attune itself,
+ *      and they were once declined on the grounds that the gate already says it. It does,
+ *      but the gate is only half of it: the rows ship at `chance: 0`, and only the
+ *      selection promotes that to the `0 + 1` the game fires while Attune runs, so the
+ *      decline left every Attune bonus dormant. The minted gate it adds is redundant with
+ *      the authored one, and harmless for that reason. A `Boost` is not a carrier:
  *      an enhancement's rows reach a character through slotting, not through the caster
  *      running the power, and the crafted damage-resistance enhancements tag one group per
  *      damage type (`Smashing`, `Lethal`, `Fire`, …) — `pchName` used as a plain label, which
@@ -75,7 +77,6 @@
 const fs = require('fs');
 const path = require('path');
 const { selectorOf, ENABLE_DELTA, DISABLE_DELTA } = require('./_variant-modes.cjs');
-const { gateText } = require('./_gate-tokens.cjs');
 
 /** The attrib whose params retune tagged groups, and the mode-publishing attrib. */
 const FILTER_ATTRIB = 'global_chance_mod';
@@ -183,12 +184,10 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
     const name = json.full_name || json.name;
     const type = String(json.type || '?');
     const deltas = new Map();
-    const published = [];
     walkGroups(json.effects, (effect) => {
       for (const template of effect.templates || []) {
         const attrib = attribOf(template);
         if (attrib === MODE_ATTRIB && template.mode_name) {
-          published.push(template.mode_name);
           modeTokens.add(template.mode_name);
         }
         if (attrib !== FILTER_ATTRIB || typeof template.scale !== 'number') continue;
@@ -210,7 +209,6 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
         type,
         holdable: holdableOf.get(json) === true,
         dir: delta >= ENABLE_DELTA ? 'raise' : 'cut',
-        modes: published,
       });
     }
   }
@@ -248,13 +246,9 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
     }
 
     // Clauses 6 and 7: the carriers.
-    const sharedModes = moverList
-      .map((m) => new Set(m.modes))
-      .reduce((acc, set) => new Set([...acc].filter((mode) => set.has(mode))));
     const moverNames = new Set(entry.movers.map((n) => n.toLowerCase()));
     const wantChance = direction === 'raise' ? 0 : 1;
     const carriers = new Map(); // power -> row count
-    let alreadyStated = 0;
     let payloadless = 0;
     for (const json of powers) {
       // An enhancement is not a carrier: its rows reach a character by being slotted, not by
@@ -281,24 +275,11 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
           payloadless += 1;
           return;
         }
-        const gate = gateText(effect.requires_expression);
-        if ([...sharedModes].some((mode) => gate.includes(`k${mode}`))) {
-          alreadyStated += 1;
-          return;
-        }
         carriers.set(name, (carriers.get(name) || 0) + 1);
       });
     }
     entry.carriers = [...carriers.keys()].sort();
     entry.rows = [...carriers.values()].reduce((a, b) => a + b, 0);
-    if (alreadyStated && entry.rows) {
-      decline(`mixed carriers — ${alreadyStated} rows already state a shared mover mode, ${entry.rows} do not`);
-      continue;
-    }
-    if (alreadyStated) {
-      decline(`every carrier row already states a shared mover mode (${alreadyStated} rows)`);
-      continue;
-    }
     if (!entry.rows) {
       // A carrier population that is all costume-FX no-ops IS a family shape worth
       // recording (the Stance inherent); a moved tag nothing wears at the switching

@@ -92,5 +92,11 @@ export const Telekinesis: Power = {
       "chance": 0.25,
       "label": "Immobilized"
     }
+  ],
+  "targetModes": [
+    "Levitated"
+  ],
+  "setsModes": [
+    "Levitated"
   ]
 };

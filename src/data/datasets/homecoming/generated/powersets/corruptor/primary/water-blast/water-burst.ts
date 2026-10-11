@@ -183,5 +183,11 @@ export const WaterBurst: Power = {
       "path": "temporary_powers.temporary_powers.tidal_power",
       "count": 1
     }
+  ],
+  "targetModes": [
+    "Wet"
+  ],
+  "setsModes": [
+    "Wet"
   ]
 };

@@ -92,7 +92,22 @@ export const SonicThrust: Power = {
     ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Knockback",0.67,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"SoundBoost"],
-    ["Damage","Energy",0.2,1,25.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,0,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&"],true,null,null,null,null,null,null,null,null,"SMAttune"]
+    ["Damage","Energy",0.2,1,25.8,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"SMAttune",null,null,null,null,null,null,null,null,null,null,"sonicatuneself"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "sonicatuneself",
+      "label": "Sonic Atune Self",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": {
+        "type": "Energy",
+        "scale": 0.2,
+        "table": "Melee_Damage",
+        "duration": 25.8,
+        "tickRate": 2
+      }
+    }
   ],
   "specialEffects": [
     {
@@ -100,5 +115,12 @@ export const SonicThrust: Power = {
       "chance": 0.10000000149011612,
       "label": "Knockback"
     }
+  ],
+  "targetModes": [
+    "SonicAtune1Foe"
+  ],
+  "setsModes": [
+    "SonicAtune1Foe",
+    "SonicAtune1Self"
   ]
 };

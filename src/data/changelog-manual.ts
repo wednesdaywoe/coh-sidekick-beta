@@ -46,6 +46,15 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-10-11',
+
+    items: [
+      { id: 'sonic-attune-bonuses', message: 'Homecoming and Brainstorm: Attune now switches on the extra damage and effects Sonic Melee attacks deal to an Attuned target, and shows its own -Resistance', type: 'fix' },
+      { id: 'attune-mud-pots-damage', message: 'Attune and Mud Pots now show their damage in the Info panel and power tooltips', type: 'fix' },
+      { id: 'foe-debuff-res-is-debuff', message: 'Homecoming and Brainstorm: Attune, Sonic Thrust, Strident Echo, Earsplitter, Sonic Siphon and Acid Arrow list the debuff resistance they take from an enemy under Debuffs, and no longer add it to your own totals when switched on', type: 'fix' },
+    ]
+  },
+  {
     date: '2026-10-08',
 
     items: [

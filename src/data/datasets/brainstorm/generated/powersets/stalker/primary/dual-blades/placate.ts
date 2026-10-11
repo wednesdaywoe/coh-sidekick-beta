@@ -95,5 +95,8 @@ export const Placate: Power = {
         }
       }
     }
+  ],
+  "setsModes": [
+    "PlacateFollowup"
   ]
 };

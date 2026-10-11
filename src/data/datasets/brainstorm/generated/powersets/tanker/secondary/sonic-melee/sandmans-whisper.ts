@@ -79,10 +79,33 @@ export const SandmansWhisper: Power = {
     ["Damage","Energy",0.82,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"]],
     ["Mez","Sleep",15,3,0,"Melee_Sleep","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,null,null,null,null,0.25],
     ["Damage","Fire",0.738,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Smashing",0.902,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
-    ["Damage","Energy",0.902,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
+    ["Damage","Smashing",0.902,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",0.902,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
     ["Damage","Smashing",0.9795,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",0.9795,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Sleep",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,null,null,null,null,0.25]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "sonicatuneself",
+      "label": "Sonic Atune Self",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.902,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Energy",
+          "scale": 0.902,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
+  ],
+  "setsModes": [
+    "DD_DebuffMode_1"
   ]
 };

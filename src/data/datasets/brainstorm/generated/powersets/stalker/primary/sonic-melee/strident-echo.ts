@@ -103,8 +103,8 @@ export const StridentEcho: Power = {
     ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"SoundBoost"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","enttype","target>","critter","eq","&&"],true],
-    ["Damage","Energy",0.2,1,25.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","enttype","target>","player","eq","&&"],true,null,null,null,null,null,"Held,Sleep",-0.8,null,"SMAttune"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","enttype","target>","critter","eq","kSMAttune","Source.Mode?","&&","&&"],true],
+    ["Damage","Energy",0.2,1,25.8,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Suppress",2,null,2,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","enttype","target>","player","eq","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,"Held,Sleep",-0.8,null,"SMAttune"]
   ],
   "specialEffects": [
     {
@@ -137,5 +137,12 @@ export const StridentEcho: Power = {
       "expires": 10,
       "maxCount": 3
     }
+  ],
+  "targetModes": [
+    "SonicAtune2Foe"
+  ],
+  "setsModes": [
+    "SonicAtune2Foe",
+    "SonicAtune2Self"
   ]
 };

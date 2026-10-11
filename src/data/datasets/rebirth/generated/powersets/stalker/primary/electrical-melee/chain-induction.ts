@@ -105,6 +105,9 @@ export const ChainInduction: Power = {
       "maxCount": 3
     }
   ],
+  "targetModes": [
+    "Chain_Induction"
+  ],
   "setsModes": [
     "Chain_Induction"
   ]

@@ -110,5 +110,11 @@ export const SteamSpray: Power = {
       "expires": 15,
       "maxCount": 3
     }
+  ],
+  "targetModes": [
+    "Wet"
+  ],
+  "setsModes": [
+    "Wet"
   ]
 };

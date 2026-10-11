@@ -79,10 +79,10 @@ export const Earsplitter: Power = {
     ["Damage","Fire",1.17,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Energy",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST"],
     ["Damage","Energy",2.6,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST"],
-    ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
-    ["Damage","Energy",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
-    ["Damage","Energy",3.12,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST"],
-    ["Damage","Energy",3.12,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST"],
+    ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",3.12,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_ST"],
+    ["Damage","Energy",3.12,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_ST"],
     ["Damage","Smashing",1.1695,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",1.1695,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",2.339,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_ST"],
@@ -96,6 +96,26 @@ export const Earsplitter: Power = {
     ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"SoundBoost"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "sonicatuneself",
+      "label": "Sonic Atune Self",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 1.56,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Energy",
+          "scale": 1.56,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
   ],
   "specialEffects": [
     {

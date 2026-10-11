@@ -79,8 +79,8 @@ export const Earsplitter: Power = {
     ["Mez","Held",5,1,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"RefreshToCount",1,null,null,0.75,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,true,null,null,null,null,null,null,"SoundBoost"],
     ["Mez","Held",5,3,0,"Melee_Immobilize","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"SoundBoost"],
     ["Damage","Fire",1.17,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
-    ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
-    ["Damage","Energy",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
+    ["Damage","Smashing",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",1.56,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
     ["Damage","Smashing",1.1695,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",1.1695,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Defense","All",-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
@@ -93,6 +93,26 @@ export const Earsplitter: Power = {
     ["Recovery",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["RechargeTime",null,-1,1,15,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Mez","Held",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.75,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"SoundBoost"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "sonicatuneself",
+      "label": "Sonic Atune Self",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 1.56,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Energy",
+          "scale": 1.56,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
   ],
   "specialEffects": [
     {

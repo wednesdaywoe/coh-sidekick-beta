@@ -210,5 +210,11 @@ export const Geyser: Power = {
       "path": "temporary_powers.temporary_powers.tidal_power",
       "count": 1
     }
+  ],
+  "targetModes": [
+    "Wet"
+  ],
+  "setsModes": [
+    "Wet"
   ]
 };

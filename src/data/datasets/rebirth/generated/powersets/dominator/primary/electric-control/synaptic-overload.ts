@@ -80,6 +80,9 @@ export const SynapticOverload: Power = {
       }
     }
   ],
+  "targetModes": [
+    "Chain_Confuse_Mode"
+  ],
   "setsModes": [
     "Chain_Confuse_Mode"
   ]

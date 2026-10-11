@@ -131,5 +131,11 @@ export const Cloudburst: Power = {
       "expires": 30,
       "maxCount": 5
     }
+  ],
+  "targetModes": [
+    "Wet"
+  ],
+  "setsModes": [
+    "Wet"
   ]
 };

@@ -92,6 +92,9 @@ export const ChainInduction: Power = {
       "label": "Recovery"
     }
   ],
+  "targetModes": [
+    "Chain_Induction"
+  ],
   "setsModes": [
     "Chain_Induction"
   ]

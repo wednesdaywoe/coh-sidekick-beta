@@ -709,6 +709,8 @@ export interface PowerEffects {
   stealth?: StealthEffects;
   /** Debuff resistance */
   debuffResistance?: DebuffResistance;
+  /** A foe's debuff resistance LOWERED (Sonic Thrust, Acid Arrow): a debuff, not the caster's */
+  debuffResistanceDebuff?: DebuffResistance;
   /** Mez resistance (reduces mez duration) — per-type, e.g., { hold: { scale, table } } */
   mezResistance?: Record<string, NumberOrScaled>;
 
@@ -1168,6 +1170,12 @@ export interface Power {
    * (`Disable_All`) stripped. Absent on the vast majority of powers.
    */
   setsModes?: string[];
+  /**
+   * The subset of `setsModes` this power sets on the FOE it is aimed at, for
+   * `<mode> target.mode?` gates — Attune marks its target `SonicAtuneFoe`. Read by
+   * the engine from the contract bundle; nothing in the beta reads it.
+   */
+  targetModes?: string[];
   /**
    * What this power BECOMES while a mode is live, keyed by the mode id that selects it. The
    * game's PowerRedirector fires a different record entirely at activation time — a Kheldian

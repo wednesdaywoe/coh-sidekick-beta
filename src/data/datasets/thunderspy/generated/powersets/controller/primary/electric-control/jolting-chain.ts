@@ -81,6 +81,9 @@ export const JoltingChain: Power = {
       "label": "Recovery"
     }
   ],
+  "targetModes": [
+    "Chain_Jolt_Mode"
+  ],
   "setsModes": [
     "Chain_Jolt_Mode"
   ],

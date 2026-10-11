@@ -75,16 +75,36 @@ export const SonicClap: Power = {
     ["Damage","Fire",0.2554,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["enttype","target>","critter","eq"],null,null,null,null,null,null,null,null,null,"FieryEmbrace"],
     ["Damage","Energy",0.784,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE"],
     ["Damage","Energy",0.784,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"],
-    ["Damage","Smashing",0.4312,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
-    ["Damage","Energy",0.4312,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&"],true],
-    ["Damage","Energy",0.8623,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE"],
-    ["Damage","Energy",0.8623,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"],
+    ["Damage","Smashing",0.4312,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",0.4312,1,0,"Melee_Damage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"sonicatuneself"],
+    ["Damage","Energy",0.8623,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,null,null,"CritSmall,ScrapperCrit_AoE"],
+    ["Damage","Energy",0.8623,1,0,"Melee_InherentDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.10000000149011612,null,null,null,null,null,null,["enttype","target>","critter","eq","kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&","&&","arch","target>","Class_Minion_Grunt","eq","arch","target>","Class_Minion_Small","eq","||","arch","target>","Class_Minion_Pets","eq","||","arch","target>","Class_Minion_Swarm","eq","||","enttype","target>","player","eq","||","!","kSMAttune","Source.Mode?","&&","&&"],true,null,null,null,null,null,null,null,null,"CritLarge,ScrapperCrit_AoE"],
     ["Damage","Smashing",0.3779,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",0.3779,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true],
     ["Damage","Energy",0.7557,1,0,"Melee_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,null,0.05000000074505806,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"CritPlayer,ScrapperCrit_AoE"],
     ["Mez","Knockback",0.65,1,0,"Melee_Ones","Cur","Magnitude","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,0.33,null,"SoundBoost"],
     ["Mez","Stunned",1,3,0,"Melee_PvPMez","Cur","Duration","Target","Any",true,"Stack",2,null,null,0.20000000298023224,null,null,null,null,null,null,["enttype","target>","player","eq"],true,null,null,null,null,null,null,null,null,"SoundBoost"],
-    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,0,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&"],true,null,null,null,null,null,null,null,null,"SMAttune"]
+    ["ExecutePower",null,0,0,0,"Melee_Ones","Str","Magnitude","Target","Any",true,"Stack",2,null,null,1,null,null,null,null,null,null,["kSonicAtuneSelf","Source.Mode?","kSonicAtuneFoe","target.mode?","&&","kSMAttune","Source.Mode?","&&"],true,null,null,null,null,null,null,null,null,"SMAttune",null,null,null,null,null,null,null,null,null,null,"sonicatuneself"]
+  ],
+  "conditionalEffects": [
+    {
+      "id": "sonicatuneself",
+      "label": "Sonic Atune Self",
+      "scope": "global",
+      "defaultActive": false,
+      "damage": [
+        {
+          "type": "Smashing",
+          "scale": 0.4312,
+          "table": "Melee_Damage"
+        },
+        {
+          "type": "Energy",
+          "scale": 0.4312,
+          "table": "Melee_Damage"
+        }
+      ]
+    }
   ],
   "specialEffects": [
     {

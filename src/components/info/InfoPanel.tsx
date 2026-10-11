@@ -72,6 +72,7 @@ import {
 } from './powerDisplayUtils';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction, isQuickSnipeActive } from './resolveEffectivePower';
 import { magnitudesFromProjection } from './magnitudesFromProjection';
+import { damageFromProjection } from './damageFromProjection';
 import {
   RegistryEffectsDisplay,
 } from './SharedPowerComponents';
@@ -495,7 +496,9 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   }, [calculatedDamage, effectivePower, build, enhancementBonuses.damage, globalBonusesForCalc.damage, archetypeId, stormCellActive, mechanicAdjusters]);
 
   // Resolved damage shown in the Damage block — direct first, pseudo-pet fallback.
-  const resolvedDamage = calculatedDamage ?? pseudoPetDamage;
+  // The engine's ledger, for a power whose damage rows the converter set aside (Attune).
+  const engineDamage = useMemo(() => damageFromProjection(projection?.damage), [projection]);
+  const resolvedDamage = calculatedDamage ?? pseudoPetDamage ?? engineDamage;
 
   // The Scrapper crit is rank-forked rows in the power's OWN data (its own scale, table
   // and probability — One Thousand Cuts crits for 2.21 against a 2.361 base; Sweeping

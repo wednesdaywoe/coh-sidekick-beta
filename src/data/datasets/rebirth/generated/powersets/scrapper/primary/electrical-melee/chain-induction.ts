@@ -100,6 +100,9 @@ export const ChainInduction: Power = {
       "label": "Energy_Dmg"
     }
   ],
+  "targetModes": [
+    "Chain_Induction"
+  ],
   "setsModes": [
     "Chain_Induction"
   ]

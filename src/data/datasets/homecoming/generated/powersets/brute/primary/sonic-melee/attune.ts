@@ -77,5 +77,13 @@ export const Attune: Power = {
     ["Regeneration",null,-1,1,1.75,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["distance","40","<="],true,null,null,null,null,null,null,null,null,"Debuffs"],
     ["Recovery",null,-1,1,1.75,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["distance","40","<="],true,null,null,null,null,null,null,null,null,"Debuffs"],
     ["RechargeTime",null,-1,1,1.75,"Melee_Debuff_Res_Dmg","Res","Magnitude","Target","Any",true,"Replace",2,null,null,1,null,true,null,null,null,null,["distance","40","<="],true,null,null,null,null,null,null,null,null,"Debuffs"]
+  ],
+  "targetModes": [
+    "SonicAtuneFoe"
+  ],
+  "setsModes": [
+    "SonicAtuneFoe",
+    "SonicAtuneSelf",
+    "SMAttune"
   ]
 };

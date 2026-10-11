@@ -68,6 +68,9 @@ export const Slug: Power = {
       "label": "Knockback"
     }
   ],
+  "targetModes": [
+    "FocusFire_Slug"
+  ],
   "setsModes": [
     "FocusFire_Slug",
     "PersonalAttack2"

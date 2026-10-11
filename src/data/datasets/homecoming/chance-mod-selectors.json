@@ -48,6 +48,50 @@
     "Tanker_Defense.Stone_Armor.Rooted"
    ],
    "rows": 6
+  },
+  {
+   "tag": "SMAttune",
+   "dir": "raise",
+   "movers": [
+    "Brute_Melee.Sonic_Melee.Attune",
+    "Brute_Melee.Sonic_Melee.Attune",
+    "Scrapper_Melee.Sonic_Melee.Attune",
+    "Scrapper_Melee.Sonic_Melee.Attune",
+    "Stalker_Melee.Sonic_Melee.Attune",
+    "Stalker_Melee.Sonic_Melee.Attune",
+    "Tanker_Melee.Sonic_Melee.Attune",
+    "Tanker_Melee.Sonic_Melee.Attune"
+   ],
+   "carriers": [
+    "Brute_Melee.Sonic_Melee.Deafening_Wave",
+    "Brute_Melee.Sonic_Melee.Earsplitter",
+    "Brute_Melee.Sonic_Melee.Sandmans_Whisper",
+    "Brute_Melee.Sonic_Melee.Sonic_Clap",
+    "Brute_Melee.Sonic_Melee.Sonic_Thrust",
+    "Brute_Melee.Sonic_Melee.Strident_Echo",
+    "Redirects.Sonic_Melee.Deafening_Wave",
+    "Redirects.Sonic_Melee.Sonic_Clap",
+    "Redirects.Sonic_Melee.Sonic_Thrust",
+    "Redirects.Sonic_Melee.Strident_Echo",
+    "Scrapper_Melee.Sonic_Melee.Deafening_Wave",
+    "Scrapper_Melee.Sonic_Melee.Earsplitter",
+    "Scrapper_Melee.Sonic_Melee.Sandmans_Whisper",
+    "Scrapper_Melee.Sonic_Melee.Sonic_Clap",
+    "Scrapper_Melee.Sonic_Melee.Sonic_Thrust",
+    "Scrapper_Melee.Sonic_Melee.Strident_Echo",
+    "Stalker_Melee.Sonic_Melee.Deafening_Wave",
+    "Stalker_Melee.Sonic_Melee.Earsplitter",
+    "Stalker_Melee.Sonic_Melee.Sonic_Clap",
+    "Stalker_Melee.Sonic_Melee.Sonic_Thrust",
+    "Stalker_Melee.Sonic_Melee.Strident_Echo",
+    "Tanker_Melee.Sonic_Melee.Deafening_Wave",
+    "Tanker_Melee.Sonic_Melee.Earsplitter",
+    "Tanker_Melee.Sonic_Melee.Sandmans_Whisper",
+    "Tanker_Melee.Sonic_Melee.Sonic_Clap",
+    "Tanker_Melee.Sonic_Melee.Sonic_Thrust",
+    "Tanker_Melee.Sonic_Melee.Strident_Echo"
+   ],
+   "rows": 70
   }
  ],
  "declined": [
@@ -486,23 +530,6 @@
     "Redirects.Seismic_Blast.Seismic_Stress_Release"
    ],
    "reason": "mover types [Click] — not all Toggle"
-  },
-  {
-   "tag": "SMAttune",
-   "dir": "raise",
-   "movers": [
-    "Brute_Melee.Sonic_Melee.Attune",
-    "Brute_Melee.Sonic_Melee.Attune",
-    "Scrapper_Melee.Sonic_Melee.Attune",
-    "Scrapper_Melee.Sonic_Melee.Attune",
-    "Stalker_Melee.Sonic_Melee.Attune",
-    "Stalker_Melee.Sonic_Melee.Attune",
-    "Tanker_Melee.Sonic_Melee.Attune",
-    "Tanker_Melee.Sonic_Melee.Attune"
-   ],
-   "carriers": [],
-   "rows": 0,
-   "reason": "every carrier row already states a shared mover mode (70 rows)"
   },
   {
    "tag": "SpeedRefresh",

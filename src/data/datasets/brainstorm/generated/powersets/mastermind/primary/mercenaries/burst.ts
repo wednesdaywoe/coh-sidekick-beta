@@ -63,6 +63,9 @@ export const Burst: Power = {
     ["Meta",null,1,180,30,"Melee_Ones","Cur","Constant","SelfAndPets","Any",false,"Replace",2,null,null,1,null,true,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"RefreshReminder",null,"set_mode"],
     ["Damage","Lethal",0.315,1,0.91,"Ranged_PvPDamage","Abs","Magnitude","Target","Any",true,"Stack",2,null,0.30000001192092896,1,null,null,null,null,null,null,["enttype","target>","player","eq"],true]
   ],
+  "targetModes": [
+    "FocusFire_Burst"
+  ],
   "setsModes": [
     "FocusFire_Burst",
     "PersonalAttack1"

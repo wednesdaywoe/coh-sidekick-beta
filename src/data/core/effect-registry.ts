@@ -374,6 +374,16 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     canBeByType: true,
     priority: 3,
   },
+  debuffResistanceDebuff: {
+    summaryTokens: ['debuff res'],
+    label: '-Debuff Res',
+    category: 'debuff',
+    colorClass: STAT_COLORS.debuffResistance,
+    format: 'percent',
+    canBeByType: true,
+    expandByType: true,
+    priority: 3,
+  },
   damageDebuff: {
     summaryTokens: ['dmg', 'damage', 'dam'],
     label: '-Damage',

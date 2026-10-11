@@ -71,6 +71,9 @@ export const SynapticOverload: Power = {
       "label": "Confuse"
     }
   ],
+  "targetModes": [
+    "Chain_Confuse_Mode"
+  ],
   "setsModes": [
     "Chain_Confuse_Mode"
   ]

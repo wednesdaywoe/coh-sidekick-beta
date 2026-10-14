@@ -46,6 +46,14 @@ export interface ManualEntry {
 export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-10-14',
+
+    items: [
+      { id: 'my-builds-update-keeps-link', message: 'A build opened from My Builds now stays linked to its saved copy, so saving offers "Update Saved Build" again instead of making a duplicate.', type: 'fix' },
+    ]
+  },
+  // ───────────────────────────────────────────────────────────────────────
+  {
     date: '2026-10-11',
 
     items: [

@@ -35,9 +35,39 @@ export function buildShareUrl(build: Build): string {
   return url.toString();
 }
 
+const VAULT_LINK_KEY = 'coh-planner-url-vault-link';
+
+/**
+ * The hash carries the build but not the library entry it was loaded from, so a
+ * reload that re-imports the hash used to drop the link and turn "Update Saved
+ * Build" back into "Save to Library" — a duplicate entry on the next save. This
+ * remembers the pair per tab; the hash import restores the link only when the
+ * incoming hash is the one recorded here. A share link opened fresh has no
+ * matching record and stays unlinked, so it can never overwrite the viewer's
+ * own entry.
+ */
+export function rememberVaultLink(hash: string, vaultId: string | undefined): void {
+  try {
+    if (vaultId) sessionStorage.setItem(VAULT_LINK_KEY, JSON.stringify({ hash, vaultId }));
+    else sessionStorage.removeItem(VAULT_LINK_KEY);
+  } catch {
+    // Storage unavailable — the link just doesn't survive a reload.
+  }
+}
+
+export function recallVaultLink(hash: string): string | undefined {
+  try {
+    const record = JSON.parse(sessionStorage.getItem(VAULT_LINK_KEY) ?? 'null');
+    return record?.hash === hash && typeof record.vaultId === 'string' ? record.vaultId : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 /** Replace the current URL with `?serverId=<id>#<hash>` without adding a history entry. */
 function writeUrl(build: Build): void {
   const hash = encodeBuildToHash(build);
+  rememberVaultLink(hash, build.vaultId);
   const url = new URL(window.location.href);
   url.searchParams.set('serverId', build.serverId);
   const next = `${url.pathname}${url.search}#${hash}`;
@@ -88,6 +118,7 @@ export function useUrlBuildSync(): void {
     const priorChecklist = currentBuild.craftingChecklist;
     const priorObtained = currentBuild.incarnateObtained;
     const priorShopping = currentBuild.shoppingListAcquired;
+    const vaultId = recallVaultLink(incoming);
 
     try {
       const json = decodeImportFragment(incoming);
@@ -98,6 +129,7 @@ export function useUrlBuildSync(): void {
         useBuildStore.setState({
           build: {
             ...after,
+            ...(vaultId ? { vaultId } : {}),
             craftingChecklist: { ...priorChecklist, ...after.craftingChecklist },
             incarnateObtained: { ...priorObtained, ...after.incarnateObtained },
             shoppingListAcquired: { ...priorShopping, ...after.shoppingListAcquired },

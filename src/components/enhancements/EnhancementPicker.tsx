@@ -245,13 +245,16 @@ export function EnhancementPicker() {
     return slots;
   }, [picker.currentPowerName, picker.currentPowerSet, build]);
 
-  // Get indices of empty slots (starting from currentSlotIndex)
+  // Slots a bulk placement fills: the clicked slot, then empty slots after it.
+  // The clicked slot counts even when full — the first pick replaces it, as a
+  // single click would; counting only empties left a full power with nowhere
+  // to put a selection.
   // When virtualSlots is set (compare modal), use those instead of the build's slots
-  const emptySlotIndices = useMemo(() => {
+  const targetSlotIndices = useMemo(() => {
     const slots = picker.virtualSlots ?? currentPowerSlots;
     const indices: number[] = [];
     for (let i = picker.currentSlotIndex; i < slots.length; i++) {
-      if (!slots[i]) {
+      if (i === picker.currentSlotIndex || !slots[i]) {
         indices.push(i);
       }
     }
@@ -569,7 +572,7 @@ export function EnhancementPicker() {
     if (totalToFill === 0) return;
 
     // Fill empty slots: IO-set pieces first, then stacked items.
-    const slotsToFill = emptySlotIndices.slice(0, totalToFill);
+    const slotsToFill = targetSlotIndices.slice(0, totalToFill);
     allPieces.forEach(({ set, piece, pieceIndex }, idx) => {
       if (idx < slotsToFill.length) {
         placeEnhancement(
@@ -641,7 +644,7 @@ export function EnhancementPicker() {
       .filter(({ piece }) => isPiecePlaceable(set, piece));
 
     // Get empty slots starting from current slot
-    const slotsToFill = emptySlotIndices.slice(0, selectedPieces.length);
+    const slotsToFill = targetSlotIndices.slice(0, selectedPieces.length);
     if (slotsToFill.length === 0) return;
 
     // Fill slots with selected pieces
@@ -1300,9 +1303,9 @@ export function EnhancementPicker() {
           <div className="flex-shrink-0 border-t border-gray-700 bg-gray-900/95 backdrop-blur px-3 py-2 flex items-center gap-2">
             <span className="text-xs sm:text-sm text-gray-300 flex-1 min-w-0 truncate">
               {totalSelectedPieces} piece{totalSelectedPieces === 1 ? '' : 's'} selected
-              {emptySlotIndices.length < totalSelectedPieces && (
+              {targetSlotIndices.length < totalSelectedPieces && (
                 <span className="text-amber-400 ml-2">
-                  (only {emptySlotIndices.length} empty slot{emptySlotIndices.length === 1 ? '' : 's'} — extras ignored)
+                  (only {targetSlotIndices.length} slot{targetSlotIndices.length === 1 ? '' : 's'} to fill — extras ignored)
                 </span>
               )}
             </span>
@@ -1314,10 +1317,10 @@ export function EnhancementPicker() {
             </button>
             <button
               onClick={handleSlotMultiSelect}
-              disabled={emptySlotIndices.length === 0}
+              disabled={targetSlotIndices.length === 0}
               className="text-xs sm:text-sm px-3 py-1.5 rounded bg-green-600 hover:bg-green-500 text-on-success font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              Slot {Math.min(totalSelectedPieces, emptySlotIndices.length)}
+              Slot {Math.min(totalSelectedPieces, targetSlotIndices.length)}
             </button>
           </div>
         )}

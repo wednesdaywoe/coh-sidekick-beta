@@ -8,7 +8,10 @@ import { Button } from '@/components/ui/Button';
 import { getSharedBuild, incrementViews, isOwnedBuild, deleteBuild, reclaimBuild, updateBuildVisibility, updateBuildMetadata } from '@/services/sharedBuilds';
 import { useBuildStore } from '@/stores/buildStore';
 import { useAuthStore } from '@/stores/authStore';
-import { getActiveDataset } from '@/data/dataset';
+import { getActiveDataset, getAllDatasetMetadata, isDatasetId } from '@/data/dataset';
+import { encodeImportFragment } from '@/utils/import-url';
+import { rememberVaultLink } from '@/utils/url-build-sync';
+import { showDatasetSwitchOverlay } from '@/utils/dataset-switch-overlay';
 import { buildDocumentTitle, useDocumentTitle, DEFAULT_DOCUMENT_TITLE } from '@/utils/document-title';
 import { CURRENT_PREVIEW_TEMPLATE_VERSION } from '@/components/export-image/BuildPreviewCard';
 import type { SharedBuild, BuildVisibility } from '@/types/shared';
@@ -142,31 +145,33 @@ export function BuildDetailPage() {
 
   const handleLoadBuild = () => {
     if (!build) return;
-    const success = importBuild(JSON.stringify(build.build_json));
-    if (success) {
-      // Link the in-memory build to this library entry only when the
-      // viewer is the owner — otherwise "Save to Library" would attempt
-      // to update someone else's entry (which the backend rejects, but
-      // we surface a "Save as new" instead). For non-owners, treat the
-      // load as a fresh fork.
-      setVaultId(owned ? build.id : null);
+    const json = JSON.stringify(build.build_json);
+    // Link the in-memory build to this library entry only when the
+    // viewer is the owner — otherwise "Save to Library" would attempt
+    // to update someone else's entry (which the backend rejects, but
+    // we surface a "Save as new" instead). For non-owners, treat the
+    // load as a fresh fork.
+    const vaultId = owned ? build.id : undefined;
 
-      // If the loaded build belongs to a different dataset than the one
-      // currently active, a TanStack client-side navigation to `/` keeps
-      // the wrong dataset live — every power lookup then reads the wrong
-      // server's data. Force a full reload via `?serverId=` so main.tsx
-      // boots the matching dataset. localStorage already holds the
-      // imported build (Zustand persist wrote it synchronously above), so
-      // rehydration on the new page picks it up.
-      const loadedServerId = useBuildStore.getState().build.serverId;
-      try {
-        if (loadedServerId !== getActiveDataset().id) {
-          window.location.assign(`/?serverId=${loadedServerId}`);
-          return;
-        }
-      } catch {
-        // No active dataset (shouldn't happen post-boot) — fall through.
-      }
+    // A build from another dataset can't be imported in place: the active
+    // dataset is fixed at boot. importBuild would reload to carry it across,
+    // but onto this page's path, and the link set afterwards would land on the
+    // build being replaced. Reload onto the planner instead, with the build in
+    // the hash and the link recorded against that hash for the import there.
+    const rawServerId = (build.build_json as { build?: { serverId?: unknown } }).build?.serverId;
+    const targetServerId = isDatasetId(rawServerId) ? rawServerId : 'homecoming';
+    if (targetServerId !== getActiveDataset().id) {
+      const hash = encodeImportFragment(json);
+      rememberVaultLink(hash, vaultId);
+      showDatasetSwitchOverlay(
+        getAllDatasetMetadata().find((d) => d.id === targetServerId)?.displayName ?? targetServerId,
+      );
+      window.location.assign(`/?serverId=${targetServerId}#${hash}`);
+      return;
+    }
+
+    if (importBuild(json)) {
+      setVaultId(vaultId ?? null);
       navigate({ to: '/' });
     }
   };

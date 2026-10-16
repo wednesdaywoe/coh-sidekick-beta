@@ -13,6 +13,7 @@ import { useCalculatedStats, useCharacterCalculation, useActiveSetBonuses } from
 import { getBaselineHealth } from '@/utils/calculations/stats';
 import { computeAllStats } from '@/utils/detailed-totals';
 import { getDefenseSoftcap } from '@/data/purple-patch';
+import { publicProviderName } from '@/utils/author-identity';
 import { renderNodeToPng, downloadBlob, copyPngToClipboard, slugifyFilename } from '@/utils/export-image';
 import { BuildImageCard, CARD_WIDTH } from '@/components/export-image/BuildImageCard';
 import {
@@ -87,7 +88,7 @@ export function BuildImageModal({ isOpen, onClose }: BuildImageModalProps) {
     if (isOpen) {
       setBusy('idle');
       setOptions((prev) =>
-        prev.authorName ? prev : { ...prev, authorName: user?.user_metadata?.name ?? user?.email?.split('@')[0] ?? '' },
+        prev.authorName ? prev : { ...prev, authorName: publicProviderName(user?.user_metadata) },
       );
     }
   }, [isOpen, user]);

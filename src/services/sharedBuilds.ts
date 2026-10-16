@@ -9,6 +9,7 @@ import { capturePreviewBase64 } from '@/utils/preview-capture';
 import { CURRENT_PREVIEW_TEMPLATE_VERSION } from '@/components/export-image/BuildPreviewCard';
 import type { BuildExport } from '@/types/build';
 import { DEFAULT_BUILD_NAME } from '@/types/build';
+import { publicProviderName } from '@/utils/author-identity';
 
 const DEFAULT_PAGE_SIZE = 20;
 const OWNER_TOKENS_KEY = 'coh-planner-owner-tokens';
@@ -489,10 +490,7 @@ export async function quickShareBuild(buildExport: BuildExport): Promise<{ url: 
     name = ['Generic ' + at, pri, sec].filter(Boolean).join(' - ') || 'Shared Build';
   }
 
-  const authorName =
-    (user.user_metadata?.full_name as string | undefined) ||
-    (user.user_metadata?.name as string | undefined) ||
-    '';
+  const authorName = publicProviderName(user.user_metadata);
 
   const shareInput: ShareBuildInput = {
     name,

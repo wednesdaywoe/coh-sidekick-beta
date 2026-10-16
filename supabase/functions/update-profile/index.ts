@@ -18,7 +18,7 @@
 
 import { createClient, type User } from 'https://esm.sh/@supabase/supabase-js@2';
 import { storableAvatarUrl } from '../_shared/avatar-url.ts';
-import { MAX_DISPLAY_NAME, handleCandidate, normalizeIdentityName } from '../_shared/author-name.ts';
+import { MAX_DISPLAY_NAME, containsEmail, handleCandidate, normalizeIdentityName } from '../_shared/author-name.ts';
 import { identityClaimRefusal, type HandleLookup } from '../_shared/identity-claim.ts';
 
 const HANDLE_REGEX = /^[a-z0-9][a-z0-9_-]{2,29}$/;
@@ -108,6 +108,11 @@ Deno.serve(async (req: Request) => {
       // field with the person looking at it, and a name silently shortened
       // there is something you find out about later. Measured on the code
       // points the column stores, not on UTF-16 units.
+      // Refused, not stripped: the field is in front of the person, and a
+      // profile name is public to anyone (see `containsEmail`).
+      if (containsEmail(dn)) {
+        return jsonError('Display name cannot contain an email address', 400);
+      }
       if (Array.from(dn).length > MAX_DISPLAY_NAME) {
         return jsonError(`Display name must be ${MAX_DISPLAY_NAME} characters or fewer`, 400);
       }

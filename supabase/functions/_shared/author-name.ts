@@ -193,7 +193,25 @@ function stripClaimedPrefix(name: string): string {
  *      hiding, not a hypothetical one. `Array.from` iterates code points.
  */
 export function sanitizeAuthorName(raw: unknown): string {
-  return truncateByCodePoint(normalizeIdentityName(raw), MAX_AUTHOR_NAME);
+  const name = normalizeIdentityName(raw);
+  if (containsEmail(name)) return '';
+  return truncateByCodePoint(name, MAX_AUTHOR_NAME);
+}
+
+/**
+ * An address shape anywhere in the string: `local@domain.tld`, no spaces.
+ * `Savant @ Everlasting` is not one; `jane.smith@example.com` and a SimpleLogin
+ * alias are.
+ *
+ * Why it is here: SimpleLogin's `name` claim IS an email address, and the
+ * quick-share path copied that claim into `author_name`, so 25 builds went out
+ * with their sharer's address in the byline (2026-10-16). An author label is
+ * public by construction, and nobody filling one in means to publish an
+ * address, so an address is dropped whole rather than refused. Refusing would
+ * fail a share over a field the sharer may never have seen.
+ */
+export function containsEmail(name: string): boolean {
+  return /[^\s@]+@[^\s@]+\.[^\s@]{2,}/u.test(name);
 }
 
 /**

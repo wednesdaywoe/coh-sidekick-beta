@@ -1539,3 +1539,66 @@ CREATE POLICY "own layout update" ON user_layouts
 -- anon and authenticated ALL on a new public table. Anon has no use for it.
 REVOKE ALL ON public.user_layouts FROM anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.user_layouts TO authenticated;
+
+-- ============================================
+-- Migration: no email address in a public name (NOT YET APPLIED, 2026-10-16)
+-- ============================================
+--
+-- SimpleLogin's `name` claim is the account's email address (an alias or the
+-- real one). Two writers copied it somewhere strangers read it:
+--
+--   * the seed below put it in `profiles.display_name`, which is public-read:
+--     58 profiles held an address on 2026-10-16;
+--   * the web client's quick-share copied it into `shared_builds.author_name`:
+--     25 builds from 12 sharers, shown in the "By:" line.
+--
+-- `share-build` and `update-profile` now refuse addresses
+-- (`_shared/author-name.ts::containsEmail`). This makes the seed skip them,
+-- drops the email-local-part fallback (an alias prefix or `jane.smith` is the
+-- same disclosure in a smaller font), and clears the rows already written. A
+-- profile seeded empty is the ordinary state for a SimpleLogin account until
+-- its owner picks a name.
+
+CREATE OR REPLACE FUNCTION public_name_candidate(raw TEXT)
+RETURNS TEXT AS $$
+  SELECT CASE
+    WHEN raw ~ '[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]{2,}' THEN NULL
+    ELSE NULLIF(raw, '')
+  END;
+$$ LANGUAGE sql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION seed_profile_on_signup()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO profiles (user_id, display_name, discord_id, discord_username, avatar_url)
+  VALUES (
+    NEW.id,
+    seeded_display_name(COALESCE(
+      public_name_candidate(NEW.raw_user_meta_data->'custom_claims'->>'global_name'),
+      public_name_candidate(NEW.raw_user_meta_data->>'full_name'),
+      public_name_candidate(NEW.raw_user_meta_data->>'name'),
+      ''
+    )),
+    NEW.raw_user_meta_data->>'provider_id',
+    NEW.raw_user_meta_data->>'full_name',
+    storable_avatar_url(NEW.raw_user_meta_data->>'avatar_url')
+  )
+  ON CONFLICT (user_id) DO NOTHING;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+-- Clear what is already stored. An emptied author_name draws as the proved
+-- handle alone, or as anonymous; an emptied display_name is the seed's own
+-- empty case.
+UPDATE shared_builds SET author_name = ''
+  WHERE author_name ~ '[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]{2,}';
+UPDATE profiles SET display_name = ''
+  WHERE display_name ~ '[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]{2,}';
+-- The one profile seeded from an email local part under the old fallback.
+UPDATE profiles p SET display_name = ''
+  FROM auth.users u
+  WHERE u.id = p.user_id
+    AND u.raw_app_meta_data->>'provider' = 'custom:simplelogin'
+    AND p.display_name <> ''
+    AND p.display_name = split_part(u.email, '@', 1);

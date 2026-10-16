@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { authorIdentity } from './author-identity';
+import { authorIdentity, publicProviderName } from './author-identity';
 
 describe('authorIdentity', () => {
   it('pairs a proved handle with the name the share carried', () => {
@@ -124,5 +124,29 @@ describe('authorIdentity', () => {
     // An empty handle would otherwise link to /author/ and draw a bare @.
     expect(authorIdentity('Savant', '')).toEqual({ kind: 'unverified', display: 'Savant' });
     expect(authorIdentity('Savant', '@')).toEqual({ kind: 'unverified', display: 'Savant' });
+  });
+});
+
+describe('email addresses in author names', () => {
+  it('hides a stored address rather than drawing it', () => {
+    // Rows written by quick-share before the server dropped addresses.
+    expect(authorIdentity('jane.smith@example.com', null)).toEqual({ kind: 'anonymous' });
+    expect(authorIdentity('jane.smith@example.com', 'jane')).toEqual({
+      kind: 'verified',
+      display: '',
+      handle: 'jane',
+    });
+    expect(authorIdentity('Savant @ Everlasting', null)).toEqual({
+      kind: 'unverified',
+      display: 'Savant @ Everlasting',
+    });
+  });
+
+  it('never offers an address as the provider name', () => {
+    // SimpleLogin: no full_name, and `name` is the address.
+    expect(publicProviderName({ name: 'abc.xyz@aleeas.com' })).toBe('');
+    expect(publicProviderName({ full_name: 'tigereyes', name: 'tigereyes#0' })).toBe('tigereyes');
+    expect(publicProviderName({ full_name: 'a@b.co', name: 'Savant' })).toBe('Savant');
+    expect(publicProviderName(undefined)).toBe('');
   });
 });

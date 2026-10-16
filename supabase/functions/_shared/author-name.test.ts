@@ -10,7 +10,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { sanitizeAuthorName, handleCandidate, MAX_AUTHOR_NAME } from './author-name';
+import { sanitizeAuthorName, handleCandidate, containsEmail, MAX_AUTHOR_NAME } from './author-name';
 
 describe('sanitizeAuthorName', () => {
   it('leaves an ordinary name exactly as typed', () => {
@@ -239,5 +239,19 @@ describe('handleCandidate', () => {
     expect(handleCandidate('savant!')).toBeNull();
     expect(handleCandidate('小次郎')).toBeNull();
     expect(handleCandidate('')).toBeNull();
+  });
+});
+
+describe('email addresses', () => {
+  it('drops an author name carrying an address, whole', () => {
+    expect(sanitizeAuthorName('jane.smith@example.com')).toBe('');
+    expect(sanitizeAuthorName('Jane (jane.smith@example.com)')).toBe('');
+    // The sigil strip runs first; the address behind it must not survive it.
+    expect(sanitizeAuthorName('@jane@example.com')).toBe('');
+  });
+
+  it('leaves an interior @ that is not an address', () => {
+    expect(sanitizeAuthorName('Savant @ Everlasting')).toBe('Savant @ Everlasting');
+    expect(containsEmail('Savant@Everlasting')).toBe(false);
   });
 });

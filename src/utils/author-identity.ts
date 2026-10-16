@@ -121,8 +121,34 @@ export function authorIdentity(
   authorName: string | null | undefined,
   authorHandle: string | null | undefined,
 ): AuthorIdentity {
-  const display = stripClaimedPrefix(authorName ?? '').trim();
+  const stripped = stripClaimedPrefix(authorName ?? '').trim();
+  // Rows stored before `sanitizeAuthorName` dropped addresses still carry them.
+  const display = containsEmail(stripped) ? '' : stripped;
   const handle = stripClaimedPrefix(authorHandle ?? '').trim().toLowerCase();
   if (handle) return { kind: 'verified', display, handle };
   return display ? { kind: 'unverified', display } : { kind: 'anonymous' };
+}
+
+/**
+ * An address shape anywhere in a name. Mirrors `containsEmail` in
+ * `_shared/author-name.ts`, which says why: SimpleLogin's `name` claim is an
+ * email address, and a name is public wherever it goes.
+ */
+export function containsEmail(name: string): boolean {
+  return /[^\s@]+@[^\s@]+\.[^\s@]{2,}/u.test(name);
+}
+
+/**
+ * The name a signed-in user's provider gave, if it is fit to show strangers.
+ * Discord's `full_name` is a username; SimpleLogin's `name` is an email
+ * address and never qualifies.
+ */
+export function publicProviderName(
+  metadata: Record<string, unknown> | null | undefined,
+): string {
+  for (const key of ['full_name', 'name']) {
+    const value = metadata?.[key];
+    if (typeof value === 'string' && value.trim() && !containsEmail(value)) return value.trim();
+  }
+  return '';
 }

@@ -14,9 +14,9 @@ import { renderNodeToPng } from '@/utils/export-image';
 
 /**
  * Set by main.tsx during a `?previewCapture=<id>` boot (see
- * streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF4/5): `ready` is true only
+ * streams/BUILD_PREVIEW_BACKFILL_PLAN.md, build-preview-backfill-4/5): `ready` is true only
  * once `id`'s real build_json has loaded into the store. The capture-mode
- * reporting pass (PREVBF5) must check this before uploading anything — a
+ * reporting pass (build-preview-backfill-5) must check this before uploading anything — a
  * fetch failure otherwise silently captures the default empty build and
  * uploads it as if it were `id`'s real preview.
  */

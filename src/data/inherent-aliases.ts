@@ -4,7 +4,7 @@
  * A build stores each inherent by `internalName`, so renaming one breaks every
  * build already saved under the old name. These eight were renamed when the
  * universal inherents stopped being hand-authored and started coming out of the
- * export (INHERENT-4 / INHERENT-5): the old names were invented by the hand
+ * export (data-gaps-32 / data-gaps-33): the old names were invented by the hand
  * table and match nothing in any fork's data. `PowerSurge` was worse than
  * invented — Electric Armor has a real power by that name, so one address named
  * two different powers.

@@ -1,5 +1,5 @@
 /**
- * DSH4 adversarial check — bridge output vs the Mids oracle's ground-truth
+ * deductive-schema-harness-4 adversarial check — bridge output vs the Mids oracle's ground-truth
  * EffectType/DamageType/MezType. For each HC power in both, compare the SET of
  * (effectType, subType) my `bridgeAttrib`/ingest produces against the oracle's. A
  * confident type I produce that the oracle NEVER has for that power is a potential
@@ -132,7 +132,7 @@ const agreePct = ((compared - misMaps.length) / compared) * 100;
 console.log(`[crosscheck] powers compared: ${n}, confident (effectType,subType) checks: ${compared}`);
 console.log(`[crosscheck] ${agreePct.toFixed(1)}% agree with Mids ground truth; ${misMaps.length} residual`);
 console.log('  residual = documented modeling differences, NOT bridge mis-maps:');
-console.log('   · aspect=Str scalar/movement Enhancement-vs-keep-type (Mids-internal, table-context; DSH6)');
+console.log('   · aspect=Str scalar/movement Enhancement-vs-keep-type (Mids-internal, table-context; deductive-schema-harness-6)');
 console.log('   · Base_Defense-all vs Mids per-type expansion; Mids-trimmed all-type DamageBuff stubs');
 console.log('   · redirect inlining / PvP-table encoding (see diff_oracle.py taxonomy)');
 for (const [t, c] of [...byType.entries()].sort((a, b) => b[1] - a[1]).slice(0, 25)) {

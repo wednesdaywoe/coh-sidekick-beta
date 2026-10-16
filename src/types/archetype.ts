@@ -53,7 +53,7 @@ export interface ArchetypeStats {
   hpCapTable: number[];
   /** Absorb ceiling at level 50 (attrib_max_max.absorb[49]). Its own row, not a second
    *  statement of the HP one: Homecoming's Dominator absorbs to 1070.9 against a 1017.4
-   *  baseHP (DATA-GAP-REGISTER CLASSES-3). */
+   *  baseHP (DATA-GAP-REGISTER data-gaps-87). */
   absorbCap: number;
   /** Absorb ceiling per level, index 0 = level 1 through index 49 = level 50 */
   absorbCapTable: number[];
@@ -93,7 +93,7 @@ export interface ArchetypeStats {
   resistanceCap: number;
 
   // The attribute ceilings ClampCur bounds attrCur against, read from the class binary's
-  // AttribMaxTable (DATA-GAP-REGISTER CAPS-1). Each cap is an ABSOLUTE attribute value, so the
+  // AttribMaxTable (DATA-GAP-REGISTER data-gaps-183). Each cap is an ABSOLUTE attribute value, so the
   // percentage a dashboard shows is only recoverable against that class's own base — which is
   // why the bases ride along, and why the published percentage is not a per-class constant: the
   // Arachnos classes author a higher regeneration base under the same 5.0 ceiling, so they cap
@@ -122,7 +122,7 @@ export interface ArchetypeStats {
   defenseCeilingTable: number[];
   /** The lowest ClampCur lets a debuff push typed defense (AttribMin's scalar, −1.0 on every
    *  player archetype). The game writes "your defense is negated" as a saturating magnitude,
-   *  so without this the debuff resolves to nothing (DATA-GAP-REGISTER ATTRMIN-1). */
+   *  so without this the debuff resolves to nothing (DATA-GAP-REGISTER data-gaps-194). */
   defenseFloor: number;
   /** Base max endurance per level (a flat 100 on every player archetype). */
   maxEnduranceTable: number[];
@@ -134,7 +134,7 @@ export interface ArchetypeStats {
   movementBase: MovementAxes;
   /** The lowest scale ClampCur lets a debuff push each axis to (AttribMin). 0.1 run/fly and
    *  0.0 jump on every player class, so a grounding power leaves a crawl rather than a negative
-   *  speed (DATA-GAP-REGISTER MOVEMIN-1). */
+   *  speed (DATA-GAP-REGISTER data-gaps-193). */
   movementFloor: MovementAxes;
   /** Per-level ceiling per travel axis, in the same scale units as {@link movementBase}. */
   movementCapTable: MovementAxisTables;

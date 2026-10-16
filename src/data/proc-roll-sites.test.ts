@@ -51,7 +51,7 @@ import type { IOSet, IOSetEnhancement } from '@/types';
  *    execute every cast and no cast ever paid two procs.
  *  - **A piece TWO children could hold has no single roll and fails loud.**
  *    The multi-mez ATO procs in Hypnotizing Lights are that shape today —
- *    DATA-GAP-REGISTER HC-4 files the residual — and each surface contains
+ *    DATA-GAP-REGISTER data-gaps-109 files the residual — and each surface contains
  *    the throw as a per-piece marker rather than a crash.
  */
 
@@ -215,7 +215,7 @@ describe('proc roll sites', () => {
       expect(resolveProcRollSite(undefined, undefined)).toBeNull();
     });
 
-    it('a piece two children could hold fails loud (DATA-GAP-REGISTER HC-4)', () => {
+    it('a piece two children could hold fails loud (DATA-GAP-REGISTER data-gaps-109)', () => {
       // The multi-mez ATO procs list every mez type, so Hypnotizing Lights'
       // Sleep-taking wide child and Confuse-taking narrow child BOTH qualify.
       // The export runs one of the two children per cast (a single template
@@ -342,7 +342,7 @@ describe('proc roll sites', () => {
       expect(powers.length).toBe(11);
     });
 
-    it('no piece reaches two sites, outside the filed HC-4 residual', () => {
+    it('no piece reaches two sites, outside the filed data-gaps-109 residual', () => {
       let collisions = 0;
       for (const power of sitesPowers()) {
         const sites = power.procRollSites!;

@@ -59,7 +59,7 @@ import type { InherentPowerDef } from '@/data';
 // `Homecoming` on everything that was not Rebirth, and this refused the result with "made for
 // Homecoming, but the planner is currently running Homecoming" — the same branch printing both
 // halves of the sentence. Brainstorm and Thunderspy were unopenable by us for that reason.
-// See DATA-GAP MBDEXPORT-2.
+// See DATA-GAP data-gaps-262.
 
 /**
  * Per-server full-path remaps for Mids power names whose meaning has shifted
@@ -370,7 +370,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   const claimedBy = new Map<string, string>();
   /**
    * The slot rows the file wrote for each power we resolved, kept so step 13b can seed
-   * `slotOrder` with the level the AUTHOR placed each slot at (MBDEXPORT-18).
+   * `slotOrder` with the level the AUTHOR placed each slot at (data-gaps-271).
    *
    * `SlotEntries[].Level` was read nowhere but `midsMaxUsedLevel`, which takes a max over the
    * whole file and throws the individual levels away. So every imported build reached
@@ -399,7 +399,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
 
     /**
      * What this entry brought, read off the file before anything below has had a
-     * chance to decline it (MBDIMPORT-5).
+     * chance to decline it (data-gaps-235).
      *
      * There are a dozen ways out of this body — a silent skip, an unrecognised
      * format, the reassign guard, a name no powerset holds, a claim another entry
@@ -494,19 +494,19 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
           // `isActive` is whatever `buildSelectedPower` read off `StatInclude`, and it is not
           // re-derived here. This used to force Toggle and Auto sub-powers on and everything
           // else off, which predates the StatInclude mirror and outlived its reason: it threw
-          // away the author's flag on ten of the Warshade's form attacks (MBDEXPORT-13), and
+          // away the author's flag on ten of the Warshade's form attacks (data-gaps-266), and
           // for an Auto it was never needed — the calc gate reads `isAuto || isActive`.
           // This block `continue`s, so the generic capture below never sees a form
           // sub-power and its slider was the one power's the round trip kept losing
-          // (MBDEXPORT-19). Keyed on the resolved power's own internalName, which is what
+          // (data-gaps-272). Keyed on the resolved power's own internalName, which is what
           // the UI store and the writer both address it by.
           if (entry.VariableValue && match.internalName) {
             targetsHitValues[match.internalName] = entry.VariableValue;
           }
           // Step 13b seeds `slotOrder` from this map, and this branch `continue`s before the
           // generic capture that fills it — so a form attack reached the solver with no stored
-          // level and was packed greedily (MBDEXPORT-18's fourth cause; `collectAllPowers`
-          // already lets these powers in here, which is the half SLOT-1 had done).
+          // level and was packed greedily (data-gaps-271's fourth cause; `collectAllPowers`
+          // already lets these powers in here, which is the half issues-6 had done).
           if (entry.SlotEntries?.length) fileSlotRows.set(subPower, entry.SlotEntries);
           const targetList = primaryMatch ? primaryPowers : secondaryPowers;
           if (!targetList.some((p) => p.internalName === match.internalName)) {
@@ -561,7 +561,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
      *
      * A repeat of the SAME Mids name is an ordinary duplicate entry and stays silent —
      * Mids files carry those. Two DIFFERENT names landing on one power is not a duplicate,
-     * it is a collision, and it was the quiet half of MBDIMPORT-2: the loser's slots and
+     * it is a collision, and it was the quiet half of data-gaps-232: the loser's slots and
      * enhancements were dropped by a bare `break`, with `warnings: []` and `powersFailed: 0`
      * still on the summary. The user's only symptom was a power missing from a build they
      * watched import cleanly. A soft failure is a lie; this is the line that makes it a
@@ -795,7 +795,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   build.sets = computeSetTracking(build);
 
   // 13b. Seed slotOrder with the level the FILE places each slot at, before step 14 gets a
-  // chance to invent one (MBDEXPORT-18).
+  // chance to invent one (data-gaps-271).
   seedSlotOrderFromFile(build, fileSlotRows);
 
   // 14. Populate slotOrder with one entry per non-base slot, anchored at the
@@ -805,7 +805,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
   // pick level. See `ensureSlotOrderPopulated` for the full diagnosis.
   //
   // This pure parser has no store access and so no opinion on Level Up mode
-  // (SLOT-3) — `false` here is a permanent no-op; the store's own
+  // (issues-3) — `false` here is a permanent no-op; the store's own
   // `importMidsBuild` action re-runs this same call against the live mode
   // right after, which is the one that can actually populate real levels.
   //
@@ -853,7 +853,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
  * actually put that slot there. Nothing downstream can re-derive it: the grant schedule says
  * which levels were AVAILABLE, never which one this slot took, so a solver handed an empty
  * `slotOrder` packs the slots as a respec would and the result is a levelling history the
- * author never made (MBDEXPORT-18). Display, print, forum export and the `.mbd` writer all
+ * author never made (data-gaps-271). Display, print, forum export and the `.mbd` writer all
  * read `computeAllSlotLevels`, so seeding here corrects all four at once.
  *
  * Two kinds of slot are skipped, and both are skipped because they are not allocations:
@@ -861,7 +861,7 @@ export function importMidsBuild(jsonString: string): MidsImportResult {
  * auto-granted freebie sitting at a fixed level (Rebirth's Health and Stamina). Those are the
  * same two `userSlotFloor` excludes, read off the file rather than re-derived.
  *
- * The seeded level is a preference, not a guarantee, and under SLOT-1's matching solver that
+ * The seeded level is a preference, not a guarantee, and under issues-6's matching solver that
  * is a stronger preference than canonical's copy can offer: `assignGrants` seeds every legal
  * stored level first and only displaces one when leaving it would cost another slot its grant
  * entirely. A level the schedule grants nothing at — Mids' respec rows at 47 and 49 — is
@@ -894,7 +894,7 @@ function seedSlotOrderFromFile(
       if (row.IsInherent) continue;
       if (typeof row.Level !== 'number') continue;
       // The file's own record of when its author placed the slot — a history, just not one
-      // made here, so it rides back out unchanged rather than being re-solved (MBDEXPORT-21).
+      // made here, so it rides back out unchanged rather than being re-solved (data-gaps-276).
       seeded.push({
         powerName: power.internalName,
         slotIndex: s,
@@ -968,7 +968,7 @@ function processEntry(
 
   /**
    * This powerset has given the name to a different power, and offers no counterpart for
-   * the one Mids means (MBDIMPORT-2). Every exact-name door below has to honour it — the
+   * the one Mids means (data-gaps-232). Every exact-name door below has to honour it — the
    * powerset matcher does so through `findPowerByMidsName`, and the pool and epic fullName
    * lookups need it stated here because they never call that.
    */
@@ -1005,15 +1005,15 @@ function processEntry(
     // An inherent entry carries two things the roster cannot: the author's include flag, and
     // the slots they spent on it. Both used to be conditional on a piece sitting in one of
     // those slots — the test here was `!SlotEntries.some(s => s.Enhancement)` and an all-empty
-    // entry was dropped whole. That lost the flag (MBDEXPORT-13): Swift and Hurdle hold one
+    // entry was dropped whole. That lost the flag (data-gaps-266): Swift and Hurdle hold one
     // empty slot each, so on the round trip the entry stopped carrying anything and both powers
-    // disappeared. It also lost the placements (MBDEXPORT-15) — Rebirth grants Health and
+    // disappeared. It also lost the placements (data-gaps-268) — Rebirth grants Health and
     // Stamina two slots each and the file is the only record of them, so an entry of three
     // empty slots came back a bare roster row.
     //
     // So every entry goes through the loop below now. A placement survives whether or not it
     // holds anything, and `slotsImported` counts it where the early return left it to
-    // `slotsSkipped` — the MBDIMPORT-5 reconciliation is the same sum either way, but the
+    // `slotsSkipped` — the data-gaps-235 reconciliation is the same sum either way, but the
     // slots are on the side that says they arrived.
     //
     // Ported from canonical, whose `.mbd` round trip against its own writer measured both.
@@ -1035,7 +1035,7 @@ function processEntry(
       category: 'inherent',
       power: {
         name: powerInternalName.replace(/_/g, ' '),
-        // Carried so the slider capture in the main loop can key on it (MBDEXPORT-19). This
+        // Carried so the slider capture in the main loop can key on it (data-gaps-272). This
         // struct is a transport — step 11b merges it back by DISPLAY name and reads only
         // `isActive`, `slots` and `inherentSlotCount` — so nothing else consumes this field;
         // without it the capture guard fails its `internalName` test and an inherent's

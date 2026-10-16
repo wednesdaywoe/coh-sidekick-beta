@@ -5,7 +5,7 @@
  * strength curves, multi-aspect scale, relative-level attenuation, exemplar
  * magnitude handicaps) lives in each dataset's generated module
  * (`src/data/datasets/<id>/generated/enhancement-curves.ts`, emitted from the
- * binary export by SOURCE-1 SW3 and staleness-guarded against it both
+ * binary export by data-gaps-324 SW3 and staleness-guarded against it both
  * directions). This facade forwards reads to whichever dataset is currently
  * active, mirroring `at-tables.ts`.
  */

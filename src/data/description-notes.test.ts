@@ -74,14 +74,15 @@ describe('description notes', () => {
       ).toEqual([]);
       expect(
         unadjudicated,
-        `${dataset}: new description divergence(s). Do NOT just add a note — adjudicate first (census the shape fork-wide, find a same-fork control that reads correctly), because an absent effect is also what a parse gap looks like. See docs/gaps/ HYBRID-2`,
+        `${dataset}: new description divergence(s). Do NOT just add a note — adjudicate first (census the shape fork-wide, find a same-fork control that reads correctly), because an absent effect is also what a parse gap looks like. See docs/gaps/ data-gaps-2`,
       ).toEqual([]);
     }
   });
 
   it('every note cites the register entry that adjudicated it', () => {
     for (const note of DESCRIPTION_NOTES) {
-      expect(note.gap, `${note.key}`).toMatch(/^[A-Z][A-Z0-9-]+$/);
+      // A worklog item id since the registers moved to worklog.jsonl (data-gaps-2).
+      expect(note.gap, `${note.key}`).toMatch(/^[a-z]+(-[a-z]+)*-[0-9]+$/);
       expect(note.datasets.length, `${note.key} datasets`).toBeGreaterThan(0);
       expect(note.finding.length, `${note.key} finding`).toBeGreaterThan(15);
       // The short line renders inside a 120px band. Anything much longer is a sentence the

@@ -5,9 +5,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /**
- * DSH8 — regression guard for the incarnate collapse detector
+ * deductive-schema-harness-8 — regression guard for the incarnate collapse detector
  * (`scripts/dsh8-incarnate-collapse-detector.cjs`). It sweeps the Hybrid + Destiny
- * buff slots per dataset, keying INPUT by the DSH4 bridge (`ingestExportPower`) and
+ * buff slots per dataset, keying INPUT by the deductive-schema-harness-4 bridge (`ingestExportPower`) and
  * OUTPUT by the generated `incarnate-effects.ts`, and flags a "class-present,
  * sibling-missing" multi-type collapse (the Support Core defense drop's shape).
  *
@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
  * sibling fails here. Non-gating class-absent rows are tracked as coverage
  * residuals, not collapse defects.
  *
- * See streams/DEDUCTIVE_SCHEMA_HARNESS.md (DSH8).
+ * See streams/DEDUCTIVE_SCHEMA_HARNESS.md (deductive-schema-harness-8).
  */
 
 const REPO = fileURLToPath(new URL('../../..', import.meta.url));
@@ -36,7 +36,7 @@ function runDetector(dataset: string): { collapses: number; groups: number; chec
   return { collapses: parseInt(m[1], 10), groups: parseInt(m[2], 10), checked: c ? parseInt(c[1], 10) : 0 };
 }
 
-describe('DSH8 incarnate collapse detector — gate', () => {
+describe('deductive-schema-harness-8 incarnate collapse detector — gate', () => {
   for (const ds of ['homecoming', 'rebirth', 'thunderspy', 'brainstorm']) {
     it(`${ds}: zero high-confidence multi-type collapses in Hybrid + Destiny`, () => {
       const r = runDetector(ds);

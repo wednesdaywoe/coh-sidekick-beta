@@ -166,7 +166,7 @@ describe('shiftColumn', () => {
 });
 
 describe('reconcilePlannerColumns (merge migration)', () => {
-  it('backfills column for legacy (pre-LAY11) entries, reproducing the single row', () => {
+  it('backfills column for legacy (pre-rearrangeable-layout-11) entries, reproducing the single row', () => {
     const legacyKept: PlannerSectionConfig[] = [
       { id: 'available', visible: true },
       { id: 'primary', visible: true },
@@ -201,7 +201,7 @@ describe('reconcilePlannerColumns (merge migration)', () => {
 });
 
 describe('isPreAtomicSplitCategory (upgrade migration guard)', () => {
-  it('flags the pre-LAY8 layout (combined pool, no inherent split)', () => {
+  it('flags the pre-rearrangeable-layout-8 layout (combined pool, no inherent split)', () => {
     // The oldest shape: pool holds pool+epic+inherent, no atomic ids at all.
     const preLay8 = [
       { id: 'available' }, { id: 'primary' }, { id: 'secondary' },
@@ -210,7 +210,7 @@ describe('isPreAtomicSplitCategory (upgrade migration guard)', () => {
     expect(isPreAtomicSplitCategory(preLay8)).toBe(true);
   });
 
-  it('flags the LAY8–12 layout (separate `inherent`, still no atomic ids)', () => {
+  it('flags the rearrangeable-layout-8–12 layout (separate `inherent`, still no atomic ids)', () => {
     const lay8 = [
       { id: 'available' }, { id: 'primary' }, { id: 'secondary' },
       { id: 'pool' }, { id: 'inherent' }, { id: 'info' },

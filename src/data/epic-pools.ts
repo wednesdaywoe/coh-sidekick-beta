@@ -73,7 +73,7 @@ interface LegacyEpicPower {
    *  `MINTED_FIELDS`; declared here so the pick is typed rather than indexed loosely. */
   atoms?: Power['atoms'];
   /** EntsAffected — the power-level recipient list `reachesCaster` resolves an atom's
-   *  `AnyAffected` pronoun against (TARGETS-3). */
+   *  `AnyAffected` pronoun against (data-gaps-63). */
   targetsAffected?: string[];
   targetsAutoHit?: string[];
   effects?: LegacyEpicPowerEffects;
@@ -184,7 +184,7 @@ function pickModeGates(legacy: LegacyEpicPower): ModeGates {
 // drops the atom stream leaves a pool or epic power answerable only by its bag.
 // `targetsAffected` travels with them: it is the power-level list `reachesCaster`
 // consults to resolve an `AnyAffected` atom's pronoun, so atoms without it are a
-// question the readers cannot answer (TARGETS-3).
+// question the readers cannot answer (data-gaps-63).
 // `targetsAutoHit` is its pair, which the Hit Chance Alert reads to tell an attack that rolls
 // from one that never misses.
 const MINTED_FIELDS = ['stats', 'effectArea', 'damage', 'atoms', 'targetsAffected', 'targetsAutoHit'] as const;
@@ -393,7 +393,7 @@ function poolArchetypeGate(pool: EpicPool): Set<string> {
   const gate = new Set<string>();
   for (const power of pool.powers) {
     if (!power.requires?.length) continue;
-    // Joined only to ask a question of it — never split back apart (COND-8).
+    // Joined only to ask a question of it — never split back apart (data-gaps-123).
     const req = power.requires.join(' ');
     const re = /@Class_([A-Za-z_]+)/g;
     let m: RegExpExecArray | null;

@@ -9,20 +9,20 @@
  * parser doesn't emit yet — prefer fixing the parser/converter over re-adding
  * an override. See GAME-DATA-PRINCIPLES.md §13 and src/data/README.md.
  *
- * OVERRIDE-5: dropped `effectArea`, `allowedEnhancements` and `stats`. The export says
+ * data-gaps-292: dropped `effectArea`, `allowedEnhancements` and `stats`. The export says
  * Location, not AoE; its `boosts_allowed` carries the Taunt the override dropped; and the
  * 15ft radius belongs to Pets_Omega_Bomb's explosion, which states 20 over 16 targets. The
  * summon resolver reads that footprint on its own.
  *
- * OVERRIDE-5: dropped `allowedSetCategories` — the export states the list per power and
+ * data-gaps-292: dropped `allowedSetCategories` — the export states the list per power and
  * the converter emits it. Every copy in this layer restated that list, reordered it, or stated
  * `[]` where the generated layer's absence already means the same thing to `sets_for_power`.
- * Caltrops was one of the restatements until Brainstorm's export moved under it (BRAIN-2).
+ * Caltrops was one of the restatements until Brainstorm's export moved under it (data-gaps-291).
  *
- * OVERRIDE-5: dropped `description` / `shortHelp` — the export's `display_help` and
+ * data-gaps-292: dropped `description` / `shortHelp` — the export's `display_help` and
  * `display_short_help` are what the game itself shows, and the converter emits both. The text
  * here was a second source: "Moderate DMG" where the export writes "DMG", a "Damage: Moderate"
- * tail the export has no such line for. It masked HELPTEXT-1's glued sentences, which is fixed
+ * tail the export has no such line for. It masked data-gaps-293's glued sentences, which is fixed
  * at the converter now.
  */
 import type { Power } from '@/types';

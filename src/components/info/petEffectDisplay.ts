@@ -89,7 +89,7 @@ export const EFFECT_DISPLAY: Record<string, { label: string; color: string }> = 
   ToHitDebuffResist: { label: '-ToHit Resist', color: 'text-sky-400' },
   DefenseDebuffResist: { label: '-Defense Resist', color: 'text-sky-400' },
   HealResist: { label: 'Heal Resist', color: 'text-sky-400' },
-  // The three the ENT-3/ENT-9 vocabulary added on the applied side.
+  // The three the data-gaps-98/data-gaps-104 vocabulary added on the applied side.
   RegenDebuff: { label: '-Regen', color: 'text-orange-400' },
   MovementCapDebuff: { label: '-Speed Cap', color: 'text-teal-400' },
   DamageBuff: { label: '+Damage', color: 'text-green-400' },

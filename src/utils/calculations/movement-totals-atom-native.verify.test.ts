@@ -16,7 +16,7 @@
  * `movementBuffValue` returns an ARRAY — usually empty — for any power with a movement atom,
  * and `??` keeps an empty array, so the bag branch only ever fired where the reader answered
  * `undefined`. Across 14,249 powers that is one power: rebirth Acrobatics, whose atoms fork by
- * class (AT-FORK-1), so a build-agnostic read saw none of them. Read through `mezSourceFor` it
+ * class (AT-data-gaps-298), so a build-agnostic read saw none of them. Read through `mezSourceFor` it
  * answers with the same jumpHeight/jumpSpeed the bag holds, and the data branch is left with no
  * carrier at all.
  *
@@ -31,7 +31,7 @@
  * `reachesCaster` consults the power's recipients — and the bag's untagged entry was dropped by
  * the `isSelfDirectedEffect` gate. So the root those two powers are named for reached no total
  * on two of the four forks. The block also grew its second half: `movementCapDebuff` is the
- * Maximum face of the same penalty, split out of `slow` by ENT-5, and this calc never grew the
+ * Maximum face of the same penalty, split out of `slow` by data-gaps-100, and this calc never grew the
  * read — 312 powers carry the slot and none was ever spent.
  *
  * Mutation-tested four ways, all red: routing the recipient question off the ROW rather than the
@@ -218,7 +218,7 @@ describe('BPORT11 cluster 4 — the movement cluster, censused off the atoms', (
 
   it('gives the Maximum face of the penalty a reader for the first time', () => {
     // 312 powers carry `movementCapDebuff` and this calc read none of them: the slot was split
-    // out of `slow` by ENT-5 and only the Current-face read was ever written here. Nothing
+    // out of `slow` by data-gaps-100 and only the Current-face read was ever written here. Nothing
     // moves today — only 4 views are self-tagged and both arms agree on all 4 — but the axis
     // now has a reader on both faces, which is what stops the next cap debuff being silent.
     // The 312 `movementCapDebuff` slot carriers were the bag's and are gone; what the arm was

@@ -21,7 +21,7 @@ import { useEngineStore } from '@/engine/engineStore';
 import { submitPreviewBackfill } from '@/services/sharedBuilds';
 
 /** Give the wasm engine this long to finish loading before giving up on a
- *  `?previewCapture=` boot — see PREVBF5. Generous: a hidden iframe has no
+ *  `?previewCapture=` boot — see build-preview-backfill-5. Generous: a hidden iframe has no
  *  user waiting on it, so there's no UX cost to erring toward patience. */
 const CAPTURE_TIMEOUT_MS = 15000;
 
@@ -56,7 +56,7 @@ export function SharePreviewCapture() {
     return () => registerPreviewCaptureNode(null);
   });
 
-  // Capture-mode reporting (PREVBF5): a `?previewCapture=` boot captures
+  // Capture-mode reporting (build-preview-backfill-5): a `?previewCapture=` boot captures
   // itself once and reports to the parent iframe host — a no-op in every
   // other boot, since `window.__previewCapture` is only ever set by
   // main.tsx's capture-mode branch.
@@ -73,7 +73,7 @@ export function SharePreviewCapture() {
       );
     };
 
-    // The target build itself never loaded (PREVBF4's fetch failed) — nothing
+    // The target build itself never loaded (build-preview-backfill-4's fetch failed) — nothing
     // in the store is worth capturing. Report immediately, don't wait on the
     // engine (it would just capture the default empty build).
     if (!capture.ready) {

@@ -7,7 +7,7 @@
  * Both merges decline a colliding key in `additive` mode — a colliding key means two simultaneous
  * instances, and overwriting the base with one of them would show a single misleadingly stronger
  * effect. They differ only in what they ask for base PRESENCE: the engine asks the atom-projected
- * base surface, the beta asks `power.effects`, which STRIP-1 emptied. So every entry's copy filled
+ * base surface, the beta asks `power.effects`, which data-gaps-327 emptied. So every entry's copy filled
  * in and the resolver was handed the conditional's atom for a key the power's own atoms carry.
  *
  * A row is listed whether or not the two numbers coincide. A non-witness that happens to agree is

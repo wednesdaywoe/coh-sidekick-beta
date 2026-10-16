@@ -6,7 +6,7 @@
  * "Shield Defense cannot be paired with a weapon set": each side's level-1 powers exclude
  * the other side by name, so taking the pair leaves you unable to buy a first power at all.
  * There is no set-level field carrying that rule — Shield Defense's own `buy_requires` is
- * empty on all three forks. See SETGATE-1 in the rebuild's DATA-GAP-REGISTER.
+ * empty on all three forks. See data-gaps-65 in the rebuild's DATA-GAP-REGISTER.
  *
  * Lives here rather than in the picker because two surfaces need the same answer: the power
  * picker (which powers can I buy) and the powerset dropdown (which sets can I pair). A second
@@ -229,7 +229,7 @@ function looksLikeRpn(tokens: readonly string[]): boolean {
  * RPN; otherwise fall through to the infix logic.
  */
 export function evaluateRequires(requires: string | readonly string[], ctx: RequiresContext): boolean {
-  // The wire carries requires as a token array (COND-8); the infix fallbacks below
+  // The wire carries requires as a token array (data-gaps-123); the infix fallbacks below
   // parse a legacy hand-edited grammar whose atoms are space-free dotted paths, so
   // joining for THAT path is the format's own round trip, not a token-boundary guess.
   // The recursive calls this function makes on infix substrings arrive as strings.
@@ -304,7 +304,7 @@ export function evaluateRequires(requires: string | readonly string[], ctx: Requ
  * so a pairing check built on this fails open (no block) rather than blocking a legal pair.
  *
  * Exported because `AvailablePowers` used to carry a hand-copied twin of these three checks,
- * and the copies drifted: SHOWFLAGS-2 had to be fixed in both places. One predicate, so the
+ * and the copies drifted: data-gaps-56 had to be fixed in both places. One predicate, so the
  * gate that grades it (`hidden-mechanic-picks.test.ts`) grades what the picker actually runs.
  */
 export function isBuyablePick(p: Power): boolean {
@@ -313,13 +313,13 @@ export function isBuyablePick(p: Power): boolean {
   if (p.powerType === 'Global Enhancement') return false;
   // The grant itself, at any level. `AutoIssue` is the game handing the power over, and the
   // level term on it says WHEN, never whether it is bought — Clear Skies arrives once Vacuum
-  // and Vortex are trained and costs nothing (ROSTER-2). The Rust planner has read it
+  // and Vortex are trained and costs nothing (data-gaps-281). The Rust planner has read it
   // this way all along (`pick_gate`, powers.rs); this side was still inferring the same fact
   // from a hand-written list of granted powers, which reached neither Clear Skies nor
   // Thunderspy's Fetid Presence. AutoIssue forces Free (`powers_load.c:950`) and the corpus
   // agrees on all four forks, so this arm subsumes the Free half of the hidden check below.
   if (p.autoIssue) return false;
-  // Hidden from the Manage screen is not the same as not for sale — see SHOWFLAGS-2 and
+  // Hidden from the Manage screen is not the same as not for sale — see data-gaps-56 and
   // the picker's own copy of this filter in AvailablePowers.tsx. `free` is the axis, and it
   // still has work to do above: Seismic Shockwaves is handed over Free without AutoIssue.
   if ((p.mechanicType === 'hiddenPassive' || p.mechanicType === 'hiddenAuto') && p.free) return false;

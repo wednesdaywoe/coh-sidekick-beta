@@ -13,7 +13,7 @@
  * — craftable on every fork. A user reported that on 2026-07-30 ("set as Attuned
  * … despite its Winter theme, behaves as a normal IO") and the beta took it off
  * the list; canonical's copy of the list kept it, and it cost every Winter's Gift
- * piece its level on a `.mbd` write until 2026-09-10 (MBDEXPORT-14). The same key
+ * piece its level on a `.mbd` write until 2026-09-10 (data-gaps-267). The same key
  * cannot tell Thunderspy's two "Subaluwa" records apart either, and they differ on
  * exactly this field.
  */
@@ -89,7 +89,7 @@ describe('attunedOnly — what the two guesses got wrong', () => {
   });
 
   /**
-   * MBDEXPORT-14. Winter's Gift is a Universal Travel set with `Crafted_*`
+   * data-gaps-267. Winter's Gift is a Universal Travel set with `Crafted_*`
    * pieces on every fork; the hand list called it attuned because of the name it
    * shares with the winter event sets, and the level went with it.
    */

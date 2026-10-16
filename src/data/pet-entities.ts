@@ -53,7 +53,7 @@ export function getPetEntity(name: string | undefined): PetEntity | undefined {
  * A pet's payload can be one summon deeper — Poison Trap's pet carries only a Self_Destruct and
  * a self-resistance, and the choke and vomit live in the gas cloud that Self_Destruct leaves
  * behind as the trap dies. Stopping at the named entity showed the power doing nothing at all
- * (ENT-3 step 4). Only in-place summons are here; the converter has already excluded the
+ * (data-gaps-98 step 4). Only in-place summons are here; the converter has already excluded the
  * `target: AnyAffected` ones, which spawn a copy per foe hit and would report a bounce chain as
  * if every link landed on the same target.
  *

@@ -29,7 +29,7 @@ export {
 } from './enhancements';
 export type { DualOriginCombo, EnhancementCategory } from './enhancements';
 
-// Special-enhancement registries (per-dataset generated, SOURCE-1 item 9)
+// Special-enhancement registries (per-dataset generated, data-gaps-324 item 9)
 export { getSpecialEnhancements, getSpecialRegistry } from './special-enhancements';
 export type { SpecialCategory, GeneratedSpecialEnhancementDef } from './special-enhancements';
 

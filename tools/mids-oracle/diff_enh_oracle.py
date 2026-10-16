@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-DSH9 bootstrap — minimal enhancement oracle coverage diff.
+deductive-schema-harness-9 bootstrap — minimal enhancement oracle coverage diff.
 
 Compares Mids EnhDB oracle identity surfaces to current Sidekick extracted data:
   - IO set display names (EnhancementSet.display_name) vs io-sets-raw.ts names
@@ -8,7 +8,7 @@ Compares Mids EnhDB oracle identity surfaces to current Sidekick extracted data:
     vs proc-data.ts (setName + ioName)
 
 This is deliberately a LIGHTWEIGHT coverage lens to validate the new EnhDB reader
-and provide an actionable worklist. It is not yet the full value-level DSH9 gate.
+and provide an actionable worklist. It is not yet the full value-level deductive-schema-harness-9 gate.
 """
 
 from __future__ import annotations
@@ -28,8 +28,8 @@ import read_i12
 
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
-# Both spelled once, in the readers that own them (PROV-3). The `I12.mhd` this named
-# has not existed on this checkout since before the row was opened, so DSH9 died on it.
+# Both spelled once, in the readers that own them (data-gaps-245). The `I12.mhd` this named
+# has not existed on this checkout since before the row was opened, so deductive-schema-harness-9 died on it.
 DEFAULT_DB = read_enhdb.DEFAULT_MHD
 DEFAULT_I12 = read_i12.DEFAULT_MHD
 
@@ -490,7 +490,7 @@ def _stat_vocabularies(
     """Stat names one side can emit and the other has no slot for.
 
     Both sides name the same 33 stats, and nothing compared the two lists. A
-    repo-side rename (MEZRES-1 spelled `defense_(area)` -> `defense_(aoe)`) or
+    repo-side rename (data-gaps-185 spelled `defense_(area)` -> `defense_(aoe)`) or
     an unmapped oracle effect type therefore did not fail -- it split one
     matching stat into a `missing` line and an `extra` line and sat in the
     baseline looking like a finding. A name with no counterpart is a defect in
@@ -690,7 +690,7 @@ def _apply_explicit_proc_aliases(
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="Minimal EnhDB oracle coverage diff (DSH9 bootstrap)")
+    ap = argparse.ArgumentParser(description="Minimal EnhDB oracle coverage diff (deductive-schema-harness-9 bootstrap)")
     ap.add_argument("--mhd", default=DEFAULT_DB, help="path to EnhDB.mhd")
     ap.add_argument("--i12", default=DEFAULT_I12, help="path to I12.mhd (for value-aware set-bonus projection)")
     ap.add_argument("--dataset", choices=["homecoming", "rebirth", "thunderspy"], default="homecoming")
@@ -841,7 +841,7 @@ def main(argv: list[str] | None = None) -> int:
         residual_signatures.update(_signatures_from_values(value_details))
 
     print(
-        f"=== DSH9 bootstrap diff (dataset={args.dataset}, enhdb_version={version:.6g}) ===\n"
+        f"=== deductive-schema-harness-9 bootstrap diff (dataset={args.dataset}, enhdb_version={version:.6g}) ===\n"
         f"oracle sets={len(oracle_set_names)} repo sets={len(repo_set_names)}\n"
         f"missing set names={len(missing_sets)} extra set names={len(extra_sets)}\n"
         f"oracle proc pairs={len(oracle_proc_pairs)} repo proc pairs={len(repo_proc_pairs)}\n"
@@ -963,8 +963,8 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.baseline_out:
         out_path = os.path.abspath(args.baseline_out)
-        # PROV-5: this file graded two Mids databases and named neither. It is the
-        # third artefact of the shape PROV-3 found, and it goes through the same
+        # data-gaps-247: this file graded two Mids databases and named neither. It is the
+        # third artefact of the shape data-gaps-245 found, and it goes through the same
         # primitive the other two now do.
         payload: dict = {
             "schema": "dsh9-enh-oracle-residual-baseline/1",

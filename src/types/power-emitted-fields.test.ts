@@ -15,7 +15,7 @@ import { getAllPowersets } from '@/data/powersets';
  * It went unnoticed at scale. When power.ts was reconciled on 2026-08-21 the rebuild's copy
  * was missing fourteen fields its own converter writes, `autoIssue` and `free` among them,
  * on all 8,500-odd powers across the three forks. Same class as the `grantEdges` find that
- * opened FORK-2: emitted, consumed, never declared.
+ * opened data-gaps-299: emitted, consumed, never declared.
  *
  * Reading the shipped data rather than the type keeps the direction right — the export is
  * the source of truth, so an emitted key is the evidence and the type is what has to answer

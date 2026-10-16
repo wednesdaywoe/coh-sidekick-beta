@@ -14,7 +14,7 @@
  * A token this can't resolve — a target-relative reader (`target.isFriend?`, `enttype
  * target>`, `distance`), or a source reader whose attribute a static build has no value for
  * (`kMeter source>`) — pushes UNKNOWN rather than aborting, and unknown propagates through
- * the operators the way canonical's `Value::Unknown` does (EXPR-1). `evaluateConditionTri`
+ * the operators the way canonical's `Value::Unknown` does (data-gaps-121). `evaluateConditionTri`
  * reports a program that ends unknown as `undefined`, canonical's `EvalError::Indeterminate`.
  *
  * Propagation is Kleene, not merely sticky, and the difference is load-bearing: `&&`/`||`
@@ -145,7 +145,7 @@ function readReader(reader: string, operands: Val[], ctx: ConditionContext): Val
   }
 }
 
-/** Evaluate one postfix condition against `ctx`, as the token list the wire holds (COND-8:
+/** Evaluate one postfix condition against `ctx`, as the token list the wire holds (data-gaps-123:
  *  tokens arrive pre-split and are never re-split, so multi-word tokens survive intact).
  *  `undefined` is "can't tell" — the program is unknown, or it is malformed. Callers that walk
  *  an ordered list must handle it separately from `false`; see the module doc. */

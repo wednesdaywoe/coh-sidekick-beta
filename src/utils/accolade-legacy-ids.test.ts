@@ -10,7 +10,7 @@ import { normalizeAccoladeIds, hydrateBuild, slimBuild } from '@/utils/build-ser
 import { useBuildStore } from '@/stores/buildStore';
 
 /**
- * Every door a build enters by normalises its accolade list — DATA-GAP ACCOLADE-3.
+ * Every door a build enters by normalises its accolade list — DATA-GAP data-gaps-3.
  *
  * The defect was never the rename itself. The rename was correct and it existed; it just
  * lived in ONE place, `buildStore`'s persisted-state migration, so it covered localStorage
@@ -56,7 +56,7 @@ describe('normalizeAccoladeIds', () => {
 
   /**
    * Renaming is not resolving. An id the table does not know is the case the totals have to
-   * REPORT; inventing an answer here would put ACCOLADE-3's silence back one layer down.
+   * REPORT; inventing an answer here would put data-gaps-3's silence back one layer down.
    */
   it('passes an id it does not know through unchanged', () => {
     expect(normalizeAccoladeIds(['not_an_accolade'])).toEqual(['not_an_accolade']);
@@ -70,7 +70,7 @@ describe('normalizeAccoladeIds', () => {
 });
 
 describe('every door normalises the accolade roster', () => {
-  /** The door ACCOLADE-3 came through: a `.skif` / share link / cloud build. */
+  /** The door data-gaps-3 came through: a `.skif` / share link / cloud build. */
   it('hydrateBuild — the file, share-link and cloud-build door', () => {
     expect(hydrateBuild({ accolades: LEGACY }).accolades).toEqual(CURRENT);
   });
@@ -87,7 +87,7 @@ describe('every door normalises the accolade roster', () => {
    * and only converts the set-piece arrays. It is also the exact era that wrote accolades as
    * OBJECTS (the exporter stamped `version: 1` while the store held `{ id, bonuses, … }`), so
    * left raw it lost every accolade in the file, not just the two renames. Found by the
-   * ACCOLADE-3 door census rather than by the row, which only named the two.
+   * data-gaps-3 door census rather than by the row, which only named the two.
    */
   it('importBuild v1 — the raw-Build arm, which never folded its objects at all', () => {
     const build = createEmptyBuild('homecoming');

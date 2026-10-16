@@ -1,5 +1,5 @@
 /**
- * Mids internal name → this dataset's internal name, per powerset (DATA-GAP MBDIMPORT-2).
+ * Mids internal name → this dataset's internal name, per powerset (DATA-GAP data-gaps-232).
  *
  * A `.mbd` names a power by its INTERNAL name and nothing else, and that namespace has
  * drifted: HC has rotated internal names underneath stable display names. Tactical Arrow's
@@ -41,7 +41,7 @@
  * matcher's own ladder and, failing that, to a warning, which is the honest outcome.
  *
  * All of that is the join INSIDE a powerset. Pairing the powersets themselves is its own
- * problem, and MBDIMPORT-7 is what happens when it is assumed away: the group segment
+ * problem, and data-gaps-237 is what happens when it is assumed away: the group segment
  * drifts too. Rebirth's Guardian secondaries are `Guardian_Comp` here and
  * `Guardian_Composition` in Mids, so a `group.set` string comparison matched none of the
  * 13 and skipped them without a word. The import path never had this bug because it never
@@ -64,7 +64,7 @@
  *   reported when refused  a leftover is named with the condition it failed. The bare
  *                          `continue` this replaces is what let 13 powersets vanish.
  *
- * Then the third pass, for the sets whose two spellings share nothing at all (MBDEXPORT-9).
+ * Then the third pass, for the sets whose two spellings share nothing at all (data-gaps-256).
  * Mids puts the archetype qualifier on the far end of an epic pool — `Epic.Dark_Mastery_Blaster`
  * for our `Epic.Blaster_Dark_Mastery` — contracts it where archetypes share the set
  * (`Epic.Ice_Mastery_DefCorr`, `Epic.Psionic_Mastery_ScrapStalk`) and abbreviates the theme
@@ -132,13 +132,13 @@ const namesDataset = NAMES_DATASET[datasetId] || datasetId;
  * An `I12.mhd` header carries "Mids Reborn Powers Database" and a version, never a fork, so
  * the dump cannot say which database it came from and this header used to compose the claim
  * out of the dataset id — "Mids Reborn thunderspy database", an assertion that Mids has one.
- * It does not: Mids Reborn's releases carry Generic, Homecoming and Rebirth (MBDEXPORT-2).
+ * It does not: Mids Reborn's releases carry Generic, Homecoming and Rebirth (data-gaps-262).
  *
  * The Thunderspy entry is the one that needed saying. `/Thunderspy/` is a third-party
  * DATABASE DROP, not a pair of loose files: Mids' Generic database with four files replaced —
  * `I12.mhd`, `NLevels.mhd`, `RLevels.mhd`, `SData.mhd` — plus that fork's powerset icons. Every
  * other file in it, `EnhDB.mhd` included, is Generic byte for byte. So the enhancement half of
- * MBDEXPORT-2 is not a stand-in this repo chose; it is the one the drop's own author shipped,
+ * data-gaps-262 is not a stand-in this repo chose; it is the one the drop's own author shipped,
  * having rebuilt the powers database and left the enhancement one alone.
  *
  * Who built it is still unrecorded. Mids Reborn's own releases carry Generic, Homecoming and
@@ -159,7 +159,7 @@ const NAMES_PROVENANCE = {
     + ' Generic database with the powers DB, the two level tables and SData swapped out and that'
     + " fork's icons added. Not from Mids Reborn's own releases, which carry Generic, Homecoming"
     + ' and Rebirth; who built it is unrecorded. 286 of our 305 Thunderspy powersets are in it,'
-    + " against 272 of Homecoming's 364. DATA-GAP MBDEXPORT-2.",
+    + " against 272 of Homecoming's 364. DATA-GAP data-gaps-262.",
 };
 const NAMES_PATH = path.join(REPO_ROOT, 'tools', 'mids-oracle', `mids-power-names.${namesDataset}.json`);
 const EXPORT_BASE = path.join(REPO_ROOT, 'exported_powers');
@@ -217,14 +217,14 @@ const midsNames = JSON.parse(fs.readFileSync(NAMES_PATH, 'utf-8'));
 const exportSets = readExportPowersets();
 
 /**
- * Mids' powerset keys, folded for the join and kept literal for the writer (MBDEXPORT-6).
+ * Mids' powerset keys, folded for the join and kept literal for the writer (data-gaps-255).
  *
  * The pairing below compares spellings across two namespaces, so it has to fold. The .mbd
  * WRITER composes a `PowerName` out of these two segments and Mids resolves one with an
  * ordinal `==`, so it needs the case back — `Epic.VEAT_Mace_Mastery` and
  * `Pool.Force_of_Will` are not what title-casing the folded key produces.
  *
- * A dump emitted before MBDEXPORT-6 carries folded keys and no marker. Its case is not
+ * A dump emitted before data-gaps-255 carries folded keys and no marker. Its case is not
  * recoverable from the JSON, and guessing it would write a path that binds to nothing
  * while looking resolved, so the path table is withheld for that fork and said out loud.
  */
@@ -235,7 +235,7 @@ for (const [key, rows] of Object.entries(midsNames.powersets || {})) {
 }
 
 /**
- * Every non-alphanumeric gone — the import matcher's own ladder (MBDEXPORT-8).
+ * Every non-alphanumeric gone — the import matcher's own ladder (data-gaps-258).
  *
  * `normalizeDisplay` above stops at collapsing separator RUNS, so "Moon Beam" and
  * "Moonbeam" are a miss there, and deliberately: a forward row for a pair the matcher
@@ -269,7 +269,7 @@ function editDistance(a, b) {
 }
 
 /**
- * How far two display names may differ and still be one misspelling (DATA-GAP MBDIMPORT-16).
+ * How far two display names may differ and still be one misspelling (DATA-GAP data-gaps-251).
  *
  * Mids' "Brillant Barrage" is one deletion from our "Brilliant Barrage". Two is the widest
  * that still reads as a typo rather than a different name; the census key cuts at the same
@@ -306,7 +306,7 @@ function corroboration(midsPowers, ours) {
 }
 
 /**
- * How much of Mids' set segment reads as an ABBREVIATION of ours (DATA-GAP MBDEXPORT-9).
+ * How much of Mids' set segment reads as an ABBREVIATION of ours (DATA-GAP data-gaps-256).
  *
  * Mids shortens by truncation, and does it everywhere: `Sentinel_Elec_Mastery`,
  * `Sentinel_Psi_Mastery`, `Sentinel_Lev_Mastery`, `Corr_Flame_Mastery`, `Def_Flame_Mastery`.
@@ -386,7 +386,7 @@ function pairPowersets() {
     claimedOurs.add(ourKey);
   }
 
-  // The third pass, where BOTH segments are respelled (DATA-GAP MBDEXPORT-9). See the
+  // The third pass, where BOTH segments are respelled (DATA-GAP data-gaps-256). See the
   // header: the name carries no signal at all here, so the roster carries the whole claim.
   const pairedMids = new Set(paired.map((p) => p.midsKey));
   const ourRosterOf = (key) => exportSets.get(key);
@@ -470,7 +470,7 @@ function pairPowersets() {
 const { paired, unmatched, unpairedOurs } = pairPowersets();
 
 // `--pairs` prints the powerset pairing and stops. It exists because the pairing is an
-// input to measurements this generator does not itself make (MBDEXPORT-8's separator
+// input to measurements this generator does not itself make (data-gaps-258's separator
 // census), and a measurement that re-derives it is a second copy of the three conditions
 // above — free to drift, and wrong in exactly the way the number is supposed to settle.
 if (process.argv.includes('--pairs')) {
@@ -509,7 +509,7 @@ for (const { midsKey, ourKey } of paired) {
   }
 
   // How many powers each Mids display names in this set — the MIRROR of `candidates.length`
-  // below, and missing until MBDIMPORT-18.
+  // below, and missing until data-gaps-250.
   //
   // The join already refuses when OUR display names two powers, on the sentence three lines
   // above: picking an arm would be a coin flip dressed as a decode. That sentence is just as
@@ -535,14 +535,14 @@ for (const { midsKey, ourKey } of paired) {
 
   const midsByName = new Map(midsPowers.map((row) => [String(row[0]).toLowerCase(), row]));
   const rows = {};
-  // The same join read the other way, for the EXPORT path (DATA-GAP MBDEXPORT-3). It has
+  // The same join read the other way, for the EXPORT path (DATA-GAP data-gaps-254). It has
   // to be minted here rather than inverted from `rows` in TypeScript, because `rows` keys
   // on a folded spelling and the writer needs Mids' literal one: Mids' loader resolves a
   // `PowerName` with `PiDFromUidPower`, an ordinal `==` against the database's own string.
   // Rebirth's Martial Mastery carries `"Shukuchi "` with a trailing space, and the folded
   // key `"shukuchi"` is a name Mids has no record of.
   const reverseRows = {};
-  // Reverse rows the tight join cannot reach, for the writer alone (DATA-GAP MBDEXPORT-8).
+  // Reverse rows the tight join cannot reach, for the writer alone (DATA-GAP data-gaps-258).
   // Kept in their own table rather than merged above, so that "every reverse row inverts a
   // forward row" stays an invariant a gate can hold, and so the looser provenance of these
   // is impossible to read past.
@@ -568,7 +568,7 @@ for (const { midsKey, ourKey } of paired) {
     // the table plainly carried spelling-only rows while dropping a whole class of them.
     if (ourInternal === String(midsInternal)) continue;
 
-    // Mids' own display is ambiguous here (MBDIMPORT-18), so this row has no evidence behind
+    // Mids' own display is ambiguous here (data-gaps-250), so this row has no evidence behind
     // it that the sibling sharing the display does not have equally. Refused AFTER the identity
     // check above, on purpose: a pair Mids already spells our way is read as the identity it
     // is, not reported as a collision it does not suffer from.
@@ -669,10 +669,10 @@ for (const { midsKey, ourKey } of paired) {
     looseReverseRows[ourInternal.toLowerCase()] = String(midsInternal);
     stats.loose.push(`${ourKey}: ${ourInternal} → ${midsInternal} ("${candidates[0].displayName}" / "${midsDisplay}")`);
   }
-  // The residual pass (DATA-GAP MBDIMPORT-16). Mids MISSPELLS a display name — Pyrotechnic
+  // The residual pass (DATA-GAP data-gaps-251). Mids MISSPELLS a display name — Pyrotechnic
   // Control's "Brillant Barrage" against our "Brilliant Barrage", one missing letter, at the
   // same level 12 — and a misspelling is not a separator, so neither pass above can reach it.
-  // MBDIMPORT-13 folded separators on purpose and left the rest to the matcher's ladder; the
+  // data-gaps-253 folded separators on purpose and left the rest to the matcher's ladder; the
   // ladder deletes non-alphanumerics and so cannot reach a missing letter either.
   //
   // What reaches it is not a wider string comparison. It is the argument the POWERSET pairing
@@ -680,7 +680,7 @@ for (const { midsKey, ourKey } of paired) {
   // it can, if exactly one Mids power and exactly one of ours are left over inside this set,
   // the pairing is FORCED rather than chosen. Distance is a sanity bound on that, not the
   // evidence for it — a pass that bound on distance alone would be the guessing machine
-  // MBDIMPORT-2 exists to prevent.
+  // data-gaps-232 exists to prevent.
   //
   // The level has to AGREE here, where the passes above treat it as a tie-breaker only. Those
   // two join on a display name that matched, which is evidence in itself; this one has no
@@ -748,7 +748,7 @@ for (const { midsKey, ourKey } of paired) {
 }
 
 /**
- * Ours → Mids' literal `group.set`, for every paired set (MBDEXPORT-6).
+ * Ours → Mids' literal `group.set`, for every paired set (data-gaps-255).
  *
  * A separate table from `MIDS_NAME_MAP` because it covers a different population: the map
  * carries only sets that ROTATED a power name, and the writer needs a path for every set
@@ -776,7 +776,7 @@ for (const midsKey of Object.keys(alias)) {
 }
 
 /**
- * Mids' `Class_X` → its name for that archetype's own inherent (DATA-GAP MBDEXPORT-24).
+ * Mids' `Class_X` → its name for that archetype's own inherent (DATA-GAP data-gaps-24).
  *
  * Passed through from the names dump rather than derived here, because the join is a field
  * this file never sees: Mids' `eGridType`, which says which grid the app places a power on
@@ -824,18 +824,18 @@ const body = `/**
  * Keyed by OUR \`group.powerset\` (lower-cased), then by the Mids internal name
  * (lower-cased). The value is this dataset's internal name for the SAME power, joined on
  * the display name — the identity that survived HC's internal-name rotations. See
- * DATA-GAP MBDIMPORT-2.
+ * DATA-GAP data-gaps-232.
  *
  * The key is ours rather than Mids' because Mids' group segment drifts too
- * (\`Guardian_Composition\` for our \`Guardian_Comp\`, MBDIMPORT-7). \`MIDS_POWERSET_ALIAS\`
+ * (\`Guardian_Composition\` for our \`Guardian_Comp\`, data-gaps-237). \`MIDS_POWERSET_ALIAS\`
  * below carries those pairs so a reader holding the .mbd's own path can reach the same row.
  *
  * Source: ${wrapComment(source)}
  * Powersets paired with the export: ${stats.shared} of ${midsSets.size}. Remapped names: ${stats.rows}.
  * Reverse rows for the writer: ${stats.reverseRows}${stats.reverseWithdrawn.length ? `, with ${stats.reverseWithdrawn.length} withdrawn as ambiguous` : ''}, plus ${stats.loose.length} the display join could only reach with its separators stripped.
- * Powerset paths for the writer: ${Object.keys(sortedPaths).length}${KEYS_ARE_LITERAL ? '' : ` — NONE. The ${namesDataset} names dump predates MBDEXPORT-6 and carries folded powerset keys, so Mids' own spelling is not in it. Re-run emit_mids_names.py against that fork's I12.mhd to fill this in.`}
- * Of the remapped names, ${stats.residual.length} come from the residual pass (MBDIMPORT-16): a set where exactly one power was left over on each side, at the same level, their display names within ${RESIDUAL_MAX_DISTANCE} edits. ${stats.residualRejected.length} such pairings were refused for want of level agreement or distance, and ${stats.residualAmbiguous.length} sets had leftovers on both sides but more than one, so nothing was joined.
- * Display joins refused because MIDS gives one display to several powers in the set (MBDIMPORT-18): ${stats.midsAmbiguous.length}.
+ * Powerset paths for the writer: ${Object.keys(sortedPaths).length}${KEYS_ARE_LITERAL ? '' : ` — NONE. The ${namesDataset} names dump predates data-gaps-255 and carries folded powerset keys, so Mids' own spelling is not in it. Re-run emit_mids_names.py against that fork's I12.mhd to fill this in.`}
+ * Of the remapped names, ${stats.residual.length} come from the residual pass (data-gaps-251): a set where exactly one power was left over on each side, at the same level, their display names within ${RESIDUAL_MAX_DISTANCE} edits. ${stats.residualRejected.length} such pairings were refused for want of level agreement or distance, and ${stats.residualAmbiguous.length} sets had leftovers on both sides but more than one, so nothing was joined.
+ * Display joins refused because MIDS gives one display to several powers in the set (data-gaps-250): ${stats.midsAmbiguous.length}.
  * Mids powersets with no counterpart here: ${unmatched.length} — listed by the generator on stderr.
  * Archetype inherents Mids grids: ${Object.keys(sortedArchetypeInherents).length}.
  *
@@ -853,7 +853,7 @@ export const MIDS_NAME_MAP: Readonly<Record<string, Readonly<Record<string, stri
 export const MIDS_POWERSET_ALIAS: Readonly<Record<string, string>> = ${JSON.stringify(sortedAlias, null, 2)};
 
 /**
- * Mids' \`Class_X\` → its own name for that archetype's inherent (DATA-GAP MBDEXPORT-24).
+ * Mids' \`Class_X\` → its own name for that archetype's inherent (DATA-GAP data-gaps-24).
  *
  * The \`.mbd\` archetype-inherent row is addressed by NAME, and Mids has more names than
  * powers: Homecoming carries \`Opportunity\`, \`Opportunity_Icon\` and \`Opportunity_Meter\`,
@@ -875,7 +875,7 @@ export const MIDS_ARCHETYPE_INHERENT: Readonly<Record<string, string>> = ${JSON.
 
 /**
  * The same join backwards — THIS dataset's internal name (lower-cased) → Mids' own, for
- * the .mbd writer (DATA-GAP MBDEXPORT-3).
+ * the .mbd writer (DATA-GAP data-gaps-254).
  *
  * Not derivable from \`MIDS_NAME_MAP\` above, and that is the point of emitting it. The
  * forward map keys on a folded spelling because its reader is matching; the writer is
@@ -891,7 +891,7 @@ export const MIDS_NAME_REVERSE: Readonly<Record<string, Readonly<Record<string, 
 
 /**
  * OUR \`group.powerset\` (lower-cased) → Mids' own spelling of it, for the .mbd writer
- * (DATA-GAP MBDEXPORT-6).
+ * (DATA-GAP data-gaps-255).
  *
  * The first two segments of a \`PowerName\`, read out of Mids' database rather than
  * composed. The writer used to build them from an archetype table and the powerset's ICON
@@ -912,7 +912,7 @@ export const MIDS_POWERSET_PATH: Readonly<Record<string, string>> = ${JSON.strin
 
 /**
  * Reverse rows the display join could only reach with every separator stripped — for the
- * .mbd writer, and for it alone (DATA-GAP MBDEXPORT-8).
+ * .mbd writer, and for it alone (DATA-GAP data-gaps-258).
  *
  * Rebirth spells a power \`Moonbeam\` and Mids spells it \`Moon_Beam\`. The join above
  * folds separator RUNS to one space and stops, so that pair is a miss, and that tightness
@@ -952,7 +952,7 @@ if (!KEYS_ARE_LITERAL) {
   console.error(
     `  no powerset paths: the ${namesDataset} names dump carries folded powerset keys and no`
     + ` "powersetKeys": "literal" marker, so Mids' own spelling of a group.set is not in it.`
-    + ` The .mbd writer will report every set on this fork rather than guess (MBDEXPORT-6).`,
+    + ` The .mbd writer will report every set on this fork rather than guess (data-gaps-255).`,
   );
 }
 for (const line of stats.loose) console.error(`  loose reverse: ${line}`);
@@ -970,7 +970,7 @@ for (const line of stats.levelRejected) console.error(`  level-rejected: ${line}
 for (const line of stats.ambiguous.slice(0, 10)) console.error(`  ambiguous: ${line}`);
 if (stats.ambiguous.length > 10) console.error(`  ambiguous: … +${stats.ambiguous.length - 10} more`);
 
-// Every Mids powerset this run could not pair, and why. MBDIMPORT-7 was 13 of these
+// Every Mids powerset this run could not pair, and why. data-gaps-237 was 13 of these
 // answered with a bare `continue`: a skip nobody could see is indistinguishable from a
 // powerset Mids does not carry.
 const byReason = new Map();
@@ -984,7 +984,7 @@ console.error(
 );
 for (const { midsKey, why } of unmatched) console.error(`    ${midsKey} — ${why}`);
 
-// Every pair the roster pass minted, in full (DATA-GAP MBDEXPORT-9). These are the ones no
+// Every pair the roster pass minted, in full (DATA-GAP data-gaps-256). These are the ones no
 // part of the NAME argues for — the claim is that the two sets hold the same powers and
 // nothing else holds them — so the list is the reviewable artifact, not the count.
 const rekeyed = paired.filter((p) => p.rekeyed);

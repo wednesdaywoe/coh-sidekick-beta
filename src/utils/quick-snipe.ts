@@ -5,7 +5,7 @@
  * told to, or returns the power unchanged. `fastFormActive` is a plain boolean rather than a
  * condition-aware gate ON PURPOSE — this function has no build/combat context of its own, so
  * whether the fast form SHOULD be active is entirely the caller's call:
- *  - `resolveEffectivePower` evaluates `power.quickSnipe.condition` for real (SNIPE-2 —
+ *  - `resolveEffectivePower` evaluates `power.quickSnipe.condition` for real (data-gaps-146 —
  *    Homecoming gates on combat engagement, Rebirth/Thunderspy on ToHit ≥ 97%) before calling
  *    this, since it's answering "what does the build show RIGHT NOW".
  *  - `attack-chain-powers.ts` is answering a different question ("what does this attack chain

@@ -1,14 +1,14 @@
 /**
- * DSH4 — Closed atomic effect schema + canonical identity key.
+ * deductive-schema-harness-4 — Closed atomic effect schema + canonical identity key.
  *
  * Source of truth: streams/DEDUCTIVE_SCHEMA_HARNESS.md. This encodes the Mids /
  * game / bin-parser atomic model — a power is a **flat array of atomic,
  * single-attrib effect records**, a compound effect = N sibling records
  * distinguished by damageType / mezType / pvMode / resistible. It is the schema the
- * converter's bag-of-~90-named-slots `PowerEffects` will be *projected from* (DSH6),
+ * converter's bag-of-~90-named-slots `PowerEffects` will be *projected from* (deductive-schema-harness-6),
  * and the shape the oracle harness keys on (DSH5). This file defines the record, the
  * attrib→type bridge, and the identity keys — it does NOT yet rewrite the converter
- * (that is DSH6) nor read the Mids oracle (DSH5).
+ * (that is deductive-schema-harness-6) nor read the Mids oracle (DSH5).
  *
  * Field provenance (each `AtomicEffect` field ← Mids `Effect` / bin-export template):
  *   effectType/subType ← export `attribs[]` string via `bridgeAttrib` (Mids splits
@@ -55,8 +55,8 @@ export type Aspect = 'Res' | 'Max' | 'Abs' | 'Str' | 'Cur' | 'Unspecified';
 
 /** eAttribType — how the scale is interpreted, one member per the parser's four
  *  `ATTRIB_MOD_TYPE` values (`_enums.py`, verified against the Ghidra keyword table).
- *  'Constant' used to be folded onto 'Magnitude' (ATTRTYPE-1), which laundered a parse
- *  fact into plausible data — the STACK-3 shape — even though no consumer distinguished
+ *  'Constant' used to be folded onto 'Magnitude' (data-gaps-50), which laundered a parse
+ *  fact into plausible data — the data-gaps-66 shape — even though no consumer distinguished
  *  the two; the fold is retired here so the type is what the game stores. */
 export type AttribType = 'Magnitude' | 'Duration' | 'Constant' | 'Expression';
 
@@ -66,7 +66,7 @@ export type AttribType = 'Magnitude' | 'Duration' | 'Constant' | 'Expression';
  *
  * One member per `ModTarget` (`Common/entity/attribmod.h:69`), because the game's seven
  * values are not four. `'All'` used to stand where two of them are now, and it was the
- * collapse this file exists to prevent (TARGETS-2): `SelfAndPets` anchors on the CASTER
+ * collapse this file exists to prevent (data-gaps-64): `SelfAndPets` anchors on the CASTER
  * and `AnyAffectedAndPets` anchors on whoever the power hit, and folding both onto one
  * member left nothing to tell a self-buff from a foe-facing one. Half the appliers then
  * read `'All'` as "lands on the caster" and half did not, so whether a Thunderspy Fly
@@ -170,7 +170,7 @@ export interface AtomicEffect {
    *
    * Only Homecoming's export currently carries it; the Rebirth/Thunderspy parsers drop
    * the expression string (their `Rage_Buff` damage atoms arrive value-less), so Fury is
-   * not derivable there — a recorded data gap (DATA-GAP INHERENT-2), not a fallback.
+   * not derivable there — a recorded data gap (DATA-GAP data-gaps-152), not a fallback.
    */
   magnitudeExpression?: string;
   duration: number;
@@ -185,7 +185,7 @@ export interface AtomicEffect {
    * all three are `toWho: Self` rows of one power, and nothing else on them tells the
    * buff phase from the crash. Read it before counting a self-directed penalty as sustained state — the
    * whole caster-reaching −ToHit population of all three forks is a rez after-effect
-   * at delay 60–90 (DATA-GAP DEFDEBUFF-1).
+   * at delay 60–90 (DATA-GAP data-gaps-195).
    *
    * NOT a duration offset for the ordinary case: half the delayed population is sub-second
    * animation timing (7.5k of the export's 14.7k delayed templates — a heal landing 0.25s
@@ -306,7 +306,7 @@ export interface AtomicEffect {
    * geometry does not survive to the runtime — `targets_affected` is not emitted
    * and redirect/Defiance provenance is not on the atom — so, exactly like
    * {@link gated}, the converter decides and stamps the verdict. (`Continuous`
-   * itself now reaches the atom; it stopped folding to `No` with STACK-3. It is
+   * itself now reaches the atom; it stopped folding to `No` with data-gaps-66. It is
    * still not sufficient on its own — see `computeAoePerTargetPatches`, where the
    * stack flavor is one of several terms.)
    *
@@ -318,7 +318,7 @@ export interface AtomicEffect {
 
   /**
    * This atom's share of a redirect chain's BASE contribution to its slot — the other arm of
-   * the branch {@link perTarget} covers, and PERFOE-2.
+   * the branch {@link perTarget} covers, and data-gaps-308.
    *
    * `detectStackingEffects` walks an `Execute_Power` chain into another power's file and adds
    * what it finds to the patch: as `perTarget` when the outer row targets `AnyAffected` or the
@@ -416,7 +416,7 @@ export interface AtomicEffect {
    * pool's Spring Attack is `['Self']` because the parent teleports you, while the foe
    * knockback it pulls in belongs to a `['Foe']` power; Trick Arrow's EMP Arrow is a
    * `['Self']` shell over a `['Friend']` field, so the field's buffs are the team's and not
-   * the caster's. Reading the shell's list credits the caster with both (TARGETS-3).
+   * the caster's. Reading the shell's list credits the caster with both (data-gaps-63).
    *
    * STAMPED BY THE CONVERTER, not re-derivable at runtime — like {@link gated},
    * {@link perTarget}, {@link suppressible} and {@link notOnCaster}. The redirect chain is
@@ -435,7 +435,7 @@ export interface AtomicEffect {
    * base/conditional boolean cannot say that. Rebirth spells the fork out as a
    * pair: Tough carries a Kheldian arm and a thirteen-archetype arm, and while
    * both sat in base every Rebirth build read 3.0 S/L resistance where
-   * Homecoming and Thunderspy read 1.5 (DATA-GAP-REGISTER AT-FORK-1).
+   * Homecoming and Thunderspy read 1.5 (DATA-GAP-REGISTER AT-data-gaps-298).
    *
    * The parser resolves the fork by evaluating the gate once per archetype the
    * dataset defines and exporting the satisfied side (`requires_archetypes`);
@@ -466,7 +466,7 @@ export interface AtomicEffect {
    * these are markers rather than numeric stats, so no applier wants a subType
    * for them — but a GATE can name one, and then the collapse bites.
    *
-   * CHAIN-1 is where it bit. `kMeter` is a single character attribute that ten
+   * data-gaps-127 is where it bit. `kMeter` is a single character attribute that ten
    * different mechanics publish (Hide, Placate, Domination, Defiance,
    * Opportunity, Fury/Rage, Primal Energy, Battle Euphoria, Pack Mentality) —
    * the game reuses one slot because a character has exactly one meter
@@ -543,7 +543,7 @@ export interface AtomicEffect {
    * (`convert-powerset.cjs:5759`). The atom stream did not, so those rows rode the
    * wire ungated and indistinguishable from a standing effect, and the movement
    * reader had to reconstruct the verdict by matching `+X` against `−X` on the same
-   * axis (MOVEMAP-6). Emitting the field replaces that inference with the fact.
+   * axis (data-gaps-177). Emitting the field replaces that inference with the fact.
    */
   applicationType?: string;
 
@@ -563,7 +563,7 @@ export interface AtomicEffect {
    * Extraction (the raw template states no duration while the pet lives 300).
    * Separating them at runtime means testing `Class_*_Henchman` in an `if`, which is
    * Rule 0's ban; the converter already knows which template it read, so it says so
-   * here (DATA-GAP-REGISTER ENT-14).
+   * here (DATA-GAP-REGISTER data-gaps-14).
    *
    * Present on a few hundred atoms corpus-wide and absent everywhere else, so it is
    * the claim itself — a summon row without one is an entity the power creates but
@@ -613,13 +613,13 @@ export interface AtomicEffect {
    * reasoning that a keyed row was the flag's surviving spelling. Reactive
    * Regeneration falsified it: five flagged `Stack` templates with no stack key at all,
    * so the proxy declined to skip and the projection wrote a `regenBuffUnenhanced` the
-   * bag never had (DATA-GAP-REGISTER STACK-5). 505 Homecoming templates carry the flag
+   * bag never had (DATA-GAP-REGISTER data-gaps-59). 505 Homecoming templates carry the flag
    * and 10 Thunderspy ones; Rebirth authors none (its neighbouring bit 19,
    * `StackExactPower`, is on 3,108 templates, so the word is being read).
    */
   stackByAttribAndKey?: boolean;
 
-  // --- provenance (debugging + DSH6 migration) ---
+  // --- provenance (debugging + deductive-schema-harness-6 migration) ---
   sourceAttrib?: string;
 }
 
@@ -762,7 +762,7 @@ export function encodeAtom(a: AtomicEffect): EncodedAtom {
     // A gate expression is a token list, and a list with no tokens states nothing —
     // the same fact as carrying no gate. Encoding it as `[]` would put a value where
     // the field is absent, and every reader that asks "is there a gate here?" would
-    // start answering yes (COND-8).
+    // start answering yes (data-gaps-123).
     if (Array.isArray(v) && v.length === 0) return null;
     return v === undefined ? null : (v as Slot);
   });
@@ -791,11 +791,11 @@ export function decodeAtoms(encoded: readonly EncodedAtom[] | undefined): Atomic
 const KEY_SEP = '|';
 
 /**
- * Full canonical identity key (plan §DSH4). Two records with the same key are the
+ * Full canonical identity key (plan §deductive-schema-harness-4). Two records with the same key are the
  * SAME application and may merge; a different key is a genuinely distinct sibling.
  * Includes `round(scale,4)` so the resistible/unresistable twin (identical structure,
  * half scale) and duration-variant stacks stay distinct. Used by the converter's
- * dedup/merge (DSH6) and the collapse detector (DSH3/DSH6).
+ * dedup/merge (deductive-schema-harness-6) and the collapse detector (DSH3/deductive-schema-harness-6).
  */
 export function identityKey(e: AtomicEffect): string {
   return [
@@ -870,7 +870,7 @@ const MEZ_SUBTYPE: Record<string, string> = {
   // vocab below and the converter's own MEZ_TYPES (which already reads both spellings, so
   // the effects bag already credits these) — mapping here converges the atom to the bag,
   // recovering the tspy `specialBuff.stun` mez-STRENGTH the Rust reader was reading as 0
-  // (Conserve Power / Energize). TSPY-3 step 2. [[tspy-player-vocab-gap]]
+  // (Conserve Power / Energize). data-gaps-75 step 2. [[tspy-player-vocab-gap]]
   stun: 'Stunned', immobilize: 'Immobilized',
 };
 
@@ -887,7 +887,7 @@ const SCALAR_EFFECT: Record<string, EffectType> = {
 };
 
 /**
- * [BRIDGE-2] stealth-radius attribs → Stealth/<axis>.
+ * [data-gaps-203] stealth-radius attribs → Stealth/<axis>.
  *
  * The bin export carries the PvE and PvP stealth radii as DISTINCT attribs
  * (`StealthRadius_PvE` / `StealthRadius_PvP`) and `Translucency` as the visual-alpha
@@ -931,7 +931,7 @@ const MOVEMENT_AXIS: Record<string, string> = {
   // (`Friction`→MovementFriction, `Control`→MovementControl) on the same
   // `*_Friction`/`*_Control` tables HC uses. Verified: tspy `Friction` sits on
   // `Melee_Friction` (== HC MovementFriction's table) and co-occurs with MovementControl
-  // on 169/170 files, mirroring HC's always-paired travel-power rule — so the old TSPY-2
+  // on 169/170 files, mirroring HC's always-paired travel-power rule — so the old data-gaps-77
   // note that "tspy MovementFriction is absent" was just this respelling (the census
   // looked for `MovementFriction`, missed `Friction`). The parser already relabels most
   // front-`Control`→`MovementControl`; `control` here catches the 1 residual it misses.
@@ -951,7 +951,7 @@ const META_EFFECT: Record<string, EffectType> = {
   // parsing + the attrib-118 byte-granular sub-index fix, which stopped collapsing
   // several of these onto Set_Mode). None is a numeric player stat — all are
   // non-stat engine/reward/script/costume markers → 'Meta'. (`translucency` is the
-  // stealth-visual component → Stealth/Translucency; see STEALTH_AXIS [BRIDGE-2].)
+  // stealth-visual component → Stealth/Translucency; see STEALTH_AXIS [data-gaps-203].)
   revoke_power: 'Meta', cancel_mods: 'Meta', set_costume: 'Meta',
   silent_kill: 'Meta', xpdebtprotection: 'Meta', token_add: 'Meta',
   token_set: 'Meta', clear_damagers: 'Meta', view_attributes: 'Meta',
@@ -1038,7 +1038,7 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
     return { effectType: 'Mez', subType: sub };
   }
 
-  // Stealth radius / translucency — the axis lives in the subType [BRIDGE-2]. Must precede
+  // Stealth radius / translucency — the axis lives in the subType [data-gaps-203]. Must precede
   // SCALAR/META (which used to catch these attrib-typed with no subType).
   if (a in STEALTH_AXIS) return { effectType: 'Stealth', subType: STEALTH_AXIS[a] };
 
@@ -1059,10 +1059,10 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
   // is NOT in the name (the damage/resistance face is always written `<type>_Dmg`).
   // Res/res-table ⇒ Resistance; def-table ⇒ Defense; Cur ⇒ Defense (the bare attrib IS
   // the defense characteristic, on any table); Str ⇒ Enhancement (defense strength buff);
-  // else (Abs/Max on a non-def/res table) ⇒ deferred to DSH6's holistic routing.
+  // else (Abs/Max on a non-def/res table) ⇒ deferred to deductive-schema-harness-6's holistic routing.
   const sub = a === 'base_defense' ? 'All' : DAMAGE_SUBTYPE[a];
   if (sub) {
-    // [BRIDGE-1] base_defense IS the defense characteristic; its @Resistance (or
+    // [data-gaps-202] base_defense IS the defense characteristic; its @Resistance (or
     // res-table) face is defense-DEBUFF-RESISTANCE — route to Defense, NOT all-damage
     // Resistance. ingestTemplate preserves aspect=Res from the template ⇒ the atom
     // becomes Defense/All aspect=Res (an encoding coh_data already models). 'All' is
@@ -1081,10 +1081,10 @@ export function bridgeAttrib(attrib: string, aspect?: string, table?: string): B
     // HC export (2026-07-05): every bare-by-type @ Current template is defense — Barrier /
     // Support Core incarnates and the positional NPC "Resistance" powers (whose real
     // resistance rides `_Dmg`@Res) — with zero mez/notify co-listing at aspect=Current.
-    // Previously these fell to Unmapped, blinding DSH5/DSH6 to defense on non-`*Def*` tables.
+    // Previously these fell to Unmapped, blinding DSH5/deductive-schema-harness-6 to defense on non-`*Def*` tables.
     if (asp === 'current') return { effectType: 'Defense', subType: sub };
     if (isStr) return { effectType: 'Enhancement', subType: sub };
-    return { effectType: 'Unmapped', reason: `by-type '${attrib}' at aspect '${aspect ?? '?'}' on non-def/res table '${table}' (deferred — DSH6 routing)` };
+    return { effectType: 'Unmapped', reason: `by-type '${attrib}' at aspect '${aspect ?? '?'}' on non-def/res table '${table}' (deferred — deductive-schema-harness-6 routing)` };
   }
 
   // kSpecial: the game's per-power special-behavior attribute (the exporter
@@ -1160,7 +1160,7 @@ export function mapAttribType(t?: string): AttribType {
   // Absence is the parse table's own default, not a guess: the AttribMod table declares
   // the field `TOK_INT(AttribModTemplate, eType, kModType_Magnitude)`
   // (`Common/entity/attribmod.h:678`), so a def with no `Type` line compiles to
-  // Magnitude. ATTRTYPE-1 could only measure this (Detention Field's mez row reads
+  // Magnitude. data-gaps-50 could only measure this (Detention Field's mez row reads
   // Magnitude); the parse table states it.
   if (!t) return 'Magnitude';
   const mapped = known[t];
@@ -1175,7 +1175,7 @@ export function mapAttribType(t?: string): AttribType {
  * was needed there. This used to be four substring tests falling through to
  * `'Unspecified'`, and both halves of that did damage. The `includes('Pets')` arm caught
  * `SelfAndPets` and `AnyAffectedAndPets` alike and answered `'All'` for both, which is
- * the fold TARGETS-2 measured. And the fall-through turned the one `TargetOnly` template
+ * the fold data-gaps-64 measured. And the fall-through turned the one `TargetOnly` template
  * in the corpus into "the source stated nothing" — the exact absent-vs-defaulted
  * confusion {@link Aspect} documents, run backwards.
  *
@@ -1205,7 +1205,7 @@ function mapToWho(target?: string): ToWho {
  *
  * The one place that question is answered, because it used to be answered fourteen
  * times: some appliers tested `toWho === 'Self'`, others `'Self' || 'All'`, and the two
- * readings disagreed on every `SelfAndPets` atom in the corpus (TARGETS-2).
+ * readings disagreed on every `SelfAndPets` atom in the corpus (data-gaps-64).
  *
  * - `Self` and `SelfAndPets` anchor on the caster by construction — the engine starts
  *   the walk at `pSrc` and never consults the power's targets, so neither needs context.
@@ -1222,7 +1222,7 @@ function mapToWho(target?: string): ToWho {
  *   field. The bag route already reads it as `selfIsCountedTarget`; the atom route does
  *   not, and every family whose atoms are `Target` still answers from the bag because of
  *   it. Deliberately unchanged here: 2,082 / 1,948 / 2,208 base atoms would move at once.
- *   See DATA-GAP-REGISTER TARGETS-3.
+ *   See DATA-GAP-REGISTER data-gaps-63.
  */
 export function landsOnCaster(a: Pick<AtomicEffect, 'toWho'>): boolean {
   switch (a.toWho) {
@@ -1256,7 +1256,7 @@ function mapRequiredEvents(evs?: ExportTemplate['required_events']): string | un
 }
 
 /** Every `application_type` the three exports state. Closed on purpose — an
- *  unlisted value is a parse surprise, and the STACK-3 rule says a converter that
+ *  unlisted value is a parse surprise, and the data-gaps-66 rule says a converter that
  *  folds one into a plausible default ships the surprise as data. */
 const APPLICATION_TYPES = new Set([
   'OnTick',
@@ -1289,7 +1289,7 @@ function mapApplicationType(a?: string): string | undefined {
  * caller owns the scope). The export states duration and `always` per event and the
  * atom carries one of each per template, so a template whose events disagree, or an
  * event missing either field, THROWS rather than collapsing or defaulting (the
- * STACK-3 rule: a converter default turns a data surprise into plausible data).
+ * data-gaps-66 rule: a converter default turns a data surprise into plausible data).
  * Every emitted template today is uniform; the known non-uniform ones are non-Meta.
  */
 function mapSuppressWindow(
@@ -1327,7 +1327,7 @@ function mapSuppressWindow(
  * `StackTypeEnum` per `Common/entity/attribmod.h`.
  *
  * An unrecognized value THROWS. It used to fall back to `'No'`, and that default
- * did two kinds of damage at once (STACK-3). It mislabelled: `StackThenIgnore`
+ * did two kinds of damage at once (data-gaps-66). It mislabelled: `StackThenIgnore`
  * and `Continuous` were absent from the table below though the parser decodes
  * both, so 744 templates across the three forks landed on a sentinel meaning the
  * OPPOSITE of what they say. And it laundered: Thunderspy's stack field was being
@@ -1411,7 +1411,7 @@ export function mapPvMode(isPvp?: string): PvMode {
  * Every attrib produces a record; an unbridged attrib yields an
  * `effectType:'Unmapped'` record (never dropped) so the caller can measure
  * coverage. Shared by the reference encoder below AND the converter's
- * production ingest (DSH6 — `templatesToAtoms` in convert-powerset.cjs), so
+ * production ingest (deductive-schema-harness-6 — `templatesToAtoms` in convert-powerset.cjs), so
  * both sides encode a template identically by construction.
  */
 export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEffect[] {
@@ -1479,7 +1479,7 @@ export function ingestTemplate(t: ExportTemplate, ctx: IngestContext): AtomicEff
         bridged.effectType === 'Meta' && t.cancel_events?.length ? t.cancel_events : undefined,
       applicationType: mapApplicationType(t.application_type),
       // Refresh-by-(attrib, key) semantics, and beside `Stack`/`Continuous` the mark of a
-      // per-target increment the resource router must not also route (STACK-5).
+      // per-target increment the resource router must not also route (data-gaps-59).
       stackByAttribAndKey: (t.flags ?? []).includes('StackByAttribAndKey') || undefined,
       sourceAttrib: attrib,
     });

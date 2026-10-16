@@ -6,7 +6,7 @@
  * powerset directories; nothing joined the two, so a set could convert cleanly, ship in the
  * contract, pass every corpus gate — and be unpickable, because no roster named it.
  *
- * That is not hypothetical (ROSTER-1). Homecoming shipped Sonic Melee, Wind Control and the
+ * That is not hypothetical (data-gaps-282). Homecoming shipped Sonic Melee, Wind Control and the
  * Stalker's Stone Armor unreachable, and Brainstorm added Light Affinity and Sonic Aura to the
  * same silence: 23 powersets across the two forks, converted and invisible. The roster generator
  * (`scripts/generate-archetypes.cjs`) derives these lists from disk and would have been right,

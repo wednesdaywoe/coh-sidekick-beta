@@ -163,9 +163,9 @@ describe('engine fingerprint', () => {
  *
  * `fingerprintRebuild` grades the INPUTS. Until 2026-09-19 that was the whole manifest, so
  * `_engine_manifest.json` was a statement about two `.wasm` with none of their bytes in it, and
- * `--compare` graded the premises without ever opening the conclusion (STALE-2).
+ * `--compare` graded the premises without ever opening the conclusion (data-gaps-339).
  *
- * `fingerprintArtifacts` is deliberately NOT the fix for what STALE-2 measured. At `--write` time
+ * `fingerprintArtifacts` is deliberately NOT the fix for what data-gaps-339 measured. At `--write` time
  * it hashes the artifact `build-engine.mjs` has just produced, so it agrees by construction and
  * can never be evidence that the build reproduces. It catches the OTHER failure: the manifest and
  * the committed output dirs drifting apart — a half-copied refresh, a stale `wasm-node` next to a
@@ -254,7 +254,7 @@ describe('engine artifact fingerprint', () => {
 
   it('reds on a manifest that predates the artifacts key rather than passing it', () => {
     // Skipping quietly would restore the exact blind spot the key closes: a manifest with no
-    // artifacts in it is the STALE-2 shape, and a gate that passes it is the STALE-2 gate.
+    // artifacts in it is the data-gaps-339 shape, and a gate that passes it is the data-gaps-339 gate.
     const root = makeEngineDir();
     try {
       const problems = diffFingerprints({ source: 's', bundles: {} }, {
@@ -300,7 +300,7 @@ describe('engine artifact fingerprint', () => {
  *
  * `fingerprintArtifacts` is taken of the file `build-engine.mjs` has just written, so the manifest
  * agrees with the tree by construction. That catches the two drifting apart afterwards and is
- * silent on whether the build REPRODUCES, which is the question STALE-3 asks: build a second time
+ * silent on whether the build REPRODUCES, which is the question data-gaps-340 asks: build a second time
  * on a machine that is not the writer, and compare. `gradeRebuild` is the judgement in that
  * comparison, and it lives in the shared module rather than in `build-engine.mjs` because the
  * script needs a real cargo build to run and the beta's CI has neither Rust nor a canonical
@@ -333,7 +333,7 @@ describe('rebuild verdict', () => {
 
   it('calls a stale rebuild INCONCLUSIVE rather than a reproducibility failure', () => {
     // The bytes WILL differ here and saying "does not reproduce" would be true and misdiagnosed,
-    // sending someone hunting host-specific strings in a .wasm built from other sources. STALE-1
+    // sending someone hunting host-specific strings in a .wasm built from other sources. data-gaps-338
     // is the row that cost: its staleness message was true and its "the tree moved" was wrong.
     const { verdict, problems } = gradeRebuild({
       manifest,

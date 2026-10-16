@@ -11,7 +11,7 @@
  * `isPVPMap? entref target> entref source> eq ! &&`, whose root operator is
  * `&&`, and its whole PvP-only defence set landed in base. 3,230 groups across
  * 223 expressions were exposed; two facets carried hand patches
- * (DATA-GAP-REGISTER COND-1).
+ * (DATA-GAP-REGISTER data-gaps-128).
  *
  * The verdict is now read structurally by the parser
  * (`bin_crawler/parser/_gate_default.py`), which evaluates the parsed tree
@@ -35,7 +35,7 @@ const VERDICTS = new Set([
  * `requires_default` off an effect group, validated.
  *
  * Throws rather than defaulting: a missing field means the export predates it
- * and is stale, and a soft default here is precisely the shape that let STACK-3
+ * and is stale, and a soft default here is precisely the shape that let data-gaps-66
  * hide — an impossible value quietly becoming a plausible one.
  */
 function requiresDefault(group) {
@@ -58,7 +58,7 @@ function requiresDefault(group) {
  * `arch source> Class_Scrapper eq` on a pool power is base for a Scrapper and a
  * branch for everyone else; one boolean cannot say that, so the parser evaluates
  * the gate once per archetype the dataset defines and ships the side that came
- * out satisfied (DATA-GAP-REGISTER AT-FORK-1). A verdict of
+ * out satisfied (DATA-GAP-REGISTER AT-data-gaps-298). A verdict of
  * INDETERMINATE_ARCHETYPE with an EMPTY list is a real state and means the
  * opposite of a fork worth keeping: the archetypes disagree but none of them
  * makes the gate hold on its own, so the group is base for nobody.

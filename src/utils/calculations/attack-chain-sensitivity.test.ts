@@ -32,7 +32,7 @@ import { BlazingBolt } from '@/data/datasets/homecoming/generated/powersets/blas
  * The rebuild runs the same measurement against its own chain (`chain_sensitivity_gate.rs`).
  * The two sets are NOT expected to match: this planner resolves the fast-snipe form from
  * `permanentToHit`, so +ToHit moves a chain here and does not there (DATA-GAP-REGISTER
- * CHAIN-1). A difference is a finding to record, not a bug to smooth over.
+ * data-gaps-127). A difference is a finding to record, not a bug to smooth over.
  */
 
 const SET = 'blaster/fire-blast';
@@ -89,7 +89,7 @@ describe('Attack Chain Builder — which team buffs move a chain', () => {
 
   it('drains the exported endurance pool, and binds it at the archetype ceiling', () => {
     // The sim used to open `100 + maxEndurance` — a hardcoded pool with no clamp on either the
-    // pool or the recovery rate. Both are the export's (CAPS-1), and a what-if is exactly what
+    // pool or the recovery rate. Both are the export's (data-gaps-183), and a what-if is exactly what
     // reaches the ceiling: no real build gets near +265 max endurance.
     const stats = getArchetype('blaster')!.stats;
     const build = blasterBuild();

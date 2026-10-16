@@ -22,9 +22,9 @@ import type { IOSetEnhancement } from '@/types';
  * predicts 58.7% (z = +1.06, consistent); the 15ft-AoE model predicts 21.9%
  * (z = +8.51, p = 5.6e-14 — excluded). A second run on Lightning Clap
  * (2026-07-29, 65 hits → 61 procs = 93.8%) agrees. Do not "fix" this back to an
- * AoE denominator; the numbers are in docs/DATA-GAP-REGISTER-RESOLVED.md HC-3.
+ * AoE denominator; the numbers are in docs/DATA-GAP-REGISTER-RESOLVED.md data-gaps-115.
  *
- * The flag now comes from the bin (HC-3), which is why the first test can exist
+ * The flag now comes from the bin (data-gaps-115), which is why the first test can exist
  * at all: it reads converted data. The hardcoded set it replaced was keyed by
  * `internalName` and so could not even represent what the game actually
  * authors — the same power name is flagged on some archetypes and not others.

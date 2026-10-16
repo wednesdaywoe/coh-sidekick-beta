@@ -7,7 +7,7 @@ import { carriedSlotLevels, hasPackedSlotLevels } from '@/utils/slot-levels';
 import type { Build } from '@/types';
 
 /**
- * What a `.mbd`'s `SlotEntry.Level` claims about a build authored HERE — DATA-GAP MBDEXPORT-21.
+ * What a `.mbd`'s `SlotEntry.Level` claims about a build authored HERE — DATA-GAP data-gaps-276.
  *
  * Three code paths write a level into `slotOrder` and they do not mean the same thing. A
  * placement in the UI and MBDIMPORT's `seedSlotOrderFromFile` are records of when an author put
@@ -23,8 +23,8 @@ import type { Build } from '@/types';
  *
  * **Byte-identical in both repos, and that is the point rather than a convenience.** These seven
  * cases passing on both sides IS the statement that the two writers share one answer, which is
- * what MBDEXPORT-21's Done-when asks for. The stamp SITES live in each repo's own
- * `slot-levels-provenance.test.ts` instead: `ensureSlotOrderPopulated` still carries SLOT-3's
+ * what data-gaps-276's Done-when asks for. The stamp SITES live in each repo's own
+ * `slot-levels-provenance.test.ts` instead: `ensureSlotOrderPopulated` still carries issues-3's
  * `levelUpMode` argument on the beta and not here, and the `.mbd` fixture corpus is
  * canonical-only — so a shared file could only grade those by pretending the fork is closed
  * where it is not.
@@ -75,13 +75,13 @@ function exportedSlotLevel(build: Build): number | undefined {
   return undefined;
 }
 
-describe('what a slot Level claims (MBDEXPORT-21)', () => {
+describe('what a slot Level claims (data-gaps-276)', () => {
   beforeAll(async () => { await loadDataset('homecoming'); }, 120000);
 
   /**
    * The author placed it, so the file says what they placed — even at a level this server's
-   * schedule does not grant, which is MBDIMPORT-14's open population. Re-solving it here is
-   * what MBDEXPORT-18 closed, so this is the case that must not regress.
+   * schedule does not grant, which is data-gaps-243's open population. Re-solving it here is
+   * what data-gaps-271 closed, so this is the case that must not regress.
    */
   it('an AUTHORED level is the author\'s record, and rides out unchanged', () => {
     expect(exportedSlotLevel(levelledBuild('authored'))).toBe(SLOT_LEVEL_UNGRANTED);
@@ -115,7 +115,7 @@ describe('what a slot Level claims (MBDEXPORT-21)', () => {
   });
 
   /**
-   * ONCE, not per slot. SLOT-3 asked for exactly this and gated it on a UI mode; it is derived
+   * ONCE, not per slot. issues-3 asked for exactly this and gated it on a UI mode; it is derived
    * from the build now, so it travels with the file rather than with the device.
    */
   it('the synthetic-levels disclosure is emitted once, and only when something is packed', () => {
@@ -127,7 +127,7 @@ describe('what a slot Level claims (MBDEXPORT-21)', () => {
   });
 
   /**
-   * The per-slot warning MBDEXPORT-18 added, kept honest against the disclosure above: a
+   * The per-slot warning data-gaps-271 added, kept honest against the disclosure above: a
    * carried level the schedule cannot grant still says so per slot, because that is a claim
    * about THIS slot rather than about how the build was planned.
    */

@@ -1,15 +1,15 @@
 /**
- * `groupEffectsByCategory` resolves a `<base>Unenhanced` split slot — ENT-6.
+ * `groupEffectsByCategory` resolves a `<base>Unenhanced` split slot — data-gaps-101.
  *
  * The converter expresses an IgnoreStrength verdict as a parallel bag slot rather than as a flag
  * on the value (`atom-query.ts` names the discriminator and the five slots the corpus ships), and
  * no such slot is registered in `EFFECT_REGISTRY`. So the grouping loop's `if (!config) continue`
- * used to drop every one of them, which is ENT-6's sentence verbatim: the `*Unenhanced` half of a
+ * used to drop every one of them, which is data-gaps-101's sentence verbatim: the `*Unenhanced` half of a
  * buff reached the totals with no display row.
  *
- * This graded nothing in either repo until the two copies converged (FORK-7) — the beta's
+ * This graded nothing in either repo until the two copies converged (data-gaps-304) — the beta's
  * `beta-display.test.ts` asserts the CALL SITE, not the resolution. A rule living in two
- * hand-copied files with no gate over it is the shape FORK-7 exists to catch, so the rule is
+ * hand-copied files with no gate over it is the shape data-gaps-304 exists to catch, so the rule is
  * graded here instead of trusted twice.
  */
 import { describe, it, expect } from 'vitest';

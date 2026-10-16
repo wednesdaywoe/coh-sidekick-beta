@@ -1,7 +1,7 @@
 /**
  * BPORT1 — the guard on `scripts/beta-bag-supply-census.cjs`.
  *
- * The census is the measurement the STRIP-1 beta port stands on: it decides, per bag slot,
+ * The census is the measurement the data-gaps-327 beta port stands on: it decides, per bag slot,
  * whether a reader is spending something or standing over an empty shelf, and BPORT3/BPORT4
  * adjudicate their seams against its verdicts. A measurement nothing grades drifts, and this
  * one drifts in a particularly quiet way — a converter change moves supply, and the census
@@ -41,7 +41,7 @@
  * `src/data/datasets/<ds>/generated` only, so a hand-written override carrying an `effects` key
  * is invisible to every `own` count in this file. 36 homecoming override files still carry one
  * (see the guard at the bottom). A slot this census calls `own: 0` may still be supplied on
- * Homecoming and on no other fork, which is exactly the shape of hole TEAMBUFF-1 was.
+ * Homecoming and on no other fork, which is exactly the shape of hole data-gaps-222 was.
  *
  * Run as a child process rather than required in-process: the census loads every generated
  * module on all four datasets (~12.5k modules, ~1.3 GB peak), and a vitest worker holding
@@ -306,7 +306,7 @@ describe('BPORT1 census — supplier 3, the buff-pet mint', () => {
     //
     // What kept the slot LIVE has changed underneath that, and the assertion has to change with
     // it or it stops meaning anything: `own` was 317 converter carriers and is now 0. The slot
-    // survives on 20 `conditionalEffects` carriers, one of the two suppliers STRIP-1 left
+    // survives on 20 `conditionalEffects` carriers, one of the two suppliers data-gaps-327 left
     // standing. Same verdict, different reason, so both halves are pinned.
     const r = row('rechargeBuff');
     expect(r.petReachable).toBe(0);

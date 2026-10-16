@@ -4,7 +4,7 @@
  * Accepts a preview image captured by a hidden `?previewCapture=` boot for a
  * build that predates the share-preview feature, or was rendered under an
  * older visual template — see streams/BUILD_PREVIEW_BACKFILL_PLAN.md
- * (PREVBF6). No auth: any visitor's browser can be the one that generates
+ * (build-preview-backfill-6). No auth: any visitor's browser can be the one that generates
  * it, which is the whole point of "automatic on view". That's bounded on the
  * write side instead - version-gated (never accepts a write when the row's
  * `preview_template_version` is already current), a server-side shape check

@@ -7,8 +7,8 @@
  * planner. `datasets/homecoming/levels.ts` spelled out their scales, tables and
  * endurance by hand, and because only Homecoming has a `levels.ts`, every fork
  * got Homecoming's copy. That cost four shipped wrong numbers, all of them
- * things the export states plainly (DATA-GAP-REGISTER INHERENT-4, INHERENT-5,
- * INHERENT-8).
+ * things the export states plainly (DATA-GAP-REGISTER data-gaps-32, data-gaps-33,
+ * data-gaps-34).
  *
  * WHICH powers: the address list below, one entry per power the planner offers.
  * That list is curation, not derivation, and it is the only hand-held thing here
@@ -20,7 +20,7 @@
  *
  * WHICH fork: each entry is resolved against the fork being converted, and a
  * fork that holds none of an entry's addresses emits nothing for it. That is the
- * INHERENT-4 fix — Thunderspy has no Ninja Run, Beast Run or Athletic Run
+ * data-gaps-32 fix — Thunderspy has no Ninja Run, Beast Run or Athletic Run
  * anywhere in its export, and was being offered all three.
  *
  * Homecoming states its two P2W runs as an `Auto` granter whose only templates
@@ -91,7 +91,7 @@ const OUTPUT_PATH = datasetPath(datasetId, 'generated', 'basic-inherents.ts');
  * five-slot buy cap (`MAX_BOOSTS_BOUGHT`) that lands on the same six. So the
  * three travel toggles state `0` and mean it, and Sprint, Rest and the
  * prestige sprints are silent sixes. The hand table's four had no source and
- * is retired. Closed INHERENT-7 / MAXBOOST-1.
+ * is retired. Closed data-gaps-35 / data-gaps-61.
  */
 const OFFERED = [
   {
@@ -192,7 +192,7 @@ function buildIndex() {
       if (!entry.name.endsWith('.json') || entry.name === 'index.json') continue;
       let json;
       try {
-        // Through the gate-stamping reader (COND-12): the Stance inherent is a carrier.
+        // Through the gate-stamping reader (data-gaps-126): the Stance inherent is a carrier.
         json = _readPowerFile(full);
       } catch {
         continue;
@@ -255,7 +255,7 @@ function followGrant(rawJson, index) {
     throw new Error(
       `${rawJson.full_name} grants ${granted[0]}, which is not in this fork's export. ` +
         'The grant target is the power the character actually runs — emitting the granter ' +
-        'instead would ship a power with no mechanic (INHERENT-6).',
+        'instead would ship a power with no mechanic (data-gaps-31).',
     );
   }
   return target;
@@ -289,7 +289,7 @@ function convertBasicInherent(rawJson, entry, granter) {
   // gates on `available <= level`, so this record's own `available_level` IS the
   // grant level — Rest's 1 means level 2, which is what Mids' own files state and
   // what the planner stamped as 1 for as long as nothing carried the field
-  // (MBDEXPORT-18). Read off the GRANTER for the same reason `autoIssue` is:
+  // (data-gaps-271). Read off the GRANTER for the same reason `autoIssue` is:
   // the toggle is not what the gate is evaluated on.
   power.grantedAtLevel = ((granter ?? rawJson).available_level ?? 0) + 1;
   // Read off the GRANTER where the fork uses one. The Homecoming toggle sitting
@@ -313,7 +313,7 @@ function convertBasicInherent(rawJson, entry, granter) {
   // converted it. This was the last tree without it. Read off the toggle rather
   // than the granter, because the granter only says who hands the power over,
   // while the toggle is what carries `modes_suspended` — the field saying a
-  // Kheldian in Nova form is not getting their Sprint speed (INHERENT-9).
+  // Kheldian in Nova form is not getting their Sprint speed (data-gaps-9).
   assignModes(power, rawJson);
 
   if (rawJson.target_type) {
@@ -328,7 +328,7 @@ function convertBasicInherent(rawJson, entry, granter) {
   power.requires = gateTokens(rawJson.requires);
 
   // Literal read; silence is the exporter suppressing the parse-table default,
-  // so it decodes to 6 (see the OFFERED comment — INHERENT-7 / MAXBOOST-1).
+  // so it decodes to 6 (see the OFFERED comment — data-gaps-35 / data-gaps-61).
   power.maxSlots =
     rawJson.max_boosts === undefined || rawJson.max_boosts === null
       ? 6
@@ -340,7 +340,7 @@ function convertBasicInherent(rawJson, entry, granter) {
   power.allowedEnhancements = [...new Set(enhancements)].sort();
 
   // null and [] both mean the game lists this power in no set — the field stays
-  // unset and only single IOs work. No inference fallback (SETCAT-1).
+  // unset and only single IOs work. No inference fallback (data-gaps-39).
   if (Array.isArray(rawJson.allowed_set_categories) && rawJson.allowed_set_categories.length) {
     power.allowedSetCategories = [...rawJson.allowed_set_categories].sort();
   }
@@ -371,7 +371,7 @@ function convertBasicInherent(rawJson, entry, granter) {
 
     // The pets. This partition reached `extractSummon` through the bag it no longer emits, so
     // the strip took its summons silently — the Accolade markers (Mark of Recall's beacon, the
-    // Portable Workbench) among them (ENT-22). Same address as every other partition's.
+    // Portable Workbench) among them (data-gaps-22). Same address as every other partition's.
     const summon = extractPowerSummon(allTemplates, rawJson.name);
     if (summon) power.summon = summon;
   }
@@ -399,7 +399,7 @@ function convertBasicInherent(rawJson, entry, granter) {
   // `encodeAtomsForEmit` copies that stamp onto the atom; running it first would put a
   // conditional group's per-foe increment on the base atoms.
   //
-  // This converter shipped no conditionals at all until BRAIN-3 — the fifth instance of a
+  // This converter shipped no conditionals at all until data-gaps-290 — the fifth instance of a
   // capability built in convert-powerset.cjs and never handed to a sibling. Brawl's entire
   // Fighting-pool synergy sat gated in the export with no toggle able to reach it: the
   // Boxing-or-Kick -recharge/-tohit pair and Cross Punch's -regen/-recovery, on Homecoming,
@@ -428,12 +428,12 @@ function convertBasicInherent(rawJson, entry, granter) {
     // not of which converter read it: the aspect and per-template target the recovered slot
     // needs are missing from every fork-6 power alike. The applied-mez half was called only by
     // convert-powerset.cjs, so Rest, Hibernate and Rise of the Phoenix shipped 15 foe-control
-    // slots on self-only powers (TWIN-2).
+    // slots on self-only powers (data-gaps-316).
     // The guards read the effects PROJECTION to decide which slots are Thunderspy target-trap
     // artifacts, then stamp the atoms behind them. The bag is no longer emitted on the power,
     // so it is computed here for the guards alone and thrown away — dropping the computation
     // along with the emission is what silently retired both guards and let the trapped rows
-    // reach the engine on the atoms (TSPY-10, and it re-opened TWIN-2's widening).
+    // reach the engine on the atoms (data-gaps-53, and it re-opened data-gaps-316's widening).
     const guardBag = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
     guardThunderspyOnesBuffs(power, rawJson.targets_affected, guardBag);
     guardThunderspyAppliedMez(power, rawJson.targets_affected, guardBag);

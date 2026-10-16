@@ -1,9 +1,9 @@
 /**
  * The engine's resolved granted magnitudes, reshaped into the rows `RegistryEffectsDisplay`
- * renders (ENGLAG-1 / PROD6C-3).
+ * renders (data-gaps-329 / PROD6C-3).
  *
  * The display used to resolve its own rows from a bag the surface built. That bag's only
- * authored source was the power's wire `effects`, and STRIP-1 removed it, so
+ * authored source was the power's wire `effects`, and data-gaps-327 removed it, so
  * `buildDisplayEffects` now returns the keys it mints for itself and nothing else. Around
  * 2,700 powers per fork carry atoms and produce no effect row at all. The engine never had
  * that problem: `granted::atom_seed` projects the display bag from the atom stream, resolves
@@ -60,7 +60,7 @@ function isExpanded(row: GrantedMagnitude): boolean {
  * Narrow the wire quantity to the display union, refusing an unrecognized kind.
  *
  * Both unions are hand-declared against the engine's `GrantedQuantity`, and a widened enum
- * obliges every exhaustive reader (ATTRTYPE-1). A cast here would let a new engine member
+ * obliges every exhaustive reader (data-gaps-50). A cast here would let a new engine member
  * reach the render sites as a kind none of them has an arm for, which is a blank row rather
  * than a report, so this refuses instead (Rule 1).
  */
@@ -116,7 +116,7 @@ export function magnitudesFromProjection(rows: GrantedMagnitude[]): ResolvedMagn
       mezFace: mezFaceOf(row.label),
       // The seconds only reach a row whose tier is not already them: a `mez_duration` row's
       // tier IS the seconds, so the engine states `duration: null` there (recorded_duration)
-      // and the surface must not print the same number twice. ENGLAG-2.
+      // and the surface must not print the same number twice. data-gaps-330.
       duration: row.duration ?? undefined,
     });
   }

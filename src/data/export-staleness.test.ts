@@ -14,7 +14,7 @@ import { REPO_ROOT, PKG_ROOT, SURFACES, foldFiles, posixRel } from './export-man
  * ships without a matching re-export leaves the committed JSON stale and every
  * downstream fix inert (the powers tree bit twice: the 2026-07-06 tspy hybrid
  * relabel; the incarnate one-dataset regen. The `tables/` tree was the WS3 gap
- * — in sync only because CLASSES-1 happened to regenerate it, guarded by
+ * — in sync only because data-gaps-85 happened to regenerate it, guarded by
  * nothing going forward).
  *
  * The cross-check: each exporter stamps its output dir with an

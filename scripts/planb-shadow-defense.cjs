@@ -23,7 +23,7 @@
  * Scope: the ELEVEN standard defense globals — the three positions (Melee/Ranged/
  * AoE) and eight damage types (Smashing…Psionic), the only defense types the calc
  * totals. `All` (from a `base_defense` template) is one value on all eleven, and
- * since DEFALL-1 the atom readers expand it so. The bag cannot: it stores such a
+ * since data-gaps-197 the atom readers expand it so. The bag cannot: it stores such a
  * row as a SCALAR ScaledEffect (`{scale, table}`, never a `def<Type>` key). That
  * is a GRADED divergence, not an excused one — `expandScalarAll` rewrites the bag
  * slot by the same stated rule (the scalar's value must appear on all eleven keys)
@@ -49,7 +49,7 @@
  * bag keeps the slot — the power card still shows allies what they receive. That is
  * atoms saying MORE than the bag, not less, and equality would be the bug. Counted
  * separately, and narrowed by `defenseBuffIsTeamOnly` so it can only excuse a power
- * whose every defense row says so. See TEAMBUFF-1.
+ * whose every defense row says so. See data-gaps-222.
  */
 
 require('tsx/cjs');
@@ -107,7 +107,7 @@ const stats = {
 const findings = [];
 
 /**
- * The DEFALL-1 graded divergence: a bag defense slot holding a `base_defense` row is
+ * The data-gaps-197 graded divergence: a bag defense slot holding a `base_defense` row is
  * a SCALAR ScaledEffect (`{scale, table}`), while the atom readers expand that row
  * onto all eleven standard keys. Rewrite the bag by the same stated rule — the
  * scalar's value on every key — so the per-type comparison stays exact. Only the
@@ -132,7 +132,7 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
-  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  // data-gaps-327 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
   if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
   const eff = power.effects || {};
   const bagBuff = expandScalarAll(name, typeof eff.defenseBuff === 'object' ? eff.defenseBuff : {});
@@ -186,7 +186,7 @@ console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${
 console.log(`  buff agree:          ${stats.buffAgree}  (archetype-fork resolved: ${stats.buffForkResolved}; team-only abstentions: ${stats.buffTeamOnly})`);
 console.log(`  suppress type-slots: ${stats.suppTypes}  (of which per-target: ${stats.suppPerTarget})`);
 console.log(`  suppress agree:      ${stats.suppAgree}`);
-console.log(`  scalar-All expanded: ${stats.scalarAllExpanded}  (DEFALL-1 graded divergence: bag base_defense scalar → 11 keys)`);
+console.log(`  scalar-All expanded: ${stats.scalarAllExpanded}  (data-gaps-197 graded divergence: bag base_defense scalar → 11 keys)`);
 console.log(`  diverge:             ${findings.length}`);
 
 for (const f of findings.slice(0, 50)) {
@@ -201,7 +201,7 @@ if (findings.length) {
   process.exit(1);
 }
 if (VACUOUS) {
-  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-data-gaps-327.`);
   console.log('   The atom side is graded by the converter gates, not here.');
 } else {
   console.log('\nOK — atom-derived defense buff + suppressible reproduce the bag corpus-wide (11 standard globals).');

@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
  * as accepting "To Hit Debuff". That wrongly implied Tar Patch (a Slow/-Res patch
  * with NO to-hit debuff) takes ToHit-debuff sets. The record's own GroupName says
  * "Universal Debuff" and always did — first restored by a curated override, then read
- * straight off the record at BOOST-2 when the whole inference chain came out.
+ * straight off the record at data-gaps-40 when the whole inference chain came out.
  */
 function gen(rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/rebirth/generated/powersets/${rel}`, import.meta.url));

@@ -11,7 +11,7 @@ import { ENHANCEMENT_CURVES as THUNDERSPY_CURVES } from './datasets/thunderspy/g
 import { ENHANCEMENT_CURVES as BRAINSTORM_CURVES } from './datasets/brainstorm/generated/enhancement-curves';
 
 /**
- * Enhancement-curves staleness guard (SOURCE-1 SW3) — generated == export,
+ * Enhancement-curves staleness guard (data-gaps-324 SW3) — generated == export,
  * both directions.
  *
  * The generated `enhancement-curves.ts` modules are what the engine will read

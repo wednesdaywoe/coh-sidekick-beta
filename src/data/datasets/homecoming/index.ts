@@ -95,7 +95,7 @@ const dataset: Dataset = {
     // never enabled: 36/36 powers with authored help of literally "… text",
     // reused Interface icons, and no exemplar-grant linkage. Serving it would
     // apply a slot the picker rightly hides (DATASET_ONLY_SLOTS in
-    // incarnates.ts) — see GENESIS-1.
+    // incarnates.ts) — see data-gaps-47.
     genesis: {},
   } as unknown as IncarnateEffectsRaw,
   powerPoolsRaw: POWER_POOLS_RAW as unknown as LegacyPowerPoolRegistry,

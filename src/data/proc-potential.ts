@@ -338,7 +338,7 @@ export function getProcPotential(power: Power): ProcPotential | null {
     // nowhere, which is why an unrouted proc drops out rather than falling
     // back to the shell's geometry. A piece TWO children could hold has no
     // single roll and drops out the same way; the slotted surfaces carry the
-    // loud marker (DATA-GAP-REGISTER HC-4).
+    // loud marker (DATA-GAP-REGISTER data-gaps-109).
     let site: ProcRollSite | null;
     try {
       site = resolveProcRollSite(power.procRollSites, data.boostsAllowed);
@@ -401,7 +401,7 @@ export function getProcPotential(power: Power): ProcPotential | null {
  * Does an IO set's `type` fall under this power-facing category?
  *
  * Both sides are `BoostSet.GroupName` read twice, so they compare as strings —
- * see BOOST-2 for what the lookup table that used to sit here cost.
+ * see data-gaps-40 for what the lookup table that used to sit here cost.
  */
 function setMatchesCategory(setType: string, category: IOSetCategory): boolean {
   return setType === category;

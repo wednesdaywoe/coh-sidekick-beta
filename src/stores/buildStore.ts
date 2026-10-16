@@ -84,7 +84,7 @@ import { useUIStore } from './uiStore';
 // CAPTURE-MODE PERSISTENCE
 // ============================================
 // A hidden capture-mode boot (see streams/BUILD_PREVIEW_BACKFILL_PLAN.md,
-// PREVBF3/4) imports an arbitrary build — someone else's, for a preview
+// build-preview-backfill-3/4) imports an arbitrary build — someone else's, for a preview
 // render — into this store. That must never reach the visiting browser's
 // real `localStorage`: this module is a singleton, and `persist` writes on
 // every state change, so a real write here would overwrite whatever build
@@ -196,7 +196,7 @@ interface BuildActions {
   canMoveSlot: (source: SlotLevelRef, target: PowerRef) => boolean;
   /**
    * Freeze real grant levels onto every slot placed while Level Up mode was
-   * off (SLOT-3). Called once, right as the mode turns on — mirrors the
+   * off (issues-3). Called once, right as the mode turns on — mirrors the
    * import-time migrations (`ensureSlotOrderPopulated` /
    * `backfillSlotOrderLevels` / `reconcileStoredSlotLevels`) so a build
    * planned free-form gets a legal, stable leveling order the moment there is
@@ -859,7 +859,7 @@ function syncBuildDefinitions(build: Build): void {
   //
   // A mode SOME power publishes is decided by that power's own state, which is exactly the
   // engine's `collect_source_modes` over active powers. A mode NO power publishes is left
-  // alone: Thunderspy exports no `Set_Mode` template (TSPY-3's excluded tail), so its
+  // alone: Thunderspy exports no `Set_Mode` template (data-gaps-75's excluded tail), so its
   // Hunter/Prowler forms are pure display state with no setter to read, and recomputing over
   // publishers would silently switch them off.
   const allSelected: SelectedPower[] = [
@@ -2323,7 +2323,7 @@ export const useBuildStore = create<BuildStore>()(
 
         // Outside Level Up mode a slot carries no dated level at all — a real
         // respec hands the player their full earned budget as one freely
-        // assignable pool, with no per-power floor tied to pick order (SLOT-3).
+        // assignable pool, with no per-power floor tied to pick order (issues-3).
         // The count budget above is the only limit that still applies.
         //
         // In Level Up mode, resolve the assigned grant level *before* the slot
@@ -2339,7 +2339,7 @@ export const useBuildStore = create<BuildStore>()(
           // No grant the slot could legally occupy: refuse, the way the count budget
           // above refuses. Placing it anyway is what wrote an entry with no level,
           // which the display then filled in with the power's pick level — a level
-          // the game may grant no slots at (SLOT-1).
+          // the game may grant no slots at (issues-6).
           if (assignedLevel === null) return false;
         }
 
@@ -2356,8 +2356,8 @@ export const useBuildStore = create<BuildStore>()(
             slotIndex: newSlotIndex,
             category,
             // Click order is still worth keeping even without a level — it's
-            // what a later switch into Level Up mode backfills from (SLOT-3).
-            // A slot the user just placed: this level IS the history (MBDEXPORT-21).
+            // what a later switch into Level Up mode backfills from (issues-3).
+            // A slot the user just placed: this level IS the history (data-gaps-276).
             ...(assignedLevel !== null ? { level: assignedLevel, levelSource: 'authored' as const } : {}),
           };
           newBuild.slotOrder = [...newBuild.slotOrder, newEntry];
@@ -2500,7 +2500,7 @@ export const useBuildStore = create<BuildStore>()(
           // 2) Resolve the destination grant level against the POST-removal
           //    slotOrder (so the freed source grant is back in the pool), then
           //    append the slot to the target power — mirrors addSlot. Outside
-          //    Level Up mode there is no dated level to resolve (SLOT-3).
+          //    Level Up mode there is no dated level to resolve (issues-3).
           const assignedLevel = levelUpMode
             ? findNextAvailableGrantLevel(newBuild, targetPickLevel)
             : null;
@@ -2625,7 +2625,7 @@ export const useBuildStore = create<BuildStore>()(
         // whichever selected power carries the mode in `setsModes`, read from the power def, so
         // no list of form-power names is needed here.
         //
-        // Thunderspy exports no `Set_Mode` template at all (TSPY-3's excluded tail), so its
+        // Thunderspy exports no `Set_Mode` template at all (data-gaps-75's excluded tail), so its
         // Hunter/Prowler forms have no discoverable setter and stay pure display state.
         const active = new Set(modes);
         const build = get().build;
@@ -2807,7 +2807,7 @@ export const useBuildStore = create<BuildStore>()(
             // the set's [minLevel, maxLevel] range; generic IOs land on the
             // crafted-record roster the export names (nine levels in steps of
             // five — the slider's every-integer band would otherwise mint a
-            // level-37 Accuracy IO, BOOST-6). Attuned IOs (including those
+            // level-37 Accuracy IO, data-gaps-6). Attuned IOs (including those
             // just-flipped by attuneAll above) don't carry a meaningful level,
             // so we skip.
             const isAttuned = next.type === 'io-set' && next.attuned === true;
@@ -3200,10 +3200,10 @@ export const useBuildStore = create<BuildStore>()(
         // also land on a grant at or above its power's pick level, and those run
         // out separately — Homecoming issues 24 grants from level 39 on, so a
         // build can be well inside its 67 and still have nowhere to put a slot
-        // on a power taken at 38 (SLOT-1). Mirror addSlot so the + button and
+        // on a power taken at 38 (issues-6). Mirror addSlot so the + button and
         // the action agree.
         //
-        // Outside Level Up mode there is no dated floor at all (SLOT-3) — the
+        // Outside Level Up mode there is no dated floor at all (issues-3) — the
         // count budget above is the whole check.
         if (!useUIStore.getState().levelUpMode) return true;
         const pickLevel = found.category === 'inherent' ? 1 : found.power.level;
@@ -3302,7 +3302,7 @@ export const useBuildStore = create<BuildStore>()(
               // that never folded its accolade objects to ids — and v1 is exactly the era
               // that wrote them as objects (the exporter stamped `version: 1` while the store
               // held `{ id, bonuses, … }`). Left raw, EVERY accolade in such a file misses the
-              // roster and drops out of the totals, not just the two ACCOLADE-3 renames.
+              // roster and drops out of the totals, not just the two data-gaps-3 renames.
               accolades: normalizeAccoladeIds(data.build.accolades),
               sets: Object.fromEntries(
                 setsEntries.map(([setId, tracking]) => [
@@ -3341,11 +3341,11 @@ export const useBuildStore = create<BuildStore>()(
           normalizeBranchPowersets(build);
 
           // Clear stored levels the schedule never grants — an export written
-          // before SLOT-1 can carry the old pick-level fallback frozen in.
+          // before issues-6 can carry the old pick-level fallback frozen in.
           // Unconditional: harmless hygiene regardless of mode, and a wrong
           // stored level would wrongly seed a later switch into Level Up mode.
           scrubFabricatedSlotLevels(build);
-          // The remaining three only mean anything in Level Up mode (SLOT-3) —
+          // The remaining three only mean anything in Level Up mode (issues-3) —
           // outside it a slot carries no level to populate, backfill, or
           // reconcile, and stored history stays exactly as imported.
           const importLevelUpMode = useUIStore.getState().levelUpMode;
@@ -3397,7 +3397,7 @@ export const useBuildStore = create<BuildStore>()(
           build.slotOrder = [];
         }
         scrubFabricatedSlotLevels(build);
-        // The rest only means anything in Level Up mode (SLOT-3) — outside it
+        // The rest only means anything in Level Up mode (issues-3) — outside it
         // a Mids import's slots carry no level, same as anything free-placed.
         const midsLevelUpMode = useUIStore.getState().levelUpMode;
         backfillSlotOrderLevels(build, midsLevelUpMode);
@@ -3704,7 +3704,7 @@ export const useBuildStore = create<BuildStore>()(
 
           // Migration: accolades written by an older Sidekick — the object fold and the two
           // pre-convention ids, both through the one normaliser `hydrateBuild` uses. The table
-          // used to live here AND there, in two spellings; one of them is how ACCOLADE-3's
+          // used to live here AND there, in two spellings; one of them is how data-gaps-3's
           // door census found the third copy that was missing (`importBuild`'s v1 arm).
           if (Array.isArray(state.build.accolades) && state.build.accolades.length > 0) {
             state.build.accolades = normalizeAccoladeIds(state.build.accolades);
@@ -3758,7 +3758,7 @@ export const useBuildStore = create<BuildStore>()(
           }
 
           // Migration: clear stored slot levels the schedule never grants. A
-          // build saved before SLOT-1 can carry a level frozen in from the old
+          // build saved before issues-6 can carry a level frozen in from the old
           // pick-level fallback (e.g. `level: 38`, a level Homecoming grants no
           // slots at); it can never be honored, so drop it and let the solver
           // re-house the slot. Must run BEFORE the backfill, which would
@@ -3775,9 +3775,9 @@ export const useBuildStore = create<BuildStore>()(
           // `setTimeout` a few lines below for the same reason), so reading it
           // here risks silently skipping this migration for a build that is
           // actually in Level Up mode. Running it unconditionally reproduces
-          // this migration's exact pre-SLOT-3 behavior; the cost if the build
+          // this migration's exact pre-issues-3 behavior; the cost if the build
           // turns out to be in free mode is unused stored levels sitting in
-          // `slotOrder` that nothing reads (SLOT-3).
+          // `slotOrder` that nothing reads (issues-3).
           backfillSlotOrderLevels(state.build, true);
 
           // Migration: Populate any missing slotOrder entries so add/remove
@@ -3786,7 +3786,7 @@ export const useBuildStore = create<BuildStore>()(
           // builds that left slotOrder empty or partial).
           ensureSlotOrderPopulated(state.build, true);
 
-          // Migration: a build leveled through SLOT-2 carries a run of entries
+          // Migration: a build leveled through issues-7 carries a run of entries
           // all claiming one level. They display correctly but cascade on a
           // removal, because a level no grant can honor reads the same as no
           // level at all. Freeze the solved assignment in. Must run LAST.

@@ -1,8 +1,8 @@
 /**
- * STACKINFO-1 — the targets-hit slider, from the data that raises it to the control that shows it.
+ * data-gaps-332 — the targets-hit slider, from the data that raises it to the control that shows it.
  *
  * `getStackingInfo` read the authored `effects` object for both of its arms and opened with
- * `if (!power.effects) return null`. STRIP-1 emptied that object corpus-wide, so it answered
+ * `if (!power.effects) return null`. data-gaps-327 emptied that object corpus-wide, so it answered
  * `null` for every power on every fork and `InfoPanel.tsx` rendered no slider at all — the AoE
  * self-buff family showed its one-target value with no way to say how many foes it hit. The one
  * gate over it skipped itself on the same emptied data, which is why the regression outlasted
@@ -65,7 +65,7 @@ function authoredStackingMetadata(power: Power): boolean {
   );
 }
 
-describe('STACKINFO-1 — the slider the atoms raise', () => {
+describe('data-gaps-332 — the slider the atoms raise', () => {
   it.each(DATASET_IDS)('%s offers both arms, and neither is empty', async (server: DatasetId) => {
     await loadDataset(server);
     let perFoe = 0;
@@ -105,7 +105,7 @@ describe('STACKINFO-1 — the slider the atoms raise', () => {
     // authored metadata the old reader read. Asked of the stacking keys alone, not of the whole
     // `effects` object — 31 homecoming powers still carry an authored `stealth` or `buffDuration`,
     // and a bag being non-empty is a different fact from a bag stating a stack. This is the
-    // assertion that would have caught the regression on the day STRIP-1 landed.
+    // assertion that would have caught the regression on the day data-gaps-327 landed.
     expect(
       bagBacked,
       `${server}: ${bagBacked} slider carriers still author their own \`perTarget\` / ` +
@@ -113,11 +113,11 @@ describe('STACKINFO-1 — the slider the atoms raise', () => {
         `reader is back on the bag`,
     ).toBe(0);
     // eslint-disable-next-line no-console
-    console.warn(`[STACKINFO-1] ${server}: ${perFoe} per-foe sliders, ${stacks} stack-count sliders`);
+    console.warn(`[data-gaps-332] ${server}: ${perFoe} per-foe sliders, ${stacks} stack-count sliders`);
   }, 120000);
 });
 
-describe('STACKINFO-1 — the surface that shows it', () => {
+describe('data-gaps-332 — the surface that shows it', () => {
   let panel = '';
   beforeAll(() => {
     panel = readFileSync(join(REPO, 'src/components/info/InfoPanel.tsx'), 'utf8');
@@ -136,7 +136,7 @@ describe('STACKINFO-1 — the surface that shows it', () => {
   it('sends the setting to the key the engine adapter reads', () => {
     // `characterStateAdapter` maps `targetsHitValues[internalName]` onto each selected power's
     // `targets_hit`, which is the whole path from this control to a number on screen now that
-    // the rendered rows come from the projection (ENGLAG-1). A slider writing anywhere else
+    // the rendered rows come from the projection (data-gaps-329). A slider writing anywhere else
     // would move nothing.
     expect(panel).toContain('setTargetsHit(powerName, Number(e.target.value))');
     expect(panel).toContain('s.targetsHitValues[powerName]');

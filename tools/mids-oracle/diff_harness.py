@@ -2,15 +2,15 @@
 """
 DSH5 — oracle-backed differential harness (streams/DEDUCTIVE_SCHEMA_HARNESS.md).
 
-The production successor to the DSH1 PoC (`diff_oracle.py`). Where the PoC diffed a
+The production successor to the deductive-schema-harness-1 PoC (`diff_oracle.py`). Where the PoC diffed a
 14-power cohort on a bridge-free table proxy, DSH5:
 
   1. sweeps the WHOLE HC set — joins every Mids power (oracle, via `read_i12`) to our
      parser export by `full_name`;
-  2. keys effects by the **DSH4 canonical identity** (real `(effectType, subType,
+  2. keys effects by the **deductive-schema-harness-4 canonical identity** (real `(effectType, subType,
      pvMode, resistible)` via the tested `atomic-effect.ts` bridge — the export side
      is canonicalized once by `emit_canonical.ts`, never re-ported into Python), with
-     Mids' `Enhancement`/`et_modifies` pair re-spelled into that vocabulary (PROV-4);
+     Mids' `Enhancement`/`et_modifies` pair re-spelled into that vocabulary (data-gaps-246);
   3. checks the structural invariants (set/count equality = the collapse catcher;
      multi-type completeness; PvE/PvP twin integrity; resistibility present+correct;
      table-name + aspect/attribType agreement as advisory tiers);
@@ -81,7 +81,7 @@ COMPARABLE = {
     # Mids' catch-all for "resistance to a secondary-attribute debuff" (Acid Arrow's
     # -regen/-recovery/-endurance/etc.). Mids collapses the whole family to ResEffect
     # with a placeholder damage_type; our bridge preserves the affected attrib at
-    # aspect=Res (the documented DSH4/DSH6 boundary). We canonicalize BOTH sides to
+    # aspect=Res (the documented deductive-schema-harness-4/deductive-schema-harness-6 boundary). We canonicalize BOTH sides to
     # this bucket so the family compares by count instead of flooding UNCLASSIFIED.
     "ResEffect",
 }
@@ -91,7 +91,7 @@ COMPARABLE = {
 _RES_NATIVE = {"Defense", "Resistance", "Elusivity", "Mez", "MezResist"}
 
 # The 2026-07-05 resistible/unresistable-twin collapse cohort — must match EXACTLY
-# (DSH1 proved this). These are the harness's teeth.
+# (deductive-schema-harness-1 proved this). These are the harness's teeth.
 TWIN_GATE = {
     "controller_buff.trick_arrow.flash_arrow",
     "controller_buff.trick_arrow.poison_gas_arrow",
@@ -126,7 +126,7 @@ def norm_table(t):
 
 # The complete standard damage / positional type-sets. When an effect covers the
 # WHOLE set, Mids collapses it to a single `damage_type=None` ("all") record, while
-# our bin export lists every type explicitly (and the DSH4 bridge faithfully splits
+# our bin export lists every type explicitly (and the deductive-schema-harness-4 bridge faithfully splits
 # them per-type). To compare like-for-like, the harness folds a complete set → one
 # 'All' record on BOTH sides (Mids' convention). The resistible/unresistable twin is
 # folded independently, so it stays distinct — the whole point of the twin gate.
@@ -142,7 +142,7 @@ def oracle_subtype(et, dmg, mez):
     return None
 
 
-# --- PROV-4: Mids' Enhancement encoding -> the attribute it enhances ----------
+# --- data-gaps-246: Mids' Enhancement encoding -> the attribute it enhances ----------
 # Mids spells a strength buff as `EffectType.Enhancement` and names WHICH attribute
 # in a second field, `et_modifies`. Our export spells the attribute itself, because
 # the bridge reads aspect=Str off the attrib (atomic-effect.ts) — so `Enhancement`
@@ -194,7 +194,7 @@ def _fold_complete(recs):
     """Fold complete damage/position type-sets into a single 'All' (sub='') record,
     per (effectType, resistible) group — symmetric across oracle and export.
 
-    Both sets fold, independently. One group can hold both vectors: PROV-4's fold
+    Both sets fold, independently. One group can hold both vectors: data-gaps-246's fold
     puts defense strength in `Enhancement` alongside mez strength, and Power Boost
     carries all 8 damage types AND all 3 positions there. Folding only the first
     match left the positions unfolded on the side whose damage set was complete and
@@ -227,7 +227,7 @@ def _fold_complete(recs):
 
 def oracle_records(power, enh_fold=None):
     """Oracle effects -> canonical records. `enh_fold` (a Counter) receives the
-    PROV-4 Enhancement census: where each `et_modifies` was routed, and which ones
+    data-gaps-246 Enhancement census: where each `et_modifies` was routed, and which ones
     have no counterpart to route to."""
     recs = []
     for e in power["effects"]:
@@ -236,7 +236,7 @@ def oracle_records(power, enh_fold=None):
                          "table": e["modifier_table"], "pv": e["pv_mode"], "aspect": e["aspect"],
                          "attrib_type": e["attrib_type"], "scale": e["scale"]})
             continue
-        if e["effect_type"] == "Enhancement":               # PROV-4
+        if e["effect_type"] == "Enhancement":               # data-gaps-246
             et, sub = enhanced_attrib(e)
             if enh_fold is not None:
                 if et is None:
@@ -405,7 +405,7 @@ def main(argv=None):
     inv5_matched = inv5_table_agree = 0   # advisory table-agreement stat
     multiplicity_keys = 0         # advisory: same key present both sides, different count
     powers_with_residual = 0
-    enh_fold = Counter()          # PROV-4: where each Mids et_modifies was routed
+    enh_fold = Counter()          # data-gaps-246: where each Mids et_modifies was routed
 
     for fn in matched:
         od = details_of(oracle_records(oracle[fn], enh_fold))
@@ -476,7 +476,7 @@ def main(argv=None):
     total_comparable = inv5_matched + sum(tier_counts.values())
     rules = {
         "schema": "dsh5-oracle-divergence-rules/1",
-        # PROV-3: this was the relative path and nothing else, into a gitignored tree
+        # data-gaps-245: this was the relative path and nothing else, into a gitignored tree
         # that no longer held the file. `read_i12.provenance` is the same primitive the
         # name bridge stamps, so the two artefacts can be told apart — or told to be the
         # same database — without either of them being rerun.
@@ -506,7 +506,7 @@ def main(argv=None):
                 "tier": "advisory (Mids string skew)",
             },
         },
-        # PROV-4: Mids' `Enhancement` + `et_modifies` re-spelled in the export's
+        # data-gaps-246: Mids' `Enhancement` + `et_modifies` re-spelled in the export's
         # vocabulary. "(not comparable)" = routed correctly to a type COMPARABLE does
         # not gate (EnduranceDiscount, MaxHP, Stealth) — the same exclusion a plain
         # oracle record of that type already gets. "UNROUTED" = no MIDS_ET counterpart.
@@ -566,7 +566,7 @@ def main(argv=None):
             print("\nREGRESSION-GATE: PASS — no new UNCLASSIFIED divergence vs baseline.")
     elif not gate_fail:
         print("\nFirst-run baseline established (no --baseline given). The "
-              f"{len(unclassified)} UNCLASSIFIED signatures are the DSH6 triage worklist; "
+              f"{len(unclassified)} UNCLASSIFIED signatures are the deductive-schema-harness-6 triage worklist; "
               "commit the rules file to gate regressions.")
     return exit_code
 

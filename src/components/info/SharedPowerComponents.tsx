@@ -223,11 +223,11 @@ interface DisplayableEffect {
   /** What {@link tiers} is a quantity OF, as `resolvePowerMagnitudes` classified it. The
    *  `mag`-format rows used to re-derive this here from the raw value's shape, which put a
    *  third copy of the mez rule in the render edge and got it wrong for every row whose
-   *  `scale × table` is a magnitude rather than seconds (MEZDUR-1). */
+   *  `scale × table` is a magnitude rather than seconds (data-gaps-167). */
   quantity: MagnitudeQuantity;
   byTypeLabel?: string;
   expandedLabel?: string;
-  /** The effective duration in seconds. Set on a MAGNITUDE-valued engine mez row (ENGLAG-2);
+  /** The effective duration in seconds. Set on a MAGNITUDE-valued engine mez row (data-gaps-330);
    *  absent on a `mez_duration` row (tier IS the seconds) and on any resolver-built row.
    *  Rendered as `(8s)` beside the rank, replacing the pre-strip `durations`-map lookup. */
   duration?: number;
@@ -633,15 +633,15 @@ interface RegistryEffectsDisplayProps {
   /** Purple patch info for adjusting accuracy and damage final values */
   purplePatchInfo?: { factor: number; offset: number; toHitBonus?: number; combatModifier: number };
   /** The power's `targets_affected` — needed to read the mez FACE off the value's own
-   *  protection spelling instead of sniffing table names (MEZFACE-1). */
+   *  protection spelling instead of sniffing table names (data-gaps-168). */
   targetsAffected?: string[];
   /**
-   * Already-resolved rows, used INSTEAD of resolving `effects` here (ENGLAG-1).
+   * Already-resolved rows, used INSTEAD of resolving `effects` here (data-gaps-329).
    *
    * A surface that holds an engine projection passes `magnitudesFromProjection(...)` and gets
    * the rows the engine resolved from the atom stream. A surface that does not keeps the
    * `effects` path, which resolves whatever the display bag still carries — and since
-   * STRIP-1 that is the keys `buildDisplayEffects` mints for itself, so a power whose effects
+   * data-gaps-327 that is the keys `buildDisplayEffects` mints for itself, so a power whose effects
    * were authored on the wire renders nothing at all through it.
    *
    * The two row sources differ in one respect the render sites have to tolerate: an engine
@@ -808,8 +808,8 @@ export function RegistryEffectsDisplay({
   };
 
   // Distinguish mez PROTECTION from APPLIED mez. The FACE reads the same discriminator pair
-  // the applier credits (MEZFACE-1): the converter's protection spelling — negative scale,
-  // TSPY-8's first spelling, negative magnitude its second, an Expression-valued row — on a
+  // the applier credits (data-gaps-168): the converter's protection spelling — negative scale,
+  // data-gaps-52's first spelling, negative magnitude its second, an Expression-valued row — on a
   // power that affects no foe. The `res_boolean` table sniff this used to be was wrong in
   // both directions: every `*_Ones` armor (Bane/Crab/Wolf Spider, the SFC accolade) missed
   // the group, and a spelled foe control on a Res_Boolean table would have been kept. A bare
@@ -1071,7 +1071,7 @@ export function RegistryEffectsDisplay({
         // column and collided with the value columns. It moves to a hover
         // tooltip on the standard row instead.
         const label0 = expandedLabel || config.label;
-        // MEZFACE-1: a self-directed mez row (the caster's own root — Hibernate, Icy
+        // data-gaps-168: a self-directed mez row (the caster's own root — Hibernate, Icy
         // Bastion) states its recipient instead of reading as foe control. The protection
         // rows already say caster-facing, so the group does not earn a redundant mark.
         const label =
@@ -1094,7 +1094,7 @@ export function RegistryEffectsDisplay({
             : undefined;
           const dom = domExtra && isMezEffect(domExtra.value) ? domExtra.value : undefined;
           // The mez rank this row applies at. A duration row carries it beside the tiers
-          // (the tiers are seconds); every other `mag` row's tiers ARE the rank (MEZDUR-1).
+          // (the tiers are seconds); every other `mag` row's tiers ARE the rank (data-gaps-167).
           const ownMag = quantity.kind === 'mez_duration' ? quantity.magnitude : tiers.base;
           const rawMag = dom ? ownMag + dom.mag : ownMag;
           const magStr = Number.isInteger(rawMag) ? rawMag.toString() : rawMag.toFixed(1);
@@ -1121,7 +1121,7 @@ export function RegistryEffectsDisplay({
           // Duration-based mez (stun, hold, etc.) — magnitude is fixed, duration is enhanceable
           // `quantity` is the classification; the raw value is not consulted again. It used
           // to be re-tested here, which dropped the row for any producer that resolves the
-          // quantity without carrying an authored value (ENGLAG-1's engine rows).
+          // quantity without carrying an authored value (data-gaps-329's engine rows).
           if (quantity.kind === 'mez_duration' && archetypeId && level) {
             // Under Domination the effective hold is the tagged bonus (it stacks
             // onto the base with a longer duration), so display uses its scale/table.
@@ -1215,8 +1215,8 @@ export function RegistryEffectsDisplay({
 
           // Magnitude-valued mez, and the plain-number protection entries the `protection`
           // key expands to. The tiers are the RANK here, and the duration is the template's
-          // own — the display bag used to record it under `durations` (MEZDUR-1), but STRIP-1
-          // removed that and ENGLAG-2 moved the seconds onto the ENGINE row, which a
+          // own — the display bag used to record it under `durations` (data-gaps-167), but data-gaps-327
+          // removed that and data-gaps-330 moved the seconds onto the ENGINE row, which a
           // `mez_magnitude` row carries (`GrantedMagnitude::duration` → `ResolvedMagnitude`).
           // A `mez_magnitude` row is enhanceable on the same coupling a duration row is; an
           // expanded protection number is not.

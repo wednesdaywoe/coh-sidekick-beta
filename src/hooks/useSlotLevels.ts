@@ -5,7 +5,7 @@
  * array. A `null` entry is a slot the grant schedule could not place —
  * surface it, never substitute a number for it. Outside Level Up mode the
  * map is empty: a slot carries no level at all in free-form planning
- * (SLOT-3), and every consumer already treats a missing entry as nothing to
+ * (issues-3), and every consumer already treats a missing entry as nothing to
  * show. Recalculates whenever the build or the mode changes.
  */
 

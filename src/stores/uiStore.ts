@@ -611,7 +611,7 @@ interface UIActions {
    *  columns' weights untouched. */
   setPlannerSectionWeights: (view: keyof PlannerLayoutState, weights: Partial<Record<PlannerSectionId, number>>) => void;
   /** Set vertical fr-weights (`rowWeight`) for one or more stacked sections
-   *  (LAY11 vertical resize). Same merge semantics as `setPlannerSectionWeights`
+   *  (rearrangeable-layout-11 vertical resize). Same merge semantics as `setPlannerSectionWeights`
    *  but on the within-column axis. */
   setPlannerSectionRowWeights: (view: keyof PlannerLayoutState, rowWeights: Partial<Record<PlannerSectionId, number>>) => void;
   /** Toggle a single planner section between collapsed (header only) and expanded. */
@@ -1158,7 +1158,7 @@ export const useUIStore = create<UIStore>()(
       // Settings
       // Clamped to the crafted-record roster the export names, not to a typed
       // band: 51-53 were never recipes, and a persisted one from before this
-      // read the export comes back as the ceiling (BOOST-6).
+      // read the export comes back as the ceiling (data-gaps-6).
       setGlobalIOLevel: (level) => {
         const craftLevels = getCommonIOLevels();
         set({
@@ -2170,7 +2170,7 @@ export const useUIStore = create<UIStore>()(
             const kept = saved.filter((s) => known.has(s.id));
             const present = new Set(kept.map((s) => s.id));
             const missing = defaults.filter((s) => !present.has(s.id));
-            // reconcilePlannerColumns backfills `column` for legacy (pre-LAY11)
+            // reconcilePlannerColumns backfills `column` for legacy (pre-rearrangeable-layout-11)
             // entries and appends new sections in fresh trailing columns.
             return reconcilePlannerColumns(kept, missing);
           };

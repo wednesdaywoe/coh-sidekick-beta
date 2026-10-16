@@ -247,7 +247,7 @@ export function getIOSetsForCategory(category: IOSetCategory): IOSet[] {
   // (`BoostSet.GroupName`), so they compare as strings. The lookup table that used
   // to sit between them mapped all 56 headings to themselves and answered
   // `undefined` for anything it had not been told about, which dropped a fork's
-  // sets from the picker silently rather than failing — see BOOST-2.
+  // sets from the picker silently rather than failing — see data-gaps-40.
   return Object.values(_activeRegistry()).filter((set) => set.type === category);
 }
 

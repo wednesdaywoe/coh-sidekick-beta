@@ -5,7 +5,7 @@
 # empty slot with no error; a malformed inherent block throws inside LoadBuild's
 # try/catch and the build comes up looking merely incomplete. Reading the C#
 # tells you what COULD happen — only running it tells you what did. Both bugs
-# behind MBDEXPORT-1 were found this way after source reading had produced two
+# behind data-gaps-261 were found this way after source reading had produced two
 # equally plausible stories.
 #
 #   ./mids-wine.sh path/to/build.mbd     # open a build

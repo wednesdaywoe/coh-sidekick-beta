@@ -14,7 +14,7 @@ import { Hibernate } from '@/data/datasets/homecoming/generated/powersets/tanker
 
 /**
  * Regression guards for the Trick Arrow effect-collapse fixes (2026-07-05),
- * restated atom-native (STRIP-1 — the generated powerset carries `atoms`, not
+ * restated atom-native (data-gaps-327 — the generated powerset carries `atoms`, not
  * an `effects` bag, so every `p.effects.<slot>` read this file made no longer
  * exists).
  *

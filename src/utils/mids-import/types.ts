@@ -77,7 +77,7 @@ export interface MidsImportSummary {
   powersFailed: number;
   /**
    * Enhancements the finished build holds. Every enhancement the file carries is in
-   * this count or in `enhancementsFailed` — MBDIMPORT-5 was six that were in neither,
+   * this count or in `enhancementsFailed` — data-gaps-235 was six that were in neither,
    * riding out of the build on a power the reassign guard was right to refuse.
    */
   enhancementsImported: number;

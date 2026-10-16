@@ -5,9 +5,9 @@ import { isBuyablePick } from '@/data/power-requires';
 import type { Power } from '@/types';
 
 /**
- * SHOWFLAGS-2 — hidden from the Manage screen is not the same as not for sale.
+ * data-gaps-56 — hidden from the Manage screen is not the same as not for sale.
  *
- * SHOWFLAGS-1 taught the converter to classify a power as `hiddenPassive`/`hiddenAuto` from
+ * data-gaps-57 taught the converter to classify a power as `hiddenPassive`/`hiddenAuto` from
  * its `ShowInManage kFalse` + `MaxBoosts 0` flags, and both planners then read that class as
  * "never a pick". It isn't one: `ShowInManage` says only that the power gets no row on the
  * enhancement Manage screen, which every slotless power carries whether or not the game
@@ -22,7 +22,7 @@ import type { Power } from '@/types';
  * Fate Sealed are not.
  *
  * Three legs, because the first two grade the rule and only the third would have caught the
- * original: SHOWFLAGS-1's gates asserted that hidden powers stay out of the pick list, which
+ * original: data-gaps-57's gates asserted that hidden powers stay out of the pick list, which
  * is half a question, and stayed green over a corpus where the other half was wrong.
  */
 
@@ -41,7 +41,7 @@ function hiddenAtPickableLevel(powers: Power[]): Power[] {
 /**
  * Floors per dataset, measured 2026-08-26. A zero on either side means that side stopped
  * being graded — absence and "the classifier went unreachable again" have the same shape,
- * and only the floor separates them (the SHOWFLAGS-1 lesson, applied to both halves).
+ * and only the floor separates them (the data-gaps-57 lesson, applied to both halves).
  */
 const FLOORS: Record<(typeof DATASETS)[number], { handedOver: number; sold: number }> = {
   // Shockwaves ×4 handed over; Adaptation ×5 + Staff Mastery ×3 + Fate Sealed sold.
@@ -56,7 +56,7 @@ const FLOORS: Record<(typeof DATASETS)[number], { handedOver: number; sold: numb
 /**
  * The VEAT branch sets, the only powersets that legitimately offer fewer than nine picks —
  * they are half-sets a character specializes into at 24, not full primaries. Named rather
- * than thresholded so a NEW short set is a red, which is exactly what SHOWFLAGS-2 produced.
+ * than thresholded so a NEW short set is a red, which is exactly what data-gaps-56 produced.
  */
 const SHORT_BY_DESIGN = /^arachnos-(soldier|widow)\//;
 
@@ -80,7 +80,7 @@ for (const ds of DATASETS) {
       expect(graded).toBeGreaterThanOrEqual(FLOORS[ds].handedOver);
     });
 
-    it('a hidden mechanic the game SELLS stays a pick (SHOWFLAGS-2)', () => {
+    it('a hidden mechanic the game SELLS stays a pick (data-gaps-56)', () => {
       let graded = 0;
       const withheld: string[] = [];
       for (const [id, ps] of Object.entries(getAllPowersets())) {

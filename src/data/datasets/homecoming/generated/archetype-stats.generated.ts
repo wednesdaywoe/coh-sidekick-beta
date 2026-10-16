@@ -15,7 +15,7 @@
  * and the +400% endurance-discount cap), plus movementFloor/movementBase/
  * movementCapTable (Phase 5 — the travel scales and the pair of bounds ClampCur
  * holds them between, in scale units: 1.0 = 21 ft/s for the speeds, 4 ft for
- * jump height), and the attribute ceilings of Phase 6 (CAPS-1): toHit/
+ * jump height), and the attribute ceilings of Phase 6 (data-gaps-183): toHit/
  * regeneration/recovery as a base scalar plus a per-level cap table, the single
  * per-level defenseCeilingTable with its defenseFloor scalar (a real clamp far
  * ABOVE the purple-patch softcap, which is a threshold and stays separate), and
@@ -51,7 +51,7 @@ export interface ArchetypeBinaryStats {
   enduranceCap: number;
   /** The lowest scale ClampCur lets a debuff push each axis to — AttribMin.
    *  0.1 run/fly and 0.0 jump on every player class, so a grounding power
-   *  leaves a crawl rather than a negative speed (DATA-GAP-REGISTER MOVEMIN-1). */
+   *  leaves a crawl rather than a negative speed (DATA-GAP-REGISTER data-gaps-193). */
   movementFloor: MovementAxes;
   movementBase: MovementAxes;
   movementCapTable: MovementAxisTables;
@@ -66,7 +66,7 @@ export interface ArchetypeBinaryStats {
    *  scalar, −1.0 on every player archetype. The game writes "your defense
    *  is negated" as a saturating magnitude (Thunderspy Organic Armor states
    *  Defense −500 under Defensive Adaptation), so without this the debuff
-   *  resolves to nothing at all (DATA-GAP-REGISTER ATTRMIN-1). */
+   *  resolves to nothing at all (DATA-GAP-REGISTER data-gaps-194). */
   defenseFloor: number;
   maxEnduranceTable: number[];
   maxEnduranceCapTable: number[];

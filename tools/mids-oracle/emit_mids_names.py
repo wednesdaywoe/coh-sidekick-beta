@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Emit Mids Reborn's power NAME table for one dataset — the input to
-`scripts/convert-mids-name-map.cjs` (DATA-GAP MBDIMPORT-2).
+`scripts/convert-mids-name-map.cjs` (DATA-GAP data-gaps-232).
 
 Why this exists at all, given CLAUDE.md's "source from the binary export, not
 second-hand Mids tables": the question here is not a game fact. It is *what Mids
@@ -56,7 +56,7 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 # drop's own author rebuilt the powers database and left the enhancement one alone. Who built
 # it is unrecorded; Mids Reborn's releases carry Generic, Homecoming and Rebirth, so it is not
 # from there. Stated rather than assumed, because a header reading "Mids Reborn Powers
-# Database" names no fork and a version alone names none — see DATA-GAP MBDEXPORT-2.
+# Database" names no fork and a version alone names none — see DATA-GAP data-gaps-262.
 #
 # The drop lives in BOTH repos now. It was in the beta alone until 2026-09-10, and this
 # script's default path (`REPO_ROOT/Thunderspy/I12.mhd`) therefore resolved in one twin and
@@ -64,7 +64,7 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fi
 # gone. A gitignored vendored directory is per-checkout; check both before calling one empty.
 DEFAULT_MHD = {
     # Spelled in `read_i12` so the DSH5 harness and this bridge read the same file by
-    # construction rather than by two copies of one string agreeing (PROV-3).
+    # construction rather than by two copies of one string agreeing (data-gaps-245).
     "homecoming": read_i12.DEFAULT_MHD,
     "rebirth": os.path.expanduser(
         "~/Games/mids-reborn/drive_c/MidsReborn/Databases/Rebirth/I12.mhd"
@@ -143,7 +143,7 @@ def main(argv=None) -> int:
     prov = provenance(mhd_path, buf, total)
 
     # Keyed by Mids' OWN spelling of `group.set`, case and all. Folding it here is what
-    # MBDEXPORT-6 was: the writer composes a `PowerName` out of these two segments, Mids
+    # data-gaps-255 was: the writer composes a `PowerName` out of these two segments, Mids
     # resolves one with an ordinal `==`, and a lower-cased path binds to nothing. Two
     # spellings that differ only in case would collide — neither database has such a pair,
     # and the assert below says so rather than leaving it to hold by luck.
@@ -183,13 +183,13 @@ def main(argv=None) -> int:
         "sha256": prov["sha256"],
         "powerCount": prov["powerCount"],
         # The marker a reader checks before trusting a key's case. A dump written before
-        # MBDEXPORT-6 carries folded keys and no marker, and its case is unrecoverable
+        # data-gaps-255 carries folded keys and no marker, and its case is unrecoverable
         # without the `.mhd` — which is a different answer from "Mids spells it that way".
         "powersetKeys": "literal",
         # `Class_X` -> Mids' name for that archetype's own inherent. A separate key rather
         # than rows in `powersets`, because it answers a different question with a different
         # join: these are not two spellings of one name but the one power of several that
-        # Mids will actually place. DATA-GAP MBDEXPORT-24.
+        # Mids will actually place. DATA-GAP data-gaps-24.
         "archetypeInherents": inherents,
         "powersets": {k: sets[k] for k in sorted(sets, key=str.lower)},
     }

@@ -76,7 +76,7 @@ interface Census {
  * deferred: seven execution stats and `damage` survive the strip because a second arm already
  * answers, and no other dying slot has one.
  *
- * A pair leaving this set is the ENDSTAT-1 failure repeating — a fallback the code documents
+ * A pair leaving this set is the data-gaps-159 failure repeating — a fallback the code documents
  * and the data does not honour — so it reds here before BPORT7 ships it.
  */
 const COVERED_ARMS: string[] = [
@@ -119,7 +119,7 @@ const COVERED_ARMS: string[] = [
  *    `authoredCycle` arm BPORT2 kept deliberately and pinned by census, and `inherents.ts`'s
  *    is `getDominationInfo` — canonical reads it off the inherent power through
  *    `@/data/archetype-inherent`, a module this fork does not have. Both wait on the same
- *    thing: PARTSTAT-2, the join from an archetype's declared inherent to the
+ *    thing: data-gaps-277, the join from an archetype's declared inherent to the
  *    `Inherent.Inherent` power that holds it, which is canonical-only.
  *
  * What was left, and what BPORT6 carried: `power-row-utils` (the whole predicate, atom-native
@@ -127,7 +127,7 @@ const COVERED_ARMS: string[] = [
  * (`collectStrengthBuffs` onto `specialBuffValue` + `stackCapOf`). The `summon` cluster was
  * BPORT7's by BPORT3's verdict — reader and writer crossed together once
  * `convert-powerset.cjs` lifted the slot — and left this map with the crossing: five files
- * dropped out, and what remains is BPORT6's pair, still waiting on PARTSTAT-2.
+ * dropped out, and what remains is BPORT6's pair, still waiting on data-gaps-277.
  */
 const CANONICAL_MIGRATED_FIRST: Record<string, string[]> = {
   // BPORT7's regen emptied the bag; the beta has no bag-only seams, so nothing carries.
@@ -147,7 +147,7 @@ const CANONICAL_MIGRATED_FIRST: Record<string, string[]> = {
  * `power-row-utils` went atom-native outright and imports more than canonical's copy does now
  * (`absorbMaxHPFractionValue`, which canonical has landed and not yet wired into its own
  * toggle predicate). `inherents.ts` is the one left, and its two symbols are the
- * `getDominationInfo` read that waits on PARTSTAT-2 — an entry here, not an omission.
+ * `getDominationInfo` read that waits on data-gaps-277 — an entry here, not an omission.
  */
 const ATOM_ARM_BEHIND = [
   'src/utils/calculations/inherents.ts',
@@ -335,7 +335,7 @@ describe('BPORT4 census — what the strip costs, per seam', () => {
  * a frozen pre-strip dataset as its input, or its output frozen into fixtures. Both were priced
  * against "this file has no migrated twin to carry" — and it has one. PROD7 quarantined the
  * legacy calc under a new name on this side only; canonical never split its copy and migrated it
- * in place through its own STRIP-1. Every sibling question here is keyed by path, so the twin
+ * in place through its own data-gaps-327. Every sibling question here is keyed by path, so the twin
  * answered `absent` 165 times and the census reported the strongest verdict available without
  * ever performing the lookup.
  *
@@ -397,7 +397,7 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // it are ABSORB, the one family BPORT11 declined to carry. BPORT7 A2 carried it: the oracle
     // resolves the MaxHP-fraction probe first, the flat fold second, the pet-aura mint last —
     // the shape canonical's own strip settled on — and the per-foe increment neither reader can
-    // express is the named ABSORB-4 residual, which `serverParity` excludes by key and logs
+    // express is the named data-gaps-163 residual, which `serverParity` excludes by key and logs
     // unverified rather than letting it red the walk.
     //
     // The carry does NOT count the arms it keeps: `syntheticEffects(power)?.rechargeBuff`
@@ -457,7 +457,7 @@ describe('BPORT5 — what grades the engine once the bag is gone', () => {
     // `isDebuffAtom` are `carries_combat_debuff`'s; all four live in `character-totals.ts` on
     // this side, so they read as "the oracle does not call them" and are an artifact of PROD7's
     // split rather than work owed. The two absorb readers that stood in this gap until now are
-    // carried by BPORT7 A2 — the per-foe channel they cannot express is the ABSORB-4 residual.
+    // carried by BPORT7 A2 — the per-foe channel they cannot express is the data-gaps-163 residual.
     expect(gap.sort()).toEqual(['SPECIAL_BUFF_STACK', 'atomsOf', 'isDebuffAtom', 'specialBuffValue']);
     // And what has landed, which is the half that must not silently come back.
     for (const carried of ['accuracyBuffValue', 'rechargeBuffValue', 'rangeBuffValue',

@@ -3,7 +3,7 @@
  *
  * The toggles are derived from the exported Accolades powerset (see @/data/accolades);
  * each stands alone (on/off), with a hero/villain/any faction label. There is no mutual
- * exclusion — the real activateRequires gates don't 1:1-pair (DATA-GAP ACCOLADE-1).
+ * exclusion — the real activateRequires gates don't 1:1-pair (DATA-GAP data-gaps-44).
  */
 
 import { useBuildStore } from '@/stores';

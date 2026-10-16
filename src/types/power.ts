@@ -32,11 +32,11 @@ export interface ScaledEffect {
    *  against `pDef->characterClassName` and passes the summoner alongside only for the
    *  `Requires` evaluation (`uiPowerInfo.c` `power_AddPetEffects`). The mark travels ON the
    *  value rather than being decided by the reader, because one bag holds both kinds — and
-   *  after the ENT-8 split one KEY can hold rows from two pets of different classes
-   *  (ENT-10). */
+   *  after the data-gaps-103 split one KEY can hold rows from two pets of different classes
+   *  (data-gaps-105). */
   petClass?: string;
   /** The template's IgnoreStrength flag, carried on the VALUE rather than only in a
-   *  `<key>Unenhanced` slot name (ENT-4). A marked value takes no enhancement and no
+   *  `<key>Unenhanced` slot name (data-gaps-99). A marked value takes no enhancement and no
    *  global: it renders flat and is tagged in the Info panel. */
   ignoreStrength?: boolean;
   /** Per-stack scale increment for stacking buffs (per-target AoE or damage-triggered).
@@ -57,7 +57,7 @@ export interface ScaledEffect {
    *  holds the longest-lived instance; each variant is rendered as its own row
    *  with its own duration. Set by the converter's duration-aware accumulate. */
   durationVariants?: { scale: number; duration: number }[];
-  /** Per-effect projection of the DSH4 `eToWho` field: `'Self'` marks a debuff
+  /** Per-effect projection of the deductive-schema-harness-4 `eToWho` field: `'Self'` marks a debuff
    *  value that actually lands on the CASTER (Granite Armor's -damage/-recharge/
    *  -speed, Rage's crash, Reaction Time's self-slow) and so counts against the
    *  caster's own totals. Absence means the value is a foe/display-only debuff.
@@ -125,7 +125,7 @@ export function isScaledEffect(value: unknown): value is ScaledEffect {
 }
 
 /**
- * A debuff value that lands on the caster (DSH4 `eToWho === 'Self'`). Only the
+ * A debuff value that lands on the caster (deductive-schema-harness-4 `eToWho === 'Self'`). Only the
  * object-shaped ScaledEffect form carries the marker — bare-number debuff slots
  * are foe/display-only by construction (the converter's self-penalty branches
  * always emit an object). Replaces the old bag-level `selfPenalty` gate.
@@ -209,7 +209,7 @@ export interface DotEffect {
 export interface MezEffect {
   /** Mez magnitude (determines what rank of enemies are affected) */
   mag: number;
-  /** Duration scale, SIGNED (MEZFACE-1): the sign is the protection spelling, so a reader
+  /** Duration scale, SIGNED (data-gaps-168): the sign is the protection spelling, so a reader
    *  needs no table-name sniff to tell an armor's status protection from applied control. */
   scale: number;
   /** AT table for duration calculation */
@@ -224,13 +224,13 @@ export interface MezEffect {
    * than a value. `'Expression'`: the magnitude comes from a stack-machine program, so
    * neither product is the answer.
    *
-   * Absent on a bundle minted before MEZDUR-1; a reader must say so rather than pick one.
+   * Absent on a bundle minted before data-gaps-167; a reader must say so rather than pick one.
    */
   attribType?: AttribType;
   /** See {@link ScaledEffect.ignoreStrength} — a mez whose duration takes no enhancement. */
   ignoreStrength?: boolean;
   /** `'Self'` when the atom is directed at the caster — the self-root (Hibernate, Icy
-   *  Bastion) that holds the caster still, not applied control (MEZFACE-1). Absent means
+   *  Bastion) that holds the caster still, not applied control (data-gaps-168). Absent means
    *  the atom is not caster-directed. */
   toWho?: string;
 }
@@ -326,7 +326,7 @@ export interface MovementByType {
   fly?: NumberOrScaled;
   movementControl?: NumberOrScaled;
   movementFriction?: NumberOrScaled;
-  // The paired IgnoreStrength halves (FLYPOOL-1): when an axis carries an
+  // The paired IgnoreStrength halves (data-gaps-175): when an axis carries an
   // enhanceable row AND an IgnoreStrength twin, the twin lives under the
   // `<axis>Unenhanced` split-slot spelling instead of clobbering the axis.
   runSpeedUnenhanced?: NumberOrScaled;
@@ -411,24 +411,24 @@ export interface ResolvedPseudoPetEffect {
   /** IgnoreStrength: the player's enhancements/buffs do NOT scale this — show informational/unenhanced. */
   ignoreStrength?: boolean;
   /** Mez rows only: the row is directed at the CASTER — a self-root, not applied control.
-   *  Rides the pseudo-pet merge the same way `attribType` does (MEZFACE-1). */
+   *  Rides the pseudo-pet merge the same way `attribType` does (data-gaps-168). */
   toWho?: string;
   /** Mode-gated: only applies while the power is in its empowered/triggered state
    *  (Storm Cell's lightning effects — "while High Winds is active"). */
   conditional?: boolean;
   /** Which movement axis a `Slow` / `MovementCapDebuff` row names (`runSpeed`,
    *  `flySpeed`, `jumpSpeed`, `jumpHeight`). A pet row belongs in the same key as its
-   *  parent-power twin, and the parent's rows are per axis (ENT-5), so the axis has to
+   *  parent-power twin, and the parent's rows are per axis (data-gaps-100), so the axis has to
    *  travel with the row rather than collapse into one ambiguous "Slow". */
   axis?: string;
   /** The damage types a `ResistanceBuff` row names, lower-cased. One modifier moves every
-   *  type it names at one scale; a row naming none folds into no total at all (ENT-9). */
+   *  type it names at one scale; a row naming none folds into no total at all (data-gaps-104). */
   resistanceTypes?: string[];
   /** The defense positions and damage types a `DefenseBuff` row names, lower-cased. Same
    *  shape and same reason as `resistanceTypes`: one modifier, every position it names. */
   defenseTypes?: string[];
   /** Which face of Absorb an `Absorb` row moves (`Maximum`, `Current`). Absorb is a pool
-   *  with a cap, and a row raising the cap is not a row filling it (ENT-17). */
+   *  with a cap, and a row raising the cap is not a row filling it (data-gaps-17). */
   absorbAspect?: string;
 }
 
@@ -702,7 +702,7 @@ export interface PowerEffects {
    *  reduction, keyed like `movement`. Chilling Embrace states both faces of
    *  `runSpeed` from one template (0.7×Melee_Slow at Current, −1.0×
    *  Melee_SpeedRunning at Maximum), and while both wrote `slow` the later one
-   *  replaced the earlier (ENT-5). Self-directed entries carry `toWho: 'Self'`
+   *  replaced the earlier (data-gaps-100). Self-directed entries carry `toWho: 'Self'`
    *  and reach the movement globals the way `slow`'s do. */
   movementCapDebuff?: MovementByType;
   /** Stealth effects */
@@ -914,12 +914,12 @@ export interface GrantEdge {
    *  resolves that default, so it is always present. */
   count: number;
   /** The effect group chain's composed gate, as the verbatim token array every other expression
-   *  on the wire uses (COND-8). Absent = unconditional. */
+   *  on the wire uses (data-gaps-123). Absent = unconditional. */
   condition?: string[];
   /** The group chain's composed roll, emitted only when it is below 1. */
   chance?: number;
   /** Seconds after activation the edge applies, group chain plus template delay. Absent = at
-   *  cast. A delayed edge is a crash-shaped state change (DELAY-1). */
+   *  cast. A delayed edge is a crash-shaped state change (data-gaps-62). */
   delaySeconds?: number;
   /** The granted record's own `lifetime`: wall-clock seconds from grant to removal. Absent =
    *  the record authors no wall-clock limit. */
@@ -948,7 +948,7 @@ export interface Power {
    * only a `Grant_Power` aimed at the toggle in the `Prestige` category, and
    * this power IS that toggle. Provenance — nothing reads it — but it is what
    * tells a walked grant apart from a power a fork authored inline (Rebirth
-   * does the latter with the same two powers). See INHERENT-6.
+   * does the latter with the same two powers). See data-gaps-31.
    */
   grantedBy?: string;
   /** The caster-state writes this power performs (grant/revoke edges). Absent on the powers
@@ -987,7 +987,7 @@ export interface Power {
    * says "whoever this power affects" rather than naming anybody: Static Shield
    * and Wormhole both author a `Teleport` resistance that way, and only this
    * field distinguishes the caster's own protection from the immunity the yanked
-   * foe gets (DATA-GAP-REGISTER MEZRES-3). The power's `targetType` cannot — a
+   * foe gets (DATA-GAP-REGISTER data-gaps-187). The power's `targetType` cannot — a
    * PBAoE that teleports foes is `targetType: 'Self'` too (Shadow Slip).
    *
    * Omitted when the export states nothing, so absent stays distinguishable from
@@ -1046,7 +1046,7 @@ export interface Power {
    * jumps to next (bin field 43b). Electrical Affinity circuits use it to pick
    * the neediest ally (`kHitPoints%` / `kEndurance%` priority) or the nearest
    * one (`prevdistance`). Carried verbatim from the binary as the token list the
-   * wire holds (COND-8); the Info panel humanizes the known patterns. Absent on
+   * wire holds (data-gaps-123); the Info panel humanizes the known patterns. Absent on
    * non-chain powers.
    */
   chainTargetExpression?: string[];
@@ -1054,7 +1054,7 @@ export interface Power {
    * MaxTargetsExpr — a computed target-cap RPN (bin field 38) that overrides the
    * static `stats.maxTargets` when its condition holds (e.g. the circuits' cap
    * grows while the Static buff is stacked; a Tanker Gauntlet attack's cap).
-   * A token list, like every other expression on the wire (COND-8). Absent
+   * A token list, like every other expression on the wire (data-gaps-123). Absent
    * unless the cap is conditional.
    */
   maxTargetsExpression?: string[];
@@ -1089,7 +1089,7 @@ export interface Power {
    * parse table (`powers_load.c:2192`) right after `StrengthsDisallowed`, ahead of
    * HC's inserted `GlobalStrengthsDisallowed`; the Parse6 reader used to stop
    * short of it, so Rebirth and Thunderspy exported an all-zero column that read
-   * as absence (PPM-3, recovered 2026-08-03).
+   * as absence (data-gaps-112, recovered 2026-08-03).
    *
    * Only ever `true` — absence is the other state, so the type carries no `false`.
    */
@@ -1104,7 +1104,7 @@ export interface Power {
    * recharge. Sparse and only ever `false` — the flag's one authored value is
    * `kNone`, so absence means procs roll normally. Homecoming only: stock Parse6
    * has no such word (Rebirth), and Thunderspy carries the word but authors no
-   * `kNone` (TSPY-5). Read through `powerFiresProcs`, the one place the rule lives.
+   * `kNone` (data-gaps-73). Read through `powerFiresProcs`, the one place the rule lives.
    *
    * HC authors it on 165 powers, in two groups that mean different things to a
    * player:
@@ -1244,13 +1244,13 @@ export interface Power {
    * entity table has no record. Absent when the power summons nothing.
    *
    * A converter VERDICT built with the whole power in view, not a projection of the atoms: which
-   * `EntCreate` row is the power's window (ENT-14), how repeated rows aggregate into `entities`
+   * `EntCreate` row is the power's window (data-gaps-14), how repeated rows aggregate into `entities`
    * with counts, which P-hash resolves to which sibling, which redirect list names a real entity
-   * (ENT-16), and whether a tier-gated summon rebuilds at all.
+   * (data-gaps-16), and whether a tier-gated summon rebuilds at all.
    *
    * It rode inside {@link effects} and had no other address until 2026-08-29, so retiring that
    * bag took the pets with it and 400+ summoners per fork went dark — no pet on the display, and
-   * the buff-pet aura fold at zero on all four forks (DATA-GAP-REGISTER ENT-22). Every partition
+   * the buff-pet aura fold at zero on all four forks (DATA-GAP-REGISTER data-gaps-22). Every partition
    * writes it here now: powersets, pools, epics, inherents and accolades alike, so which powers
    * show their pets stops depending on which bags a strip left behind.
    */
@@ -1261,8 +1261,8 @@ export interface Power {
    * wire holds — Homecoming's `kEngaged … Experienced_Marksman …`, the forks'
    * `['cur.kToHit', 'source>', '.97', '>=']` — evaluated by the engine against the build. No
    * threshold is re-derived anywhere in the pipeline; matching one fork's gate text is what
-   * left two forks with no fast form (SNIPE-2). Tokens rather than one joined string because
-   * a joined gate cannot be split back apart (COND-8).
+   * left two forks with no fast form (data-gaps-146). Tokens rather than one joined string because
+   * a joined gate cannot be split back apart (data-gaps-123).
    */
   quickSnipe?: {
     condition: string[];
@@ -1272,7 +1272,7 @@ export interface Power {
      * The fast form's own `atoms`, in the same compact wire form as `Power.atoms`. The engine
      * resolves projected damage from the atom list and reads `damage` only for display, so a
      * form that carried only `damage` swapped the cast and left the slow form's charged hit
-     * standing — about twice the fast form's, on Homecoming (SNIPE-3).
+     * standing — about twice the fast form's, on Homecoming (data-gaps-147).
      */
     atoms?: EncodedAtom[];
   };
@@ -1336,7 +1336,7 @@ export interface Power {
   excludes?: string[];
   /**
    * Plan B, Phase 0 — the power's effects as the pre-projection **atom list**
-   * (DSH4 `AtomicEffect[]`), the same list `templatesToAtoms` feeds to the
+   * (deductive-schema-harness-4 `AtomicEffect[]`), the same list `templatesToAtoms` feeds to the
    * `effects` bag projection. Carried in the compact positional `EncodedAtom`
    * wire form (see `src/data/core/atomic-effect.ts`); decode with `decodeAtoms`.
    *
@@ -1460,7 +1460,7 @@ export interface ConditionalEffect {
    * Domination bonus a Dominator gets from Cross Punch is simply not there for anyone
    * else holding the same pool power. The Rust engine enforces it in
    * `coh_data::conditional_for_class`; `expandActiveConditionals` is the twin's
-   * enforcement point (DATA-GAP-REGISTER COND-4, COND-13).
+   * enforcement point (DATA-GAP-REGISTER data-gaps-131, data-gaps-122).
    */
   casterArchetypes?: string[];
   /** Damage entries that apply on top of base damage when active. */

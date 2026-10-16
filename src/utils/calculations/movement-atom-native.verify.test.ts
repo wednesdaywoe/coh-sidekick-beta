@@ -143,15 +143,15 @@ describe('atom-native movement — Thunderspy travel powers (the blackout fix)',
   // `Melee_SpeedFlying` buffs with a `Melee_Ones` companion, and — unlike HC, which
   // types that companion aspect=Maximum so it routes to the cap-bump slot — tspy
   // types it Current, so it belongs in `flySpeed` too. The 0.8 companion was
-  // invisible until the parser read every AttribMod in an element (TSPY-4); the
+  // invisible until the parser read every AttribMod in an element (data-gaps-74); the
   // aspect is not a misread (tspy's movement aspect distribution matches HC and
   // Rebirth corpus-wide).
   //
   // This test used to assert only "a table-backed, non-zero fly speed", deliberately
   // declining to say which of the rows won last-write-wins — the honest claim while
-  // the axis held one slot. MOVEMAP-1 split it, so all three rows survive and the
+  // the axis held one slot. data-gaps-198 split it, so all three rows survive and the
   // claim can be the whole recovery rather than the fact that some of it happened.
-  // See DATA-GAP-REGISTER TSPY-4 and MOVEMAP-1.
+  // See DATA-GAP-REGISTER data-gaps-74 and data-gaps-198.
   it('Fly resolves every one of its fly-speed buffs (was +0, then was one of three)', () => {
     const fly = tspyPool('flight', 'Fly');
     const mv = movementBuffValue(fly)!;

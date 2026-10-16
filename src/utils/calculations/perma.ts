@@ -16,7 +16,7 @@
  *   permaPercent   = (netStrength - 1) / rechargeNeeded * 100  (0% = no bonuses, 100% = perma)
  *   effectiveRecharge = baseRecharge / netStrength
  *
- * Every input comes from the atom stream (PERMA-2, ported from the 1.0 fork 2026-09-04).
+ * Every input comes from the atom stream (data-gaps-155, ported from the 1.0 fork 2026-09-04).
  * The window used to be read off the `effects` bag — a `durations` map keyed by bag slot,
  * gated behind `if (!power.effects) return false` — so it answered "not eligible" for every
  * bagless power, which is what the whole corpus becomes once the writer-side strip lands here
@@ -25,7 +25,7 @@
  * derives its window from `window_slots`, a mirror of the converter's slot routing, and this
  * reads the atoms. Measured old-rule-vs-new over 21,372 entries on four forks, 0 powers lose
  * eligibility and 57 rows gain it. The two places the mirror could not follow the atoms were
- * PERMA-4, closed 2026-09-05 in the engine — the redirect stamp below and a self-directed debuff
+ * data-gaps-154, closed 2026-09-05 in the engine — the redirect stamp below and a self-directed debuff
  * outside the mirror's four penalty slots — so what remains between the two engines is the
  * vendored artifact's lag, rostered in `powerProjectionParity`'s `MIRROR_BLIND_ROWS`.
  */
@@ -208,7 +208,7 @@ const DURATION_MATCH_TOLERANCE = 1e-3;
  * as "reaches the caster", so missing evidence can never manufacture a veto.
  * Every named recipient goes through `reachesCaster`: the anchored ones answer
  * for themselves, and a `Target` atom resolves through the power's own
- * `targetsAffected` (TARGETS-3). That join replaces the old `targetType`
+ * `targetsAffected` (data-gaps-63). That join replaces the old `targetType`
  * foe-guess, which read "whoever this power is aimed at" as "an enemy" and only
  * survived because the archetypal perma powers carry `targetType: 'Self'`.
  */
@@ -224,7 +224,7 @@ function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): bo
  *
  * The sibling above and this one ask the same question under opposite burdens of proof, which
  * is why the file carries both. {@link atomReachesCaster} resolves a named recipient through
- * `reachesCaster`'s TARGETS-3 join, because `recastVerdict` is issuing a CLAIM about how a
+ * `reachesCaster`'s data-gaps-63 join, because `recastVerdict` is issuing a CLAIM about how a
  * recast combines and a guess there prints a wrong badge. This one decides whether to VETO a
  * window, so an absent recipient reads as reaching the caster: missing evidence can never
  * delete a window (Rule 1).
@@ -234,7 +234,7 @@ function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): bo
  * false for a list that is not there as readily as for one naming somebody else.
  *
  * Which list resolves the pronoun is `ownerTargets` first and the power's own only after
- * (TARGETS-3, and the same order {@link reachesCaster} reads them in). `ownerTargets` is stamped
+ * (data-gaps-63, and the same order {@link reachesCaster} reads them in). `ownerTargets` is stamped
  * by the collectors exactly when a template was pulled out of ANOTHER power's file, so on a
  * redirect it carries the executed power's recipients rather than the caster's aim. Fulcrum
  * Shift is the case that names itself: the parent is `targetsAffected: ['Foe']` and its eight
@@ -253,13 +253,13 @@ function atomReachesCaster(atom: AtomicEffect, power: Power | SelectedPower): bo
  * positive one; the negative direction is a proof.
  *
  * Both halves cost a shipped ring. Reading the stamped list leniently gives Recall Friend and
- * Shadow Recall a 1.5s ring off the TELEPORTED ally's translucency — the rings PERMA-3 had just
+ * Shadow Recall a 1.5s ring off the TELEPORTED ally's translucency — the rings data-gaps-156 had just
  * removed — and hands Brainstorm's Adrenalin Boost a 90s window stamped `['DeadPlayerFriend']`
- * (PERMA-4). Reading the power's own list leniently hands the caster every ally-only buff's
+ * (data-gaps-154). Reading the power's own list leniently hands the caster every ally-only buff's
  * clock, because such a power names `Friend` and no foe at all: 47 power entries over 22
  * (fork, power) pairs drew a ring on a buff nobody holds — Adrenalin Boost, Painbringer, Amp Up,
  * Fortify Pack, Experimental Injection, Mutation, Elixir of Life, Thunderspy's Motivate and
- * Discipline Allies and its two teleports (PERMA-5, closed 2026-09-05;
+ * Discipline Allies and its two teleports (data-gaps-153, closed 2026-09-05;
  * `coh_math::perma::target_recipients_reach_caster` is the twin). The archetypal perma team
  * buffs are separated by the same field and keep their windows: Accelerate Metabolism and
  * Chrono Shift state `['Friend', 'Self']`, Farsight `['Teammate', 'Self']`.
@@ -312,7 +312,7 @@ function carriesCasterState(a: AtomicEffect): boolean {
  * a hand-authored `effects` bag, no atoms and no `stats`. Domination is the only Click among
  * the fourteen, and its 200s / 90s cycle is written there rather than read from the export,
  * because this fork carries no join from an archetype's declared inherent to the
- * `Inherent.Inherent` power holding it. (The 1.0 fork closed that join under PARTSTAT-2 and its
+ * `Inherent.Inherent` power holding it. (The 1.0 fork closed that join under data-gaps-277 and its
  * card now carries the twin's own stats and atoms; until the same join lands here, an
  * atom-only window would take Domination's perma ring away.)
  *
@@ -338,7 +338,7 @@ function authoredCycle(power: Power | SelectedPower): { recharge: number; window
  *
  * Two sources. A summon's lifetime rides `summonWindow`, stamped by the converter's own summon
  * resolution on the row it read — which `EntCreate` row IS the power's window is a question no
- * rule over `duration` can answer (ENT-14). Gated rows count there: Soul Extraction's ghosts are
+ * rule over `duration` can answer (data-gaps-14). Gated rows count there: Soul Extraction's ghosts are
  * tier-gated and exactly one materializes, so the stamp is the admission and the gate is not.
  * Everything else is the longest window a base caster-state atom holds open.
  *

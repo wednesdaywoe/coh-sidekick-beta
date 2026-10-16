@@ -67,7 +67,7 @@ export const STAT_GROUP_INFO: Record<string, StatGroupInfo> = {
   debuffresistrecharge: { group: 'Mez/Debuff Res', label: 'Slow Res (Rech)' },
   debuffresistslow: { group: 'Mez/Debuff Res', label: 'Slow Res (Move)' },
   debuffresistendurance: { group: 'Mez/Debuff Res', label: 'End Drain Res' },
-  // MEZRES-1: a unique's global repel protection, re-encoded by the vocab as its own stat
+  // data-gaps-185: a unique's global repel protection, re-encoded by the vocab as its own stat
   mezResistRepel: { group: 'Mez/Debuff Res', label: 'Repel Resistance' },
   // Mez / control duration (offensive — boosts the mez you apply)
   immobilizeDuration: { group: 'Mez Duration', label: 'Immobilize' },

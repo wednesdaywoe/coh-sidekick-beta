@@ -34,7 +34,7 @@ export function getInherentAvailabilityOverride(internalName: string): number | 
  *
  * Four separate `createInherentSelectedPower` copies spelled this `level: 1`
  * until 2026-09-12 and only one of them consulted the dataset; the importer's
- * copy is the one the .mbd corpus goes through (MBDEXPORT-18, 20 of its 44).
+ * copy is the one the .mbd corpus goes through (data-gaps-271, 20 of its 44).
  */
 export function getInherentGrantLevel(def: {
   internalName: string;
@@ -81,10 +81,10 @@ export function getInherentAutoGrantedSlotCount(internalName: string, level: num
  * `createArchetypeInherentPower` from the archetype's display name, and no other
  * planner resolves that: Mids reads `Inherent.Inherent.Rage_Buff` where we would
  * say `Inherent.Brute.Fury`. The `.mbd` writer wrote no archetype inherent at all
- * until it had this (MBDEXPORT-20).
+ * until it had this (data-gaps-273).
  *
  * `undefined` when this fork ships no single power for the archetype's declared
- * inherent — a real gap the caller reports rather than fills (INHERENT-10).
+ * inherent — a real gap the caller reports rather than fills (data-gaps-10).
  */
 export function headlineArchetypeInherentName(archetypeId: string): string | undefined {
   return getActiveDataset().inherentRules.headlineArchetypeInherents?.[archetypeId];

@@ -49,7 +49,7 @@ import {
  * What quantity a row's three-tier carries. A mez row shows a fixed magnitude beside an
  * enhanceable duration, so the two travel together.
  *
- * The four mez members are one decision, taken off the atom's `attribType` (MEZDUR-1). That
+ * The four mez members are one decision, taken off the atom's `attribType` (data-gaps-167). That
  * field states which of the AttribMod's two numbers `scale × table` computes, and nothing
  * else on the row does: a Duration mez and a Magnitude mez are identical on effect type,
  * sub-type, sign, aspect, recipient and table, and differ only in what the product MEANS.
@@ -67,7 +67,7 @@ import {
  * and duration straight across, so `scale x table` is the number that row DISCARDS. No mez
  * attrib carries one in any fork, and the engine's gate keeps it that way, so this member
  * exists to route the value rather than to render a number. It is declared here because the
- * engine declares it (ATTRTYPE-1), not because the corpus reaches it.
+ * engine declares it (data-gaps-50), not because the corpus reaches it.
  */
 export type MagnitudeQuantity =
   | { kind: 'value' }
@@ -94,7 +94,7 @@ export interface ResolvedMagnitude {
   /** Abbreviated type summary for a COLLAPSED by-type row. */
   byTypeLabel?: string;
   /**
-   * Which FACE a mez row wears (MEZFACE-1), when the producer already knows.
+   * Which FACE a mez row wears (data-gaps-168), when the producer already knows.
    *
    * This resolver never sets it: the face is a fact about the POWER (does it affect a foe?)
    * and the resolver is handed a bag, not a power. Its consumer therefore keeps its own
@@ -105,7 +105,7 @@ export interface ResolvedMagnitude {
   mezFace?: 'protection' | 'self';
   /**
    * The effective duration in seconds, surfaced only on a MAGNITUDE-valued mez row
-   * (ENGLAG-2). The engine row carries it for every quantity a `durations` record exists
+   * (data-gaps-330). The engine row carries it for every quantity a `durations` record exists
    * for; the tier on a `mez_duration` row already IS the seconds, so it stays unset there
    * and the surface never prints one number twice under two headings.
    */
@@ -180,7 +180,7 @@ function scaleTermsOf(value: unknown): ScaleTerm[] | undefined {
  *
  * `class_GetNamedTableValue(pclass, name, level)` takes a class as well as a table name, and a
  * pseudo-pet's rows are a second character's — Choking Cloud's gas resolves against
- * `minion_pets`, not against the Controller who dropped it, and the two tables differ (ENT-10).
+ * `minion_pets`, not against the Controller who dropped it, and the two tables differ (data-gaps-105).
  * A term with no class is the power's own row (or an inline pseudo-pet shell with no
  * `villaindef.bin` record at all) and resolves against the build's archetype, as before.
  */
@@ -205,7 +205,7 @@ function tableProduct(value: unknown, archetypeId: string | undefined, level: nu
  * MAGNITUDES, not the scales — the only order in which they are addable. The game computes
  * every AttribMod's magnitude as `scale × table[class][level]` at the template's own table, and
  * where it reduces several templates to one number it accumulates the resolved magnitudes.
- * Adding the scales first is the operation the game performs nowhere, and it is ENT-8;
+ * Adding the scales first is the operation the game performs nowhere, and it is data-gaps-103;
  * summing the signed products first is the same mistake one step later, and it cancels rather
  * than adds — Ice Elemental's `rechargeDebuff` states `0.1` on `Melee_Ones` (+1) beside `0.2` on
  * `Ranged_Slow` (−1), two debuff contributions whose tables carry opposite signs, and `|0.1 −
@@ -281,7 +281,7 @@ function termBaseValue(
       // at all; the row is built from the quantity alone.
       if (value.attribType !== 'Duration' && value.attribType !== 'Magnitude') return null;
       // Through `tableProduct`, so a merged pseudo-pet row resolves against the class it names
-      // rather than the summoner's — Choking Cloud's gas is a second character (ENT-10).
+      // rather than the summoner's — Choking Cloud's gas is a second character (data-gaps-105).
       const product = tableProduct(value, archetypeId, level ?? DEFAULT_TABLE_LEVEL);
       return product === undefined ? null : Math.abs(product);
     }
@@ -475,8 +475,8 @@ export function resolvePowerMagnitudes({
       const quantity = classifyMagQuantity(value, config);
       // A row whose value the data does not state still gets a row. It carries no number —
       // the surface says so in words — because the alternatives are both worse: a fabricated
-      // one is the soft-wrong MEZDUR-1 was filed for, and dropping the row is the silent
-      // omission ENT-6 measured, where a power's card simply lacked an effect the game shows.
+      // one is the soft-wrong data-gaps-167 was filed for, and dropping the row is the silent
+      // omission data-gaps-101 measured, where a power's card simply lacked an effect the game shows.
       if (quantity.kind === 'mez_expression'
         || quantity.kind === 'mez_constant'
         || quantity.kind === 'mez_unstated') {
@@ -504,8 +504,8 @@ export function resolvePowerMagnitudes({
       // magnitude exactly as a Duration one takes it on the seconds.
       //
       // A split slot takes neither: the slot NAME is the IgnoreStrength mark, so the
-      // row is flat at every tier (ENT-6). A value carrying the mark on itself is the
-      // same verdict spelled the other way (ENT-4), and it is read off the entry the
+      // row is flat at every tier (data-gaps-101). A value carrying the mark on itself is the
+      // same verdict spelled the other way (data-gaps-99), and it is read off the entry the
       // BASE was read from: a `canBeByType` key the config does not expand collapses to
       // its first entry, and the outer object never carries a mark, so asking it
       // reported Ice Arrow's part-marked slow as wholly enhanceable.

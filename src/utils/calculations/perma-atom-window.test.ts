@@ -69,12 +69,12 @@ describe('a Target atom resolves its pronoun through ownerTargets first', () => 
   /**
    * Fulcrum Shift is the case that names itself. The power is aimed at a foe
    * (`targetsAffected: ['Foe']`) and its eight `+Damage` rows arrive from the buff sub-power it
-   * executes, stamped `ownerTargets: ['Friend', 'Self']` — the collection provenance TARGETS-3
+   * executes, stamped `ownerTargets: ['Friend', 'Self']` — the collection provenance data-gaps-63
    * put there precisely so a redirected row is not read against its parent's aim. Vetoing on the
    * parent deletes a 45s window the caster demonstrably holds, which is the archetypal Kinetics
    * perma target.
    *
-   * `coh_math::perma::reaches_caster_for_perma` read only the parent's list until PERMA-4
+   * `coh_math::perma::reaches_caster_for_perma` read only the parent's list until data-gaps-154
    * (2026-09-05) and lost it — `perma_eligibility_census` reported `win 0.0, rust false` on
    * every Kinetics copy. The two engines agree now, and this test is what would notice the
    * window being taken away again by a later "reconciliation". Homecoming and Brainstorm are the
@@ -110,7 +110,7 @@ describe('a Target atom resolves its pronoun through ownerTargets first', () => 
    * names whom the row lands on outright, so `Self` has to be in it — read leniently, an ally
    * buff's own recipients ("no foe here") become the caster's, which is how the teleports get
    * their 1.5s ring back off the teleported ally's translucency and how Brainstorm's Adrenalin
-   * Boost keeps a 90s window stamped `['DeadPlayerFriend']` (PERMA-4).
+   * Boost keeps a 90s window stamped `['DeadPlayerFriend']` (data-gaps-154).
    *
    * Stated on a power whose own list would otherwise LAND the window: the parent names no foe,
    * so only the stamp can produce the 0 (a filter that declined everything would pass a probe
@@ -130,10 +130,10 @@ describe('a Target atom resolves its pronoun through ownerTargets first', () => 
 
 describe("a Target atom on the power's own list needs the caster named", () => {
   /**
-   * The other lenient read, and the one that survived PERMA-4. An ally-only buff aims every row
+   * The other lenient read, and the one that survived data-gaps-154. An ally-only buff aims every row
    * at `Target` and names no foe, so a veto that fires only on an enemy kept the window and
    * handed the caster the ALLY's clock — 47 power entries over 22 (fork, power) pairs drew a
-   * perma ring on a buff nobody holds (PERMA-5).
+   * perma ring on a buff nobody holds (data-gaps-153).
    *
    * Stated on a pair differing in nothing but the list, and the positive half has to LAND the
    * window: a rule that declined everything would pass the ally half on its own. The third arm
@@ -160,7 +160,7 @@ describe("a Target atom on the power's own list needs the caster named", () => {
    * The corpus half, on the power the register's key checks. Adrenalin Boost is an Empathy
    * ally buff — `targetsAffected: ['Friend']`, eight rows at `toWho: 'Target'`, a 90s window
    * against a 300s recharge — and the Empath gets nothing from it at all. Brainstorm is the
-   * control PERMA-4 already fixed from the other side: its rows carry
+   * control data-gaps-154 already fixed from the other side: its rows carry
    * `ownerTargets: ['DeadPlayerFriend']`, so the stamp read vetoes them there.
    */
   it.each(['homecoming', 'rebirth', 'thunderspy'] as const)(

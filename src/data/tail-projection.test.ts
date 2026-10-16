@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /**
- * Guards on the AttribMod-tail converter projection (DATA-GAP-REGISTER FLAGS-2
+ * Guards on the AttribMod-tail converter projection (DATA-GAP-REGISTER data-gaps-81
  * residual, closed 2026-07-20), scanning the COMMITTED generated data with no
  * raw-export dependency — same standing as converter-invariants.test.ts.
  *
@@ -137,7 +137,7 @@ describe('alpha ED-bypass split (GENERATED_ALPHA_ED_BYPASS)', () => {
 
   it('thunderspy Agility recharge: 33% with 22% bypass, read from the flag', () => {
     // tspy reported no bypass at all until its AttribMod flags word was decoded
-    // (TSPY-4) — the absence was a parse gap, not a fork difference. Its silent file
+    // (data-gaps-74) — the absence was a parse gap, not a fork difference. Its silent file
     // splits 0.11 plain + 0.22 `BoostIgnoreDiminishing`, the same 2/3 Homecoming's
     // Musculature carries above. Still read from the DATA, never a per-tier ratio.
     const { totals, bypass } = tables('thunderspy');

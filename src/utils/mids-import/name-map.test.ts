@@ -38,7 +38,7 @@ import { importMidsBuild } from '@/utils/mids-import';
 import type { Power } from '@/types';
 
 /**
- * MBDIMPORT-2 — Mids' internal-name namespace has drifted from the game's. HC rotated
+ * data-gaps-232 — Mids' internal-name namespace has drifted from the game's. HC rotated
  * internal names underneath stable display names, so an exact internal-name match binds
  * the WRONG power and nothing fails: Tactical Arrow's `Gymnastics` is Oil Slick Arrow in
  * the export, took Gymnastics' slots, and the entry that owned them was deduped away with
@@ -264,7 +264,7 @@ describe('Mids .mbd import — the derived name map', () => {
 });
 
 /**
- * MBDIMPORT-7 — the map is a join, and the join has to reach the powerset first.
+ * data-gaps-237 — the map is a join, and the join has to reach the powerset first.
  *
  * It paired Mids' powersets to ours by comparing `group.set` as a string, and the group
  * segment drifts as readily as a power name does: Rebirth's Guardian secondaries are
@@ -360,7 +360,7 @@ describe('Mids .mbd import — the powerset alias table', () => {
 });
 
 /**
- * MBDEXPORT-3 — the writer's table, held to being the reader's table backwards.
+ * data-gaps-254 — the writer's table, held to being the reader's table backwards.
  *
  * Two tables, one join. `MIDS_NAME_REVERSE` exists because the forward map is lossy in the
  * direction the .mbd WRITER needs it: it folds Mids' spelling to lower case and trims it,
@@ -403,19 +403,19 @@ describe('Mids .mbd export — the reverse name table', () => {
     }
     // 106 + 36 + 94 + 105 as generated. A table that stopped being emitted would leave every
     // loop above unentered and every assertion in it unexecuted. The four grew by 56 at
-    // MBDEXPORT-9, when the roster pass reached the powersets whose two spellings share
+    // data-gaps-256, when the roster pass reached the powersets whose two spellings share
     // nothing — a powerset with no pair carries no rows, so its rotations were invisible
-    // rather than absent. They grew by 27 more at MBDEXPORT-23, when the join stopped
+    // rather than absent. They grew by 27 more at data-gaps-23, when the join stopped
     // folding case: a pair that differs ONLY in case is a pair the writer has to be told
-    // about, and it had been skipped as agreement. By 4 more at MBDIMPORT-16, Homecoming's
-    // and Brainstorm's share of the residual pass — and DOWN by 2 at MBDIMPORT-18, where
+    // about, and it had been skipped as agreement. By 4 more at data-gaps-251, Homecoming's
+    // and Brainstorm's share of the residual pass — and DOWN by 2 at data-gaps-250, where
     // Rebirth's two Savage Melee pet rows turned out to rest on a display Mids gives to both
     // of the powers it names, so neither arm was evidence for the other.
     expect(graded).toBe(341);
   });
 
   /**
-   * A pair that differs only in CASE is still a pair the writer needs (MBDEXPORT-23).
+   * A pair that differs only in CASE is still a pair the writer needs (data-gaps-23).
    *
    * Two guards conspired to drop this whole class. The join skipped a pair whose names
    * matched case-insensitively, as agreement; and where that was fixed, the withdrawal
@@ -465,7 +465,7 @@ describe('Mids .mbd export — the reverse name table', () => {
 });
 
 /**
- * MBDEXPORT-6 — the two segments in FRONT of a power name.
+ * data-gaps-255 — the two segments in FRONT of a power name.
  *
  * The writer used to COMPOSE them, from an archetype table for the group and the
  * powerset's icon filename for the set. A Rebirth Guardian went out as
@@ -521,7 +521,7 @@ describe('Mids .mbd export — the powerset path table', () => {
     // was not in it and the generator refused to invent one. The dump has been re-cut from
     // the `Thunderspy/I12.mhd` it always came from — same file, same sha256, every row
     // identical, only the 3,535 keys' CASE restored — so the withholding is over
-    // (MBDEXPORT-2).
+    // (data-gaps-262).
     expect(graded).toBe(14101);
     expect(Object.keys(THUNDERSPY_PATHS)).toHaveLength(3453);
   });
@@ -536,7 +536,7 @@ describe('Mids .mbd export — the powerset path table', () => {
       unpaired[fork] = [...ourSetKeys()].filter((k) => !midsPowersetPathForExport(k)).length;
     }
     await loadDataset('homecoming');
-    // 19 / 17 / 28 on the three live forks before MBDEXPORT-9's roster pass. What is left
+    // 19 / 17 / 28 on the three live forks before data-gaps-256's roster pass. What is left
     // is attributed rather than merely counted, and the census next to this file
     // (`scripts/keys/mbdexport9-powerset-pairing-census.cjs`) is where each one's reason
     // is: Mids holds a copy per archetype and our key names none (Rebirth's Frost and
@@ -549,7 +549,7 @@ describe('Mids .mbd export — the powerset path table', () => {
     //
     // Thunderspy read 386 — every set it has — while its path table was withheld for the
     // folded-key reason above. With the table in place it reads 14, and those 14 are in the
-    // census beside the other three forks' rather than standing outside it (MBDEXPORT-2).
+    // census beside the other three forks' rather than standing outside it (data-gaps-262).
     expect(unpaired).toEqual({ homecoming: 10, rebirth: 6, thunderspy: 14, brainstorm: 10 });
   }, 600000);
 
@@ -576,7 +576,7 @@ describe('Mids .mbd export — the powerset path table', () => {
 });
 
 /**
- * MBDEXPORT-9 — the pairs the two spellings do not argue for at all.
+ * data-gaps-256 — the pairs the two spellings do not argue for at all.
  *
  * The first two passes both agree on the SET segment: the exact `group.set` key, then the
  * segment alone. A pair whose set segments differ therefore came from the third, the one
@@ -587,7 +587,7 @@ describe('Mids .mbd export — the powerset path table', () => {
  * same while a widened rule quietly swapped which Mids set an epic pool goes to, and the
  * whole risk of a roster join lives in exactly that swap.
  */
-describe('Mids .mbd export — the pairs matched on the roster (MBDEXPORT-9)', () => {
+describe('Mids .mbd export — the pairs matched on the roster (data-gaps-256)', () => {
   /** Mids' set segment folded the way the pairing folds it, for comparison with ours. */
   const segment = (key: string) =>
     key.split('.').slice(1).join('.').trim().replace(/[\s_-]+/g, '_').toLowerCase();
@@ -632,7 +632,7 @@ describe('Mids .mbd export — the pairs matched on the roster (MBDEXPORT-9)', (
     ],
     // Thunderspy's twelve were real and unreadable until its names dump was re-cut with
     // literal powerset keys: the pairing always found them and the generator always printed
-    // them, but there was no path table to hold them (MBDEXPORT-2). Four of the twelve are
+    // them, but there was no path table to hold them (data-gaps-262). Four of the twelve are
     // this fork renaming a stock CoH set (Hobo Melee for Hard Life, Brawling for Street
     // Justice), which is exactly the class a roster join exists to reach.
     thunderspy: [
@@ -700,7 +700,7 @@ describe('Mids .mbd export — the pairs matched on the roster (MBDEXPORT-9)', (
     // A pair is only worth having if the powers inside it bind, and an unpaired set had
     // no rows at all — so these rotations were invisible rather than absent. Ours displays
     // "Build Up" under the internal name `Ice_Slick`, and Mids' `Build_Up` displays the
-    // same: exactly the MBDIMPORT-2 shape, in a powerset the pairing could not see.
+    // same: exactly the data-gaps-232 shape, in a powerset the pairing could not see.
     expect(midsPowersetPathForExport('epic.defender_ice_mastery')).toBe('Epic.Ice_Mastery_DefCorr');
     expect(midsNameForExport('epic.defender_ice_mastery', 'Ice_Slick')).toBe('Build_Up');
     expect(midsNameRemap('epic.defender_ice_mastery', 'Build_Up')).toBe('Ice_Slick');
@@ -720,7 +720,7 @@ describe('Mids .mbd export — the pairs matched on the roster (MBDEXPORT-9)', (
 });
 
 /**
- * MBDEXPORT-8 — the rows only a wider join can reach, and why they live apart.
+ * data-gaps-258 — the rows only a wider join can reach, and why they live apart.
  *
  * Rebirth spells a power `Moonbeam`; Mids spells it `Moon_Beam`. The name map's display
  * join folds separator RUNS to one space and stops, so that pair is a miss — and that is

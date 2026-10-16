@@ -47,7 +47,7 @@ const {
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { tokensFromText } = require('../../scripts/_gate-tokens.cjs');
 
-// The wire carries expressions as token arrays (COND-8); the literals authored in
+// The wire carries expressions as token arrays (data-gaps-123); the literals authored in
 // this file are text, so tokenize them here — never inside the converter.
 const stdResultCoefficient = (expr: string | readonly string[], ctx: object) =>
   stdResultCoefficientRaw(Array.isArray(expr) ? expr : tokensFromText(expr), ctx);

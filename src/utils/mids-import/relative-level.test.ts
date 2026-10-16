@@ -18,7 +18,7 @@ import type { Enhancement, OriginEnhancement } from '@/types';
  * either.** Mids grades an SO `SingleO` and names the piece `Magic_Damage`, so
  * this suite verified the fix through a door no file can open — the origin
  * branch it exercised was unreachable, and every origin enhancement in a real
- * build was being lost while these stayed green (MBDIMPORT-6). The UIDs and
+ * build was being lost while these stayed green (data-gaps-236). The UIDs and
  * grades below are now the ones the corpus actually carries.
  */
 
@@ -30,7 +30,7 @@ beforeAll(async () => {
  * `tier` and `origin` sit on `OriginEnhancement` alone, so reading either off the union is a
  * type error, and asserting the discriminator with `expect` narrows nothing — vitest's
  * matchers are not assertion functions. Narrow by throwing instead, which is the assertion
- * these two cases were reaching for anyway: the MBDIMPORT-6 bug WAS an origin UID falling
+ * these two cases were reaching for anyway: the data-gaps-236 bug WAS an origin UID falling
  * through to the IO-set parser, so a piece that comes back as anything but `'origin'` is the
  * regression, not a typing inconvenience.
  */

@@ -4,7 +4,7 @@ import { join, dirname, relative } from 'node:path';
 import { REPO_ROOT, SURFACES, foldFiles, posixRel } from './export-manifests';
 
 /**
- * Export-contents guard — the trust-root gate (SECURITY_AUDIT F78, PROV-1).
+ * Export-contents guard — the trust-root gate (SECURITY_AUDIT F78, data-gaps-319).
  *
  * The two older guards ask about the export's PROVENANCE: staleness asks which
  * exporter ran, provenance asks which assets tree it read. Neither asks the
@@ -14,7 +14,7 @@ import { REPO_ROOT, SURFACES, foldFiles, posixRel } from './export-manifests';
  * Nothing hashed them. The converters, contract totals, regen-diff and the
  * fixtures all consume this tree as ground truth and are self-consistent with
  * whatever they find in it, so a power file edited after the export is
- * indistinguishable from a real parse. That is the FLAGS-2 shape one layer
+ * indistinguishable from a real parse. That is the data-gaps-81 shape one layer
  * below the parser: not a bad read becoming authoritative, but a good read
  * quietly amended afterwards. `path_safety.py` named the same hole from the
  * other side — a bad write "leaves no trace to find afterwards either".

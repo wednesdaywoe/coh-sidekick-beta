@@ -41,7 +41,7 @@ describe('Adaptation stance parent resolution (HC scrapper)', () => {
     const set = getPowerset('scrapper/bio-armor')!;
     const candidates = set.powers.filter((p: Power) => GROUP.parents.includes(p.internalName));
     expect(candidates.map((p: Power) => p.internalName).sort()).toEqual(['Adaptation', 'Evolution']);
-    // `hiddenPassive` since SHOWFLAGS-1: the switcher authors `ShowInManage
+    // `hiddenPassive` since data-gaps-57: the switcher authors `ShowInManage
     // kFalse`, so it classifies as the hidden set-mechanic it is, and the
     // impostor toggle carries no mechanicType at all.
     expect(candidates.filter((p: Power) => p.mechanicType != null).map((p: Power) => [p.internalName, p.mechanicType]))

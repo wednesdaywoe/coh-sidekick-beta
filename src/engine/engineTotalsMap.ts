@@ -125,7 +125,7 @@ interface EnginePerma {
 export interface EngineGrantedQuantity {
   /** All seven members of the engine's `GrantedQuantity`. This used to declare three, which
    *  made an exhaustive reader on this side accept four wire values it had no arm for
-   *  (ATTRTYPE-1: widening a wire enum obliges every exhaustive reader). */
+   *  (data-gaps-50: widening a wire enum obliges every exhaustive reader). */
   kind:
     | 'value'
     | 'mez_duration'
@@ -153,7 +153,7 @@ export interface EngineGrantedMagnitude {
   by_type_label: string | null;
   /** The effective duration in seconds, from `GrantedMagnitude::duration`. `null` on a
    *  `mez_duration` row (its tier already IS the seconds) and on a row the display bag
-   *  records nothing for — see the engine's `recorded_duration`. ENGLAG-2. */
+   *  records nothing for — see the engine's `recorded_duration`. data-gaps-330. */
   duration: number | null;
 }
 
@@ -318,7 +318,7 @@ export interface GrantedMagnitude {
   value: ThreeTierValues;
   quantity: EngineGrantedQuantity;
   byTypeLabel: string | null;
-  /** The effective duration in seconds — see [`EngineGrantedMagnitude.duration`]. ENGLAG-2. */
+  /** The effective duration in seconds — see [`EngineGrantedMagnitude.duration`]. data-gaps-330. */
   duration: number | null;
 }
 
@@ -759,7 +759,7 @@ export function mapGlobal(b: EngineBonuses, s: EngineStats): GlobalBonuses {
     debuffResistRecharge: b.debuff_resist_recharge, debuffResistEndurance: b.debuff_resist_endurance,
     debuffResistRecovery: b.debuff_resist_recovery, debuffResistToHit: b.debuff_resist_to_hit,
     debuffResistRegeneration: b.debuff_resist_regeneration, debuffResistPerception: b.debuff_resist_perception,
-    // DEBUFFRES-1. Accumulator-only on the engine side too — no `CharacterStats` twin, so unlike
+    // data-gaps-171. Accumulator-only on the engine side too — no `CharacterStats` twin, so unlike
     // the eight above these have no `mapStats` line.
     debuffResistAccuracy: b.debuff_resist_accuracy, debuffResistRange: b.debuff_resist_range,
     healOther: b.heal_other, healReceived: b.heal_received, threatLevel: 0,

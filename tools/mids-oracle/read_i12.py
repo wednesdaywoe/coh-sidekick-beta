@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-DSH1 — Mids Reborn I12.mhd oracle reader (PoC).
+deductive-schema-harness-1 — Mids Reborn I12.mhd oracle reader (PoC).
 
 Ports the MidsReborn `BinaryReader` deserialization layout to Python so we can
 diff every power's effect *structure* against a Mids-derived oracle (the
@@ -381,7 +381,7 @@ def read_power(r: Reader) -> dict:
         "display": display_name,
         # `available` is the 0-based level the power unlocks at; `level` is Mids' own
         # ordering level. Both are carried because the two disagree for granted powers,
-        # and MBDIMPORT-2's name join uses availability to tell a renamed power from a
+        # and data-gaps-232's name join uses availability to tell a renamed power from a
         # reused name — a display match that disagrees on when the power unlocks is a
         # coincidence, not an identity.
         "available": available,
@@ -390,7 +390,7 @@ def read_power(r: Reader) -> dict:
         "class_name": requires["class_name"],
         # Mids' `eGridType` — WHICH grid the app places this power on, and 0 means none.
         # A `.mbd` naming a power Mids grids nowhere is refused with no error, so this is
-        # the field that says whether a name the writer emits can bind at all (MBDEXPORT-24).
+        # the field that says whether a name the writer emits can bind at all (data-gaps-24).
         # Read off Homecoming's `Inherent` group: 2 is the archetype's own inherent (exactly
         # one per class), 4 the universal grid `SortGridPowers` indexes by position
         # (Brawl/Sprint/Rest and the four Fitness powers), 6 and 7 the form, toggle and
@@ -407,7 +407,7 @@ POWERS_MARKER = b"\x0cBEGIN:POWERS"     # .NET string: 0x0c len prefix + "BEGIN:
 SUMMONS_MARKER = "BEGIN:SUMMONS"
 
 # The Homecoming main database, in the Wine prefix `tools/mids-oracle/mids-wine.sh`
-# drives. This pointed into `MidsReborn-master/` until PROV-3 (2026-09-13) — a vendored,
+# drives. This pointed into `MidsReborn-master/` until data-gaps-245 (2026-09-13) — a vendored,
 # gitignored source tree that holds only the two `EnhDB.mhd` files on this checkout, so the
 # default resolved to nothing and DSH5 could not be rerun as checked out. A path into a
 # gitignored tree is not a citation; `provenance()` below is what an artefact should carry.
@@ -437,7 +437,7 @@ def _cite_path(path: str) -> str:
 def provenance(path: str, buf: bytes, power_count: int, count_key: str = "powerCount") -> dict:
     """What a committed artefact must say about the database it was derived from.
 
-    PROV-3: two artefacts here were built from a Mids `I12.mhd` and recorded it two
+    data-gaps-245: two artefacts here were built from a Mids `I12.mhd` and recorded it two
     ways. The name bridge stated version + sha256; `oracle_divergence_rules.json`
     stated a PATH into a gitignored tree and nothing else. Only one of those can be
     checked, and when they were finally compared they turned out to be different
@@ -446,7 +446,7 @@ def provenance(path: str, buf: bytes, power_count: int, count_key: str = "powerC
     So both go through this one function now. Two formats is the defect; a shared
     primitive is why it cannot come back. `database` alone names no fork (the header
     reads "Mids Reborn Powers Database" in all of them) and `version` alone names none
-    either — see MBDEXPORT-2 — so the sha256 is the identifying field and the rest is
+    either — see data-gaps-262 — so the sha256 is the identifying field and the rest is
     what a human reads.
     """
     name, version = read_header(buf)
@@ -455,7 +455,7 @@ def provenance(path: str, buf: bytes, power_count: int, count_key: str = "powerC
         "database": name,
         "version": version,
         "sha256": hashlib.sha256(buf).hexdigest(),
-        # DSH9 cites an EnhDB.mhd through this same function, and that file holds
+        # deductive-schema-harness-9 cites an EnhDB.mhd through this same function, and that file holds
         # enhancements rather than powers. The count is what a human reads, so it
         # says which it counted; the sha256 is still the identifying field.
         count_key: power_count,
@@ -494,7 +494,7 @@ def read_powers(buf: bytes):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="Mids I12.mhd oracle reader (DSH1 PoC)")
+    ap = argparse.ArgumentParser(description="Mids I12.mhd oracle reader (deductive-schema-harness-1 PoC)")
     ap.add_argument("--mhd", default=DEFAULT_MHD, help="path to I12.mhd (default: HC)")
     ap.add_argument("--out", default="-", help="output JSONL path ('-' = stdout)")
     ap.add_argument("--grep", default=None, help="only powers whose full_name contains this (case-insensitive)")

@@ -1,5 +1,5 @@
 /**
- * SOURCE-1 item 9 — per-dataset special-enhancement registries.
+ * data-gaps-324 item 9 — per-dataset special-enhancement registries.
  *
  * Emits `src/data/datasets/<id>/generated/special-enhancements.ts` from the
  * committed binary export's boost-piece templates, replacing the hand
@@ -280,7 +280,7 @@ function main() {
   lines.push(' *');
   lines.push(' * Derived from the committed binary export (boosts/{hamidon,synthetic_hamidon,');
   lines.push(' * titan,hydra,dsync,generic prestige}_* piece templates + boosts_allowed) by');
-  lines.push(' * scripts/convert-special-enhancements.cjs (SOURCE-1 item 9).');
+  lines.push(' * scripts/convert-special-enhancements.cjs (data-gaps-324 item 9).');
   lines.push(' *');
   lines.push(` * Regenerate: node scripts/convert-special-enhancements.cjs --dataset ${datasetId}`);
   lines.push(' */');

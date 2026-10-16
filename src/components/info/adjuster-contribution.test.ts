@@ -60,7 +60,7 @@ describe('adjuster contribution hint (homecoming)', () => {
       }
     }
 
-    // Both sides of the pin ask `power.effects` whether the base states a key, and STRIP-1
+    // Both sides of the pin ask `power.effects` whether the base states a key, and data-gaps-327
     // emptied it — so neither can find a collision and the two agree on nothing. That is a
     // STATED skip, not a pass: the precondition is asserted, so the day the base surface comes
     // back this flips itself to the real assertion instead of staying quietly green.

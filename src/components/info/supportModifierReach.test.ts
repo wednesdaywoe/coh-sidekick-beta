@@ -141,7 +141,7 @@ describe('PROD6B-2b: archetype-name support modifier reachability', () => {
         for (const archetypeId of archetypesFor(setId, allArchetypes)) {
           for (const power of set.powers) {
             // The bag the DISPLAY resolves, not the authored one. This walked `power.effects`
-            // until 2026-09-08, and STRIP-1 emptied that for every power on every fork — so the
+            // until 2026-09-08, and data-gaps-327 emptied that for every power on every fork — so the
             // sweep resolved nothing and both floors below went to zero while the invariant they
             // guard stayed green on a population of none. The surfaces have never resolved the
             // authored bag; reading the built one is what this file's own header claims ("no

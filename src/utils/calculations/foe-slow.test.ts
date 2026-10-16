@@ -14,7 +14,7 @@ import { selfSlowValue, selfRechargeDebuffValue, atomsOfType } from '@/data/core
  * so the calc treats it as a foe debuff and the InfoPanel surfaces it).
  * Self-penalty slows (Granite) carry the marker per-entry and are unchanged.
  *
- * Retired bag → atom readers (STRIP-1). `atomsOfType(power, 'Movement')` with a
+ * Retired bag → atom readers (data-gaps-327). `atomsOfType(power, 'Movement')` with a
  * `*_Slow` table IS the movement half; `selfSlowValue` is the reader the totals
  * pass spends, and it publishes only what reaches the caster — a pure foe slow
  * (Ice Bolt's `AnyAffected` rows) is `[]`, while Granite's self rows populate it.

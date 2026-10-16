@@ -158,7 +158,7 @@ function fileSweep() {
  * name reads as "beta-only, no counterpart" — the strongest possible claim, made by a lookup
  * that never happened. PROD7 quarantined this repo's legacy calc into `legacy-totals.oracle.ts`
  * and left canonical's copy where it was; canonical then migrated that copy in place through its
- * own STRIP-1. So the oracle's 165 seams all reported `absent`, and BPORT5 was scoped as a
+ * own data-gaps-327. So the oracle's 165 seams all reported `absent`, and BPORT5 was scoped as a
  * choice between two ways to FREEZE the oracle — because the census said the migrated twin it
  * could carry did not exist.
  *
@@ -420,7 +420,7 @@ function atomArmGap(rel, siblingRoot) {
  *
  * `guardCovers` above is a claim about SHAPE — the guard reads something other than the bag.
  * Whether it reads something *present* is a different question and the only one that decides
- * whether the strip turns the seam into dead code or into a zero. ENDSTAT-1 is the standing
+ * whether the strip turns the seam into dead code or into a zero. data-gaps-159 is the standing
  * proof that the shape can be right and the answer still no: a comment promised `enrich` would
  * project `stats`, it never did, and seventy-odd epic toggles drained to nothing behind a
  * fallback that looked covered.

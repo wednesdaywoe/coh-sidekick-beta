@@ -319,8 +319,8 @@ export function CompareSlottingModal() {
   );
 
   // The effect rows, taken from that same projection rather than resolved from the display bag
-  // (ENGLAG-1, carried here 2026-09-07). The engine seeds its rows from the power's ATOMS, so
-  // it resolves a power whose authored `effects` STRIP-1 removed; `buildDisplayEffects` alone
+  // (data-gaps-329, carried here 2026-09-07). The engine seeds its rows from the power's ATOMS, so
+  // it resolves a power whose authored `effects` data-gaps-327 removed; `buildDisplayEffects` alone
   // mints only its own keys and this panel rendered almost nothing. The rows answer the
   // hypothetical slotting because `activeProjection` IS the hypothetical run — the same one
   // `activeEnhBonuses` and the dashboard deltas read. `undefined` until the engine has loaded,

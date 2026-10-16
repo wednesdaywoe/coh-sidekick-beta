@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { describeChainTarget, describeTargetCap } from '@/utils/chain-expressions';
 
 /** An expression WRITTEN as text in this file. The pipeline carries token lists
- *  (COND-8); only the literals authored below need splitting, and naming it keeps
+ *  (data-gaps-123); only the literals authored below need splitting, and naming it keeps
  *  the two apart. */
 const toks = (text: string) => text.split(' ');
 

@@ -1,7 +1,7 @@
 /**
  * BPORT1 — supply census for the `effects` bag, across all four datasets.
  *
- * The STRIP-1 beta port (`docs/streams/strip1-beta-port.md` in the canonical repo) has to
+ * The data-gaps-327 beta port (`docs/streams/strip1-beta-port.md` in the canonical repo) has to
  * decide, per bag slot, whether the reader that spends it is doing work or standing over an
  * empty shelf. Reading the reader cannot answer that: ~30 of the ~45 slot reads are
  * `atomFn(power) ?? effects.slot` seams whose right-hand side still serves atom-less

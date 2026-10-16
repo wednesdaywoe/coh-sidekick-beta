@@ -29,7 +29,7 @@ import {
 import { findSelectedPowerInBuild } from './powerDisplayUtils';
 import type { IOSetEnhancement, GenericIOEnhancement, OriginEnhancement, SpecialEnhancement, Enhancement } from '@/types';
 
-/** Matches the slot badge's own wording for an unplaceable slot (SLOT-1). */
+/** Matches the slot badge's own wording for an unplaceable slot (issues-6). */
 const UNPLACED_SLOT_TITLE =
   'This slot has no level the game could grant it — the build wants more slots at this power\u2019s level or later than the schedule issues.';
 
@@ -86,7 +86,7 @@ export function EnhancementInfoContent({ powerName, powerSet, slotIndex }: Enhan
             : 'inherent';
   // The level this slot was placed at — same derivation the power list's slot-level
   // chips use (respec vs leveling mode aware). `null` means the grant schedule
-  // had nothing left this slot could legally occupy (SLOT-1).
+  // had nothing left this slot could legally occupy (issues-6).
   const slotLevel = powerCategory
     ? slotLevelsMap.get(powerKey(powerCategory, powerName))?.[slotIndex]
     : undefined;

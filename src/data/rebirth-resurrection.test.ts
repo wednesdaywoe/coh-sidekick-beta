@@ -12,7 +12,7 @@ import { IO_SETS_RAW as IO_SETS_RAW_REBIRTH } from './datasets/rebirth/io-sets-r
  * shares — so every attempt to infer the category from the conversion groups landed
  * somewhere wrong, most memorably "Brute Archetype Sets" off the first rez power in
  * the pool (Brute_Defense.Dark_Armor.Soul_Transfer). The record states "Rez Sets" in
- * its GroupName and always did; BOOST-2 stopped inferring and read it.
+ * its GroupName and always did; data-gaps-40 stopped inferring and read it.
  */
 function gen(rel: string): string {
   const p = fileURLToPath(new URL(`./datasets/rebirth/generated/powersets/${rel}`, import.meta.url));

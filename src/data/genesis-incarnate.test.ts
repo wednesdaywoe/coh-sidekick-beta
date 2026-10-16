@@ -102,7 +102,7 @@ describe('Genesis slot gating — Rebirth', () => {
 // placeholder (authored help = "… text", reused Interface icons) — the slot was
 // defined but never enabled. Both must hide the slot AND serve no effects, so a
 // deserialized cross-dataset build can't apply an unreleased amplifier. See the
-// GENESIS-1 register entry.
+// data-gaps-47 register entry.
 describe.each(['homecoming', 'thunderspy'] as const)(
   'Genesis slot gating — %s (dormant placeholder)',
   (datasetId) => {

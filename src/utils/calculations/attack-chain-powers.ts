@@ -935,7 +935,7 @@ function atLevel(table: number[], level: number): number {
 
 /**
  * A buff ceiling expressed over the class's own base, as the percentage a planner shows
- * (CAPS-1). The ceiling is an ABSOLUTE attribute value, so it says nothing on its own —
+ * (data-gaps-183). The ceiling is an ABSOLUTE attribute value, so it says nothing on its own —
  * `5.0 / 0.25 - 1 = +1900%` is a Blaster's regeneration ceiling, and the same 5.0 over an
  * Arachnos Soldier's 0.30 base is +1567%.
  */
@@ -947,7 +947,7 @@ function buffCeilingPercent(capTable: number[], base: number, level: number): nu
 /**
  * Character endurance parameters for the sustainability sim.
  *
- * Both the bar and the rate it refills at come from the archetype's own export (CAPS-1), not
+ * Both the bar and the rate it refills at come from the archetype's own export (data-gaps-183), not
  * from a literal: the pool is `maxEnduranceTable` plus the build's +MaxEnd, clamped to
  * `maxEnduranceCapTable`, and the recovery percentage is clamped to the class's recovery
  * ceiling. This used to open `100 + maxEndurance` with no clamp on either — a hardcoded pool

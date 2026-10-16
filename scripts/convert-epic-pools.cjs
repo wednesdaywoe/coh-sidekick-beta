@@ -131,7 +131,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
 
   // Basic metadata. `internalName` is the export's own identity for the power, carried the
   // same way the archetype converter carries it (`internalName: powerJson.name`). Before
-  // MBDIMPORT-17 these two emitters wrote only `fullName`, and the Rust loader DERIVED the
+  // data-gaps-252 these two emitters wrote only `fullName`, and the Rust loader DERIVED the
   // identity from its last segment — a derivation that agreed on all 1,846 pool and epic
   // powers across four forks, which is why nothing ever broke. Agreement is not the same as
   // reading it: the export owns this field, so it is read rather than reconstructed.
@@ -171,7 +171,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
 
   // EntsAffected — who this power's effects can land on, which is what an atom
   // targeting `AnyAffected` means by "the target". See the field doc on
-  // `Power.targetsAffected` (DATA-GAP-REGISTER MEZRES-3).
+  // `Power.targetsAffected` (DATA-GAP-REGISTER data-gaps-187).
   if (Array.isArray(rawJson.targets_affected) && rawJson.targets_affected.length) {
     power.targetsAffected = rawJson.targets_affected;
   }
@@ -233,7 +233,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   // game actually permits (Pet Damage / Recharge Intensive Pets on summon
   // powers, To Hit Debuff on Darkest Night, etc.). null and [] both mean the
   // game lists this power in no set — the field stays unset. No inference
-  // fallback: it invented slottability the game refuses (SETCAT-1 — Healing
+  // fallback: it invented slottability the game refuses (data-gaps-39 — Healing
   // sets in Rebirth's Hoarfrost).
   if (Array.isArray(rawJson.allowed_set_categories)
       && rawJson.allowed_set_categories.length > 0) {
@@ -284,7 +284,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     // The pets. This partition reached `extractSummon` through the bag and nothing else, so
     // retiring the bag took every epic and patron summon with it — 50 records per fork, the
     // whole patron tier (Summon Widow, Mu Guardian, the Coralax) plus the epic rains, showing
-    // no pet and folding no aura (ENT-22). Same address as convert-powerset.cjs's, so one
+    // no pet and folding no aura (data-gaps-22). Same address as convert-powerset.cjs's, so one
     // reader answers for both partitions.
     const summon = extractPowerSummon(allTemplates, rawJson.name);
     if (summon) power.summon = summon;
@@ -363,14 +363,14 @@ function convertEpicPower(rawJson, rank, availableLevel) {
   //
   // This partition's carriers are the three Leviathan Mastery Spirit Sharks (whose Leviathan
   // Hunger gate is an ownership claim), EM Pulse's vs-Machines bonus and, on Thunderspy, Dark
-  // Obliteration's hide bonus. See COND-2.
+  // Obliteration's hide bonus. See data-gaps-129.
   if (rawJson.effects?.length) {
     const conditional = extractConditionalEffects(rawJson.effects, rawJson);
     if (conditional) power.conditionalEffects = conditional;
   }
 
   // Thunderspy: the two target-trap guards, which this partition had never run at all — the
-  // widest half of TWIN-2. The trap belongs to the BINARY (fork 6 drops aspect and the
+  // widest half of data-gaps-316. The trap belongs to the BINARY (fork 6 drops aspect and the
   // per-template target), so it reaches every converter that reads one, and an epic power is
   // no less exposed than a powerset one. Hibernate and Rise of the Phoenix shipped a recovered
   // `immobilize` on `["Self"]` powers because of it.
@@ -379,7 +379,7 @@ function convertEpicPower(rawJson, rank, availableLevel) {
     // artifacts, then stamp the atoms behind them. The bag is no longer emitted on the power,
     // so it is computed here for the guards alone and thrown away — dropping the computation
     // along with the emission is what silently retired both guards and let the trapped rows
-    // reach the engine on the atoms (TSPY-10, and it re-opened TWIN-2's widening).
+    // reach the engine on the atoms (data-gaps-53, and it re-opened data-gaps-316's widening).
     const guardBag = extractEffects(allTemplates, undefined, rawJson.targets_affected);
     guardThunderspyOnesBuffs(power, rawJson.targets_affected, guardBag);
     guardThunderspyAppliedMez(power, rawJson.targets_affected, guardBag);
@@ -545,7 +545,7 @@ function convertEpicPool(poolId, existingPool) {
       continue;
     }
 
-    // Through the gate-stamping reader (COND-12), same reason as the pool converter.
+    // Through the gate-stamping reader (data-gaps-126), same reason as the pool converter.
     const rawJson = _readPowerFile(filePath);
     if (availableLevels[i] === undefined) {
       throw new Error(

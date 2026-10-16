@@ -2,7 +2,7 @@
  * PopOutInfoPanel — the InfoPanel in a floating draggable/resizable window.
  *
  * The drag/resize/portal shell lives in the shared `FloatingWindow` primitive
- * (LAY10); this component supplies only the Dock action + the InfoPanel body.
+ * (rearrangeable-layout-10); this component supplies only the Dock action + the InfoPanel body.
  * Position + size persist via the `info-panel` persistKey.
  */
 

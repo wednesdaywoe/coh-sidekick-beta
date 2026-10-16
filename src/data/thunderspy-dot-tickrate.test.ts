@@ -25,7 +25,7 @@ import { TenebrousTentacles } from './datasets/thunderspy/generated/powersets/bl
 describe('Thunderspy DoT tickRate', () => {
   // `damage` is a single entry for a one-component attack and an ARRAY once a power
   // carries more than one damage type. Tenebrous Tentacles became the latter under
-  // TSPY-4 (its Negative burst rides a sibling AttribMod of the same element as the
+  // data-gaps-74 (its Negative burst rides a sibling AttribMod of the same element as the
   // Smashing DoT, so only one of the two was reachable before) — take the ticking
   // component either way, which is what this file is about.
   const single = (p: { damage?: unknown }) => {

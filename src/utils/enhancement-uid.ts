@@ -56,7 +56,7 @@ export function parseIOSetUid(uid: string): ParsedIOSetUid | null {
     // event-set procs). Nothing in the string names a slot, so 6 is a guess,
     // and no caller recovers from it: `mapEnhancementUid` takes
     // `pieces.find((p) => p.num === pieceNum)`. This used to claim a
-    // display-name resolver did; there isn't one (MBDEXPORT-10).
+    // display-name resolver did; there isn't one (data-gaps-263).
     //
     // It stands because this function is the FALLBACK. Every such UID in a
     // vendored Mids database is in `MIDS_UIDS`, which `mapEnhancementUid`

@@ -10,7 +10,7 @@
  * build's global — `base × (1 + global) / (1 + global + local)`. Global alone
  * cancels, which is why the older reading "global recharge never affects PPM
  * rolls" held for as long as nobody slotted recharge in the power; once they do,
- * global softens the penalty. Measured 2026-08-02 (DATA-GAP-REGISTER PPM-2).
+ * global softens the penalty. Measured 2026-08-02 (DATA-GAP-REGISTER data-gaps-111).
  */
 
 import type { Enhancement, IOSetEnhancement } from '@/types';
@@ -135,7 +135,7 @@ export function calculateSlottedProcDamagePerCast(input: SlottedProcDamageInput)
     // its slotting to a child. A piece TWO children could hold (the multi-mez
     // ATO procs in Hypnotizing Lights) has no single roll: it pays nothing
     // here, and the Info panel carries the loud marker (DATA-GAP-REGISTER
-    // HC-4).
+    // data-gaps-109).
     let site: ProcRollSite | null;
     try {
       site = resolveProcRollSite(input.procRollSites, procData.boostsAllowed);

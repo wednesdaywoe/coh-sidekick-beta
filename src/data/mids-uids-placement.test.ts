@@ -8,7 +8,7 @@
  * Rebirth's Return From the Grave lists its sixth record as a byte-copy of its
  * fifth, so the letter key drops it, slots 1 and 6 both come free, and the rez
  * proc — Mids' FIRST member — landed on our piece 6, Recharge. Silently, in
- * both directions, because the import path reads this same table (MBDEXPORT-10).
+ * both directions, because the import path reads this same table (data-gaps-263).
  *
  * Nothing downstream could see it. The export sweep in `mids-export.test.ts`
  * asks whether the UID we emit is one Mids HAS, and the mis-bound one is; the

@@ -36,7 +36,7 @@ const PARASITIC_ATS: ReadonlyArray<readonly [string, string]> = [
 const ABLATIVE_ATS = [...PARASITIC_ATS, ['sentinel/bio-armor', 'Sentinel'] as const];
 
 /** The ATs whose Parasitic Aura carries ONLY the Max-face Expression, so the per-foe increment
- *  has no atom to read — the ABSORB-4 residual's population on this power, pinned by name. */
+ *  has no atom to read — the data-gaps-163 residual's population on this power, pinned by name. */
 const EXPRESSION_ONLY_PARASITIC: ReadonlySet<string> = new Set(['brute/bio-armor']);
 
 /** The per-foe stamp on a power's Current-face absorb GRANT, or `undefined` when it authors
@@ -117,13 +117,13 @@ describe('Bio Armor absorb + targets-hit fixes (homecoming)', () => {
       // The PER-FOE increment is a different matter, and the difference is measured rather
       // than smoothed over. Three of the four ATs author the grant as a Current/Magnitude atom
       // that carries `perTarget`; Brute authors ONLY the Max-face Expression, whose per-foe half
-      // has no atom source — the ABSORB-4 carried residual ("the MaxHP-FRACTION half has no atom
+      // has no atom source — the data-gaps-163 carried residual ("the MaxHP-FRACTION half has no atom
       // source at all"), which the bag's `maxHPFractionPerTarget` used to paper over. Stated as
       // a partition so neither side can drift silently: an AT leaving the Expression-only set
       // reds here, and so does one joining it.
       const perTarget = perFoeAbsorbStamp(pw!);
       if (EXPRESSION_ONLY_PARASITIC.has(setId)) {
-        expect(perTarget, `${setId}: gained a per-foe atom — ABSORB-4's residual may be closed`).toBeUndefined();
+        expect(perTarget, `${setId}: gained a per-foe atom — data-gaps-163's residual may be closed`).toBeUndefined();
       } else {
         expect(perTarget, `${setId}: lost its per-foe atom`).toBeCloseTo(0.1, 5);
       }

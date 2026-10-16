@@ -16,7 +16,7 @@
  * So the table is generated from EnhDB.mhd — Mids is the only authority on its
  * own namespace — by `tools/mids-oracle/emit_mids_uids.py`.
  *
- * WHOSE EnhDB, per fork, because two of the four are not their own (MBDEXPORT-2).
+ * WHOSE EnhDB, per fork, because two of the four are not their own (data-gaps-262).
  * Homecoming and Rebirth read Mids' databases of those names. Brainstorm reads
  * Homecoming's, which is the database a Brainstorm build is authored in anyway.
  * Thunderspy reads Mids' GENERIC database — `Thunderspy/EnhDB.mhd` is byte-identical
@@ -67,7 +67,7 @@ export interface MidsUidTable {
    * this range, keeps the Uid, and says nothing. The slot comes back looking filled and
    * correct on both screens while holding a different enhancement — Homecoming's Launch,
    * Thrust, Hypersonic and Warp are 15-50 in the game export and 20-50 here, so a
-   * level-15 piece is a level-20 piece by the time Mids has read it. MBDEXPORT-22.
+   * level-15 piece is a level-20 piece by the time Mids has read it. data-gaps-275.
    *
    * Read off Mids' SET record, which is the one it clamps with. Each enhancement record
    * carries a range too and the two disagree on 96 of Homecoming's 227 sets; the set

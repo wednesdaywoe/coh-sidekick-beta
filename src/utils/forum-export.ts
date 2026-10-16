@@ -37,7 +37,7 @@ export function generateForumExport(
 ): string {
   const { includeIncarnates = true, includeSetBonuses = true } = options;
   const fmt = formatter(format);
-  // Outside Level Up mode a slot carries no real level (SLOT-3); this is a
+  // Outside Level Up mode a slot carries no real level (issues-3); this is a
   // synthetic, schedule-legal placement for the printed text, not a claim
   // about the build's actual leveling history.
   const slotLevels = computeExportSlotLevels(build, levelUpMode);
@@ -77,7 +77,7 @@ export function generateForumExport(
 
   // Category travels with the power: `computeAllSlotLevels` keys on
   // `category:internalName`, and looking it up by display name missed on every
-  // power, so every exported slot printed its power's pick level (SLOT-1).
+  // power, so every exported slot printed its power's pick level (issues-6).
   const allPowers: { power: SelectedPower; category: PowerCategory }[] = [
     ...build.primary.powers.map((power) => ({ power, category: 'primary' as const })),
     ...build.secondary.powers.map((power) => ({ power, category: 'secondary' as const })),

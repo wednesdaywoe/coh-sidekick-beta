@@ -8,7 +8,7 @@
  *
  * Read PER PLAYER CLASS, which is the part a build-agnostic comparison cannot do. A protection
  * atom may fork on `casterArchetypes` — Rebirth's pool powers state identical arms per class
- * (AT-FORK-1) — and a raw read returns `undefined` exactly where the build's own arm exists.
+ * (AT-data-gaps-298) — and a raw read returns `undefined` exactly where the build's own arm exists.
  * The bag never had to care, because the converter wrote one slot per power with the fork
  * already collapsed into it; an atom reader has to resolve it or lose the value. So every
  * assertion here runs through {@link mezSourceFor}, the same resolution the call site uses.

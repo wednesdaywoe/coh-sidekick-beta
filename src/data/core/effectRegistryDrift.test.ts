@@ -4,7 +4,7 @@
  *
  * The engine resolves per-power granted magnitudes from the contract file; this component
  * registry resolves the same rows for display. Two hand-maintained copies of the same rules
- * is the FLAGS-2 shape — self-consistent on each side, silently divergent between them —
+ * is the data-gaps-81 shape — self-consistent on each side, silently divergent between them —
  * so this test is the thing that makes them one source rather than two.
  *
  * Presentation-only fields (`colorClass`, `renderAs`) are deliberately absent from the

@@ -65,7 +65,7 @@ const ONLY_FALLBACK = args.includes('--fallback');
 // --gate: CI mode. Exits non-zero on two high-confidence classes: the
 // "contradiction" invariants (a genuine ranged attack carrying single-target
 // Melee, or vice versa — the signature of one category landing across the wrong
-// pool), and an override masking the export's own authoritative list (BRAIN-2).
+// pool), and an override masking the export's own authoritative list (data-gaps-291).
 // Suppresses the noisy informational sections (un-overridden augmentation
 // drift, inference fallback, heuristic missing-category checks) so CI logs show
 // only the actionable failures.
@@ -443,7 +443,7 @@ const CONTRADICTION_ALLOWLIST = new Set([
   'rebirth:warshade_offensive/umbral-blast/gravimetric-snare',
 ]);
 
-// BRAIN-2 gate — an override whose `allowedSetCategories` contradicts the export's
+// data-gaps-291 gate — an override whose `allowedSetCategories` contradicts the export's
 // own `allowed_set_categories` is a hand list outranking the authoritative one.
 // Separated from the un-overridden drift bucket because the two have different
 // causes: an un-overridden diff on Thunderspy is usually the converter's

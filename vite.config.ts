@@ -118,7 +118,7 @@ function cspPlugin(): Plugin {
           `connect-src 'self' https://*.supabase.co wss://*.supabase.co https://*.sentry.io https://wednesdaywoe.github.io https://coh-planner-feedback.wedswoe.workers.dev`,
           // 'self' is the hidden preview-capture iframe: BuildDetailPage frames
           // this same origin at /?previewCapture=<id> to render a build's share
-          // image off-screen (streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF7).
+          // image off-screen (streams/BUILD_PREVIEW_BACKFILL_PLAN.md, build-preview-backfill-7).
           // It was missing until 2026-09-03, so the on-view backfill worked in
           // dev — where there is no CSP — and was blocked in production for
           // every build; only the quick-share path ever wrote an image.

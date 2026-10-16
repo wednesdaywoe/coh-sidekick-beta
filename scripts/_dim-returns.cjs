@@ -1,5 +1,5 @@
 /**
- * Shared dim_returns derivation (SOURCE-1 SW3/item 9): schedule identity by
+ * Shared dim_returns derivation (data-gaps-324 SW3/item 9): schedule identity by
  * tier-start triple, and the boost-type -> schedule map an
  * `enhancement_curves.json` carries. Used by convert-enhancement-curves.cjs
  * (full curve module) and convert-special-enhancements.cjs (schedule lookup

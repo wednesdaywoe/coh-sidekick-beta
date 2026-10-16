@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
  * A converter that invents a REAL set heading for a power the game lists in no
  * set offers genuine sets where the game refuses them, and every category still
  * matches something — so no heading-vocabulary check can see it. That was
- * SETCAT-1's actual damage: the pool/epic converters answered
+ * data-gaps-39's actual damage: the pool/epic converters answered
  * `allowed_set_categories: null` with an inference heuristic, and the picker
  * offered Teleport sets in Jaunt and Healing sets in Rebirth's Hoarfrost. So
  * this joins the generated pool/epic categories back to the export: a power

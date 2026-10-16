@@ -3,7 +3,7 @@
  *
  * Derived from the committed binary export (boosts/{hamidon,synthetic_hamidon,
  * titan,hydra,dsync,generic prestige}_* piece templates + boosts_allowed) by
- * scripts/convert-special-enhancements.cjs (SOURCE-1 item 9).
+ * scripts/convert-special-enhancements.cjs (data-gaps-324 item 9).
  *
  * Regenerate: node scripts/convert-special-enhancements.cjs --dataset thunderspy
  */

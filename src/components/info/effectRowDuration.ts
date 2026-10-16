@@ -5,7 +5,7 @@
  * subject under test, and `RegistryEffectsDisplay` is a React component with no render harness
  * in this repo. Grading it through the component would mean grading it through nothing.
  *
- * The precedence exists because the same question has three possible answers after STRIP-1
+ * The precedence exists because the same question has three possible answers after data-gaps-327
  * (PROD6B-BETA-PARITY class 2):
  *
  *  - the ENGINE row's `duration`, which is `recorded_duration` off the atom-derived `durations`

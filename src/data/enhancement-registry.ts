@@ -245,7 +245,7 @@ export function getTierBorderColor(tier: string): string {
  * sits in the export beside the attuned copies on all four datasets — and it came
  * off the list on 2026-07-30 after a user reported it behaving as a normal IO.
  * It was still on canonical's copy of the list six weeks later, where it cost
- * every Winter's Gift piece its level on a `.mbd` write (MBDEXPORT-14), because
+ * every Winter's Gift piece its level on a `.mbd` write (data-gaps-267), because
  * this file sits outside the shared-surface guard and nothing measured the two
  * lists against each other.
  *

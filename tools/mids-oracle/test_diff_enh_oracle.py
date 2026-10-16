@@ -46,10 +46,10 @@ class TestDiffEnhOracle(unittest.TestCase):
         val = abs(0.1125) * diff_enh_oracle._bonus_multiplier(effect)
         self.assertAlmostEqual(val, 1.125, places=3)
 
-    # --- PROV-5: the comparator's stat vocabulary had drifted from the repo's ---
+    # --- data-gaps-247: the comparator's stat vocabulary had drifted from the repo's ---
 
     def test_aoe_defense_speaks_the_repo_s_spelling(self) -> None:
-        # MEZRES-1 renamed this stat defense_(area) -> defense_(aoe) on the repo
+        # data-gaps-185 renamed this stat defense_(area) -> defense_(aoe) on the repo
         # side; the alias stayed behind and split 115 matching rows into a
         # missing line and an extra line apiece.
         self.assertEqual(diff_enh_oracle._damage_name("AoE"), "aoe")
@@ -95,7 +95,7 @@ class TestDiffEnhOracle(unittest.TestCase):
 
     def test_res_effect_reads_et_modifies_for_the_slow_triple(self) -> None:
         # Mids spells slow resistance as one ResEffect row per debuffed attrib,
-        # keyed by et_modifies -- the same second field PROV-4 taught the DSH5
+        # keyed by et_modifies -- the same second field data-gaps-246 taught the DSH5
         # comparator to read. The repo carries one slot for the whole triple.
         for attrib in ("SpeedRunning", "SpeedFlying", "RechargeTime"):
             effect = {

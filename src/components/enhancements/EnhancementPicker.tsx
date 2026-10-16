@@ -101,7 +101,7 @@ export function EnhancementPicker() {
   // be `min={10} max={53}` typed in, which offered a level-37 Accuracy IO and
   // three levels past the top of the game's roster; 51-53 is the pre-booster
   // spelling of a level-50 IO with three combines, which this picker already
-  // carries on its own axis as the Boost dial (BOOST-6).
+  // carries on its own axis as the Boost dial (data-gaps-6).
   const ioCraftLevels = getCommonIOLevels();
   const onGenericTab = typeFilter === 'generic';
   // What a generic IO picked right now is crafted at: a level carried in from

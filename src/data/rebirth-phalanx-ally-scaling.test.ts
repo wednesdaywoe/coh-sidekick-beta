@@ -28,7 +28,7 @@ const PHALANX = [
 
 describe('Rebirth Phalanx Fighting per-ally defense scaling (is_pvp ally pattern)', () => {
   // The per-ally increment no longer reaches the generated file as a bag key
-  // (`"perTarget"` was `effects` slot, stripped 2026-08 — STRIP-1). It now lives as
+  // (`"perTarget"` was `effects` slot, stripped 2026-08 — data-gaps-327). It now lives as
   // the atom stream's own `per_target` stamp, the wire field at tuple index 24
   // (atom-reference §2). So the guard scans the emitted ATOMS for the increment
   // rather than the retired bag shape, keeping the claim: the PvE classifier must

@@ -35,7 +35,7 @@ export function EnhancementToolsModal({ isOpen, onClose }: EnhancementToolsModal
 
   // The band is the crafted-record roster's ends, not a typed 10-50: set pieces
   // take every integer inside their own range, generic IOs only the roster's
-  // steps, and the store floors them onto it on the way in (BOOST-6).
+  // steps, and the store floors them onto it on the way in (data-gaps-6).
   const ioCraftLevels = getCommonIOLevels();
   const [ioLevelEnabled, setIoLevelEnabled] = useState(true);
   const [ioLevel, setIoLevel] = useState(ioCraftLevels[ioCraftLevels.length - 1]);

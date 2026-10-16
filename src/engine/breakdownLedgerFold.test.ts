@@ -112,7 +112,7 @@ function buildFor(server: Server, atId: string): Build {
   // Accolades are the ledger's third `kind`, and the only contributors the build stores as bare
   // ids rather than as picked powers — which is what made their rows fall back to the internal
   // name until the resolver learned to read the registry. Every toggle the fork offers: the
-  // hero/villain gates are the game's, and the planner lets each stand alone (ACCOLADE-1).
+  // hero/villain gates are the game's, and the planner lets each stand alone (data-gaps-44).
   build.accolades = getAccolades().map(accoladeId);
 
   // One incarnate per slot the fork offers, top tier of the first tree — the incarnate ledger is

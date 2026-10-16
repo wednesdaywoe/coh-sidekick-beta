@@ -443,7 +443,7 @@ const FITNESS_POOL_BY_NAME = new Map(
  * scale table. This is what makes Health/Stamina/Swift/Hurdle interpret the SAME
  * atomized data the Rust engine reads from the contract — most importantly
  * Health's `MezResist(Sleep)` atom, which the old hand table dropped so the
- * planner reported no Sleep resistance at all (DATA-GAP INHERENT-1). Health's
+ * planner reported no Sleep resistance at all (DATA-GAP data-gaps-49). Health's
  * power only ever affects its caster (authored `Target kCaster`), so its
  * `Res(Sleep)` is the caster's own and belongs in the player's mezResistSleep.
  */
@@ -456,7 +456,7 @@ function fitnessPoolCalcFields(
   }
   return {
     atoms: pool.atoms as EncodedAtom[],
-    // No `effects`: STRIP-1 took the bag off the pool converter's output, so all 83 generated pool
+    // No `effects`: data-gaps-327 took the bag off the pool converter's output, so all 83 generated pool
     // powers carry zero `effects` keys and this read had been resolving to `undefined` through an
     // `as unknown as` cast that hid it. Dropping the key is what the four already got at runtime.
     // The execution stats came with the bag until the pool converter minted them (atom-migration
@@ -548,7 +548,7 @@ export const INHERENT_FITNESS_POWERS: InherentPowerDef[] = [
  * be spelled out here by hand — scales, tables, endurance, the lot — and because
  * only Homecoming has a `levels.ts`, every fork got Homecoming's copy. The
  * numbers disagreed with the export on nearly every axis and the membership was
- * simply wrong off Homecoming (INHERENT-4, INHERENT-5). They now come from
+ * simply wrong off Homecoming (data-gaps-32, data-gaps-33). They now come from
  * `generated/basic-inherents.ts`, one module per fork, built by
  * `scripts/convert-basic-inherents.cjs`.
  *
@@ -788,7 +788,7 @@ export function createArchetypeInherentPower(
   // `inherent_sentinel_opportunity.png` where the export says `inherent_targetlock.png` — a
   // DIFFERENT image, so the two planners drew different art for one power.
   //
-  // A fabricated filename that is usually an alias is the same failure ICON-1 retired one layer
+  // A fabricated filename that is usually an alias is the same failure data-gaps-29 retired one layer
   // over, and it hid for the same reason: it resolves. An inherent with no icon now resolves to
   // `Unknown.png` through `getPowerIconPath`, which is a placeholder the reader can see rather
   // than a guess that happens to land.

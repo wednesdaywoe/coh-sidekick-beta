@@ -45,7 +45,7 @@ function activeServerId(): string | undefined {
  * shared Homecoming list against a hand-written `inherentRules.excludeInherents`
  * — one entry long, naming Rebirth's missing Athletic Run — which is exactly the
  * shape that let Thunderspy go on being offered Ninja Run, Beast Run and five
- * prestige sprints it has never had (INHERENT-4). Absence is now data.
+ * prestige sprints it has never had (data-gaps-32). Absence is now data.
  *
  * The explicit named exports shadow the ones from `export *`.
  */

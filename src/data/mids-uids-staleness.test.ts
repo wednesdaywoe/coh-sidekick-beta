@@ -19,7 +19,7 @@ import { MIDS_UIDS as THUNDERSPY } from './datasets/thunderspy/generated/mids-ui
 // Homecoming's open beta and shares its enhancement namespace. `Thunderspy/EnhDB.mhd`
 // is Mids' GENERIC database under a Thunderspy name — Mids has never carried a
 // Thunderspy one — so this gate pins a file whose provenance it cannot see
-// (DATA-GAP MBDEXPORT-2).
+// (DATA-GAP data-gaps-262).
 const SOURCES = [
   ['homecoming', HOMECOMING, 'MidsReborn-master/MidsReborn/Databases/Homecoming/EnhDB.mhd'],
   ['brainstorm', BRAINSTORM, 'MidsReborn-master/MidsReborn/Databases/Homecoming/EnhDB.mhd'],

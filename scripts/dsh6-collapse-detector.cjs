@@ -1,20 +1,20 @@
 /**
- * DSH6 general per-slot collapse detector.
+ * deductive-schema-harness-6 general per-slot collapse detector.
  *
  * The DSH3 collapse detector could only check the resistible/unresistable twin
  * (it had no attrib→slot routing map — the converter output had already discarded
- * the attrib identity). DSH4 shipped that map (the `bridgeAttrib` bridge in
+ * the attrib identity). deductive-schema-harness-4 shipped that map (the `bridgeAttrib` bridge in
  * `src/data/core/atomic-effect.ts`), so a *general* per-slot detector is now
- * possible. This is that detector, and the gate the DSH6 converter rework drives
+ * possible. This is that detector, and the gate the deductive-schema-harness-6 converter rework drives
  * to zero one site at a time.
  *
- * SINGLE SOURCE: the input side reuses the DSH4 bridge (`ingestExportPower`) via
+ * SINGLE SOURCE: the input side reuses the deductive-schema-harness-4 bridge (`ingestExportPower`) via
  * `tsx/cjs` — the attrib→(effectType,subType) map is never re-ported here.
  *
  * Per power: INPUT = bridge atoms from the source `exported_powers/**.json` (what
  * SHOULD survive); OUTPUT = every effect identity reachable anywhere in the generated
  * Power object (effects + damage + specialEffects + conditionalEffects). It runs TWO
- * complementary gates, both keyed to the DSH4 identity and both only firing when the
+ * complementary gates, both keyed to the deductive-schema-harness-4 identity and both only firing when the
  * effectType is otherwise present ("class-present, sibling-missing" → cannot be
  * confused with the converter's legitimate whole-class target drops, which land in a
  * separate non-gating "class-absent" bucket):
@@ -30,7 +30,7 @@
  *     templates the bin resolves at DSH7-numeric). resistible folded out (buffs have no
  *     twin — DSH3 gates debuff twins).
  *
- * SINGLE SOURCE: both gates' input reuses the DSH4 bridge (`ingestExportPower`) via
+ * SINGLE SOURCE: both gates' input reuses the deductive-schema-harness-4 bridge (`ingestExportPower`) via
  * `tsx/cjs` — the attrib→(effectType,subType) map is never re-ported here. Runs in CI
  * (all inputs committed, unlike DSH5's gitignored `.mhd`).
  *
@@ -65,7 +65,7 @@ const POWER_FILTER = argVal('--power');
 // byType: the slot value is a { subKey: {...} } map (one entry per damage/position/mez type).
 // ---------------------------------------------------------------------------
 const SLOT_TABLE = {
-  // damage-output strength (aspect=Str) — excluded from INPUT check (DSH4 Enhancement
+  // damage-output strength (aspect=Str) — excluded from INPUT check (deductive-schema-harness-4 Enhancement
   // boundary) but still collected as representation to stay generous/FP-safe.
   damageBuff: { et: 'DamageBuff', sign: '+' },
   damageDebuff: { et: 'DamageBuff', sign: '-' },
@@ -98,7 +98,7 @@ const SLOT_TABLE = {
   // +1.938 run cap etc.) split out of `movement` 2026-07-12 — same Movement
   // class, distinct output slot so the Current-aspect buff isn't clobbered.
   // movementCapDebuff is that split's debuff direction, out of `slow`
-  // 2026-08-04 for the same reason (ENT-5).
+  // 2026-08-04 for the same reason (data-gaps-100).
   movement: { et: 'Movement', sign: null, byType: true },
   movementCapBump: { et: 'Movement', sign: null, byType: true },
   movementCapDebuff: { et: 'Movement', sign: null, byType: true },
@@ -155,8 +155,8 @@ const META_SLOT = new Set([
 // explosion — the biggest, cleanest collapse class), over effectTypes with a
 // clean, aspect-stable, table-independent bridge↔converter correspondence.
 // Excluded from v1 (tracked as coverage, never mis-flagged):
-//   - aspect=Str  → the Power-Boost→specialBuff Enhancement boundary (DSH4/DSH6).
-//   - aspect=Res base-defense (Defense|All since BRIDGE-1; was Resistance|All) →
+//   - aspect=Str  → the Power-Boost→specialBuff Enhancement boundary (deductive-schema-harness-4/deductive-schema-harness-6).
+//   - aspect=Res base-defense (Defense|All since data-gaps-202; was Resistance|All) →
 //     converter's debuffResistance (DDR). Excluded in inputIdentities, aspect-keyed.
 //   - exotic resist types the converter's DAMAGE_TYPES map omits (radiation/…).
 //   - KB subtypes (foe KB-protection has documented target-conditional drops).
@@ -493,7 +493,7 @@ function inputIdentities(sourceJson) {
     if (a.attribType === 'Expression') continue;       // engine phantoms / caps
     if (a.aspect === 'Str') continue;                  // Power-Boost → specialBuff (Enhancement boundary)
     if (a.aspect === 'Res' && a.effectType === 'Movement') continue; // slow-RES → debuffResistance.movement
-    // [BRIDGE-1] base_defense@Res is now typed Defense/all (was Resistance/all, which
+    // [data-gaps-202] base_defense@Res is now typed Defense/all (was Resistance/all, which
     // checkableSub excluded as DDR); it routes to debuffResistance.defense, NOT a
     // defenseBuff.all slot — the same DDR family as the Movement slow-RES above.
     // Exclude it so the retyped atom isn't mis-flagged as a dropped Defense/all sibling.
@@ -721,7 +721,7 @@ function main() {
   console.log(`  worklist → ${path.relative(REPO, OUT_PATH)}`);
 
   // -------------------------------------------------------------------------
-  // COMPLETENESS GATE (DSH6 Phase 0b, --gate). The PotD lesson: a whole-
+  // COMPLETENESS GATE (deductive-schema-harness-6 Phase 0b, --gate). The PotD lesson: a whole-
   // effect-type drop landed in the non-gating class-absent bucket and stayed
   // CI-green for two months. Under --gate, EVERY group — collapse AND
   // class-absent, by-type AND scalar — must appear in the frozen, reason-

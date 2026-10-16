@@ -10,7 +10,7 @@
  * That inheritance is the thing to distrust as a patch lands. An override is a
  * hand patch for an export defect, and a patch that FIXES the defect upstream
  * turns the override into a restatement that outlives its reason
- * (DATA-GAP-REGISTER BRAIN-2). The shard is re-pointed each cycle rather than
+ * (DATA-GAP-REGISTER data-gaps-291). The shard is re-pointed each cycle rather than
  * retired, so this folder is never "done" — it is re-checked per release.
  */
 
@@ -99,7 +99,7 @@ const dataset: Dataset = {
     // never enabled: 36/36 powers with authored help of literally "… text",
     // reused Interface icons, and no exemplar-grant linkage. Serving it would
     // apply a slot the picker rightly hides (DATASET_ONLY_SLOTS in
-    // incarnates.ts) — see GENESIS-1.
+    // incarnates.ts) — see data-gaps-47.
     genesis: {},
   } as unknown as IncarnateEffectsRaw,
   powerPoolsRaw: POWER_POOLS_RAW as unknown as LegacyPowerPoolRegistry,

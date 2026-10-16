@@ -1,5 +1,5 @@
 # Worker for coh-sidekick.com/builds/* — see src/index.ts and
-# streams/BUILD_PREVIEW_IMAGE_PLAN.md (EMBED4).
+# streams/BUILD_PREVIEW_IMAGE_PLAN.md (build-preview-image-4).
 name = "coh-sidekick-build-og"
 main = "src/index.ts"
 compatibility_date = "2026-09-03"

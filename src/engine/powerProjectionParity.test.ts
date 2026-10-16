@@ -168,7 +168,7 @@ function carriesTransform(power: Power): boolean {
   return p.quickSnipe != null || p.midCombatCast != null || (p.conditionalEffects?.length ?? 0) > 0;
 }
 
-/** Does this power's fast-snipe form read the CASTER's own ToHit (SNIPE-2), the way canonical's
+/** Does this power's fast-snipe form read the CASTER's own ToHit (data-gaps-146), the way canonical's
  *  `effective::fast_form_reads_caster_to_hit` reads it — structurally (the pair of tokens),
  *  not by matching the fork. Rebirth/Thunderspy's `cur.kToHit source> .97 >=` is a state the
  *  `combatMode` toggle alone can never move; only a build whose ToHit crosses 97% can, which
@@ -176,13 +176,13 @@ function carriesTransform(power: Power): boolean {
  *  reads no such pair, so the toggle IS its reach signal. Used to keep the anti-vacuity
  *  `castMoved` check from asserting a toggle can move a state it structurally cannot. */
 function quickSnipeReadsCasterToHit(power: Power): boolean {
-  // The wire carries the condition as a token array (COND-8) — read it as one.
+  // The wire carries the condition as a token array (data-gaps-123) — read it as one.
   const tokens = (power as unknown as { quickSnipe?: { condition?: string[] } }).quickSnipe?.condition ?? [];
   return tokens.some((t, i) => t.toLowerCase() === 'cur.ktohit' && tokens[i + 1]?.toLowerCase() === 'source>');
 }
 
 /** Does this power summon an entity? Read off `power.summon`, the whole-power verdict the
- *  converter stamps (ENT-22) — never re-derived from `EntCreate` atoms, which state the
+ *  converter stamps (data-gaps-22) — never re-derived from `EntCreate` atoms, which state the
  *  entity's own lifespan and not whether the power has one. */
 function carriesSummon(power: Power): boolean {
   return (power as unknown as { summon?: unknown }).summon != null;
@@ -199,7 +199,7 @@ function carriesModeVariant(power: Power): boolean {
  *  rather than naming any (Rule 0). */
 /** Does this power grant +Strength — the Power Boost family the PROD6C fold reads?
  *
- *  Was `effects.specialBuff != null`. STRIP-1 emptied `effects`, so that read returned false for
+ *  Was `effects.specialBuff != null`. data-gaps-327 emptied `effects`, so that read returned false for
  *  every power on every fork, `strengthCandidates` found none, and the body below returned at its
  *  first line — green, having graded nothing. It never went red, which makes it the worse half of
  *  the same defect the 36 loud failures came from (PROD6B-BETA-PARITY class 1).
@@ -448,7 +448,7 @@ function tierDelta(label: string, engine: ThreeTierValues | null, beta: ThreeTie
 }
 
 /**
- * Rows where the ENGINE is right and the beta's generated tree cannot be yet — REDIRSTAT-1, whose
+ * Rows where the ENGINE is right and the beta's generated tree cannot be yet — data-gaps-143, whose
  * converter is declared forked in `scripts/sync-manifest.json` (`scripts/convert-powerset.cjs`).
  *
  * That converter stamps a modal redirect branch's OWN recharge and endurance onto the
@@ -486,7 +486,7 @@ function splitRedirStatRows(
     // pinned above, so matching a segment cannot reach another power's row.
     const segments = row.split(':')[0].split('.');
     if (segments.some((segment) => REDIRSTAT_KEYS.includes(segment))) {
-      adjudicated.push(`${row} — the engine reads the redirect branch's own stat and the beta's tree has no field to hold it (REDIRSTAT-1, converter declared forked)`);
+      adjudicated.push(`${row} — the engine reads the redirect branch's own stat and the beta's tree has no field to hold it (data-gaps-143, converter declared forked)`);
     } else {
       real.push(row);
     }
@@ -582,8 +582,8 @@ function betaCannotRunTheWindowVeto(power: Power | SelectedPower | undefined): b
  * beta read the caster's window off the atoms while `coh_math`'s converter MIRROR had no slot for
  * the atom carrying it — Thunderspy Cross Punch and Swirl on an IgnoreStrength self-buff, the EM
  * Pulse copies on a self-directed `Recovery −1` outside the mirror's four penalty slots. The
- * roster called it vendor lag and predicted it would empty at the next engine vendor; PERMA-3 and
- * PERMA-4 landed, BPORT8 re-vendored, and on 2026-09-07 every row resolves NON-null and equal on
+ * roster called it vendor lag and predicted it would empty at the next engine vendor; data-gaps-156 and
+ * data-gaps-154 landed, BPORT8 re-vendored, and on 2026-09-07 every row resolves NON-null and equal on
  * both sides at the duration below.
  *
  * So the class is recorded the other way up. An empty roster of an ADJUDICATED absence cannot tell
@@ -616,7 +616,7 @@ const MIRROR_RECOVERED_WINDOWS: Record<string, Record<string, number>> = {
  * were not a value dispute: the engine's `Hold Prot` 17.3 is the stalker's own `Held −50 @Cur`
  * protection through `Melee_Res_Boolean`, the beta's `Hold` 22.35s is the crash pet's EM Pulse
  * `Held +15 Duration` on foes through the pet class's `Ranged_Immobilize`. On the two forks that
- * summon the pet separately the pseudo-pet merge lays the second under the first, and STRIP-1
+ * summon the pet separately the pseudo-pet merge lays the second under the first, and data-gaps-327
  * removed the first from the beta's bag, so the underlay was what the resolver saw. Homecoming
  * and brainstorm inline the pet's templates into the power itself, so nothing is merged and the
  * key is unwitnessed there — an empty roster on those forks is a reached population of zero
@@ -933,7 +933,7 @@ const DISPLAY_MINTED_KEYS = new Set([
 /** Does this display bag carry anything the AUTHORED effects supplied?
  *
  *  This is the question the engine-supersedes-beta adjudication actually depends on, and until
- *  STRIP-1 nobody had to ask it: the arm accepts an engine-only row when "the beta's bag has no
+ *  data-gaps-327 nobody had to ask it: the arm accepts an engine-only row when "the beta's bag has no
  *  such key", reading that as the beta's converter having dropped an effect the parser
  *  recovered. That inference holds while the beta HAS a bag and the missing key is one power's
  *  drift. It does not hold at all once the bag is empty for every power — then the premise is
@@ -971,7 +971,7 @@ function authoredSlotsAgree(a: unknown, b: unknown): boolean {
 
 
 /** A by-type label with its segment order removed. The segments are joined without a delimiter
- *  (`RunFlyJmpH…`), so they cannot be re-split reliably (COND-8: a joined string is for asking,
+ *  (`RunFlyJmpH…`), so they cannot be re-split reliably (data-gaps-123: a joined string is for asking,
  *  never re-splitting) — the sorted character multiset is the order-free fingerprint instead.
  *  Order itself is not under test for the same reason row order is not: the engine emits its
  *  by-type breakdown in its own map order, the beta in registry order, and the per-type CONTENT
@@ -985,7 +985,7 @@ function byTypeFingerprint(label: string | null | undefined): string | null {
  *
  *  `real` and `adjudicated` are the original two: a disagreement between two sides that both
  *  answered, and one the authored data explains. `unwitnessed` is the third — rows the beta
- *  cannot speak to because STRIP-1 left its bag holding only minted keys, which is most of the
+ *  cannot speak to because data-gaps-327 left its bag holding only minted keys, which is most of the
  *  corpus and was previously counted as disagreement. `witnessed` says whether this power's beta
  *  side had any authored input at all, so a body can state the population it really graded
  *  instead of the population it walked. `underlayOutranked` is the one adjudication that carries
@@ -1002,7 +1002,7 @@ type MagnitudeDiff = {
 };
 
 /** The bag keys the beta holds only because an ADDITIVE conditional filled them into a base bag
- *  STRIP-1 emptied — [`additiveFillIns`]' subject, keyed effectKey -> the entry that filled it. */
+ *  data-gaps-327 emptied — [`additiveFillIns`]' subject, keyed effectKey -> the entry that filled it. */
 type AdditiveFillIns = ReadonlyMap<string, string>;
 
 /** Which of a power's bag keys arrived by an active additive conditional filling an EMPTY base
@@ -1016,7 +1016,7 @@ type AdditiveFillIns = ReadonlyMap<string, string>;
  *
  *  They differ in one place only: what they ask for base PRESENCE. The engine asks the
  *  atom-projected base surface (`window_slots`, `effective.rs`' `conditional_delta`); the beta
- *  asks `power.effects`, which STRIP-1 emptied for every power on every fork. So the beta's
+ *  asks `power.effects`, which data-gaps-327 emptied for every power on every fork. So the beta's
  *  collision test is universally false, every additive entry's copy fills in, and the resolver is
  *  handed the CONDITIONAL's atom for a key the power's own atoms carry.
  *
@@ -1035,7 +1035,7 @@ type AdditiveFillIns = ReadonlyMap<string, string>;
  *  down (mutation sweep 2026-09-08 — deleting either leaves the suite green):
  *
  *  * the `offBag` presence test can only fire where the toggles-off bag holds the key, and
- *    STRIP-1 left it holding none — every subject measures `baseBagKeys=0`. It is oriented to
+ *    data-gaps-327 left it holding none — every subject measures `baseBagKeys=0`. It is oriented to
  *    NARROW as the bag comes back, which is what keeps it from becoming the universally-true
  *    guard it exists to compensate for; until then the corpus cannot violate it.
  *  * the exact-value test decides WHICH entry is named, never whether the row routes: where two
@@ -1065,7 +1065,7 @@ function additiveFillIns(
 }
 
 /** The slots `mezSlotValue` reads — the beta's own atom-native reader for a power's OWN
- *  control / protection row, which is the reader the display bag lost at STRIP-1. */
+ *  control / protection row, which is the reader the display bag lost at data-gaps-327. */
 type OwnMezSlot = Parameters<typeof mezSlotValue>[1];
 const OWN_MEZ_SLOTS: ReadonlySet<string> = new Set<OwnMezSlot>(['hold', 'stun', 'sleep', 'immobilize', 'confuse', 'fear']);
 
@@ -1148,7 +1148,7 @@ function witnessLine(server: string, label: string, w: MagnitudeWitness): string
  *  resolved a row: that row came through the projection's deeper walk (a grant edge or mode
  *  redirect the legacy dataset folded into the power itself — Bio Armor's aura taunt is the
  *  canonical pair, legacy `taunt {scale 1.1}` on the stance vs the engine reading the granted
- *  aura's own scale-1 row, the TAUNT-1 own-beats-redirect rule). Rows the two datasets author
+ *  aura's own scale-1 row, the data-gaps-313 own-beats-redirect rule). Rows the two datasets author
  *  IDENTICALLY keep failing hard, which is what preserves the gate's grip on resolution.
  *
  *  There is no linear-self-stack adjudication any more, and the reason is worth keeping. The
@@ -1157,7 +1157,7 @@ function witnessLine(server: string, label: string, w: MagnitudeWitness): string
  *  a second hand-maintained copy of the routing rules, and it keyed a `Range|Str` template to
  *  `specialBuff` while the extractor put the VALUE on `rangeBuff`, so sentinel Aim's list named
  *  a key the bag had nothing under and omitted the one that did. Both datasets shipped it, so
- *  the rows were adjudicated on atom evidence instead. STACK-6 closed it upstream — the keys
+ *  the rows were adjudicated on atom evidence instead. data-gaps-173 closed it upstream — the keys
  *  come from the router now — and the rows are plain greens, which is the bar the exit
  *  condition set. A row that needs the old adjudication is a regression, not an exception. */
 /** Whether an engine display slot resolved from a spawned helper's rows: the slot itself or any
@@ -1245,7 +1245,7 @@ function magnitudeDeltas(
     // Two rows, two ATOMS. The pseudo-pet merge lays a summoned pet's control UNDER the power's
     // own bag — `{ ...pseudo, ...effects }` here, `merged.insert(key, own)` in granted.rs — so a
     // key the power's own atoms carry is answered by the power and never by the pet, on both
-    // sides, by the same declared order. STRIP-1 emptied the beta's own slot and the underlay
+    // sides, by the same declared order. data-gaps-327 emptied the beta's own slot and the underlay
     // showed through: the resolver was handed the pet's row (the merge stamps it `petClass`)
     // for a key the engine resolves from the power's own atom. Power Surge is the corpus case:
     // its own `Held −50 @Cur` on the caster is Hold PROTECTION, and its crash pet's EM Pulse
@@ -1415,7 +1415,7 @@ const MAX_SLOTS_PER_POWER = 6;
  *  alone. Every "the state reached the engine" floor used that, and the tiers are the dominant
  *  subpopulation: a body could keep asserting the state was observable while the state had
  *  stopped reaching magnitude rows entirely. That was tolerable while the resolver comparison
- *  covered the magnitude half; STRIP-1 removed the resolver's input, so the floor beneath those
+ *  covered the magnitude half; data-gaps-327 removed the resolver's input, so the floor beneath those
  *  bodies IS this now. `mutation-floor-hidden-by-dominant-subpopulation`. */
 function magnitudeRowsMoved(
   a: PowerProjection,
@@ -1555,12 +1555,12 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(
       undeclared,
       `${server}: buildDisplayEffects mints these with no authored effects, and DISPLAY_MINTED_KEYS ` +
-        `omits them — every one reads as an authored effect and re-opens the arm STRIP-1 made ` +
+        `omits them — every one reads as an authored effect and re-opens the arm data-gaps-327 made ` +
         `vacuous. Add them to the set.`,
     ).toEqual([]);
   }, 120000);
 
-  // ENGLAG-1 — the display renders the ENGINE's rows now, mapped by `magnitudesFromProjection`.
+  // data-gaps-329 — the display renders the ENGINE's rows now, mapped by `magnitudesFromProjection`.
   //
   // The population is every powerset power of every standard archetype, each projected through
   // `project_power` — the call `usePowerProjection` makes for a power you hover in the picker,
@@ -1571,7 +1571,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // Two oracles, because neither covers the other's population:
   //
   // - The ENGINE's own row, for the `row_key` -> expansion verdict and the label. The resolver
-  //   cannot grade these: a by-type value lives in the authored bag STRIP-1 removed, so every
+  //   cannot grade these: a by-type value lives in the authored bag data-gaps-327 removed, so every
   //   expanded row is engine-only and a resolver diff sees none of them. What is available is a
   //   JOIN between two fields the engine states independently — an expanded row is keyed
   //   `{effect_key}_{type_key}` AND labelled off the family label, so each checks the other.
@@ -1649,12 +1649,12 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
             if (row.quantity.kind !== engine.quantity.kind) deltas.push(`${where}: quantity ${row.quantity.kind} vs ${engine.quantity.kind}`);
             if (row.byTypeLabel !== (engine.byTypeLabel ?? undefined)) deltas.push(`${where}: byTypeLabel ${row.byTypeLabel} vs ${engine.byTypeLabel}`);
 
-            // ENGLAG-2 — the seconds travel on the row now, not in a `durations` map the bag
+            // data-gaps-330 — the seconds travel on the row now, not in a `durations` map the bag
             // no longer carries. A MAGNITUDE-valued mez
             // row's tier is the rank, so it must carry its duration here (that is the half the
             // tier cannot show); a DURATION-valued mez row's tier already IS the seconds, so
             // it must NOT (the engine's `recorded_duration` returns `null` for it) — printing
-            // a second number beside a tier that is already that number is the MEZDUR-1
+            // a second number beside a tier that is already that number is the data-gaps-167
             // double-state under a new field name. The adapter reads `row.duration`, never
             // `effects.durations`, so the only injection point is the engine row this walks.
             if (engine.quantity.kind === 'mez_duration') {
@@ -1695,7 +1695,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     }
 
     // eslint-disable-next-line no-console
-    console.warn(`[ENGLAG-1 adapter] ${server}: ${census.projected} powers, ${census.rows} rows (${census.expanded} expanded, ${census.faced} faced, ${census.qualified} qualified), ${census.compared} cross-checked, ${census.recovered} recovered, ${lost.length} lost (+${lostMinted.length} minted)`);
+    console.warn(`[data-gaps-329 adapter] ${server}: ${census.projected} powers, ${census.rows} rows (${census.expanded} expanded, ${census.faced} faced, ${census.qualified} qualified), ${census.compared} cross-checked, ${census.recovered} recovered, ${lost.length} lost (+${lostMinted.length} minted)`);
 
     // Every rule above is graded only where the corpus carries its shape, so each population is
     // named. The first version of this test asserted none of them and was blind to two.
@@ -1704,7 +1704,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(census.faced, `${server}: no mez FACE — the face read is ungraded`).toBeGreaterThan(10);
     expect(census.qualified, `${server}: no row whose engine label differs from the registry's — the label carry is ungraded`).toBeGreaterThan(10);
     expect(census.compared, `${server}: no row cross-checked against the resolver`).toBeGreaterThan(500);
-    // ENGLAG-2: the duration floor. A magnitude-valued mez row must reach the gate CARRYING a
+    // data-gaps-330: the duration floor. A magnitude-valued mez row must reach the gate CARRYING a
     // non-null duration — otherwise the seconds half is gone again and this grades nothing.
     // Set well under the corpus count so it is a collapse detector, not a pin.
     expect(census.mezMagWithDur, `${server}: no magnitude-valued mez row carrying its duration`).toBeGreaterThan(30);
@@ -1731,7 +1731,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // …and that the surfaces actually PASS those rows. Every arm above grades
   // `magnitudesFromProjection` directly, so deleting the one prop that reaches the component
   // would leave all of them green while the panel went back to rendering minted keys only.
-  // There is no render harness in this repo, so this reads the call sites (ENGLAG-1).
+  // There is no render harness in this repo, so this reads the call sites (data-gaps-329).
   //
   // `CompareSlottingModal` was the third caller and was held back on the reading that its
   // subject is a HYPOTHETICAL slotting while `project_power` resolves the build's own. PROD6D
@@ -1760,7 +1760,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
   // The precedence in `effectRowDuration.ts` (the row's own duration, then the bag's per-effect
   // `durations` map, then its power-level `buffDuration`) is unchanged. What was wrong was a
   // SUPPLIER. `buildDisplayEffects` backfilled a summon's lifespan into `buffDuration` under the
-  // guard "only where the power states no duration of its own" — a guard reading a key STRIP-1
+  // guard "only where the power states no duration of its own" — a guard reading a key data-gaps-327
   // removed from every power on every fork, so it became universally true and fired on all
   // 110 / 111 / 120 / 119 summon powers per fork. That put a PET'S LIFESPAN into the slot meaning
   // the power's own effect clock: two different quantities, one slot, and the pet's number won
@@ -1923,11 +1923,11 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.error(`\n[PROD6B-1 projection parity] ${server} (${powers.length} powers)\n    ${deltas.join('\n    ')}`);
     }
-    // The magnitude half of this body is unwitnessed: STRIP-1 left the fixture's bags holding
+    // The magnitude half of this body is unwitnessed: data-gaps-327 left the fixture's bags holding
     // minted keys only (0 / 0 / 1 / 0 powers carry an authored one), so the comparison above
     // grades the execution tiers, ArcanaTime, perma and enhancement bonuses, and the magnitude
     // rows only where the resolver can still speak. Floored on the rows existing at all; their
-    // shape is graded by the ENGLAG-1 adapter arm over the whole corpus.
+    // shape is graded by the data-gaps-329 adapter arm over the whole corpus.
     // eslint-disable-next-line no-console
     console.warn(witnessLine(server, 'every selected power projects to the beta calculators', witness));
     expect(deltas).toEqual([]);
@@ -2046,7 +2046,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(summonPowers, `${server}: the summon fixture reached no power carrying a summon`).toBeGreaterThan(20);
     expect(enginePetRows, `${server}: no engine row resolved from a pseudo-pet key — the merge is ungraded here`).toBeGreaterThan(0);
     expect(betaPetRows, `${server}: no beta row resolved from a pseudo-pet key — the merge is ungraded here`).toBeGreaterThan(0);
-    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // Anti-vacuity for the magnitude half. data-gaps-327 left most of the corpus unable to answer, and
     // an arm that grades zero powers is green for the wrong reason — so the population the
     // resolver CAN still witness is floored rather than assumed.
     expect(
@@ -2149,7 +2149,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // Guard the sweep: an empty walk would pass vacuously.
     expect(projected, `${server}: no unheld power was projected`).toBeGreaterThan(0);
     expect(magnitudeRows, `${server}: no unheld power resolved a magnitude row`).toBeGreaterThan(0);
-    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // Anti-vacuity for the magnitude half. data-gaps-327 left most of the corpus unable to answer, and
     // an arm that grades zero powers is green for the wrong reason — so the population the
     // resolver CAN still witness is floored rather than assumed.
     expect(
@@ -2315,7 +2315,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     await loadDataset(server);
     const witness = witnessCounter();
     const candidates = strengthCandidates(server);
-    // This used to warn "fork carries no specialBuff power" and RETURN. Between STRIP-1 and
+    // This used to warn "fork carries no specialBuff power" and RETURN. Between data-gaps-327 and
     // 2026-09-07 that branch was taken on ALL FOUR forks, because `grantsStrength` read the
     // emptied `effects.specialBuff` — so the body returned at its first line, green, with nothing
     // graded, and no arm anywhere said so. A floor instead: every fork carries carriers (9 on
@@ -2465,7 +2465,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         sliderMax.set(power.internalName, info.maxStacks);
         // Counted per ARM. The stack arm is the dominant subpopulation by an order of magnitude,
         // so a per-target arm that went blind again would leave `sliders` barely moved and every
-        // floor below still green — the shape that hid STACKINFO-1 in the first place.
+        // floor below still green — the shape that hid data-gaps-332 in the first place.
         if (info.label === 'Targets Hit') perFoeSliders += 1; else stackSliders += 1;
       }
       if (sliderMax.size === 0) continue;
@@ -2561,7 +2561,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // This used to warn and RETURN here, on the reading that a fork whose corpus reaches the
     // transform on no power should be reported and skipped rather than pass vacuously. That
     // reading is dead: `sliders` is 0 on all four forks, because `getStackingInfo` opens with
-    // `if (!power.effects) return null` and STRIP-1 emptied `effects` on every power. The skip
+    // `if (!power.effects) return null` and data-gaps-327 emptied `effects` on every power. The skip
     // condition and the thing it was skipping have the same cause, so the body returned green
     // having graded nothing — and it never went red, which is why it outlasted the 36 that did.
     //
@@ -2571,14 +2571,14 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(
       sliders,
       `${server}: not one power carries a stacking slider — \`getStackingInfo\` reads \`power.effects\`, ` +
-        `which STRIP-1 emptied, so it returns null for the whole corpus. The engine's atom-native ` +
+        `which data-gaps-327 emptied, so it returns null for the whole corpus. The engine's atom-native ` +
         `replacement is in coh_math's stacking.rs; the TS side has not been re-pointed at it.`,
     ).toBeGreaterThan(0);
     expect(
       perFoeSliders,
       `${server}: not one slider is a per-foe one — every carrier found came through the stack ` +
         `arm, so the AoE arm is reading something that is gone (it read \`effects[…].perTarget\` ` +
-        `until STACKINFO-1) and the powers that grow per foe without self-stacking are ungraded`,
+        `until data-gaps-332) and the powers that grow per foe without self-stacking are ungraded`,
     ).toBeGreaterThan(0);
     expect(
       stackSliders,
@@ -2587,8 +2587,8 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     // `bagsChanged` and `betaMoved` are REPORTED, not floored, and the reason is the same one
     // that put the third bucket on `magnitudeDeltas`. Both grade the beta's own bag transform
     // (`withTargetsHit` -> `adjustEffectsForTargets`), whose two inputs are a `perTarget` on a bag
-    // VALUE and the power's `stacksLinear` list — both authored, both emptied by STRIP-1. The beta
-    // never grew an atom seed for its display bag: ENGLAG-1 re-pointed the rendered rows at the
+    // VALUE and the power's `stacksLinear` list — both authored, both emptied by data-gaps-327. The beta
+    // never grew an atom seed for its display bag: data-gaps-329 re-pointed the rendered rows at the
     // engine projection instead, and all three `RegistryEffectsDisplay` call sites now pass
     // `rows`, so the bag reaches the surface for its `durations` / `buffDuration` annotations
     // alone. A floor here would demand movement from a path the swap retired.
@@ -2604,7 +2604,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         `\`stacksLinear\` left in the corpus to drive either`,
     );
     expect(engineMoved, `${server}: the slider moved no engine row`).toBeGreaterThan(0);
-    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // Anti-vacuity for the magnitude half. data-gaps-327 left most of the corpus unable to answer, and
     // an arm that grades zero powers is green for the wrong reason — so the population the
     // resolver CAN still witness is floored rather than assumed.
     expect(
@@ -2630,7 +2630,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     const deltas: string[] = [];
     const adjudicated: string[] = [];
     let quickForms = 0;
-    // Of `quickForms`, how many the `combatMode` toggle alone can reach (SNIPE-2) — the rest
+    // Of `quickForms`, how many the `combatMode` toggle alone can reach (data-gaps-146) — the rest
     // gate on the caster's own ToHit, a state this fixture never buffs.
     let toggleReachableQuickForms = 0;
     let openers = 0;
@@ -2802,12 +2802,12 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
         `${server}: ${toggleReachableQuickForms} combat-mode-reachable quick forms in the corpus and not one cast moved in combat`,
       ).toBeGreaterThan(0);
     } else if (quickForms > 0) {
-      // Every quick form here gates on the caster's own ToHit (SNIPE-2 — Rebirth/Thunderspy),
+      // Every quick form here gates on the caster's own ToHit (data-gaps-146 — Rebirth/Thunderspy),
       // not on `combatMode`. This fixture drives no ToHit buff, so 0 is the CORRECT reading:
       // asserting >0 would demand the toggle move a state it structurally cannot.
       // eslint-disable-next-line no-console
       console.warn(
-        `[PROD6C-3k effective] ${server}: ${quickForms} quick forms, all ToHit-gated (SNIPE-2) — this fixture cannot grade the snipe swap without a ToHit buff`,
+        `[PROD6C-3k effective] ${server}: ${quickForms} quick forms, all ToHit-gated (data-gaps-146) — this fixture cannot grade the snipe swap without a ToHit buff`,
       );
     } else {
       // eslint-disable-next-line no-console
@@ -2817,7 +2817,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // eslint-disable-next-line no-console
       console.warn(`[PROD6C-3k effective] ${server}: no cast moved from cover — ${openers} openers reached, none whose mid-combat cast differs from its from-Hide one`);
     }
-    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // Anti-vacuity for the magnitude half. data-gaps-327 left most of the corpus unable to answer, and
     // an arm that grades zero powers is green for the wrong reason — so the population the
     // resolver CAN still witness is floored rather than assumed.
     expect(
@@ -2899,7 +2899,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
           // Reach: what the mode actually MOVED against the no-mode run. A redirect that changes
           // nothing is ungraded however green the parity goes (the PROD6C-3f method).
           //
-          // Measured on the DISPLAY BAG, which STRIP-1 emptied — so what survives here is the
+          // Measured on the DISPLAY BAG, which data-gaps-327 emptied — so what survives here is the
           // minted keys, and a redirect that changed only authored effects now moves nothing.
           // Kept because a redirect that swaps the execution stats still shows up in it, and
           // widened below with the engine's own rows, which are the half the bag can no longer
@@ -2944,7 +2944,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(
       movedMagPowers,
       `${server}: ${modedPowers} pairs reached and the mode moved no engine MAGNITUDE row — the ` +
-        `bag-keyed reach above cannot see this, because STRIP-1 left the bag holding minted keys`,
+        `bag-keyed reach above cannot see this, because data-gaps-327 left the bag holding minted keys`,
     ).toBeGreaterThan(0);
     // No floor on the witnessed population here: it is zero on every fork, and pinning it at zero
     // would assert the strip stays. The verdict for this body's magnitude half is the engine-side
@@ -2954,7 +2954,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(deltas).toEqual([]);
   }, 300000);
 
-  // TSPY-4. The TOTALS half of the mode story 6C-3l covered on the display side. A power's
+  // data-gaps-74. The TOTALS half of the mode story 6C-3l covered on the display side. A power's
   // `setsModes` is the ONLY thing that binds a `Source.Mode?` gate for the totals pass, so a fork
   // whose parser resolved those templates to a placeholder published no mode, every mode-gated
   // atom stayed dark, and nothing here could see it — the beta drove the same conditionals from
@@ -3023,11 +3023,11 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
     if (carriers === 0) {
       // eslint-disable-next-line no-console
-      console.warn(`[TSPY-4 mode totals] ${server}: no build both publishes and consumes a mode — this fork cannot grade the binding`);
+      console.warn(`[data-gaps-74 mode totals] ${server}: no build both publishes and consumes a mode — this fork cannot grade the binding`);
       return;
     }
     // eslint-disable-next-line no-console
-    console.warn(`[TSPY-4 mode totals] ${server}: ${graded}/${carriers} archetype(s) bind a published mode\n    ${bound.join('\n    ')}`);
+    console.warn(`[data-gaps-74 mode totals] ${server}: ${graded}/${carriers} archetype(s) bind a published mode\n    ${bound.join('\n    ')}`);
     expect(graded, `${server}: ${carriers} archetype(s) publish a mode their own powers gate on, and not one gate bound — the parser resolved those Set_Mode templates to a placeholder`).toBeGreaterThan(0);
   }, 300000);
 
@@ -3117,7 +3117,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
 
     expect(engineMoved, `${server}: no engine row changed between level ${SWEEP_LEVEL} and 50 — the level is being ignored`).toBeGreaterThan(0);
     expect(betaMoved, `${server}: no beta row changed between level ${SWEEP_LEVEL} and 50 — the level is being ignored`).toBeGreaterThan(0);
-    // Anti-vacuity for the magnitude half. STRIP-1 left most of the corpus unable to answer, and
+    // Anti-vacuity for the magnitude half. data-gaps-327 left most of the corpus unable to answer, and
     // an arm that grades zero powers is green for the wrong reason — so the population the
     // resolver CAN still witness is floored rather than assumed.
     expect(
@@ -3204,13 +3204,13 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(engineMoved, `${server}: equipping Alpha changed no engine-projected value`).toBeGreaterThan(0);
     expect(betaMoved, `${server}: equipping Alpha changed no beta enhancement bonus`).toBeGreaterThan(0);
     // The magnitude half of that reach, floored separately. The resolver used to grade Alpha's
-    // effect on the granted magnitudes row for row; STRIP-1 left it nothing to grade with (this
+    // effect on the granted magnitudes row for row; data-gaps-327 left it nothing to grade with (this
     // body witnesses 0 / 0 / 3 / 0 powers), so the claim that Alpha reaches the magnitudes at all
     // rests here. `projectedValuesMoved` above is satisfied by an execution tier alone.
     expect(
       engineMagsMoved,
       `${server}: equipping Alpha moved an execution tier but no granted MAGNITUDE row — with the ` +
-        `resolver comparison starved by STRIP-1, nothing else grades Alpha's reach into them`,
+        `resolver comparison starved by data-gaps-327, nothing else grades Alpha's reach into them`,
     ).toBeGreaterThan(0);
 
     // (2) …and under that Alpha the engine still matches the beta calculators row for row.
@@ -3311,7 +3311,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
       // …and observable in the GRANTED MAGNITUDES, not only in the enhancement bonuses feeding
       // them. `rescaled` counts a beta-side aspect moving; it would stay green with the engine's
       // magnitude rows frozen at their level-50 values. That gap used to be covered by the
-      // resolver comparison below, which STRIP-1 starved (this body witnesses 0 / 0 / 2 / 0).
+      // resolver comparison below, which data-gaps-327 starved (this body witnesses 0 / 0 / 2 / 0).
       const atFifty = mapPowerProjection(
         engineTotals(server, build, ctxWith({ incarnateActive: { ...CTX.incarnateActive, alpha: true } })).power_projection,
       );
@@ -3354,7 +3354,7 @@ suite('PROD6B-1 — engine per-power projection vs beta calculators, per server'
     expect(
       magsRescaled,
       `${server}: exemplaring moved an enhancement bonus but no granted MAGNITUDE row against the ` +
-        `level-50 run — with the resolver comparison starved by STRIP-1, nothing else grades the ` +
+        `level-50 run — with the resolver comparison starved by data-gaps-327, nothing else grades the ` +
         `rescale reaching the rows`,
     ).toBeGreaterThan(0);
     // Unwitnessed magnitude half — the `magsRescaled` floor above is this body's verdict for it.

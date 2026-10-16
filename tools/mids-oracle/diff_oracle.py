@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-DSH1 gate 2/3 — PoC structural comparison: Mids oracle vs our parser export.
+deductive-schema-harness-1 gate 2/3 — PoC structural comparison: Mids oracle vs our parser export.
 
 This is a PROOF-OF-CONCEPT validator, not the production harness (that is DSH5,
-which is deliberately sequenced after the DSH4 closed schema). Its only job is to
-prove the DSH1 oracle reader is a usable structural arbiter: that Mids and our bin
+which is deliberately sequenced after the deductive-schema-harness-4 closed schema). Its only job is to
+prove the deductive-schema-harness-1 oracle reader is a usable structural arbiter: that Mids and our bin
 parser export agree on effect *topology* for known-answer powers, and that the
 comparison has the sensitivity to surface real divergences.
 
 Both sides are compared at template granularity — the parser export
 (`exported_powers/`) is NOT collapsed (only the converter collapses), so this is a
 clean parser-to-parser diff. We canonicalize each effect to a bridge-free identity
-tuple that needs NO attrib-name<->enum vocabulary map (that map is DSH4's job):
+tuple that needs NO attrib-name<->enum vocabulary map (that map is deductive-schema-harness-4's job):
 
     (modifier_table, aspect, pv_mode, resistible)
 
@@ -168,7 +168,7 @@ def build_export_index():
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="DSH1 gate 2/3 PoC: oracle vs parser export")
+    ap = argparse.ArgumentParser(description="deductive-schema-harness-1 gate 2/3 PoC: oracle vs parser export")
     ap.add_argument("--mhd", default=read_i12.DEFAULT_MHD)
     ap.add_argument("--cohort", default="default", choices=sorted(COHORTS))
     ap.add_argument("--normalize-pvp", action="store_true",
@@ -185,7 +185,7 @@ def main(argv=None):
     match = miss = redirect = clean = residual_powers = 0
     twin_gate_fail = []
     class_totals = Counter()
-    print(f"=== DSH1 gate-2 PoC: oracle vs parser export "
+    print(f"=== deductive-schema-harness-1 gate-2 PoC: oracle vs parser export "
           f"(cohort={args.cohort}, normalize_pvp={args.normalize_pvp}) ===\n")
     for fn in cohort:
         key = fn.lower()
@@ -237,7 +237,7 @@ def main(argv=None):
     print(f"\n=== exact:{match}  known-classes-only:{clean}  redirect:{redirect}  "
           f"has-OTHER-residual:{residual_powers}  missing:{miss}  (of {len(cohort)}) ===")
     print("divergence taxonomy (modeling conventions that DSH5's classifier will canonicalize —")
-    print("NOT Sidekick/parser defects; MULTI_TYPE/MEZ residuals need the DSH4 attrib bridge):")
+    print("NOT Sidekick/parser defects; MULTI_TYPE/MEZ residuals need the deductive-schema-harness-4 attrib bridge):")
     for k, v in sorted(class_totals.items()):
         print(f"    {k}: {v} effect-tuples")
 

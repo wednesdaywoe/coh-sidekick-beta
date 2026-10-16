@@ -259,7 +259,7 @@ export function fingerprintRebuild(rebuildDir) {
  * {@link fingerprintRebuild} grades the INPUTS: it walks canonical's tree and says the Rust the
  * engine was built from has not moved. Nothing in it opens the two `.wasm` it certifies, so until
  * 2026-09-19 the manifest was a statement about two binaries with none of their bytes in it, and
- * `--compare` graded the premises while never reading the conclusion (STALE-2).
+ * `--compare` graded the premises while never reading the conclusion (data-gaps-339).
  *
  * What this catches, and what it cannot, because the difference is the whole point. At `--write`
  * time the hash is taken of the artifact `build-engine.mjs` has just produced, so it agrees by
@@ -269,7 +269,7 @@ export function fingerprintRebuild(rebuildDir) {
  * input hash is structurally blind to, because every input still matches.
  *
  * The reproducibility half — rebuild in the gate and compare bytes — is a separate capability and
- * is deliberately NOT this function. STALE-2 measured what it rests on: the build is not
+ * is deliberately NOT this function. data-gaps-339 measured what it rests on: the build is not
  * bit-identical across hosts as it stands, because panic-location strings in the data section
  * carry the rustup toolchain path and `$CARGO_HOME`.
  *
@@ -305,12 +305,12 @@ export function fingerprintArtifacts(engineDir) {
  * it agrees by construction; it catches the manifest and the tree drifting apart afterwards and
  * cannot be evidence that the build reproduces. The only evidence for that is building a second
  * time somewhere else and comparing, which is what `build-engine.mjs --verify` does and what this
- * function judges (STALE-3).
+ * function judges (data-gaps-340).
  *
  * Three verdicts, not two, and the third is the point. If the rebuild's sources are not the ones
  * the committed artifacts were built from, the bytes SHOULD differ and this run has measured
  * staleness, not reproducibility — reporting that as "does not reproduce" would be a true failure
- * with a false diagnosis, which is the shape STALE-1 already cost. It is still not a pass: a gate
+ * with a false diagnosis, which is the shape data-gaps-338 already cost. It is still not a pass: a gate
  * that reports green when it could not grade is the family of defect this row belongs to.
  *
  * @param {{manifest: {source?: string, bundles?: Record<string,string>, artifacts?: Record<string,string>}, inputs: {source: string, bundles?: Record<string,string>}, committed: Record<string,string>, rebuilt: Record<string,string>}} args

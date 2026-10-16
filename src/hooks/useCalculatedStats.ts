@@ -129,7 +129,7 @@ export interface CalculatedStats {
     tohit: number;
     regeneration: number;
     perception: number;
-    // DEBUFFRES-1. Off `global`, not `charStats`: neither has a CharacterStats twin.
+    // data-gaps-171. Off `global`, not `charStats`: neither has a CharacterStats twin.
     accuracy: number;
     range: number;
   };

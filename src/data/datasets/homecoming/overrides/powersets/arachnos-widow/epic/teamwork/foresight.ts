@@ -16,7 +16,7 @@
  * `debuffResistance.defense` bag / `Defense aspect=Res` atom); real elusivity is a
  * distinct PvP-only stat (the aspect=Strength `*_Elusivity` atoms). Do not re-add.
  *
- * Retired 2026-07-18 (STRENGTH-2 finding): the `specialBuff` mez block (hold/stun/
+ * Retired 2026-07-18 (data-gaps-205 finding): the `specialBuff` mez block (hold/stun/
  * immobilize/sleep/confuse/fear @ 0.25 Melee_Ones) hand-copied this power's mez
  * RESISTANCE into a slot the calc reads as mez STRENGTH — the same over-credit as
  * the elusivity entry, one aspect over. Foresight's binary carries exactly one mez
@@ -25,7 +25,7 @@
  * aspect=Strength mez template, so crediting any `strengthMez` is a fabrication.
  * The atom-native path reconstructs specialBuff from atoms (aspect=Str only), so it
  * reads 0 here regardless; this entry only inflated the transitional bag. Do not
- * re-add. See DATA-GAP-REGISTER STRENGTH-2 and coh_math test
+ * re-add. See DATA-GAP-REGISTER data-gaps-205 and coh_math test
  * `strength::tests::mez_resistance_atoms_are_not_mez_strength`.
  */
 import type { Power } from '@/types';

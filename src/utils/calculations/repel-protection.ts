@@ -11,7 +11,7 @@ import { baseAtoms, reachesCaster, type AtomSource } from '@/data/core/atom-quer
  * Lives OUTSIDE atom-query.ts because that file is on the shared identical-status manifest, so
  * every edit to it forks the pair and has to be mirrored and re-recorded — the same
  * call-site-hosted precedent as `mezSourceFor` in character-totals.ts. Both repos carry this
- * module at the same path and the same bytes; the STRIP-1 sweep and the totals import from
+ * module at the same path and the same bytes; the data-gaps-327 sweep and the totals import from
  * here so the "reader must be the SAME one the totals path calls" doctrine holds for the
  * tripwire.
  *
@@ -33,7 +33,7 @@ export function repelProtectionValue(
   for (const a of baseAtoms(power)) {
     if (a.effectType !== 'Mez' && a.effectType !== 'MezResist') continue;
     if (a.subType !== 'Repel') continue;
-    if (!reachesCaster(a, power)) continue; // branch 1 (foe) excluded → PASS2B-1
+    if (!reachesCaster(a, power)) continue; // branch 1 (foe) excluded → data-gaps-206
     if (a.pvMode === 'PvP') continue; // the converter drops the PvP twin upstream
     // branch 2b: a Self aspect=Res Repel atom on a NON-Res_Boolean table is Repel
     // *resistance*, not protection — same rule as KB.

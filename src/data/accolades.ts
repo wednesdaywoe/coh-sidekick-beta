@@ -3,7 +3,7 @@
  *
  * Accolades are ordinary auto-on Self powers (`Temporary_Powers.Accolades`), extracted
  * to each dataset's `generated/accolades.ts` (`ACCOLADES_POWERSET`). The planner presents
- * the *permanent stat* ones as independent on/off toggles (DATA-GAP ACCOLADE-1; the beta's
+ * the *permanent stat* ones as independent on/off toggles (DATA-GAP data-gaps-44; the beta's
  * hand-built silo that used to live here is removed).
  *
  * The toggle set is DERIVED, not a curated name list: a stat toggle is an `Auto` power
@@ -81,7 +81,7 @@ export function accoladeId(power: AccoladePower): string {
  *
  * The gate is `type char> hero eq`, and the read is the token PAIR rather than a
  * substring of the joined text: the expression is a token array on the wire
- * (COND-8), and asking for an adjacent pair is the same question the game's own
+ * (data-gaps-123), and asking for an adjacent pair is the same question the game's own
  * postfix evaluator asks — the operand and the comparison that consumes it.
  */
 export function accoladeFaction(power: AccoladePower): AccoladeFaction {
@@ -120,7 +120,7 @@ export function getAccolades(): AccoladePower[] {
  * accolade with no stat buff (Eye of the Magus) has no toggle by design and drops silently,
  * while a name in neither list is a roster divergence and has to warn. Reading only
  * `getAccolades()` collapses those two into one silent drop, which is the shape that let
- * MBDIMPORT-1 sit unnoticed.
+ * data-gaps-231 sit unnoticed.
  */
 export function getAllAccolades(): AccoladePower[] {
   return activeAccoladePowerset().powers;

@@ -28,7 +28,7 @@
  *   resistibility are effects the single-slot model cannot represent losslessly.
  *   A fully-general per-slot detector needs the converter's attrib→slot routing
  *   map (the output has already discarded the attrib identity) — that lands with
- *   the DSH4 schema + DSH6 converter rework. Until then this surfaces the family
+ *   the deductive-schema-harness-4 schema + deductive-schema-harness-6 converter rework. Until then this surfaces the family
  *   for triage without asserting every case is a bug.
  *
  * Usage:

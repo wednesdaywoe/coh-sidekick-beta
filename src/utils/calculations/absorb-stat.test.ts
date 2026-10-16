@@ -37,7 +37,7 @@ describe('Absorb character total (homecoming)', () => {
   }
 
   it('recovers Wild Bastion as a 25%-of-MaxHP absorb (atom-native)', () => {
-    // The bag's `effects.absorb.maxHPFraction` is gone with the strip (STRIP-1); the
+    // The bag's `effects.absorb.maxHPFraction` is gone with the strip (data-gaps-327); the
     // fraction now lives on the Expression atom, evaluated by the atom-native reader
     // that mirrors Rust's `absorb_max_hp_fraction_value` (ATOM10).
     expect(absorbMaxHPFractionValue(WildBastion as never)).toBeCloseTo(0.25, 5);

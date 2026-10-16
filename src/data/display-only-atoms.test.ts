@@ -12,7 +12,7 @@ import type { EncodedAtom } from './core/atomic-effect';
  * An effect group tagged `DisplayOnly` exists so the tooltip can quote a number the power
  * causes somewhere else. Brainstorm's Disruption Strike states its −2.5 resistance debuff
  * that way, and the converter's ToWho fold lands it on `Target` — which `reachesCaster`
- * resolves as the caster on a `["Self"]` power (TARGETS-3). Rest's real −10 crash has that
+ * resolves as the caster on a `["Self"]` power (data-gaps-63). Rest's real −10 crash has that
  * exact shape, so the tag is the only thing telling a tooltip twin from a genuine self
  * penalty. Nothing read it, and the phantom reached the self-resistance applier on all eight
  * damage types.

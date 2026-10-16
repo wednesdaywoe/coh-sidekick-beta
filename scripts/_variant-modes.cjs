@@ -5,7 +5,7 @@
  * caster changes mode, written in the binary as a chance modifier on a TAG rather than as a
  * gate on the group.
  *
- * Dual Pistols' Swap Ammo is the whole population (COND-9). Every one of the set's attacks
+ * Dual Pistols' Swap Ammo is the whole population (data-gaps-124). Every one of the set's attacks
  * carries four tagged secondary groups — `Lethal`, `ColdDamage`, `FireDamage`, `ToxicDamage`
  * — and the loaded one is chosen from outside the attack entirely:
  *
@@ -24,7 +24,7 @@
  *
  * What that replaces is `extractDualPistolsAmmo`, which reshaped the BAG only, keyed on the
  * powerset name containing `dual_pistols`, and left the wire atoms ungated — the asymmetry
- * COND-9 records. Nothing here names a power, a set, an ammo or a mode: a selector is
+ * data-gaps-124 records. Nothing here names a power, a set, an ammo or a mode: a selector is
  * recognised by its shape, and the modes and labels come out of the data it publishes.
  *
  * The shape, all four clauses required:
@@ -42,7 +42,7 @@
  * the Staff Fighting forms, Fusion, Blood Thirst and the flight toggles all raise a tag
  * without displacing one: they ADD a rider to whatever attack is running rather than swapping
  * a variant, and gating their groups here would move numbers this mechanic has nothing to do
- * with. Measured over the three exports (re-measured 2026-08-18, after COND-11 put the Parse6
+ * with. Measured over the three exports (re-measured 2026-08-18, after data-gaps-11 put the Parse6
  * forks' tags on the wire) the four clauses select: Homecoming's twelve Dual Pistols ammo
  * toggles plus Light Form (whose filter is inert there — see the census's INERT_SELECTORS);
  * Rebirth's two Granite Armor copies (the authored `Granite_Armor_Mode` suspension of the
@@ -53,14 +53,14 @@
  * same toggles with the same thirteen filters and the same deltas, and no `Set_Mode` row on
  * any of them — only Swap Ammo itself publishes a mode there. So those forks have no caster
  * state to gate on, their ammo variants stay in base as the `chance: 0` rows the export makes
- * them, and that is recorded as COND-10 rather than papered over: the reshape this file
+ * them, and that is recorded as data-gaps-125 rather than papered over: the reshape this file
  * replaces was inventing three per-ammo toggles on both of them, off a string match on the
  * powerset name.
  *
  * The families this pass structurally CANNOT read — movers with no shared parent and no mode,
  * spread across powersets (the flight tags, the Kheldian shapeshift suppression) — are the
  * corpus-wide pass's job: `detect-chance-mod-selectors.cjs` writes the per-dataset map and
- * [`installGlobalVariantModes`] carries it here (COND-12). One tag is never claimed by both:
+ * [`installGlobalVariantModes`] carries it here (data-gaps-126). One tag is never claimed by both:
  * the detector declines anything a per-set selector loads or displaces.
  */
 
@@ -324,10 +324,10 @@ let ACTIVE = null;
 
 /**
  * The corpus-wide map, installed once per process from the dataset's
- * `chance-mod-selectors.json` (COND-12). Same shape as the per-set map, different scope and
+ * `chance-mod-selectors.json` (data-gaps-126). Same shape as the per-set map, different scope and
  * different mode provenance: these families publish no `Set_Mode`, so the gate token is MINTED
  * from the tag itself and the movers' emitted `setsModes` gain it (`globalMoverModes`). The
- * per-set map wins a tag lookup, and the detector keeps the two disjoint (a COND-9-claimed tag
+ * per-set map wins a tag lookup, and the detector keeps the two disjoint (a data-gaps-124-claimed tag
  * is declined corpus-wide), so the preference is an ordering, not an adjudication.
  */
 let GLOBAL = null;
@@ -346,7 +346,7 @@ function activeVariantModes() {
  * Install the corpus-wide chance-mod selector families for this dataset — the `selected` list
  * of `detect-chance-mod-selectors.cjs`'s sweep artifact. Raised tags become the enable side
  * (their carriers' `chance: 0` groups are stamped `k<Tag> Source.Mode?` and promoted, exactly
- * as a COND-9 mode gate is); cut tags become the defaults side (their carriers' `chance: 1`
+ * as a data-gaps-124 mode gate is); cut tags become the defaults side (their carriers' `chance: 1`
  * atoms gain the negation, and stay in the bag as base). Sticky for the process lifetime,
  * because the scope is the corpus, not the set being converted.
  */
@@ -408,7 +408,7 @@ function globalConditionalLabel(id) {
  *
  * The DEFAULT side is not written here. `collectAllTemplates` drops any group whose gate merely
  * mentions `Source.Mode?`, so spelling the standard-variant condition into the tree would strip
- * the base debuff out of the bag — the very divergence COND-9 exists to close. It is stamped on
+ * the base debuff out of the bag — the very divergence data-gaps-124 exists to close. It is stamped on
  * the atoms instead, where the reader that honours a gate can see it ([`defaultVariantGate`]).
  *
  * Idempotent: a tree walked by several collectors is only stamped once.
@@ -464,11 +464,11 @@ function _gateOne(effect, inheritedMode) {
   // onto a group that carried its own INDETERMINATE gate (an ammo variant's crit rider) is the
   // same answer — a conjunction with a definitely-false clause is definitely false.
   //
-  // An archetype FORK is the one verdict left standing (COND-12; no COND-9 tag pairs with a
+  // An archetype FORK is the one verdict left standing (data-gaps-126; no data-gaps-124 tag pairs with a
   // non-empty fork). `requires_default: INDETERMINATE_ARCHETYPE` plus `requires_archetypes` is
   // the only carrier of the class list, and overwriting it would flatten a fork the atoms still
   // need — Rebirth's flight rows are the same row written once per side of the Kheldian split,
-  // and the engine resolves that per build (`caster_archetypes`, AT-FORK-1). Leaving the verdict
+  // and the engine resolves that per build (`caster_archetypes`, AT-data-gaps-298). Leaving the verdict
   // alone does not leak the group into base: every base collector skips a gate that mentions
   // `Source.Mode?` before it consults the verdict, which is the same routing every authored
   // mode-gated fork already takes.

@@ -22,7 +22,7 @@ import {
 } from './slot-levels';
 
 /**
- * Slot grant allocation (SLOT-1).
+ * Slot grant allocation (issues-6).
  *
  * A placed slot must sit on a grant the schedule actually issues, at or above
  * its power's pick level. That makes the allocation a matching, and these tests
@@ -93,7 +93,7 @@ function noGrantOverclaimed(names: string[]): void {
 describe('slot grant allocation — Homecoming', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
-    // SLOT-3: the schedule floor these tests pin only applies in Level Up
+    // issues-3: the schedule floor these tests pin only applies in Level Up
     // mode. This suite predates that mode split and exercises leveling-mode
     // behavior throughout.
     useUIStore.setState({ levelUpMode: true });
@@ -144,7 +144,7 @@ describe('slot grant allocation — Homecoming', () => {
    * Placing slots one at a time must walk the schedule FORWARD. The probe used
    * to displace an incumbent whenever an augmenting path existed, so each new
    * slot landed on the lowest grant in the build and shoved the slot already
-   * there upward — the leveling column read newest-first (SLOT-2). Powers taken
+   * there upward — the leveling column read newest-first (issues-7). Powers taken
    * at level 1 make the whole pool reachable, which is why the reversal showed
    * on the first three picks and stopped at a power taken later.
    */
@@ -184,7 +184,7 @@ describe('slot grant allocation — Homecoming', () => {
   });
 
   /**
-   * A build leveled through SLOT-2 saved a run of entries all claiming the
+   * A build leveled through issues-7 saved a run of entries all claiming the
    * lowest grant. It is not garbage: the placement ORDER survives (`addSlot`
    * appends), so the solver rebuilds a legal forward assignment from it, and the
    * build occupies exactly the grants a clean replay of the same clicks would
@@ -197,7 +197,7 @@ describe('slot grant allocation — Homecoming', () => {
    * and consume the same grants; only the attribution differs, and no stored
    * data survives that could tell them apart.
    */
-  it('rebuilds a legal assignment from a build poisoned by SLOT-2', () => {
+  it('rebuilds a legal assignment from a build poisoned by issues-7', () => {
     const order = ['Alpha', 'Alpha', 'Alpha', 'Beta', 'Beta', 'Alpha'];
     install(50, [pow('Alpha', 1, 1), pow('Beta', 2, 1)], []);
     for (const name of order) {
@@ -205,7 +205,7 @@ describe('slot grant allocation — Homecoming', () => {
     }
     const replayed = [...levelsFor('Alpha').slice(1), ...levelsFor('Beta').slice(1)].sort();
 
-    // The same build as SLOT-2 would have saved it: every entry stamped 3.
+    // The same build as issues-7 would have saved it: every entry stamped 3.
     install(
       50,
       [pow('Alpha', 1, 5), pow('Beta', 2, 3)],
@@ -348,7 +348,7 @@ describe('slot grant allocation — Homecoming', () => {
 describe('stored levels are never fabricated', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
-    useUIStore.setState({ levelUpMode: true }); // SLOT-3: leveling-mode suite
+    useUIStore.setState({ levelUpMode: true }); // issues-3: leveling-mode suite
   }, 120000);
 
   it('populate refuses to invent an entry for an unservable slot', () => {
@@ -390,7 +390,7 @@ describe('stored levels are never fabricated', () => {
 describe('the placement probe and the display agree', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
-    useUIStore.setState({ levelUpMode: true }); // SLOT-3: leveling-mode suite
+    useUIStore.setState({ levelUpMode: true }); // issues-3: leveling-mode suite
   }, 120000);
 
   /**
@@ -439,7 +439,7 @@ describe('the placement probe and the display agree', () => {
 describe('exports print the assigned level, not the pick level', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
-    useUIStore.setState({ levelUpMode: true }); // SLOT-3: leveling-mode suite
+    useUIStore.setState({ levelUpMode: true }); // issues-3: leveling-mode suite
   }, 120000);
 
   /**
@@ -447,7 +447,7 @@ describe('exports print the assigned level, not the pick level', () => {
    * to look the map up by DISPLAY name, which missed on every power, so every
    * printed slot silently fell back to its power's pick level — the corruption
    * this bug produced was invisible in the one place a user could have compared
-   * it against the game (SLOT-1).
+   * it against the game (issues-6).
    */
   it('forum export names the grant level a slot sits at', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -499,7 +499,7 @@ describe('exports print the assigned level, not the pick level', () => {
 });
 
 /**
- * SLOT-3: outside Level Up mode a slot has no dated level at all. The pick-level
+ * issues-3: outside Level Up mode a slot has no dated level at all. The pick-level
  * floor above is a faithful model of sequential leveling; it is not a faithful
  * model of a real respec, which grants the player's full earned budget as one
  * freely assignable pool. Verified against the actual game's respec wizard, not
@@ -508,7 +508,7 @@ describe('exports print the assigned level, not the pick level', () => {
  * only runs on auto-arrange or build-open, so the two disagree with each other
  * and with the game.
  */
-describe('SLOT-3 — free-form planning has no pick-level floor', () => {
+describe('issues-3 — free-form planning has no pick-level floor', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
     useUIStore.setState({ levelUpMode: false });

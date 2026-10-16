@@ -80,7 +80,7 @@ describe.each([
 });
 
 /**
- * PROCCAT-1. Every entry used to carry a hand-authored `setCategory` naming its
+ * data-gaps-108. Every entry used to carry a hand-authored `setCategory` naming its
  * set's type, in front of the `type` each fork's registry already states. It was
  * wrong in 52 of 184 and nothing read it, so nothing could go red. It is deleted;
  * a consumer that needs the type derives it from the registry at the point of use.

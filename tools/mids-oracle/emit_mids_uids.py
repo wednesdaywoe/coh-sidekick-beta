@@ -43,7 +43,7 @@ MIDS_DB = os.path.join(REPO_ROOT, "MidsReborn-master", "MidsReborn", "Databases"
 # database — the closest stand-in there is, not the fork's own file, and this
 # comment used to claim otherwise. It gets 210 of Thunderspy's 213 sets because
 # they are shared CoH sets; the three it cannot get (`kb` and the two Primalist
-# ATOs) exist in no Mids database at all. See DATA-GAP MBDEXPORT-2 — the
+# ATOs) exist in no Mids database at all. See DATA-GAP data-gaps-262 — the
 # staleness gate below pins this file's sha256, which grades freshness and is
 # blind to which database it is.
 DATASET_SOURCES = {
@@ -58,7 +58,7 @@ DATASET_SOURCES = {
 # Enhancement Database" and nothing else, no fork and no version — so a path is all the
 # generated header used to carry, and `Thunderspy/EnhDB.mhd` reads like the fork's own file.
 # A sha256 gate over it (src/data/mids-uids-staleness.test.ts) grades freshness and is
-# structurally blind to which database it is. See DATA-GAP MBDEXPORT-2.
+# structurally blind to which database it is. See DATA-GAP data-gaps-262.
 DATASET_PROVENANCE = {
     "homecoming": "Mids Reborn's own Homecoming database.",
     "rebirth": "Mids Reborn's own Rebirth database.",
@@ -76,7 +76,7 @@ DATASET_PROVENANCE = {
         "and Rebirth and has never had a Thunderspy database. It resolves 210 of Thunderspy's "
         "213 sets because those are shared CoH sets; the three it cannot — `kb` and the two "
         "Primalist ATOs — exist in no Mids database at all, and the export reports them per "
-        "slot. DATA-GAP MBDEXPORT-2."
+        "slot. DATA-GAP data-gaps-262."
     ),
 }
 
@@ -128,7 +128,7 @@ def set_key(uid: str) -> str:
     `superior _endless_nightmare`, which matches nothing on either side: the
     export reported "Mids has no enhancement by that name" for a set Mids
     plainly has, and the import failed all six pieces. One key in four forks.
-    See DATA-GAP MBDEXPORT-2.
+    See DATA-GAP data-gaps-262.
     """
     stem = uid
     for prefix in UID_PREFIXES:
@@ -202,7 +202,7 @@ def build_table(mhd_path: str) -> dict:
         # proc is member ONE, and "last free" bound it to our piece 6, Recharge
         # — silently in both directions, because the import path reads this same
         # table. Position says member one, and Mids' own names agree with our
-        # piece order down the set. MBDEXPORT-10.
+        # piece order down the set. data-gaps-263.
         for position, uid in unlettered:
             if position in by_piece:
                 notes.append(
@@ -246,7 +246,7 @@ def build_table(mhd_path: str) -> dict:
         # decision and not a detail. It was measured rather than reasoned: Rebirth's
         # `Rolling_Barrage_A` states 34 on its own record and its set states 24, and a slot
         # written at 24 came back from Mids' own reader untouched. The piece record is not
-        # the gate; the set record is. MBDEXPORT-22.
+        # the gate; the set record is. data-gaps-275.
         #
         # Stored as GAME levels. The field is in `IoLevel` space, which is 0-based (a
         # level-50 piece is 49) and which Mids clamps against raw, so +1 here puts it in
@@ -269,7 +269,7 @@ def build_table(mhd_path: str) -> dict:
     #
     # It is not the sets' range restated. Our picker offers 10-53 and Homecoming's own
     # strength curve runs past 50, so a level-53 generic IO is a real piece on our side and
-    # a level-50 one on Mids' — measured, clamped silently. MBDEXPORT-22.
+    # a level-50 one on Mids' — measured, clamped silently. data-gaps-275.
     generic_ranges = sorted({(e["level_min"] + 1, e["level_max"] + 1)
                              for e in enh if e["type"] == "InventO"})
     if len(generic_ranges) > 1:

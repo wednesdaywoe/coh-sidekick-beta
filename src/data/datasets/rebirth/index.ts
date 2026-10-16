@@ -102,7 +102,7 @@ const dataset: Dataset = {
     judgement: IncarnateGen.GENERATED_JUDGEMENT_EFFECTS,
     lore: IncarnateGen.GENERATED_LORE_EFFECTS,
     // Rebirth is the only server that finished the Genesis slot; the other two
-    // export a byte-shaped-but-dormant table and serve `{}` — see GENESIS-1.
+    // export a byte-shaped-but-dormant table and serve `{}` — see data-gaps-47.
     genesis: IncarnateGen.GENERATED_GENESIS_EFFECTS,
   } as unknown as IncarnateEffectsRaw,
   powerPoolsRaw: POWER_POOLS_RAW as unknown as LegacyPowerPoolRegistry,

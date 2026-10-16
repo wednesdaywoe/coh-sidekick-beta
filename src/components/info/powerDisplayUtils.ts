@@ -556,7 +556,7 @@ export function applyActiveConditionals(
   // predicate its own gate negates), so an active one takes its place rather than
   // stacking on top of it. Without this the two halves of a swap both showed:
   // Temporal Mending read 1.75 + 2.625 with Temporal Selection on, and Crushing
-  // Uppercut read 3.18 + 3.339 at Combo Level 1 (PAR2).
+  // Uppercut read 3.18 + 3.339 at Combo Level 1 (backlog-2).
   //
   // Rows with no `displacedBy` are untouched however the conditional is tagged. Psi
   // Blade's Insight is `mode: 'replace'` off a negated gate on its GrantPower atom

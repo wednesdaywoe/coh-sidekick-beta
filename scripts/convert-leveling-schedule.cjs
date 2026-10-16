@@ -8,7 +8,7 @@
  *   - power-pick + slot-grant schedules   <- leveling_schedule.json (schedules.bin)
  *   - pool/epic unlock levels + pool cap  <- leveling_schedule.json
  *   - per-power auto-granted slot levels  <- power records carrying
- *     `free_boost_slots_on_power` (PARSE6-1; Rebirth Health/Stamina today)
+ *     `free_boost_slots_on_power` (data-gaps-83; Rebirth Health/Stamina today)
  *
  * Level semantics (power_system.c `CountForLevel`): every schedule array is a
  * sorted list of 0-based security levels; the count of entries <= L is the
@@ -100,7 +100,7 @@ const powerPicks = grantsByLevel(schedule.power);
 const slotGrants = grantsByLevel(schedule.assignable_boost);
 
 // ---------------------------------------------------------------------------
-// Per-power auto-granted slots (FreeBoostSlotsOnPower overrides, PARSE6-1)
+// Per-power auto-granted slots (FreeBoostSlotsOnPower overrides, data-gaps-83)
 // ---------------------------------------------------------------------------
 
 // Other datasets nest under the HC flat root — a homecoming walk must not

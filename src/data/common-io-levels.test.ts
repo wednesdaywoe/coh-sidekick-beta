@@ -7,7 +7,7 @@ import type { EnhancementSchedule } from '@/data/enhancement-curves';
 
 /**
  * The levels a generic IO can be crafted at are the ones the export names, on
- * every dataset (BOOST-6).
+ * every dataset (data-gaps-6).
  *
  * The picker's spinner was `min={10} max={53}`, every integer between, typed in
  * — so it offered a level-37 Accuracy IO the game ships no recipe for, and

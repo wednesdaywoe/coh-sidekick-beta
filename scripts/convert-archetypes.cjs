@@ -19,7 +19,7 @@
  * authored table, so it is read as its own row rather than derived from HP.
  * Phase 6 (classes.bin AttribMax rows): the attribute ceilings the export used
  * to discard — toHit, regeneration, recovery, defense and max endurance
- * (DATA-GAP-REGISTER CAPS-1). Regeneration and recovery are reachable by a real
+ * (DATA-GAP-REGISTER data-gaps-183). Regeneration and recovery are reachable by a real
  * build, so these are live clamps, not just what-if guardrails.
  * Remaining hand-curated scalars (damageModifier, buffDebuffModifier,
  * baseEndurance, baseRecovery, defenseCap) aren't single binary quantities — the
@@ -71,7 +71,7 @@ const MOVEMENT_AXES = {
   jump_height: 'jumpHeight',
 };
 
-// The attribute ceilings CAPS-1 recovered from AttribMaxTable, mapping the
+// The attribute ceilings data-gaps-183 recovered from AttribMaxTable, mapping the
 // exporter's `_CEILED_ATTRIBS` export prefix onto the camelCase name the calc
 // uses. Each contributes `<name>Base` (the AttribBase scalar) and
 // `<name>CapTable` (the per-level ceiling ClampCur bounds it against). Both
@@ -84,7 +84,7 @@ const CEILED_ATTRIBS = {
 };
 
 /**
- * The attribute ceilings and their bases (CAPS-1). Per-level rows, because the
+ * The attribute ceilings and their bases (data-gaps-183). Per-level rows, because the
  * ToHit, regeneration and defense curves all rise with level — exemplaring down
  * genuinely lowers what a build can reach, exactly as the travel ceilings do.
  *
@@ -126,7 +126,7 @@ function attributeCeilings(at, attribs) {
   }
   if (!perLevel('defense_cap', 'defenseCeilingTable')) return null;
   // The other half of the same clamp: AttribMin's scalar, −1.0 on every player
-  // archetype (ATTRMIN-1). Validated `<= 0` rather than `< 0` because a 0.0
+  // archetype (data-gaps-194). Validated `<= 0` rather than `< 0` because a 0.0
   // floor is real data on the classes that author one, and validated at all
   // because a POSITIVE defense floor would mean defense can never go negative —
   // a claim no dataset makes about a player class.
@@ -149,7 +149,7 @@ function attributeCeilings(at, attribs) {
  * exemplaring down genuinely lowers what a build can reach there. The floor is
  * AttribMin's scalar, and it is not zero: every player class of all three
  * datasets floors run and fly at 0.1, jump speed and height at 0.0
- * (DATA-GAP-REGISTER MOVEMIN-1).
+ * (DATA-GAP-REGISTER data-gaps-193).
  *
  * The floor is therefore validated as `>= 0` where base and cap are validated
  * as `> 0` — a zero floor is real data on two of the four axes, so rejecting it
@@ -277,7 +277,7 @@ function extract() {
       // The game's own token for this archetype (`Class_Blaster`). Carried
       // because the effect gates compare against it directly — an archetype-
       // forked atom names the classes it applies to in this spelling, and the
-      // engine matches a build against it (AT-FORK-1). Reconstructing it from
+      // engine matches a build against it (AT-data-gaps-298). Reconstructing it from
       // the hyphenated id would be authoring a naming convention the export
       // already states.
       className: data.name,
@@ -335,7 +335,7 @@ function generate(stats) {
   L.push(' * and the +400% endurance-discount cap), plus movementFloor/movementBase/');
   L.push(' * movementCapTable (Phase 5 — the travel scales and the pair of bounds ClampCur');
   L.push(' * holds them between, in scale units: 1.0 = 21 ft/s for the speeds, 4 ft for');
-  L.push(' * jump height), and the attribute ceilings of Phase 6 (CAPS-1): toHit/');
+  L.push(' * jump height), and the attribute ceilings of Phase 6 (data-gaps-183): toHit/');
   L.push(' * regeneration/recovery as a base scalar plus a per-level cap table, the single');
   L.push(' * per-level defenseCeilingTable with its defenseFloor scalar (a real clamp far');
   L.push(' * ABOVE the purple-patch softcap, which is a threshold and stays separate), and');
@@ -371,7 +371,7 @@ function generate(stats) {
   L.push('  enduranceCap: number;');
   L.push('  /** The lowest scale ClampCur lets a debuff push each axis to — AttribMin.');
   L.push('   *  0.1 run/fly and 0.0 jump on every player class, so a grounding power');
-  L.push('   *  leaves a crawl rather than a negative speed (DATA-GAP-REGISTER MOVEMIN-1). */');
+  L.push('   *  leaves a crawl rather than a negative speed (DATA-GAP-REGISTER data-gaps-193). */');
   L.push('  movementFloor: MovementAxes;');
   L.push('  movementBase: MovementAxes;');
   L.push('  movementCapTable: MovementAxisTables;');
@@ -386,7 +386,7 @@ function generate(stats) {
   L.push('   *  scalar, −1.0 on every player archetype. The game writes "your defense');
   L.push('   *  is negated" as a saturating magnitude (Thunderspy Organic Armor states');
   L.push('   *  Defense −500 under Defensive Adaptation), so without this the debuff');
-  L.push('   *  resolves to nothing at all (DATA-GAP-REGISTER ATTRMIN-1). */');
+  L.push('   *  resolves to nothing at all (DATA-GAP-REGISTER data-gaps-194). */');
   L.push('  defenseFloor: number;');
   L.push('  maxEnduranceTable: number[];');
   L.push('  maxEnduranceCapTable: number[];');

@@ -19,7 +19,7 @@ import { FRTDominate } from './datasets/homecoming/powersets/arachnos-widow/epic
  * boosts tagged ASSAULT powers the category gate missed, and leaves untagged
  * control effects (e.g. epic/patron holds) alone.
  *
- * STRIP-1 restated the base-mez read onto the atom stream: the generated power
+ * data-gaps-327 restated the base-mez read onto the atom stream: the generated power
  * carries `atoms`, not an `effects` bag, so `power.effects.hold` (what this
  * file's `mez()` helper read) no longer exists. The base hold is now
  * `mezSlotValue(power, 'hold')`. The OTHER read — the Domination bolt-on inside

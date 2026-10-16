@@ -1,4 +1,4 @@
-# mids-oracle — Mids Reborn structural oracle (DSH1 + DSH5)
+# mids-oracle — Mids Reborn structural oracle (deductive-schema-harness-1 + DSH5)
 
 A Linux-native reader for the Mids Reborn `I12.mhd` power database, used as a
 **structural oracle** for the Deductive Schema Harness
@@ -55,7 +55,7 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
   Mids *understood* rather than what it was handed — a Uid it refused comes back empty, and
   one it resolved elsewhere comes back as the other record's name. Slot by slot, a Uid is
   kept, LOST, MIS-BOUND, or RESTATED. MIS-BOUND is the one a count cannot reach: the slot is
-  filled either way, and it is MBDIMPORT-5's own failure, where Mids' namespace has drifted
+  filled either way, and it is data-gaps-235's own failure, where Mids' namespace has drifted
   and a set plus a piece number is all the two still share. Two live examples, both from
   mutants and both silent under counting — `Attuned_Superior_Defiant_Barrage_A` binds to
   `Superior_Attuned_Superior_Defiant_Barrage_A`, a different set's piece, and a Uid with its
@@ -66,8 +66,8 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
   `RelativeLevel` changed. Over 2,112 swept slots Mids returned `Grade`, `RelativeLevel` and
   `Obtained` exactly as given and rewrote only `IoLevel`. One rewrite is forgiven and counted
   rather than reported: our `IoLevel: 0` for a piece with no craft level, which Mids clamps
-  into the set's range and, per MBDEXPORT-17's controlled measurement, does not read. A piece
-  that states a REAL level and comes back at another is a finding, and that is MBDEXPORT-22.
+  into the set's range and, per data-gaps-270's controlled measurement, does not read. A piece
+  that states a REAL level and comes back at another is a finding, and that is data-gaps-275.
 
   The twins are read from `$MIDS_WINEPREFIX/drive_c/mbd-oracle-work/resaved` by default;
   `--resaved <dir>` overrides. Exits 1 on any finding, so it can stand as a gate.
@@ -119,8 +119,8 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
   queue drained, not a list zipped. Accolades and incarnates ride free — both are written
   past `LastPower`, where Mids addresses by name rather than index.
 
-  Found MBDEXPORT-23 (Homecoming's Lingering Radiation, lost to one letter of case in a
-  table that folded case while claiming to carry spelling), MBDEXPORT-24 and ROSTER-2.
+  Found data-gaps-23 (Homecoming's Lingering Radiation, lost to one letter of case in a
+  table that folded case while claiming to carry spelling), data-gaps-24 and data-gaps-281.
 
       npx tsx --import ./scripts/env-register.mjs scripts/generate-mbd-power-sweep.ts --out /tmp/psweep
       tools/mids-oracle/mbd-oracle.sh -o /tmp/psweep.jsonl /tmp/psweep/homecoming /tmp/psweep/rebirth
@@ -136,7 +136,7 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
   Both of those join on DISPLAY name, which is an identity only while a display name names one
   power. `oursOnlyInternal` is the leg for when it does not: a display name our export files
   over two powers, listed by internal name, which is what the reconciler reads first. Scoped to
-  that doubling on purpose — unscoped it forgives 104 Homecoming names (DRIFTBASE-1). Currently
+  that doubling on purpose — unscoped it forgives 104 Homecoming names (data-gaps-274). Currently
   0 on Homecoming and 2 on Rebirth, both `Clear_Skies_Text`.
   Regenerate alongside `mids-power-names.<dataset>.json`; the stamped sha256 is what makes a
   Mids database update visible in the diff.
@@ -165,34 +165,34 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
   combat canonicalization (fold `pv`→Combat, strip the `pvp` table token) that
   reconciles Mids' explicit PvE/PvP record pairs with our Any-base + `_pvp*`-override
   encoding. This is a **PoC validator, not the production harness** (that is DSH5,
-  sequenced after the DSH4 closed schema).
+  sequenced after the deductive-schema-harness-4 closed schema).
 
 - **`emit_canonical.ts` + `diff_harness.py`** — the DSH5 production harness. The TS
-  emitter canonicalizes the whole HC export via the **tested DSH4 bridge**
+  emitter canonicalizes the whole HC export via the **tested deductive-schema-harness-4 bridge**
   (`ingestExportPower` from `src/data/core/atomic-effect.ts`), resolving redirect
   shells, so the app's schema and the oracle diff can never drift (the bridge is
   single-source; Python never re-ports it). `diff_harness.py` joins every Mids power
-  to the canonical export by `full_name`, keys effects by the DSH4 identity, checks
+  to the canonical export by `full_name`, keys effects by the deductive-schema-harness-4 identity, checks
   the structural invariants, runs a tiered classifier, and writes
   `oracle_divergence_rules.json` (the committable baseline) + a coverage manifest.
   See "DSH5 harness" below.
 
-- **`read_enhdb.py`** — DSH9 bootstrap reader for `EnhDB.mhd` (enhancement + IO set DB).
+- **`read_enhdb.py`** — deductive-schema-harness-9 bootstrap reader for `EnhDB.mhd` (enhancement + IO set DB).
   Ports `DatabaseAPI.LoadEnhancementDb` plus `Enhancement(BinaryReader)` and
   `EnhancementSet(BinaryReader)` verbatim. Emits either enhancements, sets, both,
   or a summary. For enhancement FX payloads it reuses `read_i12.py`'s
   `Effect(BinaryReader)` parser at template granularity.
 
-- **`diff_enh_oracle.py`** — minimal DSH9 coverage diff. Compares:
+- **`diff_enh_oracle.py`** — minimal deductive-schema-harness-9 coverage diff. Compares:
   - oracle set names (`EnhancementSet.display_name`) vs `src/data/datasets/<dataset>/io-sets-raw.ts`
   - oracle proc tuples (`set display name + enhancement name` where `is_proc`) vs
     `src/data/proc-data.ts` (`setName + ioName`)
 
   This is intentionally a bootstrap worklist generator, not yet the full value-level
-  DSH9 gate.
+  deductive-schema-harness-9 gate.
 
   Two guards sit under `--value-diff`, both of which fail `--strict` **even behind a
-  baseline** (PROV-5). They grade the comparator, not the data, so a baseline must not
+  baseline** (data-gaps-247). They grade the comparator, not the data, so a baseline must not
   forgive them:
   - **stat vocabulary** — the two sides name the same 33 stats and nothing compared
     the lists. A repo-side rename or an unmapped effect type does not read as an
@@ -207,12 +207,12 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
 - **`test_read_enhdb.py`** — smoke regression check for the new reader (alignment,
   count floor, and stable identity anchors).
 
-- **`enh_oracle_residual_baseline.json`** — the DSH9 committed residual. Carries
+- **`enh_oracle_residual_baseline.json`** — the deductive-schema-harness-9 committed residual. Carries
   `read_i12.provenance` for **both** databases it grades (`oracle.enhdb`,
-  `oracle.i12`) since PROV-5; before that it named neither.
+  `oracle.i12`) since data-gaps-247; before that it named neither.
 
 - **`test_diff_harness.py`** — pure-function checks on the DSH5 comparator's record
-  layer (the PROV-4 Enhancement fold and the complete-type-set fold). Needs no `.mhd`
+  layer (the data-gaps-246 Enhancement fold and the complete-type-set fold). Needs no `.mhd`
   and no canonical cache, so unlike the harness itself it runs anywhere.
 
 ## Requirements
@@ -220,7 +220,7 @@ disagree numerically, the raw `.pigg` bin is the tiebreaker.
 Local only — the `.mhd` databases live in a gitignored Wine prefix, so these tools do
 not run in CI. `MidsReborn-master/` is the vendored Mids SOURCE, read by a human when
 porting a binary layout; it is not where a database is read from. It held one until
-PROV-3 (2026-09-13), which is how the DSH5 baseline came to name a database nobody
+data-gaps-245 (2026-09-13), which is how the DSH5 baseline came to name a database nobody
 could produce — see the provenance note below. Wiring the harness into CI (with a
 committed DB or a golden JSON export) is DSH5/DSH7. Python 3, stdlib only.
 
@@ -229,10 +229,10 @@ committed DB or a golden JSON export) is DSH5/DSH7. Python 3, stdlib only.
 ```sh
 python3 read_i12.py                              # HC I12.mhd -> stdout JSONL
 python3 read_i12.py --grep Trick_Arrow --limit 5 # spot-check specific powers
-python3 diff_oracle.py --normalize-pvp           # DSH1 gate-2/3 known-answer comparison
+python3 diff_oracle.py --normalize-pvp           # deductive-schema-harness-1 gate-2/3 known-answer comparison
 python3 diff_oracle.py --cohort trick_arrow --normalize-pvp
 
-# DSH9 bootstrap (EnhDB oracle):
+# deductive-schema-harness-9 bootstrap (EnhDB oracle):
 python3 read_enhdb.py --mode summary
 python3 read_enhdb.py --mode sets --grep "gambler" --limit 5
 python3 diff_enh_oracle.py --dataset homecoming --show 20
@@ -252,12 +252,12 @@ python3 diff_harness.py --baseline oracle_divergence_rules.json  # + regression 
 python3 diff_harness.py --emit --top 30           # force-refresh canonical, show 30 classes
 ```
 
-## Provenance (PROV-3, 2026-09-13)
+## Provenance (data-gaps-245, 2026-09-13)
 
 Every artefact here that is derived from a `.mhd` states which one, through the single
 `read_i12.provenance()` — `database`, `version`, `sha256`, `powerCount`. The sha256 is
 the identifying field: the header reads "Mids Reborn Powers Database" in all four forks
-and a version string names none of them either (MBDEXPORT-2). A path is not a citation,
+and a version string names none of them either (data-gaps-262). A path is not a citation,
 and `oracle_divergence_rules.json` carried only a path until this row.
 
 ## Gate results (Gate 1 re-run 2026-09-13; 2 and 3 as of 2026-07-05)
@@ -275,7 +275,7 @@ and `oracle_divergence_rules.json` carried only a path until this row.
   carried **0** `unresistable` markers, the post-fix output **1** — the oracle
   corroborates precisely the effect the collapse had dropped.
 
-## DSH9 bootstrap results (2026-07-06)
+## deductive-schema-harness-9 bootstrap results (2026-07-06)
 
 - `read_enhdb.py` parses local Homecoming `EnhDB.mhd` with end-of-file alignment OK.
   Current DB summary: 1,345 enhancements, 227 sets, 128 proc enhancements.
@@ -283,7 +283,7 @@ and `oracle_divergence_rules.json` carried only a path until this row.
 - `diff_enh_oracle.py` reports meaningful coverage deltas:
   - set names are now 227 vs 227 with a small typo-only mismatch class
     (`Ascendency`/`Cacophany`/`Convalesence` vs normalized spelling)
-  - proc tuple residuals are surfaced as a concrete DSH9 worklist for extractor
+  - proc tuple residuals are surfaced as a concrete deductive-schema-harness-9 worklist for extractor
     reconciliation.
 
 ### `diff_enh_oracle.py` modes
@@ -330,7 +330,7 @@ typed rule in DSH5's tiered classifier:
 | class | what | reconciliation |
 | --- | --- | --- |
 | `PVP_MODELING` | Mids: base table + explicit PvE/PvP records. Ours: Any base + `_pvp*` override table. | fold `pv`→Combat + strip `pvp` token (done in `--normalize-pvp`) |
-| `MULTI_TYPE_GRANULARITY` | Mids emits one record per damage type; our export keeps one multi-attrib record (e.g. Build Up: 7 `melee_buff_dmg` vs 1). | expand our multi-attrib templates one-per-attrib — **needs the DSH4 attrib→type bridge** |
+| `MULTI_TYPE_GRANULARITY` | Mids emits one record per damage type; our export keeps one multi-attrib record (e.g. Build Up: 7 `melee_buff_dmg` vs 1). | expand our multi-attrib templates one-per-attrib — **needs the deductive-schema-harness-4 attrib→type bridge** |
 | `MEZ_PVP_RESIDUAL` | our `_pvpmez` maps to Mids' `_ones`/`_special`, not `_mez`. | explicit table alias map |
 | `INHERENT_EXTRA` | export carries `_inherentdamage` records Mids omits (the inherent bonus `damage.ts` deliberately filters). | skip inherent tables |
 | `REDIRECT` | redirect shells (`effects: []` + `redirect[]`, e.g. Arachnos Burst→Crab/Wolf_Burst). Mids inlines the target; our export defers to the pointer. | resolve the redirect chain before diffing |
@@ -339,7 +339,7 @@ typed rule in DSH5's tiered classifier:
 ## DSH5 harness — invariants, canonicalization, gate results (2026-07-05)
 
 `diff_harness.py` sweeps **all 5,668 joined HC powers** (not a 14-power cohort) and
-keys effects by the real DSH4 `(effectType, subType, resistible)` identity. The
+keys effects by the real deductive-schema-harness-4 `(effectType, subType, resistible)` identity. The
 build-out surfaced — and the harness now canonicalizes — the systematic *modeling*
 differences that would otherwise masquerade as defects (each was verified against a
 concrete power before being folded, never assumed):
@@ -347,8 +347,8 @@ concrete power before being folded, never assumed):
 | canonicalization | why | where |
 | --- | --- | --- |
 | **complete-type-set fold** | an all-damage/all-position effect: Mids collapses to one `damage_type=None` record; our export lists every type (the bridge splits per-attrib). Fold a complete set → one `All` on both sides. Twin (R/U) folded independently, stays distinct, and the damage and position sets fold independently too — one group can hold both. | Poison Gas Arrow (Mids 1 vs export 8) |
-| **Enhancement fold** (PROV-4) | Mids spells a strength buff `EffectType.Enhancement` and names the enhanced attribute in a second field, `et_modifies`; our export spells the attribute itself, keeping `Enhancement` only for mez and defense strength (the two families with no effectType of their own). Read `et_modifies` and re-spell in the export's vocabulary. Where it routes is in the rules file under `enhancement_fold`. | Power Boost (SpeedRunning, SpeedFlying and Defense were one key) |
-| **ResEffect fold** | Mids' catch-all for "resistance to a secondary-attribute debuff"; our bridge keeps the affected attrib at `aspect=Res` (the DSH4/DSH6 boundary). Bucket both → `ResEffect`. | Acid Arrow (−regen/−rec/−end…) |
+| **Enhancement fold** (data-gaps-246) | Mids spells a strength buff `EffectType.Enhancement` and names the enhanced attribute in a second field, `et_modifies`; our export spells the attribute itself, keeping `Enhancement` only for mez and defense strength (the two families with no effectType of their own). Read `et_modifies` and re-spell in the export's vocabulary. Where it routes is in the rules file under `enhancement_fold`. | Power Boost (SpeedRunning, SpeedFlying and Defense were one key) |
+| **ResEffect fold** | Mids' catch-all for "resistance to a secondary-attribute debuff"; our bridge keeps the affected attrib at `aspect=Res` (the deductive-schema-harness-4/deductive-schema-harness-6 boundary). Bucket both → `ResEffect`. | Acid Arrow (−regen/−rec/−end…) |
 | **set-not-multiset INV1** | Mids enumerates conditional/DoT/combo scale-tiers as separate records on the *same* key. Collapse drops a whole *distinct* sibling key — never duplicate copies — so compare distinct-key **presence**; count deltas on a shared key are advisory `MULTIPLICITY`. | Claw Swipe (Mids 28 vs export 6 Lethal) |
 | **INV4 resistibility-flip** | a residual key whose base `(effectType\|subType)` exists on the other side with the opposite resistible bit — the twin-collapse axis. Split into its own `RESISTIBILITY_FLIP` class (kept in the worklist; not gated wholesale — Mids self-buff records carry an unresistable convention). | Power Surge (mez-protection U-twins) |
 
@@ -361,7 +361,7 @@ would be the one thing these guards must never do (a false positive).
 
 **Result:** 2,576 / 5,668 powers carry a structural residual → `oracle_divergence_rules.json`
 (schema `dsh5-oracle-divergence-rules/1`): BY_DESIGN 1,157 (redirect/inherent/pvp-only),
-RELABEL 547 (type-granularity), **UNCLASSIFIED 6,245 = the DSH6 triage worklist.** The
+RELABEL 547 (type-granularity), **UNCLASSIFIED 6,245 = the deductive-schema-harness-6 triage worklist.** The
 UNCLASSIFIED bucket is genuine signal, not noise — spot-verified to be Mids semantic
 relabeling (Enhancement = the `aspect=Str` boundary), content scope (incarnate/epic), the
 289 resistibility-flips, and ~160 scattered "Mids has a damage type we lack" powers (e.g.
@@ -369,7 +369,7 @@ Mace Beam Blast Smashing+Energy vs our Energy — a concrete candidate finding f
 tiebreaker, DSH7). This is **local-only** (the `.mhd` is gitignored → not in CI yet, DSH7);
 `.oracle_cache/` (the canonical dump) is gitignored, the distilled rules file is committable.
 
-**Re-measured 2026-09-13** on the database PROV-3 re-pointed to, with PROV-4's Enhancement
+**Re-measured 2026-09-13** on the database data-gaps-245 re-pointed to, with data-gaps-246's Enhancement
 fold in: matched 9,198 (`boosts/` joined in July), 2,333 carrying a structural residual,
 **UNCLASSIFIED 5,679**, BY_DESIGN 1,158, RELABEL 404, INV5 89.6%, MULTIPLICITY 1,847. The
 numbers above are the 2026-07-05 snapshot and are kept as the shape of the first sweep.

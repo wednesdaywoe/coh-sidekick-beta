@@ -210,8 +210,8 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   const projection = usePowerProjection(powerSet, powerName);
 
   // The effect rows themselves, taken from that projection rather than resolved here
-  // (ENGLAG-1). The engine seeds its display bag from the power's ATOMS, so it resolves the
-  // rows of a power whose authored `effects` STRIP-1 removed; resolving locally would render
+  // (data-gaps-329). The engine seeds its display bag from the power's ATOMS, so it resolves the
+  // rows of a power whose authored `effects` data-gaps-327 removed; resolving locally would render
   // only the keys `buildDisplayEffects` mints for itself. `null` until the dataset loads,
   // which is the one window the local path still covers.
   const effectRows = useMemo(
@@ -603,7 +603,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
     // the DamageBlock "+proc" annotation. Proc *chance* (below) reads both too,
     // but differently: global recharge cancels out of the window unless the power
     // carries slotted recharge, and then it softens that penalty rather than
-    // adding one (DATA-GAP-REGISTER PPM-2).
+    // adding one (DATA-GAP-REGISTER data-gaps-111).
     const enhancedRecharge = calcThreeTier('recharge', baseRecharge, enhancementBonuses, globalBonusesForCalc).final;
     const effectiveCast = useArcanaTimeToggle ? calculateArcanaTime(castTime) : castTime;
     const cycleTime = (enhancedRecharge + effectiveCast) || 1;
@@ -787,7 +787,7 @@ function PowerInfo({ powerName, powerSet }: PowerInfoProps) {
   // Per-target buff scaling (stored in UI store so it persists across power switches)
   const stackingInfo = useMemo(() => power ? getStackingInfo(power) : null, [power]);
   // An untouched slider reads as its axis' FLOOR, not as zero: on a power whose caster fills one
-  // of its own target seats there is no zero-target state to default to (PERFOE-3). The engine
+  // of its own target seats there is no zero-target state to default to (data-gaps-309). The engine
   // floors the count the same way from the same two fields, so the control and the number agree.
   const storedTargetsHit = useUIStore((s) => s.targetsHitValues[powerName]);
   const targetsHit = storedTargetsHit ?? stackingInfo?.minStacks ?? 0;

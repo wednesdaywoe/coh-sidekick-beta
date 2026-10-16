@@ -19,12 +19,12 @@ import type { SummonEffect } from '@/types/power';
  *    The converter reads the flag rather than discarding the template, and this
  *    merge is the only place a pseudo-pet's kit reaches the summoning power at
  *    all — so dropping the row showed nothing where the honest answer is
- *    "something the summoner's slotting does not reach" (ENT-4).
+ *    "something the summoner's slotting does not reach" (data-gaps-99).
  *  • A movement key holds one value PER AXIS. Glue Arrow slows running by 0.72
  *    and caps jump height at 500 off the same table; one value per key can hold
- *    neither, and summing them gives 500.72 (ENT-5 / ENT-8).
+ *    neither, and summing them gives 500.72 (data-gaps-100 / data-gaps-103).
  *  • Every row an entity supplies names the entity's own class, because that is
- *    the class its tables resolve against — not the summoner's (ENT-10).
+ *    the class its tables resolve against — not the summoner's (data-gaps-105).
  */
 describe('synthesizePseudoPetEffects', () => {
   beforeAll(async () => {
@@ -61,7 +61,7 @@ describe('synthesizePseudoPetEffects', () => {
     expect(out).not.toBeNull();
     // The guaranteed pulse (mag 3, scale 8) wins over the aura's 5% proc.
     // `attribType` rides with the row: the reader takes the mez's quantity off it, and a
-    // merged pet row that arrived without one resolves as unstated (MEZDUR-1).
+    // merged pet row that arrived without one resolves as unstated (data-gaps-167).
     expect(out!.hold).toEqual(
       { mag: 3, scale: 8, table: 'Melee_Ones', attribType: 'Duration', petClass: 'minion_pets' });
     // The pet's ToHitDebuff still surfaces alongside the hold.

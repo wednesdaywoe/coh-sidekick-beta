@@ -1,6 +1,6 @@
 {
   "_doc": [
-    "DSH6 completeness-gate allowlist (Phase 0b). Consumed by",
+    "deductive-schema-harness-6 completeness-gate allowlist (Phase 0b). Consumed by",
     "`dsh6-collapse-detector.cjs --gate`: EVERY detector group — collapse AND",
     "class-absent, by-type AND scalar — must have its key here or the gate",
     "fails. This converts the old non-gating class-absent bucket (the blind",
@@ -38,7 +38,7 @@
     "self-penalty|Movement": "Reaction Time — by design. The power's −0.7 movement templates are OnDeactivate undo-mods (they fire only when the toggle drops, reversing the OnTick +0.7 sustain buffs; confirmed vs CoD2 field-for-field). The shifted ATTRIB_MOD_APPLICATION table (fixed 2026-07-20) had mislabeled them OnActivate, so the converter's OnDeactivate skip missed them and a phantom self-penalty atom shipped; with correct labels the skip drops them, collapsing the phantom."
   },
   "discriminatorClassAbsent": {
-    "self-penalty|Movement": "Geode — by design (MOVEMAP-7). Its only movement-family row is the kFly mode kill (`Fly -10000 Melee_Ones`), a flight-mode grant magnitude, not a speed; the extractor no longer folds mode-axis rows into the slow display slots (they'd render as a -1,000,000% slow). The atom stream still carries the row as subType FlyMode.",
+    "self-penalty|Movement": "Geode — by design (data-gaps-174). Its only movement-family row is the kFly mode kill (`Fly -10000 Melee_Ones`), a flight-mode grant magnitude, not a speed; the extractor no longer folds mode-axis rows into the slow display slots (they'd render as a -1,000,000% slow). The atom stream still carries the row as subType FlyMode.",
     "twin-unenhanced|Regeneration": "Genetic Corruption (Stalker Bio Armor) — its IgnoreStrength +Regen is gated on `kRestedAdaptation Source.Mode?` (Efficient stance only) and wholly dropped from base output, exactly like its already-allowlisted Rested-stance +Res block (see classAbsent Genetic Corruption entries). Same self-conditional known gap; the real enhanceable/unenhanceable regen twins (Gamma Boost, Fast Healing, Obscure Sustenance) all correctly emit regenBuffUnenhanced and pass."
   },
   "scalarClassAbsent": {

@@ -4,7 +4,7 @@ import { importMidsBuild } from '@/utils/mids-import';
 import { getAccolade, getAccolades, getAllAccolades, accoladeId } from '@/data/accolades';
 
 /**
- * MBDIMPORT-1 — accolades arrived as `Temporary_Powers.Accolades.*` and the importer's
+ * data-gaps-231 — accolades arrived as `Temporary_Powers.Accolades.*` and the importer's
  * blanket temp-power skip dropped every one of them silently, with `warnings: []` telling
  * the user nothing was lost. The build that surfaced it carried four (Atlas Medallion,
  * Task Force Commander, Portal Jockey, Freedom Phalanx Reserve), so its imported HP and

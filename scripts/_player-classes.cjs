@@ -6,7 +6,7 @@
  * `derivePlayerArchetypes` reads that subset straight from the export's own
  * membership signal instead of a hand-maintained allowlist — so a new
  * archetype flows in, and a fixed NPC-misclassification flows out, with no
- * edit here (resolved DATA-GAP-REGISTER CLASSES-2, 2026-07-21: the WS8
+ * edit here (resolved DATA-GAP-REGISTER data-gaps-86, 2026-07-21: the WS8
  * sequential parse restored the header fields this reads).
  *
  * `derivePetClasses` reads the pet subset from the DEMAND side: the classes the
@@ -27,7 +27,7 @@ const path = require('node:path');
 const PET_ENTITY_PREFIXES = ['pets_', 'mastermindpets_', 'incarnatepets_'];
 
 // A class file is player-facing when the export's own membership signal says
-// so. That signal differs by dataset SCHEMA, not by name (CLASSES-1/WS8):
+// so. That signal differs by dataset SCHEMA, not by name (data-gaps-85/WS8):
 // Homecoming deleted i24's origin-restriction fields and added VillainRank
 // (0 for players, 1-11 for NPC ranks), so HC keys on `villain_rank === 0`; the
 // forks kept i24's restriction gating, where every playable class carries
@@ -55,7 +55,7 @@ function derivePlayerArchetypes(tablesDir) {
 
   // Fail loud on a desynced discriminator: a parser regression that dropped
   // both membership fields would silently empty this list, which then silently
-  // drops every archetype's modifier tables downstream (the FLAGS-2 failure
+  // drops every archetype's modifier tables downstream (the data-gaps-81 failure
   // mode — a self-consistent-but-wrong export). Every real dataset carries ~15
   // player archetypes; the precise per-dataset count is pinned by the coverage
   // and staleness tests.
@@ -89,7 +89,7 @@ function derivePlayerClassTokens(tablesDir) {
 // lost the tables for their henchman classes (`minion_henchman`, `boss_henchman`,
 // `lt_henchman`) and their praetorian grunts — a pet whose class has no tables
 // resolves nothing, which is how Thunderspy's Rally The Militia reached the merge
-// with no table to resolve against (ENT-10).
+// with no table to resolve against (data-gaps-105).
 function derivePetClasses(entitiesDir, tablesDir) {
   if (!fs.existsSync(entitiesDir)) {
     throw new Error(`derivePetClasses: no entities dir at ${entitiesDir}`);

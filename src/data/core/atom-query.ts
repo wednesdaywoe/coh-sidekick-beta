@@ -59,7 +59,7 @@ export type AtomSource = Pick<Power, 'atoms' | 'targetsAffected'> & Partial<Pick
 const atomCache = new WeakMap<AtomSource, readonly AtomicEffect[]>();
 
 /**
- * The power's atom list — its effects as the flat, pre-projection DSH4 record
+ * The power's atom list — its effects as the flat, pre-projection deductive-schema-harness-4 record
  * array, decoded from the compact `Power.atoms` wire form.
  *
  * Returns `[]` for a power with no atoms. NB that is NOT the same as "no
@@ -79,7 +79,7 @@ export function atomsOf(power: AtomSource): readonly AtomicEffect[] {
 /**
  * A row the client prints but never applies. Brainstorm's Disruption Strike states a
  * −2.5 resistance debuff at `AnyAffected` on a `["Self"]` power, which every recipient
- * test resolves as the caster (TARGETS-3), so untagged it lands as a phantom self
+ * test resolves as the caster (data-gaps-63), so untagged it lands as a phantom self
  * penalty on all 8 types. Rest's real −10 crash has that exact shape, and the group's
  * `DisplayOnly` tag is the only thing telling the two apart.
  *
@@ -113,7 +113,7 @@ export function atomsOfType(power: AtomSource, effectType: EffectType): AtomicEf
  * An archetype-forked atom is excluded here because these readers have no build to
  * resolve it against: it is base for ONE archetype and absent from every other's (see
  * `AtomicEffect.casterArchetypes`). The Rust gather, which does know the build, keeps it
- * and filters by class (AT-FORK-1).
+ * and filters by class (AT-data-gaps-298).
  *
  * The bag is no longer blind in quite the same way. The CONVERTER holds the archetype
  * roster, so it can resolve a fork the readers here cannot and state the slot whenever
@@ -191,7 +191,7 @@ export function bySubType(atoms: readonly AtomicEffect[]): Map<string, AtomicEff
  * (the Rage crash bug, found mechanically by the DSH6c gate — no user reported it).
  *
  * Which recipients count is {@link landsOnCaster}'s call, not this one's — the reading
- * used to be spelled out here and differently at a dozen other doors (TARGETS-2).
+ * used to be spelled out here and differently at a dozen other doors (data-gaps-64).
  */
 export function selfDirected(atoms: readonly AtomicEffect[]): AtomicEffect[] {
   return atoms.filter(landsOnCaster);
@@ -626,7 +626,7 @@ export function isDebuffAtom(a: AtomicEffect): boolean {
  */
 function requiresExcludesSelf(req: string[]): boolean {
   // Joined only to ask a question of it — a token boundary can neither create
-  // nor destroy this clause. Never split the result back apart (COND-8).
+  // nor destroy this clause. Never split the result back apart (data-gaps-123).
   const squashed = req.join(' ');
   return [
     'entref target> entref source> eq !',
@@ -682,7 +682,7 @@ export function excludesCaster(a: AtomicEffect): boolean {
 function gateExcludesCaster(a: AtomicEffect): boolean {
   const req = a.requiresExpression;
   if (!req?.length) return false;
-  // Joined only to ask a question of it — never split back apart (COND-8).
+  // Joined only to ask a question of it — never split back apart (data-gaps-123).
   const squashed = req.join(' ');
   return (
     requiresExcludesSelf(req) ||
@@ -698,7 +698,7 @@ function gateExcludesCaster(a: AtomicEffect): boolean {
  * (the atom's `'Target'`) names nobody: it means "whoever this power affects", so the identical
  * spelling is the caster on Maneuvers and the yanked foe on Wormhole. What settles it is the
  * power's own `targetsAffected`, which no atom carries because it is a POWER-level field
- * (TARGETS-3) — except when a collector pulled the atom out of another power's file, and then
+ * (data-gaps-63) — except when a collector pulled the atom out of another power's file, and then
  * {@link AtomicEffect.ownerTargets} carries that power's list instead.
  *
  * Not every site wants this question. A reader rebuilding what a power GRANTS (the defense a
@@ -803,7 +803,7 @@ export function resistanceSelfDebuffValue(
  * but only at `aspect: Cur`, the one arm of the filter that must read the aspect
  * (see {@link isAllCurDefense}). The bag stores such a row as a SCALAR
  * `defenseBuffSuppressible` ScaledEffect with no `def<Type>` key, which is why the
- * planb-shadow expands the scalar by the same rule before comparing (DEFALL-1).
+ * planb-shadow expands the scalar by the same rule before comparing (data-gaps-197).
  */
 const DEFENSE_STD_SUBTYPES = new Set([
   'Melee', 'Ranged', 'AoE',
@@ -814,9 +814,9 @@ const DEFENSE_STD_SUBTYPES = new Set([
  * The `All` arm of the defense-buff filter: a `Base_Defense` row at the attribute's
  * live value. The aspect is checked HERE, where the typed arm never needs to, because
  * `All` is the one defense subType whose other faces exist in bulk: `Defense/All` at
- * `Res` is defense-debuff-resistance (BRIDGE-1's reclassification — 229 Homecoming
+ * `Res` is defense-debuff-resistance (data-gaps-202's reclassification — 229 Homecoming
  * atoms), and at `Str` it is defense strength (Adrenal Booster). Reading either as a
- * defense value would ship Wolf Spider Armor's 0.3 as +30% defense — DEFALL-1's
+ * defense value would ship Wolf Spider Armor's 0.3 as +30% defense — data-gaps-197's
  * census is the warrant that `Cur` alone is the buff face.
  */
 function isAllCurDefense(a: AtomicEffect): boolean {
@@ -854,7 +854,7 @@ function defensePerTypeValue(
   // per-foe pass reads it and the bag's slot holds its increment. An atom the extractor DID
   // surface belongs to its `conditionalEffects` entry, where the extractor recomputes the per-foe
   // scaling in the entry's own scope — crediting it to the base is Evolving Armor granting its
-  // Defensive-stance +Def in every stance. The stamp only reaches such an atom since PERFOE-1's
+  // Defensive-stance +Def in every stance. The stamp only reaches such an atom since data-gaps-307's
   // conditional half, which is why this clause could be written without it and stay green.
   const gatedIncr = group.filter((a) => a.gated && a.perTarget && !a.conditionalId);
   if (!base.length && !gatedIncr.length) return undefined;
@@ -915,7 +915,7 @@ function defenseBuffByType(
     // scale-0 defense would still be caught.)
     if (!v || (v.scale === 0 && !v.perTarget)) continue;
     // `All` is `Base_Defense` — one value on all eleven keys, not a twelfth key
-    // (DEFALL-1; the Rust twin routes through `defense_total_keys`). No corpus power
+    // (data-gaps-197; the Rust twin routes through `defense_total_keys`). No corpus power
     // carries an `All` base row beside a typed base row in one suppression half
     // (Personal Force Field's typed siblings are PvP-gated and reconstruct to
     // nothing), and this Record could not hold both — where the Rust twin's list
@@ -976,7 +976,7 @@ export function defenseBuffSuppressibleValue(
  */
 export function defenseBuffIsTeamOnly(power: AtomSource): boolean {
   // Same atom population as `defenseBuffByType` (incl. the `All`-at-`Cur` arm,
-  // DEFALL-1): this function disambiguates that filter's silence, so the two must
+  // data-gaps-197): this function disambiguates that filter's silence, so the two must
   // read the same rows or a team-only `Base_Defense` power would be reported as a
   // divergence instead of excused as an abstention.
   const defense = atomsOfType(power, 'Defense').filter(
@@ -1009,7 +1009,7 @@ export function defenseBuffIsTeamOnly(power: AtomSource): boolean {
  *
  * NB regen/recovery — the OTHER two `*Unenhanced` twins — are deliberately NOT handled
  * here: their bag values also depend on `foldResourceSlot`'s same-table SUM, a regen-only
- * `StackByAttribAndKey` skip (the flag itself is on the wire since STACK-5, but the skip
+ * `StackByAttribAndKey` skip (the flag itself is on the wire since data-gaps-59, but the skip
  * is still a rule the reader has to apply), and a description-text target-trap filter. They got their own slice and their own helpers — see
  * {@link regenBuffValue} / {@link recoveryBuffValue}, whose extra rules and two punts are
  * exactly that list.
@@ -1058,7 +1058,7 @@ export function maxHPBuffValue(
  *      and maxHP (Replace-collapsed), a resource slot RAW-SUMS its same-table entries and
  *      RESETS on a table change (Obscure Sustenance's recovery: 0.6+0.38+0.1 = 1.08).
  *
- * ONE PUNT lives here, BPORT11 closed it, and EXPRPUNT-1 reopened it: **any
+ * ONE PUNT lives here, BPORT11 closed it, and data-gaps-331 reopened it: **any
  * `Expression`-typed resource atom returns `undefined`.** The converter's RESOURCES guard
  * drops `Expression` templates whose effect-group `Chance` is 0 — a marker the game never
  * fires — and keeps the rest, but it CONSUMES that discriminator: `templatesToAtoms` writes
@@ -1137,7 +1137,7 @@ function resourceBuffValue(
 
   const increments = atoms.filter((a) => a.perTarget);
   // The flat base must LAND ON THE CASTER to count toward his own totals — the resources
-  // family's PASS2B-1, the same exclusion `kbProtectionValue` below applies to offensive
+  // family's data-gaps-206, the same exclusion `kbProtectionValue` below applies to offensive
   // knockback. Without it the reader credits the caster with a foe debuff or a teammate buff
   // written on a power he merely owns: Temporal Bomb's `Location` -Recovery patch read as
   // +37.5% recovery, Valiance summed its `Self` +80% and its `target ≠ source` +60% into
@@ -1181,12 +1181,12 @@ function resourceBuffValue(
 }
 
 /**
- * The `effects.knockback` / `effects.knockup` PROTECTION slot, atom-native (ATOM15 / PASS2B-1).
+ * The `effects.knockback` / `effects.knockup` PROTECTION slot, atom-native (ATOM15 / data-gaps-206).
  * `field ∈ {'knockback','knockup'}`. Reproduces the converter's KB accumulate fold
  * (`convert-powerset.cjs:4356`), restricted to SELF-DIRECTED PROTECTION atoms — the converter's
  * branches 2a (`Self` + aspect=Res + Res_Boolean) and 3 (`Self` + aspect≠Res). Branch 1
  * (`toWho ≠ 'Self'`) is EXCLUDED: that is offensive foe-knockback (Battle Axe Gash's 0.67), not
- * caster protection — the PASS2B-1 fix that retires the `effectArea + powerType` proxy. Spans BOTH
+ * caster protection — the data-gaps-206 fix that retires the `effectArea + powerType` proxy. Spans BOTH
  * `Mez` AND `MezResist` effectTypes (the converter keys on the resolved attrib string, so a
  * `MezResist/Knockback` protection atom counts — Quantum/Evasive Maneuvers carry ONLY that). PvP-twin
  * atoms are dropped (the converter excludes them upstream). Accumulate `|scale|` with
@@ -1201,7 +1201,7 @@ export function kbProtectionValue(
   for (const a of baseAtoms(power)) {
     if (a.effectType !== 'Mez' && a.effectType !== 'MezResist') continue;
     if (a.subType !== subType) continue;
-    if (!reachesCaster(a, power)) continue; // branch 1 (foe) excluded → PASS2B-1
+    if (!reachesCaster(a, power)) continue; // branch 1 (foe) excluded → data-gaps-206
     if (a.pvMode === 'PvP') continue; // the converter drops the PvP twin upstream
     // branch 2b: a Self aspect=Res KB atom on a NON-Res_Boolean table is KB *resistance*, not protection
     if (a.aspect === 'Res' && !(a.modifierTable || '').toLowerCase().includes('res_boolean')) continue;
@@ -1287,7 +1287,7 @@ const MOVEMENT_AXIS_TO_KEY: Record<string, string> = {
 /**
  * The same map for the PENALTY side — `effects.slow` → the movement global
  * (`slowKeyMap`, character-totals.ts). Wider than the buff side by the two axes that
- * carry a modelled global here and none there (MOVE-1).
+ * carry a modelled global here and none there (data-gaps-190).
  *
  * `fly` is absent here for the reason it is absent above, and that absence is a fix
  * rather than a tidy-up: `slowKeyMap` sends both `flySpeed` and `fly` to `flySpeed`,
@@ -1312,7 +1312,7 @@ const SLOW_AXIS_TO_KEY: Record<string, string> = {
  * Rebirth's Fly read -5.2% where the game gives +161%.
  *
  * The population is now ZERO on all three forks (measured over the contract bundles,
- * 2026-08-18): COND-11 put the Parse6 tags on the wire and COND-12's corpus-wide
+ * 2026-08-18): data-gaps-11 put the Parse6 tags on the wire and data-gaps-126's corpus-wide
  * chance-mod pass gates every tagged sentinel on its minted mode, so a chance-0 atom
  * either carries its gate and arrives `gated` (dropped by `baseAtoms` before this
  * routing sees it) or does not exist. The rule stays as the backstop it always was: a
@@ -1378,14 +1378,14 @@ function isCaplessAxis(a: AtomicEffect): boolean {
  *     speed buff — this is the split that stopped Super Speed reporting 1.938×Melee_Ones
  *     instead of its real 1.0×Melee_SpeedRunning);
  *   - aspect `Max` + slow → `movementCapDebuff` (the debuff direction of that same split;
- *     it shared `slow`'s axis slot until ENT-5 and overwrote the speed debuff there);
+ *     it shared `slow`'s axis slot until data-gaps-100 and overwrote the speed debuff there);
  *   - slow (negative scale, or a `debuff`/`slow` table) → `slow`;
  *   - self → `movement`; non-self → `movement` ONLY via the trailing `aspect === 'current'`
  *     branch (a foe-targeted Absolute/Maximum movement effect is dropped entirely).
  *
  * One function because the chain is one chain: the branches are ordered, and a reader
  * that reproduces only its own branch re-derives the ones above it and drifts from them.
- * The two CAP branches returned `undefined` here until STRIP-1, and naming them is the
+ * The two CAP branches returned `undefined` here until data-gaps-327, and naming them is the
  * whole difference between four readers over one chain and four re-derivations of it.
  *
  * The deactivation clause arrived with the cap branches and had to. A toggle's shutdown
@@ -1396,7 +1396,7 @@ function isCaplessAxis(a: AtomicEffect): boolean {
  * and `slow` already read empty for it and this clause moves neither. What arithmetic
  * could not reach is the mirror's `Max` row — a `+1.0` run-cap RAISE that negates nothing
  * and so matched nothing — and the moment `capBump` was named and given a consumer, that
- * row became a phantom +1 cap on every Reaction Time build. MOVEMAP-6 is the Rust side of
+ * row became a phantom +1 cap on every Reaction Time build. data-gaps-177 is the Rust side of
  * the same finding; `isCancelledPair` stays until its TS half retires it, now covering no
  * atom this clause does not.
  */
@@ -1511,7 +1511,7 @@ export function movementBuffValue(power: AtomSource): MovementBuffEntry[] | unde
  * again `+0.5 / -0.5 IgnoreStrength`, and a map holding one value per axis kept one of
  * each — which cancelled, by luck. Split the plus alone and the cancel breaks.
  *
- * `movementCapDebuff` is NOT read here. ENT-5 moved the Maximum-aspect rows into their
+ * `movementCapDebuff` is NOT read here. data-gaps-100 moved the Maximum-aspect rows into their
  * own slot so a cap debuff would stop overwriting the speed debuff on the same axis,
  * and the caller still spends that slot from the bag; re-aiming it is a different
  * number and a separate question.
@@ -1551,7 +1551,7 @@ export function selfSlowValue(power: AtomSource): MovementBuffEntry[] | undefine
  * separates them, and it holds MAGNITUDES, so the pair cannot cancel by arithmetic here — it has
  * to be recognised and dropped whole.
  *
- * The rule reads both rows and not their recipients, which is what TARGETS-3 changed. It used to
+ * The rule reads both rows and not their recipients, which is what data-gaps-63 changed. It used to
  * test that the negating row was NOT the caster's, standing in for a question about the power;
  * with the join in place that test flips per fork and gets the pair wrong on the fork it was
  * written for. Homecoming's aura row has no gate, so it reaches the caster and the pair is two
@@ -1640,12 +1640,12 @@ export function movementCapBumpValue(power: AtomSource): MovementBuffEntry[] | u
 /**
  * The atom-native self-directed `effects.movementCapDebuff` — the DEBUFF direction of the
  * same split, lowering the ceiling rather than the speed (Granite Armor's −1.7851 jump
- * height). ATOM-BAG-4(c) on the Rust side; STRIP-1 here.
+ * height). ATOM-BAG-4(c) on the Rust side; data-gaps-327 here.
  *
  * Self-directed only, mirroring the bag's `toWho === 'Self'` filter: the converter writes
  * this key for a foe cap debuff too and only TAGS the self ones, so the facing test belongs
  * to the reader rather than to {@link routeMovementAtom}. Axis-keyed as wide as the slow
- * side, since a control/friction ceiling reaches a modelled global here (MOVE-1) even
+ * side, since a control/friction ceiling reaches a modelled global here (data-gaps-190) even
  * though the cap-BUMP branch refuses those two axes outright.
  *
  * This slot is why the reader exists rather than being tidy. The bag half went silent at
@@ -1657,7 +1657,7 @@ export function movementCapBumpValue(power: AtomSource): MovementBuffEntry[] | u
  * is deliberate. Rest states its `−1000 Melee_Ones` run-cap row `toWho: 'Target'` on a
  * `Self`-only power, so the converter wrote the slot and never stamped it `Self`, and
  * `isSelfDirectedEffect` threw it away at the spend site. {@link reachesCaster} makes the
- * TARGETS-3 join the stamp predates — a Self-only power's "target" is the caster — and
+ * data-gaps-63 join the stamp predates — a Self-only power's "target" is the caster — and
  * admits it. That is not this reader choosing to differ: {@link selfSlowValue} already
  * states Rest's four `−1000` axes on the identical join and the totals already spend them,
  * and the Rust twin admits the cap row on the same `reaches_caster` test. The bag is the
@@ -1831,7 +1831,7 @@ const MEZ_SUBTYPE_TO_SLOT: Record<string, string> = {
  * neither side).
  *
  * `scale` rides SIGNED, which is the protection spelling — negative scale is an armor's status
- * protection rather than applied foe control (MEZFACE-1). The totals pass takes `|scale| ×
+ * protection rather than applied foe control (data-gaps-168). The totals pass takes `|scale| ×
  * table@50` and gates on a `res_boolean` table, so this reader stays value-faithful and leaves
  * the protection-vs-control verdict to the caller that already owns it.
  */
@@ -1845,7 +1845,7 @@ export function mezSlotValue(
     if (a.aspect === 'Res' || a.aspect === 'Str') continue; // mezResistance / specialBuff arms
     // `guardThunderspyAppliedMez` deletes an applied-mez slot on a power whose
     // `targets_affected` names no foe and whose row is not protection-backed, and stamps the
-    // atoms behind it (TSPY-10). The nine Thunderspy rows are self-roots on rez/hibernate
+    // atoms behind it (data-gaps-53). The nine Thunderspy rows are self-roots on rez/hibernate
     // powers (Revive, Restore Essence, Hide, Hibernate, Elixir of Life).
     if (a.notOnCaster) continue;
     if (!a.subType || MEZ_SUBTYPE_TO_SLOT[a.subType.toLowerCase()] !== slot) continue;
@@ -1889,7 +1889,7 @@ function isConverterDebuff(a: AtomicEffect): boolean {
  *
  * `wantDebuff` selects the arm. `slowIsDebuff` carries the rechargeTime branch's extra
  * disjunct (a `slow` table is a debuff whatever the sign says). `casterOnly` carries the
- * range branch's `reachesCaster` gate — ATOM-BAG-9/TARGETS-3: that slot claims what the power
+ * range branch's `reachesCaster` gate — ATOM-BAG-9/data-gaps-63: that slot claims what the power
  * adds to the CASTER's range, so the question is the power's recipients, not the row's aspect,
  * and a `['Friend']`-only carrier (Brainstorm's Magnify) is declined.
  */
@@ -1903,7 +1903,7 @@ function combatModifierSlot(
     if (a.aspect === 'Res') return false; // the debuffResistance arm
     // The converter's Thunderspy `*_Ones` guard deletes the whole `rechargeBuff` slot on a
     // power whose shortHelp does not advertise `+Rech`, and stamps the atoms behind it
-    // (TSPY-10). Skipping them here is what keeps this reader equal to the bag; without it
+    // (data-gaps-53). Skipping them here is what keeps this reader equal to the bag; without it
     // 23 Thunderspy powers re-credit the caster with recharge the guard just removed.
     // Inert for the other three slots — the converter stamps no Accuracy/Range/
     // EnduranceDiscount atom, and never the debuff face this predicate can also select.
@@ -2104,7 +2104,7 @@ export function mezResistanceValue(
       add(sub, a);
     }
     if (sub === 'teleport') {
-      // STRIP-1's carried residual, ported from `coh_math::appliers::mez_resistance` (MEZRES-3).
+      // data-gaps-327's carried residual, ported from `coh_math::appliers::mez_resistance` (data-gaps-187).
       // A `MezResist`/`Teleport` row is spelled identically whether it protects the caster
       // (Static Shield, Personal Force Field) or whoever the power just yanked (Wormhole, Shadow
       // Slip, Fold Space author it beside the `Mez/Teleport` that moved the foe) or buffed
@@ -2132,7 +2132,7 @@ export function mezResistanceValue(
  * Taunt and Placate are Mez SUBTYPES, not effect types, which is why {@link mezResistanceValue}
  * never covered them: its `MEZ_SUBTYPE_TO_SLOT` spells the six control types only.
  *
- * The fold is the converter's CONTROL fold (TAUNT-1): the power's own row beats a
+ * The fold is the converter's CONTROL fold (data-gaps-313): the power's own row beats a
  * redirect-collected one — `ownerTargets` is the collection provenance, stamped exactly when a
  * collector pulls a template out of another power's file — and within one provenance the LAST
  * row wins. Without the provenance test a Tanker's inherent punchvoke row, collected through a
@@ -2216,7 +2216,7 @@ export function absorbValue(power: AtomSource): { scale: number; table: string; 
  * and `@Strength` to unity and returns the bare coefficient `C`, the same value the retired bag
  * slotted as `maxHPFraction`. This is the half {@link absorbValue} deliberately EXCLUDES
  * (`aspect==='Max' && attribType==='Expression'`) — the totals oracle answered 0 for it until
- * this reader landed (STRIP-1).
+ * this reader landed (data-gaps-327).
  *
  * Mirrors the converter's `parseAbsorbMaxHPFraction` gate exactly: BASE atoms only, one distinct
  * fraction; an unevaluable ceiling or two distinct base fractions returns `None` (fall back to
@@ -2306,7 +2306,7 @@ export function absorbMaxHPFractionValue(power: AtomSource): number | undefined 
  * before the stack multiply can reach it.
  *
  * The recipient test is {@link landsOnCaster}, wider than the converter's literal
- * `target === 'Self'` — it admits `SelfAndPets` and `TargetAndPets`, the reading TARGETS-2
+ * `target === 'Self'` — it admits `SelfAndPets` and `TargetAndPets`, the reading data-gaps-64
  * settled as canonical.
  */
 function selfStacks(a: AtomicEffect): boolean {
@@ -2372,7 +2372,7 @@ function isSpecialBuffAtom(a: AtomicEffect): boolean {
  * sign of a specialBuff lives in the modifier table, not the scale. Reaction Time's self
  * JumpHeight slow is `-0.7` on `Melee_Slow`, whose table is itself negative; reconstructing it
  * as raw `-0.7` double-negates into a movement-strength BUFF the game never grants, where
- * `+0.7` correctly resolves to `-0.7`, fails the `> 0` test, and credits nothing (STRENGTH-1).
+ * `+0.7` correctly resolves to `-0.7`, fails the `> 0` test, and credits nothing (data-gaps-204).
  *
  * {@link baseAtoms} scopes this to the power's unconditional base, which is what the bag slot
  * held: a mode-gated +Strength atom is the converter's `conditionalEffects` business, and Bio
@@ -2436,7 +2436,7 @@ export type StackHalf = 'enhanceable' | 'unenhanced' | 'either';
  * IgnoreStrength halves of ToHit / Regeneration / Recovery are separate slots differing on no
  * field but `ignoreStrength`.
  *
- * The third discriminator is the sub type, carried by `buff` as an optional narrowing (STACK-4).
+ * The third discriminator is the sub type, carried by `buff` as an optional narrowing (data-gaps-92).
  * A whole-family cap is the MAX over every admitted atom, so one cap covered a family whose axes
  * disagreed — Thunderspy's Time Wall states its Run axis `Stack` (cap 2) and its Fly / Jump axes
  * `Replace`. Only the consumers that ask a per-sub-type question pass one: the movement axes, the
@@ -2565,8 +2565,8 @@ export function maxStackCap(power: AtomSource): number | undefined {
  *
  * Asked of the ATOMS, which is where {@link AtomicEffect.perTarget} is stamped and where the
  * display bag's own `perTarget` is minted from. It used to be asked of the authored `effects`
- * object; STRIP-1 emptied that, so the question came back "no" for every power on every fork
- * (STACKINFO-1).
+ * object; data-gaps-327 emptied that, so the question came back "no" for every power on every fork
+ * (data-gaps-332).
  *
  * A zero increment is not one. The bag-side projection writes `perTarget: 0` onto a slot it
  * rebuilt for another reason, so presence and a real per-foe axis are different questions — the

@@ -272,7 +272,7 @@ export function getOriginTierValue(tier: OriginTier, normalizedAspect: string): 
  * curve: Homecoming's runs 105 entries deep because its class tables do, and
  * reading 51-53 off it paid out a level the game ships no recipe for — and paid
  * nothing on the forks, whose tables stop at 50. A level past the roster is a
- * stored value from before that band was read from the export (BOOST-6) or a
+ * stored value from before that band was read from the export (data-gaps-6) or a
  * set level clamped elsewhere, so it clamps rather than throwing.
  */
 export function getIOValueAtLevel(level: number, schedule: EnhancementSchedule = 'A'): number {
@@ -500,7 +500,7 @@ const HIGH_RARITY_MULTIPLIER = 1.25;
  * everything else — including the Rebirth one-off event tiers — enhances at
  * standard values. Closed vocabulary: an unknown tier must surface, never
  * silently enhance at 1.0. (Replaces the category=='purple' / "Superior"
- * name-prefix heuristic — SOURCE-1 item 3.)
+ * name-prefix heuristic — data-gaps-324 item 3.)
  */
 const RARITY_TIER_MULTIPLIER: Record<string, number> = {
   ECCommon: 1,

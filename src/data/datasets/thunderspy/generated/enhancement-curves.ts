@@ -3,8 +3,8 @@
  *
  * Derived from the committed binary export (enhancement_curves.json +
  * tables/*.json + the crafted-boost corpus) by
- * scripts/convert-enhancement-curves.cjs (SOURCE-1 SW3). Derivation proof:
- * docs/SOURCE-1-SW1-derivation.md.
+ * scripts/convert-enhancement-curves.cjs (data-gaps-324 SW3). Derivation proof:
+ * docs/data-gaps-324-SW1-derivation.md.
  *
  * Regenerate: node scripts/convert-enhancement-curves.cjs --dataset thunderspy
  */

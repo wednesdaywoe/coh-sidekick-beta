@@ -212,7 +212,7 @@ function specialMembership(records) {
  * map the popmenu writes `boost` commands from, and its failure mode is an
  * enhancement that does not appear in game with no error anywhere — the whole
  * reason the hand-written table it replaced spelled Fly `Crafted_Flight` for
- * eleven months (POPMENU-1).
+ * eleven months (data-gaps-225).
  */
 function resolveCommonIoRecords(records, templatesByToken) {
   const familied = new Set();

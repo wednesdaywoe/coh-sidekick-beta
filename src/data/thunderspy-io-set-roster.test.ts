@@ -23,7 +23,7 @@ import { IO_SETS_RAW as HC_SETS } from '@/data/datasets/homecoming/io-sets-raw';
  * forks spell four slotting headings differently). Piece NAMES joined them in
  * 2026-08: every fork names its pieces from its own boost powers, and the strings
  * differ — Homecoming's ATO pieces carry an archetype qualifier the others don't.
- * BONUSES joined them in BOOST-5 step 2: each fork's tiers resolve from its own
+ * BONUSES joined them in data-gaps-5 step 2: each fork's tiers resolve from its own
  * export, and the authorings differ (HC re-rounded defense scales to 4dp and
  * offset its damage tiers +0.025), so only the tier/piece structure is shared.
  */

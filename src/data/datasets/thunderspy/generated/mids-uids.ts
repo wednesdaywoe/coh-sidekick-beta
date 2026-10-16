@@ -12,7 +12,7 @@
  * Thunderspy database. It resolves 210 of Thunderspy's 213 sets because those
  * are shared CoH sets; the three it cannot — `kb` and the two Primalist ATOs —
  * exist in no Mids database at all, and the export reports them per slot.
- * DATA-GAP MBDEXPORT-2.
+ * DATA-GAP data-gaps-262.
  *
  * Mids resolves a slotted enhancement by UID substring match and leaves the
  * slot empty on a miss, so the export path reads these rather than deriving

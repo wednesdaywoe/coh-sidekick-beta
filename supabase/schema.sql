@@ -37,7 +37,7 @@ CREATE TABLE shared_builds (
   -- rendered under, or NULL alongside a NULL preview_image_path (never
   -- rendered). Lets a stale image (rendered under an older visual template)
   -- be told apart from a current one without re-deriving anything from the
-  -- image itself. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF1).
+  -- image itself. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (build-preview-backfill-1).
   preview_template_version INTEGER
 );
 
@@ -551,7 +551,7 @@ CREATE POLICY "own favorites delete" ON favorites
 -- role key — never a direct client write, so no INSERT policy on
 -- storage.objects is needed here (same reasoning as shared_builds itself:
 -- "The edge functions use the service role key, which bypasses RLS").
--- See streams/BUILD_PREVIEW_IMAGE_PLAN.md (EMBED1).
+-- See streams/BUILD_PREVIEW_IMAGE_PLAN.md (build-preview-image-1).
 
 -- 1. Where the build stores which preview image belongs to it.
 ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS preview_image_path TEXT;
@@ -601,14 +601,14 @@ LEFT JOIN profiles p ON p.user_id = b.user_id;
 -- and a stale image can be regenerated automatically. Every pre-existing row
 -- lands NULL here, same as preview_image_path — NULL already means
 -- "generate regardless of version," which is correct for a row this column
--- predates. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF1).
+-- predates. See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (build-preview-backfill-1).
 ALTER TABLE shared_builds ADD COLUMN IF NOT EXISTS preview_template_version INTEGER;
 
 -- shared_builds_with_author freezes its `b.*` expansion at creation, same as
--- the EMBED1 migration above — rebuild it the same way (DROP+CREATE, no
+-- the build-preview-image-1 migration above — rebuild it the same way (DROP+CREATE, no
 -- GRANTs on the view to preserve).
 --
--- **DO NOT COPY THIS PROJECTION** — see the note on the EMBED1 block above.
+-- **DO NOT COPY THIS PROJECTION** — see the note on the build-preview-image-1 block above.
 -- Superseded by the F73 migration at the end of this file.
 DROP VIEW IF EXISTS shared_builds_with_author;
 CREATE VIEW shared_builds_with_author
@@ -853,7 +853,7 @@ GRANT SELECT (
 --         # 25 with it. That one is the redeploy's check, not the SQL's.
 --
 --    The view is DROPped and recreated here with no GRANT restored after it,
---    which is safe for the reason the EMBED1 block above states and the two
+--    which is safe for the reason the build-preview-image-1 block above states and the two
 --    prior migrations demonstrated by running: this project has no explicit
 --    GRANTs on the view, and access comes from Supabase's project-wide default
 --    privileges, which apply to newly created objects. If the browse 401s

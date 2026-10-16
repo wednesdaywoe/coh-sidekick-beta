@@ -43,7 +43,7 @@ const STAGED_SUFFIX = '.regen-prev';
  *
  *   live present  → the child finished; the staged copy is the superseded one.
  *   live absent   → the staged copy is the ONLY copy. Deleting it here would be
- *                   REGEN-1 again, committed by the very code meant to prevent it.
+ *                   data-gaps-317 again, committed by the very code meant to prevent it.
  *
  * Runs before the conversion loop so a leftover can never reach
  * `generate-powerset-index.cjs`, which indexes any directory holding an
@@ -123,7 +123,7 @@ for (const [category, info] of Object.entries(CATEGORY_MAP)) {
     // a fresh directory, and only a child that SUCCEEDED gets to make its
     // absence permanent. Deleting first is what turned a transient child death
     // — a throw, or the 30s timeout below under load — into ten missing files
-    // (Homecoming's Sentinel Willpower, REGEN-1, 2026-08-10). Exiting 1 made
+    // (Homecoming's Sentinel Willpower, data-gaps-317, 2026-08-10). Exiting 1 made
     // that loss loud; staging makes it not happen.
     const staged = force && fs.existsSync(outputDir) ? `${outputDir}${STAGED_SUFFIX}` : null;
     if (staged) {

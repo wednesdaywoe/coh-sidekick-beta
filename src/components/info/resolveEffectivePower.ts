@@ -11,10 +11,10 @@
  *    verbatim off the binary (`power.formVariants`, first match wins) rather than a mode key —
  *    Energy Manipulation's Stun becoming a slower AoE under Power Boost. `conditionExpr.ts`
  *    evaluates the condition; canonical closed the matching engine side 2026-08-07
- *    (`coh_math::effective::with_form_variant`) — see docs/gaps/engine-beta-parity.md PARITY-1.
+ *    (`coh_math::effective::with_form_variant`) — see docs/gaps/engine-beta-parity.md issues-1.
  * 3. **quick snipe** — in combat, a snipe shows its fast cast/range and the quick form's damage.
  *    Which state actually GATES the fast form is fork-specific and lives in
- *    `power.quickSnipe.condition` (SNIPE-2) — see docs/gaps/engine-beta-parity.md PARITY-2.
+ *    `power.quickSnipe.condition` (data-gaps-146) — see docs/gaps/engine-beta-parity.md issues-2.
  * 4. **mid-combat cast** — an opener with a separate `midCombatCast` uses it when NOT hidden;
  *    the slow interruptible animation is the from-Hide one.
  * 5. **active conditionals** — the mode-gated contributions whose toggle is on merge onto
@@ -37,7 +37,7 @@ import type { Build } from '@/types/build';
 import type { ArchetypeId } from '@/types/archetype';
 
 /** The caster's current (buffed, UNCLAMPED) ToHit fraction the forks' fast-snipe gate reads
- *  (`cur.kToHit source> .97 >=`, SNIPE-2) — archetype `toHitBase` + the build's global ToHit
+ *  (`cur.kToHit source> .97 >=`, data-gaps-146) — archetype `toHitBase` + the build's global ToHit
  *  bonus/100, exactly `crates/coh_math/src/projection.rs`'s `gate_context`
  *  (`caps.to_hit_base + g.to_hit / 100.0`). Single-sourced so every `resolveEffectivePower`
  *  caller feeds `EffectivePowerState.currentToHit` the same number. 0.75 is the documented
@@ -70,7 +70,7 @@ export interface EffectivePowerState {
   build: Build;
   /** The caster's current (buffed, UNCLAMPED) ToHit fraction — archetype `toHitBase` + the
    *  build's global ToHit bonus/100. Read by `cur.kToHit source>`, the forks' fast-snipe gate
-   *  (SNIPE-2). Mirrors `crates/coh_math/src/projection.rs`'s `gate_context` exactly
+   *  (data-gaps-146). Mirrors `crates/coh_math/src/projection.rs`'s `gate_context` exactly
    *  (`caps.to_hit_base + g.to_hit / 100.0`) — required rather than defaulted so a caller that
    *  forgets it fails to compile instead of silently never firing the fork gate. */
   currentToHit: number;
@@ -218,7 +218,7 @@ export function isQuickSnipeActive(power: Power, state: EffectivePowerState): bo
 export function resolveEffectivePower(power: Power, state: EffectivePowerState): ApplyConditionalsResult {
   const conditionCtx = toConditionContext(state);
   const redirected = applyFormVariant(applyModeRedirect(power, state.activeModes), conditionCtx);
-  // Which state actually gates the fast form is fork-specific (SNIPE-2): Homecoming reads
+  // Which state actually gates the fast form is fork-specific (data-gaps-146): Homecoming reads
   // `kEngaged Source.Mode?`, which `toConditionContext` binds from `state.combatMode` the same
   // way the engine does; Rebirth/Thunderspy read `cur.kToHit source> .97 >=` instead, which
   // `state.combatMode` alone can never satisfy. Evaluating the condition (rather than trusting

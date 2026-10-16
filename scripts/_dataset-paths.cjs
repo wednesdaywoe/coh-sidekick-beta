@@ -29,7 +29,7 @@ const REPO_ROOT = path.resolve(__dirname, '..');
 /**
  * Every dataset the pipeline builds, in regen order. The single source — the roster
  * was copy-pasted across ~25 scripts, and a paste is how a new dataset gets converted
- * by some of them and silently skipped by the rest (the DSH8 Clarion-leak shape).
+ * by some of them and silently skipped by the rest (the deductive-schema-harness-8 Clarion-leak shape).
  *
  * `brainstorm` is Homecoming's open beta (the Brainstorm server), a first-class shipping
  * dataset rather than a ring Homecoming reads. It trails HC's content by one release

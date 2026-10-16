@@ -23,7 +23,7 @@
  * oracle's seam is `defenseBuffIsTeamOnly(power) ? undefined : (defenseBuffValue(mezSource) ??
  * syntheticEffects(power)?.defenseBuff)`, and `syntheticEffects` returns the bag for any power
  * carrying `syntheticContribution` — the pet-aura fold and the conditional mints, which are
- * exactly the suppliers STRIP-1 left alive. So the claim is restated as the condition that makes
+ * exactly the suppliers data-gaps-327 left alive. So the claim is restated as the condition that makes
  * the gate load-bearing: hand the power the mint the fallback would read, and the gate must
  * still say team-only. That is the same question the old assertion was reaching for, asked of
  * the flag rather than of the converter.

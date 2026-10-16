@@ -18,7 +18,7 @@ import path from 'path';
  *
  * `castTime` / `interruptTime` / `timeToRoot` are skipped on a power carrying `quickSnipe`: the
  * shell record's `activation_time` is the FAST anim, and the converter deliberately overrides
- * those three with the slow branch's real timing (SNIPE-2).
+ * those three with the slow branch's real timing (data-gaps-146).
  */
 
 const REPO = process.cwd();

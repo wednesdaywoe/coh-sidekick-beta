@@ -222,9 +222,9 @@ const HEADLINE_INHERENT_ALIASES = {
  * roster rows would double them. But the `.mbd` writer has to NAME this power for
  * another program, and the name it needs is the export's, not the
  * `Inherent.<Archetype>.<Name>` that `createArchetypeInherentPower` synthesises.
- * That is MBDEXPORT-20: the writer emitted no archetype inherent at all, on 8 of 8
+ * That is data-gaps-273: the writer emitted no archetype inherent at all, on 8 of 8
  * corpus builds. So this emits the NAME and nothing else — no stats, no atoms, which
- * is what keeps it clear of PARTSTAT-2's territory. There is no number here to drift.
+ * is what keeps it clear of data-gaps-277's territory. There is no number here to drift.
  *
  * The rule, in order:
  *   1. auto-issued, gated on player archetype classes only — clauses 1 and 2 above.
@@ -241,7 +241,7 @@ const HEADLINE_INHERENT_ALIASES = {
  * Anything still ambiguous emits NOTHING, and the writer warns rather than guessing.
  * Exactly one archetype lands there — Thunderspy's Primalist, whose fork ships
  * `Primal_Energy_Meter` and `Primal_Energy_Dampen` and no canonical power. That is
- * INHERENT-10, and emitting either half would be the silent wrong answer the row
+ * data-gaps-10, and emitting either half would be the silent wrong answer the row
  * exists to keep visible.
  */
 function selectHeadlineInherents() {
@@ -399,7 +399,7 @@ ${body}
 
 /**
  * Archetype id → the \`Inherent.Inherent\` full name of its HEADLINE inherent, for
- * the \`.mbd\` writer, which has to name this power for Mids (MBDEXPORT-20). The
+ * the \`.mbd\` writer, which has to name this power for Mids (data-gaps-273). The
  * NAME only — no stats and no atoms, so there is nothing here that can drift into a
  * wrong number. See the converter's \`selectHeadlineInherents\` for the rule.
  *

@@ -34,7 +34,7 @@
  * not a gap in this reader, and it is a Click either way.
  *
  * ABSORB is absent from this file on purpose: it is the one family BPORT11 declined to carry.
- * See the block comment in the oracle and the ABSORB-4 residual.
+ * See the block comment in the oracle and the data-gaps-163 residual.
  *
  * **BPORT13 restated the arms.** BPORT7 removed `power.effects`, so the bag half of every
  * comparison above is gone. Three different things follow, and lumping them together is how a
@@ -250,7 +250,7 @@ describe('BPORT11 cluster 5 — the last families, censused off the atoms', () =
   });
 
   it('declines every Expression resource atom, and names every power carrying one', () => {
-    // BPORT11 closed the Expression punt here and EXPRPUNT-1 reopened it, because the engine
+    // BPORT11 closed the Expression punt here and data-gaps-331 reopened it, because the engine
     // had closed the same punt the other way and the two verdicts met in the oracle fixtures.
     // This block is that guard re-cut onto the verdict that won.
     //
@@ -365,13 +365,13 @@ describe('BPORT11 cluster 5 — the last families, censused off the atoms', () =
     expect(carriers).toEqual([]);
   });
 
-  it('names the bag supply STRIP-1 left standing: 36 homecoming override files', () => {
+  it('names the bag supply data-gaps-327 left standing: 36 homecoming override files', () => {
     // BPORT7 emptied the CONVERTER's bag. It did not empty the hand-written overrides layer,
-    // which is a separate supplier and was not on STRIP-1's list of five. 36 files under
+    // which is a separate supplier and was not on data-gaps-327's list of five. 36 files under
     // `src/data/datasets/homecoming/overrides/` still carry an `effects` key and no other fork
     // has one — so any reader with a `?? effects.slot` seam answers differently on Homecoming
     // than on the other three, which is precisely the fork-shaped hole a per-power hand-list
-    // leaves and the reason TEAMBUFF-1 was a bug.
+    // leaves and the reason data-gaps-222 was a bug.
     //
     // Pinned as a census rather than fixed here: retiring these is an overrides-layer audit
     // with its own oracle question (is the parser emitting the fact yet?), not a test edit.

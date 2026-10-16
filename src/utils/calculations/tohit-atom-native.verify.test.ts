@@ -7,7 +7,7 @@
  * for the shapes the migration had to get right:
  *   - per-target (Soul Drain: 1.0 flat + 0.2/foe → the per-foe slider),
  *   - per-target where the atom's own `stacking` does not settle it (Invincibility
- *     is `Continuous`, which the atom now carries since STACK-3 but which is not
+ *     is `Continuous`, which the atom now carries since data-gaps-66 but which is not
  *     on its own a per-target increment — the converter-STAMPED one is),
  *   - burst/tail (Inner Light: sustained 0.77 ToHit tail, NOT the 2.77 overlap sum),
  *   - +Damage's per-damage-type explosion (collapsed, not 8× summed),
@@ -85,7 +85,7 @@ describe('atom-native Damage — Against All Odds (Self increment counts at N=1)
 describe('atom-native Damage — Fulcrum Shift (redirect increment, Target toWho)', () => {
   it('recovers { scale: 6, perTarget: 2 } — the flat self buff plus the first foe`s', () => {
     const v = damageBuffValue(FulcrumShift)!;
-    // The increment is `AnyAffected`, and until TARGETS-3 that read as "not the caster's",
+    // The increment is `AnyAffected`, and until data-gaps-63 that read as "not the caster's",
     // so N=1 was the flat 4 alone. Both of this power's leaves are `['Friend', 'Self']`
     // powers — `KineticTransferBuffSelf` puts the flat +4 on the caster and
     // `KineticTransferBuff` puts +2 on every friend near each foe — so at one foe he has

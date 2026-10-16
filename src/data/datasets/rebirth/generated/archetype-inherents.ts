@@ -20,7 +20,7 @@ export const GENERATED_ARCHETYPE_INHERENTS: Record<string, InherentPowerDef[]> =
 
 /**
  * Archetype id → the `Inherent.Inherent` full name of its HEADLINE inherent, for
- * the `.mbd` writer, which has to name this power for Mids (MBDEXPORT-20). The
+ * the `.mbd` writer, which has to name this power for Mids (data-gaps-273). The
  * NAME only — no stats and no atoms, so there is nothing here that can drift into a
  * wrong number. See the converter's `selectHeadlineInherents` for the rule.
  *

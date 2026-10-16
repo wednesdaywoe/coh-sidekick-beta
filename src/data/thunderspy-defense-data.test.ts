@@ -50,7 +50,7 @@ describe('Thunderspy defense powers carry their defense magnitude', () => {
   it('armor toggle Focused Fighting carries positional (melee) defense', () => {
     // The affected attrib comes from the index array (HC parity: 'Melee'), not
     // the bogus 'Buff_Def' front token. Stated on the atoms — the `effects` bag
-    // the bag-side projection provided is retired (STRIP-1).
+    // the bag-side projection provided is retired (data-gaps-327).
     const melee = atomsOfType(FocusedFighting, 'Defense')
       .filter((a) => a.aspect === 'Cur' && a.modifierTable === 'Melee_Buff_Def')
       .find((a) => a.subType === 'Melee');

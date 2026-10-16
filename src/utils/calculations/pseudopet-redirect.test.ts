@@ -27,8 +27,8 @@ import type { ResolvedPseudoPet } from '@/types/power';
  *   - Category Five storm:  0.08 cold, 0.82 smashing / tick
  *   - Category Five Eye:    5.12 energy / tick (lightning)
  *
- * STRIP-1 restatement: every `X.effects!.summon!` read moved to `X.summon!`. The strip
- * retired the power-level `effects` bag, and ENT-22 (2026-08-29) hoisted the summon verdict
+ * data-gaps-327 restatement: every `X.effects!.summon!` read moved to `X.summon!`. The strip
+ * retired the power-level `effects` bag, and data-gaps-22 (2026-08-29) hoisted the summon verdict
  * to top-level `power.summon` (`src/types/power.ts:1211`) so pets survive the bag's
  * removal — one writer, one address, on every partition. The nested `ability.effects`
  * trees inside `summon.resolvedEntities` are NOT bag reads: the strip left the resolved
@@ -280,7 +280,7 @@ describe('pseudo-pet redirect resolution', () => {
 
   describe('Freezing Rain (absent-entity_def priority_list shell)', () => {
     // entity_def is absent; the shell name (PL_StaticObject) lives in
-    // priority_list and the payload in Pets.* redirects. SHELL-1 (fixed):
+    // priority_list and the payload in Pets.* redirects. data-gaps-107 (fixed):
     // the resolver falls back to priority_list for the effective entity, so
     // these summons carry resolvedEntities + the shell name as entity.
     const re = () => FreezingRain.summon!.resolvedEntities![0];
@@ -349,7 +349,7 @@ describe('pseudo-pet redirect resolution', () => {
     it("getPetEntity tolerates the bare name and finds the Pets_-prefixed entity", () => {
       expect(getPetEntity('Sleet')?.name).toBe('Pets_Sleet');
     });
-    // SHELL-1 (fixed): HC Sleet is the same absent-entity_def shell class as
+    // data-gaps-107 (fixed): HC Sleet is the same absent-entity_def shell class as
     // Freezing Rain — the payload lives in Pets.Sleet.* redirects, so it
     // resolves as a shell (entity = PL_StaticObject + resolvedEntities), NOT
     // via the getPetEntity('Sleet') pet-entity fallback the beta used.

@@ -53,7 +53,7 @@ describe('evaluateConditionTri — the third value', () => {
   });
 
   it('absorbs unknown Kleene-style when the definite sibling settles it', () => {
-    // EXPR-1's own example: mode off makes the conjunction false, unvaluable `distance` or not.
+    // data-gaps-121's own example: mode off makes the conjunction false, unvaluable `distance` or not.
     expect(t('kBoostRange Source.Mode? distance 7 > &&')).toBe(false);
     expect(t('kBoostRange Source.Mode? distance 7 > &&', ctx({ liveModes: new Set(['kboostrange']) }))).toBeUndefined();
     expect(t('1 distance 7 > ||')).toBe(true);

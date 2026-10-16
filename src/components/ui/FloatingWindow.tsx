@@ -11,7 +11,7 @@
  * + size across reloads via `uiStore.floatingWindows`.
  *
  * Extracted from the previously-duplicated PopOutInfoPanel + SetBonusPopup
- * desktop shells (LAY10).
+ * desktop shells (rearrangeable-layout-10).
  */
 
 import { useEffect, useRef, useState, useCallback } from 'react';

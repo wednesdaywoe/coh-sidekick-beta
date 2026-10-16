@@ -4,10 +4,10 @@
  * Keyed by OUR `group.powerset` (lower-cased), then by the Mids internal name
  * (lower-cased). The value is this dataset's internal name for the SAME power, joined on
  * the display name — the identity that survived HC's internal-name rotations. See
- * DATA-GAP MBDIMPORT-2.
+ * DATA-GAP data-gaps-232.
  *
  * The key is ours rather than Mids' because Mids' group segment drifts too
- * (`Guardian_Composition` for our `Guardian_Comp`, MBDIMPORT-7). `MIDS_POWERSET_ALIAS`
+ * (`Guardian_Composition` for our `Guardian_Comp`, data-gaps-237). `MIDS_POWERSET_ALIAS`
  * below carries those pairs so a reader holding the .mbd's own path can reach the same row.
  *
  * Source: mids-power-names.thunderspy.json, version 2026.3.346 (sha256 1bbc83348369…) — the I12 from a
@@ -15,12 +15,12 @@
  * powers DB, the two level tables and SData swapped out and that fork's icons added. Not from
  * Mids Reborn's own releases, which carry Generic, Homecoming and Rebirth; who built it is
  * unrecorded. 286 of our 305 Thunderspy powersets are in it, against 272 of Homecoming's 364.
- * DATA-GAP MBDEXPORT-2.
+ * DATA-GAP data-gaps-262.
  * Powersets paired with the export: 3453 of 3535. Remapped names: 94.
  * Reverse rows for the writer: 94, plus 0 the display join could only reach with its separators stripped.
  * Powerset paths for the writer: 3453
- * Of the remapped names, 0 come from the residual pass (MBDIMPORT-16): a set where exactly one power was left over on each side, at the same level, their display names within 2 edits. 3 such pairings were refused for want of level agreement or distance, and 6 sets had leftovers on both sides but more than one, so nothing was joined.
- * Display joins refused because MIDS gives one display to several powers in the set (MBDIMPORT-18): 8.
+ * Of the remapped names, 0 come from the residual pass (data-gaps-251): a set where exactly one power was left over on each side, at the same level, their display names within 2 edits. 3 such pairings were refused for want of level agreement or distance, and 6 sets had leftovers on both sides but more than one, so nothing was joined.
+ * Display joins refused because MIDS gives one display to several powers in the set (data-gaps-250): 8.
  * Mids powersets with no counterpart here: 82 — listed by the generator on stderr.
  * Archetype inherents Mids grids: 15.
  *
@@ -253,7 +253,7 @@ export const MIDS_POWERSET_ALIAS: Readonly<Record<string, string>> = {
 };
 
 /**
- * Mids' `Class_X` → its own name for that archetype's inherent (DATA-GAP MBDEXPORT-24).
+ * Mids' `Class_X` → its own name for that archetype's inherent (DATA-GAP data-gaps-24).
  *
  * The `.mbd` archetype-inherent row is addressed by NAME, and Mids has more names than
  * powers: Homecoming carries `Opportunity`, `Opportunity_Icon` and `Opportunity_Meter`,
@@ -291,7 +291,7 @@ export const MIDS_ARCHETYPE_INHERENT: Readonly<Record<string, string>> = {
 
 /**
  * The same join backwards — THIS dataset's internal name (lower-cased) → Mids' own, for
- * the .mbd writer (DATA-GAP MBDEXPORT-3).
+ * the .mbd writer (DATA-GAP data-gaps-254).
  *
  * Not derivable from `MIDS_NAME_MAP` above, and that is the point of emitting it. The
  * forward map keys on a folded spelling because its reader is matching; the writer is
@@ -510,7 +510,7 @@ export const MIDS_NAME_REVERSE: Readonly<Record<string, Readonly<Record<string, 
 
 /**
  * OUR `group.powerset` (lower-cased) → Mids' own spelling of it, for the .mbd writer
- * (DATA-GAP MBDEXPORT-6).
+ * (DATA-GAP data-gaps-255).
  *
  * The first two segments of a `PowerName`, read out of Mids' database rather than
  * composed. The writer used to build them from an archetype table and the powerset's ICON
@@ -3985,7 +3985,7 @@ export const MIDS_POWERSET_PATH: Readonly<Record<string, string>> = {
 
 /**
  * Reverse rows the display join could only reach with every separator stripped — for the
- * .mbd writer, and for it alone (DATA-GAP MBDEXPORT-8).
+ * .mbd writer, and for it alone (DATA-GAP data-gaps-258).
  *
  * Rebirth spells a power `Moonbeam` and Mids spells it `Moon_Beam`. The join above
  * folds separator RUNS to one space and stops, so that pair is a miss, and that tightness

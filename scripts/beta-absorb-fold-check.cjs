@@ -1,5 +1,5 @@
 /**
- * BPORT7 pre-regen check: the ABSORB-4 fold comparison window. `node scripts/beta-absorb-fold-check.cjs`.
+ * BPORT7 pre-regen check: the data-gaps-163 fold comparison window. `node scripts/beta-absorb-fold-check.cjs`.
  *
  * Grades, on all four forks, every power whose PRE-STRIP bag carries an
  * `effects.absorb` slot against the atom readers:
@@ -8,7 +8,7 @@
  * The flat fold SUMS identical rows; the bag stores scale/N + maxStacks=N
  * (convert-powerset.cjs:7286), so N-row powers read N x the bag's raw scale.
  * One-shot measurement; the bag dies at the BPORT7 regen. Findings and the
- * corrected 169/171 reading: ABSORB-4 in canonical's docs/gaps/stat-routing.md.
+ * corrected 169/171 reading: data-gaps-163 in canonical's docs/gaps/stat-routing.md.
  */
 require('tsx/cjs');
 const path = require('path');
@@ -56,7 +56,7 @@ const divergent = [];
 // application, a Stack row sums to its cap". Rows group by (scale, table, target) identity, the
 // pre-scan's allMatch key (convert-powerset.cjs:6255-6258); count is 1 when every row is
 // stacking==='Replace', else min(size, stackCap). The re-run found the bag's maxStacks is
-// template-scoped, not stacking-keyed — see the ABSORB-4 narrative.
+// template-scoped, not stacking-keyed — see the data-gaps-163 narrative.
 function stackingFold(power) {
   const rows = baseAtoms(power).filter(
     (a) => a.effectType === 'Absorb'

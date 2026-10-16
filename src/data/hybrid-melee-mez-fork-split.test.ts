@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { EXPORTED } from './export-manifests';
 
 /**
- * HYBRID-2 — Homecoming dropped the Melee Hybrid's status protection at T3-Radial and T4, and
+ * data-gaps-2 — Homecoming dropped the Melee Hybrid's status protection at T3-Radial and T4, and
  * left the tooltip claiming it. The forks kept the rows, and their tooltips are right.
  *
  * This pins an UPSTREAM fact, not a defect of ours. It exists because the observation is one

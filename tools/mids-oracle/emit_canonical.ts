@@ -1,6 +1,6 @@
 /**
  * DSH5 — export-side canonicalizer. Walks the committed HC parser export
- * (`exported_powers/`, minus rebirth/thunderspy/tables), runs the **tested DSH4
+ * (`exported_powers/`, minus rebirth/thunderspy/tables), runs the **tested deductive-schema-harness-4
  * bridge** (`ingestExportPower` from src/data/core/atomic-effect.ts), and emits one
  * canonical JSONL line per power. This is deliberately the ONLY place the export
  * side is turned into `(effectType, subType, …)` — the Python harness never re-ports
@@ -13,7 +13,7 @@
  *
  * "Unconditional" is `isAlwaysCondition` from `scripts/_gate-tokens.cjs`, the same
  * helper the converters use, rather than a local test. This file read the branch as a
- * STRING equal to 'Always' until PROV-3 (2026-09-13). COND-8 had since made every gate
+ * STRING equal to 'Always' until data-gaps-245 (2026-09-13). data-gaps-123 had since made every gate
  * field a token array on the wire and the sentinel string went with it — all 1,097
  * redirect rows in the export are arrays now, so `.trim()` threw and the emitter could
  * not run at all. Both spellings of unconditional (`[]`, `['1']`) live in that helper;
@@ -34,7 +34,7 @@ const { ALL_DATASETS } = require_('../../scripts/_dataset-paths.cjs') as { ALL_D
 
 const REPO = fileURLToPath(new URL('../..', import.meta.url));
 const EXPORT_ROOT = path.join(REPO, 'exported_powers');
-// The non-Homecoming trees. `brainstorm` was missing until PROV-3 (2026-09-13) and it is
+// The non-Homecoming trees. `brainstorm` was missing until data-gaps-245 (2026-09-13) and it is
 // a FORK, not a Homecoming subtree — 1,461 of the 14,852 names it shares with Homecoming
 // carry different effects. Because `byName` kept the last writer and `readdirSync` hands
 // back filesystem order, whichever tree walked later won the name: 3,232 records came from
@@ -50,7 +50,7 @@ const SKIP_TOP = new Set<string>([...ALL_DATASETS.filter((d) => d !== 'homecomin
 interface RawPower {
   full_name?: string;
   effects?: unknown[];
-  // A gate expression is a token array (COND-8); `gateTokens` throws on a string
+  // A gate expression is a token array (data-gaps-123); `gateTokens` throws on a string
   // rather than re-splitting one, so an un-ported producer surfaces here loudly.
   redirect?: { name?: string; condition_expression?: string[] | null }[];
 }
@@ -91,7 +91,7 @@ for (const { path: p } of files) {
   // 3,000 rows.
   if (byName.has(fn)) {
     throw new Error(`two files claim ${power.full_name}: ${priorPath.get(fn)} and ${p} `
-      + '— a non-Homecoming tree is missing from SKIP_TOP (PROV-3)');
+      + '— a non-Homecoming tree is missing from SKIP_TOP (data-gaps-245)');
   }
   priorPath.set(fn, p);
   byName.set(fn, power);

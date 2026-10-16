@@ -97,7 +97,7 @@ describe('collectStrengthBuffs', () => {
 
   it('honors self-stacking read off the atoms, and the targets-hit slider', () => {
     // The depth comes from the ATOMS, not from `effects.maxStacks` / `stacksLinear` — those
-    // two slots left the contract with the bag, and STACK-7 took their last reader. A
+    // two slots left the contract with the bag, and data-gaps-158 took their last reader. A
     // `Str`-aspect self row stating `Stack` at limit 2 IS the whole answer: membership,
     // value and depth in one place, now that the value map is read off the same rows.
     const stacksTwice = (over: Partial<AtomicEffect>): AtomicEffect =>
@@ -256,7 +256,7 @@ function buildWith(powers: { pool?: boolean; powerBoostActive?: boolean }): any 
   if (powers.pool) {
     // Hover, not Combat Jumping: on Rebirth every one of Combat Jumping's defence atoms
     // is archetype-forked, and these bag-view readers deliberately hold no build to
-    // resolve a fork against, so it contributes nothing here (AT-FORK-1 — the Rust
+    // resolve a fork against, so it contributes nothing here (AT-data-gaps-298 — the Rust
     // gather is the reader that resolves it). Hover carries the same shape — a self
     // defence toggle, unforked on every fork — which keeps this test about Power Boost.
     b.pools = [{ id: 'flight', name: 'Flight', powers: [

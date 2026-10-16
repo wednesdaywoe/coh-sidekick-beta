@@ -786,7 +786,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
   ) => {
     // Enhancements the source tool routed into a power the game won't allow them in.
     // Shield Defense's permuted internal names used to be the common cause and are no
-    // longer (MBDIMPORT-2 resolves the rotation before binding), so what reaches here now
+    // longer (data-gaps-232 resolves the rotation before binding), so what reaches here now
     // is a genuine mismatch. They're excluded from totals and flagged in the build; tell
     // the user so they can move or clear them.
     const illegal = findIllegalSlots(resultBuild);
@@ -1632,7 +1632,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
               /* Export Utilities */
               <div className="space-y-4">
                 {/* Two readings of one sentence, because the two exports below no longer
-                    answer the question the same way (MBDEXPORT-21). The print sheet draws
+                    answer the question the same way (data-gaps-276). The print sheet draws
                     whatever the grid draws, so Level Up mode still governs it. The `.mbd`
                     asks the BUILD instead — a per-device toggle is not something a file can
                     carry, and the same `.skif` opened by two people must not make two
@@ -1650,7 +1650,7 @@ export function ExportImportModal({ isOpen, onClose }: ExportImportModalProps) {
                     size="sm"
                     onClick={() => {
                       // The slider lives in the UI store, not on the build, so the writer
-                      // has to be handed it or it goes out as zero (MBDEXPORT-19).
+                      // has to be handed it or it goes out as zero (data-gaps-272).
                       const { json, warnings } = exportToMidsWithReport(
                         build,
                         useUIStore.getState().targetsHitValues,

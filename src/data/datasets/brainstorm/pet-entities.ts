@@ -76,8 +76,8 @@ export interface PetAbility {
    *  (Singularity's Gravity Distortion, `['Foe']`) — identical type names, identical
    *  scales. The pet is the caster here, so the polarity inverts against a player
    *  power: `Self` is the pet alone and the summoner arrives as `Friend`,
-   *  `MyOwner` or `Teammate` (register ENT-12; the power-converter twin is
-   *  MEZRES-3). Omitted when the export states nothing, so absent stays
+   *  `MyOwner` or `Teammate` (register data-gaps-106; the power-converter twin is
+   *  data-gaps-187). Omitted when the export states nothing, so absent stays
    *  distinguishable from an authored empty list. */
   targetsAffected?: string[];
   range?: number;

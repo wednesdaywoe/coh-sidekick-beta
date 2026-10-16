@@ -309,7 +309,7 @@ function ActivationRow({
 // nothing (it cancels), which is why the rule of thumb used to read
 // "global recharge doesn't matter"; it matters as soon as the power
 // carries slotting of its own. Measured in game 2026-08-02 — see
-// DATA-GAP-REGISTER PPM-2. `slottedRechargeBonus` is the post-ED
+// DATA-GAP-REGISTER data-gaps-111. `slottedRechargeBonus` is the post-ED
 // enhancement total for the power; Alpha incarnate is bundled into it.
 // ----------------------------------------------------------------------
 
@@ -360,7 +360,7 @@ interface ProcEntry {
   /**
    * Set on a kNone shell where TWO children could hold this piece (the
    * multi-mez ATO procs in Hypnotizing Lights) — no single roll exists, and
-   * the routing refuses to pick a geometry. DATA-GAP-REGISTER HC-4.
+   * the routing refuses to pick a geometry. DATA-GAP-REGISTER data-gaps-109.
    */
   unroutable?: boolean;
 }
@@ -437,7 +437,7 @@ function ProcChanceRow({
         schedule,
         // On a fixed-period schedule the recharge term is inert. Otherwise this is the shared
         // helper, NOT a second copy of the formula: printing a window the engine didn't compute
-        // is how PPM-2's global term survived a year of being looked at.
+        // is how data-gaps-111's global term survived a year of being looked at.
         modifiedRecharge: schedule.fixedPeriod
           ? schedule.window
           : procRechargeWindow(baseRecharge, slottedRechargeBonus),

@@ -182,8 +182,8 @@ export interface PetAbility {
    *  (Singularity's Gravity Distortion, `['Foe']`) — identical type names, identical
    *  scales. The pet is the caster here, so the polarity inverts against a player
    *  power: `Self` is the pet alone and the summoner arrives as `Friend`,
-   *  `MyOwner` or `Teammate` (register ENT-12; the power-converter twin is
-   *  MEZRES-3). Omitted when the export states nothing, so absent stays
+   *  `MyOwner` or `Teammate` (register data-gaps-106; the power-converter twin is
+   *  data-gaps-187). Omitted when the export states nothing, so absent stays
    *  distinguishable from an authored empty list. */
   targetsAffected?: string[];
   range?: number;
@@ -291,10 +291,10 @@ export interface InherentRules {
    * The case that forced this hook: Thunderspy moved the Stalker's **Hide**
    * and **Placate** out of the powersets into `Inherent.Inherent` and reused
    * the vacated powerset name slots for other powers, so both were reachable
-   * from no screen at all (AUTOISSUE-2). Homecoming and Rebirth grant them
+   * from no screen at all (data-gaps-139). Homecoming and Rebirth grant them
    * from powersets and so contribute nothing here.
    *
-   * OPTIONAL because the two repos close AUTOISSUE-2 at different layers. A
+   * OPTIONAL because the two repos close data-gaps-139 at different layers. A
    * dataset built for the TypeScript planner populates it from a generated
    * `archetype-inherents.ts`. The Rust engine needs no list: it admits a grant
    * by GATE SHAPE (`granted_powers::inherent_scope` keeps a member whose
@@ -315,7 +315,7 @@ export interface InherentRules {
    * `createArchetypeInherentPower` synthesises `Inherent.<Archetype>.<Name>` for it,
    * which is OUR spelling and resolves to nothing in another planner. The `.mbd`
    * writer needs the export's, and wrote no archetype inherent at all until it had one
-   * (MBDEXPORT-20, 8 of 8 corpus builds, both forks).
+   * (data-gaps-273, 8 of 8 corpus builds, both forks).
    *
    * OPTIONAL for the same reason `archetypeInherents` is: the two repos reach this
    * name at different layers. The beta populates it from a generated map, derived by
@@ -327,7 +327,7 @@ export interface InherentRules {
    *
    * An archetype may be absent from a populated map: a fork that ships no single power
    * for a declared inherent leaves it out, and the caller reports rather than guessing
-   * (INHERENT-10, Thunderspy's Primalist).
+   * (data-gaps-10, Thunderspy's Primalist).
    */
   headlineArchetypeInherents?: Record<string, string>;
 }
@@ -423,7 +423,7 @@ export interface Dataset {
   // Enhancement curves — ED thresholds, boost-type→schedule assignment,
   // per-boost-level strength curves, multi-aspect scale, relative-level
   // attenuation, and the exemplar magnitude handicaps, all generated from the
-  // dataset's binary export (SOURCE-1 SW3). The enhancement engine reads these
+  // dataset's binary export (data-gaps-324 SW3). The enhancement engine reads these
   // through `src/data/enhancement-curves.ts`.
   enhancementCurves: EnhancementCurvesData;
 
@@ -431,11 +431,11 @@ export interface Dataset {
   // the game client prints for it, each entry pointing at the section that
   // describes it (scripts/convert-boost-index.cjs). Read through
   // `src/data/boost-index.ts`; it is what tells the picker which crafting
-  // levels a common IO exists at, a band that used to be typed in (BOOST-6).
+  // levels a common IO exists at, a band that used to be typed in (data-gaps-6).
   boostIndex: BoostIndexData;
 
   // Special-enhancement registries (Hamidon/Titan/Hydra/D-Sync/prestige),
-  // generated from the dataset's boost-piece templates (SOURCE-1 item 9).
+  // generated from the dataset's boost-piece templates (data-gaps-324 item 9).
   // The forks carry no D-Sync pieces and only the classic 11 Hamidons —
   // per-dataset by necessity, read through `src/data/special-enhancements.ts`.
   specialEnhancements: SpecialEnhancementsData;
@@ -459,14 +459,14 @@ export interface Dataset {
   //
   // Optional because it states a capability, not a requirement: a repo that has
   // not generated the artifact does not carry it, and the beta has not (see
-  // PARTSTAT-2's carried beta residual). `getArchetypeInherentPower` answers
+  // data-gaps-277's carried beta residual). `getArchetypeInherentPower` answers
   // `undefined` there and the card shows an inherent with no numbers, which is
   // the gap made visible rather than filled. Canonical's four datasets all set
   // it, and `domination-perma-classification.test.ts` reds per fork if one stops.
   archetypeInherentPowerset?: Powerset;
 
   // The archetypes this fork declares an inherent for and ships no power behind,
-  // as `convert-inherents.cjs` derived it from what it emitted (INHERENT-10).
+  // as `convert-inherents.cjs` derived it from what it emitted (data-gaps-10).
   //
   // The converter runs the resolver's own rule over what it just emitted, so this
   // agrees with `getArchetypeInherentPowerFor` by construction and is no second

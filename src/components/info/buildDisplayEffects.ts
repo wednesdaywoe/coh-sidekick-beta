@@ -25,7 +25,7 @@
  *   value into a degrees row (48 / 42 / 46 powers).
  * * `buffDuration` from a summon's duration was InfoPanel-only (297 / 273 / 280 powers). It is
  *   gone (2026-09-07). Its guard — "only where the power states no duration of its own" — read
- *   `effects.buffDuration`, which STRIP-1 removed from every power on every fork, so the guard
+ *   `effects.buffDuration`, which data-gaps-327 removed from every power on every fork, so the guard
  *   became universally true and the backfill fired on every summon power: measured at 110 / 111 /
  *   120 / 119 powers per fork, and 100% of the bag's surviving `buffDuration` values. That put a
  *   pet's lifespan into the slot that means the power's own effect clock, where it collided with
@@ -65,7 +65,7 @@ export function buildDisplayEffects(
   const stats = power.stats;
   const bag: Record<string, unknown> = { ...effects };
 
-  // STRIP-1: the writer lifts summon out of the bag to the top level, so the
+  // data-gaps-327: the writer lifts summon out of the bag to the top level, so the
   // bag spread above no longer carries it. Mint it from the top level so the
   // display surfaces that read the bag (DamageBlock, the tooltip's pet block)
   // keep their contract.
@@ -104,9 +104,9 @@ export function buildDisplayEffects(
     if (movement.runSpeed) bag.runSpeed = movement.runSpeed;
     if (movement.jumpSpeed) bag.jumpSpeed = movement.jumpSpeed;
     if (movement.jumpHeight) bag.jumpHeight = movement.jumpHeight;
-    // The converter's `<axis>Unenhanced` split slots (FLYPOOL-1): a paired
+    // The converter's `<axis>Unenhanced` split slots (data-gaps-175): a paired
     // IgnoreStrength half beside the enhanceable one, flattened to the flat
-    // spellings the registry resolves through the base key (ENT-6) and the
+    // spellings the registry resolves through the base key (data-gaps-101) and the
     // engine's granted.rs emits from the atoms. Pool Fly carries both halves.
     if (movement.flySpeedUnenhanced) bag.flyUnenhanced = movement.flySpeedUnenhanced;
     if (movement.runSpeedUnenhanced) bag.runSpeedUnenhanced = movement.runSpeedUnenhanced;
@@ -156,9 +156,9 @@ export function hasPerTargetField(value: unknown): boolean {
  * the per-foe story is the dominant one for tooltip math), so the smaller stack cap cannot
  * shrink the targets axis.
  *
- * **Both arms read the ATOMS.** They read the authored `effects` object until STACKINFO-1, and
+ * **Both arms read the ATOMS.** They read the authored `effects` object until data-gaps-332, and
  * the function opened with `if (!power.effects) return null` — sound while that object was the
- * display bag's source, and starvation the moment it was not. STRIP-1 emptied it: no power on
+ * display bag's source, and starvation the moment it was not. data-gaps-327 emptied it: no power on
  * any fork carries an authored `perTarget`, a `maxStacks` or a `stackInterval` any more, so this
  * returned `null` for the entire corpus and every surface stopped offering the slider. It read
  * as a corpus with no stacking powers rather than as a reader with no input, which is why the
@@ -179,12 +179,12 @@ export function hasPerTargetField(value: unknown): boolean {
  *  - A power whose effects land on the caster as well as on whoever else is in radius fills the
  *    first of its `maxTargets` seats for as long as it is running. Phalanx Fighting gives its 5%
  *    melee/ranged/AoE defence solo, and a slider reading "Off" there described a state the power
- *    is never in (PERFOE-3).
+ *    is never in (data-gaps-309).
  *  - A power the game refuses to fire without an entity in its sights reached at least one of
  *    them if it was used at all. Guarded Spin is the reported case: a Staff Fighting cone whose
  *    +Def(Melee, Lethal) the game stacks once per foe it lands on, so its growth is real — but the
  *    slider it needed opened at "Off", and toggling the power on moved no defence on the dashboard
- *    for anyone who did not know to look for it (PERFOE-4).
+ *    for anyone who did not know to look for it (data-gaps-310).
  *
  * The stacks arm keeps 0: N there counts casts, and a click the build has not fired is off.
  */
@@ -321,8 +321,8 @@ function adjustEffectsForTargets(
  *
  * **It currently transforms nothing, and that is stated rather than assumed.** Both of
  * {@link adjustEffectsForTargets}'s inputs are authored — a `perTarget` on a bag VALUE, and the
- * power's `stacksLinear` list — and STRIP-1 left neither in the corpus, so the copy it returns is
- * always the bag it was given. Nothing user-visible depends on that any more: ENGLAG-1 re-pointed
+ * power's `stacksLinear` list — and data-gaps-327 left neither in the corpus, so the copy it returns is
+ * always the bag it was given. Nothing user-visible depends on that any more: data-gaps-329 re-pointed
  * the rendered rows at the engine's projection and all three `RegistryEffectsDisplay` call sites
  * pass `rows`, so this bag reaches the surface for its `durations` / `buffDuration` annotations
  * alone, and the slider's whole effect runs through the engine. Kept, not deleted, because it is

@@ -193,7 +193,7 @@ export interface IncarnateProcContribution {
  * @param arcDegrees   Cone arc in degrees (360 for sphere/ST).
  * @param enhancedRechargeBonus  This power's own slotted recharge as decimal. Build-wide
  *   recharge is deliberately NOT a parameter: HC's PPM rule counts the power's own
- *   enhancements and Alpha only (DATA-GAP-REGISTER PPM-5).
+ *   enhancements and Alpha only (DATA-GAP-REGISTER data-gaps-114).
  * @param expectedTargets  Number of foes the proc damage gets applied to.
  *   Unlike slotted IO procs (which Mids treats as single-target per row),
  *   Mids multiplies Hybrid / Interface proc damage by the attack's

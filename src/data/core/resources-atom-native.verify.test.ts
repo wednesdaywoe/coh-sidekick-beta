@@ -163,13 +163,13 @@ describe('atom-native resources — Icy Bastion (the StackByAttribAndKey burst/t
 
 /**
  * `resources-expression-punt` — the tripwire BPORT11's closure note claimed and never wrote,
- * and the one EXPRPUNT-1 needed to see that the closure was wrong.
+ * and the one data-gaps-331 needed to see that the closure was wrong.
  *
  * The punt declines every `Expression`-typed resource atom. Its whole live population is seven
  * programs over four forks, and this pins each one with the reason it is declined, because the
  * two BPORT11 got wrong were "what the value means" and "who is in the population".
  */
-describe('atom-native resources — the Expression punt (EXPRPUNT-1)', () => {
+describe('atom-native resources — the Expression punt (data-gaps-331)', () => {
   const exprAtoms = (power: Parameters<typeof atomsOf>[0], effectType: string) =>
     atomsOf(power).filter((a) => a.effectType === effectType && a.attribType === 'Expression');
 

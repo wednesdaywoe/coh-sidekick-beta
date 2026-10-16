@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Resolve one (attrib, aspect, table) tuple via DSH4 bridgeAttrib.
+// Resolve one (attrib, aspect, table) tuple via deductive-schema-harness-4 bridgeAttrib.
 // Usage:
 //   node scripts/bridge-attrib-one.cjs '<json>'
 // where json is: {"attrib":"Smashing_Dmg","aspect":"Resistance","table":"Ranged_Res_Dmg"}

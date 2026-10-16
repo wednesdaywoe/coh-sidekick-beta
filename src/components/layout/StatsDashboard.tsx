@@ -706,7 +706,7 @@ export function StatsDashboard({ excludeModals = false }: StatsDashboardProps = 
       />
 
       {/* Always-on off-screen render feeding shareBuild()'s social-preview
-          image capture — see streams/BUILD_PREVIEW_IMAGE_PLAN.md (EMBED2/3) */}
+          image capture — see streams/BUILD_PREVIEW_IMAGE_PLAN.md (build-preview-image-2/3) */}
       <SharePreviewCapture />
 
       {/* Welcome Modal — opened from the update banner's "learn more" link */}

@@ -13,7 +13,7 @@
  *
  * The stamp is what makes this exact: the atom's own `stacking` can't identify a
  * per-target increment on its own (Invincibility's `Continuous` reaches the atom
- * since STACK-3, but the flavor is only one of `computeAoePerTargetPatches`'
+ * since data-gaps-66, but the flavor is only one of `computeAoePerTargetPatches`'
  * terms), and the AoE geometry / redirect / Defiance provenance never reaches the
  * runtime — so the converter decides and stamps, as it does for `gated` (Slice 0).
  *
@@ -102,7 +102,7 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
-  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  // data-gaps-327 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
   if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
 
   for (const slot of SLOTS) {
@@ -133,7 +133,7 @@ function checkPower(dataset, power, genPath) {
     const eq = bag && atomCmp && bag.scale === atomCmp.scale && bag.perTarget === atomCmp.perTarget;
     if (eq) { stats.agree++; continue; }
 
-    // Fulcrum Shift's N=1 value, where the bag is short by one increment (TARGETS-3).
+    // Fulcrum Shift's N=1 value, where the bag is short by one increment (data-gaps-63).
     //
     // The power executes two redirects: `KineticTransfer` puts a +2 buff on every FRIEND
     // near each foe it hits, and `KineticTransferBuffSelf` puts a flat +4 on the caster.
@@ -181,7 +181,7 @@ console.log(`  buff slots checked:  ${stats.withToHit}`);
 console.log(`  of which per-target: ${stats.perTargetPowers}`);
 console.log(`  agree:               ${stats.agree}`);
 console.log(`  defiance-rejected:   ${stats.defianceRejected} (graded as empty-atoms + bag-holds)`);
-console.log(`  N=1 recovered:       ${stats.recoveredN1} (Fulcrum Shift's redirect-delivered self increment — TARGETS-3)`);
+console.log(`  N=1 recovered:       ${stats.recoveredN1} (Fulcrum Shift's redirect-delivered self increment — data-gaps-63)`);
 // Both ways: the redirect chain that delivers the caster's own increment is a Parse7
 // authoring, so only the HC-lineage datasets recover it, 4 Kinetics ATs each. The Parse6
 // forks author Fulcrum Shift without it. A dataset appearing or dropping out here is the
@@ -231,7 +231,7 @@ if (!VACUOUS && DATASETS.includes('homecoming') && stats.defianceRejected === 0)
   process.exit(1);
 }
 if (VACUOUS) {
-  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-data-gaps-327.`);
   console.log('   The atom side is graded by the converter gates, not here.');
 } else {
   console.log('\nOK — atom-derived tohitBuff + damageBuff (scale + perTarget) reproduce the bag corpus-wide.');

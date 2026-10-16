@@ -150,7 +150,7 @@ describe('Hybrid Support — aspect=Strength buffs, not N×-inflated', () => {
   });
 });
 
-describe('Hybrid Support Core — leaguemate buff is not dropped (DSH8)', () => {
+describe('Hybrid Support Core — leaguemate buff is not dropped (deductive-schema-harness-8)', () => {
   // The Core Support Hybrids gate their buff with `enttype target> player eq`
   // (the player-leaguemate value the caster receives) + `enttype target> critter
   // eq` (pets, "doubled in strength"). extractHybrid recognized only empty-req /
@@ -232,7 +232,7 @@ describe('Rebirth dataset (Parse6) — no junk keys, no N× collapse', () => {
     expect(fx.debuffResistance).toBeCloseTo(0.5, 6);
   });
 
-  it('Support Core Hybrid leaguemate buff survives Parse6 (DSH8) — two traps', () => {
+  it('Support Core Hybrid leaguemate buff survives Parse6 (deductive-schema-harness-8) — two traps', () => {
     // Rebirth's Support Core showed an EMPTY caster buff for two Parse6-only
     // reasons the HC-tuned code missed:
     //   1. CASE — Rebirth writes `Enttype target> player eq` (capital E); the

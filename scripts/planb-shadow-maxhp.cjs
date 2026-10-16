@@ -66,7 +66,7 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
-  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  // data-gaps-327 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
   if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
   const eff = power.effects || {};
 
@@ -112,7 +112,7 @@ if (findings.length) {
   process.exit(1);
 }
 if (VACUOUS) {
-  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-data-gaps-327.`);
   console.log('   The atom side is graded by the converter gates, not here.');
 } else {
   console.log('\nOK — atom-derived maxHPBuff + maxHPBuffUnenhanced reproduce the bag corpus-wide.');

@@ -144,7 +144,7 @@ function forkResolvedViews(dataset, power) {
     ? rosterOf(dataset).map((archetype) => ({
       archetype,
       // `targetsAffected` rides along because an atom reader needs it to resolve a
-      // `toWho: 'Target'` recipient (TARGETS-3), and a view that dropped it would answer
+      // `toWho: 'Target'` recipient (data-gaps-63), and a view that dropped it would answer
       // "reaches nobody" for every such atom — a fork-resolved view silently reading a
       // different code path than the power it stands for.
       source: {

@@ -4,10 +4,10 @@
  * planner's own data does not carry.
  *
  * REPORTS, never asserts. City of Heroes descriptions fall behind the powers they describe, and
- * a divergence is worth surfacing to a player (docs/gaps/sets-boosts-incarnates.md, HYBRID-2).
+ * a divergence is worth surfacing to a player (docs/gaps/sets-boosts-incarnates.md, data-gaps-2).
  * But the sentence "the description is wrong" is the same sentence a parse gap produces, so
  * nothing here decides anything: it hands candidates to a person, who adjudicates the way
- * HYBRID-2 was adjudicated and adds the survivor to src/data/description-notes.ts.
+ * data-gaps-2 was adjudicated and adds the survivor to src/data/description-notes.ts.
  *
  *   node scripts/audit-description-divergence.cjs [--dataset <id>]
  *
@@ -167,7 +167,7 @@ function main() {
     );
     for (const c of uniq) console.log(`   ${c.key}  promises ${c.family}, data carries none`);
   }
-  console.log('\nCandidates are not findings. Adjudicate each the way HYBRID-2 was — census the');
+  console.log('\nCandidates are not findings. Adjudicate each the way data-gaps-2 was — census the');
   console.log('shape fork-wide and find a same-fork control — before adding it to');
   console.log('src/data/description-notes.ts.');
   return report;

@@ -9,8 +9,8 @@
  * parser doesn't emit yet — prefer fixing the parser/converter over re-adding
  * an override. See GAME-DATA-PRINCIPLES.md §13 and src/data/README.md.
  *
- * OVERRIDE-5: emptied. What was left restated the generated value exactly, which is the
- * shape BRAIN-2 caught: invisible until the export under it moves, and then `withOverrides`
+ * data-gaps-292: emptied. What was left restated the generated value exactly, which is the
+ * shape data-gaps-291 caught: invisible until the export under it moves, and then `withOverrides`
  * replaces the whole value and the stale copy wins.
  */
 import type { Power } from '@/types';

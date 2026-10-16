@@ -62,7 +62,7 @@ describe('IO-set bonus key handling', () => {
   it('perception is modeled (Rectified Reticle → perceptionRadius global)', () => {
     expect(normalizeStatName('perception')).toBe('perceptionradius');
   });
-  // SETSTAT-1 — both of these used to resolve to null. The engine tracks them now, and the
+  // data-gaps-188 — both of these used to resolve to null. The engine tracks them now, and the
   // shared vocabulary is generated from its contract, so the beta follows rather than decides.
   it('knockback_strength is modeled (offensive KB strength has its own stat)', () => {
     expect(normalizeStatName('knockback_strength')).toBe('knockbackstrength');

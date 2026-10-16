@@ -1,5 +1,5 @@
 /**
- * planner-layout — pure helpers for the LAY11 2D planner dock grid.
+ * planner-layout — pure helpers for the rearrangeable-layout-11 2D planner dock grid.
  *
  * The persisted layout slice (`uiStore.plannerLayout[view]`) is a *flat*
  * `PlannerSectionConfig[]`. The 2D layout is derived, not stored:

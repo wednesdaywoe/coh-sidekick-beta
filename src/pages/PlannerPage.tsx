@@ -59,7 +59,7 @@ function UndockButton({ onClick }: { onClick: () => void }) {
  *  rather than deforming) and the resize drag clamps neighbors to it. */
 const MIN_COL_PX = 240;
 
-/** Colored edge bar marking where a dragged section will land (LAY11 drop zones). */
+/** Colored edge bar marking where a dragged section will land (rearrangeable-layout-11 drop zones). */
 function dropEdgeStyle(zone: DropZone): React.CSSProperties {
   const t = 3;
   switch (zone) {
@@ -72,7 +72,7 @@ function dropEdgeStyle(zone: DropZone): React.CSSProperties {
 
 /** Drag-handle grip shown in each desktop column header. Resting contrast lifted
  *  (slate-500, was slate-600) so the reorder affordance reads without hover — the
- *  header twin of the always-on divider seam (LAY12 discoverability). */
+ *  header twin of the always-on divider seam (rearrangeable-layout-12 discoverability). */
 function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
@@ -91,9 +91,9 @@ function GripHandle(props: React.HTMLAttributes<HTMLDivElement>) {
 }
 
 /** Shared resize divider straddling the gap between two columns (`axis='x'`,
- *  vertical seam) or two stacked cells (`axis='y'`, horizontal seam). Both LAY7's
- *  horizontal resize and LAY11's vertical resize route through this one element so
- *  the discoverability treatment stays in a single place (LAY12).
+ *  vertical seam) or two stacked cells (`axis='y'`, horizontal seam). Both rearrangeable-layout-7's
+ *  horizontal resize and rearrangeable-layout-11's vertical resize route through this one element so
+ *  the discoverability treatment stays in a single place (rearrangeable-layout-12).
  *
  *  Treatment: the *persistent* resting cue is the thin frame each cell carries
  *  (`ring-slate-600`, one step brighter than the `bg-slate-700` gap it sits on) —
@@ -159,7 +159,7 @@ export function PlannerPage() {
   const togglePlannerSectionCollapsed = useUIStore((s) => s.togglePlannerSectionCollapsed);
 
   // Desktop drag-reorder state (native HTML5 DnD; a 6-item reorder doesn't
-  // warrant a DnD library dependency). LAY11: a drop now carries a zone
+  // warrant a DnD library dependency). rearrangeable-layout-11: a drop now carries a zone
   // (stack above/below vs. new column left/right of the target cell).
   const [dragId, setDragId] = useState<PlannerSectionId | null>(null);
   const [overId, setOverId] = useState<PlannerSectionId | null>(null);
@@ -391,7 +391,7 @@ export function PlannerPage() {
   const gridSections = sections.filter(
     (s) => s.visible && !(s.id === 'info' && undocked),
   );
-  // Derive the 2D layout (LAY11): sections sharing a `column` stack vertically.
+  // Derive the 2D layout (rearrangeable-layout-11): sections sharing a `column` stack vertically.
   // Each column's horizontal weight is the topmost section's `weight`.
   const columns = toColumns(gridSections).map((rows) => ({
     weight: rows[0]?.weight ?? 1,
@@ -482,7 +482,7 @@ export function PlannerPage() {
       <div className="lg:flex lg:flex-col">
         <PlannerHintBar />
 
-        {/* ── Desktop (lg+): rearrangeable columns (LAY11), content-flow ── */}
+        {/* ── Desktop (lg+): rearrangeable columns (rearrangeable-layout-11), content-flow ── */}
         <div
           ref={gridRef}
           // `overflow-x-auto` keeps the columns side-by-side and only scrolls
@@ -500,7 +500,7 @@ export function PlannerPage() {
               data-column
               // bg-slate-900 (not -700) so the empty canvas below content-sized
               // tiles is seamless with the tiles themselves; the per-cell `ring`
-              // frame (LAY12) carries the stacked-cell separation, and the column
+              // frame (rearrangeable-layout-12) carries the stacked-cell separation, and the column
               // seams are the grid-level gap, unaffected.
               className="relative flex flex-col gap-px bg-slate-900 min-h-0"
             >

@@ -5,7 +5,7 @@ import {
   parseIOSetPieceValues,
 } from './enhancement-values';
 
-// The value curves read from the active dataset (SOURCE-1 SW5); the expected
+// The value curves read from the active dataset (data-gaps-324 SW5); the expected
 // percentages below are Homecoming's.
 beforeAll(async () => {
   await loadDataset('homecoming');

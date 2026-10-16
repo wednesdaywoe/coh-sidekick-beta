@@ -141,7 +141,7 @@ describe('BPORT3 — characterStateAdapter.ts reads supplier 2, not the power ba
  * sites — and the beta shipped zero powers carrying a top-level `summon`, so none of them
  * may move first. Canonical recorded the cost of getting this wrong in `Power.summon`'s own
  * doc: retiring the bag "took the pets with it and 400+ summoners per fork went dark"
- * (ENT-22).
+ * (data-gaps-22).
  *
  * BPORT7 crossed it. The twenty-four power-bag reads (twenty-three own, one alias) now read
  * `power.summon`, and `buildDisplayEffects` mints the display bag's `summon` from the top
@@ -198,7 +198,7 @@ describe('BPORT3 — the summon slot crosses with its writer, or the pets go dar
   });
 });
 
-describe('ENGLAG-1 — the roster of RegistryEffectsDisplay call sites', () => {
+describe('data-gaps-329 — the roster of RegistryEffectsDisplay call sites', () => {
   // The swap is only as wide as its call sites, and `powerProjectionParity`'s gate names them
   // one by one — so it is blind to a FOURTH surface that ships on the bag path by never
   // appearing in its list. This pins the roster; that gate grades the members.

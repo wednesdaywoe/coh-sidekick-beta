@@ -2,7 +2,7 @@
 
 /**
  * Per-archetype caster meters — the attributes a dataset reuses as one class's
- * resource bar (DATA-GAP-REGISTER COND-13).
+ * resource bar (DATA-GAP-REGISTER data-gaps-122).
  *
  * The game overloads attribute slots. `Stealth` is hide for most of the roster,
  * and on both Parse6 forks it is also the Dominator's Domination bar, because

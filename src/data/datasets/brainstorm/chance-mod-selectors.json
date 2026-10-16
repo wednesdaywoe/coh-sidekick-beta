@@ -108,7 +108,7 @@
     "Sentinel_Ranged.Dual_Pistols.Cryo_Ammunition",
     "Temporary_Powers.Temporary_Powers.Cryo_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "Contaminated",
@@ -178,7 +178,7 @@
     "Sentinel_Ranged.Dual_Pistols.Incendiary_Ammunition",
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "GrantThermalBoost",
@@ -246,7 +246,7 @@
     "Temporary_Powers.Temporary_Powers.Cryo_Ammunition",
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "MaxPsyBarrier",
@@ -313,7 +313,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PerfectionofMind",
@@ -329,7 +329,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PerfectionofSoul",
@@ -345,7 +345,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PresenceHealHigh",
@@ -354,7 +354,7 @@
     "Peacebringer_Defensive.Luminous_Aura.Light_Form",
     "Teamwork.Widow_Teamwork.Elude"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "PresenceHealLow",
@@ -363,7 +363,7 @@
     "Peacebringer_Defensive.Luminous_Aura.Light_Form",
     "Teamwork.Widow_Teamwork.Elude"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "PreventiveMedicine",
@@ -448,7 +448,7 @@
     "Sentinel_Ranged.Dual_Pistols.Chemical_Ammunition",
     "Temporary_Powers.Temporary_Powers.Chemical_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "TravelStance",

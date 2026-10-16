@@ -3,7 +3,7 @@
  *
  * Every consumer used to answer this by substring-testing the RPN for
  * `enttype target> player eq`. That is right for the bare case and backwards
- * for a negated one, and both ship (MAPGATE-1):
+ * for a negated one, and both ship (data-gaps-135):
  *
  *   `arch target> Class_Minion_Grunt eq … enttype target> player eq || !`
  *       "not a minion and not a player" — the Scrapper/Stalker critical-hit
@@ -26,7 +26,7 @@ const SCOPES = new Set(['EITHER', 'PVE_ONLY', 'PVP_ONLY', 'NEVER', 'UNPARSED']);
  *
  * Throws rather than defaulting: a missing field means the export predates the
  * field and is stale, and a soft default here is precisely the shape that let
- * STACK-3 hide — an impossible value quietly becoming a plausible one.
+ * data-gaps-66 hide — an impossible value quietly becoming a plausible one.
  */
 function requiresScope(group) {
   const v = group && group.requires_pv;

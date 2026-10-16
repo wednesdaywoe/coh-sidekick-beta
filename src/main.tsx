@@ -159,7 +159,7 @@ function bootServerId(): DatasetId {
 
 // ?previewCapture=<id> boots the app in a hidden capture-mode iframe to render
 // and snapshot someone else's build (see
-// streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF4/5). buildStore's persist
+// streams/BUILD_PREVIEW_BACKFILL_PLAN.md, build-preview-backfill-4/5). buildStore's persist
 // already swapped to an in-memory stub for this boot (see
 // isPreviewCaptureMode in stores/buildStore.ts), so importBuild() here can't
 // touch this browser's real saved build — it only has to win the race against
@@ -179,7 +179,7 @@ bootReady = loadDataset(bootServerId()).then(async () => {
   const captureId = previewCaptureId()
   if (captureId) {
     // Records whether the *target* build actually loaded — read by
-    // SharePreviewCapture's capture pass (PREVBF5) before it uploads
+    // SharePreviewCapture's capture pass (build-preview-backfill-5) before it uploads
     // anything. Without this, a fetch failure would silently capture and
     // upload the default empty build as if it were captureId's real preview.
     window.__previewCapture = { id: captureId, ready: false }
@@ -191,7 +191,7 @@ bootReady = loadDataset(bootServerId()).then(async () => {
         window.__previewCapture.ready = true
       }
     } catch {
-      // ready stays false — PREVBF5 reports failure instead of capturing.
+      // ready stays false — build-preview-backfill-5 reports failure instead of capturing.
     }
   }
 })

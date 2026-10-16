@@ -990,7 +990,7 @@ function extractHybrid() {
         //                                  caster, so it stays out of caster totals.
         // Neither matched the self/per-target RPN forms above, so the whole Core
         // buff was routed nowhere (empty frontLoaded) while the Radial line — which
-        // uses an empty requires — rendered. DSH8 fix: route the player-leaguemate
+        // uses an empty requires — rendered. deductive-schema-harness-8 fix: route the player-leaguemate
         // value to frontLoaded (the caster gets it, like an empty-req self buff).
         //
         // Two cross-dataset traps make the parser's `is_pvp` flag the WRONG key:
@@ -1000,7 +1000,7 @@ function extractHybrid() {
         //      explicit is_pvp field, so the bin parser SYNTHESIZES it from the
         //      requires target-type. A BARE `player eq` — which is exactly what
         //      this Hybrid buff carries — is structurally PvP-only, so the
-        //      synthesis marks it PVP_ONLY. (Since MAPGATE-1 that verdict is a
+        //      synthesis marks it PVP_ONLY. (Since data-gaps-135 that verdict is a
         //      structural read, not a token scan, so a negated or disjunct
         //      clause no longer lands here — but the bare form still does.)
         //      That synthesis is harmless for FOE effects
@@ -1078,9 +1078,9 @@ function extractHybrid() {
           } else if (datasetId === 'thunderspy' && attrib === 'Ones') {
             // Parse6/Thunderspy collapses these passives to a generic `Ones`
             // token; the silent-file family names the stat and the recovered
-            // aspect (TSPY-3 typing — the fronts used to be empty, which an
+            // aspect (data-gaps-75 typing — the fronts used to be empty, which an
             // older aspect === '' gate here matched and silently stopped
-            // matching, HYBRID-1) discriminates: support/assault carry
+            // matching, data-gaps-48) discriminates: support/assault carry
             // Strength, control carries Resistance. Values are tspy's own
             // (it rebalances — control res is 0.1..0.4 vs HC's 0.1..0.25).
             if (silentName.startsWith('support_boost_') && aspect === 'Strength') {
@@ -1613,7 +1613,7 @@ function resolveGenesisExemplar(ref) {
 // ============================================
 // All three exports carry a genesis dir, so this extracts everywhere — but only
 // Rebirth authored real powers; HC and tspy carry placeholder help/icons and no
-// exemplar linkage. The app serves Genesis for Rebirth alone (GENESIS-1). Each
+// exemplar linkage. The app serves Genesis for Rebirth alone (data-gaps-47). Each
 // ability GRANTS two things: a
 // Genesis_Silent "boost" power that buffs its partner incarnate slot (the
 // "level 45+" effect, active when incarnates aren't exemplar-suppressed), and
@@ -1995,7 +1995,7 @@ function generateTypeScript(alpha, destiny, hybrid, iface, judgement, lore, gene
   // ---- GENESIS ----
   // Emitted for every dataset whose export carries the slot (all three do). Only
   // Rebirth's table is served by the app; HC/tspy emit dormant placeholders that
-  // the incarnate layer ignores (GENESIS-1). `effects` are the level-45+
+  // the incarnate layer ignores (data-gaps-47). `effects` are the level-45+
   // partner-slot buffs; `exemplarPower` is the level-44- exemplar-only grant.
   if (genesis && Object.keys(genesis).length > 0) {
     lines.push('// ============================================');

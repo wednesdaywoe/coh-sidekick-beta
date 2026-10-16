@@ -13,7 +13,7 @@
  * The main incarnate slots.
  *
  * `genesis` is a 7th slot released only on the Rebirth server. All three exports
- * define it, but HC and Thunderspy ship dormant placeholders (GENESIS-1), so it
+ * define it, but HC and Thunderspy ship dormant placeholders (data-gaps-47), so it
  * is a partner-slot amplifier offered in the UI only on Rebirth — see
  * `getSelectableIncarnateSlotIds()`. It is still a first-class member of this
  * union so build state, serialization and export handle it uniformly.

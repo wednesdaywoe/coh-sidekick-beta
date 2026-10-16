@@ -594,7 +594,7 @@ export function shouldApplyEnhancements(
 // `ignoreStrength`, and then it lands in the same key carrying that mark and
 // resolves flat across all three tiers. This comment used to claim the converter
 // DROPPED the binary's IgnoreStrength templates so everything here was
-// enhanceable — ENT-4 disproved that; the converter reads the flag and marks the
+// enhanceable — data-gaps-99 disproved that; the converter reads the flag and marks the
 // effect rather than discarding it.
 //
 // NOTE: this is the vendored twin of the engine's pet effect vocabulary, which is one
@@ -608,7 +608,7 @@ export function shouldApplyEnhancements(
 // contribution twice in two vocabularies; a foe-facing face is the FOE's stat; and a
 // `Self…` row is the pet's own sheet, which the Summons block shows. The engine's match is
 // exhaustive so a new arm breaks its build; this map has no such compiler, so the rule is
-// stated rather than enforced (ENT-9 / ENT-12).
+// stated rather than enforced (data-gaps-104 / data-gaps-106).
 const PSEUDO_PET_ENHANCEABLE_EFFECT: Record<string, keyof import('@/types/power').PowerEffects> = {
   Slow: 'slow',
   DefenseDebuff: 'defenseDebuff',
@@ -630,8 +630,8 @@ const PSEUDO_PET_ENHANCEABLE_EFFECT: Record<string, keyof import('@/types/power'
 
 // The two keys whose rows carry a movement axis, and which therefore merge into a
 // per-axis object rather than one value — the shape a parent power's `slow` has had
-// since ENT-5. Blizzard slows fly by 0.6 and everything else by 0.5; Caltrops states
-// run 0.8 beside a jump-height 500. One value per key can hold neither (ENT-8).
+// since data-gaps-100. Blizzard slows fly by 0.6 and everything else by 0.5; Caltrops states
+// run 0.8 beside a jump-height 500. One value per key can hold neither (data-gaps-103).
 const PSEUDO_PET_BY_AXIS = new Set(['slow', 'movementCapDebuff']);
 
 // PetEffect.type → PowerEffects mez key. These carry magnitude + duration
@@ -666,7 +666,7 @@ const PSEUDO_PET_MEZ_EFFECT: Record<string, keyof import('@/types/power').PowerE
  * the SUMMONER's slotting to these correct — and it is a different fact from which class the
  * magnitudes RESOLVE against, which is the pet's own. Every row an entity supplies is
  * therefore stamped with that entity's `characterClass`, and the reader resolves each value
- * against the class on the row it is reading (ENT-10).
+ * against the class on the row it is reading (data-gaps-105).
  *
  * The vendored twin of `granted::pseudo_pet_effects`; the two must agree row for row, and
  * `powerProjectionParity` grades that they do.
@@ -713,9 +713,9 @@ export function synthesizePseudoPetEffects(
         table,
         // The pet row's own discriminator, forwarded rather than re-derived: a merged control
         // row is read by the same `mag`-format path a parent power's is, and without it every
-        // summoned mez resolves as unstated (MEZDUR-1).
+        // summoned mez resolves as unstated (data-gaps-167).
         //
-        // The FACE does not ride along, though MEZFACE-1 wrote this line as if it did.
+        // The FACE does not ride along, though data-gaps-168 wrote this line as if it did.
         // Nothing produces a `toWho` on a pet effect: it is absent from the generated
         // `PetEffect` type, `convert-pet-entities.cjs` never emits it (it emits `attribType`
         // one line up), and all four datasets carry zero. So the forward read a field that
@@ -737,7 +737,7 @@ export function synthesizePseudoPetEffects(
   let fromEntityTable = false;
   for (const entityName of entityNames) {
     // The whole in-place chain, not just the named entity — Poison Trap's payload is the gas
-    // cloud its pet's Self_Destruct leaves behind, one summon deeper (ENT-3 step 4). The
+    // cloud its pet's Self_Destruct leaves behind, one summon deeper (data-gaps-98 step 4). The
     // pseudo-pets / patches-only rule now lives in the walk.
     for (const entity of getSummonedEntityChain(entityName)) {
       for (const ability of entity.abilities) {
@@ -755,17 +755,17 @@ export function synthesizePseudoPetEffects(
   // unenhanceable effect was "informational" — but this merge is the only place a pseudo-pet's
   // kit reaches the summoning power at all, so skipping showed nothing rather than showing
   // something unboostable, and it made this branch disagree with both the entity-table branch
-  // above and the parent-power route (ENT-4).
+  // above and the parent-power route (data-gaps-99).
   //
   // Read only when the entity table produced nothing: the inline block stands in for a pet
   // the table has no record of, and Homecoming's Sentinel Whirlpool carries both for the
   // SAME pet — its two blocks identical row for row — so walking both added that pet to
-  // itself and doubled every number it publishes (ENT-8).
+  // itself and doubled every number it publishes (data-gaps-103).
   //
   // These rows carry NO pet class, and that is the data rather than a gap in it: the shells
   // they come from (`PL_StaticObject`, `Pet_NoCollision`, …) have no `villaindef.bin` record
   // at all, so there is no `characterClassName` for the game to resolve them against either.
-  // They resolve against the summoner's archetype (ENT-10).
+  // They resolve against the summoner's archetype (data-gaps-105).
   if (!fromEntityTable) {
     for (const resolved of summon.resolvedEntities ?? []) {
       for (const ability of resolved.abilities) {
@@ -806,7 +806,7 @@ type PetContribution = {
   /**
    * The summoned entity's own character class. Absent for a row from the inline
    * `resolvedEntities` block, whose shells have no `villaindef.bin` record and therefore no
-   * class for the game to resolve them against either (ENT-10).
+   * class for the game to resolve them against either (data-gaps-105).
    */
   petClass?: string;
   ignoreStrength?: boolean;
@@ -827,14 +827,14 @@ type ScaledOrTermed = PetContribution | ScaleTerms;
  * Rows naming one table add as scales. Rows naming DIFFERENT tables travel as separate terms
  * for getEffectBaseValue to resolve and sum, because adding their scales mixes units:
  * Homecoming's Summon Tarantula published `slow = 500.2` from a `0.2` on `Ranged_Slow` plus a
- * `500` on `Ranged_Ones`, a number in no unit at all (ENT-8).
+ * `500` on `Ranged_Ones`, a number in no unit at all (data-gaps-103).
  *
  * Sameness is a case-insensitive exact name AND the same pet class, because a table name is
  * only half of a table: `class_GetNamedTableValue(pclass, name, level)` takes both, and one
  * name holds different values under different classes. Homecoming's Soul Extraction is the
  * corpus's one case — six `Ranged_Debuff_ToHit` rows off three henchman classes, whose values
  * differ — and summing their scales would resolve all six at whichever class arrived first
- * (ENT-10). The name half is the game's own identity: `classes.c` looks the template's table up
+ * (data-gaps-105). The name half is the game's own identity: `classes.c` looks the template's table up
  * in a case-insensitive stash and aliases nothing, so Rebirth's Dark Servant, which spells one
  * table `Ranged_DeBuff_ToHit` on three rows and `Ranged_Debuff_ToHit` on a fourth, stays one
  * sum. Splitting a pair that is really one table+class would cost nothing anyway: the terms
@@ -842,7 +842,7 @@ type ScaledOrTermed = PetContribution | ScaleTerms;
  *
  * The `ignoreStrength` mark is all-or-nothing over the whole key either way. One displayed
  * number can make only one claim about whether the summoner's slotting reaches it, and a mixed
- * key drops the mark and reads as enhanceable — what it was before the mark existed (ENT-4).
+ * key drops the mark and reads as enhanceable — what it was before the mark existed (data-gaps-99).
  */
 export function mergePetContributions(rows: PetContribution[]): ScaledOrTermed | null {
   const [first, ...rest] = rows;

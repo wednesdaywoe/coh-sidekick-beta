@@ -8,7 +8,7 @@ import type { SpecialEnhancementsData } from './datasets/homecoming/generated/sp
 import { normalizeAspectName } from '@/utils/calculations/enhancement-values';
 
 /**
- * Guards on the generated special-enhancement registries (SOURCE-1 item 9).
+ * Guards on the generated special-enhancement registries (data-gaps-324 item 9).
  *
  * The entry IDS are load-bearing outside the data layer: icon filenames
  * (`HONucleolus.png`, `TNPeridont.png`, …) and saved-build slots

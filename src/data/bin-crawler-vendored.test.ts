@@ -15,7 +15,7 @@ import {
  * `scripts/sync-bin-crawler.sh` copies them across and records what it copied in
  * `tools/bin-crawler-vendored.json`.
  *
- * The failure this exists to prevent has already happened once: HC-3's parser
+ * The failure this exists to prevent has already happened once: data-gaps-115's parser
  * decode landed in the canonical repo while this one kept a hardcoded stand-in,
  * and nothing went red — the export-staleness guard compares this repo's exports
  * against THIS repo's parser, so a copy that is uniformly twelve days behind is

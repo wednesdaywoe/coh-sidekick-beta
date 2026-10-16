@@ -105,8 +105,8 @@ function PowerInfoContent({ powerName, powerSet }: PowerInfoContentProps) {
   const damageVsHigher = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_HIGHER_RANK_SEGMENT);
   const damageVsMinion = usePowerDamageVsRank(wantEngineCrit ? powerSet : undefined, powerName, VS_MINION_RANK_SEGMENT);
 
-  // The effect rows, from the engine rather than resolved off the display bag (ENGLAG-1) — the
-  // same swap the InfoPanel takes, and for the same reason: STRIP-1 left the bag holding only
+  // The effect rows, from the engine rather than resolved off the display bag (data-gaps-329) — the
+  // same swap the InfoPanel takes, and for the same reason: data-gaps-327 left the bag holding only
   // the keys `buildDisplayEffects` mints, so the local path renders no authored effect at all.
   const projection = usePowerProjection(powerSet, powerName);
   const effectRows = useMemo(

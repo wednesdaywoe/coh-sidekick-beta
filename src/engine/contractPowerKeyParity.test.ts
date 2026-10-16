@@ -5,7 +5,7 @@
  * lookup is case-sensitive. The two sides come from different places: the TS layer is
  * `generated/` composed with `overrides/` in this repo, while `public/engine/contract/*.json.gz`
  * is vendored from canonical. Fix one side there and re-vendor without the other and the keys
- * part company, which is what OVERRIDE-4 did here. Twenty-two Widow/Soldier branch powers kept
+ * part company, which is what data-gaps-312 did here. Twenty-two Widow/Soldier branch powers kept
  * the beta's `Frt_`/`Nw_`/`Cs_`/`Ws_` re-casing against the bin's `FRT_`/`NW_`/`CS_`/`WS_`,
  * every card and slot rendered, and only the totals were short.
  *

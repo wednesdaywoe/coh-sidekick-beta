@@ -301,7 +301,7 @@ export interface HydrationNote {
  *
  * Here rather than in `buildStore`'s persisted-state migration, which is where the rename used
  * to live alone: localStorage is one door of five, and the other four (share link, JSON paste,
- * `.skif` open, a cloud build) come through `hydrateBuild` — DATA-GAP ACCOLADE-3. A migration
+ * `.skif` open, a cloud build) come through `hydrateBuild` — DATA-GAP data-gaps-3. A migration
  * on one door is not a migration. `importBuild`'s v1 arm is the fifth and reaches neither, so
  * it calls this directly.
  *

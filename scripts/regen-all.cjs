@@ -34,7 +34,7 @@ const datasets = (() => {
   // generated/ tree reproduces byte-identical from committed exported_powers/,
   // same as HC/Rebirth) so the regen-diff CI guard covers it too — closing the
   // "converter fix regenerated some datasets, not others" staleness class
-  // (the DSH8 Clarion leak).
+  // (the deductive-schema-harness-8 Clarion leak).
   return require('./_dataset-paths.cjs').ALL_DATASETS;
 })();
 
@@ -70,7 +70,7 @@ const STEPS = [
   // used to spell them out by hand and hand every fork Homecoming's copy.
   { script: 'convert-basic-inherents.cjs',    args: [],          generated: true },
   // Accolade powers -> generated/accolades.ts. Absent from this table until 2026-08-22, so a
-  // converter change reached the script and never the output: HELPTEXT-1 shipped with the
+  // converter change reached the script and never the output: data-gaps-293 shipped with the
   // accolade descriptions still carrying raw `<br>`/`<color>` markup.
   { script: 'convert-accolades.cjs',          args: [],          generated: true },
   { script: 'convert-pool-powers.cjs',        args: ['--apply'], generated: true },
@@ -83,7 +83,7 @@ const STEPS = [
   // missing by checking that no powerset already displays that name, so a stale
   // powerset layer would make it emit powers the build can already reach.
   { script: 'convert-archetype-inherents.cjs', args: [],         generated: true },
-  // The boost index (BOOST-1): every enhancement keyed by the name the game
+  // The boost index (data-gaps-42): every enhancement keyed by the name the game
   // client prints for it -> generated/boost-index.ts. It INVERTS two layers
   // this list does not own — generated/special-enhancements.ts and
   // io-sets-raw.ts, both refreshed out of band here — so it runs last and
@@ -107,7 +107,7 @@ for (const ds of datasets) {
   }
 }
 
-// DSH6 completeness gate (Phase 0b) — runs ONCE after the dataset loop (the
+// deductive-schema-harness-6 completeness gate (Phase 0b) — runs ONCE after the dataset loop (the
 // detector sweeps the HC generated tree only). Fails the regen if any collapse
 // or whole-class-absent group is missing from the frozen allowlist
 // (scripts/dsh6-gate-allowlist.json) — the PotD-class silent drop now fails

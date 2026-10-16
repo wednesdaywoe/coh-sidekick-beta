@@ -134,7 +134,7 @@ describe('slot-level move — Homecoming', () => {
 
   it('works from respec-computed levels (empty slotOrder) by freezing levels first', () => {
     // "Respec mode" here means `computeSlotLevelsRespec` — an empty `slotOrder`
-    // within Level Up mode — not SLOT-3's `levelUpMode: false`. This test stays
+    // within Level Up mode — not issues-3's `levelUpMode: false`. This test stays
     // on `levelUpMode: true` throughout to exercise that internal path.
     const b = makeBuild([pow('Alpha', 1, 3), pow('Beta', 1, 2)], []);
     const before = computeAllSlotLevels(b, true);

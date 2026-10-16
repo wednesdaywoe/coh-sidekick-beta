@@ -71,7 +71,7 @@ describe.each(DATASET_IDS)('%s — archetype inherent art', (forkId) => {
   it('carries an icon for all but the inherents known to have none', () => {
     // A floor, so deleting the icons wholesale cannot pass the two cases above by leaving
     // nothing to check. The Primalist is the one archetype in any fork whose inherent the
-    // export gives no art at all (INHERENT-10 is the same absence seen from the name side).
+    // export gives no art at all (data-gaps-10 is the same absence seen from the name side).
     const without = archetypes(ds)
       .filter(([, a]) => a.inherent && !a.inherent.icon)
       .map(([, a]) => a.inherent!.name);

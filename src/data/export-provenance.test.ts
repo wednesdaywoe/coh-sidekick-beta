@@ -12,14 +12,14 @@ import {
 /**
  * Export-provenance guard — which assets tree did these bytes come from?
  *
- * DATA-GAP-REGISTER PROV-1. Homecoming publishes several shards under one
+ * DATA-GAP-REGISTER data-gaps-319. Homecoming publishes several shards under one
  * `assets/` root, and they are divergent BRANCHES rather than points on one
  * timeline. An export taken from the wrong shard is therefore wrong in both
  * directions at once — missing shipped fixes while carrying unreleased content
  * — and because it is internally self-consistent it passes every check that
  * reads only the export: the staleness guard compares exporter fingerprints,
  * converter validation and contract totals read the export as ground truth.
- * That is the FLAGS-2 shape the mandate names, a bad read UPSTREAM of the
+ * That is the data-gaps-81 shape the mandate names, a bad read UPSTREAM of the
  * export becoming authoritative data.
  *
  * It shipped once (`8a32f60c42`): Homecoming exported from `assets/beta`
@@ -36,7 +36,7 @@ import {
 // manifest written by an older exporter fail distinctly from a wrong-shard
 // one, and a range would quietly readmit the shape this guard exists to
 // reject. Schema 2 carried `source`, so this bump is about what a CURRENT
-// manifest must look like, not about PROV-1's own floor.
+// manifest must look like, not about data-gaps-319's own floor.
 const SCHEMA = 'bin-crawler-export-manifest/3';
 
 interface SourceFile {
@@ -73,11 +73,11 @@ describe.each(ENTRIES)('export-provenance ($dataset, $tree)', (entry) => {
   const manifest = readManifest(entry.manifestPath);
   const where = relative(REPO_ROOT, entry.manifestPath);
 
-  it('records provenance at all (manifest predates PROV-1 otherwise)', () => {
+  it('records provenance at all (manifest predates data-gaps-319 otherwise)', () => {
     expect(
       manifest.schema,
       `${where} is a pre-provenance manifest. It cannot say which assets tree ` +
-        `produced this export, which is the whole of PROV-1. Re-export: ${entry.reexport}`,
+        `produced this export, which is the whole of data-gaps-319. Re-export: ${entry.reexport}`,
     ).toBe(SCHEMA);
     expect(manifest.source, `${where} has no 'source' block.`).toBeTypeOf('object');
   });
@@ -96,7 +96,7 @@ describe.each(ENTRIES)('export-provenance ($dataset, $tree)', (entry) => {
   });
 
   /**
-   * The ring NAME does not identify a tree — PROV-2. A stale snapshot copied out
+   * The ring NAME does not identify a tree — data-gaps-320. A stale snapshot copied out
    * of a live install keeps its basename, so `bins/…/tspy` and the real `tspy`
    * are indistinguishable by ring alone, and the snapshot shipped a month-old
    * corpus while passing the check above. The path around the ring is what

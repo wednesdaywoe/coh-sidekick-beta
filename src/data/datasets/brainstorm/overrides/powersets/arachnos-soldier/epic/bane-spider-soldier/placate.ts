@@ -9,14 +9,14 @@
  * parser doesn't emit yet — prefer fixing the parser/converter over re-adding
  * an override. See GAME-DATA-PRINCIPLES.md §13 and src/data/README.md.
  *
- * OVERRIDE-5: dropped `effectArea` and `allowedEnhancements`. The export says Sphere,
+ * data-gaps-292: dropped `effectArea` and `allowedEnhancements`. The export says Sphere,
  * radius 15, not SingleTarget, and its `boosts_allowed` holds the same four types in the
  * game's own order. The override alphabetized them, a fossil of the pool converter's sort.
  *
- * OVERRIDE-5: dropped `description` / `shortHelp` — the export's `display_help` and
+ * data-gaps-292: dropped `description` / `shortHelp` — the export's `display_help` and
  * `display_short_help` are what the game itself shows, and the converter emits both. The text
  * here was a second source: "Moderate DMG" where the export writes "DMG", a "Damage: Moderate"
- * tail the export has no such line for. It masked HELPTEXT-1's glued sentences, which is fixed
+ * tail the export has no such line for. It masked data-gaps-293's glued sentences, which is fixed
  * at the converter now.
  */
 import type { Power } from '@/types';

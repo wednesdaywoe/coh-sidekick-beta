@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-DSH9 bootstrap — Mids Reborn EnhDB.mhd reader.
+deductive-schema-harness-9 bootstrap — Mids Reborn EnhDB.mhd reader.
 
 Faithful Python port of MidsReborn's Enhancement DB binary load order:
   - Core/DatabaseAPI.cs: LoadEnhancementDb
@@ -31,9 +31,9 @@ HEADER = "Mids Reborn Enhancement Database"
 
 # The Homecoming enhancement database, beside the main one `read_i12.DEFAULT_MHD` reads,
 # so the two DSH legs are on one Mids install rather than on two by coincidence. This
-# pointed into `MidsReborn-master/` until PROV-3 (2026-09-13); that tree still HOLDS an
+# pointed into `MidsReborn-master/` until data-gaps-245 (2026-09-13); that tree still HOLDS an
 # `EnhDB.mhd`, which is why nothing broke loudly — it is simply an older one
-# (bf5b978e… against the prefix's b5b4379d…), so DSH9 was grading against a database
+# (bf5b978e… against the prefix's b5b4379d…), so deductive-schema-harness-9 was grading against a database
 # nothing else here reads. The Rebirth pair is byte-identical between the two trees,
 # which is what makes the Homecoming difference signal rather than noise.
 DEFAULT_MHD = os.path.join(os.path.dirname(read_i12.DEFAULT_MHD), "EnhDB.mhd")
@@ -266,7 +266,7 @@ def _emit_jsonl(records: list[dict[str, Any]], out_path: str) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description="Mids EnhDB.mhd reader (DSH9 bootstrap)")
+    ap = argparse.ArgumentParser(description="Mids EnhDB.mhd reader (deductive-schema-harness-9 bootstrap)")
     ap.add_argument("--mhd", default=DEFAULT_MHD, help="path to EnhDB.mhd (default: HC)")
     ap.add_argument("--mode", choices=["summary", "enhancements", "sets", "both"], default="summary")
     ap.add_argument("--out", default="-", help="JSONL output path ('-' = stdout)")

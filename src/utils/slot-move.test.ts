@@ -128,7 +128,7 @@ describe('canRelocateSlot', () => {
 describe('moveSlot store action (homecoming)', () => {
   beforeAll(async () => {
     await loadDataset('homecoming');
-    // SLOT-3: the store action reads live Level Up mode; these tests pin its
+    // issues-3: the store action reads live Level Up mode; these tests pin its
     // schedule-aware (on) behavior.
     useUIStore.setState({ levelUpMode: true });
   });

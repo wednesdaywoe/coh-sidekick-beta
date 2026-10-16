@@ -113,7 +113,7 @@ export interface StancePowerLike {
   activeSubPower?: string;
   /** Distinguishes the stance SWITCHER (the mechanic-classified record that
    *  grants the stance chips — `parentMechanic`, or `hiddenPassive` since the
-   *  SHOWFLAGS-1 flag read) from a same-internalName impostor. Bio Armor's
+   *  data-gaps-57 flag read) from a same-internalName impostor. Bio Armor's
    *  switcher is internal "Evolution" (Scrapper/Brute/Tanker) or "Adaptation"
    *  (Stalker/Sentinel); the "Evolving Armor" +Res toggle *also* has
    *  internalName "Adaptation" but carries no mechanicType at all. */
@@ -156,7 +156,7 @@ export function stanceGroupForConditionalId(id: string): StanceGroup | undefined
  *  off? Two classes qualify: `parentMechanic` (a visible mechanic parent like
  *  Swap Ammo) and `hiddenPassive` (a set-mechanic grant the game hands out and
  *  hides from the manage screen — Bio Armor's Adaptation, Staff Mastery, per
- *  SHOWFLAGS-1's `ShowInManage kFalse` read). Before that read landed the
+ *  data-gaps-57's `ShowInManage kFalse` read). Before that read landed the
  *  hidden class could not occur and every switcher stamped `parentMechanic`;
  *  the def flags now separate them, and a switcher can be either. */
 function isStanceSwitcher(p: StancePowerLike): boolean {

@@ -6,7 +6,7 @@
  * failure mode of a wrong name is an enhancement that is simply not in the tray,
  * with nothing anywhere saying why — which is how the exporter spelled Fly
  * `Crafted_Flight` and Slow `Crafted_Slow` for eleven months while every gate
- * stayed green (POPMENU-1). The game calls them `Crafted_Fly` and
+ * stayed green (data-gaps-225). The game calls them `Crafted_Fly` and
  * `Crafted_Snare`.
  *
  * The oracle here is `exported_powers/<fork>/boosts/`, read off disk — the
@@ -112,11 +112,11 @@ describe.each(DATASET_IDS)('Popmenu boost records (%s)', (datasetId) => {
 
   it('offers exactly the generic IOs the game has a record for', () => {
     // The two rosters are independent by design: the picker's is hand-written
-    // and the index's is derived from the crafted boost family, and BOOST-1 kept
+    // and the index's is derived from the crafted boost family, and data-gaps-42 kept
     // them that way on purpose so neither is checking itself. Set equality is
     // what makes that pair an oracle rather than two lists.
     //
-    // It ran one short for six weeks. BOOST-1 measured the hand list at 25 of
+    // It ran one short for six weeks. data-gaps-42 measured the hand list at 25 of
     // the game's 26 and fixed the DERIVED side, so the engine offered Intangible
     // and the picker did not; nothing compared them. Order is presentation and
     // is deliberately not compared — the index's copy is sorted, the hand list
@@ -131,7 +131,7 @@ describe.each(DATASET_IDS)('Popmenu boost records (%s)', (datasetId) => {
   });
 
   it('spells the two the hand-written table got wrong', () => {
-    // POPMENU-1, pinned by name in both directions: the right record, and the
+    // data-gaps-225, pinned by name in both directions: the right record, and the
     // absence of the invented one. The planner stat is not the record name with
     // `Crafted_` on the front, and these are the two places that shows.
     expect(grantedUid(createGenericIOEnhancement('Fly', 50))).toBe('Crafted_Fly');

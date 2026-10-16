@@ -5,9 +5,9 @@
  * `maxTargets 3`: an unconditional `Replace` base of 0.5 beside a `target ≠ source` increment of
  * 0.3. The caster fills the first of those three seats for as long as the power is on, so N never
  * reaches zero — and reading the untouched slider as "no foes" deleted the 5% melee/ranged/AoE
- * defence the game hands out with no ally in sight (PERFOE-3, filed from a beta bug report).
+ * defence the game hands out with no ally in sight (data-gaps-309, filed from a beta bug report).
  *
- * Guarded Spin is the second shape, and it is a CLICK rather than an always-on power (PERFOE-4,
+ * Guarded Spin is the second shape, and it is a CLICK rather than an always-on power (data-gaps-310,
  * filed from a Thunderspy report: "does not show in the dashboard when toggled on. I checked every
  * AT it's available for"). Its `EntsAffected` is `kFoe` alone, so the seat above says nothing about
  * it, and its +Def(Melee, Lethal) is one `kStackType_Stack` mod aimed at the caster which the game
@@ -34,10 +34,10 @@ import { encodeAtom, type AtomicEffect } from '@/data/core/atomic-effect';
 import type { Power } from '@/types/power';
 
 /**
- * The per-foe increment as an ATOM, which is where the slider reads it (STACKINFO-1).
+ * The per-foe increment as an ATOM, which is where the slider reads it (data-gaps-332).
  *
  * These fixtures used to state their `perTarget` in the `effects` object alone, which the slider
- * read until STRIP-1 emptied that object corpus-wide and the reader went blind. `adjustForStackCap`
+ * read until data-gaps-327 emptied that object corpus-wide and the reader went blind. `adjustForStackCap`
  * below still takes a bag VALUE — it is handed one row at a time by the accumulator — so each
  * power now states the increment in both places, exactly as a converted power does.
  */
@@ -231,7 +231,7 @@ describe('getStackingInfo — where the slider starts', () => {
 
   it('starts a stack count at zero', () => {
     // The depth is the ATOM's `stackCap` now, not a `maxStacks` slot: the converter minted that
-    // slot for only some of the powers whose atoms state a depth, and STRIP-1 took the rest.
+    // slot for only some of the powers whose atoms state a depth, and data-gaps-327 took the rest.
     const buildUp = {
       stats: {},
       atoms: [encodeAtom({

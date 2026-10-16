@@ -4,14 +4,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /**
- * OVERRIDE-4 guard — the override layer must not restate the identity and
+ * data-gaps-312 guard — the override layer must not restate the identity and
  * placement fields the export owns.
  *
  * `withOverrides()` shallow-replaces a key, so an override entry is
  * indistinguishable from converter output by the time anything reads the
  * composed power. Two fields are owned outright by the binary and an override
- * that restates them is a copy that goes stale (OVERRIDE-3's shape) or a
- * contradiction of a directly-stated field (OVERRIDE-4's shape):
+ * that restates them is a copy that goes stale (data-gaps-311's shape) or a
+ * contradiction of a directly-stated field (data-gaps-312's shape):
  *
  *   - `internalName` is the binary's `name` — the key a saved build writes down.
  *     Re-casing it (the beta's `Frt_`/`Nw_` convention over the bin's `FRT_`/`NW_`)
@@ -26,7 +26,7 @@ import { fileURLToPath } from 'node:url';
  *     identically) is the same defect wearing a milder face. Either way the
  *     fix belongs in the converter, not the override.
  *
- * Found 2026-08-19 by censusing the override layer for OVERRIDE-3: 99
+ * Found 2026-08-19 by censusing the override layer for data-gaps-311: 99
  * `targetType` entries and 22 re-cased `internalName` entries, plus the Widow
  * Strike/Lunge pair's swapped `name`/`icon`/`available` (the authored
  * `raw defs/Widow_Training/*.powers` oracle confirmed the bin's swap is the
@@ -81,7 +81,7 @@ const overrideFiles = DATASETS.flatMap((ds) =>
   walkTs(path.join(DATASETS_DIR, ds, 'overrides')).filter((f) => !f.endsWith('index.ts')),
 );
 
-describe('OVERRIDE-4: the override layer does not restate export-owned identity fields', () => {
+describe('data-gaps-312: the override layer does not restate export-owned identity fields', () => {
   it('examines a non-trivial number of override files (vacuity floor)', () => {
     // The layer carried 200+ override files at the time this guard was written;
     // a count near zero means the walk is broken and the invariants below are

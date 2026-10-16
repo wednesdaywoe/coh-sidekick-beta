@@ -3,8 +3,8 @@
  * record it was converted from.
  *
  * A check that lives inside one converter can only ever grade that converter, which is the
- * blind spot the three-converters drift keeps walking into (SNIPE-2, Plan B, Aid Other,
- * COND-2 — each a capability built in `convert-powerset.cjs` and never given to the other
+ * blind spot the three-converters drift keeps walking into (data-gaps-146, Plan B, Aid Other,
+ * data-gaps-129 — each a capability built in `convert-powerset.cjs` and never given to the other
  * two). A check that joins the shared INPUT to the combined OUTPUT sees all three at once.
  *
  * Extracted from `audit-form-coverage.cjs`, the first gate of this shape, so a second one

@@ -71,7 +71,7 @@ describe('Mids .mbd import — summary counts', () => {
   });
 
   /**
-   * MBDIMPORT-5's other direction. The row was found on a refused power, whose slots
+   * data-gaps-235's other direction. The row was found on a refused power, whose slots
    * never reached a counter at all; this is the entry that reaches every counter and
    * is dropped afterwards, when a second spelling of the same power finds the first
    * already there. `enhancementsImported` then claimed pieces the build did not hold,

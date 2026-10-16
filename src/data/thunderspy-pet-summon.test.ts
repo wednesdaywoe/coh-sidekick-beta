@@ -31,8 +31,8 @@ import { calculatePetDamage, synthesizePseudoPetEffects } from '@/utils/calculat
  * Each pet's AttribMod carries an `EntCreate` payload in its Params union naming the
  * EntityDef and PriorityList, which is what these assertions read
  * (`params.entity_def` → PET_ENTITIES). Recovering it took two passes: the sibling walk
- * that surfaced the per-pet AttribMods at all (TSPY-4), then the Params union itself
- * (WRAP-1). In between, the pets were reconstructed by scanning the element's raw bytes
+ * that surfaced the per-pet AttribMods at all (data-gaps-74), then the Params union itself
+ * (data-gaps-67). In between, the pets were reconstructed by scanning the element's raw bytes
  * for entity-def-SHAPED strings — which is why Illusion Control's Mirage used to summon
  * `MirageAttackerHit`, a message key. Choosing by shape rather than by field is the
  * failure `test_thunderspy_entcreate_attach.py` now pins.
@@ -92,7 +92,7 @@ describe('Thunderspy pet / pseudo-pet summon recovery (data-driven)', () => {
     // Element resolved from the shortHelp DMG(Lethal), scale/table from the binary.
     // Three Lethal components, matching its Rebirth twin byte for byte (Homecoming
     // carries the same three, its 0.42 on Melee_InherentDamage). Only the 0.84 was
-    // reachable before the parser walked every AttribMod in an element (TSPY-4).
+    // reachable before the parser walked every AttribMod in an element (data-gaps-74).
     expect(bite!.damage).toEqual([
       { damageType: 'Lethal', scale: 0.84, table: 'Melee_Damage' },
       { damageType: 'Lethal', scale: 0.1, table: 'Melee_Damage' },

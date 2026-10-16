@@ -14,7 +14,7 @@
  * Both take the token list and join it only to ASK a question of it: every probe
  * below is a substring test, and a token boundary can neither create nor destroy
  * a substring. Nothing here splits the joined text back apart, which is the step
- * COND-8 was about.
+ * data-gaps-123 was about.
  */
 
 /** The expression as one line of text, for probing and for the hover title. */

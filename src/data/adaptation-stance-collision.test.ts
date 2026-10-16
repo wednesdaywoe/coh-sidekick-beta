@@ -37,7 +37,7 @@ describe('Adaptation stance internalName collision (homecoming)', () => {
     expect(evolution, 'scrapper Evolution switcher').toBeTruthy();
     expect(evolvingArmor, 'scrapper Adaptation (Evolving Armor)').toBeTruthy();
     // Sanity: the switcher is mechanic-classified, Evolving Armor is not.
-    // `hiddenPassive` since SHOWFLAGS-1 landed the ShowInManage read — the
+    // `hiddenPassive` since data-gaps-57 landed the ShowInManage read — the
     // game itself hides the switcher from the manage screen.
     expect(evolution.mechanicType).toBe('hiddenPassive');
     expect(evolvingArmor.mechanicType).toBeUndefined();

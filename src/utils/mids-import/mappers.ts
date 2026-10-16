@@ -53,7 +53,7 @@ import { resolveMidsUid } from '@/data/mids-uids';
  * names `Generic`, which is the database its UID table IS — `Thunderspy/EnhDB.mhd` is
  * byte-identical to Mids' `Generic/EnhDB.mhd` — and the only string measured to survive: in
  * Mids 3.8.6 under Wine a build naming `Generic` opens, and one naming `Thunderspy` dies in a
- * .NET error box with no build at all. See DATA-GAP MBDEXPORT-2.
+ * .NET error box with no build at all. See DATA-GAP data-gaps-262.
  */
 export const MIDS_DATABASE_FOR_DATASET: Record<DatasetId, { database: string; own: boolean }> = {
   homecoming: { database: 'Homecoming', own: true },
@@ -116,13 +116,13 @@ export function mapOrigin(midsOrigin: string): Origin {
  * corpus are Hamidon Os, which the special path genuinely owns, and because the
  * test that verified the negative relative levels passed `'SO'` by hand. The
  * first real levelling build ever read lost 79 of its 89 enhancements. See
- * DATA-GAP MBDIMPORT-6.
+ * DATA-GAP data-gaps-236.
  *
  * Exported because the writer needs it too, and needed it for exactly as long.
  * `mids-export.ts` wrote our own `SO` back into the file, and Mids `Enum.Parse`s
  * that field: it throws inside `LoadBuild` and the whole build refuses to open,
  * not one slot of it. Fixing the reader and leaving the writer to its own
- * spelling is how MBDEXPORT-4 survived MBDIMPORT-6 by a day. One table, read
+ * spelling is how data-gaps-259 survived data-gaps-236 by a day. One table, read
  * forwards here and backwards there.
  */
 export const MIDS_ORIGIN_TIER: Record<string, 'TO' | 'DO' | 'SO'> = {
@@ -310,7 +310,7 @@ export const MIDS_SILENT_SKIP_PATHS = new Set<string>([
   // NOT skipped: `Mastermind_Buff.Radiation_Emission.Radiation_Emission` used to sit here
   // as a presumed set-root artifact. It is a real power — Mids displays it as "Radiant
   // Aura", which is `Radiant_Aura` here — so the skip was throwing away a Mastermind's
-  // heal on every import. The derived name map (MBDIMPORT-2) resolves it; the guess that
+  // heal on every import. The derived name map (data-gaps-232) resolves it; the guess that
   // put it on this list was made from the name alone, without asking what Mids displays.
 ]);
 
@@ -425,7 +425,7 @@ export function midsNameIsRetired(powersetPath: string, midsName: string): boole
  * Find a power within a list of Power definitions by Mids internal name.
  *
  * Strategy:
- *   0. Consult the DERIVED Mids→dataset name map FIRST (MBDIMPORT-2), scoped to the powersets
+ *   0. Consult the DERIVED Mids→dataset name map FIRST (data-gaps-232), scoped to the powersets
  *      `sources` names. It has to run ahead
  *      of the exact match, because the bug it closes is an exact match that SUCCEEDS on
  *      the wrong power: HC rotated internal names under stable display names, so Tactical

@@ -1,7 +1,7 @@
 /**
  * The shipped engine bundle carries no power `effects` bag.
  *
- * STRIP-1's beta port emptied the bag from three surfaces, and this one is the last and the
+ * data-gaps-327's beta port emptied the bag from three surfaces, and this one is the last and the
  * least visible. The converters and the generated TS are source in this repo, so a bag coming
  * back there is a diff someone reads. `public/engine/contract/*.json.gz` is vendored build
  * output copied wholesale from canonical by `npm run build:engine`, and it is what USERS
@@ -20,7 +20,7 @@
  *     bonus's effect list, a proc entry's. These are untouched by the strip and always will be.
  *   - an OBJECT under `conditionalEffects` — a bag, and a LIVE one. It is the supplier
  *     `expandActiveConditionals` reads to turn a stance or mode into a synthetic power, which
- *     has no atoms to be read from instead (SYNTH-1). The strip never targeted it.
+ *     has no atoms to be read from instead (data-gaps-328). The strip never targeted it.
  *
  * An object-valued `effects` anywhere else is the bag, and there is no third thing it could be.
  * So the check needs no slot roster and no expected number: it partitions every occurrence and
@@ -121,7 +121,7 @@ function datasets(): string[] {
     .sort();
 }
 
-describe('STRIP-1 — the vendored engine bundle ships no power effects bag', () => {
+describe('data-gaps-327 — the vendored engine bundle ships no power effects bag', () => {
   const ids = datasets();
 
   it('grades every dataset the contract directory holds', () => {
@@ -144,7 +144,7 @@ describe('STRIP-1 — the vendored engine bundle ships no power effects bag', ()
       expect(seen.arrays, `${id}: no array-valued effects — pet/bonus/proc lists went missing`).toBeGreaterThan(1000);
       expect(
         seen.conditionalBags,
-        `${id}: no conditional bags — the live synthetic supplier (SYNTH-1) is gone`,
+        `${id}: no conditional bags — the live synthetic supplier (data-gaps-328) is gone`,
       ).toBeGreaterThan(100);
 
       const sites = [...seen.bagSites.entries()]

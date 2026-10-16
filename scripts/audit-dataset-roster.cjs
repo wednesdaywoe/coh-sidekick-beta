@@ -50,7 +50,7 @@ const ALLOWLIST = {
   // The four fixture emitters USED to sit here, on the reasoning that they dump from the beta's
   // frozen TypeScript calc and that calc has no brainstorm dataset. That was never true of this
   // repo: the emitters import `../src/data/dataset`, which is the vendored calc HERE, and the
-  // brainstorm tree was scaffolded into it when BRAIN-1 landed. The allowance outlived its
+  // brainstorm tree was scaffolded into it when data-gaps-288 landed. The allowance outlived its
   // premise and held the door open — three of the four had already been widened by hand while
   // their allowlist rows still said they could not be, and the audit reported the subset it was
   // told to expect rather than the one on disk. An allowance that names a blocker is only worth
@@ -260,7 +260,7 @@ function balancedSpan(text, start) {
  * The marker is deliberately not an allowlist keyed by file and line. A line number drifts on
  * the next edit, and a reason kept in another file is a reason the next editor of the table does
  * not see — which is how `per-server-builds.test.ts` stayed three-dataset behind an allowance
- * written twelve lines above the rows it excused (BRAIN-12).
+ * written twelve lines above the rows it excused (data-gaps-285).
  *
  * Read from the table's span AND from the comment block immediately above it, because that is
  * where a reason is naturally written. The preamble walk stops at the first line that is not a
@@ -324,8 +324,8 @@ function keyedTablesIn(text) {
  * The same defect one level down: a pin table whose key is `<dataset>|<power>|<axis>`
  * rather than a bare dataset name. `keyedTablesIn` can't see these, because the
  * character after the dataset name is a delimiter and not a colon, so
- * planb-shadow-movement's three TARGETS-3 tables sat a dataset behind while its two
- * sibling gates were flagged and widened (MOVE-4).
+ * planb-shadow-movement's three data-gaps-63 tables sat a dataset behind while its two
+ * sibling gates were flagged and widened (data-gaps-172).
  *
  * Scoped to a bracket-matched `const NAME = { ... }` / `[ ... ]` so the whole table is one
  * span (the sibling gates pin theirs as arrays), which is the same `balancedSpan` the keyed

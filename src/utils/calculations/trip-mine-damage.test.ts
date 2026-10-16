@@ -87,7 +87,7 @@ describe('Trip Mine damage (homecoming)', () => {
   it("the Dominator's mine resolves damage from its Info redirect", () => {
     const power = getPowerset('dominator/arsenal-assault')?.powers
       .find((p: Power) => p.internalName === 'Trip_Mine') as Power | undefined;
-    // The writer lifts `summon` out of the bag to the top level (STRIP-1/BPORT7); the bag
+    // The writer lifts `summon` out of the bag to the top level (data-gaps-327/BPORT7); the bag
     // slot it used to sit in is gone.
     const resolved = (power?.summon as any)?.resolvedEntities?.[0];
     expect(resolved, 'Dominator Trip Mine resolvedEntities').toBeTruthy();

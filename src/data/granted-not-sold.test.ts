@@ -5,7 +5,7 @@ import { isBuyablePick } from '@/data/power-requires';
 import type { Power } from '@/types';
 
 /**
- * ROSTER-2 — a power the game hands over is not a pick, and the export says which.
+ * data-gaps-281 — a power the game hands over is not a pick, and the export says which.
  *
  * Rebirth's Wind Control ships Clear Skies at level 31, granted once Vacuum and Vortex are
  * trained. The picker offered it anyway, so the set read as ten choices where the game sells
@@ -17,7 +17,7 @@ import type { Power } from '@/types';
  * directly all along (`pick_gate`, powers.rs) — the two planners disagreed and only one was
  * looking at the data.
  *
- * The gate that should have caught this was SHOWFLAGS-2's third leg, which asserts a full AT
+ * The gate that should have caught this was data-gaps-56's third leg, which asserts a full AT
  * powerset offers at least nine picks. It grades one direction. A set offering TEN passes it,
  * and Wind Control did, on two forks, for as long as it shipped. The other direction is not
  * writable as a count — Broad Sword really does carry ten members and sells nine of them by
@@ -28,7 +28,7 @@ const DATASETS = ['homecoming', 'rebirth', 'thunderspy', 'brainstorm'] as const;
 
 /**
  * Floors measured 2026-09-13, just under the real counts. A zero here means the leg stopped
- * asking rather than started passing — the SHOWFLAGS-1 lesson, and the reason both legs carry
+ * asking rather than started passing — the data-gaps-57 lesson, and the reason both legs carry
  * one. Graded population is the AutoIssue powers at a real unlock level: the ones a picker
  * could plausibly offer, as opposed to the -1 sentinel rows nothing was ever going to show.
  */

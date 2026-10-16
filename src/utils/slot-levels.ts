@@ -22,7 +22,7 @@
  * A slot the schedule cannot serve resolves to `null`, never to a plausible
  * substitute. The pick level in particular is NOT a safe fallback: on a power
  * taken at 38 it names a level that grants no slots at all, and on a power
- * taken at 3 it is indistinguishable from a real assignment (SLOT-1).
+ * taken at 3 it is indistinguishable from a real assignment (issues-6).
  *
  * Keys: Uses powerKey("category:internalName") to avoid collisions when
  * multiple powers share the same internalName across categories.
@@ -97,7 +97,7 @@ function powerPickLevel(power: SelectedPower): number {
   // `available <= level`, so Rest arrives at 2 and Rebirth's Fitness four at 2
   // while Homecoming's arrive at 1. `createInherentSelectedPower` had already
   // resolved all of that into `power.level`; the constant threw it away and
-  // stamped every inherent slot at 1 (MBDEXPORT-18, 20 of its 44).
+  // stamped every inherent slot at 1 (data-gaps-271, 20 of its 44).
   return power.level;
 }
 
@@ -144,7 +144,7 @@ interface SlotDemand {
  * which releases the 39 for the power that needs it. A first-come walk cannot
  * see that trade: it declares the build full while a valid assignment sits one
  * swap away, and the caller then invents a level for the slot it could not
- * place. That is SLOT-1, and the augmenting search below is the fix.
+ * place. That is issues-6, and the augmenting search below is the fix.
  *
  * Stored levels are seeded first, so an untouched build keeps every slot exactly
  * where the user put it. Kuhn's augmenting paths then extend that seed to a
@@ -181,7 +181,7 @@ function assignGrants(demands: SlotDemand[], grantPool: number[]): number[] {
   // Displacing an owner is how a late power reaches a grant nothing else can
   // spare; doing it when a free grant was available instead rewrites a level the
   // user placed by hand, and the newcomer lands on the low grant it took. That
-  // is the reversed leveling order the placement probe reported (SLOT-2).
+  // is the reversed leveling order the placement probe reported (issues-7).
   // Maximality is untouched — a free grant is an augmenting path of length one,
   // and the second pass still explores every owned grant when none is free.
   const augment = (demand: number, seen: boolean[]): boolean => {
@@ -250,7 +250,7 @@ function collectRespecDemands(allPowers: CategorizedPower[]): SlotDemand[] {
  * `slotOrder` entry where it has one.
  *
  * Two rules here were once split across the compute and the placement probe,
- * which is how the two came to disagree (SLOT-1):
+ * which is how the two came to disagree (issues-6):
  *
  * - An entry that addresses no real user slot — power gone, index past the end
  *   of the row, or pointing into an inherent's auto-granted block — contributes
@@ -314,7 +314,7 @@ function collectAllPowers(build: Build): CategorizedPower[] {
   // Auto-granted sub-powers (Kheldian forms) belong here. They are slottable and
   // `countPlacedBudgetSlots` bills their extra slots to the same budget, so
   // holding them out of the demand list made the placement probe and the display
-  // compute disagree about how much of the pool was spent (SLOT-1).
+  // compute disagree about how much of the pool was spent (issues-6).
   for (const p of build.primary.powers) {
     allPowers.push({ power: p, category: 'primary' });
   }
@@ -451,7 +451,7 @@ function collectDemands(build: Build, allPowers: CategorizedPower[]): SlotDemand
  * The probe IS the compute, deliberately: it runs the same solver over the same
  * demands. Answering from a separate walk down `slotOrder` is exactly how the
  * probe and the display came to disagree, and a probe that under-reports what is
- * free is what makes a placement land with no level at all (SLOT-1).
+ * free is what makes a placement land with no level at all (issues-6).
  */
 function probeGrantLevel(
   build: Build,
@@ -488,7 +488,7 @@ export function findNextAvailableGrantLevel(
  * slot), index 1+ = the grant level consumed for that slot, or `null` where the
  * schedule has no grant left the slot could legally occupy.
  *
- * `levelUpMode` off (SLOT-3): a real in-game respec hands the player their full
+ * `levelUpMode` off (issues-3): a real in-game respec hands the player their full
  * earned slot budget as one freely assignable pool — no power's pick level
  * bounds which grant a slot can use, so there is no such thing as "this slot's
  * level" outside a sequential leveling walk. Returns an empty map; every
@@ -520,7 +520,7 @@ export function computeAllSlotLevels(build: Build, levelUpMode: boolean): Map<st
  * build was planned, so an export needs *some* number even when
  * `levelUpMode` is off. That number is a synthetic packing (respec mode's
  * solver, ignoring pick order), not a claim about the user's actual leveling
- * history — callers should say so in the UI once, not per slot (SLOT-3).
+ * history — callers should say so in the UI once, not per slot (issues-3).
  */
 export function computeExportSlotLevels(build: Build, levelUpMode: boolean): Map<string, SlotLevel[]> {
   if (!levelUpMode) return computeSlotLevelsRespec(build);
@@ -531,7 +531,7 @@ export function computeExportSlotLevels(build: Build, levelUpMode: boolean): Map
  * What this build's own schedule would issue, regardless of what the grid is drawing.
  *
  * The `true` is not "the user is in Level Up mode" — it is "solve for real". A `.mbd` needs a
- * concrete assignment whichever mode the UI happens to be in, and MBDEXPORT-21's decision is
+ * concrete assignment whichever mode the UI happens to be in, and data-gaps-276's decision is
  * that the file's claim must come off the BUILD and never off a per-device toggle the `.skif`
  * does not carry. Print and forum text keep `computeExportSlotLevels`, because those draw what
  * the user is looking at rather than making a claim another planner will read as authoritative.
@@ -547,15 +547,15 @@ export function solvedSlotLevels(build: Build): Map<string, SlotLevel[]> {
  * anything it cannot pair with a free grant — the right answer for the grid, where a level the
  * schedule never issued would be a lie about the build's legality. It is the wrong answer for
  * the `.mbd` writer: a slot's level is the author's record of when they placed it, and
- * re-solving it hands the file back a levelling history its author never made (MBDEXPORT-18).
+ * re-solving it hands the file back a levelling history its author never made (data-gaps-271).
  *
  * So an AUTHORED stored level wins wherever the build holds one, and the solver fills the rest.
- * The two disagree on exactly the population MBDIMPORT-14 is open on — Mids' respec rows at 47
+ * The two disagree on exactly the population data-gaps-243 is open on — Mids' respec rows at 47
  * and 49, and Rebirth's extra slot at 9/13/17/23 — and that disagreement is real rather than a
  * rounding: our schedule issues no grant there. The writer says so per slot instead of silently
  * picking a side.
  *
- * A PACKED level is skipped, which is MBDEXPORT-21's whole decision: it was written by
+ * A PACKED level is skipped, which is data-gaps-276's whole decision: it was written by
  * `ensureSlotOrderPopulated` from the same solver this function starts from, so preferring it
  * would be carrying the solver's answer back to itself while calling it the author's. Skipping
  * means the solver's current answer stands — which is what a build with no levelling history
@@ -583,11 +583,11 @@ export function carriedSlotLevels(build: Build): Map<string, SlotLevel[]> {
 /**
  * Whether this build's exported slot levels include any the author never placed.
  *
- * The once-in-the-UI disclosure SLOT-3 asked for, derived from the BUILD rather than from a UI
- * mode. That distinction is the point of MBDEXPORT-21: this repo gated the same disclosure on
+ * The once-in-the-UI disclosure issues-3 asked for, derived from the BUILD rather than from a UI
+ * mode. That distinction is the point of data-gaps-276: this repo gated the same disclosure on
  * `useUIStore.levelUpMode`, which is per-device state the `.skif` does not carry, so the same
  * file exported by two people made two different claims. A fact the writer needs that the build
- * does not hold is MBDEXPORT-19's shape.
+ * does not hold is data-gaps-272's shape.
  */
 export function hasPackedSlotLevels(build: Build): boolean {
   return (build.slotOrder ?? []).some((entry) => entry.levelSource === 'packed');
@@ -597,7 +597,7 @@ export function hasPackedSlotLevels(build: Build): boolean {
  * Rewrite stored slot levels the solver could not honor to the level it actually
  * assigned. Mutates the build in place; returns whether anything changed.
  *
- * SLOT-2 stamped every placement with the lowest grant in the build, so a build
+ * issues-7 stamped every placement with the lowest grant in the build, so a build
  * leveled through that defect carries a run of entries all claiming one level.
  * The display is already right — the solver seeds what the schedule can serve
  * and assigns the rest forward — but an entry whose level no grant can honor is,
@@ -629,7 +629,7 @@ export function reconcileStoredSlotLevels(build: Build, levelUpMode: boolean): b
     // Packed, and the paragraph above is the reason rather than an exception to it: the
     // stored level was already dead, so what lands here is the SOLVER's answer and not the
     // author's. Repairing a level nobody can honour is still not a record of a placement
-    // (MBDEXPORT-21) — `levelSource` describes the level, not the entry.
+    // (data-gaps-276) — `levelSource` describes the level, not the entry.
     entry.levelSource = 'packed';
     changed = true;
   }
@@ -682,7 +682,7 @@ export function ensureSlotOrderPopulated(build: Build, levelUpMode: boolean): bo
       const level = levels[s];
       // A slot the schedule could not serve has no level to freeze. Writing one
       // anyway is what turned a transient over-subscription into a stored level
-      // that no grant matches, which no later solve could ever honor (SLOT-1).
+      // that no grant matches, which no later solve could ever honor (issues-6).
       if (level === null || level === undefined) continue;
       newEntries.push({
         powerName: power.internalName,
@@ -690,7 +690,7 @@ export function ensureSlotOrderPopulated(build: Build, levelUpMode: boolean): bo
         category,
         level,
         // The solver's packing, not the author's chronology. Stamped so the `.mbd` writer
-        // can tell it from a real placement instead of guessing from a proxy (MBDEXPORT-21).
+        // can tell it from a real placement instead of guessing from a proxy (data-gaps-276).
         levelSource: 'packed',
       });
     }
@@ -729,7 +729,7 @@ export function backfillSlotOrderLevels(build: Build, levelUpMode: boolean): boo
     entry.level = level;
     // The ENTRY is a real placement — it exists because someone put a slot there — but this
     // LEVEL is the solver's, invented now because the entry was written before levels were
-    // stored at all. `levelSource` describes the level, so it is packed (MBDEXPORT-21).
+    // stored at all. `levelSource` describes the level, so it is packed (data-gaps-276).
     entry.levelSource = 'packed';
     changed = true;
   }
@@ -740,7 +740,7 @@ export function backfillSlotOrderLevels(build: Build, levelUpMode: boolean): boo
  * Drop stored slot levels the grant schedule does not issue. Mutates the build
  * in place; returns whether anything changed.
  *
- * Before SLOT-1, a placement the allocator could not serve was written out with
+ * Before issues-6, a placement the allocator could not serve was written out with
  * no level and then DISPLAYED at its power's pick level — and the rehydrate
  * backfill froze that display value in as a stored level. A power taken at 38 on
  * Homecoming produced `level: 38`, a level that grants no slots at all, so the
@@ -823,7 +823,7 @@ export function canMoveSlotLevel(
   levelUpMode: boolean
 ): boolean {
   // Nothing to swap: outside leveling mode a slot carries no level at all
-  // (SLOT-3), so there is no dated value to trade between two slots.
+  // (issues-3), so there is no dated value to trade between two slots.
   if (!levelUpMode) return false;
 
   const s = resolveRef(build, source);
@@ -920,7 +920,7 @@ export interface PowerRef {
  * across a relocation. The schedule is not: freeing a grant at level 21 does
  * nothing for a power taken at 38, and dragging a slot across that gap is
  * precisely the gesture that used to produce a slot stamped with an impossible
- * level (SLOT-1).
+ * level (issues-6).
  */
 export function canRelocateSlot(
   build: Build,
@@ -942,7 +942,7 @@ export function canRelocateSlot(
   if (t.power.slots.length >= t.power.maxSlots) return false;
   // Outside leveling mode there is no dated schedule to check the relocation
   // against — the budget is net-neutral across a move, so an open slot is
-  // the only requirement (SLOT-3).
+  // the only requirement (issues-3).
   if (!levelUpMode) return true;
   return relocatedGrantLevel(build, source, s, t) !== null;
 }

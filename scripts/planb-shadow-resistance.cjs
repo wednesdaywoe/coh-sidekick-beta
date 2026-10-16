@@ -81,7 +81,7 @@ function checkPower(dataset, power, genPath) {
   const name = power.name || genPath;
   if (POWER_FILTER && !name.toLowerCase().includes(POWER_FILTER.toLowerCase())) return;
   stats.powers++;
-  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  // data-gaps-327 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
   if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
 
   const bagRes = power.effects && typeof power.effects.resistance === 'object' ? power.effects.resistance : {};
@@ -117,7 +117,7 @@ function checkPower(dataset, power, genPath) {
       // power, so the row is the caster's and the bag's recipient test — which reads the atom
       // alone — never wrote the slot. Resting leaves you with ~-1000% resistance, which is what
       // the power is for. Pinned by name so a second power joining this class gets adjudicated
-      // rather than absorbed (TARGETS-3).
+      // rather than absorbed (data-gaps-63).
       else if (bagS === undefined && atomS !== undefined && name === 'Rest') {
         stats.selfRecovered++;
         selfRecoveriesSeen[`${dataset}|${name}`] = true;
@@ -148,7 +148,7 @@ console.log(`  buff type-slots:     ${stats.buffTypes}  (of which per-target: ${
 console.log(`  buff agree:          ${stats.buffAgree}  (of which archetype-fork resolved: ${stats.forkResolved})`);
 console.log(`  self type-slots:     ${stats.selfTypes}`);
 console.log(`  self agree:          ${stats.selfAgree}`);
-console.log(`  self recovered:      ${stats.selfRecovered}  (Rest's AnyAffected crash, dropped by the bag's recipient test — TARGETS-3)`);
+console.log(`  self recovered:      ${stats.selfRecovered}  (Rest's AnyAffected crash, dropped by the bag's recipient test — data-gaps-63)`);
 // Both ways: a fork that stopped recovering Rest's crash is the join regressing, and this
 // gate would otherwise read the silence as agreement.
 const EXPECTED_SELF_RECOVERIES = ['homecoming|Rest', 'rebirth|Rest', 'thunderspy|Rest', 'brainstorm|Rest'];
@@ -181,7 +181,7 @@ if (recoveryPinFailures.length) {
   process.exit(1);
 }
 if (VACUOUS) {
-  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-data-gaps-327.`);
   console.log('   The atom side is graded by the converter gates, not here.');
 } else {
   console.log('\nOK — atom-derived resistance buff + self-penalty reproduce the bag corpus-wide (8 standard types).');

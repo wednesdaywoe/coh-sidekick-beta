@@ -9,7 +9,7 @@
  * parser doesn't emit yet — prefer fixing the parser/converter over re-adding
  * an override. See GAME-DATA-PRINCIPLES.md §13 and src/data/README.md.
  *
- * OVERRIDE-5: emptied. The export states the Slice / Boomerang Slice exclusion as
+ * data-gaps-292: emptied. The export states the Slice / Boomerang Slice exclusion as
  * `requires: [<the other power>, '!']` on both powers on all four archetypes, and
  * `pick_rules::requires_met` evaluates it. This hand `excludes` covered 1 of those 8.
  */

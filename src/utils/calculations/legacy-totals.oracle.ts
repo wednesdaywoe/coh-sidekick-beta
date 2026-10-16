@@ -557,7 +557,7 @@ function applyActivePowerBonuses(
     const stack = (value: ScalarOrScaled, family: StackFamily): ScalarOrScaled =>
       adjustForStackCap(value, targetsHitValues[power.internalName], stackCapOf(power, family), power);
     // The build's `Class_*` token, and the power as this build's class sees it. A protection
-    // atom can fork on `casterArchetypes` (AT-FORK-1), and a build-agnostic read returns
+    // atom can fork on `casterArchetypes` (AT-data-gaps-298), and a build-agnostic read returns
     // undefined exactly where the build's own arm exists — which the bag used to paper over,
     // because the converter wrote one slot per power with no fork in it. Absent when no
     // archetype is selected, which is the raw view and the pre-fork behaviour.
@@ -700,7 +700,7 @@ function applyActivePowerBonuses(
     // or the fallback hands back the number the applier just declined to give. This reads the
     // `target ≠ source` clause off the atoms; it used to read a hand-written
     // `defenseBuffExcludesSelf` override flag, which existed on two of the three forks and so
-    // answered wrong on the third (TEAMBUFF-1). It abstains on an atom-less power, so a
+    // answered wrong on the third (data-gaps-222). It abstains on an atom-less power, so a
     // synthetic contribution still reaches the gate.
     // Verified bag-equal by scripts/planb-shadow-defense.cjs.
     const defenseEffects = defenseBuffIsTeamOnly(power)
@@ -942,7 +942,7 @@ function applyActivePowerBonuses(
     // array — often an EMPTY one — for any power with a movement atom, and `??` keeps an empty
     // array, so the bag branch only ever fired where the reader answered `undefined`. Across
     // all four forks that was ONE power: rebirth Acrobatics, whose atoms fork by class
-    // (AT-FORK-1) so a build-agnostic read saw none of them. Reading through {@link mezSource}
+    // (AT-data-gaps-298) so a build-agnostic read saw none of them. Reading through {@link mezSource}
     // makes the reader answer it, and the data branch is left with no carrier at all.
     //
     // The synthetic arm stays for the 17 credited conditional mints (Stone Armor's Rooted in
@@ -993,11 +993,11 @@ function applyActivePowerBonuses(
           // multiplier outright. Only where the axis actually HOLDS a pair: a
           // lone `ignoreStrength` entry has been multiplied by the aspect since
           // the map existed, and 26 / 20 / 10 of them ship across the three
-          // forks. Reading the flag for them too is a different change. MOVEMAP-1.
+          // forks. Reading the flag for them too is a different change. data-gaps-198.
           const paired = movementEntries.filter((e) => e.axis === entry.axis).length > 1;
           const enhMultiplier = entry.ignoreStrength && paired ? 1 : 1 + (enhBonuses[movementAspectMap[key]] || 0);
           const val = entry as unknown as ScalarOrScaled;
-          // STACK-4: the axis stacks to the depth its OWN sub type reaches, not the movement
+          // data-gaps-92: the axis stacks to the depth its OWN sub type reaches, not the movement
           // family's. Time Wall states Run `Stack` (cap 2) while its Fly and Jump are
           // `Replace`, and one family-wide cap multiplied all three by 2. An axis naming no
           // sub type falls through as itself, which no atom names — so the row lands unstacked
@@ -1017,7 +1017,7 @@ function applyActivePowerBonuses(
     //
     // BPORT11 reads BOTH halves of the penalty here, which the bag arm did not. `slow` is the
     // Current-face debuff and `movementCapDebuff` is the Maximum-face one — Granite's jump
-    // CAP as against its jump SPEED — and they were one slot until ENT-5 split them so a cap
+    // CAP as against its jump SPEED — and they were one slot until data-gaps-100 split them so a cap
     // debuff would stop overwriting the speed debuff on the same axis. This block never grew
     // the second read, so 312 powers carry a `movementCapDebuff` the calc has never spent.
     // Only 4 of those views are self-tagged and both arms agree on all 4, so nothing moves
@@ -1122,7 +1122,7 @@ function applyActivePowerBonuses(
     // is gone, fixed at the converter; see atom-query.ts). Each half falls back
     // independently; the shadow gate proves every value the helper DOES return equals the
     // bag's, so a mixed atom/bag pair still sums right.
-    // EXPRPUNT-1: with the bag stripped the punt no longer falls back to anything, so this
+    // data-gaps-331: with the bag stripped the punt no longer falls back to anything, so this
     // total reads 0 for the one power whose Expression IS a caster magnitude — Gamma Boost's
     // HP-scaling regen and recovery. That is stated rather than silently patched: the
     // magnitude is a function of current-HP%, this path holds no combat state to evaluate it
@@ -1307,7 +1307,7 @@ function applyActivePowerBonuses(
     // named rather than silent: neither reader returns `perTarget`, so the per-foe increment no
     // longer reaches this slot.
     //
-    // The per-foe ABSORB channel is the third item of the ABSORB-4 residual. The engine stays
+    // The per-foe ABSORB channel is the third item of the data-gaps-163 residual. The engine stays
     // atom-fed for every per-foe family, not just absorb — measured with the bag deleted, absorb
     // reads 0 / 133.86208 / 669.3104 at N = absent / 1 / 5, and Soul Drain's tohit 0 / 12 / 20 and
     // damage 0 / 60 / 100, all unchanged — so the channel survives the regen on the engine side.
@@ -1420,7 +1420,7 @@ function applyActivePowerBonuses(
     let kbProtFromThisPower = 0;
     for (const { field, key } of mezProtTypes) {
       const isKb = field === 'knockback' || field === 'knockup';
-      // KB/KU protection is atom-native (ATOM15 / PASS2B-1): kbProtectionValue accumulates ONLY the
+      // KB/KU protection is atom-native (ATOM15 / data-gaps-206): kbProtectionValue accumulates ONLY the
       // power's SELF-directed KB protection atoms (foe-attack knockback excluded, MezResist included),
       // so a self-atom result is caster protection by construction — the old effectArea+powerType proxy
       // (which miscredited SingleTarget foe attacks like Battle Axe Gash) is retired.
@@ -1781,7 +1781,7 @@ const FITNESS_POWER_EFFECTS: Record<string, FitnessEffect[]> = {
 };
 
 /**
- * Log this silo's contributions. It lived in `calc-debug.ts` until FORK-2, which is
+ * Log this silo's contributions. It lived in `calc-debug.ts` until data-gaps-299, which is
  * how a beta-only debug hook came to fork a file both repos share: the rebuild has no
  * legacy entry point, so it never had the caller, so the twelve lines never ported.
  * Nothing outside this file calls it — it belongs to the silo, not to the debug hub.
@@ -2766,7 +2766,7 @@ function applyVariableProcBonuses(
 // Accolades are ordinary auto-on Self powers (`Temporary_Powers.Accolades`). Their +Max HP /
 // +Max End contribution is READ FROM THE POWER via the same resolvers processPower uses —
 // never a hand-authored bonus table (the removed `src/data/accolades.ts` silo mis-transcribed
-// these; DATA-GAP ACCOLADE-1). A focused apply (rather than routing through processPower)
+// these; DATA-GAP data-gaps-44). A focused apply (rather than routing through processPower)
 // keeps the dashboard's dedicated 'accolade' breakdown grouping. Accolades carry no slots, so
 // no enhancement multiplier applies.
 function applyAccoladeStats(

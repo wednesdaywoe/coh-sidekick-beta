@@ -187,7 +187,7 @@ TAG_TO_CATEGORY = {
 # That heading is `GroupName`, not `Category`. `Category` is blank on every PvP,
 # purple, event and ATO record (31 of Homecoming's 227), so keying on it dropped the
 # stamp for Soulbound Allegiance — a purple set — and its pet Build Up leaked into
-# the player's totals. BOOST-3 established the same field as the answer after the
+# the player's totals. data-gaps-30 established the same field as the answer after the
 # same blank bit a resist set's aspect label; this was one of the sites it named and
 # did not move. `GroupName` is a message-store hash, hence the resolve in `main`.
 PET_CARRIED_GROUPS = {
@@ -760,7 +760,7 @@ def parse_hand_globals() -> list[dict]:
 
 # The five parse_hand_* readers anchor on the entry's exact field ORDER, so a
 # field added, removed or reordered in proc-data.ts silently drops rows instead
-# of failing. That is how PROCCAT-1's deleted `setCategory` could have gone
+# of failing. That is how data-gaps-108's deleted `setCategory` could have gone
 # unnoticed: every reader would have matched nothing and emitted empty generated
 # files. Count against an independent read of the literal keys and stop loud.
 # The one Proc reached by neither the damage nor the other reader is pinned: a
@@ -1070,7 +1070,7 @@ def main() -> int:
           f'{len(boosts_unresolved)} unresolved ===')
     print('\n'.join(boosts_unresolved))
 
-    # --- ActivatePeriod (PPM-1): the piece's own fActivatePeriod ------------
+    # --- ActivatePeriod (data-gaps-110): the piece's own fActivatePeriod ------------
     # `CalculateModChance` multiplies PPM by `ptemplate->ppowBase->fActivatePeriod`,
     # and a proc's templates are iterated straight off the boost, so the period read
     # is the ENHANCEMENT PIECE's — never the host toggle's. Emitted per entry so both

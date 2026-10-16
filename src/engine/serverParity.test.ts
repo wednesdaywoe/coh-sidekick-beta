@@ -61,7 +61,7 @@ const handles = new Map<Server, EngineHandle>();
  *  The per-foe walk below discovers its corpus from the LEGACY dataset's increments, and the two
  *  converters disagree about a handful of powers — the legacy one invents an increment on rows
  *  the export states as flat Self buffs (a Defiance rider read as per-foe scaling), while the
- *  contract's `per_target` stamp is restricted to the export's real increments (PERFOE-1). A
+ *  contract's `per_target` stamp is restricted to the export's real increments (data-gaps-307). A
  *  response comparison on such a power grades two different authored datasets, not the two
  *  calcs, so it is logged and skipped; a power BOTH datasets give an increment still fails hard
  *  on any response mismatch. */
@@ -269,7 +269,7 @@ const SWEEP_LEVEL = 25;
 // dashboard's END COST and NET END, so excusing them hid a live 0 on every build from the
 // engine swap (2026-07-23) until the engine grew them. They are graded now — this list is for
 // fields with no consumer, not for fields with no implementation.
-// `debuffResistAccuracy`/`debuffResistRange`: engine-only fields (DEBUFFRES-1). The legacy calc's
+// `debuffResistAccuracy`/`debuffResistRange`: engine-only fields (data-gaps-171). The legacy calc's
 // `debuffResMapping` names neither key, so it reads 0 wherever the export states one — Light
 // Affinity's accuracy, Regeneration's Revive/Dismiss Pain's range. Nothing to compare, so they sit
 // here rather than under ADJUDICATED; the engine side is graded in the rebuild by
@@ -483,7 +483,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
   // foe (Parasitic Aura / Leech) is a Click. Both halves of that blindness are lifted here.
   // BPORT7 A3 re-keyed absorb discovery from the legacy bag (the BPORT7 regen empties it) to
   // the Absorb atom's `perTarget` stamp, and excluded the per-foe absorb channel itself as the
-  // named ABSORB-4 residual: the atom-fed oracle reads absorb flat (no reader returns
+  // named data-gaps-163 residual: the atom-fed oracle reads absorb flat (no reader returns
   // `perTarget`) while the engine grows it per foe, so key-comparing absorb grades two
   // channels, not two calcs. The exclusion mirrors the engine's
   // `per_target: derived.or(atom_per_target)`: the atom stamp, or the derived gate (frac probe
@@ -559,7 +559,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
         // datasets DISAGREE about which slots grow per foe is dataset drift, not a slider
         // defect — the legacy converter invented an increment on rows the export states flat
         // (a Defiance rider read as per-foe damage), while the contract's `per_target` stamp
-        // is restricted to the export's real increments (PERFOE-1). Logged and skipped whole:
+        // is restricted to the export's real increments (data-gaps-307). Logged and skipped whole:
         // one drifted slot pollutes the power's response totals. Excluded from `examined` so
         // the anti-vacuity counters keep counting only powers both sides can actually grade.
         const drift = perTargetDrift(server, powerset.id ?? powersetKey, power.internalName, power);
@@ -580,7 +580,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
           adjudicated.push(`${powersetKey}/${power.name}: helper row on ${helperTable.modifierTable} reads the ${helperTable.petClass} class — legacy calc reads the caster's, response comparison skipped`);
           continue;
         }
-        // BPORT7 A3: the per-foe absorb channel is the named ABSORB-4 residual. The atom-fed
+        // BPORT7 A3: the per-foe absorb channel is the named data-gaps-163 residual. The atom-fed
         // oracle reads absorb flat while the engine grows it per foe (atom stamp or derived
         // bundle gate), so the absorb key compares two channels, not two calcs. Drop it and
         // log the power unverified; the exclusion mirrors the engine's own gate, so it stays
@@ -592,7 +592,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
             (meta?.effectArea === 'AoE' || meta?.effectArea === 'Cone') &&
             (meta?.maxTargets ?? 0) > 1 && (meta?.maxTargets ?? 0) !== 255);
         if (absorbUnverified) {
-          unverified.push(`${powersetKey}/${power.name}: absorb key excluded, per-foe channel ungraded (ABSORB-4 residual)`);
+          unverified.push(`${powersetKey}/${power.name}: absorb key excluded, per-foe channel ungraded (data-gaps-163 residual)`);
         }
         examined++;
 
@@ -640,7 +640,7 @@ suite('PROD5 — engine vs legacy dashboard parity, per server', () => {
     }
     if (unverified.length) {
       // eslint-disable-next-line no-console
-      console.warn(`[PROD6B-2d] ${server} per-foe absorb (ABSORB-4 residual, ${unverified.length}):\n    ${unverified.join('\n    ')}`);
+      console.warn(`[PROD6B-2d] ${server} per-foe absorb (data-gaps-163 residual, ${unverified.length}):\n    ${unverified.join('\n    ')}`);
     }
 
     if (mismatches.length) {

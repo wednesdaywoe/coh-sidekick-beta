@@ -27,7 +27,7 @@ const SIZE_CONFIG: Record<SlotSize, { className: string; iconSize: number; fontS
  * Shown on a slot the grant schedule could not place. It is a real state — the
  * build asks for more slots at or above some pick level than the schedule
  * issues from that level on — and it has to be visible, because the number that
- * used to appear in its place looked like an ordinary assignment (SLOT-1).
+ * used to appear in its place looked like an ordinary assignment (issues-6).
  */
 const UNPLACED_SLOT_TITLE =
   'This slot has no level the game could grant it — the build wants more slots at this power’s level or later than the schedule issues. Free one from a later power.';

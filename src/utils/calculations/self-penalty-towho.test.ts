@@ -26,7 +26,7 @@ import {
  * Three claims re-point onto the readers (HC Granite's self slow/-Dmg/-Rech,
  * Reaction Time's silence, Ice Bolt's clean foe-only). One is OVERTURNED, not
  * re-pointed: Rebirth Granite's `-500` movement row has `toWho:'Target'` and
- * `reachesCaster`'s TARGETS-3 join (power recipients, not row aspect) admits it
+ * `reachesCaster`'s data-gaps-63 join (power recipients, not row aspect) admits it
  * — Granite is Self-only, so the fly-speed/JumpValues the row states are the
  * caster's, whatever the row's aspect says. The old bag tag excluded it and the
  * registered claim pinned that leak as sealed; the reader says it is the

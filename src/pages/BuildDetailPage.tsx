@@ -20,7 +20,7 @@ import { authorIdentity } from '@/utils/author-identity';
 /** Hard cap on how long a hidden preview-capture iframe can run before this
  *  page gives up on it — matches SharePreviewCapture's own timeout, plus
  *  headroom for the iframe's own app boot (dataset load, wasm engine).
- *  See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (PREVBF7). */
+ *  See streams/BUILD_PREVIEW_BACKFILL_PLAN.md (build-preview-backfill-7). */
 const PREVIEW_CAPTURE_TIMEOUT_MS = 25000;
 
 function needsPreviewCapture(build: SharedBuild): boolean {
@@ -105,7 +105,7 @@ export function BuildDetailPage() {
     return () => { cancelled = true; };
   }, [id]);
 
-  // Automatic preview-image backfill/refresh (PREVBF7): a hidden capture-mode
+  // Automatic preview-image backfill/refresh (build-preview-backfill-7): a hidden capture-mode
   // iframe renders and uploads this build's image if it's missing or stale.
   // `previewCaptureAttempted` guards this to once per pageview — a later
   // `setBuild` (e.g. from the visibility toggle below) must not re-trigger it.
@@ -617,7 +617,7 @@ export function BuildDetailPage() {
         )}
       </div>
 
-      {/* Hidden preview-image backfill/refresh capture (PREVBF7) — see
+      {/* Hidden preview-image backfill/refresh capture (build-preview-backfill-7) — see
           streams/BUILD_PREVIEW_BACKFILL_PLAN.md. Never visible; removed on
           completion or PREVIEW_CAPTURE_TIMEOUT_MS. */}
       {previewCaptureUrl && (

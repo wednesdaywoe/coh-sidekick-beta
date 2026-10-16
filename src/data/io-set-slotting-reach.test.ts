@@ -19,7 +19,7 @@ import { IO_SETS_RAW as THUNDERSPY } from './datasets/thunderspy/io-sets-raw';
  * compares them, so a set whose `type` no power lists simply never appears, in
  * silence, with every other guard green.
  *
- * That is how BOOST-2 sat open: four Thunderspy sets — Overwhelming Force, Subaluwa
+ * That is how data-gaps-40 sat open: four Thunderspy sets — Overwhelming Force, Subaluwa
  * and both Primalist ATOs — reached no power at all, and the labels on 25 more were
  * Homecoming's spelling of a heading Thunderspy renames. The two arms agreed with
  * each other while both disagreed with the game, which is why a same-derivation
@@ -76,7 +76,7 @@ describe.each(DATASETS)('IO set slotting reach — %s', (dataset, registry) => {
   // list is `Inherent.Inherent.Rest`, and its heading had no host because the
   // planner's Rest was a hand-written entry that stated no set categories at all.
   // Rebirth's export states `allowed_set_categories: ["Rest Buff"]` on that very
-  // record, so sourcing Rest gave the heading its host (INHERENT-5). SETCAT-2 was
+  // record, so sourcing Rest gave the heading its host (data-gaps-33). data-gaps-38 was
   // closed by decision — "Rest stays unmodeled" — and the decision is now moot.
   //
   // Kept as an empty allowlist rather than deleted: a set the picker can never
@@ -96,7 +96,7 @@ describe.each(DATASETS)('IO set slotting reach — %s', (dataset, registry) => {
   });
 
   it('every offered category is a heading some set on this fork carries', () => {
-    // Clean since SETCAT-1 closed: the pool and epic converters used to answer
+    // Clean since data-gaps-39 closed: the pool and epic converters used to answer
     // `allowed_set_categories: null` with an inference heuristic written in
     // Homecoming's vocabulary, which on the forks named headings no set there
     // carries ("Melee AoE Damage" from Rebirth's Psionic Tornado).
@@ -122,7 +122,7 @@ describe.each(DATASETS)('IO set slotting reach — %s', (dataset, registry) => {
  * The half the heading-join above cannot see: a converter that invents a REAL
  * heading for a power the game lists in no set offers genuine sets where the
  * game refuses them, and every category still matches something. That was
- * SETCAT-1's actual damage — Teleport sets in Jaunt, Healing sets in Rebirth's
+ * data-gaps-39's actual damage — Teleport sets in Jaunt, Healing sets in Rebirth's
  * Hoarfrost — 33 pool/epic powers across the forks, none of them visible to
  * the reach sweep. So this joins the generated pool/epic categories back to
  * the export: a power offers set categories only if its own
@@ -192,7 +192,7 @@ describe.each(['homecoming', 'rebirth', 'thunderspy', 'brainstorm'])(
   },
 );
 
-describe("Thunderspy's four unreachable sets (the BOOST-2 cases)", () => {
+describe("Thunderspy's four unreachable sets (the data-gaps-40 cases)", () => {
   const offered = offeredCategories('thunderspy');
 
   // Named individually because the sweep above would still pass if the extractor
@@ -235,7 +235,7 @@ describe('fork category spellings', () => {
  * and the proc-potential scorer. It agreed with the data on every row, so no test
  * could have caught it by value — but it answered `undefined` for a heading it had
  * not been told about, and a heading it has not been told about is exactly what the
- * next fork ships. That is BOOST-2's failure mode rebuilt, waiting for the data to
+ * next fork ships. That is data-gaps-40's failure mode rebuilt, waiting for the data to
  * move.
  *
  * So this grades no particular list. Any export keyed by slotting headings is a

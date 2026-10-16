@@ -16,7 +16,7 @@ const atomStacking = (duration: number, toWho: string, stacking: string, cap: nu
   toWho, 'Any', false, stacking, cap,
 ];
 
-// `targetsAffected` is what resolves a `Target` atom's pronoun (TARGETS-3) — the
+// `targetsAffected` is what resolves a `Target` atom's pronoun (data-gaps-63) — the
 // real Farsight carries `['Teammate', 'Self']`, so its caster is among the affected.
 const recastPower = (atoms: unknown[], targetsAffected = ['Teammate', 'Self']): Power =>
   ({

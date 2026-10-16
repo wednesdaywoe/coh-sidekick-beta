@@ -29,7 +29,7 @@ import { CloakofDarkness } from './datasets/thunderspy/generated/powersets/brute
  * plain `tohitBuff`.
  *
  * These re-read the committed dataset so a future regen can't silently undo it
- * (GAME-DATA-PRINCIPLES §9). The STRIP-1 bag strip removed the projected `effects`
+ * (GAME-DATA-PRINCIPLES §9). The data-gaps-327 bag strip removed the projected `effects`
  * object these once read; the claims are now stated on the ATOMS the strip left in
  * place, which is the same surface the migration's other survivors moved to.
  */
@@ -69,7 +69,7 @@ describe('Thunderspy resistance / ToHit vocabulary surfacing (TSPY11)', () => {
     // A ToHit buff must NOT surface as a resistance-debuff-shaped atom (aspect Res).
     expect(atomsOfType(Aim, 'ToHit').find((a) => a.aspect === 'Res' || a.aspect === 'Str')).toBeUndefined();
     // Aim's OTHER half is a real +Damage buff, on its own `Melee_Buff_Dmg` template.
-    // It was invisible until the parser walked every AttribMod in an element (TSPY-4);
+    // It was invisible until the parser walked every AttribMod in an element (data-gaps-74);
     // tspy now carries the same two templates Homecoming does.
     const dmgAtoms = atomsOfType(Aim, 'DamageBuff');
     expect(dmgAtoms.length).toBeGreaterThan(0);

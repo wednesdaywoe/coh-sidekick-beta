@@ -1,6 +1,6 @@
 /**
  * Special-enhancement registries facade — reads the ACTIVE dataset's
- * generated Hamidon/Titan/Hydra/D-Sync/prestige registries (SOURCE-1 item 9).
+ * generated Hamidon/Titan/Hydra/D-Sync/prestige registries (data-gaps-324 item 9).
  * Per-dataset by necessity: HC carries 20 Hamidons and the D-Sync family at
  * the Hamidon rate; the forks carry the classic 11 Hamidons, legacy 25/15
  * Titan/Hydra, and no D-Sync at all.

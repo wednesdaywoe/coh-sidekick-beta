@@ -42,7 +42,7 @@ describe('Ally/team +Range buff — homecoming', () => {
     it(`${setId}: Power of the Depths surfaces its +37.5% rangeBuff via the atom stream`, () => {
       const potd = powerBy(setId, 'Call_Depths');
       expect(potd, `${setId} Call_Depths`).toBeTruthy();
-      // The bag (`effects.rangeBuff`) no longer reaches powerset powers (STRIP-1);
+      // The bag (`effects.rangeBuff`) no longer reaches powerset powers (data-gaps-327);
       // the +Range now lives on the power's own Range atom. `rangeBuffValue` is the
       // atom-native reader the totals pass spends (character-totals.ts:2140), so the
       // guard pins that reader recovering PotD's +Range rather than a retired bag slot.

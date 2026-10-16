@@ -21,13 +21,13 @@
  * this gate was written before. The bag is a map — one value per axis — and
  * `movementBuffValue` now returns a LIST, keyed by axis plus `ignoreStrength` plus
  * `suppressible`, because a power may buff one axis twice and the map kept only the
- * last write (MOVEMAP-1: Sprint reported +50% run where the game gives +100%). So a
+ * last write (data-gaps-198: Sprint reported +50% run where the game gives +100%). So a
  * bag entry is graded against the atom entries FOR ITS AXIS, and an axis carrying
  * more than one lands in its own bucket:
  *
  *   agree        — the axis holds exactly one atom entry and the bag states it.
  *   split        — the axis holds several and the bag states one of them. This is the
- *                  bag being wrong on purpose; it is what MOVEMAP-1 fixed. Pinned by
+ *                  bag being wrong on purpose; it is what data-gaps-198 fixed. Pinned by
  *                  name in EXPECTED_SPLITS, so a NEW one is loud and so is a lost one
  *                  (which would be the fix regressing).
  *   fork         — no atom entry, because the build-agnostic reader abstains on an
@@ -55,10 +55,10 @@
  * — "tspy has NO movement data, +0 everywhere, aspect always empty"; corrected 2026-07-19,
  * all three claims are now false). `MOVEMENT_TYPES` (bag) and `MOVEMENT_AXIS` (bridge) both
  * map tspy's `SpeedRunning`/`SpeedJumping`/`SpeedFlying` spelling onto the Run/Fly/Jump axes,
- * and the TSPY-3 step-1 typing recovery filled in `aspect` (tspy is now ~4.8% aspect-empty,
+ * and the data-gaps-75 step-1 typing recovery filled in `aspect` (tspy is now ~4.8% aspect-empty,
  * was ~98%), so the speed-buff-vs-travel-cap distinction IS recoverable. This gate reports
  * ~95 tspy movement axis slots (bag == atoms, 0 divergence) — real data on both sides, not a
- * vacuous agree. (TSPY-3 step 2 also mapped the bare `Friction`/`Control` respellings, but
+ * vacuous agree. (data-gaps-75 step 2 also mapped the bare `Friction`/`Control` respellings, but
  * `movement.rs` excludes those axes from every total by design.) Coverage still prints per
  * dataset so any genuine zero stays visible rather than hiding in a corpus-wide total.
  *
@@ -104,7 +104,7 @@ const AXES = ['runSpeed', 'flySpeed', 'jumpSpeed', 'jumpHeight'];
 
 /**
  * The keys `effects.slow` uses, which are the four above plus the two axes that carry a
- * modelled global on the penalty side and none on the buff side (MOVE-1), plus `fly` —
+ * modelled global on the penalty side and none on the buff side (data-gaps-190), plus `fly` —
  * the kFly flight-MODE grant, which the bag's key map routes to the flySpeed global and
  * the atom side deliberately does not. Listed so the sweep VISITS `fly` and can count
  * what it drops, rather than never looking.
@@ -145,7 +145,7 @@ const eq = (a, b) =>
  *
  * That the atoms carry `suppressible: true` on Super Speed's control/friction slow and
  * nothing reads it IS a live question — whether a suppressible self penalty should drop
- * in combat. It is not this one, and answering it moves totals. Recorded on MOVEMAP-1.
+ * in combat. It is not this one, and answering it moves totals. Recorded on data-gaps-198.
  */
 const eqValue = (a, b) =>
   (!a && !b) || (!!a && !!b && a.scale === b.scale && a.table === b.table);
@@ -157,11 +157,11 @@ const axisEntries = (list, axis) =>
 /**
  * Every axis the atom side splits and the bag cannot, pinned by name and count.
  *
- * These are the powers MOVEMAP-1 was filed for — the sprint family's enhanceable /
+ * These are the powers data-gaps-198 was filed for — the sprint family's enhanceable /
  * `IgnoreStrength` run pair, plus the two axes where Thunderspy folds its travel band
  * onto the same axis (Sprint IS that fork's free travel toggle, ATOM-BAG-6). Pinned
  * rather than counted because both directions are worth a failure: a new split is an
- * axis nobody has read yet, and a LOST split is MOVEMAP-1's fix regressing back into
+ * axis nobody has read yet, and a LOST split is data-gaps-198's fix regressing back into
  * the last-write-wins map it replaced — which is exactly the shape no parity gate
  * could see, because both engines agreed on it.
  *
@@ -191,7 +191,7 @@ const EXPECTED_SPLITS = {
   'rebirth|Prestige Power Quick|runSpeed': 2,
   'thunderspy|Sprint|runSpeed': 3,
   'thunderspy|Sprint|jumpHeight': 2,
-  // The fly axis, split as of MOVEMAP-1's close. Every Parse6 travel power states its
+  // The fly axis, split as of data-gaps-198's close. Every Parse6 travel power states its
   // speed as several rows — an enhanceable half, an IgnoreStrength half, and on the
   // pool powers a suppressible travel band — against one normalising minus in `slow`.
   // Held to one slot the plus read half of what the game gives while the whole minus
@@ -213,12 +213,12 @@ const EXPECTED_SPLITS = {
 /**
  * Axes the atom side deliberately reads as EMPTY where the bag states a value.
  *
- * Empty since COND-12. The four entries this held — Rebirth's Aerobatics, Solar Glide,
+ * Empty since data-gaps-126. The four entries this held — Rebirth's Aerobatics, Solar Glide,
  * Afterburner and Quantum Acceleration fly axes — were `chance: 0` groups whose tags the
  * Parse6 export used to drop, so they read as mode-less sentinels and the atom side
- * silenced the axis while the bag still held a value. With the tags on the wire (COND-11)
+ * silenced the axis while the bag still held a value. With the tags on the wire (data-gaps-11)
  * and the corpus-wide chance-mod pass gating their groups on the minted `kFlightActive`
- * mode (COND-12), BOTH sides now read the axis as conditional: the bag's collector drops
+ * mode (data-gaps-126), BOTH sides now read the axis as conditional: the bag's collector drops
  * the mode-gated group and the base atom reader drops the `gated` atom, so the axis is
  * empty-vs-empty and needs no pin. The rows themselves still exist, gated — a build
  * running a flight toggle gets them through the mode machinery, not through base.
@@ -237,12 +237,12 @@ const EXPECTED_SPLITS = {
  * (COH-DATA-MODEL §3) in the debuff direction — a mode magnitude read as a speed.
  *
  * The atom side has no key for `FlyMode` on either map, so it drops them. Since
- * MOVEMAP-7 the converter drops them from the display slow slots too — the bag no
+ * data-gaps-174 the converter drops them from the display slow slots too — the bag no
  * longer states a `fly` axis, so this pin is EMPTY, and its live direction is the
  * `NEW kFly mode kill, never read` check below: an entry reappearing here means the
  * extractor has resumed folding the mode axis into `slow`. The retired population
  * (Geode/Granite/Hibernate/Icy Bastion at 10000, Parse6 Granite/Rooted at 10; HC
- * Rooted already gone via COND-12's `kGraniteRoot` gating) is in the MOVEMAP-7
+ * Rooted already gone via data-gaps-126's `kGraniteRoot` gating) is in the data-gaps-174
  * census, docs/gaps/stat-routing.md.
  */
 const EXPECTED_MODE_KILLS = {};
@@ -251,7 +251,7 @@ const EXPECTED_ABSTENTIONS = {};
 
 /**
  * The bag credits the caster with a buff the power hands to somebody else, and the atom
- * side declines it (TARGETS-3).
+ * side declines it (data-gaps-63).
  *
  * These powers state their movement rows at `AnyAffected` and name no `Self` in their own
  * `targetsAffected`: Speed Boost and Enforced Morale are `['Friend']` ally buffs a
@@ -299,7 +299,7 @@ const EXPECTED_ALLY_ONLY = {
 
 /**
  * The other direction: the atom side states a row the bag never had, because the power
- * writes it at `AnyAffected` and its own `targetsAffected` names `Self` (TARGETS-3).
+ * writes it at `AnyAffected` and its own `targetsAffected` names `Self` (data-gaps-63).
  *
  * Four shapes, all adjudicated against the power's own data:
  *   * **Rest** — `['Self']`, and every movement row `-1000 × Melee_Ones`. Resting grounds
@@ -312,7 +312,7 @@ const EXPECTED_ALLY_ONLY = {
  *
  * The magnitudes are switches rather than percentages, and nothing floors them yet: the
  * game's `ClampCur` bounds a current attribute below by its `AttribMin` row, which this
- * pipeline does not export (DATA-GAP-REGISTER MOVEMIN-1). That is a display gap on top of
+ * pipeline does not export (DATA-GAP-REGISTER data-gaps-193). That is a display gap on top of
  * a correct read, and it predates this: Homecoming's Granite Armor has been stating
  * `-189%` jump speed at `Self` all along.
  */
@@ -365,7 +365,7 @@ function checkPower(dataset, power, genPath) {
   stats.powers++;
   perDataset[dataset] = perDataset[dataset] || { powers: 0, slots: 0 };
   perDataset[dataset].powers++;
-  // STRIP-1 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
+  // data-gaps-327 (BPORT7) removed the bag this gate compares against; bag-less powers are vacuous rows, named in the tail.
   if (!power.effects || !Object.keys(power.effects).length) { stats.noBag++; return; }
 
   // Before the movement map's own early return: a grounding power (Hibernate, Icy
@@ -416,7 +416,7 @@ function checkPower(dataset, power, genPath) {
       abstentionsSeen[`${dataset}|${name}|${axis}`] = true;
       continue;
     }
-    // The two TARGETS-3 classes: the bag crediting the caster with somebody else's buff,
+    // The two data-gaps-63 classes: the bag crediting the caster with somebody else's buff,
     // and the atom side stating a row the bag's recipient test dropped. Both are the fix
     // rather than a divergence, and both are pinned by name.
     const targetsKey = `${dataset}|${name}|${axis}`;
@@ -505,10 +505,10 @@ console.log('\nPlan B Slice 7 — movement-buff reconstruction (effects.movement
 console.log(`  powers swept:  ${stats.powers}`);
 console.log(`  axis slots:    ${stats.slots}`);
 console.log(`  agree:         ${stats.agree}  (of which archetype-fork resolved: ${stats.forkResolved})`);
-console.log(`  split axes:    ${stats.split}  (atoms hold a pair the bag has one slot for — MOVEMAP-1)`);
+console.log(`  split axes:    ${stats.split}  (atoms hold a pair the bag has one slot for — data-gaps-198)`);
 console.log(`  silenced:      ${stats.abstain}  (every atom on the axis is a chance-0 sentinel naming no mode)`);
-console.log(`  ally-only:     ${stats.allyOnly}  (bag credits the caster a buff the power hands elsewhere — TARGETS-3)`);
-console.log(`  recovered:     ${stats.recovered}  (atoms state a row the bag's recipient test dropped — TARGETS-3)`);
+console.log(`  ally-only:     ${stats.allyOnly}  (bag credits the caster a buff the power hands elsewhere — data-gaps-63)`);
+console.log(`  recovered:     ${stats.recovered}  (atoms state a row the bag's recipient test dropped — data-gaps-63)`);
 console.log(`  diverge:       ${findings.length}`);
 console.log(`  slow slots:    ${stats.slow}  (effects.slow, self-directed — split axes: ${Object.keys(slowSplitsSeen).length}, diverge: ${slowFindings.length})`);
 console.log('  coverage by dataset (a zero here means the DATASET has no movement data,');
@@ -547,7 +547,7 @@ if (FULL_RUN && !VACUOUS) {
   for (const key of Object.keys(EXPECTED_ABSTENTIONS)) {
     if (!abstentionsSeen[key]) pinFailures.push(`LOST abstention: ${key} — the atom side now states this axis`);
   }
-  // The two TARGETS-3 classes, both ways. A NEW entry is a power whose caster just gained
+  // The two data-gaps-63 classes, both ways. A NEW entry is a power whose caster just gained
   // or lost a movement row and wants adjudicating against its own `targetsAffected`; a LOST
   // one is the join regressing.
   for (const key of Object.keys(allyOnlySeen)) {
@@ -597,7 +597,7 @@ if (totalDiverge || pinFailures.length) {
   process.exit(1);
 }
 if (VACUOUS) {
-  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-STRIP-1.`);
+  console.log(`\nVACUOUS — bag absent: ${stats.noBag} powers swept, 0 checks — vacuous post-data-gaps-327.`);
   console.log('   The atom side is graded by the converter gates, not here.');
 } else {
   console.log('\nOK — every bag movement entry is reproduced by an atom entry on its axis.');

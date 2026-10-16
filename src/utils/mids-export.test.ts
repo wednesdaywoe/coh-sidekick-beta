@@ -129,7 +129,7 @@ describe('mids-export enhancement UIDs', () => {
     // superior twin has the piece and spells it `_F`, so this is one database
     // row, not a set Mids never shipped.
     //
-    // It read `piece 1` until MBDEXPORT-10, which is the same defect wearing
+    // It read `piece 1` until data-gaps-263, which is the same defect wearing
     // the hole one slot along: the unlettered rez proc was filed at the last
     // free slot, so piece 1 went unnamed and piece 6 went out as the rez proc.
     // A list of what we cannot name had nowhere to record something we named
@@ -140,14 +140,14 @@ describe('mids-export enhancement UIDs', () => {
     // the build. What Mids does not have is our spelling: its set record reads
     // `Superior _Endless_Nightmare`, with a stray space its own piece UIDs lack,
     // and the emitter's key kept it. The six pieces became nameable the moment
-    // `set_key` dropped whitespace (MBDEXPORT-2), which is what reds this list.
+    // `set_key` dropped whitespace (data-gaps-262), which is what reds this list.
     rebirth: ['return_from_the_grave piece 6'],
     // Thunderspy ships KB and the Primalist ATOs, and no Mids database holds any of the
     // three. This comment was for a while the ONLY place in either repo recording that our
     // Thunderspy UID table is Mids' Generic database — while the emitter next to it claimed
     // Thunderspy shipped its own — so the repo held a fact and its contradiction in two
     // files neither of which cited the other. The provenance is now stated at every site
-    // that reads the file (MBDEXPORT-2), and this list is just the residue: three sets that
+    // that reads the file (data-gaps-262), and this list is just the residue: three sets that
     // exist on one fork and in no Mids database ever.
     thunderspy: [
       ...[1, 2, 3, 4, 5, 6].flatMap((n) => [
@@ -320,7 +320,7 @@ describe('mids-export regression: therm/water defender', () => {
   });
 
   /**
-   * MBDEXPORT-20. Not one of the seven above — `SortGridPowers` indexes those by
+   * data-gaps-273. Not one of the seven above — `SortGridPowers` indexes those by
    * position and this one Mids addresses by name — and it had no arm at all, so every
    * exported build arrived at Mids without the power its own archetype is built around.
    *
@@ -349,7 +349,7 @@ describe('mids-export regression: therm/water defender', () => {
     // pick sits one before it. It counts PICK SLOTS, not named powers — a build that
     // skipped its level-49 pick still has to keep the inherents out of that slot.
     expect(mbd.PowerEntries[mbd.LastPower - 1].PowerName).toBe('Pool.Fighting.Tough');
-    // `Temporary_Powers.` is the accolades (MBDEXPORT-12); Mids files them past `LastPower`
+    // `Temporary_Powers.` is the accolades (data-gaps-264); Mids files them past `LastPower`
     // in its own corpus, which is where the reader takes a name rather than an index.
     const GRANTED = ['Inherent.', 'Incarnate.', 'Temporary_Powers.'];
     expect(mbd.PowerEntries.slice(mbd.LastPower).every(
@@ -419,12 +419,12 @@ describe('mids-export origin enhancements', () => {
    * `SingleO` — never our `TO`/`DO`/`SO`. This assertion used to read `'SO'`,
    * under a title claiming that was "where Mids reads it", and it was green for
    * as long as it was wrong: Mids `Enum.Parse`s the field, throws inside
-   * `LoadBuild`, and refuses the entire build. See DATA-GAP MBDEXPORT-4, and the
+   * `LoadBuild`, and refuses the entire build. See DATA-GAP data-gaps-259, and the
    * corpus-graded version of this claim in canonical's
    * `mids-import/mbd-roundtrip.test.ts` — this repo has no `fixtures/` tree.
    *
    * A hand-fed test states its author's model of the format. That is exactly how
-   * MBDIMPORT-6 survived on the reader's side too, passing `'SO'` by hand
+   * data-gaps-236 survived on the reader's side too, passing `'SO'` by hand
    * through a branch no real file could reach.
    */
   it('carries the tier in Grade, spelled as Mids spells it', () => {
@@ -436,7 +436,7 @@ describe('mids-export origin enhancements', () => {
 });
 
 /**
- * MBDEXPORT-16 — which sets a VEAT's file is FILED under.
+ * data-gaps-269 — which sets a VEAT's file is FILED under.
  *
  * The corpus Night Widow grades the case where both roles hold a branch pick, and it is the
  * only VEAT the corpus has. These are the arms it cannot reach: a build that specialised in
@@ -444,7 +444,7 @@ describe('mids-export origin enhancements', () => {
  * the header ever drags the picks along with it.
  *
  * Hand-fed, and therefore stating this author's model of the format rather than Mids' —
- * which is how MBDIMPORT-6 survived. What keeps that honest here is that the claim being
+ * which is how data-gaps-236 survived. What keeps that honest here is that the claim being
  * modelled is OURS (which of the build's own sets the header names), and Mids' half of it is
  * graded against Mids' own bytes next door in `mbd_writer_roundtrip.rs`.
  */

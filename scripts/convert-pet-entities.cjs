@@ -95,7 +95,7 @@ const SIDECAR_SELF_DESTRUCT_PATH = datasetPath(datasetId, 'self-destruct-delays.
 // the only thing that says which entity those powers belong to is the entity's own
 // declaration. Both halves are data, so the join needs no naming convention — which is
 // the point, because turning `Villain_Pets.Traps_Poison_Trap.Self_Destruct` into
-// `Pets_Traps_Poison_Trap` by string surgery would be inventing one (ENT-16).
+// `Pets_Traps_Poison_Trap` by string surgery would be inventing one (data-gaps-16).
 //
 // The whole index ships rather than the summons-that-need-it subset: which summons need
 // it is a fact about the powers tree, and this script does not read the powers tree for
@@ -171,7 +171,7 @@ const PET_TYPE_TO_BAG_KEY = new Map(
  * hold, and `targets_affected` is the surviving discriminator. This converter never asked,
  * so Thunderspy pet abilities published control keys the guard classifies as index
  * artifacts — `bag_slots` mirrors the guard and stripped them, and the pet-merge census
- * read the gap as five atom-misses (ENT-20).
+ * read the gap as five atom-misses (data-gaps-20).
  *
  * The guard itself decides. This only adapts the shape: it mutates a bag OBJECT keyed by
  * bag key, while a pet ability carries a `PetEffect[]`, so the rows are projected into that
@@ -228,7 +228,7 @@ const DEBUFF_ATTRIBS = {
  * the mez by the same three aspects, and its `classifyPseudoPetEffect` — the inline
  * pseudo-pet route — emits `<Type>Protection` for the negative-Current face and
  * `<Debuff>Resist` for the resistance face. Those names are this suffix rule applied to
- * the applied type, so both are derived here rather than restated (ENT-9).
+ * the applied type, so both are derived here rather than restated (data-gaps-104).
  *
  * Scoped to the families whose applied face is Current/Absolute. The slow family is
  * absent because `classifySlowFamily` owns its own aspect fork (Maximum is the movement
@@ -285,7 +285,7 @@ function templateFace(attribLower, template) {
  * `Math.abs(scale)` — so a −40% mez resistance shipped as +40% resistance, the sign being the
  * whole difference between the two (25 rows, 12 of them on Rebirth's build-reachable
  * Disruption Arrow). Naming it would need a display key the PARENT route writes, and neither
- * route has one for a −resistance debuff, so it stays out until one exists (register ENT-12).
+ * route has one for a −resistance debuff, so it stays out until one exists (register data-gaps-106).
  */
 function facedType(appliedType, face) {
   if (face === 'applied') return appliedType;
@@ -327,7 +327,7 @@ function isDebuffDirection(template) {
  * The three faces of a slow are three different attributes and the game keeps them apart:
  * a Current/Strength-aspect speed debuff, a Maximum-aspect movement CAP debuff, and a
  * -Recharge. `convert-powerset.cjs` routes a parent power's rows to `slow[axis]`,
- * `movementCapDebuff[axis]` and `rechargeDebuff` for exactly that reason (ENT-5), and this
+ * `movementCapDebuff[axis]` and `rechargeDebuff` for exactly that reason (data-gaps-100), and this
  * returns the same three so a pet row lands in the key its parent-power twin would.
  *
  * The other two directions are not debuffs at all and previously published as one:
@@ -339,7 +339,7 @@ function isDebuffDirection(template) {
  * The recharge half of the resistance face DOES have a name — the inline route's
  * `RechargeDebuffResist` — so it is published rather than dropped, which is what stops the
  * two routes disagreeing about the same template. The movement half still has none, as it
- * has none on the inline route either (ENT-9).
+ * has none on the inline route either (data-gaps-104).
  *
  * Returns `null` when the attrib is not in this family or the row is not a debuff.
  */
@@ -365,7 +365,7 @@ function classifySlowFamily(attribLower, template) {
  * Keying on the type alone kept one effect per type per power and dropped the rest by
  * template ORDER, so Sentinel Whirlpool published its run-speed CAP kill as its `-Speed`
  * and lost the real 0.4 speed debuff, the 0.3 fly debuff and the -Recharge underneath
- * (ENT-8). Two rows are the same effect only when they agree on every axis that reaches
+ * (data-gaps-103). Two rows are the same effect only when they agree on every axis that reaches
  * the wire; anything else is a distinct effect the merge is entitled to see.
  */
 function effectIdentity(effect, template) {
@@ -412,9 +412,9 @@ function effectIdentity(effect, template) {
 //    Homecoming and Rebirth twins (Poison Gas -10 @Melee_Ones) and on the parent
 //    route, where convert-powerset.cjs ships `regenDebuff` on `Ranged_Ones`. A
 //    blanket table guard would have dropped every tspy pet -Regen, since all of
-//    them ride `*_Ones` (ENT-7).
+//    them ride `*_Ones` (data-gaps-102).
 // The `debuff_*` keys are CATEGORY tokens — what a tspy effect element carries at its
-// front. Since the parser began reading each AttribMod's own index array (TSPY-4) most
+// front. Since the parser began reading each AttribMod's own index array (data-gaps-74) most
 // of these arrive under their real HC attrib name instead (`Base_Defense`, `ToHit`, the
 // movement stats), so both spellings must map: the token for the elements that still
 // front one, the real name for the mods that now name themselves. Without the real
@@ -474,7 +474,7 @@ const BUFF_DEF_TYPE_MAP = {
 // BUFF_DEF_TYPE_MAP because that map answers "which vector is this", and the answer here is
 // "all of them" — so every branch consulting the map declined the row, and the name-keyed
 // DEBUFF_ATTRIBS caught the ally-facing ones while the self-facing ones fell out entirely
-// (ENT-18).
+// (data-gaps-18).
 //
 // Spelled out as every vector rather than left implicit. This route's consumer keys per
 // vector — `buff_pets::aura_keys` maps `defenseTypes` through `defense_key` — so a row naming
@@ -517,7 +517,7 @@ const BUFF_SCALAR_ATTRIBS = {
 //
 // Distinct from the faced vocabulary `templateFace`/`facedType` produce. Those come
 // off rows the pet addresses to somebody else (`AnyAffected`), where the recipient —
-// summoner or foe — is decided by the ABILITY's `targetsAffected` (ENT-12). These
+// summoner or foe — is decided by the ABILITY's `targetsAffected` (data-gaps-106). These
 // come off rows addressed to the pet itself, so there is no recipient question to
 // ask: the stat is the pet's, full stop.
 //
@@ -661,14 +661,14 @@ function extractSelfBuff(template) {
  *
  * A pet effect type is a string, so the Rust consumers can only route the ones they know
  * and drop the rest in silence — which is how six types shipped for months reaching no
- * consumer at all, and how a seventh (`RegenDebuff`) reached one only after ENT-7 went
+ * consumer at all, and how a seventh (`RegenDebuff`) reached one only after data-gaps-102 went
  * looking. The set cannot grow silently now: an unlisted type throws at the push below,
  * where a new type is born, and `pet_effect_vocabulary.rs` grades the other direction —
  * every type in the shipped corpus must have a route or a stated reason for having none.
  *
  * Derived from the classification maps rather than hand-listed, so adding an attrib to
  * one of them cannot leave this behind. Only the names that are literals in their own
- * emitter are literals here (ENT-9).
+ * emitter are literals here (data-gaps-104).
  */
 const EMITTED_EFFECT_TYPES = new Set([
   ...Object.values(MEZ_ATTRIBS),
@@ -798,7 +798,7 @@ function extractBuffAura(template) {
  * ally endurance grant. Same `{ effects, consumed }` contract as extractBuffAura.
  *
  * These sit outside every other vocabulary in this file, which is why a pet carrying only
- * them classified nothing at all (ENT-3): a `*_Dmg` attrib at aspect=Strength is not damage
+ * them classified nothing at all (data-gaps-98): a `*_Dmg` attrib at aspect=Strength is not damage
  * (extractDamage wants aspect=Absolute), not a resistance (that is aspect=Resistance), and
  * DEBUFF_ATTRIBS holds no damage-type keys — so it fell through all three. It is the §2
  * discriminator rule biting the converter: the ASPECT is what makes those rows a damage
@@ -1120,7 +1120,7 @@ function extractEffects(powerData) {
           // summoner's slotting, even though the pet inherits it through CopyBoosts.
           // Recorded per effect: this converter read no flags at all before, so an
           // unenhanceable pet debuff was indistinguishable from an enhanceable one and
-          // 93-100% of the pet -Resistance corpus was the wrong kind (ENT-4).
+          // 93-100% of the pet -Resistance corpus was the wrong kind (data-gaps-99).
           //
           // `granted::pseudo_pet_effects` merges the mark into the summoning power's
           // display bag, where a marked value resolves flat across all three tiers — the
@@ -1166,7 +1166,7 @@ function extractEffects(powerData) {
           // the stat; the aspect and the sign name what is being done to it, and every
           // branch below reads the APPLIED face only. A resistance or protection row
           // publishes under its own name and is never also the effect it protects from —
-          // ENT-3 closed this on `Heal_Dmg` alone and ENT-7 on `Regeneration` alone; the
+          // data-gaps-98 closed this on `Heal_Dmg` alone and data-gaps-102 on `Regeneration` alone; the
           // guard is general now, so the next family cannot arrive without one.
           const face = templateFace(attribLower, template);
           if (face !== 'applied') {
@@ -1205,7 +1205,7 @@ function extractEffects(powerData) {
             // Which number `scale × table` computes. The pseudo-pet merge mints a control row
             // in the same `{mag, scale, table}` shape a parent power writes, and the display
             // reader routes both off this field, so a control row without it is one the
-            // reader cannot resolve (MEZDUR-1). Stamped for every mez-family type rather
+            // reader cannot resolve (data-gaps-167). Stamped for every mez-family type rather
             // than for the six the merge routes as control, because the split lives in the
             // engine's route table and re-stating it here is a second copy to drift. Mapped
             // through the atomizer's own function, so `Constant` and absence fold exactly as
@@ -1382,7 +1382,7 @@ function processPetPower(powerFilePath, powerData) {
     }
   }
 
-  // ENT-20. Runs after the mint because the guard's protection carve-out reads the atoms —
+  // data-gaps-20. Runs after the mint because the guard's protection carve-out reads the atoms —
   // the same order `convert-powerset.cjs` uses, where it is called on the finished power
   // past `encodeAtomsForEmit`.
   const guardedEffects = guardThunderspyPetAppliedMez(effects, atoms, powerData.targets_affected);
@@ -1662,7 +1662,7 @@ function detectOneShot(abilities, selfDestructDelay) {
  *
  * A pet's payload can be one summon deeper: Poison Trap's pet carries only a Self_Destruct and
  * a self-resistance, and the choke/vomit/−Regen everyone associates with the power lives in the
- * `Pets_*_Poison_Gas` entity that Self_Destruct creates as the trap dies (ENT-3 step 4).
+ * `Pets_*_Poison_Gas` entity that Self_Destruct creates as the trap dies (data-gaps-98 step 4).
  *
  * `target` is the discriminator, and it is the §2 recipient axis doing its usual job. An
  * EntCreate at `Self` puts the new entity where the PET is, so it continues the same payload at
@@ -1809,7 +1809,7 @@ function processEntity(entityFilePath, upgradeMap) {
     }
   }
 
-  // The class the pet's own magnitudes resolve against (ENT-10), so a default here would be a
+  // The class the pet's own magnitudes resolve against (data-gaps-105), so a default here would be a
   // guess shipped as a number rather than an absence anyone could see. Every entity in all
   // three forks states one, so this throws rather than falling back.
   if (!defaults.character_class_name) {
@@ -1892,7 +1892,7 @@ function main() {
     // lifespan are facts independent of this script's effect vocabulary, and a summoning
     // power names its pet by NAME: withholding the record makes that name unresolvable,
     // which both Rust consumers (`granted::pseudo_pet_effects`, `buff_pets::each_folded_row`)
-    // answer by skipping in silence — the power then shows and contributes nothing (ENT-3).
+    // answer by skipping in silence — the power then shows and contributes nothing (data-gaps-98).
     // So absence from this table means "the export has no such entity" and nothing else,
     // which is the invariant `summon_resolution.rs` asserts.
     if (entity.abilities.length === 0) noAbilities++;
@@ -2080,8 +2080,8 @@ function generateTypeScript(entities) {
   lines.push(`   *  (Singularity's Gravity Distortion, \`['Foe']\`) — identical type names, identical`);
   lines.push(`   *  scales. The pet is the caster here, so the polarity inverts against a player`);
   lines.push(`   *  power: \`Self\` is the pet alone and the summoner arrives as \`Friend\`,`);
-  lines.push(`   *  \`MyOwner\` or \`Teammate\` (register ENT-12; the power-converter twin is`);
-  lines.push(`   *  MEZRES-3). Omitted when the export states nothing, so absent stays`);
+  lines.push(`   *  \`MyOwner\` or \`Teammate\` (register data-gaps-106; the power-converter twin is`);
+  lines.push(`   *  data-gaps-187). Omitted when the export states nothing, so absent stays`);
   lines.push(`   *  distinguishable from an authored empty list. */`);
   lines.push(`  targetsAffected?: string[];`);
   lines.push(`  range?: number;`);

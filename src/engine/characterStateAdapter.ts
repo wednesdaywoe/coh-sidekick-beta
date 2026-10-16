@@ -425,7 +425,7 @@ const SELF_TOTAL_EFFECT_KEYS: ReadonlySet<string> = new Set([
  *    the same signal that governs the suppressible out-of-combat defense;
  *  - the Primalist form stances ride the toggled form power's own `setsModes`, which is what
  *    `collect_source_modes` binds `kHunterMode` / `kProwlerMode` from. Thunderspy published no mode
- *    at all until TSPY-4 fixed the parser, which is why these two used to fail loud here.
+ *    at all until data-gaps-74 fixed the parser, which is why these two used to fail loud here.
  */
 const ENGINE_MODELED_ADJUSTERS: ReadonlySet<string> = new Set([
   'defensiveadaptation', 'offensiveadaptation', 'restedadaptation',

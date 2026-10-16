@@ -1,5 +1,5 @@
 /**
- * Mids' internal name for a power → this dataset's, per powerset (DATA-GAP MBDIMPORT-2).
+ * Mids' internal name for a power → this dataset's, per powerset (DATA-GAP data-gaps-232).
  *
  * A `.mbd` identifies a power by internal name alone, and that namespace has drifted from
  * the game's. HC has rotated internal names underneath stable display names: Tactical
@@ -67,7 +67,7 @@ const MAP_BY_DATASET: Record<DatasetId, NameMap> = {
 };
 
 /**
- * The same tables backwards — ours → Mids' — for the .mbd WRITER (MBDEXPORT-3).
+ * The same tables backwards — ours → Mids' — for the .mbd WRITER (data-gaps-254).
  *
  * A second generated table rather than an inversion of the one above, because the forward
  * table is lossy in the direction the writer needs: it folds Mids' spelling to lower case
@@ -83,7 +83,7 @@ const REVERSE_BY_DATASET: Record<DatasetId, NameMap> = {
 };
 
 /**
- * The rows the display join could only reach with its separators stripped (MBDEXPORT-8).
+ * The rows the display join could only reach with its separators stripped (data-gaps-258).
  *
  * A writer-side supplement to `MIDS_NAME_REVERSE`, kept separate because it comes from a
  * looser join: the reader has its own all-separators-stripped ladder and does not want
@@ -98,7 +98,7 @@ const LOOSE_BY_DATASET: Record<DatasetId, NameMap> = {
 };
 
 /**
- * Ours → Mids' literal `group.set`, for the .mbd WRITER (MBDEXPORT-3's sibling, MBDEXPORT-6).
+ * Ours → Mids' literal `group.set`, for the .mbd WRITER (data-gaps-254's sibling, data-gaps-255).
  *
  * The path half of a `PowerName`. `MIDS_NAME_REVERSE` above answers the third segment and
  * this answers the first two, and they are separate tables because they cover different
@@ -113,7 +113,7 @@ const PATH_BY_DATASET: Record<DatasetId, SetAlias> = {
 };
 
 /**
- * Mids' `Class_X` → its own name for that archetype's inherent (DATA-GAP MBDEXPORT-24).
+ * Mids' `Class_X` → its own name for that archetype's inherent (DATA-GAP data-gaps-24).
  *
  * Not part of the rotation tables above and not reachable from them. Those join on the
  * display name; three of Homecoming's `Inherent.Inherent` rows display "Opportunity" at
@@ -153,7 +153,7 @@ function normalizeKey(key: string): string {
  * The map is keyed by OUR `group.powerset`, because its main reader — the matcher in
  * `mids-import/mappers.ts` — builds the key from the candidate powers' own paths. But the
  * importer's retired-name check holds the .mbd's own path instead, and Mids' group segment
- * has drifted from ours (`Guardian_Composition` for `Guardian_Comp`, MBDIMPORT-7). Two
+ * has drifted from ours (`Guardian_Composition` for `Guardian_Comp`, data-gaps-237). Two
  * keyings of one table is how a fix lands on one reader and leaves the other wrong
  * (METHOD-7), so the alias is resolved here rather than at either call site.
  */
@@ -210,7 +210,7 @@ export function midsNameOwners(powersetKey: string): ReadonlyMap<string, string>
  * Mids' internal name for THIS dataset's `ourInternalName` inside `powersetKey`, or
  * undefined when the two agree — which is every name but a hundred-odd.
  *
- * The writer's half of the rotation (DATA-GAP MBDEXPORT-3). Undefined is the normal
+ * The writer's half of the rotation (DATA-GAP data-gaps-254). Undefined is the normal
  * answer and means "write ours"; it does NOT mean "Mids has no such power". This table
  * carries only names that moved, so it cannot tell those two apart, and a caller that
  * reported every undefined would report the whole build.
@@ -225,7 +225,7 @@ export function midsNameForExport(
 ): string | undefined {
   const key = ourInternalName.trim().toLowerCase();
   // The tight table first, always. The loose one only answers where the display join
-  // reached nothing at all (MBDEXPORT-8), so this order is the generator's decision
+  // reached nothing at all (data-gaps-258), so this order is the generator's decision
   // carried through rather than a preference expressed here — but stating it once beats
   // relying on the two tables never overlapping.
   return reverseRowsFor(powersetKey)?.[key] ?? looseRowsFor(powersetKey)?.[key];
@@ -248,7 +248,7 @@ export function midsPowersetPathForExport(ourPowersetKey: string): string | unde
 /**
  * Whether this fork's Mids namespace was read at all.
  *
- * False where the names dump this dataset was generated from predates MBDEXPORT-6 and
+ * False where the names dump this dataset was generated from predates data-gaps-255 and
  * carries powerset keys folded to lower case — Mids' own spelling is not recoverable from
  * it, so `midsPowersetPathForExport` answers undefined for every set on the fork. That is
  * a different fact from "Mids has no such powerset", and a warning that conflates the two

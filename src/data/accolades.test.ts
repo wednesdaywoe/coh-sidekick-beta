@@ -74,7 +74,7 @@ describe('accolades derived from the exported Accolades powerset', () => {
   // the joined text agrees with the token-pair read on every row — so the corpus cannot tell a
   // correct reader from a lucky one. These are the violating cases the data does not contain:
   // the faction word present but NOT as the operand `eq` consumes. Joining is for asking a
-  // question, never for re-splitting one (COND-8).
+  // question, never for re-splitting one (data-gaps-123).
   it.each([
     [['type', 'char>', 'villain', 'eq', 'hero', 'teamup', 'neq'], 'villain'],
     [['type', 'char>', 'hero', 'neq'], 'any'],

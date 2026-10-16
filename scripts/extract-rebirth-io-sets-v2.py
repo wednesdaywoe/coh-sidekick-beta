@@ -178,7 +178,7 @@ def _tier_gate(bonus: BoostBonusEntry) -> str | None:
       encoded as a tier whose condition is "that piece is slotted". SKIPPED, and not for
       want of an evaluator: the binary ALSO encodes that global on the slottable piece,
       proc-data carries it from there, and the calc grants it when the piece is slotted.
-      Emitting the tier too is the pseudo-tier double-count MEZRES-1 removed.
+      Emitting the tier too is the pseudo-tier double-count data-gaps-185 removed.
     - a `TFChallenge.*` disjunction ANDed with `isPVPMap? !` — Rebirth's challenge-mode
       bonuses, live only under a TF's challenge settings and off a PvP map. Rebirth-only,
       granting `Challenge_Set_Bonus` powers. SKIPPED: no surface models challenge state.
@@ -404,12 +404,12 @@ REBIRTH_PIECE_ASPECT_OVERRIDES: dict[str, dict[int, list[str]]] = {
 REBIRTH_PIECE_PATCHES: dict[str, dict[int, dict]] = {
     # Liberty's Belt F "Resistance/Global Damage Bonus": a hybrid piece — a
     # real resist enhancement PLUS an always-on +7.5% damage global. The
-    # global lives in a PowerBoostsSlotted-gated auto (BOOST-4), not on the
+    # global lives in a PowerBoostsSlotted-gated auto (data-gaps-4), not on the
     # boost power, so nothing on the piece itself marks it; same shape as
     # HC's hand-patched hybrids (Steadfast Resistance/Defense, LotG
     # Defense/+Recharge). The flag is what admits the piece to the engine's
     # always-on pass and adds the hidden segment to its enhancement
-    # dilution (BOOST-5 step 2 adjudication).
+    # dilution (data-gaps-5 step 2 adjudication).
     'libertys_belt': {
         6: {'proc': True},
     },
@@ -634,7 +634,7 @@ ATTRIB_TO_ASPECT = {
     # vocabulary accepts "InterruptTime" (enhancement.rs, schedule C via the
     # Melee_Boosts_40 table) — dropping the attrib here left that slot fed by
     # nobody, so the six Interrupt pieces enhanced nothing and leaned on a
-    # totalAspects stamp for their dilution (BOOST-5 step 2, the beta led).
+    # totalAspects stamp for their dilution (data-gaps-5 step 2, the beta led).
     'InterruptTime':      'InterruptTime',
     'Unknown(91)':        'InterruptTime',
     # 'ToHit' is intentionally absent — mapped contextually in
@@ -655,7 +655,7 @@ ATTRIB_TO_ASPECT = {
 def _requires_text(requires) -> str:
     """A `Requires` expression as one string, for asking whether a token appears.
 
-    The export states a requires clause as its RPN TOKEN LIST (COND-8); older
+    The export states a requires clause as its RPN TOKEN LIST (data-gaps-123); older
     trees stated the same clause pre-joined. Both are accepted, and the joined
     form is built here only to be searched — never re-split, because a token can
     itself contain a space.
@@ -694,7 +694,7 @@ def _collapse_aspects(attribs: list[str], set_group: str = '') -> tuple[list[str
     their resistance out of the totals while the power window (reading the
     hand-curated table) showed it — reported 2026-08-17. GroupName is stated by
     every record and is the only name the game's own boostset path tests
-    (`_resolve_category`, BOOST-2); keying all three labels on it changes exactly
+    (`_resolve_category`, data-gaps-40); keying all three labels on it changes exactly
     those four sets and nothing else on any fork.
     """
     aspects: list[str] = []
@@ -706,7 +706,7 @@ def _collapse_aspects(attribs: list[str], set_group: str = '') -> tuple[list[str
     # third marker shape, alongside Create_Entity × Current and Null ×
     # Absolute). Reactive Defenses F, Inexhaustibility A and Synapse's
     # Agility F all state their always-on global this way; the global itself
-    # lives in a separate PowerBoostsSlotted-gated auto (BOOST-4), so the
+    # lives in a separate PowerBoostsSlotted-gated auto (data-gaps-4), so the
     # boost power shows only the marker. Pure markers only: a piece that
     # ALSO enhances (Experienced Marksman F's Range) keeps its aspect list
     # and is not flipped here — its dilution is stated by its own scale.
@@ -1206,8 +1206,8 @@ def _bonus_stat_from_bridge(attrib: str, aspect: str, table: str = '') -> str | 
         # that issubset check IS the warrant for the `(all)` label. Reaching here means a
         # single mez type arrived on its own, so answering `(all)` would fabricate the
         # warrant the collapse withheld, and the row would carry no mez_types for the calc
-        # to spend (the MEZRES-1 shape). Repel is the one such type with a set-bonus
-        # carrier and a global of its own (MEZRES-3); everything else returns None and is
+        # to spend (the data-gaps-185 shape). Repel is the one such type with a set-bonus
+        # carrier and a global of its own (data-gaps-187); everything else returns None and is
         # reported as unmapped rather than guessed at.
         return 'repel_resistance' if sub == 'repel' else None
     if et == 'Mez' and sub in {'knockback', 'knockup'}:
@@ -1254,7 +1254,7 @@ _BONUS_STAT_PAIRS = [
 # HC 0.012×SetBonusPetShare and Rebirth 0.03×Melee_Ones — the same 3%),
 # while every non-damage tier kept its scale unchanged across the table
 # move. Keying the ×250 on the attrib alone inflated the fork-authored
-# damage tiers ×2.5 (BOOST-5).
+# damage tiers ×2.5 (data-gaps-5).
 def _bonus_multiplier(attrib: str, aspect: str, table: str) -> float:
     if aspect == 'Strength' and attrib in DAMAGE_ATTRIBS:
         return 250.0 if table == 'SetBonusPetShare' else 100.0
@@ -1618,7 +1618,7 @@ def _attuned_only(record: BoostSetRecord) -> bool:
     This replaces two guesses. `maxLevel <= 1` was the marker the planner read, and
     it is right for most of the roster but misses the reward sets that keep a 10-50
     range; the hand list that patched those was keyed on DISPLAY NAME, so it called
-    Winter's Gift attuned-only (it is not, on any fork — MBDEXPORT-14). A display
+    Winter's Gift attuned-only (it is not, on any fork — data-gaps-267). A display
     name cannot carry the fact anyway: Thunderspy prints "Subaluwa" for two
     different records, its craftable `KB` set and an `Overwhelming_Force` one that
     is attuned-only, and they differ on exactly this field.
@@ -1689,7 +1689,7 @@ def _reuse_hand_entry(out_sets: dict[str, dict], set_id: str, hc_entry: dict) ->
     them. Everything the fork states for itself goes back on top: its icon
     override, its own rarity token, its own slotting `type`, its own piece
     names — and its own BONUS TIERS. The fork's game computes set bonuses from
-    the fork's own defs, and the two authorings genuinely differ (BOOST-5
+    the fork's own defs, and the two authorings genuinely differ (data-gaps-5
     step 2: HC re-rounded its defense scales to 4dp — 0.625 vs 0.63 — and its
     damage tiers carry a +0.025 offset — 2.525 vs the forks' 2.5), so shipping
     HC's values on a fork misstates what that fork's players see. A set where
@@ -1700,7 +1700,7 @@ def _reuse_hand_entry(out_sets: dict[str, dict], set_id: str, hc_entry: dict) ->
     Homecoming — "PBAoE Damage" for "Melee AoE Damage", "Targeted AoE Damage" for
     "Ranged AoE Damage", "Taunt" for "Threat Duration", "Rez Sets" for the rez set —
     and a set left carrying HC's spelling matches no power on this fork, so the
-    picker offers it nowhere. That is the shape of the bug BOOST-2 closed.
+    picker offers it nowhere. That is the shape of the bug data-gaps-40 closed.
 
     The names have to survive for the same reason one level down: a fork names its
     own pieces, and the strings differ. Homecoming's ATO pieces carry an archetype
@@ -1966,7 +1966,7 @@ def _tspy_piece_from_boost(boost_full_name: str, num: int, power_index) -> dict 
     # `_extract_sets`), not a default. Hardcoding False here said "freely
     # slottable" about the only sets that take this path — the Primalist ATOs,
     # whose pieces each carry two `BoostsSlotted>` tests — and the beta then grew
-    # a rarity guess to override the export it had been handed (IOUNIQUE-1).
+    # a rarity guess to override the export it had been handed (data-gaps-26).
     slot_req = _requires_text(piece_power.slot_requires).lower() if piece_power else ''
     return {
         'num': num,
@@ -2062,7 +2062,7 @@ def _tspy_build_only_set(set_id: str, record, power_index, prior: dict) -> dict:
 def _apply_thunderspy_overrides(out_sets: dict[str, dict], hc_sets: dict[str, dict], ctx: dict | None = None) -> dict:
     """Thunderspy post-build passes. Mirrors Rebirth's shared-set reuse (HC's
     piece aspect lists win for any set that also exists on HC; bonus tiers stay
-    tspy's own where its build resolved any — BOOST-5), then REBUILDS the
+    tspy's own where its build resolved any — data-gaps-5), then REBUILDS the
     Thunderspy-only sets (Subaluwa, the Primalist ATOs) from their authoritative
     clientmessages display strings, since tspy's AttribMod format doesn't carry
     the enum aspect field build_sets relies on. The 4 sets that shouldn't be on
@@ -2130,7 +2130,7 @@ DATASET_CONFIG = {
             ' * Includes Rebirth-only sets (Guardian\'s Gift, Absolute Resolution,\n'
             ' * Halloween + Winter event sets, Liberty\'s Belt, etc.) that aren\'t in\n'
             ' * HC\'s curated io-sets-raw. Shared sets reuse HC\'s piece aspect lists;\n'
-            ' * bonus tiers are resolved from Rebirth\'s own export (BOOST-5).\n'
+            ' * bonus tiers are resolved from Rebirth\'s own export (data-gaps-5).\n'
         ),
     },
     'homecoming': {
@@ -2151,7 +2151,7 @@ DATASET_CONFIG = {
         'server': 'HC Brainstorm',
         # The same override pass as Homecoming, because it is the same game one shard over.
         # The bonus VALUES still come from brainstorm's own boostsets.bin, which is the half
-        # that matters: BOOST-5 closed on shared sets shipping FORK-OWN tiers, and a beta that
+        # that matters: data-gaps-5 closed on shared sets shipping FORK-OWN tiers, and a beta that
         # rebalances a set must show its own numbers rather than live's.
         'apply_overrides': _apply_homecoming_overrides,
         'extra_notes': (

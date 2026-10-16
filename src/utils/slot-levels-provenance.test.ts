@@ -6,7 +6,7 @@ import { ensureSlotOrderPopulated, hasPackedSlotLevels } from '@/utils/slot-leve
 import type { Build } from '@/types';
 
 /**
- * The stamp SITES for `slotOrder`'s `levelSource` — DATA-GAP MBDEXPORT-21.
+ * The stamp SITES for `slotOrder`'s `levelSource` — DATA-GAP data-gaps-276.
  *
  * `mids-export-slot-claim.test.ts` is the shared half: it hand-builds a `slotOrder` and grades
  * what the WRITER does with each provenance, byte-identical in both repos because that identity
@@ -14,7 +14,7 @@ import type { Build } from '@/types';
  * stamp themselves correctly, which is where a wrong stamp would actually come from.
  *
  * This file is that half, and it is per-repo rather than shared for two honest reasons rather
- * than one convenient one: `ensureSlotOrderPopulated` still takes SLOT-3's `levelUpMode` argument
+ * than one convenient one: `ensureSlotOrderPopulated` still takes issues-3's `levelUpMode` argument
  * here and not in canonical, and the `.mbd` fixture corpus is canonical-only. A shared file could
  * only cover both by pretending that fork is closed where it is not.
  *
@@ -49,7 +49,7 @@ function oneSlotBuild(): Build {
   } as unknown as Build;
 }
 
-describe('where a slot level says it came from (MBDEXPORT-21)', () => {
+describe('where a slot level says it came from (data-gaps-276)', () => {
   beforeAll(async () => { await loadDataset('homecoming'); }, 120000);
 
   /**
@@ -59,7 +59,7 @@ describe('where a slot level says it came from (MBDEXPORT-21)', () => {
    */
   it('ensureSlotOrderPopulated stamps its wholesale fill as packed', () => {
     const build = oneSlotBuild();
-    // The `true` is SLOT-3's `levelUpMode`: off, this returns an empty map and fills nothing,
+    // The `true` is issues-3's `levelUpMode`: off, this returns an empty map and fills nothing,
     // so the stamp is only reachable with it on. That argument is the fork, not the decision.
     ensureSlotOrderPopulated(build, true);
     expect(build.slotOrder.length).toBeGreaterThan(0);

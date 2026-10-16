@@ -11,7 +11,7 @@
 # part of the Sidekick tool suite, so both paths must physically exist here — but
 # they are a copy, and the flow is one-way. Edit the parser THERE, re-export
 # THERE, then run this. Editing either path here strands the fix in one repo,
-# which is what happened to HC-3.
+# which is what happened to data-gaps-115.
 #
 # The copy is a MIRROR, not an overlay: tracked files under the synced paths are
 # removed before extracting, so a file deleted upstream disappears here too. The

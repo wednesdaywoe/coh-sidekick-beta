@@ -8,7 +8,7 @@
  * or a click/travel/temp-weapon utility (Eye of the Magus, Long Range Teleport, …).
  * The stat passives are gated `activate_requires: "type char> hero eq"` (hero) /
  * "... villain eq" (villain) — the real hero↔villain split the beta's silo faked
- * with hand-authored `excludes` pairs (DATA-GAP ACCOLADE-1).
+ * with hand-authored `excludes` pairs (DATA-GAP data-gaps-44).
  *
  * Phase 1 extracted the whole powerset into `exported_powers/`; this Phase-2 step
  * turns the convert path's output into a Power[] module so a later phase can consume
@@ -140,7 +140,7 @@ function convertAccoladePower(rawJson) {
 
     // The pets. This partition reached `extractSummon` through the bag it no longer emits, so
     // the strip took its summons silently — the Accolade markers (Mark of Recall's beacon, the
-    // Portable Workbench) among them (ENT-22). Same address as every other partition's.
+    // Portable Workbench) among them (data-gaps-22). Same address as every other partition's.
     const summon = extractPowerSummon(allTemplates, rawJson.name);
     if (summon) power.summon = summon;
   }
@@ -171,7 +171,7 @@ function convertAccoladePower(rawJson) {
   // `encodeAtomsForEmit` copies that stamp onto the atom; running it first would put a
   // conditional group's per-foe increment on the base atoms.
   //
-  // Shipped none until BRAIN-3, alongside the inherent and basic-inherent trees. Nothing in
+  // Shipped none until data-gaps-290, alongside the inherent and basic-inherent trees. Nothing in
   // this partition carries a classifiable gate today, so this call changes no output — it
   // makes the zero a measured one rather than the absence of a capability, which is the
   // distinction audit-conditional-coverage.cjs exists to hold.
@@ -188,7 +188,7 @@ function convertAccoladePower(rawJson) {
 
   // EntsAffected — who this power's effects can land on, which is what an atom
   // targeting `AnyAffected` means by "the target". See the field doc on
-  // `Power.targetsAffected` (DATA-GAP-REGISTER MEZRES-3).
+  // `Power.targetsAffected` (DATA-GAP-REGISTER data-gaps-187).
   if (Array.isArray(rawJson.targets_affected) && rawJson.targets_affected.length) {
     power.targetsAffected = rawJson.targets_affected;
   }
@@ -202,12 +202,12 @@ function convertAccoladePower(rawJson) {
     // not of which converter read it: the aspect and per-template target the recovered slot
     // needs are missing from every fork-6 power alike. The applied-mez half was called only by
     // convert-powerset.cjs, so Rest, Hibernate and Rise of the Phoenix shipped 15 foe-control
-    // slots on self-only powers (TWIN-2).
+    // slots on self-only powers (data-gaps-316).
     // The guards read the effects PROJECTION to decide which slots are Thunderspy target-trap
     // artifacts, then stamp the atoms behind them. The bag is no longer emitted on the power,
     // so it is computed here for the guards alone and thrown away — dropping the computation
     // along with the emission is what silently retired both guards and let the trapped rows
-    // reach the engine on the atoms (TSPY-10, and it re-opened TWIN-2's widening).
+    // reach the engine on the atoms (data-gaps-53, and it re-opened data-gaps-316's widening).
     const guardBag = extractEffects(allTemplates, rawJson.name, rawJson.targets_affected);
     guardThunderspyOnesBuffs(power, rawJson.targets_affected, guardBag);
     guardThunderspyAppliedMez(power, rawJson.targets_affected, guardBag);

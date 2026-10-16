@@ -402,7 +402,7 @@
     "Brute_Defense.Stone_Armor.Granite_Armor",
     "Tanker_Defense.Stone_Armor.Granite_Armor"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "GraniteDeactive",
@@ -411,7 +411,7 @@
     "Brute_Defense.Stone_Armor.Granite_Armor",
     "Tanker_Defense.Stone_Armor.Granite_Armor"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "InterfaceRegen",
@@ -463,7 +463,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PerfectionofMind",
@@ -479,7 +479,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PerfectionofSoul",
@@ -495,7 +495,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Mind",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PresenceHealHigh",
@@ -533,7 +533,7 @@
     "Tanker_Melee.Super_Strength.Rage",
     "Teamwork.Widow_Teamwork.Elude"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "PresenceHealLow",
@@ -571,7 +571,7 @@
     "Tanker_Melee.Super_Strength.Rage",
     "Teamwork.Widow_Teamwork.Elude"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "PreventiveMedicine",

@@ -91,7 +91,7 @@ function midsClassForBuild(build: Build, warnings: MidsExportWarning[]): string 
  * build asserted the one fork it definitely is not. `MIDS_DATABASE_FOR_DATASET` answers both
  * this and the reader's "which fork is this file", which is the pairing that broke: the writer
  * stamped Homecoming and the reader believed it, and our own Thunderspy export came back
- * refused. See DATA-GAP MBDEXPORT-2.
+ * refused. See DATA-GAP data-gaps-262.
  */
 function midsDatabaseForBuild(build: Build, warnings: MidsExportWarning[]): string {
   const stated = isDatasetId(build.serverId) ? build.serverId : null;
@@ -151,7 +151,7 @@ function midsGenericIOSuffix(stat: string): string | null {
 type SetCategory = 'primary' | 'secondary' | 'pool' | 'epic';
 
 /**
- * One powerset in the two namespaces a `PowerName` needs (MBDEXPORT-3, MBDEXPORT-6).
+ * One powerset in the two namespaces a `PowerName` needs (data-gaps-254, data-gaps-255).
  *
  * A Mids `PowerName` is `group.set.power`. `ourKey` is the first two segments as THIS
  * dataset spells them, and it is the key both name tables are keyed by; `path` is the same
@@ -164,7 +164,7 @@ interface MidsSet {
 
 /**
  * The `group.powerset` this powerset has in OUR namespace — the key the name map is keyed
- * by (MBDIMPORT-2), and the one thing the reverse lookups below cannot guess.
+ * by (data-gaps-232), and the one thing the reverse lookups below cannot guess.
  */
 function ourPowersetKey(powersetId: string, category: SetCategory): string {
   // Pools and epics carry no `setPath` on their runtime type, so their key comes off
@@ -189,7 +189,7 @@ function powersetLabel(powersetId: string, category: SetCategory): string {
 }
 
 /**
- * A powerset resolved into Mids' namespace, or reported (DATA-GAP MBDEXPORT-6).
+ * A powerset resolved into Mids' namespace, or reported (DATA-GAP data-gaps-255).
  *
  * The path used to be COMPOSED — an archetype table for the group and the powerset's icon
  * filename for the set — and neither is a read of what Mids calls the set. A Rebirth
@@ -215,7 +215,7 @@ function resolveMidsSet(ourKey: string, label: string, warnings: MidsExportWarni
       // The pairing ran and reached nothing: Mids has no set that answers to this one.
       ? `Mids has no powerset paired with ${ourKey} — its powers will open as empty rows`
       // No Mids database has been read for this fork at all, which is a different fact
-      // and sends the reader somewhere else (MBDEXPORT-2).
+      // and sends the reader somewhere else (data-gaps-262).
       : `no Mids database has been read for this fork, so ${ourKey} is our own spelling`,
   });
   return { ourKey, path: ourKey };
@@ -280,7 +280,7 @@ function owningPowerset(
  * Reading it back from them is not a re-derivation: `powerSet` is what the file said, pick by
  * pick, and `archetype.branches` is the export's own pairing of a branch to its two sets. What
  * would be a re-derivation is asking which set HOLDS a power — that answer is the dataset's and
- * has no memory of what the author chose (MBDEXPORT-16).
+ * has no memory of what the author chose (data-gaps-269).
  *
  * One branch pick anywhere settles both roles, because specialising is what put it there. Two
  * different branches is a build no archetype offers, so it is reported and neither is used —
@@ -317,7 +317,7 @@ function branchTaken(build: Build, warnings: MidsExportWarning[]): ArchetypeBran
 }
 
 /**
- * Mids' spelling of `ourInternalName`, or ours where the two agree (DATA-GAP MBDEXPORT-3).
+ * Mids' spelling of `ourInternalName`, or ours where the two agree (DATA-GAP data-gaps-254).
  *
  * The rotation the importer undoes, redone. HC and Rebirth have moved internal names
  * underneath stable display names, so the name this planner holds is one Mids may have no
@@ -386,7 +386,7 @@ function buildPowerName(
 
 /**
  * Whether this power is a form sub-power Mids files under `Inherent.Inherent`
- * (DATA-GAP MBDEXPORT-5).
+ * (DATA-GAP data-gaps-260).
  *
  * A Kheldian's Nova and Dwarf attacks live in the form's powerset here — they are attached
  * to the parent form on the way in, and the finished build carries them there — but Mids
@@ -521,12 +521,12 @@ function describeEnhancement(enh: Enhancement): string {
  * outside it is clamped rather than refused — silently, in a file that still names the
  * right enhancement. Our export is the source of truth about the range (Rule 0) and Mids'
  * database is the stale half, so the level we write stays ours; what this buys is that the
- * user is told the hop will change it. MBDEXPORT-22.
+ * user is told the hop will change it. data-gaps-275.
  *
  * Two exemptions, both because the piece states no craft level at all:
  *
  *   - an ATTUNED set piece, which we write as `IoLevel: 0`. Mids clamps that 0 up into the
- *     set's range too, and MBDEXPORT-17 measured across all four of its cases that the
+ *     set's range too, and data-gaps-270 measured across all four of its cases that the
  *     field is not READ for such a piece — the clamp costs nothing and warning about it
  *     would be noise.
  *   - origins and specials, which also go out at 0 for the same reason.
@@ -593,7 +593,7 @@ function buildGenericIOEnhancement(enh: GenericIOEnhancement): MbdEnhancement | 
  * and `SingleO`; `SO` throws inside `LoadEnhancementData`, inside `LoadBuild`,
  * and Mids answers with "Requested value 'SO' was not found" and an empty
  * default character. Three origin pieces in a build of 86 enhancements cost the
- * user all 86 and every power holding them. See DATA-GAP MBDEXPORT-4.
+ * user all 86 and every power holding them. See DATA-GAP data-gaps-259.
  */
 const MIDS_GRADE_BY_TIER: Record<string, string> = Object.fromEntries(
   Object.entries(MIDS_ORIGIN_TIER).map(([grade, tier]) => [tier, grade]),
@@ -778,7 +778,7 @@ function buildSlotEntries(
  * `isAuto` in would state something the field does not carry, and would overwrite the author's
  * flag on every power Mids wrote `false`.
  *
- * Ported from canonical (MBDEXPORT-13). The fixtures that measured it are canonical-only, so the
+ * Ported from canonical (data-gaps-266). The fixtures that measured it are canonical-only, so the
  * argument above is the record here.
  */
 function buildPowerEntry(
@@ -840,7 +840,7 @@ function pickSchedule(): number[] {
 }
 
 /** An unfilled pick. Mids writes one of these for a skipped slot and reads it back as `NIDPower < 0`.
- *  `VariableValue` is 0 because there is no power here to carry a slider — not the MBDEXPORT-19
+ *  `VariableValue` is 0 because there is no power here to carry a slider — not the data-gaps-272
  *  literal, which was the same zero standing in for one. */
 function blankPowerEntry(): MbdPowerEntry {
   return {
@@ -899,7 +899,7 @@ function orderByPickSchedule(chosen: { level: number; entry: MbdPowerEntry }[]):
  * rather than read off the build because the build does not hold it: the importer returns it
  * beside the build and the UI store owns it from there, which is the same key `InfoPanel`
  * writes the slider under. A caller with no slider state passes nothing and every power goes
- * out at 0, which is what an unset slider means (MBDEXPORT-19). Hand-ported from canonical;
+ * out at 0, which is what an unset slider means (data-gaps-272). Hand-ported from canonical;
  * the fixtures that measured it are canonical-only, so the argument above is the record here.
  */
 export function exportToMidsWithReport(
@@ -917,7 +917,7 @@ export function exportToMidsWithReport(
   // What our own schedule would issue, kept beside it only so a slot the file is
   // about to state at an ungranted level can say so.
   const solvedLevels = solvedSlotLevels(build);
-  // Said ONCE, and derived from the build rather than from a UI mode (MBDEXPORT-21).
+  // Said ONCE, and derived from the build rather than from a UI mode (data-gaps-276).
   // Mids' format requires a Level on every slot, so a build whose levels were packed
   // wholesale by the solver still has to state numbers; this is the file admitting that
   // those numbers are a legal packing and not the author's chronology. Not per slot:
@@ -953,7 +953,7 @@ export function exportToMidsWithReport(
 
   // The two role headers name the BRANCH set once the build has specialised into one, and the
   // picks underneath keep their own — which is how Mids' own file spells it, and the whole of
-  // what a VEAT's round trip used to lose (MBDEXPORT-16). Only the header moves: `collect`
+  // what a VEAT's round trip used to lose (data-gaps-269). Only the header moves: `collect`
   // below still hands each role its base set, so a base pick goes on writing the base path.
   const branch = branchTaken(build, warnings);
   const primaryHeader = branch?.primarySet ? resolveSet(branch.primarySet, 'primary') : primary;
@@ -969,7 +969,7 @@ export function exportToMidsWithReport(
   const chosen: { level: number; entry: MbdPowerEntry }[] = [];
   // Form sub-powers do not take a pick, and the file has to say so positionally: Mids
   // reads everything past `LastPower` as auto-granted, and its own Warshade file puts the
-  // ten Nova and Dwarf attacks down there with the inherents (MBDEXPORT-5). Leaving them
+  // ten Nova and Dwarf attacks down there with the inherents (data-gaps-260). Leaving them
   // in the level-up run costs ten picks and shifts every power after them, which is a
   // second, quieter way to hand back a build the author did not write.
   const granted: MbdPowerEntry[] = [];
@@ -999,7 +999,7 @@ export function exportToMidsWithReport(
   // Mids reads entry `LastPower` itself as the first auto-granted power. This was
   // written as `length - 1` under the other reading, which handed the level-49 pick
   // to the granted run: it came back at level 0, one pick short, in all eight corpus
-  // files (MBDEXPORT-11). Mids' own files settle it — every one of them puts an
+  // files (data-gaps-265). Mids' own files settle it — every one of them puts an
   // `Inherent.*` at index `LastPower` and a real pick at `LastPower - 1`, and there
   // is no separator entry between the two. Inherents and incarnates therefore follow
   // the level-up run, and the count has to be taken before they are added.
@@ -1031,10 +1031,10 @@ export function exportToMidsWithReport(
   // The archetype inherent, which is not one of the seven above: `SortGridPowers`
   // indexes those by position, and this one Mids addresses by name — its own files
   // put it in the middle of that run, and moving it makes no difference. It went
-  // unwritten entirely until MBDEXPORT-20, and a build handed over without it is a
+  // unwritten entirely until data-gaps-273, and a build handed over without it is a
   // build Mids totals differently than we do: Defiance's damage floor, Supremacy's
   // pet buff, Dark Sustenance's mez protection. It carries the slider too, which is
-  // how the gap surfaced — MBDEXPORT-19's grade had one survivor it could not
+  // how the gap surfaced — data-gaps-272's grade had one survivor it could not
   // explain, because a census that diffs a FIELD cannot see a missing ROW.
   //
   // Mids' spelling is the export's own `Inherent.Inherent` row, never the
@@ -1056,14 +1056,14 @@ export function exportToMidsWithReport(
   const atInherentName = archetypeId ? headlineArchetypeInherentName(archetypeId) : undefined;
   if (atInherent && atInherentName) {
     const segments = atInherentName.split('.');
-    // The leaf comes from Mids' grid, not from the name rotation (DATA-GAP MBDEXPORT-24).
+    // The leaf comes from Mids' grid, not from the name rotation (DATA-GAP data-gaps-24).
     // `rotateFullName` answers "what does Mids call this power", and for this one row that
     // is the wrong question twice over. Mids carries THREE `Inherent.Inherent` rows
     // displaying "Opportunity" at level 1 under `Class_Sentinel` — the plain one, `_Icon`
     // and `_Meter` — so the name map's display join has nothing to separate them with and
     // rightly withdraws, leaving our own spelling. Ours is the one of the three Mids places
     // on no grid, and a power Mids grids nowhere is refused out of a build file with no
-    // error: every Sentinel build handed over lost the row MBDEXPORT-20 added.
+    // error: every Sentinel build handed over lost the row data-gaps-273 added.
     //
     // `midsArchetypeInherentName` asks the question this row actually has: which power does
     // Mids grid as this class's inherent. One row per class, keyed on the same token stamped
@@ -1114,7 +1114,7 @@ export function exportToMidsWithReport(
   // which is Mids' own order in the file this was measured against.
   for (const entry of granted) powerEntries.push(entry);
 
-  // Incarnates (DATA-GAP MBDEXPORT-7). `powerName` is our own slug — the last segment of
+  // Incarnates (DATA-GAP data-gaps-257). `powerName` is our own slug — the last segment of
   // the roster's `fullName`, lower-cased — and a comment here used to claim it was already
   // Mids' `Incarnate.<Slot>.<Power>`. It has no dots, so Mids resolved nothing and the row
   // came back blank; the reason nobody noticed is that an incarnate carries no enhancement
@@ -1132,7 +1132,7 @@ export function exportToMidsWithReport(
       StatInclude: true,
       ProcInclude: false,
       // An incarnate is not addressed by `internalName` and our reader routes no slider to
-      // one, so there is nothing to look up here. Mids writes none either — the MBDEXPORT-19
+      // one, so there is nothing to look up here. Mids writes none either — the data-gaps-272
       // census diffs every entry by name and no incarnate is among the ten.
       VariableValue: 0,
       InherentSlotsUsed: 0,
@@ -1141,7 +1141,7 @@ export function exportToMidsWithReport(
     });
   }
 
-  // Accolades (DATA-GAP MBDEXPORT-12), after the granted run for the same reason the
+  // Accolades (DATA-GAP data-gaps-264), after the granted run for the same reason the
   // incarnates are: everything past `LastPower` is addressed by name, not by index.
   for (const entry of accoladeEntries(build, resolve, warnings)) powerEntries.push(entry);
 
@@ -1167,7 +1167,7 @@ export function exportToMidsWithReport(
 }
 
 /**
- * Mids' `Incarnate.<Slot>.<Power>` for a chosen incarnate (DATA-GAP MBDEXPORT-7).
+ * Mids' `Incarnate.<Slot>.<Power>` for a chosen incarnate (DATA-GAP data-gaps-257).
  *
  * `powerName` holds two different things depending on who wrote the build, which is how a
  * comment here claiming it was "already Mids' own" managed to be half true for months: the
@@ -1203,9 +1203,9 @@ function incarnateFullName(
 
 /**
  * The `Temporary_Powers.Accolades.*` entries for the accolades this build holds
- * (DATA-GAP MBDEXPORT-12).
+ * (DATA-GAP data-gaps-264).
  *
- * MBDIMPORT-1 is this hole on the reader's side: a blanket `Temporary_Powers.` skip took the
+ * data-gaps-231 is this hole on the reader's side: a blanket `Temporary_Powers.` skip took the
  * accolades out with the day-job temps, and a build lost The Atlas Medallion, Task Force
  * Commander, Portal Jockey and Freedom Phalanx Reserve — their +MaxHP and +MaxEnd with them —
  * while the summary reported nothing missing. The writer had the mirror of it: the roster was
@@ -1214,7 +1214,7 @@ function incarnateFullName(
  *
  * The name goes out through the same two lookups every other power name does — the set path,
  * then the power's own name in Mids' spelling — because a path COMPOSED rather than looked up
- * is MBDEXPORT-6's defect, and `Temporary_Powers.Accolades` is in the path table already.
+ * is data-gaps-255's defect, and `Temporary_Powers.Accolades` is in the path table already.
  * Composing it here would be right on all four forks today and unguarded the day one spells it
  * differently.
  *
@@ -1227,7 +1227,7 @@ function incarnateFullName(
  * a third at the same character level, and neither reader looks at it for an accolade — so the
  * character's level goes out, as the honest reading of a permanent buff this character holds.
  *
- * The count reconciles the way the import's does (MBDIMPORT-5): every id in the build's roster
+ * The count reconciles the way the import's does (data-gaps-235): every id in the build's roster
  * is either written or named in a warning. An accolade dropped in silence is the failure this
  * row exists to end, so the miss is REPORTED rather than skipped — a stored id with no power
  * behind it is a roster divergence, the same fact the reader's third arm surfaces.
@@ -1260,7 +1260,7 @@ function accoladeEntries(
       ProcInclude: false,
       // Accolades come in through `processAccoladeEntry`, which reads no slider, so writing
       // one here would be inventing a value the reader cannot return. Symmetric and measured:
-      // no accolade is among MBDEXPORT-19's ten.
+      // no accolade is among data-gaps-272's ten.
       VariableValue: 0,
       InherentSlotsUsed: 0,
       SubPowerEntries: [],

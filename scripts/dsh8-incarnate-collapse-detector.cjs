@@ -1,11 +1,11 @@
 /**
- * DSH8 incarnate per-slot collapse detector.
+ * deductive-schema-harness-8 incarnate per-slot collapse detector.
  *
  * The sibling of [`dsh6-collapse-detector.cjs`](scripts/dsh6-collapse-detector.cjs)
  * for the SEPARATE incarnate converter (`scripts/convert-incarnate-effects.cjs`),
- * which independently reinvented the bag-of-slots model. Same shape as DSH6:
+ * which independently reinvented the bag-of-slots model. Same shape as deductive-schema-harness-6:
  *
- *   INPUT  = DSH4 bridge atoms from the source `exported_powers/<ds>/incarnate/<slot>/`
+ *   INPUT  = deductive-schema-harness-4 bridge atoms from the source `exported_powers/<ds>/incarnate/<slot>/`
  *            (`ingestExportPower`, single-source — the attrib→(effectType,subType) map
  *            is never re-ported here), filtered to what SHOULD surface as a caster buff.
  *   OUTPUT = every effect identity reachable in the generated record for that power
@@ -15,9 +15,9 @@
  *            the high-confidence multi-type collapse (the Support Core defense drop).
  *            A wholly-absent effectType lands in a non-gating class-absent bucket.
  *
- * WHY THE BY-DESIGN DROPS DIFFER FROM DSH6:
+ * WHY THE BY-DESIGN DROPS DIFFER FROM deductive-schema-harness-6:
  *   - aspect=Str `<type>_Dmg`/`Accuracy` ARE surfaced by incarnates (Hybrid/Destiny
- *     `damage`/`accuracy`), NOT the Power-Boost→Enhancement boundary DSH6 excludes.
+ *     `damage`/`accuracy`), NOT the Power-Boost→Enhancement boundary deductive-schema-harness-6 excludes.
  *     So DamageBuff + Accuracy are CHECKABLE here (folded to presence).
  *   - The genuine incarnate drops are Enhancement (aspect=Str mez / by-type strength),
  *     Heal / team-heal, GrantPower / pets / engine markers — none is a flat caster stat.
@@ -60,12 +60,12 @@ const DS_EXPORT_ROOT = DATASET === 'homecoming'
   ? path.join(REPO, 'exported_powers/incarnate')
   : path.join(REPO, 'exported_powers', DATASET, 'incarnate');
 const GEN_FILE = path.join(REPO, 'src/data/datasets', DATASET, 'generated/incarnate-effects.ts');
-// --worklist lets callers that only read stdout (the DSH8 vitest gate) redirect
+// --worklist lets callers that only read stdout (the deductive-schema-harness-8 vitest gate) redirect
 // the side-effect file somewhere disposable instead of dirtying the committed one.
 const OUT_PATH = argVal('--worklist') || path.join(REPO, 'scripts', 'dsh8-incarnate-collapse-worklist.json');
 
 // ---------------------------------------------------------------------------
-// Canonical subtype token (shared with DSH6): fold bridge subType names and
+// Canonical subtype token (shared with deductive-schema-harness-6): fold bridge subType names and
 // converter slot keys onto one token so `Ranged`(bridge)==`defRanged`(slot), etc.
 // ---------------------------------------------------------------------------
 const CANON_SUB = {
@@ -226,7 +226,7 @@ function inputIdentities(sourceJson, slot) {
     // aspect=Res on a BUFF effectType is resistance-to-that-debuff (routed to
     // debuffResistance), not a +buff — drop it (Ageless Radial's AV-blanket -recovery/
     // -regen/-recharge resistance). Keep aspect=Res only where it IS the signal:
-    // Resistance (damage-res) and MezResist (mez-duration-res). Mirrors DSH6.
+    // Resistance (damage-res) and MezResist (mez-duration-res). Mirrors deductive-schema-harness-6.
     if (a.aspect === 'Res' && et !== 'Resistance' && et !== 'MezResist') continue;
     // Non-core-mez MezResist (Clarion's Repel/Taunt/Placate resistance) is
     // projected to the scalar `debuffResistance` by design (the converter's

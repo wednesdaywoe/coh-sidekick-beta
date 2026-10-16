@@ -409,7 +409,7 @@ function LevelUpModeButton() {
   // they reached before enabling the mode. Disabling the mode leaves level alone.
   //
   // Also freeze real grant levels onto any slot placed while the mode was off
-  // (SLOT-3) — a build planned free-form has no leveling order yet, and this
+  // (issues-3) — a build planned free-form has no leveling order yet, and this
   // is the moment one becomes meaningful. Order matters here: freeze while the
   // level (and so the grant pool) still reflects what the user actually built,
   // before the clamp above narrows it.

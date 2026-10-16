@@ -200,7 +200,7 @@ function extractPetTables() {
 
     // A class an entity NAMES but that carries no usable table resolves nothing
     // for that pet, so dropping it here would hand the consumer a silent miss
-    // instead of a gap it can see (ENT-10).
+    // instead of a gap it can see (data-gaps-105).
     if (Object.keys(petTables[petClass].tables).length === 0) {
       throw new Error(
         `extract-at-tables: pet class '${petClass}' is named by a pet entity but its class file `

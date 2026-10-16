@@ -1,5 +1,5 @@
 /**
- * PAR2 — the mutex half of a `mode: 'replace'` conditional.
+ * backlog-2 — the mutex half of a `mode: 'replace'` conditional.
  *
  * A power can carry two damage groups gated on a predicate and on its negation, which makes
  * them the same template read under opposite conditions. Turning the toggle on has to swap
@@ -79,7 +79,7 @@ function corpus(): Power[] {
   return [...seen];
 }
 
-describe.each(SERVERS)('PAR2 replace-mode damage displacement — %s', (server) => {
+describe.each(SERVERS)('backlog-2 replace-mode damage displacement — %s', (server) => {
   let powers: Power[];
 
   beforeAll(async () => {

@@ -46,7 +46,7 @@ export function humanise(key: string): string {
  *
  * A stat qualifies when some `STAT_DEFINITIONS` entry names it as its `breakdownKey` — that is
  * what "a surface renders this number" means, and it is what keeps a routable-but-unspent key
- * (`mezResist`, whose row was retired — DATA-GAP-REGISTER MEZRES-1) from becoming a control
+ * (`mezResist`, whose row was retired — DATA-GAP-REGISTER data-gaps-185) from becoming a control
  * that moves nothing.
  */
 export function whatIfControls(vocabulary: readonly string[]): WhatIfControl[] {

@@ -261,7 +261,7 @@ describe('stackCapOf', () => {
     expect(stackCapOf(p, buffStack('Regeneration', 'either'))).toBe(4);
   });
 
-  it('narrows to one movement axis (STACK-4)', () => {
+  it('narrows to one movement axis (data-gaps-92)', () => {
     // Time Wall's shape: the Run axis states `Stack`, the Fly axis `Replace`. A whole-family
     // cap answered all three axes with 2 and multiplied the ones that never double.
     const p = powerWith([

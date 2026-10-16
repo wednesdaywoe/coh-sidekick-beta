@@ -40,14 +40,14 @@ describe('snipe base timing (Normal-variant cast, not the redirect shell)', () =
     // redirect pair, gated on `cur.kToHit source> .97 >=` rather than Homecoming's
     // `kEngaged`/`Experienced_Marksman`, and the old detector matched only the latter —
     // so all 47 Rebirth and 8 Thunderspy snipes showed no fast form at all
-    // (DATA-GAP-REGISTER SNIPE-2). The base timing assertions below were always right
+    // (DATA-GAP-REGISTER data-gaps-146). The base timing assertions below were always right
     // and still come from the default (slow) branch.
     expect(RebirthRangedShot.stats?.castTime).toBe(4.67);
     expect(RebirthRangedShot.stats?.interruptTime).toBe(3);
     expect(RebirthRangedShot.quickSnipe?.stats.castTime).toBe(1.67);
     // The gate travels VERBATIM, token for token: nothing in the pipeline re-derives the
     // threshold, and nothing joins the tokens into a string it would later have to split
-    // back apart (DATA-GAP-REGISTER COND-8).
+    // back apart (DATA-GAP-REGISTER data-gaps-123).
     expect(RebirthRangedShot.quickSnipe?.condition).toEqual([
       'cur.kToHit',
       'source>',

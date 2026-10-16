@@ -8,7 +8,7 @@ import { PROC_DAMAGE_EFFECTS } from '@/data/generated/proc-damage.generated';
  * `mechanics` prose the tooltip prints above it. Both reach the contract, so
  * when they disagree the planner shows a user two answers in one line.
  *
- * PPM-6 is what that costs. Bombardment's proc is `Fire_Dmg` in the export and
+ * data-gaps-119 is what that costs. Bombardment's proc is `Fire_Dmg` in the export and
  * its prose read "Damage(Energy 7 - 72)", so the tooltip printed
  * "Chance for Fire Damage (Damage Energy 7-72) Dmg: Fire 71.75" for seven
  * weeks. This guard existed and was green throughout: it read the NUMBERS
@@ -35,7 +35,7 @@ describe('damage proc structured-vs-mechanics parity', () => {
 
     const e = effects[0];
 
-    // The damage TYPE, which is the axis PPM-6 was wrong on. Compared exactly:
+    // The damage TYPE, which is the axis data-gaps-119 was wrong on. Compared exactly:
     // "Negative" for Negative Energy is the near-miss that makes a fuzzy match
     // useless here, since every wrong answer is also a real damage type.
     const handType = m[1].trim();
@@ -59,7 +59,7 @@ describe('damage proc structured-vs-mechanics parity', () => {
   });
 
   // Without this, deleting PROC_DAMAGE_EFFECTS' contents leaves the loop above
-  // grading nothing and passing. The count is the corpus as of PPM-6.
+  // grading nothing and passing. The count is the corpus as of data-gaps-119.
   it('grades every damage proc in the generated table', () => {
     expect(Object.keys(PROC_DAMAGE_EFFECTS).length).toBeGreaterThanOrEqual(36);
   });

@@ -11,7 +11,7 @@
  * tags), rewrites those tags with per-build values, and serves that shell
  * directly at the `/builds/:id` URL with a 200 — which also means a human
  * hitting the link skips the redirect round-trip GitHub Pages would have
- * done. See streams/BUILD_PREVIEW_IMAGE_PLAN.md (EMBED4).
+ * done. See streams/BUILD_PREVIEW_IMAGE_PLAN.md (build-preview-image-4).
  *
  * Unconditional rewrite for every request on the route (no bot-UA sniffing —
  * harmless for humans, avoids UA-list fragility). A private build, an

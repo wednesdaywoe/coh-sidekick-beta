@@ -2596,7 +2596,7 @@ export function procRechargeWindow(baseRecharge: number, enhancedRechargeBonus: 
  * This replaced a global-diluted window, `base × (1 + global) / (1 + global + local)`, which the
  * engine and this file both carried from 2026-08-03. The two agree exactly whenever the power
  * carries no slotting of its own, which is why the divergence went unreported until a user built
- * a power that had both. See `procs::proc_recharge_window` and DATA-GAP-REGISTER PPM-2.
+ * a power that had both. See `procs::proc_recharge_window` and DATA-GAP-REGISTER data-gaps-111.
  *
  * @param ppm - Procs Per Minute value from the enhancement
  * @param baseRecharge - Base (unenhanced) recharge time in seconds
@@ -2634,7 +2634,7 @@ export function calculateProcChance(
  * @param enhancedRechargeBonus - This power's own slotted recharge as decimal (e.g. 0.95 for +95%)
  * @param globalRechargeBonus - Build-wide recharge as decimal. It enters the CYCLE TIME only —
  *        a hasted power fires more often — and deliberately not the per-activation chance, which
- *        HC's PPM rule scores off enhancements and Alpha alone (DATA-GAP-REGISTER PPM-2). That
+ *        HC's PPM rule scores off enhancements and Alpha alone (DATA-GAP-REGISTER data-gaps-111). That
  *        split is the whole point of a per-minute rate: global recharge raises procs per minute
  *        without touching the chance, slotted recharge lowers the chance and raises the rate.
  * @returns Expected number of procs per minute

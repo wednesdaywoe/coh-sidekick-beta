@@ -18,7 +18,7 @@ Why each landed here (archived 2026-07-19, per CODEBASE-AUDIT.md):
 
 - `planb-shadow-tohit.cjs` — Plan B Slice 1 prototype; superseded by
   `planb-shadow-pertarget.cjs`, which regen-all runs.
-- `dsh6-shadow-atoms.cjs` — DSH6 exploration probe; the gating detector is
+- `dsh6-shadow-atoms.cjs` — deductive-schema-harness-6 exploration probe; the gating detector is
   `dsh6-collapse-detector.cjs`, which regen-all runs.
 - `migrate-to-layered.cjs` — one-off migration to the layered
   `{generated,overrides,powersets}` tree; the migration is long complete.

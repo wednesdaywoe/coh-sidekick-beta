@@ -1,5 +1,5 @@
 /**
- * DSH6 Phase 0a — shadow cross-check of the converter-local atom ingest.
+ * deductive-schema-harness-6 Phase 0a — shadow cross-check of the converter-local atom ingest.
  *
  * Validates `templatesToAtoms` (convert-powerset.cjs) — the PRODUCTION atom
  * encoder that will eventually feed the PowerEffects projection — against the

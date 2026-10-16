@@ -6,7 +6,7 @@ import { headlineArchetypeInherentName } from '@/data/inherent-rules';
 import type { Archetype } from '@/types';
 
 /**
- * The headline archetype inherent's EXPORT name, graded against canonical — MBDEXPORT-20's
+ * The headline archetype inherent's EXPORT name, graded against canonical — data-gaps-273's
  * beta half.
  *
  * Named for the oracle rather than for the subject, because canonical carries a file about
@@ -28,7 +28,7 @@ import type { Archetype } from '@/types';
  *
  * A snapshot can go stale in one direction: canonical changes, nobody re-cuts this.
  * That is a real limit and it is why the fixture records NULLs too — the Primalist's
- * absence (INHERENT-10) is as much a pinned answer as the 59 names.
+ * absence (data-gaps-10) is as much a pinned answer as the 59 names.
  */
 
 const ORACLE: Record<string, Record<string, string | null>> = JSON.parse(

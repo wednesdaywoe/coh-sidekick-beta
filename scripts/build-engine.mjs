@@ -18,14 +18,14 @@
  * or a missing bundle aborts with a specific message rather than emitting a half-built engine.
  *
  * `--verify` runs steps 1 and 2 into a scratch directory and compares what came out against
- * the committed artifacts instead of replacing them (STALE-3). It writes nothing into the
+ * the committed artifacts instead of replacing them (data-gaps-340). It writes nothing into the
  * beta tree. That mode exists so a machine which is NOT the one that wrote the manifest can
  * rebuild and grade the bytes: every hash in `_engine_manifest.json` is taken of the file the
  * writer had just produced, so it agrees by construction and can never be the evidence that
  * the build reproduces. Only a second build somewhere else is.
  *
  * It lives HERE rather than in a gate script of its own because the two must build alike. The
- * remap flags below are derived per host, and STALE-3's own arm F is the lesson: it logged the
+ * remap flags below are derived per host, and data-gaps-340's own arm F is the lesson: it logged the
  * bytes it produced and not the flags that produced them, so its number was unreproducible
  * three days later. A verifier that spells the flags a second time is arm F with a green tick.
  */
@@ -102,7 +102,7 @@ console.log(`[build-engine] wasm-bindgen ${installedCliVersion} matches rebuild 
 
 // --- 2. build the wasm + emit the browser glue ---
 
-// STALE-3: make the build path-independent, so the gate can rebuild and compare instead of
+// data-gaps-340: make the build path-independent, so the gate can rebuild and compare instead of
 // taking this manifest's word for what came out.
 //
 // `core::panic::Location` puts the source path of every panic site in the .wasm's data section.
@@ -266,11 +266,11 @@ run('wasm-bindgen', ['--target', 'nodejs', '--out-dir', nodeOutDir, '--out-name'
 // keeps being the file that loads.
 renameSync(join(nodeOutDir, 'coh_wasm.js'), join(nodeOutDir, 'coh_wasm.cjs'));
 
-// --- 2b. --verify: grade what this build produced against what is committed (STALE-3) ---
+// --- 2b. --verify: grade what this build produced against what is committed (data-gaps-340) ---
 //
 // This is the half `_engine_manifest.json` structurally cannot do. Its `artifacts` hashes are
 // taken at write time of the files step 2 has just written, so they agree by construction; they
-// catch the manifest and the committed tree DRIFTING APART afterwards (STALE-2) and say nothing
+// catch the manifest and the committed tree DRIFTING APART afterwards (data-gaps-339) and say nothing
 // about whether the build reproduces. The only evidence for that is a second build, and a second
 // build on the writer's own machine grades the writer's machine. So the verdict below is worth
 // exactly as much as the distance between the runner and `jpc` — see the job in canonical's CI.
@@ -278,7 +278,7 @@ renameSync(join(nodeOutDir, 'coh_wasm.js'), join(nodeOutDir, 'coh_wasm.cjs'));
 // Three-way, because with the rebuilt bytes in hand all three disagreements are distinguishable
 // and they have different fixes. Saying which one it is matters more than saying it is red: a
 // stale beta reds this job for a reason that is not reproducibility, and reporting THAT as a
-// reproducibility failure is STALE-1's lesson (a true message with the wrong diagnosis) repeated.
+// reproducibility failure is data-gaps-338's lesson (a true message with the wrong diagnosis) repeated.
 if (verifyOnly) {
   const manifestPath = join(engineDir, '_engine_manifest.json');
   if (!existsSync(manifestPath)) {
@@ -416,7 +416,7 @@ console.log(`[build-engine] effect registry -> src/data/generated/effect-registr
 // It is not evidence the build reproduces. It is what lets `--compare` notice the manifest and the
 // committed `wasm*/` having drifted apart afterwards — a half-copied refresh, a stale `wasm-node`
 // beside a fresh `wasm`, a bad merge — which no input hash can see, since every input still
-// matches. STALE-2 is the row that separates the two.
+// matches. data-gaps-339 is the row that separates the two.
 const manifestOut = join(engineDir, '_engine_manifest.json');
 const manifest = { ...fingerprintRebuild(rebuildDir), artifacts: fingerprintArtifacts(engineDir) };
 writeFileSync(manifestOut, `${JSON.stringify(manifest, null, 2)}\n`);

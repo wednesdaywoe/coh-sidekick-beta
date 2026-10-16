@@ -11,7 +11,7 @@
  *   - `export-staleness.test.ts`  — was this tree produced by the exporter
  *     source that is committed now? (parser→export currency)
  *   - `export-provenance.test.ts` — which assets tree were the bytes read
- *     from? (DATA-GAP-REGISTER PROV-1)
+ *     from? (DATA-GAP-REGISTER data-gaps-319)
  *
  * The map of surface→dataset→manifest path lives here so the two guards cannot
  * drift into disagreeing about which trees exist.
@@ -131,7 +131,7 @@ export function canonicalSource(dataset: string): {
 /**
  * Does `assetsDir` sit at <some registered root>/<subpath>?
  *
- * This is PROV-2's copy-detection without pinning the answer to one
+ * This is data-gaps-320's copy-detection without pinning the answer to one
  * workstation: a manifest stamped `/home/…/.wine/…/assets/live` and one stamped
  * `/Users/…/Library/…/assets/live` each satisfy their own machine's root, while
  * a snapshot copied to `bins/…/tspy` matches no root at all and still fails.
@@ -220,7 +220,7 @@ export const SURFACES = [
       // dataset-absent: rebirth, thunderspy — their piggs carry no `salvage.bin`, so
       // `export_salvage` early-returns and stamps no manifest. The note on this entry has the
       // whole of it; the marker sits on the rows because a reason twelve lines up is a reason
-      // the next editor of the rows does not read (BRAIN-12).
+      // the next editor of the rows does not read (data-gaps-285).
       homecoming: join(EXPORTED, 'salvage_export_manifest.json'),
       brainstorm: join(EXPORTED, 'brainstorm', 'salvage_export_manifest.json'),
     },

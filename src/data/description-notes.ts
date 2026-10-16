@@ -7,7 +7,7 @@
  * OTHER reading of the same observation: an effect a description promises and our data lacks is
  * indistinguishable, from the power alone, from an effect our parser dropped. So nothing lands
  * here from a heuristic. `scripts/audit-description-divergence.cjs` sweeps and REPORTS; a person
- * adjudicates each candidate the way HYBRID-2 was (census the shape fork-wide, find a same-fork
+ * adjudicates each candidate the way data-gaps-2 was (census the shape fork-wide, find a same-fork
  * control that reads correctly), and only the survivor is written down, with its register id.
  *
  * That is also why this is not a Rule 0 violation. The rule bans hardcoding a value the export
@@ -48,7 +48,7 @@ export const DESCRIPTION_NOTES: DescriptionNote[] = [
     detail:
       'The Rebirth and Thunderspy versions of this power do carry status protection; the '
       + 'Homecoming data does not, though its description still lists it.',
-    gap: 'HYBRID-2',
+    gap: 'data-gaps-2',
   },
   {
     key: 'incarnate:melee_genome_8',
@@ -57,7 +57,7 @@ export const DESCRIPTION_NOTES: DescriptionNote[] = [
     detail:
       'The Rebirth and Thunderspy versions of this power do carry status protection; the '
       + 'Homecoming data does not, though its description still lists it.',
-    gap: 'HYBRID-2',
+    gap: 'data-gaps-2',
   },
   {
     key: 'incarnate:melee_genome_9',
@@ -66,7 +66,7 @@ export const DESCRIPTION_NOTES: DescriptionNote[] = [
     detail:
       'The Rebirth and Thunderspy versions of this power do carry status protection; the '
       + 'Homecoming data does not, though its description still lists it.',
-    gap: 'HYBRID-2',
+    gap: 'data-gaps-2',
   },
 ];
 

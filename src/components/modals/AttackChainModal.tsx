@@ -295,7 +295,7 @@ export function AttackChainModal({ isOpen, onClose }: AttackChainModalProps) {
 
   // The archetype's binary-sourced stats — the ClampStrength bounds the chain divides by, the
   // endurance pool it drains, and every ceiling the what-if sliders below reach to. Read once:
-  // nothing in this modal may invent one of these numbers (CAPS-1).
+  // nothing in this modal may invent one of these numbers (data-gaps-183).
   const archetypeStats = useMemo(
     () => (build.archetype?.id ? getArchetype(build.archetype.id)?.stats ?? null : null),
     [build.archetype?.id],

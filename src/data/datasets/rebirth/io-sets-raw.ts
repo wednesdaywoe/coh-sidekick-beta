@@ -13,7 +13,7 @@
  * Includes Rebirth-only sets (Guardian's Gift, Absolute Resolution,
  * Halloween + Winter event sets, Liberty's Belt, etc.) that aren't in
  * HC's curated io-sets-raw. Shared sets reuse HC's piece aspect lists;
- * bonus tiers are resolved from Rebirth's own export (BOOST-5).
+ * bonus tiers are resolved from Rebirth's own export (data-gaps-5).
  *
  * Set-bonus values are scale × a per-attrib multiplier (damage ×250 on HC's
  * SetBonusPetShare table and ×100 on the forks' Melee_Ones re-authoring, max

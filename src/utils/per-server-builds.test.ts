@@ -101,7 +101,7 @@ describe('isKnownServerId', () => {
   // and called them "the three shipped datasets" for as long as there were four — the
   // predicate itself was already roster-driven (`isDatasetId`), so Brainstorm was accepted
   // in the product and unasserted here. A hand list is a second roster, and the second one
-  // is the one that goes stale (BRAIN-12).
+  // is the one that goes stale (data-gaps-285).
   it('accepts every shipped dataset and rejects others', () => {
     expect(DATASET_IDS.length).toBeGreaterThan(0);
     for (const id of DATASET_IDS) {

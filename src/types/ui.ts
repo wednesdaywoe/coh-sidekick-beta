@@ -117,16 +117,16 @@ export interface PlannerSectionConfig {
    */
   weight?: number;
   /**
-   * LAY11 — which desktop grid *column* this section occupies (0-based). Two or
+   * rearrangeable-layout-11 — which desktop grid *column* this section occupies (0-based). Two or
    * more sections sharing a `column` value stack vertically in one column, in
    * array order (top → bottom). Columns render left-to-right by ascending
-   * `column` value. Omitted only in legacy persisted state predating LAY11;
+   * `column` value. Omitted only in legacy persisted state predating rearrangeable-layout-11;
    * `merge()` backfills it (each section its own column = the historical single
    * row). Kept dense (0..N-1) by the planner-layout helpers after every edit.
    */
   column?: number;
   /**
-   * LAY11 — vertical fr weight *within* a stacked column (defaults to 1). Only
+   * rearrangeable-layout-11 — vertical fr weight *within* a stacked column (defaults to 1). Only
    * meaningful when the section shares its `column` with others; the vertical
    * resize divider drives it, mirroring `weight` on the horizontal axis.
    */

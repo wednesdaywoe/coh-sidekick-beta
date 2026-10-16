@@ -13,7 +13,7 @@ import { createEmptyBuild } from '@/types/build';
  * `+=` would DOUBLE the value (bug: Bo Ryaku ~14 instead of ~7). The guard is the
  * per-power `max` fold that counts the pair once while still stacking across powers.
  *
- * KB/KU protection is now atom-native (ATOM15 / PASS2B-1) — the value + the
+ * KB/KU protection is now atom-native (ATOM15 / data-gaps-206) — the value + the
  * self-protection discriminator come from `kbProtectionValue(power, field)`, not the
  * bag + effectArea/powerType proxy. So these mocks carry self-directed KB protection
  * ATOMS: Bo Ryaku's `MezResist/Knockback +5 (Res)` + `Mez/Knockback -15 (Cur)`

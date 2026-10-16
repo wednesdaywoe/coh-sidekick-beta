@@ -21,7 +21,7 @@ import type { Power } from '@/types';
  * This used to be seeded with the slottable members of `GRANTED_POWER_GROUPS` as well. That
  * half is gone: a granted power is one the export marks `AutoIssue`, `isBuyablePick` reads the
  * mark directly now, and over all four forks the hand-written list caught nothing the mark does
- * not (ROSTER-2). The redirect half stays because it is the half the mark misses — Rebirth
+ * not (data-gaps-281). The redirect half stays because it is the half the mark misses — Rebirth
  * reaches its Nova attacks by PowerRedirector without ever granting them, 7 powers the export
  * axis alone would offer for sale.
  *
@@ -330,7 +330,7 @@ export function AvailablePowers({
         // The auto-grant sentinel, GlobalBoost procs, and the set mechanics the game hands
         // over — the three checks that need only the power. Shared with the powerset-pairing
         // reader rather than copied here, which is how the hidden-mechanic check came to be
-        // wrong in two places at once (SHOWFLAGS-2).
+        // wrong in two places at once (data-gaps-56).
         if (!isBuyablePick(p)) return false;
         // Filter out mode-redirect targets — reached from a base power, never sold. Match on
         // internalName since variant names use that format (`Bright_Nova_Bolt`); the display

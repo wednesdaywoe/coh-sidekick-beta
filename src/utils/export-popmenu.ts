@@ -22,7 +22,7 @@ import { getCommonIOBoostUid, getIOSetBoostUid, getSpecialBoostUid } from '@/dat
  * not have is answered with a console line the user never sees, so an
  * unnameable enhancement is indistinguishable in game from one this file never
  * wrote — which is exactly how `Crafted_Flight` survived eleven months of use
- * (POPMENU-1). The exporter now says so here instead.
+ * (data-gaps-225). The exporter now says so here instead.
  */
 export interface PopmenuWarning {
   kind: 'unnameable' | 'not-grantable';
@@ -46,7 +46,7 @@ const MAX_BOOSTS_PER_OPTION = 70;
  * Every arm is a lookup into the dataset's boost index — the export's own
  * roster, keyed by the spelling the game client prints. Nothing here assembles
  * a name out of our ids: the two tables that used to (a planner-stat map and a
- * prefix/PascalCase composition for set pieces) are what POPMENU-1 was.
+ * prefix/PascalCase composition for set pieces) are what data-gaps-225 was.
  */
 function boostRecordFor(enh: Enhancement): { uid: string; level: number } | { reason: string } {
   switch (enh.type) {

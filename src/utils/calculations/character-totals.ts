@@ -101,7 +101,7 @@ export interface GlobalBonuses {
   debuffResistToHit: number;
   debuffResistRegeneration: number;
   debuffResistPerception: number;
-  // Accuracy/range debuff resistance (DEBUFFRES-1). ENGINE-ONLY: the legacy calc's
+  // Accuracy/range debuff resistance (data-gaps-171). ENGINE-ONLY: the legacy calc's
   // `debuffResMapping` names neither, so it leaves both at 0 and `serverParity` lists them
   // UNMAPPED. Declared here because the field set is the shared shape both sides fill.
   debuffResistAccuracy: number;
@@ -429,7 +429,7 @@ const AIM_NEEDS_AN_ENTITY: readonly string[] = [
  * Guarded Spin is the reported case: a Staff Fighting cone whose +Def(Melee, Lethal) is one
  * `kStackType_Stack` mod aimed at the caster, which the game applies once per foe the cone lands
  * on. The per-foe growth is real; zero was the one count the power could not be at, and it moved
- * no defence on the dashboard whatever its owner did with the toggle (PERFOE-4).
+ * no defence on the dashboard whatever its owner did with the toggle (data-gaps-310).
  */
 export function aimGuaranteesATarget(power: PerTargetFloorFields): boolean {
   return (
@@ -442,7 +442,7 @@ export function aimGuaranteesATarget(power: PerTargetFloorFields): boolean {
 /**
  * Is zero a count this power can be at? The union of the two reasons it cannot be, and the one
  * predicate the calc and the slider both ask — the caster holding a seat in his own sphere
- * (PERFOE-3) and the aim refusing to fire at nobody (PERFOE-4).
+ * (data-gaps-309) and the aim refusing to fire at nobody (data-gaps-310).
  */
 export function perTargetCountCannotBeZero(power: PerTargetFloorFields): boolean {
   return casterOccupiesATargetSlot(power) || aimGuaranteesATarget(power);
@@ -468,7 +468,7 @@ export function perTargetCountCannotBeZero(power: PerTargetFloorFields): boolean
  * radius no block runs and zero is honest. A power that lists the caster among the entities its
  * own sphere lands on is the other shape: he fills the first of its `maxTargets` slots for as
  * long as it is running, so the count floors at one and the slider only ever adds to it
- * (PERFOE-3, Phalanx Fighting — 5% melee/ranged/AoE defence with no ally in sight).
+ * (data-gaps-309, Phalanx Fighting — 5% melee/ranged/AoE defence with no ally in sight).
  */
 function adjustForPerTarget(
   value: ScalarOrScaled,
@@ -750,7 +750,7 @@ export function carries_combat_debuff(power: AtomSource): boolean {
  *
  * A forked atom (Rebirth's Combat Jumping immobilize splits on `casterArchetypes`) is base for
  * one class and absent from every other's, and a build-agnostic reader drops it entirely
- * (AT-FORK-1). This returns the unforked atoms plus the build's own arms with the stamp
+ * (AT-data-gaps-298). This returns the unforked atoms plus the build's own arms with the stamp
  * cleared — the same shape the shadow gates' `forkResolvedViews` hand the readers (see
  * `scripts/planb-shadow-sweep.cjs`) — so a forked protection atom is credited for the classes
  * it genuinely applies to rather than silently dropped when the bag stops answering.

@@ -82,7 +82,7 @@ describe('Rebirth Flight pool bonus-power fixes', () => {
   // Absence is DATA now, not a hand-written exclusion list: Rebirth's export has
   // no Athletic Run record anywhere, so its generated inherent module has no
   // entry to offer. The old `inherentRules.excludeInherents` was one name long
-  // and is what let Thunderspy go on being offered all three runs (INHERENT-4).
+  // and is what let Thunderspy go on being offered all three runs (data-gaps-32).
   it('Athletic Run is excluded from Rebirth inherents', () => {
     expect(getInherentPowers().some((p) => p.internalName === 'Prestige_Athletic_Run')).toBe(false);
     expect(getInherentPowerDef('Prestige_Athletic_Run')).toBeUndefined();

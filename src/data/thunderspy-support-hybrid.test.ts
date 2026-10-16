@@ -3,7 +3,7 @@ import { GENERATED_HYBRID_EFFECTS as TSPY_HYBRID } from '@/data/datasets/thunder
 import { GENERATED_HYBRID_EFFECTS as HC_HYBRID } from '@/data/datasets/homecoming/generated/incarnate-effects';
 
 /**
- * Thunderspy Support Hybrid — generic-attrib map (DSH8).
+ * Thunderspy Support Hybrid — generic-attrib map (deductive-schema-harness-8).
  *
  * Thunderspy stores each hybrid buff with a generic front-category token
  * (`Damage`/`Ones`/`Defense`/`Accuracy`) and all-zero aspect bytes; the REAL
@@ -80,7 +80,7 @@ describe('Thunderspy Support Hybrid generic-attrib map', () => {
       // POSITIONS and TYPES are not leaks — Rebirth's Support Genome tiers carry the
       // same Melee/Area/Smashing/Lethal/Energy/Negative rows one per AttribMod, where
       // tspy packs them into one multi-attrib mod that was unreachable until the
-      // parser walked every sub-record (TSPY-4). What this guards is that no heal or
+      // parser walked every sub-record (data-gaps-74). What this guards is that no heal or
       // mez-strength key appears.
       const allowed = /^(damage|accuracy|def[A-Z]\w*)$/;
       for (const k of Object.keys(fl)) {

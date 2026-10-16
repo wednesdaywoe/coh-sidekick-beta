@@ -13,12 +13,12 @@ import {
 } from './core/atomic-effect';
 
 /**
- * DSH4 — validate the closed atomic effect schema + identity key against the
+ * deductive-schema-harness-4 — validate the closed atomic effect schema + identity key against the
  * COMMITTED parser export (`exported_powers/`, the converter input). This proves the
  * schema fits real data, the identity keys distinguish the collapse-prone sibling
  * sets, and every attrib the HC export uses has a bridge rule (so a renamed/new
  * attrib after an HC patch fails here instead of silently mis-slotting). It does NOT
- * exercise the converter — that is DSH6.
+ * exercise the converter — that is deductive-schema-harness-6.
  *
  * See streams/DEDUCTIVE_SCHEMA_HARNESS.md.
  */
@@ -31,7 +31,7 @@ function hcFiles(): string[] {
   const out: string[] = [];
   // Every dataset that nests under the Homecoming export root, derived rather than typed:
   // this walk is Homecoming's alone, and a hand list silently adopts the next dataset's
-  // tree as HC's the day it lands (BRAIN-5).
+  // tree as HC's the day it lands (data-gaps-289).
   const skipTop = new Set<string>([
     ...ALL_DATASET_IDS.filter((id) => id !== 'homecoming'),
     'tables',
@@ -56,7 +56,7 @@ function loadByFullName(substr: string): { path: string; power: { full_name?: st
   throw new Error(`no HC export power ending in ${substr}`);
 }
 
-describe('DSH4 atomic-effect schema — export present', () => {
+describe('deductive-schema-harness-4 atomic-effect schema — export present', () => {
   it('the committed exported_powers/ input exists', () => {
     expect(fs.existsSync(EXPORT_ROOT)).toBe(true);
   });
@@ -74,7 +74,7 @@ describe('bridgeAttrib — vocabulary rules', () => {
     expect(bridgeAttrib('Smashing', 'Resistance', 'Res_Smashing')).toEqual({ effectType: 'Resistance', subType: 'Smashing' });
   });
 
-  it('maps the Thunderspy mez/movement vocab respellings (TSPY-3 step 2)', () => {
+  it('maps the Thunderspy mez/movement vocab respellings (data-gaps-75 step 2)', () => {
     // Thunderspy drops the canonical participle / `Movement` prefix on four attribs
     // where HC/Rebirth spell them fully. Same present-but-respelled class as the
     // SpeedRunning→Run movement vocab already mapped. Each is confirmed by its table:
@@ -123,7 +123,7 @@ describe('bridgeAttrib — vocabulary rules', () => {
     // The damage/resistance face is written `<type>_Dmg`; a bare position/type attrib is
     // the *defense* characteristic. Incarnate flat buffs (Support/Barrier Core) and
     // positional NPC buffs use `Melee_Ones`/`Ranged_Ones`, not a `*Def*` table — the
-    // bridge must still classify them as Defense so DSH5/DSH6 can see defense drops.
+    // bridge must still classify them as Defense so DSH5/deductive-schema-harness-6 can see defense drops.
     expect(bridgeAttrib('Smashing', 'Current', 'Melee_Ones')).toEqual({ effectType: 'Defense', subType: 'Smashing' });
     expect(bridgeAttrib('Melee', 'Current', 'Melee_Ones')).toEqual({ effectType: 'Defense', subType: 'Melee' });
     expect(bridgeAttrib('Area', 'Current', 'Ranged_Ones')).toEqual({ effectType: 'Defense', subType: 'AoE' });
@@ -238,9 +238,9 @@ describe('coverage — every HC attrib has a bridge rule (post-patch regression 
     const mappedPct = ((totalRecords - unmapped) / totalRecords) * 100;
     // eslint-disable-next-line no-console
     console.log(
-      `[DSH4] HC: ${files.length} powers, ${totalRecords} atomic records, ` +
+      `[deductive-schema-harness-4] HC: ${files.length} powers, ${totalRecords} atomic records, ` +
       `${distinctAttribs.size} distinct attribs, ${mappedPct.toFixed(1)}% mapped ` +
-      `(${unmapped} Unmapped = by-type-on-mez/notify + parser-unknown, deferred to DSH6). ` +
+      `(${unmapped} Unmapped = by-type-on-mez/notify + parser-unknown, deferred to deductive-schema-harness-6). ` +
       `effectTypes: ${Object.entries(effectTypeCounts).sort((a, b) => b[1] - a[1])
         .map(([k, v]) => `${k}:${v}`).join(' ')}`,
     );
@@ -250,17 +250,17 @@ describe('coverage — every HC attrib has a bridge rule (post-patch regression 
 });
 
 /**
- * ATTRTYPE-1 — `mapAttribType` maps all four of the parser's `ATTRIB_MOD_TYPE`
+ * data-gaps-50 — `mapAttribType` maps all four of the parser's `ATTRIB_MOD_TYPE`
  * values and throws on an unrecognized spelling. It used to fold `Constant` onto
  * `Magnitude` (`return 'Magnitude'; // Magnitude, Constant, undefined`) — the
- * STACK-3 shape, a soft default turning a parse fact into plausible data. This
+ * data-gaps-66 shape, a soft default turning a parse fact into plausible data. This
  * grades the fix directly: a regression to the fall-through fails the `Constant`
  * assertion, and a new/unlisted type value fails the throw (Rule 1: show the
  * fault rather than laundering it). Absence stays folded to `Magnitude`, matching
  * the parser default the def compiler authors (Detention Field's mez row reads
  * `Magnitude`).
  */
-describe('mapAttribType — four-member vocabulary, throw on unknown (ATTRTYPE-1)', () => {
+describe('mapAttribType — four-member vocabulary, throw on unknown (data-gaps-50)', () => {
   it('maps each of the four parser ATTRIB_MOD_TYPE values', () => {
     expect(mapAttribType('Duration')).toBe('Duration');
     expect(mapAttribType('Magnitude')).toBe('Magnitude');
@@ -268,11 +268,11 @@ describe('mapAttribType — four-member vocabulary, throw on unknown (ATTRTYPE-1
     expect(mapAttribType('Expression')).toBe('Expression');
   });
 
-  it('keeps Constant off Magnitude — the ATTRTYPE-1 fold is retired', () => {
+  it('keeps Constant off Magnitude — the data-gaps-50 fold is retired', () => {
     expect(mapAttribType('Constant')).not.toBe('Magnitude');
   });
 
-  it('throws on a present-but-unrecognized spelling (the STACK-3 soft-default guard)', () => {
+  it('throws on a present-but-unrecognized spelling (the data-gaps-66 soft-default guard)', () => {
     expect(() => mapAttribType('Gibberish')).toThrow();
   });
 

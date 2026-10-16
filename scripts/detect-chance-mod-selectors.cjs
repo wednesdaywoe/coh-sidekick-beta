@@ -3,12 +3,12 @@
 /**
  * Corpus-wide chance-mod selectors — the caster states the game publishes as a
  * `Global_Chance_Mod` tag with no `Set_Mode` naming them and no shared parent power
- * (DATA-GAP-REGISTER COND-12).
+ * (DATA-GAP-REGISTER data-gaps-126).
  *
  * The engine never gates a tagged group on a mode. `ChanceModAccumulate` sums, per tag, the
  * chance mods of everything the caster is running, and a group fires when its own chance plus
  * that sum reaches a roll — so "Fly is on" reaches Combat Jumping's ground package as a `-1.0`
- * on `FeetCantTouchTheGround` from a power in another pool entirely. COND-9's per-powerset pass
+ * on `FeetCantTouchTheGround` from a power in another pool entirely. data-gaps-124's per-powerset pass
  * reads the same mechanic where a selector also publishes a mode (Swap Ammo), and borrows that
  * mode as the gate vocabulary; the families here publish no usable mode, so the gate has to be
  * minted, and the only honest token to mint it from is the tag itself: each mover's emitted
@@ -20,11 +20,11 @@
  *
  *   1. a MOVER of tag T is a power whose `Global_Chance_Mod` moves T by a full point in a
  *      PvE-reachable group — below ±1 a mod retunes a probability rather than switching a
- *      variant, the same thresholds COND-9 reads;
+ *      variant, the same thresholds data-gaps-124 reads;
  *   2. every mover of T is a **Toggle**. A Click's mod is a timed rider (Fiery Embrace, Fusion,
- *      Blood Thirst — the families COND-9 declines by design), and an Auto's is a constant that
+ *      Blood Thirst — the families data-gaps-124 declines by design), and an Auto's is a constant that
  *      never switches (Domination_Rage's standing `-1`), so neither states a caster CHOICE the
- *      planner can offer. Read over the movers a build can HOLD, where those exist (COND-10):
+ *      planner can offer. Read over the movers a build can HOLD, where those exist (data-gaps-125):
  *      a power in a category no archetype picks and with no `auto_issue` grant is running for
  *      nobody, so its type states nothing about whether the tag switches. The Parse6 forks'
  *      ammo toggles are the measured case — Rebirth's three Dual Pistols toggles and
@@ -34,10 +34,10 @@
  *      mover at all the full list is read instead, so this can only ever RESCUE a family, never
  *      decline one: every clause-2 decline the sweep already recorded still declines;
  *   3. T moves in ONE direction. A tag both raised and cut is a swap-among-variants family
- *      (the Staff forms trading the three Perfections), which is COND-9's shape and is left to
+ *      (the Staff forms trading the three Perfections), which is data-gaps-124's shape and is left to
  *      its per-powerset rule — measured, every such family's carriers already spell their own
  *      `ownPower?` gates;
- *   4. T is not claimed by a per-powerset COND-9 selector (`selectorOf`) — one mechanic, one
+ *   4. T is not claimed by a per-powerset data-gaps-124 selector (`selectorOf`) — one mechanic, one
  *      owner, so Granite Armor's mode-published pair stays with the pass that reads its mode;
  *   5. T collides with no mode token the dataset publishes anywhere (`Set_Mode` names,
  *      `modes_suspended` / `modes_required` / `modes_disallowed`), because the minted gate
@@ -61,7 +61,7 @@
  *      an enhancement's rows reach a character through slotting, not through the caster
  *      running the power, and the crafted damage-resistance enhancements tag one group per
  *      damage type (`Smashing`, `Lethal`, `Fire`, …) — `pchName` used as a plain label, which
- *      collides by spelling with the `Lethal` the ammo toggles genuinely cut (COND-10). No gate
+ *      collides by spelling with the `Lethal` the ammo toggles genuinely cut (data-gaps-125). No gate
  *      is at stake: a `Boost` is never converted into a bundle power, so nothing would be
  *      stamped on one. What the exclusion protects is this clause — a tag whose only carriers
  *      were enhancement labels would satisfy "a stampable carrier exists" and select a family
@@ -95,7 +95,7 @@ function attribOf(template) {
   return attribs.length === 1 ? String(attribs[0]).toLowerCase() : null;
 }
 
-/** The filter names of a GCM row, whichever params arm the fork spells them in (COND-9). */
+/** The filter names of a GCM row, whichever params arm the fork spells them in (data-gaps-124). */
 function filterNames(params) {
   if (!params) return [];
   if (params.type === 'EffectFilter') return params.tags || [];
@@ -168,7 +168,7 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
     byDir.get(dir).push(json);
   }
 
-  // Clause 4's claim set: every tag a per-powerset COND-9 selector loads or displaces.
+  // Clause 4's claim set: every tag a per-powerset data-gaps-124 selector loads or displaces.
   const cond9Claimed = new Set();
   for (const jsons of byDir.values()) {
     const swallowed = [];
@@ -225,7 +225,7 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
     };
     const decline = (reason) => declined.push({ ...entry, reason });
     if (cond9Claimed.has(tag)) {
-      decline('claimed by a per-powerset COND-9 selector');
+      decline('claimed by a per-powerset data-gaps-124 selector');
       continue;
     }
     // Judged over the movers a build can hold; where none is holdable the whole list is
@@ -237,7 +237,7 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
       continue;
     }
     if (!direction) {
-      decline('moved in both directions — a swap-among-variants family (COND-9\'s shape)');
+      decline('moved in both directions — a swap-among-variants family (data-gaps-124\'s shape)');
       continue;
     }
     if (modeTokens.has(tag)) {
@@ -255,7 +255,7 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
       // the caster running it, and it labels its own groups with the damage-type vocabulary
       // (`Lethal`, `Fire`, …) that a real mover's tag collides with by spelling. Nothing is
       // stamped on a Boost either way — this keeps clause 7 from counting a label as a
-      // carrier and selecting a family with nothing to gate (COND-10).
+      // carrier and selecting a family with nothing to gate (data-gaps-125).
       if (String(json.type || '') === 'Boost') continue;
       const name = json.full_name || json.name;
       walkGroups(json.effects, (effect) => {
@@ -283,7 +283,7 @@ function detectChanceModSelectors(rawRoot, exclude = new Set()) {
     if (!entry.rows) {
       // A carrier population that is all costume-FX no-ops IS a family shape worth
       // recording (the Stance inherent); a moved tag nothing wears at the switching
-      // chance is not — COND-9's own detector treats that silence the same way.
+      // chance is not — data-gaps-124's own detector treats that silence the same way.
       if (payloadless) decline(`every carrier row is payload-less FX (${payloadless} rows)`);
       continue;
     }

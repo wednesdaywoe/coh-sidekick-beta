@@ -18,7 +18,7 @@
  *
  * That restatement immediately earned itself. `rechargeBuff` was documented as 309 agreements
  * plus 25 Thunderspy-only gains, so the census should read 334; it reads 309. The 25 left when
- * `atom-query.ts` was ported wholesale from canonical (STACK-7, 2026-08-27) and arrived
+ * `atom-query.ts` was ported wholesale from canonical (data-gaps-158, 2026-08-27) and arrived
  * carrying `slowIsDebuff`, ten days before the strip. They were never a recovery: Time Wall,
  * the named example, states its −recharge as a `Ranged_Slow` row at `toWho: Target`, and the
  * pre-port reader credited the CASTER with a foe's debuff — the identical defect this file's

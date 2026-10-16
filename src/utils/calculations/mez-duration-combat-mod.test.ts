@@ -22,7 +22,7 @@ import { mezSlotValue } from '@/data/core/atom-query';
  * `finalDuration = baseDuration * durCombatMod`.
  *
  * The hold read is atom-native (`mezSlotValue(Dominate,'hold')`) — the retired
- * `effects.hold` bag slot no longer exists (STRIP-1).
+ * `effects.hold` bag slot no longer exists (data-gaps-327).
  */
 describe('mez duration scales with enemy level (purple patch)', () => {
   beforeAll(async () => {

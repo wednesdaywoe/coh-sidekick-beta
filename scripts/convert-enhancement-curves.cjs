@@ -1,5 +1,5 @@
 /**
- * SOURCE-1 SW3 — per-dataset generated enhancement-curves module.
+ * data-gaps-324 SW3 — per-dataset generated enhancement-curves module.
  *
  * Emits `src/data/datasets/<id>/generated/enhancement-curves.ts` from the
  * committed binary export, carrying everything the enhancement engine
@@ -386,8 +386,8 @@ function main() {
   lines.push(' *');
   lines.push(' * Derived from the committed binary export (enhancement_curves.json +');
   lines.push(' * tables/*.json + the crafted-boost corpus) by');
-  lines.push(' * scripts/convert-enhancement-curves.cjs (SOURCE-1 SW3). Derivation proof:');
-  lines.push(' * docs/SOURCE-1-SW1-derivation.md.');
+  lines.push(' * scripts/convert-enhancement-curves.cjs (data-gaps-324 SW3). Derivation proof:');
+  lines.push(' * docs/data-gaps-324-SW1-derivation.md.');
   lines.push(' *');
   lines.push(` * Regenerate: node scripts/convert-enhancement-curves.cjs --dataset ${datasetId}`);
   lines.push(' */');

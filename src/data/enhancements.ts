@@ -2,10 +2,10 @@
  * Non-IO enhancement vocabulary and presentation metadata.
  *
  * The special registries (Hamidon/Titan/Hydra/D-Sync/prestige) are per-dataset
- * generated data — `src/data/special-enhancements.ts` (SOURCE-1 item 9).
+ * generated data — `src/data/special-enhancements.ts` (data-gaps-324 item 9).
  * Origin-tier values are per-aspect data from the dataset's enhancement
- * curves — `getOriginTierValue` (SOURCE-1 SW8). Common-IO values are exact
- * per-level curve reads — `getIOValueAtLevel` (SOURCE-1 SW5).
+ * curves — `getOriginTierValue` (data-gaps-324 SW8). Common-IO values are exact
+ * per-level curve reads — `getIOValueAtLevel` (data-gaps-324 SW5).
  */
 
 import type {
@@ -22,7 +22,7 @@ import type {
  * The generic ("common") IO types the picker offers, in display order.
  *
  * Hand-written ON PURPOSE, and not to be replaced by a read of the boost index's
- * `commonIoTypes`. BOOST-1 derived that one from the crafted boost family and
+ * `commonIoTypes`. data-gaps-42 derived that one from the crafted boost family and
  * deliberately left this list alone as the beta's oracle: two independent
  * statements of the same roster, which only mean something while neither is
  * computed from the other. `export-popmenu.test.ts` asserts they agree as sets
@@ -32,7 +32,7 @@ import type {
  * Order is presentation and is this list's alone — the index's copy is sorted.
  *
  * Intangible joined 2026-09-20. The hand list had named 25 of the game's 26
- * since BOOST-1 measured it and fixed only the derived side, while the icon
+ * since data-gaps-42 measured it and fixed only the derived side, while the icon
  * (`Intan.png`), the Schedule A curve and all ten `Crafted_Intangible_*` levels
  * were already in place — the one missing piece was this line. It is visible on
  * two forks: 6 powers each on Rebirth and Thunderspy accept Intangible in their
@@ -76,7 +76,7 @@ export const COMMON_IO_TYPES: EnhancementStatType[] = [
 /**
  * Presentation metadata only. Tier VALUES are per-aspect data from the
  * dataset's enhancement curves — `getOriginTierValue` in
- * `@/utils/calculations/enhancement-values` (SOURCE-1 SW8).
+ * `@/utils/calculations/enhancement-values` (data-gaps-324 SW8).
  *
  * The flat 8.3 / 16.7 / 33.3 that used to sit here was Schedule A's ladder
  * wearing every schedule's name: the export pays a Defense SO 20% and a

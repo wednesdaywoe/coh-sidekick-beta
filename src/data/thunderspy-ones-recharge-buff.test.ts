@@ -44,7 +44,7 @@ import { RallyTheMilitia } from './datasets/thunderspy/generated/powersets/maste
  * are the right and the only self-consistent oracle for it. The pool powers
  * (`Hasten`, `Burnout`) projected `effects` until the writer-side strip took the last two
  * emitters; their surfacing claims moved to the atoms with everything else, and the two
- * perma-eligibility claims the bag seam was carrying came back with PERMA-2's atom port.
+ * perma-eligibility claims the bag seam was carrying came back with data-gaps-155's atom port.
  */
 /** The first always-on atom of `effectType`, optionally narrowed by a predicate. */
 function atomOf(
@@ -77,7 +77,7 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
     expect(buff!.duration).toBe(120);
   });
 
-  // Given back by PERMA-2 (2026-09-04): the predicate reads the atoms, so the 120s window the
+  // Given back by data-gaps-155 (2026-09-04): the predicate reads the atoms, so the 120s window the
   // test above recovers is the one it measures — 120s recharge against a 120s caster-side
   // window, which is what makes Hasten the archetypal Track button.
   it('Hasten is perma-eligible (the Track button appears)', () => {
@@ -127,7 +127,7 @@ describe('Thunderspy Ones-attrib buff recovery (data-driven)', () => {
     const crash = atomOf(burnout!, 'MaxEndurance', (a) => a.aspect === 'Max');
     expect(crash).toBeDefined();
     expect(crash!.duration).toBe(60);
-    // The beta's `isPermaEligible` is a declared fork of canonical's (PERMA-2, this branch):
+    // The beta's `isPermaEligible` is a declared fork of canonical's (data-gaps-155, this branch):
     // it takes optional `RechargeBounds` and a NO-BOUNDS call deliberately reads eligible, so
     // canonical's bare `toBe(false)` grades the fork rather than the claim. The claim itself —
     // an instant power-reset is not something the caster keeps up — is the bounded call, which

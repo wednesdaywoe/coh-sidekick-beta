@@ -153,7 +153,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   // Basic metadata. `internalName` is the export's own identity for the power, carried the
   // same way the archetype converter carries it (`internalName: powerJson.name`). Before
-  // MBDIMPORT-17 these two emitters wrote only `fullName`, and the Rust loader DERIVED the
+  // data-gaps-252 these two emitters wrote only `fullName`, and the Rust loader DERIVED the
   // identity from its last segment — a derivation that agreed on all 1,846 pool and epic
   // powers across four forks, which is why nothing ever broke. Agreement is not the same as
   // reading it: the export owns this field, so it is read rather than reconstructed.
@@ -193,7 +193,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   // EntsAffected — who this power's effects can land on, which is what an atom
   // targeting `AnyAffected` means by "the target". See the field doc on
-  // `Power.targetsAffected` (DATA-GAP-REGISTER MEZRES-3).
+  // `Power.targetsAffected` (DATA-GAP-REGISTER data-gaps-187).
   if (Array.isArray(rawJson.targets_affected) && rawJson.targets_affected.length) {
     power.targetsAffected = rawJson.targets_affected;
   }
@@ -245,7 +245,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   // Caster-state writes (grant/revoke edges) — the same stamp archetype powers get, called
   // here explicitly because a shared extractor only reaches the partitions that ASK
-  // (CHAIN-1 bullet 1a: the pool converter never asked for the fast form, and Aid Other
+  // (data-gaps-127 bullet 1a: the pool converter never asked for the fast form, and Aid Other
   // shipped a second slow).
   const grantEdges = extractGrantEdges(rawJson);
   if (grantEdges) {
@@ -281,7 +281,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // reversed from boostsets.bin's per-set power lists. null and [] both mean
   // the game lists this power in no set — the field stays unset and only
   // single IOs (allowedEnhancements) work. No inference fallback: it invented
-  // slottability the game refuses (SETCAT-1 — Teleport sets in Jaunt).
+  // slottability the game refuses (data-gaps-39 — Teleport sets in Jaunt).
   if (Array.isArray(rawJson.allowed_set_categories)
       && rawJson.allowed_set_categories.length > 0) {
     power.allowedSetCategories = [...rawJson.allowed_set_categories].sort();
@@ -408,7 +408,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // the time) had no atom representation. RESOLVED by this block: as of 2026-07-18 the
   // census shows 0% of powers lack atoms in EVERY dataset (docs/ATOMIC-STATE-AUDIT.md).
   // The bag's remaining reasons to exist are the unmigrated bag-consumed families and
-  // Thunderspy's 21.7% only-`Unmapped` powers (TSPY-3) — NOT any power lacking atoms.
+  // Thunderspy's 21.7% only-`Unmapped` powers (data-gaps-75) — NOT any power lacking atoms.
   //
   // Union of `allTemplates` (what the bag saw) with `collectAtomTemplates` (which adds
   // back the gated groups the bag's collector drops); the difference is stamped
@@ -446,7 +446,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
 
   // The pets, at the address every partition now answers on. A reader that has to ask
   // `power.summon ?? power.effects.summon` is two rules, and which one answers would depend on
-  // which partition the power came from, which is the shape ENT-22 was. One writer, one address.
+  // which partition the power came from, which is the shape data-gaps-22 was. One writer, one address.
   if (effects.summon) power.summon = effects.summon;
 
   // Conditional bonus effects (Mechanic Adjusters) — the positive state gates the base
@@ -456,7 +456,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
   // stamp onto the atom, so running it first would put a conditional group's per-foe
   // increment on the base atoms.
   //
-  // This converter shipped no conditionals at all until 2026-08-07 (COND-2) — a
+  // This converter shipped no conditionals at all until 2026-08-07 (data-gaps-129) — a
   // partition-wide zero on all three forks while the gated groups sat in the export naming
   // real caster state: Arcane Bolt's mode, Cross Punch's Fighting Synergy on Boxing and
   // Kick, Field Medic on Aid Self, Domination on Homecoming's Cross Punch, Intimidate and
@@ -475,7 +475,7 @@ function convertPoolPower(rawJson, rank, availableLevel) {
     // not of which converter read it: the aspect and per-template target the recovered slot
     // needs are missing from every fork-6 power alike. The applied-mez half was called only by
     // convert-powerset.cjs, so Rest, Hibernate and Rise of the Phoenix shipped 15 foe-control
-    // slots on self-only powers (TWIN-2).
+    // slots on self-only powers (data-gaps-316).
     // Passed explicitly now that the bag is not on the power: both guards default their third
     // argument to `power.effects`, which is gone, and a guard handed `undefined` returns without
     // stamping. What survives the call is `stampNotOnCaster` on the atoms — the durable half —
@@ -566,7 +566,7 @@ function convertPool(poolId) {
     }
 
     // Through the gate-stamping reader: the flight family's carriers and movers live in the
-    // pools (COND-12), so a bare parse here would ship their groups ungated.
+    // pools (data-gaps-126), so a bare parse here would ship their groups ungated.
     const rawJson = _readPowerFile(filePath);
     // -1 marks the auto-granted powers (Afterburner from Fly, Translocation
     // from Mystic Flight, Arcane Power from Arcane Bolt) — the planner's

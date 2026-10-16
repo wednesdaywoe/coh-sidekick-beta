@@ -35,7 +35,7 @@ const commonIOLevelCache = new WeakMap<BoostIndexData, number[]>();
  * and computes a real larger number there while the forks' stop at 50 and
  * collapse. 51-53 is the pre-booster spelling of a level-50 IO with three
  * combines, which the planner already carries on its own axis as
- * `Enhancement.boost` (BOOST-6).
+ * `Enhancement.boost` (data-gaps-6).
  *
  * Every stat family must name the same levels. One that disagrees is export
  * news rather than something to reconcile, so it throws.
@@ -105,8 +105,8 @@ export function craftedCommonIOLevel(level: number, levels = getCommonIOLevels()
  * Fly `Crafted_Flight` and Slow `Crafted_Slow`; the game has `Crafted_Fly` and
  * `Crafted_Snare`, `boost` answers an unknown record with a console line nobody
  * reads, and the enhancement simply never appeared in the tray. It shipped that
- * way for eleven months (POPMENU-1), and the same shape had already cost the
- * `.mbd` exporter seven stats before it stopped assembling too (MBDEXPORT-9).
+ * way for eleven months (data-gaps-225), and the same shape had already cost the
+ * `.mbd` exporter seven stats before it stopped assembling too (data-gaps-256).
  *
  * `null` means this dataset's export names no such record. That is a real
  * answer — a fork carries sets and specials the others do not — and every

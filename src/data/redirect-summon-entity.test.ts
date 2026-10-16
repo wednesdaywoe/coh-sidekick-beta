@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 /**
- * A summon that names redirect POWERS instead of an entity, and how it finds its pet (ENT-16).
+ * A summon that names redirect POWERS instead of an entity, and how it finds its pet (data-gaps-16).
  *
  * An `EntCreate` template normally states an `entity_def`. Some state none and list redirect
  * powers instead, and nothing on the summoning power says which entity owns them — so the
@@ -156,8 +156,8 @@ describe.each(DATASETS)('redirect-power summons resolve their entity — %s', (d
    * Two powers may carry both, for opposite reasons, and each needs its own warrant:
    *
    *  - Sentinel Whirlpool, the reason the precedence exists: both blocks hold the SAME pet,
-   *    identical row for row, so either source answers the same (ENT-8).
-   *  - Spirit Tree, since ENT-17: the blocks are DISJOINT. The entity is real and holds a taunt
+   *    identical row for row, so either source answers the same (data-gaps-103).
+   *  - Spirit Tree, since data-gaps-17: the blocks are DISJOINT. The entity is real and holds a taunt
    *    and the tree's own resistances; the ally +Regen the power exists for lives only in the
    *    synthesized list. `buff_pets` reads whichever actually folded a row rather than whichever
    *    is present, so the aura lands and Whirlpool still doesn't double.
@@ -165,7 +165,7 @@ describe.each(DATASETS)('redirect-power summons resolve their entity — %s', (d
    * A third entry is a finding, not a line to add: it means a payload was replaced rather than
    * complemented.
    */
-  it('pairs a synthesized ability list with a real entity only where ENT-8 says it may', () => {
+  it('pairs a synthesized ability list with a real entity only where data-gaps-103 says it may', () => {
     const entities = new Set([...byKey.values()].flat());
     const both = summons
       .filter((s) => s.summon.resolvedEntities?.length && s.summon.entity)

@@ -136,7 +136,7 @@
     "Temporary_Powers.Temporary_Powers.Cryo_Ammunition",
     "Temporary_Powers.Temporary_Powers.Cryo_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "Contaminated",
@@ -227,7 +227,7 @@
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition",
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "GrantThermalBoost",
@@ -318,7 +318,7 @@
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition",
     "Temporary_Powers.Temporary_Powers.Incendiary_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "MaxPsyBarrier",
@@ -410,7 +410,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PerfectionofMind",
@@ -435,7 +435,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PerfectionofSoul",
@@ -460,7 +460,7 @@
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul",
     "Tanker_Melee.Staff_Fighting.Form_of_the_Soul"
    ],
-   "reason": "moved in both directions — a swap-among-variants family (COND-9's shape)"
+   "reason": "moved in both directions — a swap-among-variants family (data-gaps-124's shape)"
   },
   {
    "tag": "PresenceHealHigh",
@@ -471,7 +471,7 @@
     "Teamwork.Widow_Teamwork.Elude",
     "Teamwork.Widow_Teamwork.Elude"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "PresenceHealLow",
@@ -482,7 +482,7 @@
     "Teamwork.Widow_Teamwork.Elude",
     "Teamwork.Widow_Teamwork.Elude"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "PreventiveMedicine",
@@ -582,7 +582,7 @@
     "Temporary_Powers.Temporary_Powers.Chemical_Ammunition",
     "Temporary_Powers.Temporary_Powers.Chemical_Ammunition"
    ],
-   "reason": "claimed by a per-powerset COND-9 selector"
+   "reason": "claimed by a per-powerset data-gaps-124 selector"
   },
   {
    "tag": "TravelStance",

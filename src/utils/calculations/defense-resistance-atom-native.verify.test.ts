@@ -3,7 +3,7 @@
  * off the atoms and graded against the bag they replace.
  *
  * Five per-type maps, four of which cross fork-resolved: rebirth's pool and armour powers state
- * identical defence and resistance arms per class (AT-FORK-1), and a build-agnostic read returns
+ * identical defence and resistance arms per class (AT-data-gaps-298), and a build-agnostic read returns
  * `undefined` exactly where the build's own arm exists. Canonical hit that from the other side —
  * rebirth Weave reading 0 defence while every other fork read it — which is why the resolution
  * came across with the mez fold rather than after it.
@@ -25,7 +25,7 @@
  * The re-key is the part worth stating twice. `effects.defense` had exactly one supplier on any
  * fork and it was not the converter: **0 converted powers carry the slot**, and the only writer
  * is `buffPetAuraEffects`. Retiring the data read while the fold still wrote the old key would
- * have zeroed every buff-pet defence aura in silence — the SYNTH-1 shape, in the one place this
+ * have zeroed every buff-pet defence aura in silence — the data-gaps-328 shape, in the one place this
  * repo could have walked into it. The fold mints `defenseBuff` now, so a pet aura and a mode
  * conditional reach the arm the same way.
  */

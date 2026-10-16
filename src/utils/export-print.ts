@@ -247,7 +247,7 @@ function powerRow(
 ): string {
   // Keyed by powerKey, not by display name: `computeAllSlotLevels` has always
   // returned `category:internalName`, so a display-name lookup missed on every
-  // power and every printed slot fell back to its power's pick level (SLOT-1).
+  // power and every printed slot fell back to its power's pick level (issues-6).
   const levels = slotLevels.get(powerKey(category, power.internalName));
 
   const slots = power.slots
@@ -331,7 +331,7 @@ function buildIncarnateHTML(incarnates: IncarnateBuildState | undefined): string
 export function generatePrintHTML(build: Build, levelUpMode: boolean): string {
   const result = calculateCharacterTotals(build);
   const g = result.globalBonuses;
-  // Outside Level Up mode a slot carries no real level (SLOT-3); this is a
+  // Outside Level Up mode a slot carries no real level (issues-3); this is a
   // synthetic, schedule-legal placement for the printed sheet, not a claim
   // about the build's actual leveling history.
   const slotLevels = computeExportSlotLevels(build, levelUpMode);

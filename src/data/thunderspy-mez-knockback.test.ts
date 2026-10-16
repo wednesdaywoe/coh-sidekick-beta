@@ -37,7 +37,7 @@ import { ClearMind } from './datasets/thunderspy/generated/powersets/defender/pr
  * `guardThunderspyAppliedMez` on the power's `targets_affected` (§7).
  *
  * These re-read the recovered shape from the committed dataset (GAME-DATA-PRINCIPLES
- * §9). The STRIP-1 bag strip retired the `effects` projection these once asserted on;
+ * §9). The data-gaps-327 bag strip retired the `effects` projection these once asserted on;
  * the claims are now stated on the ATOMS, discriminated the way a surfacing fix must
  * be (subtype + face + sign), never by the attrib NAME.
  */
@@ -115,11 +115,11 @@ describe('Thunderspy applied-mez & knockback recovery (data-driven)', () => {
     expect(ku!.duration).toBe(0);
   });
 
-  // --- Aspect distinguishes mez-STRENGTH from applied mez (TSPY-3) --------------
+  // --- Aspect distinguishes mez-STRENGTH from applied mez (data-gaps-75) --------------
   it('Power Boost gains its mez-STRENGTH buff (specialBuff.stun), not an applied Stun', () => {
     // Power Boost is a +Strength self-buff (the Power Boost family): its `Stun` template is
     // aspect=Strength, toWho=Self — a buff to the CASTER'S stun MAGNITUDE (the atom type is
-    // `Enhancement`, subType `Stunned`), not an applied Stun mez (type `Mez`). Before TSPY-3
+    // `Enhancement`, subType `Stunned`), not an applied Stun mez (type `Mez`). Before data-gaps-75
     // recovered the AttribMod aspect, the blank aspect (plus targets_affected=['Self']) made
     // guardThunderspyAppliedMez drop the whole template, so the power carried nothing.
     const strength = atomsOf(PowerBoost).find(

@@ -195,7 +195,7 @@ export interface Build {
     category?: string;
     level?: number;
     /**
-     * Where `level` came from — the discriminator MBDEXPORT-21 is about.
+     * Where `level` came from — the discriminator data-gaps-276 is about.
      *
      * Three code paths write a level into this array and they do not mean the same thing:
      * a placement in the UI and MBDIMPORT's `seedSlotOrderFromFile` are both a record of

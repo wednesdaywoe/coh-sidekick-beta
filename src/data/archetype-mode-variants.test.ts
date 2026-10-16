@@ -12,7 +12,7 @@ import type { Power } from '@/types';
  * parsed yet; Thunderspy's Primalist shells were carried as a generated-but-parallel silo. Both
  * outlived their reason — the parser produces `modeVariants` on all three forks now — and
  * neither had a gate that would go red when the export caught up, because a hand table and the
- * export agreeing is not something either side measures. FORK-2 retired them; this is what
+ * export agreeing is not something either side measures. data-gaps-299 retired them; this is what
  * stands in their place.
  *
  * `pool-epic-mode-gates.test.ts` pins the same field across pool and epic powers and states

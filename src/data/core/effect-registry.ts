@@ -449,7 +449,7 @@ export const EFFECT_REGISTRY: Record<string, EffectDisplayConfig> = {
     // this and `slow` at once and the two must not collapse into one row. Same
     // enhancement family as `slow`; every row the corpus ships is IgnoreStrength,
     // so the aspect names the family rule and the per-row mark flattens each
-    // actual row (ENT-4).
+    // actual row (data-gaps-99).
     enhancementAspect: 'slow',
     priority: 8,
   },
@@ -901,7 +901,7 @@ export function formatMezValue(value: NumberOrMez): string {
   }
   if (isMezEffect(value)) {
     const mag = value.mag;
-    // Duration is never negative — the sign on `scale` is the protection spelling (MEZFACE-1).
+    // Duration is never negative — the sign on `scale` is the protection spelling (data-gaps-168).
     const duration = value.scale ? `${Math.abs(value.scale).toFixed(1)}s` : '';
     return duration ? `Mag ${mag} (${duration})` : `Mag ${mag}`;
   }
@@ -972,7 +972,7 @@ export function getByTypeFirstValue(obj: Record<string, unknown>): NumberOrScale
   if (typeof first === 'number') return first;
   // `scaleTerms` counts as well as `scale`: a pet's `slow` holds one value per movement
   // axis and an axis can state two rows off two tables, so the entry inside a by-type
-  // object is exactly the shape a top-level value can be (ENT-8). Rejecting it collapsed
+  // object is exactly the shape a top-level value can be (data-gaps-103). Rejecting it collapsed
   // the whole key to nothing and the row vanished.
   if (typeof first === 'object' && first !== null && ('scale' in first || 'scaleTerms' in first)) {
     return first as NumberOrScaled;
@@ -1037,7 +1037,7 @@ export function groupEffectsByCategory(
     // slot IS an effect: it is the converter's IgnoreStrength verdict expressed as
     // a key, so it resolves through its base key's registration and renders flat.
     // A power carrying both halves shows both rows, the way the game's own monitor
-    // does (ENT-6). Mirrors `granted.rs::resolve_granted_magnitudes`.
+    // does (data-gaps-101). Mirrors `granted.rs::resolve_granted_magnitudes`.
     let effectKey = key;
     let fromSplitSlot = false;
     let config = EFFECT_REGISTRY[key];

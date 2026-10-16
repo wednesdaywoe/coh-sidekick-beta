@@ -61,7 +61,7 @@ export const PREVIEW_CARD_HEIGHT = 880;
  * Bump this whenever this file's visual template changes (layout, type
  * scale, content shown) — it's how a build's stored `preview_template_version`
  * is judged stale and due for regeneration (see
- * streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF1). Duplicated in every
+ * streams/BUILD_PREVIEW_BACKFILL_PLAN.md, build-preview-backfill-1). Duplicated in every
  * edge function that writes `preview_template_version`
  * (supabase/functions/share-build, supabase/functions/backfill-preview) —
  * Deno functions can't import frontend TS, so update every copy by hand.

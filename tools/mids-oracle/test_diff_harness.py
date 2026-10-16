@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression checks for the DSH5 comparator's canonicalizations (PROV-4).
+"""Regression checks for the DSH5 comparator's canonicalizations (data-gaps-246).
 
 The harness itself needs a local Mids `.mhd` and the canonical export cache; these
 are pure-function checks on the record layer, so they run anywhere.
@@ -68,7 +68,7 @@ class TestEnhancedAttrib(unittest.TestCase):
 
 class TestOracleRecords(unittest.TestCase):
     def test_power_boost_enhancements_no_longer_share_one_key(self):
-        """The PROV-4 collapse: three different enhanced attributes, one key."""
+        """The data-gaps-246 collapse: three different enhanced attributes, one key."""
         effects = [oe("Enhancement", et_modifies="SpeedRunning"),
                    oe("Enhancement", et_modifies="SpeedFlying"),
                    oe("Enhancement", et_modifies="Defense"),
@@ -96,7 +96,7 @@ class TestOracleRecords(unittest.TestCase):
 
 class TestFoldComplete(unittest.TestCase):
     def test_both_complete_sets_in_one_group_fold(self):
-        """PROV-4 puts defense strength in `Enhancement` beside mez strength, so one
+        """data-gaps-246 puts defense strength in `Enhancement` beside mez strength, so one
         (effectType, resistible) group can hold all 8 damage types AND all 3
         positions. Folding only the first match left the other vector expanded."""
         effects = [oe("Enhancement", et_modifies="Defense", damage_type=d)

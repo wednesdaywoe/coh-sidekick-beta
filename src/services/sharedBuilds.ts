@@ -602,7 +602,7 @@ export function incrementViews(id: string): void {
 
 /**
  * Submit a preview image captured for `id` by the hidden capture-mode boot
- * (see streams/BUILD_PREVIEW_BACKFILL_PLAN.md, PREVBF5/6) — no auth, since
+ * (see streams/BUILD_PREVIEW_BACKFILL_PLAN.md, build-preview-backfill-5/6) — no auth, since
  * any visitor's browser can be the one that generates it. The backend only
  * accepts this when `id`'s stored image is missing or behind the current
  * template version; returns false on any failure (never throws — the caller

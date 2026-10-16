@@ -882,3 +882,5 @@
 {"at":"2026-10-16T12:05Z","by":"agent","do":"tick","id":"backlog-2","evidence":"Ticked in Markdown before the import; its evidence is in the body."}
 {"at":"2026-10-16T12:05Z","by":"agent","do":"plan","plan":"build-preview-backfill","closed":"satisfied","why":"Its Markdown said satisfied: 2026-09-03"}
 {"at":"2026-10-16T12:05Z","by":"agent","do":"plan","plan":"build-preview-image","closed":"satisfied","why":"Its Markdown said satisfied: 2026-09-03"}
+{"at":"2026-10-16T12:17Z","by":"agent","do":"edit","id":"homecoming-parser-9","says":"Phase 2, converter completeness: diff `exported_powers` vs `generated` (the class the knockback bug belonged to — parser captured it, converter dropped it); ensure every mechanically-relevant template/field incl."}
+{"at":"2026-10-16T12:17Z","by":"agent","do":"edit","id":"homecoming-parser-10","says":"Later: a `.powers ⊆ extraction` guard, once the sweep backlog is worked down."}

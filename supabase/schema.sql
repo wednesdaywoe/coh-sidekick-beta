@@ -1541,7 +1541,7 @@ REVOKE ALL ON public.user_layouts FROM anon, authenticated;
 GRANT SELECT, INSERT, UPDATE ON public.user_layouts TO authenticated;
 
 -- ============================================
--- Migration: no email address in a public name (NOT YET APPLIED, 2026-10-16)
+-- Migration: no email address in a public name (APPLIED 2026-10-16)
 -- ============================================
 --
 -- SimpleLogin's `name` claim is the account's email address (an alias or the

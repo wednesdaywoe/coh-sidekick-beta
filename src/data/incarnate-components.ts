@@ -3,6 +3,8 @@
  *
  * Per-slot, per-tree salvage requirements for crafting incarnate powers.
  * Ported from CoH-Incarnate-Calculator/js/incarnate-components.js.
+ * That source had every tier-3 radial pair swapped (Total/Partial); fixed here
+ * against baserecipes.bin, where `radial` is Total and `radial_2` is Partial.
  */
 
 import type { IncarnateSlotId, CraftingVariantKey, CraftingVariant, SalvageRequirement } from '@/types';
@@ -35,8 +37,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Vigor_Core_Boost'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Vigor_Core_Boost'] },
-      radial: { salvage: ['1x SuperchargedCapacitor', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Vigor_Radial_Boost'] },
-      radial_2: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Vigor_Radial_Boost'] },
+      radial: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Vigor_Radial_Boost'] },
+      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Vigor_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x ThaumicResonator'], prerequisites: ['Vigor_Total_Core_Revamp', 'Vigor_Partial_Core_Revamp'] },
@@ -52,8 +54,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Spiritual_Core_Boost'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Spiritual_Core_Boost'] },
-      radial: { salvage: ['1x SuperchargedCapacitor', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Spiritual_Radial_Boost'] },
-      radial_2: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Spiritual_Radial_Boost'] },
+      radial: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Spiritual_Radial_Boost'] },
+      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Spiritual_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x ThaumicResonator'], prerequisites: ['Spiritual_Total_Core_Revamp', 'Spiritual_Partial_Core_Revamp'] },
@@ -69,8 +71,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Resilient_Core_Boost'] },
       core_2: { salvage: ['1x GenomicAnalysis', '1x ArcaneCantrip', '1x ExoticIsotope'], prerequisites: ['Resilient_Core_Boost'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x ArcaneCantrip', '1x ExoticIsotope'], prerequisites: ['Resilient_Radial_Boost'] },
-      radial_2: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Resilient_Radial_Boost'] },
+      radial: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Resilient_Radial_Boost'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x ArcaneCantrip', '1x ExoticIsotope'], prerequisites: ['Resilient_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x DetailedReports', '1x ForbiddenTechnique'], prerequisites: ['Resilient_Total_Core_Revamp', 'Resilient_Partial_Core_Revamp'] },
@@ -86,8 +88,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Nerve_Core_Boost'] },
       core_2: { salvage: ['1x GenomicAnalysis', '1x ArcaneCantrip', '1x ExoticIsotope'], prerequisites: ['Nerve_Core_Boost'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x ArcaneCantrip', '1x ExoticIsotope'], prerequisites: ['Nerve_Radial_Boost'] },
-      radial_2: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Nerve_Radial_Boost'] },
+      radial: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Nerve_Radial_Boost'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x ArcaneCantrip', '1x ExoticIsotope'], prerequisites: ['Nerve_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x DetailedReports', '1x ForbiddenTechnique'], prerequisites: ['Nerve_Total_Core_Revamp', 'Nerve_Partial_Core_Revamp'] },
@@ -103,8 +105,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Musculature_Core_Boost'] },
       core_2: { salvage: ['2x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Musculature_Core_Boost'] },
-      radial: { salvage: ['1x SuperchargedCapacitor', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Musculature_Radial_Boost'] },
-      radial_2: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x SuperconductiveMembrane'], prerequisites: ['Musculature_Radial_Boost'] },
+      radial: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x SuperconductiveMembrane'], prerequisites: ['Musculature_Radial_Boost'] },
+      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Musculature_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x ArcaneCantrip', '1x NanotechGrowthMedium', '1x ForbiddenTechnique'], prerequisites: ['Musculature_Total_Core_Revamp', 'Musculature_Partial_Core_Revamp'] },
@@ -120,8 +122,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x ArcaneCantrip', '1x AncientTexts'], prerequisites: ['Intuition_Core_Boost'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x ArcaneCantrip', '1x SuperconductiveMembrane'], prerequisites: ['Intuition_Core_Boost'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Intuition_Radial_Boost'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Intuition_Radial_Boost'] },
+      radial: { salvage: ['1x DetailedReports', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Intuition_Radial_Boost'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Intuition_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x LivingRelic'], prerequisites: ['Intuition_Total_Core_Revamp', 'Intuition_Partial_Core_Revamp'] },
@@ -137,8 +139,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x ArcaneCantrip', '1x AncientTexts'], prerequisites: ['Cardiac_Core_Boost'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x ArcaneCantrip', '1x SuperconductiveMembrane'], prerequisites: ['Cardiac_Core_Boost'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Cardiac_Radial_Boost'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Cardiac_Radial_Boost'] },
+      radial: { salvage: ['1x DetailedReports', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Cardiac_Radial_Boost'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Cardiac_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x LivingRelic'], prerequisites: ['Cardiac_Total_Core_Revamp', 'Cardiac_Partial_Core_Revamp'] },
@@ -154,8 +156,8 @@ const ALPHA_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Agility_Core_Boost'] },
       core_2: { salvage: ['2x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Agility_Core_Boost'] },
-      radial: { salvage: ['1x SuperchargedCapacitor', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Agility_Radial_Boost'] },
-      radial_2: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x SuperconductiveMembrane'], prerequisites: ['Agility_Radial_Boost'] },
+      radial: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x SuperconductiveMembrane'], prerequisites: ['Agility_Radial_Boost'] },
+      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Agility_Radial_Boost'] },
     },
     tier4: {
       core: { salvage: ['1x ArcaneCantrip', '1x NanotechGrowthMedium', '1x ForbiddenTechnique'], prerequisites: ['Agility_Total_Core_Revamp', 'Agility_Partial_Core_Revamp'] },
@@ -174,8 +176,8 @@ const JUDGEMENT_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x NanotechGrowthMedium', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Vorpal_Core_Judgement'] },
       core_2: { salvage: ['1x GenomicAnalysis', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Vorpal_Core_Judgement'] },
-      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Vorpal_Radial_Judgement'] },
-      radial_2: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Vorpal_Radial_Judgement'] },
+      radial: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Vorpal_Radial_Judgement'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Vorpal_Radial_Judgement'] },
     },
     tier4: {
       core: { salvage: ['1x BiomorphicGoo', '1x DetailedReports', '1x SelfEvolvingAlloy'], prerequisites: ['Vorpal_Total_Core_Judgement', 'Vorpal_Partial_Core_Judgement'] },
@@ -191,8 +193,8 @@ const JUDGEMENT_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x DetailedReports', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Void_Core_Judgement'] },
       core_2: { salvage: ['2x GenomicAnalysis', '1x SemiConsciousEnergy'], prerequisites: ['Void_Core_Judgement'] },
-      radial: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x ExoticIsotope'], prerequisites: ['Void_Radial_Judgement'] },
-      radial_2: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Void_Radial_Judgement'] },
+      radial: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Void_Radial_Judgement'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x ExoticIsotope'], prerequisites: ['Void_Radial_Judgement'] },
     },
     tier4: {
       core: { salvage: ['1x DetailedReports', '1x ArcaneCantrip', '1x LivingRelic'], prerequisites: ['Void_Total_Core_Judgement', 'Void_Partial_Core_Judgement'] },
@@ -208,8 +210,8 @@ const JUDGEMENT_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x NanotechGrowthMedium', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Pyronic_Core_Judgement'] },
       core_2: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x SuperconductiveMembrane'], prerequisites: ['Pyronic_Core_Judgement'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Pyronic_Radial_Judgement'] },
-      radial_2: { salvage: ['1x BiomorphicGoo', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Pyronic_Radial_Judgement'] },
+      radial: { salvage: ['1x BiomorphicGoo', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Pyronic_Radial_Judgement'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Pyronic_Radial_Judgement'] },
     },
     tier4: {
       core: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x SelfEvolvingAlloy'], prerequisites: ['Pyronic_Total_Core_Judgement', 'Pyronic_Partial_Core_Judgement'] },
@@ -225,8 +227,8 @@ const JUDGEMENT_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x BiomorphicGoo', '1x MeditationTechniques', '1x AncientTexts'], prerequisites: ['Ion_Core_Judgement'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x SemiConsciousEnergy'], prerequisites: ['Ion_Core_Judgement'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Ion_Radial_Judgement'] },
-      radial_2: { salvage: ['1x NanotechGrowthMedium', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Ion_Radial_Judgement'] },
+      radial: { salvage: ['1x NanotechGrowthMedium', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Ion_Radial_Judgement'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Ion_Radial_Judgement'] },
     },
     tier4: {
       core: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x ThaumicResonator'], prerequisites: ['Ion_Total_Core_Judgement', 'Ion_Partial_Core_Judgement'] },
@@ -242,8 +244,8 @@ const JUDGEMENT_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x NanotechGrowthMedium', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Cryonic_Core_Judgement'] },
       core_2: { salvage: ['1x GenomicAnalysis', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Cryonic_Core_Judgement'] },
-      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Cryonic_Radial_Judgement'] },
-      radial_2: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Cryonic_Radial_Judgement'] },
+      radial: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Cryonic_Radial_Judgement'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Cryonic_Radial_Judgement'] },
     },
     tier4: {
       core: { salvage: ['1x BiomorphicGoo', '1x DetailedReports', '1x SelfEvolvingAlloy'], prerequisites: ['Cryonic_Total_Core_Judgement', 'Cryonic_Partial_Core_Judgement'] },
@@ -259,8 +261,8 @@ const JUDGEMENT_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x DetailedReports', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Mighty_Core_Judgement'] },
       core_2: { salvage: ['2x GenomicAnalysis', '1x SemiConsciousEnergy'], prerequisites: ['Mighty_Core_Judgement'] },
-      radial: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x ExoticIsotope'], prerequisites: ['Mighty_Radial_Judgement'] },
-      radial_2: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Mighty_Radial_Judgement'] },
+      radial: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Mighty_Radial_Judgement'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x ExoticIsotope'], prerequisites: ['Mighty_Radial_Judgement'] },
     },
     tier4: {
       core: { salvage: ['1x DetailedReports', '1x ArcaneCantrip', '1x LivingRelic'], prerequisites: ['Mighty_Total_Core_Judgement', 'Mighty_Partial_Core_Judgement'] },
@@ -279,8 +281,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x ArcaneCantrip', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Spectral_Core_Interface'] },
       core_2: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Spectral_Core_Interface'] },
-      radial: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Spectral_Radial_Interface'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Spectral_Radial_Interface'] },
+      radial: { salvage: ['1x DetailedReports', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Spectral_Radial_Interface'] },
+      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Spectral_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x DetailedReports', '1x SuperchargedCapacitor', '1x LivingRelic'], prerequisites: ['Spectral_Total_Core_Conversion', 'Spectral_Partial_Core_Conversion'] },
@@ -296,8 +298,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SemiConsciousEnergy'], prerequisites: ['Reactive_Core_Interface'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Reactive_Core_Interface'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x AncientTexts'], prerequisites: ['Reactive_Radial_Interface'] },
-      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Reactive_Radial_Interface'] },
+      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Reactive_Radial_Interface'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x AncientTexts'], prerequisites: ['Reactive_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x LivingRelic'], prerequisites: ['Reactive_Total_Core_Conversion', 'Reactive_Partial_Core_Conversion'] },
@@ -313,8 +315,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['2x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Preemptive_Core_Interface'] },
       core_2: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Preemptive_Core_Interface'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Preemptive_Radial_Interface'] },
-      radial_2: { salvage: ['2x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Preemptive_Radial_Interface'] },
+      radial: { salvage: ['2x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Preemptive_Radial_Interface'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Preemptive_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ThaumicResonator'], prerequisites: ['Preemptive_Total_Core_Conversion', 'Preemptive_Partial_Core_Conversion'] },
@@ -330,8 +332,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x BiomorphicGoo', '1x SuperconductiveMembrane'], prerequisites: ['Paralytic_Core_Interface'] },
       core_2: { salvage: ['1x NanotechGrowthMedium', '1x MeditationTechniques', '1x SemiConsciousEnergy'], prerequisites: ['Paralytic_Core_Interface'] },
-      radial: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Paralytic_Radial_Interface'] },
-      radial_2: { salvage: ['1x MeditationTechniques', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Paralytic_Radial_Interface'] },
+      radial: { salvage: ['1x MeditationTechniques', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Paralytic_Radial_Interface'] },
+      radial_2: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Paralytic_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x ArcaneCantrip', '1x SuperchargedCapacitor', '1x ForbiddenTechnique'], prerequisites: ['Paralytic_Total_Core_Conversion', 'Paralytic_Partial_Core_Conversion'] },
@@ -347,8 +349,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['2x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Gravitic_Core_Interface'] },
       core_2: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Gravitic_Core_Interface'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Gravitic_Radial_Interface'] },
-      radial_2: { salvage: ['2x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Gravitic_Radial_Interface'] },
+      radial: { salvage: ['2x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Gravitic_Radial_Interface'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Gravitic_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ThaumicResonator'], prerequisites: ['Gravitic_Total_Core_Conversion', 'Gravitic_Partial_Core_Conversion'] },
@@ -364,8 +366,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x ArcaneCantrip', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Diamagnetic_Core_Interface'] },
       core_2: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Diamagnetic_Core_Interface'] },
-      radial: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Diamagnetic_Radial_Interface'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Diamagnetic_Radial_Interface'] },
+      radial: { salvage: ['1x DetailedReports', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Diamagnetic_Radial_Interface'] },
+      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Diamagnetic_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x DetailedReports', '1x SuperchargedCapacitor', '1x LivingRelic'], prerequisites: ['Diamagnetic_Total_Core_Conversion', 'Diamagnetic_Partial_Core_Conversion'] },
@@ -381,8 +383,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x BiomorphicGoo', '1x SuperconductiveMembrane'], prerequisites: ['Degenerative_Core_Interface'] },
       core_2: { salvage: ['1x NanotechGrowthMedium', '1x MeditationTechniques', '1x SemiConsciousEnergy'], prerequisites: ['Degenerative_Core_Interface'] },
-      radial: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Degenerative_Radial_Interface'] },
-      radial_2: { salvage: ['1x MeditationTechniques', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Degenerative_Radial_Interface'] },
+      radial: { salvage: ['1x MeditationTechniques', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Degenerative_Radial_Interface'] },
+      radial_2: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Degenerative_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x ArcaneCantrip', '1x SuperchargedCapacitor', '1x ForbiddenTechnique'], prerequisites: ['Degenerative_Total_Core_Conversion', 'Degenerative_Partial_Core_Conversion'] },
@@ -398,8 +400,8 @@ const INTERFACE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SemiConsciousEnergy'], prerequisites: ['Cognitive_Core_Interface'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Cognitive_Core_Interface'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x AncientTexts'], prerequisites: ['Cognitive_Radial_Interface'] },
-      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Cognitive_Radial_Interface'] },
+      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Cognitive_Radial_Interface'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x AncientTexts'], prerequisites: ['Cognitive_Radial_Interface'] },
     },
     tier4: {
       core: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x LivingRelic'], prerequisites: ['Cognitive_Total_Core_Conversion', 'Cognitive_Partial_Core_Conversion'] },
@@ -418,8 +420,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x ArcaneCantrip', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Warworks_Core_Ally'] },
       core_2: { salvage: ['1x ArcaneCantrip', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Warworks_Core_Ally'] },
-      radial: { salvage: ['1x EnchantedSand', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Warworks_Radial_Ally'] },
-      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x AncientTexts'], prerequisites: ['Warworks_Radial_Ally'] },
+      radial: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x AncientTexts'], prerequisites: ['Warworks_Radial_Ally'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Warworks_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SelfEvolvingAlloy'], prerequisites: ['Warworks_Total_Core_Improved_Ally', 'Warworks_Partial_Core_Improved_Ally'] },
@@ -435,8 +437,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x ArcaneCantrip', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Vanguard_Core_Ally'] },
       core_2: { salvage: ['1x ArcaneCantrip', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Vanguard_Core_Ally'] },
-      radial: { salvage: ['1x EnchantedSand', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Vanguard_Radial_Ally'] },
-      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x AncientTexts'], prerequisites: ['Vanguard_Radial_Ally'] },
+      radial: { salvage: ['1x SuperchargedCapacitor', '1x GenomicAnalysis', '1x AncientTexts'], prerequisites: ['Vanguard_Radial_Ally'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Vanguard_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SelfEvolvingAlloy'], prerequisites: ['Vanguard_Total_Core_Improved_Ally', 'Vanguard_Partial_Core_Improved_Ally'] },
@@ -452,8 +454,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Tsoo_Core_Ally'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Tsoo_Core_Ally'] },
-      radial: { salvage: ['2x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Tsoo_Radial_Ally'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Tsoo_Radial_Ally'] },
+      radial: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Tsoo_Radial_Ally'] },
+      radial_2: { salvage: ['2x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Tsoo_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x GenomicAnalysis', '1x ThaumicResonator'], prerequisites: ['Tsoo_Total_Core_Improved_Ally', 'Tsoo_Partial_Core_Improved_Ally'] },
@@ -469,8 +471,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Talons_of_Vengeance_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SemiConsciousEnergy'], prerequisites: ['Talons_of_Vengeance_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Talons_of_Vengeance_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Talons_of_Vengeance_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Talons_of_Vengeance_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Talons_of_Vengeance_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x GenomicAnalysis', '1x LivingRelic'], prerequisites: ['Talons_of_Vengeance_Total_Core_Improved_Ally', 'Talons_of_Vengeance_Partial_Core_Improved_Ally'] },
@@ -486,8 +488,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['2x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Storm_Elemental_Core_Ally'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x EnchantedSand', '1x SuperconductiveMembrane'], prerequisites: ['Storm_Elemental_Core_Ally'] },
-      radial: { salvage: ['2x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Storm_Elemental_Radial_Ally'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Storm_Elemental_Radial_Ally'] },
+      radial: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Storm_Elemental_Radial_Ally'] },
+      radial_2: { salvage: ['2x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Storm_Elemental_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x GenomicAnalysis', '1x ThaumicResonator'], prerequisites: ['Storm_Elemental_Total_Core_Improved_Ally', 'Storm_Elemental_Partial_Core_Improved_Ally'] },
@@ -503,8 +505,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x EnchantedSand', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Seers_Core_Ally'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Seers_Core_Ally'] },
-      radial: { salvage: ['1x NanotechGrowthMedium', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Seers_Radial_Ally'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Seers_Radial_Ally'] },
+      radial: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Seers_Radial_Ally'] },
+      radial_2: { salvage: ['1x NanotechGrowthMedium', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Seers_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x GenomicAnalysis', '1x ThaumicResonator'], prerequisites: ['Seers_Total_Core_Improved_Ally', 'Seers_Partial_Core_Improved_Ally'] },
@@ -520,8 +522,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Rularuu_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SemiConsciousEnergy'], prerequisites: ['Rularuu_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Rularuu_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Rularuu_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Rularuu_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Rularuu_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x GenomicAnalysis', '1x LivingRelic'], prerequisites: ['Rularuu_Total_Core_Improved_Ally', 'Rularuu_Partial_Core_Improved_Ally'] },
@@ -537,8 +539,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Robotic_Drones_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Robotic_Drones_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Robotic_Drones_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Robotic_Drones_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Robotic_Drones_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Robotic_Drones_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x NanotechGrowthMedium', '1x ThaumicResonator'], prerequisites: ['Robotic_Drones_Total_Core_Improved_Ally', 'Robotic_Drones_Partial_Core_Improved_Ally'] },
@@ -554,8 +556,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x SuperconductiveMembrane'], prerequisites: ['Rikti_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Rikti_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x SuperconductiveMembrane'], prerequisites: ['Rikti_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Rikti_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Rikti_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x SuperconductiveMembrane'], prerequisites: ['Rikti_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x LivingRelic'], prerequisites: ['Rikti_Total_Core_Improved_Ally', 'Rikti_Partial_Core_Improved_Ally'] },
@@ -571,8 +573,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Polar_Lights_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x ArcaneCantrip', '1x AncientTexts'], prerequisites: ['Polar_Lights_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x ArcaneCantrip', '1x SemiConsciousEnergy'], prerequisites: ['Polar_Lights_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Polar_Lights_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Polar_Lights_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x ArcaneCantrip', '1x SemiConsciousEnergy'], prerequisites: ['Polar_Lights_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x ArcaneCantrip', '1x LivingRelic'], prerequisites: ['Polar_Lights_Total_Core_Improved_Ally', 'Polar_Lights_Partial_Core_Improved_Ally'] },
@@ -588,8 +590,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Phantom_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x AncientTexts'], prerequisites: ['Phantom_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Phantom_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Phantom_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Phantom_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Phantom_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x EnchantedSand', '1x LivingRelic'], prerequisites: ['Phantom_Total_Core_Improved_Ally', 'Phantom_Partial_Core_Improved_Ally'] },
@@ -605,8 +607,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x ExoticIsotope'], prerequisites: ['Nemesis_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SemiConsciousEnergy'], prerequisites: ['Nemesis_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Nemesis_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Nemesis_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Nemesis_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Nemesis_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x NanotechGrowthMedium', '1x LivingRelic'], prerequisites: ['Nemesis_Total_Core_Improved_Ally', 'Nemesis_Partial_Core_Improved_Ally'] },
@@ -622,8 +624,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SemiConsciousEnergy'], prerequisites: ['Longbow_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Longbow_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Longbow_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Longbow_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Longbow_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Longbow_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x NanotechGrowthMedium', '1x ThaumicResonator'], prerequisites: ['Longbow_Total_Core_Improved_Ally', 'Longbow_Partial_Core_Improved_Ally'] },
@@ -639,8 +641,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Knives_of_Vengeance_Core_Ally'] },
       core_2: { salvage: ['1x ArcaneCantrip', '1x NanotechGrowthMedium', '1x SemiConsciousEnergy'], prerequisites: ['Knives_of_Vengeance_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Knives_of_Vengeance_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Knives_of_Vengeance_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Knives_of_Vengeance_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['Knives_of_Vengeance_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x NanotechGrowthMedium', '1x LivingRelic'], prerequisites: ['Knives_of_Vengeance_Total_Core_Improved_Ally', 'Knives_of_Vengeance_Partial_Core_Improved_Ally'] },
@@ -656,8 +658,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['IDF_Core_Ally'] },
       core_2: { salvage: ['1x ArcaneCantrip', '1x NanotechGrowthMedium', '1x SemiConsciousEnergy'], prerequisites: ['IDF_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['IDF_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['IDF_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['IDF_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x SuperconductiveMembrane'], prerequisites: ['IDF_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x NanotechGrowthMedium', '1x LivingRelic'], prerequisites: ['IDF_Total_Core_Improved_Ally', 'IDF_Partial_Core_Improved_Ally'] },
@@ -673,8 +675,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Clockwork_Core_Ally'] },
       core_2: { salvage: ['2x MeditationTechniques', '1x SemiConsciousEnergy'], prerequisites: ['Clockwork_Core_Ally'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Clockwork_Radial_Ally'] },
-      radial_2: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Clockwork_Radial_Ally'] },
+      radial: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Clockwork_Radial_Ally'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Clockwork_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x MeditationTechniques', '1x ThaumicResonator'], prerequisites: ['Clockwork_Total_Core_Improved_Ally', 'Clockwork_Partial_Core_Improved_Ally'] },
@@ -690,8 +692,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Cimeroran_Core_Ally'] },
       core_2: { salvage: ['2x MeditationTechniques', '1x SemiConsciousEnergy'], prerequisites: ['Cimeroran_Core_Ally'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Cimeroran_Radial_Ally'] },
-      radial_2: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Cimeroran_Radial_Ally'] },
+      radial: { salvage: ['1x ArcaneCantrip', '1x MeditationTechniques', '1x ExoticIsotope'], prerequisites: ['Cimeroran_Radial_Ally'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Cimeroran_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x MeditationTechniques', '1x ThaumicResonator'], prerequisites: ['Cimeroran_Total_Core_Improved_Ally', 'Cimeroran_Partial_Core_Improved_Ally'] },
@@ -707,8 +709,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x SemiConsciousEnergy'], prerequisites: ['Carnival_Core_Ally'] },
       core_2: { salvage: ['2x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Carnival_Core_Ally'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Carnival_Radial_Ally'] },
-      radial_2: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Carnival_Radial_Ally'] },
+      radial: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Carnival_Radial_Ally'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Carnival_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x BiomorphicGoo', '1x ThaumicResonator'], prerequisites: ['Carnival_Total_Core_Improved_Ally', 'Carnival_Partial_Core_Improved_Ally'] },
@@ -724,8 +726,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x GenomicAnalysis', '1x SemiConsciousEnergy'], prerequisites: ['Banished_Pantheon_Core_Ally'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Banished_Pantheon_Core_Ally'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Banished_Pantheon_Radial_Ally'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Banished_Pantheon_Radial_Ally'] },
+      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Banished_Pantheon_Radial_Ally'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x NanotechGrowthMedium', '1x ExoticIsotope'], prerequisites: ['Banished_Pantheon_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['2x NanotechGrowthMedium', '1x ThaumicResonator'], prerequisites: ['Banished_Pantheon_Total_Core_Improved_Ally', 'Banished_Pantheon_Partial_Core_Improved_Ally'] },
@@ -741,8 +743,8 @@ const LORE_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x GenomicAnalysis', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Arachnos_Core_Ally'] },
       core_2: { salvage: ['2x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Arachnos_Core_Ally'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Arachnos_Radial_Ally'] },
-      radial_2: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Arachnos_Radial_Ally'] },
+      radial: { salvage: ['1x ArcaneCantrip', '1x BiomorphicGoo', '1x ExoticIsotope'], prerequisites: ['Arachnos_Radial_Ally'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x AncientTexts'], prerequisites: ['Arachnos_Radial_Ally'] },
     },
     tier4: {
       core: { salvage: ['1x SuperchargedCapacitor', '1x BiomorphicGoo', '1x ThaumicResonator'], prerequisites: ['Arachnos_Total_Core_Improved_Ally', 'Arachnos_Partial_Core_Improved_Ally'] },
@@ -761,8 +763,8 @@ const DESTINY_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x EnchantedSand', '1x DetailedReports', '1x SemiConsciousEnergy'], prerequisites: ['Incandescence_Core_Invocation'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Incandescence_Core_Invocation'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x SuperconductiveMembrane'], prerequisites: ['Incandescence_Radial_Invocation'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x SuperchargedCapacitor', '1x SemiConsciousEnergy'], prerequisites: ['Incandescence_Radial_Invocation'] },
+      radial: { salvage: ['1x DetailedReports', '1x SuperchargedCapacitor', '1x SemiConsciousEnergy'], prerequisites: ['Incandescence_Radial_Invocation'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x SuperconductiveMembrane'], prerequisites: ['Incandescence_Radial_Invocation'] },
     },
     tier4: {
       core: { salvage: ['1x DetailedReports', '1x BiomorphicGoo', '1x SelfEvolvingAlloy'], prerequisites: ['Incandescence_Total_Core_Invocation', 'Incandescence_Partial_Core_Invocation'] },
@@ -778,8 +780,8 @@ const DESTINY_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x NanotechGrowthMedium', '1x GenomicAnalysis', '1x AncientTexts'], prerequisites: ['Rebirth_Core_Invocation'] },
       core_2: { salvage: ['2x NanotechGrowthMedium', '1x SemiConsciousEnergy'], prerequisites: ['Rebirth_Core_Invocation'] },
-      radial: { salvage: ['1x EnchantedSand', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Rebirth_Radial_Invocation'] },
-      radial_2: { salvage: ['1x BiomorphicGoo', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Rebirth_Radial_Invocation'] },
+      radial: { salvage: ['1x BiomorphicGoo', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Rebirth_Radial_Invocation'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x DetailedReports', '1x AncientTexts'], prerequisites: ['Rebirth_Radial_Invocation'] },
     },
     tier4: {
       core: { salvage: ['1x EnchantedSand', '1x DetailedReports', '1x LivingRelic'], prerequisites: ['Rebirth_Total_Core_Invocation', 'Rebirth_Partial_Core_Invocation'] },
@@ -795,8 +797,8 @@ const DESTINY_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x EnchantedSand', '1x DetailedReports', '1x SemiConsciousEnergy'], prerequisites: ['Clarion_Core_Invocation'] },
       core_2: { salvage: ['1x BiomorphicGoo', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Clarion_Core_Invocation'] },
-      radial: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x SuperconductiveMembrane'], prerequisites: ['Clarion_Radial_Invocation'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x SuperchargedCapacitor', '1x SemiConsciousEnergy'], prerequisites: ['Clarion_Radial_Invocation'] },
+      radial: { salvage: ['1x DetailedReports', '1x SuperchargedCapacitor', '1x SemiConsciousEnergy'], prerequisites: ['Clarion_Radial_Invocation'] },
+      radial_2: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x SuperconductiveMembrane'], prerequisites: ['Clarion_Radial_Invocation'] },
     },
     tier4: {
       core: { salvage: ['1x DetailedReports', '1x BiomorphicGoo', '1x SelfEvolvingAlloy'], prerequisites: ['Clarion_Total_Core_Invocation', 'Clarion_Partial_Core_Invocation'] },
@@ -812,8 +814,8 @@ const DESTINY_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x MeditationTechniques', '1x BiomorphicGoo', '1x SuperconductiveMembrane'], prerequisites: ['Barrier_Core_Invocation'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x SuperchargedCapacitor', '1x SemiConsciousEnergy'], prerequisites: ['Barrier_Core_Invocation'] },
-      radial: { salvage: ['1x SuperchargedCapacitor', '1x ArcaneCantrip', '1x AncientTexts'], prerequisites: ['Barrier_Radial_Invocation'] },
-      radial_2: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Barrier_Radial_Invocation'] },
+      radial: { salvage: ['1x DetailedReports', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Barrier_Radial_Invocation'] },
+      radial_2: { salvage: ['1x SuperchargedCapacitor', '1x ArcaneCantrip', '1x AncientTexts'], prerequisites: ['Barrier_Radial_Invocation'] },
     },
     tier4: {
       core: { salvage: ['1x NanotechGrowthMedium', '1x GenomicAnalysis', '1x ForbiddenTechnique'], prerequisites: ['Barrier_Total_Core_Invocation', 'Barrier_Partial_Core_Invocation'] },
@@ -829,8 +831,8 @@ const DESTINY_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x EnchantedSand', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Ageless_Core_Invocation'] },
       core_2: { salvage: ['1x NanotechGrowthMedium', '1x ArcaneCantrip', '1x SemiConsciousEnergy'], prerequisites: ['Ageless_Core_Invocation'] },
-      radial: { salvage: ['1x DetailedReports', '1x ArcaneCantrip', '1x SemiConsciousEnergy'], prerequisites: ['Ageless_Radial_Invocation'] },
-      radial_2: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Ageless_Radial_Invocation'] },
+      radial: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x SuperconductiveMembrane'], prerequisites: ['Ageless_Radial_Invocation'] },
+      radial_2: { salvage: ['1x DetailedReports', '1x ArcaneCantrip', '1x SemiConsciousEnergy'], prerequisites: ['Ageless_Radial_Invocation'] },
     },
     tier4: {
       core: { salvage: ['2x BiomorphicGoo', '1x SelfEvolvingAlloy'], prerequisites: ['Ageless_Total_Core_Invocation', 'Ageless_Partial_Core_Invocation'] },
@@ -849,8 +851,8 @@ const HYBRID_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x NanotechGrowthMedium', '1x DetailedReports', '1x ExoticIsotope'], prerequisites: ['Support_Core_Genome'] },
       core_2: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x SuperconductiveMembrane'], prerequisites: ['Support_Core_Genome'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Support_Radial_Genome'] },
-      radial_2: { salvage: ['1x BiomorphicGoo', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Support_Radial_Genome'] },
+      radial: { salvage: ['1x BiomorphicGoo', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Support_Radial_Genome'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x EnchantedSand', '1x ExoticIsotope'], prerequisites: ['Support_Radial_Genome'] },
     },
     tier4: {
       core: { salvage: ['1x GenomicAnalysis', '1x BiomorphicGoo', '1x SelfEvolvingAlloy'], prerequisites: ['Support_Total_Core_Graft', 'Support_Partial_Core_Graft'] },
@@ -866,8 +868,8 @@ const HYBRID_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x BiomorphicGoo', '1x MeditationTechniques', '1x AncientTexts'], prerequisites: ['Melee_Core_Genome'] },
       core_2: { salvage: ['1x MeditationTechniques', '1x DetailedReports', '1x SemiConsciousEnergy'], prerequisites: ['Melee_Core_Genome'] },
-      radial: { salvage: ['1x MeditationTechniques', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Melee_Radial_Genome'] },
-      radial_2: { salvage: ['1x NanotechGrowthMedium', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Melee_Radial_Genome'] },
+      radial: { salvage: ['1x NanotechGrowthMedium', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Melee_Radial_Genome'] },
+      radial_2: { salvage: ['1x MeditationTechniques', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Melee_Radial_Genome'] },
     },
     tier4: {
       core: { salvage: ['1x GenomicAnalysis', '1x MeditationTechniques', '1x ThaumicResonator'], prerequisites: ['Melee_Total_Core_Graft', 'Melee_Partial_Core_Graft'] },
@@ -883,8 +885,8 @@ const HYBRID_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x NanotechGrowthMedium', '1x EnchantedSand', '1x SemiConsciousEnergy'], prerequisites: ['Control_Core_Genome'] },
       core_2: { salvage: ['1x GenomicAnalysis', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Control_Core_Genome'] },
-      radial: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Control_Radial_Genome'] },
-      radial_2: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Control_Radial_Genome'] },
+      radial: { salvage: ['1x GenomicAnalysis', '1x SuperchargedCapacitor', '1x SuperconductiveMembrane'], prerequisites: ['Control_Radial_Genome'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x BiomorphicGoo', '1x SemiConsciousEnergy'], prerequisites: ['Control_Radial_Genome'] },
     },
     tier4: {
       core: { salvage: ['1x BiomorphicGoo', '1x DetailedReports', '1x SelfEvolvingAlloy'], prerequisites: ['Control_Total_Core_Graft', 'Control_Partial_Core_Graft'] },
@@ -900,8 +902,8 @@ const HYBRID_DATA: RawSlotData = {
     tier3: {
       core: { salvage: ['1x DetailedReports', '1x NanotechGrowthMedium', '1x AncientTexts'], prerequisites: ['Assault_Core_Genome'] },
       core_2: { salvage: ['2x GenomicAnalysis', '1x SemiConsciousEnergy'], prerequisites: ['Assault_Core_Genome'] },
-      radial: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x ExoticIsotope'], prerequisites: ['Assault_Radial_Genome'] },
-      radial_2: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Assault_Radial_Genome'] },
+      radial: { salvage: ['1x NanotechGrowthMedium', '1x SuperchargedCapacitor', '1x ExoticIsotope'], prerequisites: ['Assault_Radial_Genome'] },
+      radial_2: { salvage: ['1x EnchantedSand', '1x GenomicAnalysis', '1x ExoticIsotope'], prerequisites: ['Assault_Radial_Genome'] },
     },
     tier4: {
       core: { salvage: ['1x DetailedReports', '1x ArcaneCantrip', '1x LivingRelic'], prerequisites: ['Assault_Total_Core_Graft', 'Assault_Partial_Core_Graft'] },

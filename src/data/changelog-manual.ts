@@ -54,6 +54,15 @@ export const MANUAL_CHANGELOG_GROUPS: ManualChangelogGroup[] = [
   },
   // ───────────────────────────────────────────────────────────────────────
   {
+    date: '2026-10-20',
+
+    items: [
+      { "id": "incarnate-recipe-numbers", "type": "fix", "message": "Fixed an issue that was mixing up the incarnate recipe numbers" },
+      { "id": "same-name-powers", "type": "fix", "message": "Powers that share a name across sets, like Thermal Radiation's and Fire Mastery's Fire Shield, can now both be taken" },
+      { "id": "critical-strikes-proc-chance", "type": "fix", "message": "The Critical Strikes and Superior Critical Strikes +Critical Hit procs now show their chance to fire in a power, instead of saying they're always on" }
+    ]
+  },
+  {
     date: '2026-10-11',
 
     items: [

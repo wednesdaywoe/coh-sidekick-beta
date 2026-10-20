@@ -885,6 +885,61 @@
       "id": "soul-absorption-per-foe",
       "date": "2026-10-08",
       "preview": "Soul Absorption now adds its Regeneration and Recovery bonus for each enemy it h"
+    },
+    {
+      "id": "my-builds-update-keeps-link",
+      "date": "2026-10-14",
+      "preview": "A build opened from My Builds now stays linked to its saved copy, so saving offe"
+    },
+    {
+      "id": "radiance-bonuses",
+      "date": "2026-10-11",
+      "preview": "Homecoming and Brainstorm: Radiance now switches on the Radiance bonuses of the "
+    },
+    {
+      "id": "mode-bonuses-follow-power",
+      "date": "2026-10-11",
+      "preview": "A bonus that depends on another of your powers running now turns on by itself wh"
+    },
+    {
+      "id": "stacking-bonuses-add",
+      "date": "2026-10-11",
+      "preview": "When a bonus adds a second copy of an effect the power already has, such as a se"
+    },
+    {
+      "id": "fired-power-bonuses",
+      "date": "2026-10-11",
+      "preview": "Homecoming and Brainstorm: Sonic Clap and Deafening Wave now include Attune's da"
+    },
+    {
+      "id": "sonic-attune-bonuses",
+      "date": "2026-10-11",
+      "preview": "Homecoming and Brainstorm: Attune now switches on the extra damage and effects S"
+    },
+    {
+      "id": "attune-mud-pots-damage",
+      "date": "2026-10-11",
+      "preview": "Attune and Mud Pots now show their damage in the Info panel and power tooltips"
+    },
+    {
+      "id": "foe-debuff-res-is-debuff",
+      "date": "2026-10-11",
+      "preview": "Homecoming and Brainstorm: Attune, Sonic Thrust, Strident Echo, Earsplitter, Son"
+    },
+    {
+      "id": "incarnate-recipe-numbers",
+      "date": "2026-10-20",
+      "preview": "Fixed an issue that was mixing up the incarnate recipe numbers"
+    },
+    {
+      "id": "same-name-powers",
+      "date": "2026-10-20",
+      "preview": "Powers that share a name across sets, like Thermal Radiation's and Fire Mastery'"
+    },
+    {
+      "id": "critical-strikes-proc-chance",
+      "date": "2026-10-20",
+      "preview": "The Critical Strikes and Superior Critical Strikes +Critical Hit procs now show "
     }
   ]
 }

@@ -52,7 +52,7 @@ import { resolvePowerMagnitudes, type ResolvedMagnitude } from '@/components/inf
 import { magnitudesFromProjection } from '@/components/info/magnitudesFromProjection';
 import { powerLevelDuration, type BagDurations } from '@/components/info/effectRowDuration';
 import { EFFECT_REGISTRY } from '@/data/core/effect-registry';
-import { buildDisplayEffects, getStackingInfo, withPseudoPetEffects, withTargetsHit } from '@/components/info/buildDisplayEffects';
+import { buildDisplayEffects, getStackingInfo, hasHitRoll, withPseudoPetEffects, withTargetsHit } from '@/components/info/buildDisplayEffects';
 import { resolveEffectivePower, effectiveGlobalAdjusters, isCasterHidden, currentToHitFraction, type EffectivePowerState } from '@/components/info/resolveEffectivePower';
 import { selectableModes } from '@/utils/mode-suppression';
 import { toCharacterStateJson, type AdapterCalcContext } from './characterStateAdapter';
@@ -758,7 +758,8 @@ function betaReference(
   const shown = shownPower(power, build, archetypeId, rawGlobal, state.ctx) as unknown as SelectedPower;
   const rechargeBase = truthyStat(shown, 'recharge', 'recharge');
   const endBase = baseEnduranceCost(shown);
-  const accBase = truthyStat(shown, 'accuracy', 'accuracy');
+  // No roll, no accuracy (Tough, Hasten): the engine's `has_hit_roll`.
+  const accBase = hasHitRoll(shown as unknown as Power) ? truthyStat(shown, 'accuracy', 'accuracy') : null;
   const castBase = truthyStat(shown, 'castTime', 'castTime');
   const rangeBase = truthyStat(shown, 'range', 'range');
 

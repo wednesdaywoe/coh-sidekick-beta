@@ -425,12 +425,15 @@ const SELF_TOTAL_EFFECT_KEYS: ReadonlySet<string> = new Set([
  *    the same signal that governs the suppressible out-of-combat defense;
  *  - the Primalist form stances ride the toggled form power's own `setsModes`, which is what
  *    `collect_source_modes` binds `kHunterMode` / `kProwlerMode` from. Thunderspy published no mode
- *    at all until data-gaps-74 fixed the parser, which is why these two used to fail loud here.
+ *    at all until data-gaps-74 fixed the parser, which is why these two used to fail loud here;
+ *  - Light Affinity's Radiance bonus (`chain_jolt_mode`) rides the Radiance click's own `setsModes`
+ *    the same way once that power is switched on (rebuild `ac3ce0697`).
  */
 const ENGINE_MODELED_ADJUSTERS: ReadonlySet<string> = new Set([
   'defensiveadaptation', 'offensiveadaptation', 'restedadaptation',
   'outofcombat',
   'huntermode', 'prowlermode',
+  'chain_jolt_mode',
 ]);
 
 /**

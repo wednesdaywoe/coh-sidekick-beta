@@ -50,6 +50,20 @@ import { perTargetCountCannotBeZero } from '@/utils/calculations/character-total
 const DEFAULT_ACTIVATE_PERIOD = 0.5;
 
 /**
+ * Does accuracy mean anything for this power? Yes when some kind it affects is not auto-hit, or
+ * when it takes Accuracy enhancements (a summon whose pet rolls with the caster's slotting).
+ * Tough, Hasten and Aim do neither, so they show no accuracy. Mirrors the engine's
+ * `Power::has_hit_roll`; an absent list counts as a roll there too.
+ */
+export function hasHitRoll(
+  power: Pick<Power, 'targetsAffected' | 'targetsAutoHit'> & { allowedEnhancements?: readonly string[] },
+): boolean {
+  const { targetsAffected: affected, targetsAutoHit: autoHit, allowedEnhancements: allowed } = power;
+  const rolls = !affected || !autoHit || affected.some((kind) => !autoHit.includes(kind));
+  return rolls || !allowed || allowed.includes('Accuracy');
+}
+
+/**
  * Build the bag `RegistryEffectsDisplay` resolves for one power.
  *
  * `damage` defaults to the power's own, and is a parameter because each surface reaches its
@@ -80,7 +94,7 @@ export function buildDisplayEffects(
       : stats.endurance;
   }
   if (stats?.recharge) bag.recharge = stats.recharge;
-  if (stats?.accuracy) bag.accuracy = stats.accuracy;
+  if (stats?.accuracy && hasHitRoll(power)) bag.accuracy = stats.accuracy;
   if (stats?.range) bag.range = stats.range;
   if (stats?.castTime) bag.castTime = stats.castTime;
   if (stats?.radius) bag.radius = stats.radius;

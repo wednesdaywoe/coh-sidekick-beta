@@ -78,6 +78,7 @@ import { selectableModes, publishedModes } from '@/utils/mode-suppression';
 // the drift that unification closed, so the store reads the same function the rows do.
 import { shouldShowToggle } from '@/components/powers/power-row-utils';
 import { useHistoryStore } from './historyStore';
+import { clearQuickShareCache } from '@/services/quickShareCache';
 import { useUIStore } from './uiStore';
 
 // ============================================
@@ -3384,6 +3385,8 @@ export const useBuildStore = create<BuildStore>()(
           if (port) build.serverId = getActiveDataset().id;
 
           set({ build, lastImportNotes: port ? notes : [] });
+          // A different build now: its short link must not update the last one's row.
+          clearQuickShareCache();
           return true;
         } catch (e) {
           console.error('Failed to import build:', e);
@@ -3408,6 +3411,7 @@ export const useBuildStore = create<BuildStore>()(
         reconcileStoredSlotLevels(build, midsLevelUpMode);
         useUIStore.getState().clearCompareSlottingCopies();
         set({ build });
+        clearQuickShareCache();
       },
 
       resetBuild: () => {
@@ -3415,6 +3419,7 @@ export const useBuildStore = create<BuildStore>()(
         // Preserve the current server — New Build should keep you on the same
         // dataset (Rebirth stays Rebirth), not snap back to Homecoming.
         set((state) => ({ build: createEmptyBuild(state.build.serverId) }));
+        clearQuickShareCache();
       },
 
       // Wipe every slotted enhancement across the whole build, keeping the

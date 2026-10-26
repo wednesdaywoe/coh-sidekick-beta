@@ -10,11 +10,13 @@ import { CURRENT_PREVIEW_TEMPLATE_VERSION } from '@/components/export-image/Buil
 import type { BuildExport } from '@/types/build';
 import { DEFAULT_BUILD_NAME } from '@/types/build';
 import { publicProviderName } from '@/utils/author-identity';
+import { QUICK_SHARE_CACHE_KEY, clearQuickShareCache } from './quickShareCache';
+
+export { clearQuickShareCache };
 
 const DEFAULT_PAGE_SIZE = 20;
 const OWNER_TOKENS_KEY = 'coh-planner-owner-tokens';
 const FAVORITES_KEY = 'coh-planner-favorites';
-const QUICK_SHARE_CACHE_KEY = 'coh-planner-quick-share';
 
 /**
  * Hourly save/share limits. **Mirrors `supabase/functions/share-build/index.ts`.**
@@ -443,12 +445,6 @@ function writeQuickShareCache(cache: QuickShareCache): void {
   localStorage.setItem(QUICK_SHARE_CACHE_KEY, JSON.stringify(cache));
 }
 
-/** Clear the quick-share cache. Called on logout so a different user on the
- *  same browser doesn't try to update the previous user's unlisted build. */
-export function clearQuickShareCache(): void {
-  localStorage.removeItem(QUICK_SHARE_CACHE_KEY);
-}
-
 async function fingerprintBuild(buildExport: BuildExport): Promise<string> {
   const json = JSON.stringify(buildExport.build);
   const bytes = new TextEncoder().encode(json);
@@ -466,6 +462,9 @@ async function fingerprintBuild(buildExport: BuildExport): Promise<string> {
  *     URL with no network call (instant re-copy).
  *   - Else, updates the cached share row in place via `existingId` (or creates
  *     a new row on the first share, or if the cached row is no longer ownable).
+ *     The cache belongs to the build in the planner: loading or starting a
+ *     different one clears it (buildStore), so this update is only ever an
+ *     edit of the same build, never a different build overwriting a link.
  *   - The created build is `visibility: 'unlisted'` — reachable by anyone
  *     with the exact URL but not surfaced in search/browse or listable via
  *     the anon API.

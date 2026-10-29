@@ -16,7 +16,8 @@ import type { ReactNode } from 'react';
 /** What the primary CTA button does when clicked. */
 export type AnnouncementAction =
   | { kind: 'openModal'; modal: 'attackChain' }
-  | { kind: 'navigate'; to: string };
+  | { kind: 'navigate'; to: string }
+  | { kind: 'link'; url: string };
 
 export interface Announcement {
   /** Stable dismissal key — never rename or reuse. */
@@ -34,6 +35,32 @@ export interface Announcement {
 }
 
 export const ANNOUNCEMENTS: Announcement[] = [
+  {
+    id: 'beta-retiring',
+    tabLabel: 'Beta is retiring',
+    badge: 'Important',
+    title: 'Sidekick Beta is being retired',
+    body: (
+      <>
+        This version of Sidekick is <strong className="text-gray-100">no longer receiving updates or fixes</strong>{' '}
+        and will be shut down soonish©️.
+        <br />
+        <br />
+        Eventually the new Sidekick will take over this address. But while beta still exists, the new Sidekick temporarily resides at{' '}
+        <a
+          href="https://next.coh-sidekick.com"
+          target="_blank"
+          rel="noopener"
+          className="text-gray-100 font-medium underline"
+        >
+          next.coh-sidekick.com
+        </a>
+        . It shares the same database so all your cloud-saved builds are there. Your saved <code>.skif</code> and Mids files open in it.
+      </>
+    ),
+    image: '/sidekick-1.0-preview.webp',
+    cta: { label: 'Go to Sidekick 1.0', action: { kind: 'link', url: 'https://next.coh-sidekick.com' } },
+  },
   {
     id: 'rearrangeable-layout',
     tabLabel: 'Custom Layout',

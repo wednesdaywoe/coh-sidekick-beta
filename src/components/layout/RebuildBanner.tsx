@@ -29,7 +29,7 @@ export function RebuildBanner() {
   return (
     <div className="bg-[var(--color-sk-magenta)] text-white text-sm flex items-center justify-center gap-3 px-4 py-1.5 flex-wrap">
       <span>
-        <strong>Sidekick 1.0 is in public testing</strong> at next.coh-sidekick.com. Your saved builds open in it.
+        <strong>Sidekick Beta is retiring and no longer gets updates.</strong> Please move to next.coh-sidekick.com. Your saved builds open in it.
       </span>
       <a
         href={ROADMAP_CALLOUT.url}
@@ -37,7 +37,7 @@ export function RebuildBanner() {
         rel="noopener"
         className="px-2.5 py-0.5 bg-white/20 hover:bg-white/30 rounded text-white font-medium transition-colors"
       >
-        Try it <span aria-hidden>&#8599;</span>
+        Go to 1.0 <span aria-hidden>&#8599;</span>
       </a>
       <button
         onClick={handleDismiss}

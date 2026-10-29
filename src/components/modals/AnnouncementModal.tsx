@@ -2,7 +2,7 @@
  * Tabbed feature-announcement spotlight ("What's New"). Auto-opens whenever the
  * ANNOUNCEMENTS registry has at least one entry the user hasn't dismissed, or
  * the current ROADMAP_VERSION hasn't been seen (announcementAutoOpens), landing
- * on the roadmap tab. Each entry is a tab (newest first), so the user can browse
+ * on the newest featurette if it's unseen, else the roadmap tab. Each entry is a tab (newest first), so the user can browse
  * every spotlight in one place.
  *
  * Dismissal (keyed by id, persisted in uiStore.dismissedAnnouncements):
@@ -37,8 +37,11 @@ export function AnnouncementModal() {
 
   const [visible, setVisible] = useState(true);
   const [dontShow, setDontShow] = useState(false);
-  // The roadmap is the landing tab; featurettes are browsed from their own tabs.
-  const [activeTab, setActiveTab] = useState<ActiveTab>('roadmap');
+  // Land on the newest featurette while it's unseen (the Beta retirement notice),
+  // otherwise on the roadmap.
+  const [activeTab, setActiveTab] = useState<ActiveTab>(() =>
+    ANNOUNCEMENTS.length > 0 && !dismissed.includes(ANNOUNCEMENTS[0].id) ? 0 : 'roadmap',
+  );
 
   const roadmapKey = roadmapSeenKey();
   const roadmapUnseen = !dismissed.includes(roadmapKey);
@@ -67,6 +70,7 @@ export function AnnouncementModal() {
   const runAction = (action: AnnouncementAction) => {
     if (action.kind === 'openModal' && action.modal === 'attackChain') openChain();
     else if (action.kind === 'navigate') navigate({ to: action.to });
+    else if (action.kind === 'link') window.open(action.url, '_blank', 'noopener');
   };
 
   const close = () => {

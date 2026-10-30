@@ -15,6 +15,7 @@
 
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { previewMayExist, previewObjectPath } from '../_shared/preview-visibility.ts';
+import { progressMayStay, withoutProgress } from '../_shared/build-progress.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -94,7 +95,7 @@ Deno.serve(async (req: Request) => {
     // Verify the authenticated user owns this build
     const { data: build } = await supabase
       .from('shared_builds')
-      .select('id, user_id')
+      .select('id, user_id, build_json')
       .eq('id', id)
       .eq('user_id', authUserId)
       .single();
@@ -113,12 +114,18 @@ Deno.serve(async (req: Request) => {
     // visibility - a row pointing at an object we are about to remove is the
     // other half of the same lie.
     const keepsPreview = previewMayExist(visibility);
+    // Leaving private takes the owner's shopping progress off the row, in the
+    // same update, for the same reason (build-progress.ts).
+    // Written only when there was progress to take, so a plain flip never
+    // rewrites a build_json a concurrent save may have just replaced.
+    const stripped = progressMayStay(visibility) ? build.build_json : withoutProgress(build.build_json);
     const { error: updateError } = await supabase
       .from('shared_builds')
       .update({
         visibility,
         updated_at: new Date().toISOString(),
         ...(keepsPreview ? {} : { preview_image_path: null, preview_template_version: null }),
+        ...(stripped === build.build_json ? {} : { build_json: stripped }),
       })
       .eq('id', id);
 

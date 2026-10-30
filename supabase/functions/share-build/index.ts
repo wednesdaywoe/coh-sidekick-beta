@@ -17,6 +17,7 @@ import { identityClaimRefusal, type HandleLookup } from '../_shared/identity-cla
 import { mayWriteBuild } from '../_shared/build-ownership.ts';
 import { classifyCaller, type Caller, type Verdict } from '../_shared/caller-identity.ts';
 import { previewMayExist, previewObjectPath } from '../_shared/preview-visibility.ts';
+import { progressMayStay, withoutProgress } from '../_shared/build-progress.ts';
 import {
   CURRENT_PREVIEW_TEMPLATE_VERSION,
   gradePreviewImage,
@@ -433,6 +434,10 @@ Deno.serve(async (req: Request) => {
       // readable preview either - including the case where it was public a
       // moment ago and the object is already sitting in the bucket.
       const effectiveVisibility = visibilityProvided ? visibility : existing.visibility;
+      // The owner's shopping progress stays on private rows only (build-progress.ts).
+      if (!progressMayStay(effectiveVisibility)) {
+        updateFields.build_json = withoutProgress(build_json);
+      }
       if (previewMayExist(effectiveVisibility)) {
         const previewPath = await uploadPreviewImage(supabase, body.existing_id, body.preview_image_base64);
         if (previewPath) {
@@ -481,6 +486,7 @@ Deno.serve(async (req: Request) => {
     const { error: insertError } = await supabase.from('shared_builds').insert({
       id,
       ...buildData,
+      build_json: progressMayStay(visibility) ? build_json : withoutProgress(build_json),
       visibility,  // new rows always set visibility explicitly
       owner_token_hash: ownerTokenHash,
       user_id: authUserId,  // null if not logged in, UUID if authenticated

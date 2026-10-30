@@ -137,3 +137,6 @@ GEMINI.md
 .ori/
 .pi/
 .playwright-mcp/
+
+# Supabase CLI cache (link state, version checks)
+supabase/.temp/

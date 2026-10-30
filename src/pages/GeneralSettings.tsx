@@ -6,6 +6,7 @@
  */
 
 import { useState, useCallback } from 'react';
+import type { User } from '@supabase/supabase-js';
 import { useAuthStore, useUIStore } from '@/stores';
 import { COLOR_THEMES, COLOR_THEME_ORDER } from '@/data/core/themes';
 import { supabase } from '@/lib/supabase';
@@ -13,6 +14,21 @@ import { Button } from '@/components/ui/Button';
 import { getOwnedBuildIds, claimBuilds } from '@/services/sharedBuilds';
 import { isCalcDebugEnabled, enableCalcDebug, disableCalcDebug } from '@/utils/calc-debug';
 import { isCrashReportingEnabled, setCrashReporting, CRASH_REPORTING_NOTICE } from '@/utils/crash-consent';
+
+const PROVIDER_NAMES: Record<string, string> = {
+  discord: 'Discord',
+  'custom:simplelogin': 'SimpleLogin',
+};
+
+/** Name the account's real sign-in method(s); this used to say Discord for everyone. */
+function signInLabel(user: User): string {
+  const meta = user.app_metadata ?? {};
+  const ids: string[] = meta.providers ?? (meta.provider ? [meta.provider] : []);
+  const names = ids.map((id) => PROVIDER_NAMES[id] ?? id);
+  if (names.length === 0) return 'Signed in';
+  if (names.length === 1) return `Signed in via ${names[0]}`;
+  return `Linked to ${names.join(' and ')}`;
+}
 
 export function GeneralSettings() {
   const user = useAuthStore((s) => s.user);
@@ -106,7 +122,7 @@ export function GeneralSettings() {
                   {user.user_metadata?.full_name || user.user_metadata?.name || 'User'}
                 </p>
                 <p className="text-xs text-gray-500">
-                  Signed in via Discord
+                  {signInLabel(user)}
                 </p>
               </div>
             </div>
